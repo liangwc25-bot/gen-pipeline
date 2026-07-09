@@ -199,6 +199,52 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             import traceback
             traceback.print_exc()
 
+    def do_POST(self):
+        if self.path == "/api/batch":
+            return self._handle_batch()
+        self.send_response(405)
+        self.end_headers()
+
+    def _handle_batch(self):
+        """Handle batch operations (POST /api/batch)."""
+        content_len = int(self.headers.get("Content-Length", 0))
+        try:
+            data = json.loads(self.rfile.read(content_len))
+        except json.JSONDecodeError:
+            self.send_error(400, "Invalid JSON")
+            return
+        
+        action = data.get("action", "")
+        filenames = data.get("filenames", [])
+        success, failed = [], []
+        
+        for fn in filenames:
+            try:
+                if action == "favorite":
+                    if fn not in load_favorites():
+                        toggle_favorite(fn)
+                    success.append(fn)
+                elif action == "archive":
+                    result = toggle_archive(fn)
+                    if result: success.append(fn)
+                    else: failed.append(fn)
+                elif action == "trash":
+                    result = move_to_trash(fn)
+                    if result: success.append(fn)
+                    else: failed.append(fn)
+            except Exception:
+                failed.append(fn)
+        
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps({
+            "success": len(success),
+            "failed": len(failed),
+            "total": len(filenames),
+        }).encode())
+
     def _do_get(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
@@ -418,6 +464,39 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                     self.send_error(404, "File not found")
             else:
                 self.send_error(400, "Missing filename")
+            return
+
+            
+            action = data.get("action", "")
+            filenames = data.get("filenames", [])
+            success, failed = [], []
+            
+            for fn in filenames:
+                try:
+                    if action == "favorite":
+                        if fn not in load_favorites():
+                            toggle_favorite(fn)
+                        success.append(fn)
+                    elif action == "archive":
+                        result = toggle_archive(fn)
+                        if result: success.append(fn)
+                        else: failed.append(fn)
+                    elif action == "trash":
+                        result = move_to_trash(fn)
+                        if result: success.append(fn)
+                        else: failed.append(fn)
+                except Exception:
+                    failed.append(fn)
+            
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "success": len(success),
+                "failed": len(failed),
+                "total": len(filenames),
+            }).encode())
             return
 
         # Serve thumbnail — try main dir first, then archive
