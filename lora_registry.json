@@ -2971,6 +2971,139 @@
       "base_model": "illustrious",
       "category": "concept",
       "nsfw": true
+    },
+    {
+      "id": "futa-taker-pov",
+      "runware_air_id": "liangwc:futa-taker-pov@1362426",
+      "name": "Futa Taker POV",
+      "url": "https://civitai.com/models/1209676",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "pov"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "lady-bulge",
+      "runware_air_id": "liangwc:lady-bulge@2353585",
+      "name": "Lady Bulge",
+      "url": "https://civitai.com/models/2001019",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "racing-miku",
+      "runware_air_id": "liangwc:racing-miku@2487845",
+      "name": "初音ミク Racing Miku 2022",
+      "url": "https://civitai.com/models/2209692",
+      "tags": [
+        "illustrious",
+        "character",
+        "vocaloid"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "race-ethnicity",
+      "runware_air_id": "liangwc:race-ethnicity@2168222",
+      "name": "Race & Ethnicity Helper",
+      "url": "https://civitai.com/models/620668",
+      "tags": [
+        "illustrious",
+        "concept",
+        "slider"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "mai-shiranui-ill",
+      "runware_air_id": "liangwc:mai-shiranui-ill@1360277",
+      "name": "不知火舞 Mai (Illu)",
+      "url": "https://civitai.com/models/540718",
+      "tags": [
+        "illustrious",
+        "character",
+        "kof"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "mai-shiranui-pony",
+      "runware_air_id": "liangwc:mai-shiranui-pony@601161",
+      "name": "不知火舞 Mai (Pony)",
+      "url": "https://civitai.com/models/540718",
+      "tags": [
+        "pony",
+        "character",
+        "kof"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "miku-pony",
+      "runware_air_id": "liangwc:miku-pony@404551",
+      "name": "初音ミク Miku (Pony)",
+      "url": "https://civitai.com/models/362031",
+      "tags": [
+        "pony",
+        "character",
+        "vocaloid"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
     }
   ],
   "categories": {
