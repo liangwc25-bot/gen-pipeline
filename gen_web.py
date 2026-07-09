@@ -188,9 +188,6 @@ def list_loras(model: str = None) -> dict:
             "description": l.get("description", ""),
             "category": l.get("category", ""),
         })
-    # Sort: concept(微调) > style > character/other
-    CAT_PRIORITY = {"concept": 0, "style": 1}
-    result.sort(key=lambda x: (CAT_PRIORITY.get(x["category"], 9), x["name"].lower()))
     return {"success": True, "loras": result}
 
 
