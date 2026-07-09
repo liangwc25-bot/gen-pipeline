@@ -161,7 +161,7 @@ def list_loras(model: str = None) -> dict:
     """Return available LoRAs from registry, optionally filtered by base_model.
     Only returns LoRAs with runware_air_id (verified on Runware)."""
     import json as _json
-    registry_path = Path(__file__).parent.parent / ".hermes" / "skills" / "creative" / "lora-manager" / "references" / "lora_registry.json"
+    registry_path = Path(__file__).parent / "lora_registry.json"
     try:
         with open(registry_path) as f:
             registry = _json.load(f)
