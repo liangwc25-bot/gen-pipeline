@@ -45,7 +45,7 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 14px 24px;
     border-bottom: 1px solid rgba(124,92,252,0.12);
-    flex-wrap: wrap; gap: 8px;
+    flex-wrap: wrap; gap: 4px;
     backdrop-filter: blur(8px);
     background: rgba(15,15,20,0.6);
     position: sticky; top: 0; z-index: 100;
@@ -56,10 +56,10 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .header-actions { display: flex; gap: 6px; align-items: center; white-space: nowrap; }
+  .header-actions { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
   .btn {
-    padding: 5px 8px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(255,255,255,0.04); color: var(--text); font-size: 0.75rem;
+    padding: 5px 9px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04); color: var(--text); font-size: 0.73rem;
     cursor: pointer; transition: all .25s ease;
     backdrop-filter: blur(4px);
     white-space: nowrap;
@@ -74,7 +74,7 @@
     background: var(--orange); border-color: var(--orange); color: #fff;
     box-shadow: 0 0 12px rgba(251,146,60,0.3);
   }
-  .count { color: var(--text2); font-size: 0.85rem; }
+  .count { color: var(--text2); font-size: 0.75rem; font-weight: 400; margin-left: 4px; opacity: 0.7; -webkit-text-fill-color: var(--text2); }
   .filter-bar { display: flex; gap: 6px; }
 
   .grid {
@@ -309,11 +309,11 @@
     padding: 12px 24px; gap: 10px; align-items: center;
     backdrop-filter: blur(12px);
   }
-  .batch-bar.open { display: flex; justify-content: center; flex-wrap: wrap; }
-  .batch-bar .batch-count { color: var(--text2); font-size: 0.85rem; margin-right: auto; }
+  .batch-bar.open { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; }
+  .batch-bar .batch-count { color: var(--text2); font-size: 0.8rem; width: 100%; text-align: center; margin-bottom: 2px; }
   .batch-bar .batch-btn {
-    padding: 8px 18px; border-radius: 10px; border: none;
-    font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: .15s;
+    padding: 6px 14px; border-radius: 10px; border: none;
+    font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: .15s;
   }
   .batch-btn.fav { background: rgba(244,63,94,0.15); color: var(--pink); }
   .batch-btn.fav:hover { background: rgba(244,63,94,0.25); }
@@ -327,16 +327,13 @@
 </head>
 <body>
 <div class="header">
-  <h1>✦ 生图库</h1>
+  <h1>✦ 生图库 <span class="count" id="count"></span></h1>
   <div class="header-actions">
-    <div class="filter-bar">
-      <button class="btn active" id="filterAll" onclick="setFilter('all')">全部</button>
-      <button class="btn" id="filterFav" onclick="setFilter('fav')">♥ 收藏</button>
-      <button class="btn" id="filterArchive" onclick="setFilter('archive')">📦 存档</button>
-    </div>
-    <span class="count" id="count"></span>
-    <button class="btn" id="selectBtn" onclick="toggleSelectMode()">☐ 选择</button>
+    <button class="btn active" id="filterAll" onclick="setFilter('all')">全部</button>
+    <button class="btn" id="filterFav" onclick="setFilter('fav')">♥ 收藏</button>
+    <button class="btn" id="filterArchive" onclick="setFilter('archive')">📦 存档</button>
     <button class="btn" onclick="rescan()" id="rescanBtn">⟳ 扫描</button>
+    <button class="btn" id="selectBtn" onclick="toggleSelectMode()">☐ 选择</button>
   </div>
 </div>
 <div id="grid" class="grid"></div>
@@ -888,7 +885,7 @@ function toggleSelectMode() {
   selectMode = !selectMode;
   document.getElementById('grid').classList.toggle('select-mode', selectMode);
   document.getElementById('batchBar').classList.toggle('open', selectMode);
-  document.getElementById('selectBtn').textContent = selectMode ? '☑ 取消选择' : '☐ 选择';
+  document.getElementById('selectBtn').textContent = selectMode ? '☑ 取消' : '☐ 选择';
   document.getElementById('selectBtn').classList.toggle('active', selectMode);
   if (!selectMode) { selected.clear(); updateCardSelection(); }
   updateBatchBar();
