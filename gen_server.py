@@ -5,7 +5,7 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
 # ── Config ──
-_env_file = Path(__file__).parent.parent / ".hermes" / ".env"
+_env_file = Path(__file__).parent / ".env"
 _runware_key = ""
 if _env_file.exists():
     for line in _env_file.read_text().splitlines():

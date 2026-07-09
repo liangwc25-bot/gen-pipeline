@@ -18,8 +18,8 @@ OUTPUT_DIR = Path(__file__).parent.parent / "output" / "images"
 # ── Env ─────────────────────────────────────────────────────────────────────
 
 def load_env():
-    """Load env vars from ~/.hermes/.env"""
-    env_path = Path.home() / ".hermes" / ".env"
+    """Load env vars from project root .env"""
+    env_path = Path(__file__).parent.parent / ".env"
     if not env_path.exists():
         return
     for line in env_path.read_text().splitlines():
@@ -33,7 +33,7 @@ def get_key(name: str) -> str:
     """Get API key or die with message."""
     val = os.environ.get(name, "")
     if not val:
-        print(f"❌ Missing {name}. Set it in ~/.hermes/.env")
+        print(f"❌ Missing {name}. Set it in gen-pipeline/.env")
         import sys
         sys.exit(1)
     return val
