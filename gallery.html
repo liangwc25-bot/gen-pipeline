@@ -283,6 +283,46 @@
     text-align: center; padding: 60px 24px; color: var(--text2);
   }
   .empty .big { font-size: 3rem; margin-bottom: 12px; }
+
+  /* ── Selection mode ── */
+  .sel-check {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 24px; height: 24px; border-radius: 6px;
+    border: 2px solid rgba(255,255,255,0.4); background: rgba(0,0,0,0.4);
+    display: none; z-index: 3; pointer-events: none;
+  }
+  .select-mode .sel-check { display: block; }
+  .thumb-card.selected .sel-check {
+    background: var(--accent); border-color: var(--accent);
+  }
+  .thumb-card.selected .sel-check::after {
+    content: '✓'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    color: #fff; font-size: 0.8rem; font-weight: 700; line-height: 1;
+  }
+  .select-mode .thumb-card { cursor: pointer; }
+  .select-mode .fav-star, .select-mode .arch-btn { pointer-events: none; opacity: 0.3; }
+
+  /* Batch action bar */
+  .batch-bar {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 500;
+    background: var(--card); border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 24px; gap: 10px; align-items: center;
+    backdrop-filter: blur(12px);
+  }
+  .batch-bar.open { display: flex; justify-content: center; flex-wrap: wrap; }
+  .batch-bar .batch-count { color: var(--text2); font-size: 0.85rem; margin-right: auto; }
+  .batch-bar .batch-btn {
+    padding: 8px 18px; border-radius: 10px; border: none;
+    font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: .15s;
+  }
+  .batch-btn.fav { background: rgba(244,63,94,0.15); color: var(--pink); }
+  .batch-btn.fav:hover { background: rgba(244,63,94,0.25); }
+  .batch-btn.arch { background: rgba(251,146,60,0.15); color: var(--orange); }
+  .batch-btn.arch:hover { background: rgba(251,146,60,0.25); }
+  .batch-btn.trash { background: rgba(239,68,68,0.15); color: #ef4444; }
+  .batch-btn.trash:hover { background: rgba(239,68,68,0.25); }
+  .batch-btn.cancel { background: rgba(255,255,255,0.06); color: var(--text2); }
+  [data-theme="light"] .batch-bar { border-top-color: rgba(0,0,0,0.08); }
 </style>
 </head>
 <body>
@@ -295,10 +335,18 @@
       <button class="btn" id="filterArchive" onclick="setFilter('archive')">📦 存档</button>
     </div>
     <span class="count" id="count"></span>
+    <button class="btn" id="selectBtn" onclick="toggleSelectMode()">☐ 选择</button>
     <button class="btn" onclick="rescan()" id="rescanBtn">⟳ 扫描</button>
   </div>
 </div>
 <div id="grid" class="grid"></div>
+<div id="batchBar" class="batch-bar">
+  <span class="batch-count" id="batchCount">已选 0 张</span>
+  <button class="batch-btn fav" onclick="batchOp('favorite')">♥ 收藏</button>
+  <button class="batch-btn arch" onclick="batchOp('archive')">📦 存档</button>
+  <button class="batch-btn trash" onclick="batchOp('trash')">🗑 回收</button>
+  <button class="batch-btn cancel" onclick="toggleSelectMode()">取消</button>
+</div>
 <div id="pagination" class="pagination"></div>
 <div id="empty" class="empty" style="display:none">
   <div class="big">📭</div>
@@ -570,15 +618,15 @@ function renderGrid(images) {
     const isFav = favorites.has(img.filename);
     const isArch = archived.has(img.filename);
     return `
-    <div class="thumb-card">
+    <div class="thumb-card" data-file="${escapeHtml(img.filename)}" onclick="selectCard(this, event)">
       <button class="arch-btn ${isArch ? 'on' : 'off'}" data-file="${escapeHtml(img.filename)}"
               onclick="event.stopPropagation(); toggleArch('${escapeHtml(img.filename)}', updateAllUI)">📦</button>
       <button class="fav-star ${isFav ? 'on' : 'off'}" data-file="${escapeHtml(img.filename)}"
               onclick="event.stopPropagation(); toggleFav('${escapeHtml(img.filename)}', updateAllUI)">${isFav ? '♥' : '♡'}</button>
       <img src="/thumb/${enc(img.filename)}" alt="" loading="lazy"
-           onclick="openModal('${enc(img.filename)}')"
            onerror="this.parentElement.innerHTML='<div class=\\'no-thumb\\'>${escapeHtml(img.filename)}</div>'">
       <div class="card-overlay"><span class="card-name">${escapeHtml(img.filename)}</span></div>
+      <div class="sel-check"></div>
     </div>`;
   }).join('');
 }
@@ -831,6 +879,65 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') navModal(-1);
   if (e.key === 'ArrowRight') navModal(1);
 });
+
+// ════════════════════ Selection Mode ════════════════════
+let selectMode = false;
+const selected = new Set();
+
+function toggleSelectMode() {
+  selectMode = !selectMode;
+  document.getElementById('grid').classList.toggle('select-mode', selectMode);
+  document.getElementById('batchBar').classList.toggle('open', selectMode);
+  document.getElementById('selectBtn').textContent = selectMode ? '☑ 取消选择' : '☐ 选择';
+  document.getElementById('selectBtn').classList.toggle('active', selectMode);
+  if (!selectMode) { selected.clear(); updateCardSelection(); }
+  updateBatchBar();
+}
+
+function selectCard(card, event) {
+  if (!selectMode) { openModal(card.querySelector('img') ? card.dataset.file : ''); return; }
+  event.stopPropagation();
+  const fn = card.dataset.file;
+  if (selected.has(fn)) { selected.delete(fn); card.classList.remove('selected'); }
+  else { selected.add(fn); card.classList.add('selected'); }
+  updateBatchBar();
+}
+
+function updateCardSelection() {
+  document.querySelectorAll('.thumb-card').forEach(card => {
+    card.classList.toggle('selected', selected.has(card.dataset.file));
+  });
+}
+
+function updateBatchBar() {
+  if (!selectMode) return;
+  document.getElementById('batchCount').textContent = `已选 ${selected.size} 张`;
+}
+
+async function batchOp(action) {
+  if (selected.size === 0) return;
+  const filenames = [...selected];
+  const res = await fetch('/api/batch', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action, filenames }),
+  });
+  const data = await res.json();
+  // Update local sets
+  if (action === 'favorite') filenames.forEach(f => favorites.add(f));
+  else if (action === 'archive') filenames.forEach(f => { archived.add(f); favorites.delete(f); });
+  else if (action === 'trash') filenames.forEach(f => { archived.delete(f); favorites.delete(f); });
+  // Reload page
+  loadPage(currentPage);
+  // Exit select mode
+  selectMode = false;
+  document.getElementById('grid').classList.remove('select-mode');
+  document.getElementById('batchBar').classList.remove('open');
+  document.getElementById('selectBtn').textContent = '☐ 选择';
+  document.getElementById('selectBtn').classList.remove('active');
+  selected.clear();
+  updateBatchBar();
+}
 
 // Init
 Promise.all([loadFavorites(), loadArchived()]).then(() => loadPage(1));
