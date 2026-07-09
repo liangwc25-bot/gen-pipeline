@@ -12,7 +12,7 @@ import tempfile
 import base64
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "workspace" / "scripts"))
+sys.path.insert(0, str(Path(__file__).parent))  # gen-pipeline root for gen_lib imports
 
 _orig_exit = sys.exit
 def _safe_exit(code=0):

@@ -617,11 +617,9 @@ function filterLoraDropdown(row, loras) {
   const dropdown = row.querySelector('.lora-dropdown');
   const q = search.value.toLowerCase().trim();
 
-  // Fallback to cache if loras is empty
-  if (!loras || !loras.length) {
-    const model = document.getElementById('model').value;
-    loras = state.lorasCache[model] || [];
-  }
+  // Always use current model's cache
+  const model = document.getElementById('model').value;
+  loras = state.lorasCache[model] || loras || [];
 
   let html = '';
   // "— 不启用 —" always first
