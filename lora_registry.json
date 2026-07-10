@@ -3450,6 +3450,276 @@
       "base_model": "illustrious",
       "category": "character_style",
       "nsfw": true
+    },
+    {
+      "id": "flux_380283_746029",
+      "runware_air_id": "liangwc:flux_380283_746029@746029",
+      "name": "POV Deepthroat/Blowjob Flux",
+      "url": "https://civitai.com/models/380283",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_696577_779502",
+      "runware_air_id": "liangwc:flux_696577_779502@779502",
+      "name": "Orgasm Face Flux",
+      "url": "https://civitai.com/models/696577",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_972173_1160192",
+      "runware_air_id": "liangwc:flux_972173_1160192@1160192",
+      "name": "FLUX Clothes On/Off",
+      "url": "https://civitai.com/models/972173",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_906779_1014705",
+      "runware_air_id": "liangwc:flux_906779_1014705@1014705",
+      "name": "Flat Chested Body Type",
+      "url": "https://civitai.com/models/906779",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_770295_1202059",
+      "runware_air_id": "liangwc:flux_770295_1202059@1202059",
+      "name": "Giant Breasts Gigantomastia",
+      "url": "https://civitai.com/models/770295",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_653203_880875",
+      "runware_air_id": "liangwc:flux_653203_880875@880875",
+      "name": "Futanari Realistic",
+      "url": "https://civitai.com/models/653203",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_649568_726726",
+      "runware_air_id": "liangwc:flux_649568_726726@726726",
+      "name": "Asian Pubic Hair FLUX",
+      "url": "https://civitai.com/models/649568",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_1346321_1520518",
+      "runware_air_id": "liangwc:flux_1346321_1520518@1520518",
+      "name": "Bukkake Realistic Cum Facial",
+      "url": "https://civitai.com/models/1346321",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_655286_1105560",
+      "runware_air_id": "liangwc:flux_655286_1105560@1105560",
+      "name": "Huge Insertion Bulge",
+      "url": "https://civitai.com/models/655286",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_713466_1185074",
+      "runware_air_id": "liangwc:flux_713466_1185074@1185074",
+      "name": "Futa Woman Sevenof9",
+      "url": "https://civitai.com/models/713466",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_947385_1060705",
+      "runware_air_id": "liangwc:flux_947385_1060705@1060705",
+      "name": "Upskirt Naked Pussy FLUX",
+      "url": "https://civitai.com/models/947385",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_925361_1035790",
+      "runware_air_id": "liangwc:flux_925361_1035790@1035790",
+      "name": "Side Petite Doggy Pose",
+      "url": "https://civitai.com/models/925361",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "niji-anime-style-flux",
+      "runware_air_id": "liangwc:niji-anime-style-flux@1423082",
+      "name": "Niji Anime Style (FLUX)",
+      "url": "https://civitai.com/models/1261988",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "niji-goth-style",
+      "runware_air_id": "liangwc:niji-goth-style@1896419",
+      "name": "Niji Goth Style",
+      "url": "https://civitai.com/models/1675502",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "niji-semi-realistic",
+      "runware_air_id": "liangwc:niji-semi-realistic@2903425",
+      "name": "Niji Semi-Realistic",
+      "url": "https://civitai.com/models/2584434",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
     }
   ],
   "categories": {
