@@ -3720,6 +3720,24 @@
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": true
+    },
+    {
+      "id": "seashell-bikini",
+      "runware_air_id": "liangwc:seashell-bikini@1948245",
+      "name": "Seashell Bikini",
+      "url": "https://civitai.com/models/1721575",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
     }
   ],
   "categories": {
