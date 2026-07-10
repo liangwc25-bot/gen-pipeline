@@ -222,6 +222,16 @@
   .modal-del-btn:hover { border-color: #ef4444; color: #ef4444; }
   .modal-send-btn:hover { border-color: #3b82f6; color: #3b82f6; }
   .modal-send-btn.sending { border-color: #3b82f6; color: #3b82f6; opacity: 0.6; pointer-events: none; }
+  .modal-gif-btn {
+    background: none; border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px; padding: 6px 10px;
+    color: var(--text2); font-size: 0.85rem; cursor: pointer;
+    transition: .15s;
+    margin-left: 4px;
+    white-space: nowrap;
+  }
+  .modal-gif-btn:hover { border-color: var(--green); color: var(--green); }
+  .modal-gif-btn.sending { border-color: var(--green); color: var(--green); opacity: 0.6; pointer-events: none; }
   .modal-copy-btn {
     background: none; border: 1px solid rgba(255,255,255,0.1);
     border-radius: 6px; color: var(--text2); cursor: pointer;
@@ -248,6 +258,11 @@
   .modal-info {
     margin-top: 12px; display: flex; gap: 16px;
     color: var(--text2); font-size: 0.8rem; flex-wrap: wrap;
+  }
+  .modal-bottom-actions {
+    display: flex; gap: 6px; justify-content: center;
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
   }
   .modal-counter {
     color: var(--text2); font-size: 0.8rem;
@@ -360,7 +375,6 @@
       <button class="modal-arch-btn" id="modalArchBtn" onclick="toggleArchModal()">📦 存档</button>
       <button class="modal-fav-btn" id="modalFavBtn" onclick="toggleFavModal()">♡ 收藏</button>
       <button class="modal-del-btn" id="modalDelBtn" onclick="moveToTrash()">🗑 回收</button>
-      <button class="modal-send-btn" id="modalSendBtn" onclick="sendToTg()">📱 传送</button>
     </div>
     <div class="modal-swipe-area">
       <button class="modal-nav prev" id="navPrev" onclick="event.stopPropagation(); navModal(-1)">‹</button>
@@ -369,6 +383,10 @@
     </div>
     <div class="modal-meta" id="modalMeta"></div>
     <div class="modal-info" id="modalInfo"></div>
+    <div class="modal-bottom-actions">
+      <button class="modal-send-btn" id="modalSendBtn" onclick="sendToTg()">📱 传送</button>
+      <button class="modal-gif-btn" id="modalGifBtn" onclick="makeGif()">🎞 GIF</button>
+    </div>
   </div>
 </div>
 
@@ -546,6 +564,35 @@ async function sendToTg() {
   } catch(e) {
     btn.textContent = '❌ 失败';
     setTimeout(() => { btn.textContent = '📱 传送'; btn.classList.remove('sending'); }, 2000);
+  }
+}
+
+// ── Make Breathing GIF ──
+async function makeGif() {
+  if (!modalFilename) return;
+  const btn = document.getElementById('modalGifBtn');
+  btn.textContent = '⏳ 生成中…';
+  btn.classList.add('sending');
+  try {
+    const res = await fetch('/api/gif-zoom', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({filename: modalFilename}),
+    });
+    const data = await res.json();
+    if (data.success) {
+      btn.textContent = '✅ 完成';
+      setTimeout(() => { btn.textContent = '🎞 GIF'; btn.classList.remove('sending'); }, 3000);
+      // Refresh the grid and open the GIF
+      await loadPage(currentPage);
+      openModal(data.filename);
+    } else {
+      btn.textContent = '❌ ' + (data.error || '失败');
+      setTimeout(() => { btn.textContent = '🎞 GIF'; btn.classList.remove('sending'); }, 3000);
+    }
+  } catch(e) {
+    btn.textContent = '❌ 失败';
+    setTimeout(() => { btn.textContent = '🎞 GIF'; btn.classList.remove('sending'); }, 3000);
   }
 }
 
@@ -936,8 +983,24 @@ async function batchOp(action) {
   updateBatchBar();
 }
 
-// Init
-Promise.all([loadFavorites(), loadArchived()]).then(() => loadPage(1));
+// Init — rescan on every refresh, bfcache restore, and tab return
+async function initGallery() {
+  await fetch('/api/rescan').catch(() => {});
+  await Promise.all([loadFavorites(), loadArchived()]);
+  loadPage(1);
+}
+initGallery();
+
+// bfcache restore (mobile back/forward): F5 doesn't fire load, this does
+window.addEventListener('pageshow', e => {
+  if (e.persisted) initGallery();
+});
+// Tab return: rescan when user comes back
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    fetch('/api/rescan').then(() => loadPage(currentPage)).catch(() => {});
+  }
+});
 </script>
 
 <button id="theme-toggle" style="position:fixed;bottom:20px;right:20px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(128,128,128,0.3);background:var(--card);color:var(--text);font-size:1.2rem;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;transition:.2s;box-shadow:0 2px 8px rgba(0,0,0,0.15)" onclick="toggleTheme()" title="切换主题">☀️</button>

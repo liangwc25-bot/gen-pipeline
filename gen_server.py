@@ -16,6 +16,9 @@ GEN_DIR = Path(__file__).parent
 GEN_WEB_PY = GEN_DIR / "gen_web.py"
 OUTPUT_DIR = GEN_DIR / "output" / "images"
 
+# Import GIF zoom
+from gen_lib.gif_zoom import make_gif
+
 JOBS = {}
 
 # ── HTTP Handler ──
@@ -54,6 +57,8 @@ class GenHandler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if self.path == "/api/generate":
             return self._handle_generate()
+        if self.path == "/api/gif-zoom":
+            return self._handle_gif_zoom()
         self.send_response(404)
         self.end_headers()
         self.wfile.write(b"Not found")
@@ -162,6 +167,55 @@ class GenHandler(SimpleHTTPRequestHandler):
         if job["status"] == "done":
             return self._json_response({"job_id": job_id, "status": "done", "result": job["result"]})
         return self._json_response({"job_id": job_id, "status": "running"})
+
+    def _handle_gif_zoom(self):
+        """POST /api/gif-zoom — create a breathing GIF from an existing image."""
+        content_len = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_len)
+        try:
+            data = json.loads(body)
+        except json.JSONDecodeError:
+            return self._json_response({"success": False, "error": "Invalid JSON"}, 400)
+
+        filename = data.get("filename", "").strip()
+        if not filename:
+            return self._json_response({"success": False, "error": "Missing filename"}, 400)
+
+        input_path = OUTPUT_DIR / filename
+        if not input_path.exists():
+            return self._json_response({"success": False, "error": f"File not found: {filename}"}, 404)
+
+        if input_path.suffix.lower() not in (".png", ".jpg", ".jpeg", ".webp"):
+            return self._json_response({"success": False, "error": "Unsupported format"}, 400)
+
+        stem = input_path.stem
+        output_name = f"{stem}_breathing.gif"
+        output_path = OUTPUT_DIR / output_name
+
+        try:
+            import time
+            t0 = time.time()
+            make_gif(
+                input_path, output_path,
+                zoom_factor=data.get("zoom_factor", 0.04),
+                pan_x=data.get("pan_x", 4),
+                pan_y=data.get("pan_y", 3),
+                fps=data.get("fps", 12),
+                cycle_s=data.get("cycle_s", 2.0),
+                cycles=data.get("cycles", 1),
+            )
+            elapsed = time.time() - t0
+            return self._json_response({
+                "success": True,
+                "filename": output_name,
+                "url": f"/api/output-images/{output_name}",
+                "size": output_path.stat().st_size,
+                "elapsed_s": round(elapsed, 2),
+            })
+        except subprocess.CalledProcessError as e:
+            return self._json_response({"success": False, "error": f"FFmpeg error: {e.stderr[:300]}"})
+        except Exception as e:
+            return self._json_response({"success": False, "error": str(e)})
 
 # ── Start ──
 

@@ -17,6 +17,9 @@ from pathlib import Path
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
 
+# GIF zoom
+from gen_lib.gif_zoom import make_gif
+
 IMAGES_DIR = Path(__file__).parent / "output" / "images"
 ARCHIVE_DIR = Path(__file__).parent / "output" / "archived"
 TRASH_DIR = Path(__file__).parent / "output" / ".trash"
@@ -157,7 +160,7 @@ def get_images(source="main", force_refresh=False) -> list:
     favs = load_favorites()
 
     for f in sorted(target_dir.iterdir(), key=lambda p: p.stat().st_mtime, reverse=True):
-        if f.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp", ".mp4"):
+        if f.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp", ".mp4", ".gif"):
             st = f.stat()
             images.append({
                 "filename": f.name,
@@ -202,6 +205,8 @@ class GalleryHandler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if self.path == "/api/batch":
             return self._handle_batch()
+        if self.path == "/api/gif-zoom":
+            return self._handle_gif_zoom()
         self.send_response(405)
         self.end_headers()
 
@@ -244,6 +249,70 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             "failed": len(failed),
             "total": len(filenames),
         }).encode())
+
+    def _handle_gif_zoom(self):
+        """POST /api/gif-zoom — create a breathing GIF from an existing image."""
+        content_len = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_len)
+        try:
+            data = json.loads(body)
+        except json.JSONDecodeError:
+            self.send_error(400, "Invalid JSON")
+            return
+
+        filename = data.get("filename", "").strip()
+        if not filename:
+            self.send_error(400, "Missing filename")
+            return
+
+        input_path = IMAGES_DIR / filename
+        if not input_path.exists():
+            self.send_error(404, "File not found")
+            return
+
+        if input_path.suffix.lower() not in (".png", ".jpg", ".jpeg", ".webp"):
+            self.send_error(400, "Unsupported format")
+            return
+
+        stem = input_path.stem
+        output_name = f"{stem}_breathing.gif"
+        output_path = IMAGES_DIR / output_name
+
+        try:
+            t0 = time.time()
+            make_gif(
+                input_path, output_path,
+                zoom_factor=data.get("zoom_factor", 0.04),
+                pan_x=data.get("pan_x", 4),
+                pan_y=data.get("pan_y", 3),
+                fps=data.get("fps", 12),
+                cycle_s=data.get("cycle_s", 2.0),
+                cycles=data.get("cycles", 1),
+            )
+            elapsed = time.time() - t0
+            CACHE.pop("main", None)  # force rescan on next list
+            CACHE.pop("archive", None)
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "success": True,
+                "filename": output_name,
+                "url": f"/api/images/{output_name}",
+                "size": output_path.stat().st_size,
+                "elapsed_s": round(elapsed, 2),
+            }).encode())
+        except subprocess.CalledProcessError as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": False, "error": f"FFmpeg error: {e.stderr[:300]}"}).encode())
+        except Exception as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode())
 
     def _do_get(self):
         parsed = urllib.parse.urlparse(self.path)
@@ -375,7 +444,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             archived = []
             if ARCHIVE_DIR.exists():
                 for f in ARCHIVE_DIR.iterdir():
-                    if f.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp"):
+                    if f.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp", ".gif"):
                         archived.append(f.name)
             archived.sort()
             self.send_response(200)
@@ -527,7 +596,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 filepath = ARCHIVE_DIR / filename
             if filepath.exists():
                 ext = filepath.suffix.lower()
-                mime = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp"}
+                mime = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp", "gif": "image/gif"}
                 ct = mime.get(ext.lstrip("."), "application/octet-stream")
                 self.send_response(200)
                 self.send_header("Content-Type", ct)
