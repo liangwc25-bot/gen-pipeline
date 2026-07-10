@@ -3104,6 +3104,240 @@
       "base_model": "pony",
       "category": "character",
       "nsfw": false
+    },
+    {
+      "id": "flux_674027_780667",
+      "runware_air_id": "liangwc:flux_674027_780667@780667",
+      "name": "FLUX LoRA 674027",
+      "url": "https://civitai.com/models/674027",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_663135_932482",
+      "runware_air_id": "liangwc:flux_663135_932482@932482",
+      "name": "FLUX LoRA 663135",
+      "url": "https://civitai.com/models/663135",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_730405_831470",
+      "runware_air_id": "liangwc:flux_730405_831470@831470",
+      "name": "FLUX LoRA 730405",
+      "url": "https://civitai.com/models/730405",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_854713_956303",
+      "runware_air_id": "liangwc:flux_854713_956303@956303",
+      "name": "FLUX LoRA 854713",
+      "url": "https://civitai.com/models/854713",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_1302256_1947551",
+      "runware_air_id": "liangwc:flux_1302256_1947551@1947551",
+      "name": "FLUX LoRA 1302256",
+      "url": "https://civitai.com/models/1302256",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_685674_767398",
+      "runware_air_id": "liangwc:flux_685674_767398@767398",
+      "name": "FLUX LoRA 685674",
+      "url": "https://civitai.com/models/685674",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_781869_874396",
+      "runware_air_id": "liangwc:flux_781869_874396@874396",
+      "name": "FLUX LoRA 781869",
+      "url": "https://civitai.com/models/781869",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_713498_819961",
+      "runware_air_id": "liangwc:flux_713498_819961@819961",
+      "name": "FLUX LoRA 713498",
+      "url": "https://civitai.com/models/713498",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_990976_1110224",
+      "runware_air_id": "liangwc:flux_990976_1110224@1110224",
+      "name": "FLUX LoRA 990976",
+      "url": "https://civitai.com/models/990976",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_754435_843598",
+      "runware_air_id": "liangwc:flux_754435_843598@843598",
+      "name": "FLUX LoRA 754435",
+      "url": "https://civitai.com/models/754435",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_701694_914983",
+      "runware_air_id": "liangwc:flux_701694_914983@914983",
+      "name": "FLUX LoRA 701694",
+      "url": "https://civitai.com/models/701694",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_767717_858659",
+      "runware_air_id": "liangwc:flux_767717_858659@858659",
+      "name": "FLUX LoRA 767717",
+      "url": "https://civitai.com/models/767717",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_1128892_1276091",
+      "runware_air_id": "liangwc:flux_1128892_1276091@1276091",
+      "name": "FLUX LoRA 1128892",
+      "url": "https://civitai.com/models/1128892",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
     }
   ],
   "categories": {
