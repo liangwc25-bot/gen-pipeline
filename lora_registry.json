@@ -3108,7 +3108,7 @@
     {
       "id": "flux_674027_780667",
       "runware_air_id": "liangwc:flux_674027_780667@780667",
-      "name": "FLUX LoRA 674027",
+      "name": "FLUX NSFW unlock",
       "url": "https://civitai.com/models/674027",
       "tags": [
         "flux",
@@ -3126,7 +3126,7 @@
     {
       "id": "flux_663135_932482",
       "runware_air_id": "liangwc:flux_663135_932482@932482",
-      "name": "FLUX LoRA 663135",
+      "name": "Breast Size Slider (FLUX)",
       "url": "https://civitai.com/models/663135",
       "tags": [
         "flux",
@@ -3144,7 +3144,7 @@
     {
       "id": "flux_730405_831470",
       "runware_air_id": "liangwc:flux_730405_831470@831470",
-      "name": "FLUX LoRA 730405",
+      "name": "Remove Clothing Censors",
       "url": "https://civitai.com/models/730405",
       "tags": [
         "flux",
@@ -3162,7 +3162,7 @@
     {
       "id": "flux_854713_956303",
       "runware_air_id": "liangwc:flux_854713_956303@956303",
-      "name": "FLUX LoRA 854713",
+      "name": "Ahegao (Non-Face Altering)",
       "url": "https://civitai.com/models/854713",
       "tags": [
         "flux",
@@ -3180,7 +3180,7 @@
     {
       "id": "flux_1302256_1947551",
       "runware_air_id": "liangwc:flux_1302256_1947551@1947551",
-      "name": "FLUX LoRA 1302256",
+      "name": "Skinny & Big Breasts",
       "url": "https://civitai.com/models/1302256",
       "tags": [
         "flux",
@@ -3198,7 +3198,7 @@
     {
       "id": "flux_685674_767398",
       "runware_air_id": "liangwc:flux_685674_767398@767398",
-      "name": "FLUX LoRA 685674",
+      "name": "ARI (NSFW)",
       "url": "https://civitai.com/models/685674",
       "tags": [
         "flux",
@@ -3216,7 +3216,7 @@
     {
       "id": "flux_781869_874396",
       "runware_air_id": "liangwc:flux_781869_874396@874396",
-      "name": "FLUX LoRA 781869",
+      "name": "Natural Saggy Breasts FLUX",
       "url": "https://civitai.com/models/781869",
       "tags": [
         "flux",
@@ -3234,7 +3234,7 @@
     {
       "id": "flux_713498_819961",
       "runware_air_id": "liangwc:flux_713498_819961@819961",
-      "name": "FLUX LoRA 713498",
+      "name": "Korean Doll Face FLUX",
       "url": "https://civitai.com/models/713498",
       "tags": [
         "flux",
@@ -3252,7 +3252,7 @@
     {
       "id": "flux_990976_1110224",
       "runware_air_id": "liangwc:flux_990976_1110224@1110224",
-      "name": "FLUX LoRA 990976",
+      "name": "Realistic Male Dick FLUX",
       "url": "https://civitai.com/models/990976",
       "tags": [
         "flux",
@@ -3270,7 +3270,7 @@
     {
       "id": "flux_754435_843598",
       "runware_air_id": "liangwc:flux_754435_843598@843598",
-      "name": "FLUX LoRA 754435",
+      "name": "Semi-Realistic Anime Style",
       "url": "https://civitai.com/models/754435",
       "tags": [
         "flux",
@@ -3288,7 +3288,7 @@
     {
       "id": "flux_701694_914983",
       "runware_air_id": "liangwc:flux_701694_914983@914983",
-      "name": "FLUX LoRA 701694",
+      "name": "Futanari Bulge FLUX",
       "url": "https://civitai.com/models/701694",
       "tags": [
         "flux",
@@ -3306,7 +3306,7 @@
     {
       "id": "flux_767717_858659",
       "runware_air_id": "liangwc:flux_767717_858659@858659",
-      "name": "FLUX LoRA 767717",
+      "name": "Realistic Massive Breast",
       "url": "https://civitai.com/models/767717",
       "tags": [
         "flux",
@@ -3324,7 +3324,7 @@
     {
       "id": "flux_1128892_1276091",
       "runware_air_id": "liangwc:flux_1128892_1276091@1276091",
-      "name": "FLUX LoRA 1128892",
+      "name": "The Pussy",
       "url": "https://civitai.com/models/1128892",
       "tags": [
         "flux",
@@ -3338,6 +3338,118 @@
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": false
+    },
+    {
+      "id": "flux-anal-gape",
+      "runware_air_id": "liangwc:flux-anal-gape@808007",
+      "name": "Anal Gape FLUX",
+      "url": "https://civitai.com/models/722641",
+      "tags": [
+        "flux",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "ultra-real-anime-flux",
+      "runware_air_id": "liangwc:ultra-real-anime-flux@1272367",
+      "name": "Ultra Real Anime FLUX",
+      "url": "https://civitai.com/models/1131779",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "femboy-flux",
+      "runware_air_id": "liangwc:femboy-flux@779648",
+      "name": "Femboy FLUX",
+      "url": "https://civitai.com/models/696714",
+      "tags": [
+        "flux",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "femboy-ill",
+      "runware_air_id": "liangwc:femboy-ill@2693790",
+      "name": "Femboy Illustrious",
+      "url": "https://civitai.com/models/1738161",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "femboy-japanese",
+      "runware_air_id": "liangwc:femboy-japanese@2113673",
+      "name": "Femboy Japanese",
+      "url": "https://civitai.com/models/1867456",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "femboy-chinese",
+      "runware_air_id": "liangwc:femboy-chinese@2162123",
+      "name": "Femboy Chinese",
+      "url": "https://civitai.com/models/1910272",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
     }
   ],
   "categories": {
