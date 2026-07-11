@@ -238,7 +238,7 @@ class GenHandler(SimpleHTTPRequestHandler):
 # ── Start ──
 
 if __name__ == "__main__":
-    PORT = 8090
+    PORT = 8091
     server = HTTPServer(("127.0.0.1", PORT), GenHandler)
     print(f"Gen pipeline → http://127.0.0.1:{PORT}")
     server.serve_forever()
