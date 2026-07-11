@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Gen pipeline server — gen.html + async generation API"""
 import json, os, time, subprocess, threading, uuid
+from collections import OrderedDict
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
@@ -19,7 +20,21 @@ OUTPUT_DIR = GEN_DIR / "output" / "images"
 # Import GIF zoom
 from gen_lib.gif_zoom import make_gif
 
-JOBS = {}
+# Completed jobs cap — prevent unbounded memory growth (OOM kills)
+JOBS = OrderedDict()
+MAX_JOBS = 50
+
+
+def _trim_jobs():
+    """Remove oldest completed jobs when over MAX_JOBS."""
+    while len(JOBS) > MAX_JOBS:
+        for jid, job in list(JOBS.items()):
+            if job["status"] == "done":
+                JOBS.pop(jid)
+                break
+        else:
+            break  # nothing left to trim
+
 
 # ── HTTP Handler ──
 
@@ -144,15 +159,18 @@ class GenHandler(SimpleHTTPRequestHandler):
                 JOBS[job_id]["result"] = result
                 JOBS[job_id]["status"] = "done"
                 JOBS[job_id].pop("proc", None)
+                _trim_jobs()
             except subprocess.TimeoutExpired:
                 proc.kill()
                 JOBS[job_id]["result"] = {"success": False, "error": "Timed out (300s)"}
                 JOBS[job_id]["status"] = "done"
                 JOBS[job_id].pop("proc", None)
+                _trim_jobs()
             except Exception as e:
                 JOBS[job_id]["result"] = {"success": False, "error": str(e)}
                 JOBS[job_id]["status"] = "done"
                 JOBS[job_id].pop("proc", None)
+                _trim_jobs()
 
         threading.Thread(target=_await, daemon=True).start()
         self._json_response({"success": True, "job_id": job_id, "status": "queued"})
