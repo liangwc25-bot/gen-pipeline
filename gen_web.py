@@ -170,7 +170,7 @@ def list_loras(model: str = None) -> dict:
 
     all_loras = registry.get("loras", [])
     # Normalize model aliases for filtering
-    model_aliases = {"pony-xl": "pony", "prefect-ill-xl": "illustrious"}
+    model_aliases = {"pony-xl": "pony", "prefect-ill-xl": "illustrious", "ultrareal-abliterated-bf8": "flux-dev"}
     match_base = model_aliases.get(model, model) if model else None
     result = []
     for l in all_loras:
