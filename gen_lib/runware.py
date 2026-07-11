@@ -19,13 +19,14 @@ from gen_lib.common import get_key, save_image, http_post, download_bytes
 MODELS = {
     "flux-dev":       {"id": "runware:101@1", "name": "FLUX.1-dev", "price": "$0.0013/张"},
     "flux-schnell":   {"id": "bfl:1@1", "name": "FLUX Schnell", "price": "$0.0023/张"},
+    "flux-uncensored": {"id": "loraimagegen:11111@11111", "name": "FLUX Uncensored", "price": "$0.0038/张"},
     "flux-2-pro":     {"id": "bfl:5@1", "name": "FLUX.2 Pro", "price": "$0.045/张"},
     "pony":           {"id": "runware:777@1", "name": "Pony V7 (AuraFlow)", "price": "~$0.005/张"},
     "sdxl":           {"id": "runware:100@1", "name": "SDXL", "price": "~$0.003/张"},
     "pony-xl":        {"id": "liangwc:3@1", "name": "Prefect Pony XL v3", "price": "$0.0013/张"},
     "prefect-ill-xl": {"id": "liangwc:6@1", "name": "Prefect Illustrious XL v8", "price": "~$0.003/张"},
     "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "$0.0019/次"},
-    "ultrareal-abliterated-bf8": {"id": "liangwc:ultrareal-abliterated-bf8@1454015", "name": "UltraReal Abliterated FLUX (BF8)", "price": "$0.0013-0.0045/张"},
+    "ultrareal-obliterated-bf8": {"id": "liangwc:ultrareal-obliterated-bf8@1454015", "name": "UltraReal Abliterated FLUX (BF8)", "price": "$0.0013-0.0045/张"},
 }
 
 # Aspect ratio → (width, height)

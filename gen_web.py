@@ -200,7 +200,7 @@ def list_models(platform: str = "runware") -> dict:
         return {"success": True, "models": models}
     else:
         from gen_lib.runware import MODELS as RUNWARE_MODELS
-        web_models = ["flux-dev", "pony-xl", "prefect-ill-xl", "qwen-edit", "ultrareal-abliterated-bf8"]
+        web_models = ["flux-dev", "pony-xl", "prefect-ill-xl", "qwen-edit", "ultrareal-abliterated-bf8", "flux-uncensored"]
         models = [{"id": k, "name": RUNWARE_MODELS[k]["name"], "price": RUNWARE_MODELS[k]["price"]}
                   for k in web_models if k in RUNWARE_MODELS]
         return {"success": True, "models": models}
