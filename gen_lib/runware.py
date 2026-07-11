@@ -25,6 +25,7 @@ MODELS = {
     "pony-xl":        {"id": "liangwc:3@1", "name": "Prefect Pony XL v3", "price": "$0.0013/张"},
     "prefect-ill-xl": {"id": "liangwc:6@1", "name": "Prefect Illustrious XL v8", "price": "~$0.003/张"},
     "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "$0.0019/次"},
+    "ultrareal-abliterated-bf8": {"id": "liangwc:ultrareal-abliterated-bf8@1454015", "name": "UltraReal Abliterated FLUX (BF8)", "price": "$0.0013-0.0045/张"},
 }
 
 # Aspect ratio → (width, height)
