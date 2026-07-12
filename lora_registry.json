@@ -3691,15 +3691,16 @@
       "name": "Niji Goth Style",
       "url": "https://civitai.com/models/1675502",
       "tags": [
-        "flux",
-        "concept"
+        "illustrious",
+        "style",
+        "gothic"
       ],
       "default_scale": 0.8,
       "scale_range": [
         0.5,
         1.2
       ],
-      "base_model": "flux-dev",
+      "base_model": "illustrious",
       "category": "character_style",
       "nsfw": true
     },
@@ -3709,15 +3710,15 @@
       "name": "Niji Semi-Realistic",
       "url": "https://civitai.com/models/2584434",
       "tags": [
-        "flux",
-        "concept"
+        "illustrious",
+        "style"
       ],
       "default_scale": 0.8,
       "scale_range": [
         0.5,
         1.2
       ],
-      "base_model": "flux-dev",
+      "base_model": "illustrious",
       "category": "character_style",
       "nsfw": true
     },
