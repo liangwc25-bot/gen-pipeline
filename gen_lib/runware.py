@@ -26,7 +26,6 @@ MODELS = {
     "pony-xl":        {"id": "liangwc:3@1", "name": "Prefect Pony XL v3", "price": "$0.0013/张"},
     "prefect-ill-xl": {"id": "liangwc:6@1", "name": "Prefect Illustrious XL v8", "price": "~$0.003/张"},
     "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "$0.0019/次"},
-    "perfection-influencer-xl": {"id": "liangwc:perfection-influencer-xl@1785408", "name": "Perfection Influencer ILXL v1.0", "price": "~$0.003/张"},
 }
 
 # Aspect ratio → (width, height)
