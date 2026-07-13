@@ -19,7 +19,7 @@ from gen_lib.common import get_key, save_image, http_post, download_bytes
 MODELS = {
     "flux-dev":       {"id": "runware:101@1", "name": "FLUX.1-dev", "price": "$0.0013/张"},
     "flux-schnell":   {"id": "bfl:1@1", "name": "FLUX Schnell", "price": "$0.0023/张"},
-    "flux-uncensored": {"id": "khialmaster:978314@1413133", "name": "FLUX Uncensored", "price": "$0.0038/张"},
+    "flux-uncensored": {"id": "loraimagegen:11111@11111", "name": "Fluxedup NSFW", "price": "$0.0038/张"},
     "flux-2-pro":     {"id": "bfl:5@1", "name": "FLUX.2 Pro", "price": "$0.045/张"},
     "pony":           {"id": "runware:777@1", "name": "Pony V7 (AuraFlow)", "price": "~$0.005/张"},
     "sdxl":           {"id": "runware:100@1", "name": "SDXL", "price": "~$0.003/张"},
