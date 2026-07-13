@@ -4337,6 +4337,25 @@
       "nsfw": false
     },
     {
+      "id": "mary-saotome",
+      "runware_air_id": "liangwc:mary-saotome@1104328",
+      "name": "早乙女芽亜里 Mary (Kakegurui)",
+      "url": "https://civitai.com/models/985819",
+      "tags": [
+        "illustrious",
+        "character",
+        "anime"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false
+    },
+    {
       "id": "yueying-dynasty-warriors",
       "runware_air_id": "liangwc:yueying-dynasty-warriors@2121618",
       "name": "月英 Yueying (三國無双)",
@@ -4428,6 +4447,25 @@
       ],
       "base_model": "illustrious",
       "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "yumeko-jabami",
+      "runware_air_id": "liangwc:yumeko-jabami@1104324",
+      "name": "蛇喰夢子 Yumeko (Kakegurui)",
+      "url": "https://civitai.com/models/985815",
+      "tags": [
+        "illustrious",
+        "character",
+        "anime"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
       "nsfw": false
     }
   ],
