@@ -141,6 +141,24 @@
       "nsfw": false
     },
     {
+      "id": "afg20-virtual-asian-20",
+      "runware_air_id": "liangwc:afg20-virtual-asian-20@1051873",
+      "name": "afg20 Virtual Asian Female 20",
+      "url": "https://civitai.com/models/783464",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
       "id": "afg26-virtual-asian-26",
       "runware_air_id": "liangwc:afg26-virtual-asian-26@1038777",
       "name": "afg26 Virtual Asian Female 26",
