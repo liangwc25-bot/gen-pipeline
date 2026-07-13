@@ -4282,6 +4282,25 @@
       "nsfw": false
     },
     {
+      "id": "hk-comic-style-jinyong",
+      "runware_air_id": "liangwc:hk-comic-style-jinyong@2164436",
+      "name": "港漫风·金庸 (黄玉郎/邱福龙)",
+      "url": "https://civitai.com/models/1912298",
+      "tags": [
+        "illustrious",
+        "style",
+        "guoman"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
       "id": "yao-wangzhe",
       "runware_air_id": "liangwc:yao-wangzhe@2824482",
       "name": "瑶·王者荣耀V2.2",
