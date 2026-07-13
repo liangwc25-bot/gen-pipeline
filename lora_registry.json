@@ -1,6 +1,6 @@
 {
   "version": "1.5",
-  "updated": "2026-07-11",
+  "updated": "2026-07-13",
   "loras": [
     {
       "id": "lora3-3d-campus-girl",
@@ -324,6 +324,24 @@
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": true
+    },
+    {
+      "id": "atlaseuu-influencer",
+      "runware_air_id": "liangwc:atlaseuu-influencer@1802916",
+      "name": "Atlaseuu Influencer",
+      "url": "https://civitai.com/models/1593187",
+      "tags": [
+        "illustrious",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false
     },
     {
       "id": "backless-panties",
@@ -1109,6 +1127,42 @@
       "nsfw": false
     },
     {
+      "id": "eastmix-asian-body",
+      "runware_air_id": "liangwc:eastmix-asian-body@1304653",
+      "name": "Eastmix Asian Body",
+      "url": "https://civitai.com/models/1133395",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "eastmix-asian-face",
+      "runware_air_id": "liangwc:eastmix-asian-face@1390428",
+      "name": "Eastmix Asian Girl Face",
+      "url": "https://civitai.com/models/1233843",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
       "id": "eerie-atmosphere-flux",
       "runware_air_id": "civitai:335970@763526",
       "name": "Eerie Atmosphere [FLUX+SDXL]",
@@ -1563,6 +1617,24 @@
       "nsfw": true,
       "incompatible_with": [],
       "notes": "2026-07-05 uploaded. 18MB — too weak for reliable NSFW. Not recommended."
+    },
+    {
+      "id": "flux-asian-beauty",
+      "runware_air_id": "liangwc:flux-asian-beauty@893860",
+      "name": "Flux Asian Beauty",
+      "url": "https://civitai.com/models/799377",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
     },
     {
       "id": "flux_972173_1160192",
@@ -3941,6 +4013,24 @@
       ],
       "base_model": "illustrious",
       "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "zyd-chinese-girl-flux",
+      "runware_air_id": "liangwc:zyd-chinese-girl-flux@2084379",
+      "name": "zyd232 Chinese Girl FLUX",
+      "url": "https://civitai.com/models/779099",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
       "nsfw": false
     },
     {
