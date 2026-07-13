@@ -4046,6 +4046,204 @@
       "base_model": "illustrious",
       "category": "style",
       "nsfw": false
+    },
+    {
+      "id": "jessica-rabbit",
+      "runware_air_id": "liangwc:jessica-rabbit@726862",
+      "name": "Jessica Rabbit",
+      "url": "https://civitai.com/models/385769",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "jasmine-disney",
+      "runware_air_id": "liangwc:jasmine-disney@390371",
+      "name": "Jasmine (Aladdin)",
+      "url": "https://civitai.com/models/48875",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "elsa-frozen",
+      "runware_air_id": "liangwc:elsa-frozen@402464",
+      "name": "Elsa (Frozen)",
+      "url": "https://civitai.com/models/112492",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "race-ethnicity-pony",
+      "runware_air_id": "liangwc:race-ethnicity-pony@2212053",
+      "name": "Race & Ethnicity Helper (Pony)",
+      "url": "https://civitai.com/models/620668",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "princess-belle",
+      "runware_air_id": "liangwc:princess-belle@430511",
+      "name": "Belle (Beauty and the Beast)",
+      "url": "https://civitai.com/models/43711",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "artoria-fate",
+      "runware_air_id": "liangwc:artoria-fate@731222",
+      "name": "Artoria Pendragon (Fate)",
+      "url": "https://civitai.com/models/653582",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "ada-wong",
+      "runware_air_id": "liangwc:ada-wong@396269",
+      "name": "Ada Wong (Resident Evil)",
+      "url": "https://civitai.com/models/354374",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "jill-valentine",
+      "runware_air_id": "liangwc:jill-valentine@655583",
+      "name": "Jill Valentine (Resident Evil)",
+      "url": "https://civitai.com/models/435001",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "selena-goth-punk",
+      "runware_air_id": "liangwc:selena-goth-punk@607167",
+      "name": "Selena Goth Punk Girl",
+      "url": "https://civitai.com/models/545935",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "stocking-anarchy",
+      "runware_air_id": "liangwc:stocking-anarchy@848046",
+      "name": "Stocking Anarchy",
+      "url": "https://civitai.com/models/758439",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "korean-girl-face",
+      "runware_air_id": "liangwc:korean-girl-face@1189291",
+      "name": "Korean Girl Style Face",
+      "url": "https://civitai.com/models/691463",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false
     }
   ],
   "categories": {
