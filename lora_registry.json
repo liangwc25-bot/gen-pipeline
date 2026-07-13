@@ -271,6 +271,24 @@
       "notes": "Grok Companion 角色"
     },
     {
+      "id": "anran-virtual-asian-14",
+      "runware_air_id": "liangwc:anran-virtual-asian-14@846589",
+      "name": "anran Virtual Asian Female 14",
+      "url": "https://civitai.com/models/753851",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
       "id": "flux_685674_767398",
       "runware_air_id": "liangwc:flux_685674_767398@767398",
       "name": "ARI (NSFW)",
