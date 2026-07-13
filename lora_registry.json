@@ -3343,6 +3343,24 @@
       "nsfw": true
     },
     {
+      "id": "shampoo-ranma",
+      "runware_air_id": "liangwc:shampoo-ranma@550900",
+      "name": "Shampoo (Ranma 1/2)",
+      "url": "https://civitai.com/models/25873",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
       "id": "flux_925361_1035790",
       "runware_air_id": "liangwc:flux_925361_1035790@1035790",
       "name": "Side Petite Doggy Pose",
@@ -4245,6 +4263,25 @@
       "nsfw": false
     },
     {
+      "id": "yueying-dynasty-warriors",
+      "runware_air_id": "liangwc:yueying-dynasty-warriors@2121618",
+      "name": "月英 Yueying (三國無双)",
+      "url": "https://civitai.com/models/1874429",
+      "tags": [
+        "illustrious",
+        "character",
+        "guoman"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false
+    },
+    {
       "id": "yao-wangzhe",
       "runware_air_id": "liangwc:yao-wangzhe@2824482",
       "name": "瑶·王者荣耀V2.2",
@@ -4253,6 +4290,25 @@
         "illustrious",
         "character",
         "wangzhe"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "zhenji-dynasty-warriors",
+      "runware_air_id": "liangwc:zhenji-dynasty-warriors@2047208",
+      "name": "甄姬 Zhenji (三國無双)",
+      "url": "https://civitai.com/models/1809007",
+      "tags": [
+        "illustrious",
+        "character",
+        "guoman"
       ],
       "default_scale": 0.8,
       "scale_range": [
