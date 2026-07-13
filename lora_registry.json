@@ -681,6 +681,24 @@
       "nsfw": true
     },
     {
+      "id": "classic-lara-croft",
+      "runware_air_id": "liangwc:classic-lara-croft@892309",
+      "name": "Classic Lara Croft",
+      "url": "https://civitai.com/models/423786",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
       "id": "lora6-cof-cum-on-flux",
       "runware_air_id": "liangwc:lora6@1576616",
       "name": "COF Cum On Flux 18+ (lora6)",
@@ -1351,6 +1369,24 @@
       ],
       "base_model": "pony",
       "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "faceless-alien-goddess",
+      "runware_air_id": "liangwc:faceless-alien-goddess@660456",
+      "name": "Faceless Alien Goddess",
+      "url": "https://civitai.com/models/591480",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
       "nsfw": false
     },
     {
