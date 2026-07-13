@@ -964,35 +964,6 @@
       "nsfw": true
     },
     {
-      "id": "cyberpunk-landscape-pony",
-      "runware_air_id": "civitai:528341@587049",
-      "name": "Cyberpunk Landscape Pony XL",
-      "file": "",
-      "url": "https://civitai.com/models/528341/cyberpunk-landscape-pony-xl",
-      "trigger_words": [
-        "cyberpunk",
-        "neon",
-        "city"
-      ],
-      "tags": [
-        "pony",
-        "cyberpunk",
-        "environment",
-        "runware-verified"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "description": "162.7MB Pony LoRA for cyberpunk cityscapes.",
-      "base_model": "pony",
-      "category": "environment",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "Runware verified ✅. Stack with Eerie Darkness for cyberpunk horror."
-    },
-    {
       "id": "dark-noir-lighting",
       "name": "Dark Noir Lighting",
       "url": "",
@@ -1233,66 +1204,6 @@
       "base_model": "flux-dev",
       "category": "style",
       "nsfw": false
-    },
-    {
-      "id": "eerie-atmosphere-flux",
-      "runware_air_id": "civitai:335970@763526",
-      "name": "Eerie Atmosphere [FLUX+SDXL]",
-      "file": "",
-      "url": "https://civitai.com/models/335970/eerie-atmosphere-fluxsdxl",
-      "trigger_words": [
-        "eerie",
-        "horror",
-        "dark",
-        "creepy"
-      ],
-      "tags": [
-        "atmosphere",
-        "horror",
-        "eerie",
-        "flux",
-        "runware-verified"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.4,
-        1.0
-      ],
-      "description": "18MB FLUX LoRA for eerie atmosphere. Works on Runware AIR. Good for ambient uncanny without monster elements.",
-      "base_model": "flux-dev",
-      "category": "environment",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "Runware verified ✅. Can stack with NSFW MASTER (diff category) for combined NSFW + atmosphere."
-    },
-    {
-      "id": "eerie-darkness-pony",
-      "runware_air_id": "civitai:941748@1054318",
-      "name": "Eerie Darkness style [PonyXL]",
-      "file": "",
-      "url": "https://civitai.com/models/941748/eerie-darkness-style-ponyxl",
-      "trigger_words": [
-        "eerie",
-        "dark",
-        "horror"
-      ],
-      "tags": [
-        "pony",
-        "horror",
-        "eerie",
-        "runware-verified"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.5,
-        1.0
-      ],
-      "description": "99.7MB Pony LoRA for dark eerie images. Adds black void eyes. ⚠️ At high scales adds wounds/horror elements.",
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "Runware verified ✅. Void eyes effect good but adds monster/horror elements at scale >= 0.8."
     },
     {
       "id": "elsa-frozen",
@@ -2757,34 +2668,6 @@
       "nsfw": true
     },
     {
-      "id": "nsfw-master",
-      "runware_air_id": "civitai:667086@746602",
-      "name": "NSFW MASTER (FLUX)",
-      "file": "",
-      "url": "https://civitai.com/api/download/models/746602",
-      "trigger_words": [],
-      "tags": [
-        "nsfw",
-        "flux",
-        "master",
-        "runware-verified"
-      ],
-      "default_scale": 1.0,
-      "scale_range": [
-        0.8,
-        1.2
-      ],
-      "description": "NSFW MASTER by Shopon_Skp - 592MB FLUX NSFW LoRA. Runware Verified ✅. Scale >= 1.0 needed for visible effect.",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [
-        "rie-asian-face-flux",
-        "asian-girls-face-v2"
-      ],
-      "notes": "Runware: scale 0.8 too weak, need 1.0+. 2026-07-05: 592MB file size overpowers ALL FLUX style LoRAs (not just ones in incompatible_with). Even at 0.2 scale, style LoRAs like sanguosha-style get pulled toward photorealism. Rule: disable NSFW MASTER when using style LoRAs, use prompt-only NSFW instead."
-    },
-    {
       "id": "nsfw-slider",
       "runware_air_id": "liangwc:nsfw-slider@2876566",
       "name": "NSFW Slider",
@@ -3281,37 +3164,6 @@
       "nsfw": false
     },
     {
-      "id": "asian-girls-face-v2",
-      "runware_air_id": "civitai:836153@1166031",
-      "name": "Realistic Asian girls face Flux v2.0",
-      "file": "",
-      "url": "https://civitai.com/models/836153/flux-or-realistic-asian-girls-face-flux",
-      "trigger_words": [
-        "asian young woman",
-        "japanese young woman"
-      ],
-      "tags": [
-        "asian",
-        "face",
-        "flux",
-        "runware-verified",
-        "character"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.3,
-        0.7
-      ],
-      "description": "Realistic Asian girls face Flux v2.0 - 292MB FLUX. Works on Runware AIR.",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [
-        "nsfw-master"
-      ],
-      "notes": "Runware verified ✅. Same category as NSFW MASTER - stacking dilutes both."
-    },
-    {
       "id": "realistic-filter",
       "runware_air_id": "liangwc:realistic-filter@1124771",
       "name": "Realistic Filter [IL]",
@@ -3382,35 +3234,6 @@
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": false
-    },
-    {
-      "id": "rie-asian-face-flux",
-      "runware_air_id": "civitai:644945@736440",
-      "name": "Rie Asian Face Flux LoRA",
-      "file": "",
-      "url": "https://civitai.com/models/644945/rie-asian-face-flux-lora",
-      "trigger_words": [
-        "girl",
-        "women"
-      ],
-      "tags": [
-        "asian",
-        "face",
-        "flux"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.4,
-        0.7
-      ],
-      "description": "164MB FLUX Asian face LoRA. ❌ NOT recognized by Runware AIR.",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [
-        "nsfw-master"
-      ],
-      "notes": "Runware: invalidLoraModel. Same category as NSFW MASTER."
     },
     {
       "id": "sadako",
