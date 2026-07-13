@@ -2148,6 +2148,25 @@
       "nsfw": false
     },
     {
+      "id": "jasmine-ill",
+      "runware_air_id": "liangwc:jasmine-ill@1363706",
+      "name": "Jasmine (Aladdin) Illu",
+      "url": "https://civitai.com/models/48875",
+      "tags": [
+        "illustrious",
+        "character",
+        "disney"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false
+    },
+    {
       "id": "jessica-rabbit",
       "runware_air_id": "liangwc:jessica-rabbit@726862",
       "name": "Jessica Rabbit",
@@ -3064,6 +3083,24 @@
       "notes": "Ranma Saotome 早乙女乱馬"
     },
     {
+      "id": "realist-beauty",
+      "runware_air_id": "liangwc:realist-beauty@383192",
+      "name": "Realist Beauty Model N°1",
+      "url": "https://civitai.com/models/339129",
+      "tags": [
+        "pony",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false
+    },
+    {
       "id": "realistic-anime-style-flux",
       "runware_air_id": "liangwc:waner-flux@769980",
       "name": "Realistic Anime Style (FLUX)",
@@ -3528,6 +3565,25 @@
       "notes": "Tifa FF7R 23套服装"
     },
     {
+      "id": "tinker-bell",
+      "runware_air_id": "liangwc:tinker-bell@1075382",
+      "name": "Tinker Bell (Peter Pan)",
+      "url": "https://civitai.com/models/44638",
+      "tags": [
+        "illustrious",
+        "character",
+        "disney"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false
+    },
+    {
       "id": "tiny-girl",
       "runware_air_id": "liangwc:shangguan-waner@480044",
       "name": "Tiny Girl",
@@ -3868,6 +3924,24 @@
       "category": "character",
       "nsfw": false,
       "notes": "FFX/X-2 3套服装"
+    },
+    {
+      "id": "zelda-botw",
+      "runware_air_id": "liangwc:zelda-botw@1393168",
+      "name": "Zelda (Breath of the Wild)",
+      "url": "https://civitai.com/models/91825",
+      "tags": [
+        "illustrious",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false
     },
     {
       "id": "sanguosha-style",
