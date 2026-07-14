@@ -4459,15 +4459,15 @@
       "name": "Charlady (本地训练)",
       "url": "https://huggingface.co/liangwc25/charlady",
       "tags": [
-        "illustrious",
+        "flux",
         "character"
       ],
-      "default_scale": 0.8,
+      "default_scale": 0.7,
       "scale_range": [
         0.5,
         1.2
       ],
-      "base_model": "illustrious",
+      "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": false
     }
