@@ -576,6 +576,17 @@ function copyPromptMeta(btn) {
   });
 }
 
+function copyFilename(btn) {
+  navigator.clipboard.writeText(btn.dataset.filename).then(() => {
+    btn.textContent = '✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋';
+      btn.classList.remove('copied');
+    }, 1200);
+  });
+}
+
 // ── Send to Telegram ──
 async function sendToTg() {
   if (!modalFilename) return;
@@ -827,17 +838,19 @@ function updateModalUI(img) {
       }
       meta.innerHTML = html || '<div class="field"><span class="value" style="color:var(--text2)">无 metadata</span></div>';
       document.getElementById('modalInfo').innerHTML = `
-        <span>${img.filename}</span>
         <span>${img.size_kb} KB</span>
         <span>${m.model || ''}</span>
+        <span style="margin-left:auto">${img.filename}</span>
+        <button class="modal-copy-btn" onclick="copyFilename(this)" data-filename="${escapeHtml(img.filename)}">📋</button>
       `;
     })
     .catch(() => { meta.innerHTML = ''; });
 
   document.getElementById('modalInfo').innerHTML = `
-    <span>${img.filename}</span>
     <span>${img.size_kb} KB</span>
     <span>${img.model ? img.model : ''}</span>
+    <span style="margin-left:auto">${img.filename}</span>
+    <button class="modal-copy-btn" onclick="copyFilename(this)" data-filename="${escapeHtml(img.filename)}">📋</button>
   `;
 }
 
