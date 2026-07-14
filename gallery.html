@@ -840,8 +840,10 @@ function updateModalUI(img) {
       document.getElementById('modalInfo').innerHTML = `
         <span>${img.size_kb} KB</span>
         <span>${m.model || ''}</span>
-        <span style="margin-left:auto">${img.filename}</span>
-        <button class="modal-copy-btn" onclick="copyFilename(this)" data-filename="${escapeHtml(img.filename)}">📋</button>
+        <div style="flex-basis:100%;display:flex;align-items:center;gap:4px;margin-top:2px">
+          <span style="word-break:break-all">${img.filename}</span>
+          <button class="modal-copy-btn" onclick="copyFilename(this)" data-filename="${escapeHtml(img.filename)}">📋</button>
+        </div>
       `;
     })
     .catch(() => { meta.innerHTML = ''; });
@@ -849,8 +851,10 @@ function updateModalUI(img) {
   document.getElementById('modalInfo').innerHTML = `
     <span>${img.size_kb} KB</span>
     <span>${img.model ? img.model : ''}</span>
-    <span style="margin-left:auto">${img.filename}</span>
-    <button class="modal-copy-btn" onclick="copyFilename(this)" data-filename="${escapeHtml(img.filename)}">📋</button>
+    <div style="flex-basis:100%;display:flex;align-items:center;gap:4px;margin-top:2px">
+      <span style="word-break:break-all">${img.filename}</span>
+      <button class="modal-copy-btn" onclick="copyFilename(this)" data-filename="${escapeHtml(img.filename)}">📋</button>
+    </div>
   `;
 }
 
