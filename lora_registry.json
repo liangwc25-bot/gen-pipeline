@@ -4738,6 +4738,32 @@
       "nsfw": true,
       "incompatible_with": [],
       "notes": "2026-07-18: Runware uploaded ✅"
+    },
+    {
+      "id": "age-slider",
+      "runware_air_id": "liangwc:age-slider@2962055",
+      "name": "Age Slider",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/lora-age-slider",
+      "trigger_words": [],
+      "tags": [
+        "body",
+        "age",
+        "slider",
+        "flux",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Age Slider — FLUX body type LoRA for adjusting apparent age of subjects.",
+      "base_model": "flux-dev",
+      "category": "concept",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-18: Runware uploaded ✅ (filename had spaces, needed URL encoding)"
     }
   ],
   "categories": {
