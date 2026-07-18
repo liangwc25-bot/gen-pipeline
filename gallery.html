@@ -286,39 +286,30 @@
     .modal-nav { width: 32px; height: 32px; font-size: 1rem; }
   }
 
-  /* ── Carousel (2-image slide) ── */
+  /* ── Carousel (scroll-snap) ── */
   .modal-swipe-area {
     position: relative;
   }
   .carousel-viewport {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
     border-radius: 8px;
-    touch-action: pan-y;
+    /* hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
-  .carousel-img {
+  .carousel-viewport::-webkit-scrollbar { display: none; }
+  .carousel-slide {
+    flex: 0 0 100%;
     width: 100%;
+    scroll-snap-align: center;
     display: block;
     user-select: none;
     -webkit-user-drag: none;
     pointer-events: none;
-  }
-  .carousel-current {
-    position: relative;
-    z-index: 1;
-  }
-  .carousel-incoming {
-    position: absolute;
-    top: 0; left: 0;
-    z-index: 2;
-  }
-  .carousel-img.animating {
-    transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-  .carousel-viewport.dragging .carousel-img {
-    transition: none;
-    cursor: grabbing;
   }
 
   /* Empty state */
@@ -407,8 +398,9 @@
     <div class="modal-swipe-area">
       <button class="modal-nav prev" id="navPrev" onclick="event.stopPropagation(); navModal(-1)">‹</button>
       <div class="carousel-viewport" id="carouselViewport">
-        <img id="modalImg" src="" alt="" class="carousel-img carousel-current">
-        <img id="modalImgNext" src="" alt="" class="carousel-img carousel-incoming">
+        <img class="carousel-slide" src="" alt="">
+        <img class="carousel-slide" id="modalImg" src="" alt="">
+        <img class="carousel-slide" src="" alt="">
       </div>
       <button class="modal-nav next" id="navNext" onclick="event.stopPropagation(); navModal(1)">›</button>
     </div>
@@ -771,12 +763,14 @@ function goToPage(page) {
   if (p >= 1 && p <= totalPages && p !== currentPage) loadPage(p);
 }
 
-// ── Modal with navigation ──
+// ── Modal with navigation (scroll-snap) ──
+let scrollTimeout = null;
+let scrollSnapBusy = false;
+
 function openModal(filename) {
   const decoded = decodeURIComponent(filename);
   modalIndex = modalImageList.findIndex(img => img.filename === decoded);
   if (modalIndex === -1) return;
-  lastNavDir = 0; // initial open, no direction
   showModalImage();
 }
 
@@ -786,14 +780,7 @@ function showModalImage() {
   if (!img) return;
 
   modalFilename = img.filename;
-  document.getElementById('modalImg').src = `/raw/${encodeURIComponent(img.filename)}`;
-
-  // Reset incoming image (clear src so it doesn't cover current)
-  const incoming = document.getElementById('modalImgNext');
-  incoming.classList.remove('animating');
-  incoming.removeAttribute('src');
-  incoming.style.transform = 'translateX(100%)';
-
+  updateCarouselSlides();
   updateModalUI(img);
 
   const modal = document.getElementById('modal');
@@ -801,6 +788,104 @@ function showModalImage() {
   document.body.style.overflow = 'hidden';
   modal.querySelector('.modal').scrollTop = 0;
 }
+
+function updateCarouselSlides() {
+  const slides = document.querySelectorAll('#carouselViewport .carousel-slide');
+  if (slides.length < 3) return;
+  const prevImg = modalImageList[modalIndex - 1];
+  const currImg = modalImageList[modalIndex];
+  const nextImg = modalImageList[modalIndex + 1];
+
+  slides[0].src = prevImg ? `/raw/${encodeURIComponent(prevImg.filename)}` : '';
+  slides[1].src = `/raw/${encodeURIComponent(currImg.filename)}`;
+  slides[2].src = nextImg ? `/raw/${encodeURIComponent(nextImg.filename)}` : '';
+
+  // Scroll to current slide silently
+  const vp = document.getElementById('carouselViewport');
+  const sw = vp.offsetWidth;
+  // Temporarily disable smooth scroll for instant positioning
+  vp.style.scrollBehavior = 'auto';
+  vp.scrollLeft = sw;
+  // Force reflow then re-enable smooth
+  vp.offsetHeight;
+  vp.style.scrollBehavior = 'smooth';
+}
+
+function navModal(direction) {
+  const newIdx = modalIndex + direction;
+  // Same-page: use scroll-snap slide
+  if (newIdx >= 0 && newIdx < modalImageList.length) {
+    const vp = document.getElementById('carouselViewport');
+    const sw = vp.offsetWidth;
+    scrollSnapBusy = true;
+    vp.scrollBy({ left: direction * sw, behavior: 'smooth' });
+    return;
+  }
+
+  // Cross-page navigation
+  const targetPage = direction > 0 ? currentPage + 1 : currentPage - 1;
+  if (targetPage < 1 || targetPage > totalPages) return;
+
+  document.getElementById('modalImg').style.opacity = '0.4';
+
+  let apiFilter = filterMode === 'archive' ? 'archive' : 'all';
+  if (filterMode === 'fav') apiFilter = 'fav';
+  fetch(`/api/images?page=${targetPage}&per_page=${PER_PAGE}&filter=${apiFilter}`)
+    .then(r => r.json())
+    .then(data => {
+      currentPage = data.page;
+      totalPages = data.total_pages;
+      totalImages = data.total;
+      allImages = data.images;
+
+      let displayImages = allImages;
+      if (filterMode === 'fav') {
+        displayImages = allImages.filter(img => favorites.has(img.filename));
+      }
+      modalImageList = displayImages;
+
+      modalIndex = direction > 0 ? 0 : modalImageList.length - 1;
+      showModalImage();
+      document.getElementById('modalImg').style.opacity = '';
+    });
+}
+
+// Scroll-snap: detect when user finishes scrolling and update state
+document.getElementById('carouselViewport').addEventListener('scroll', () => {
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    const vp = document.getElementById('carouselViewport');
+    const sw = vp.offsetWidth;
+    if (sw === 0) return;
+    const slideIdx = Math.round(vp.scrollLeft / sw);
+
+    if (slideIdx === 1) {
+      // Stayed on current — just ensure smooth is on
+      vp.style.scrollBehavior = 'smooth';
+      scrollSnapBusy = false;
+      return;
+    }
+
+    const direction = slideIdx === 0 ? -1 : 1;
+    const newIdx = modalIndex + direction;
+    if (newIdx < 0 || newIdx >= modalImageList.length) {
+      // At boundary — snap back to current
+      vp.style.scrollBehavior = 'smooth';
+      vp.scrollLeft = sw;
+      scrollSnapBusy = false;
+      return;
+    }
+
+    // Update to new image
+    modalIndex = newIdx;
+    const img = modalImageList[modalIndex];
+    modalFilename = img.filename;
+    updateCarouselSlides();
+    updateModalUI(img);
+    document.getElementById('modal').querySelector('.modal').scrollTop = 0;
+    scrollSnapBusy = false;
+  }, 150);
+});
 
 function updateModalUI(img) {
   const globalIdx = (currentPage - 1) * PER_PAGE + modalIndex + 1;
@@ -858,122 +943,13 @@ function updateModalUI(img) {
   `;
 }
 
-// ── Carousel (2-image slide) ──
-let carouselSliding = false;
-let lastNavDir = 0; // 1=last moved next (came from left), -1=last moved prev (came from right), 0=initial
-
-function commitCarouselChange(newIdx) {
-  const current = document.getElementById('modalImg');
-  const incoming = document.getElementById('modalImgNext');
-  const img = modalImageList[newIdx];
-
-  modalIndex = newIdx;
-  modalFilename = img.filename;
-
-  current.classList.remove('animating');
-  incoming.classList.remove('animating');
-  current.style.transform = 'translateX(0)';
-  current.src = `/raw/${encodeURIComponent(img.filename)}`;
-  incoming.style.transform = 'translateX(0)';
-
-  updateModalUI(img);
-  document.getElementById('modal').querySelector('.modal').scrollTop = 0;
-  carouselSliding = false;
-}
-
-function slideCarousel(direction) {
-  if (carouselSliding) return;
-  const newIdx = modalIndex + direction;
-  if (newIdx < 0 || newIdx >= modalImageList.length) return;
-
-  carouselSliding = true;
-  lastNavDir = direction;
-
-  const current = document.getElementById('modalImg');
-  const incoming = document.getElementById('modalImgNext');
-  const destImg = modalImageList[newIdx];
-
-  // Kill any existing transition
-  incoming.classList.remove('animating');
-  current.classList.remove('animating');
-
-  // Set src AND off-screen position in one synchronous block (no paint yet)
-  incoming.src = `/raw/${encodeURIComponent(destImg.filename)}`;
-  incoming.style.transform = `translateX(${direction > 0 ? '100%' : '-100%'})`;
-  current.style.transform = 'translateX(0)';
-
-  // Force browser to apply the off-screen layout before we add transitions
-  incoming.getBoundingClientRect();
-
-  // Now animate both layers
-  incoming.classList.add('animating');
-  current.classList.add('animating');
-  incoming.style.transform = 'translateX(0)';
-  current.style.transform = `translateX(${direction > 0 ? '-100%' : '100%'})`;
-
-  // Safety: if transitionend doesn't fire, force cleanup after 500ms
-  var safety = setTimeout(function() {
-    incoming.removeEventListener('transitionend', onEnd);
-    commitCarouselChange(newIdx);
-  }, 500);
-
-  function onEnd(e) {
-    if (e.target !== incoming) return;
-    incoming.removeEventListener('transitionend', onEnd);
-    clearTimeout(safety);
-    commitCarouselChange(newIdx);
-  }
-  incoming.addEventListener('transitionend', onEnd);
-}
-
-function navModal(direction) {
-  // Same-page: use carousel slide
-  const newIdx = modalIndex + direction;
-  if (newIdx >= 0 && newIdx < modalImageList.length) {
-    slideCarousel(direction);
-    return;
-  }
-
-  // Cross-page navigation
-  lastNavDir = direction;
-  const targetPage = direction > 0 ? currentPage + 1 : currentPage - 1;
-  if (targetPage < 1 || targetPage > totalPages) return;
-
-  // Dim effect while fetching
-  document.getElementById('modalImg').style.opacity = '0.4';
-
-  let apiFilter = filterMode === 'archive' ? 'archive' : 'all';
-  if (filterMode === 'fav') apiFilter = 'fav';
-  fetch(`/api/images?page=${targetPage}&per_page=${PER_PAGE}&filter=${apiFilter}`)
-    .then(r => r.json())
-    .then(data => {
-      currentPage = data.page;
-      totalPages = data.total_pages;
-      totalImages = data.total;
-      allImages = data.images;
-
-      let displayImages = allImages;
-      if (filterMode === 'fav') {
-        displayImages = allImages.filter(img => favorites.has(img.filename));
-      }
-      modalImageList = displayImages;
-
-      modalIndex = direction > 0 ? 0 : modalImageList.length - 1;
-      showModalImage();
-      document.getElementById('modalImg').style.opacity = '';
-    });
-}
-
 function closeModal(e) {
   if (e && e.target !== document.getElementById('modal').querySelector('.modal') && e.target.closest('.modal')) return;
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
-  // Sync grid to wherever the user browsed to in the modal
   renderGrid(modalImageList);
   renderPagination(modalImageList.length);
-  // Update page counter in header
   document.getElementById('count').textContent = `${totalImages} 张`;
-  // Scroll last viewed image into view
   const lastImg = modalImageList[modalIndex];
   if (lastImg) {
     const cards = document.querySelectorAll('.thumb-card');
@@ -981,186 +957,6 @@ function closeModal(e) {
     if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
-
-// ── Touch swipe + mouse drag ──
-let touchStartX = 0, touchStartY = 0;
-let isDragging = false, isPinching = false;
-let mouseDown = false, mouseInitX = 0;
-
-document.addEventListener('touchstart', e => {
-  if (!document.getElementById('modal').classList.contains('open')) return;
-  if (e.touches.length > 1 || carouselSliding) { isPinching = true; return; }
-  isPinching = false;
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-  isDragging = false;
-}, {passive: true});
-
-document.addEventListener('touchmove', e => {
-  if (!document.getElementById('modal').classList.contains('open')) return;
-  if (isPinching || carouselSliding) return;
-
-  const dx = e.touches[0].clientX - touchStartX;
-  const dy = e.touches[0].clientY - touchStartY;
-
-  if (!isDragging && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy) * 1.2) {
-    isDragging = true;
-    document.getElementById('carouselViewport').classList.add('dragging');
-    // Pre-load the incoming image
-    const incoming = document.getElementById('modalImgNext');
-    const targetIdx = dx > 0 ? modalIndex - 1 : modalIndex + 1;
-    if (targetIdx >= 0 && targetIdx < modalImageList.length) {
-      incoming.src = `/raw/${encodeURIComponent(modalImageList[targetIdx].filename)}`;
-    }
-  }
-  if (!isDragging) return;
-
-  const vw = document.getElementById('carouselViewport').offsetWidth;
-  let progress = dx / vw;
-  progress = Math.max(-1, Math.min(1, progress));
-
-  const current = document.getElementById('modalImg');
-  const incoming = document.getElementById('modalImgNext');
-
-  current.style.transform = `translateX(${progress * 100}%)`;
-  incoming.style.transform = `translateX(${progress > 0 ? (progress - 1) * 100 : (progress + 1) * 100}%)`;
-
-  e.preventDefault();
-}, {passive: false});
-
-function finishDrag() {
-  const vp = document.getElementById('carouselViewport');
-  vp.classList.remove('dragging');
-
-  const current = document.getElementById('modalImg');
-  const incoming = document.getElementById('modalImgNext');
-
-  // Read current progress
-  const style = window.getComputedStyle(current);
-  const matrix = new DOMMatrixReadOnly(style.transform);
-  const currentX = matrix.m41;
-  const vw = vp.offsetWidth;
-  const progress = currentX / vw;
-
-  const direction = progress > 0.25 ? -1 : (progress < -0.25 ? 1 : 0);
-
-  if (direction !== 0) {
-    const newIdx = modalIndex + direction;
-    if (newIdx >= 0 && newIdx < modalImageList.length) {
-      lastNavDir = direction;
-      carouselSliding = true;
-      // Complete the slide from current drag position
-      current.classList.add('animating');
-      incoming.classList.add('animating');
-      current.style.transform = `translateX(${direction > 0 ? '-100%' : '100%'})`;
-      incoming.style.transform = 'translateX(0)';
-
-      incoming.addEventListener('transitionend', function onEnd(e) {
-        if (e.target !== incoming) return;
-        incoming.removeEventListener('transitionend', onEnd);
-        commitCarouselChange(newIdx);
-      });
-    } else {
-      // Snap back
-      current.classList.add('animating');
-      incoming.classList.add('animating');
-      current.style.transform = 'translateX(0)';
-      incoming.style.transform = progress > 0 ? 'translateX(-100%)' : 'translateX(100%)';
-    }
-  } else {
-    // Snap back
-    current.classList.add('animating');
-    incoming.classList.add('animating');
-    current.style.transform = 'translateX(0)';
-    incoming.style.transform = progress > 0 ? 'translateX(-100%)' : 'translateX(100%)';
-  }
-  isDragging = false;
-}
-
-document.addEventListener('touchend', e => {
-  if (!document.getElementById('modal').classList.contains('open')) return;
-  if (!isDragging) return;
-  finishDrag();
-}, {passive: true});
-
-document.addEventListener('touchcancel', () => {
-  if (isDragging) finishDrag();
-});
-
-// ── Mouse drag (desktop) ──
-document.addEventListener('mousedown', e => {
-  if (!document.getElementById('modal').classList.contains('open')) return;
-  if (carouselSliding) return;
-  if (!e.target.closest('.carousel-viewport') || e.target.closest('button')) return;
-  mouseDown = true;
-  mouseInitX = e.clientX;
-  document.getElementById('carouselViewport').classList.add('dragging');
-  touchStartX = e.clientX; // reuse touch vars
-  isDragging = false;
-  // Pre-load potential incoming image
-  const incoming = document.getElementById('modalImgNext');
-  incoming.classList.remove('animating');
-  incoming.style.transform = 'translateX(0)';
-  e.preventDefault();
-});
-
-document.addEventListener('mousemove', e => {
-  if (!mouseDown) return;
-
-  const dx = e.clientX - mouseInitX;
-
-  if (!isDragging && Math.abs(dx) > 8) {
-    isDragging = true;
-    const incoming = document.getElementById('modalImgNext');
-    const targetIdx = dx > 0 ? modalIndex - 1 : modalIndex + 1;
-    if (targetIdx >= 0 && targetIdx < modalImageList.length) {
-      incoming.src = `/raw/${encodeURIComponent(modalImageList[targetIdx].filename)}`;
-    }
-  }
-  if (!isDragging) return;
-
-  const vw = document.getElementById('carouselViewport').offsetWidth;
-  let progress = dx / vw;
-  progress = Math.max(-1, Math.min(1, progress));
-
-  const current = document.getElementById('modalImg');
-  const incoming = document.getElementById('modalImgNext');
-
-  current.style.transform = `translateX(${progress * 100}%)`;
-  incoming.style.transform = `translateX(${progress > 0 ? (progress - 1) * 100 : (progress + 1) * 100}%)`;
-});
-
-document.addEventListener('mouseup', e => {
-  if (!mouseDown) return;
-  mouseDown = false;
-  if (isDragging) {
-    touchStartX = mouseInitX; // set for finishDrag
-    finishDrag();
-  } else {
-    // Click with no drag — snap back
-    const current = document.getElementById('modalImg');
-    const incoming = document.getElementById('modalImgNext');
-    document.getElementById('carouselViewport').classList.remove('dragging');
-    current.classList.remove('animating');
-    incoming.classList.remove('animating');
-    current.style.transform = 'translateX(0)';
-    incoming.style.transform = 'translateX(0)';
-  }
-});
-
-document.addEventListener('mouseleave', () => {
-  if (mouseDown) {
-    mouseDown = false;
-    isDragging = false;
-    const current = document.getElementById('modalImg');
-    const incoming = document.getElementById('modalImgNext');
-    document.getElementById('carouselViewport').classList.remove('dragging');
-    current.classList.add('animating');
-    incoming.classList.add('animating');
-    current.style.transform = 'translateX(0)';
-    incoming.style.transform = 'translateX(-100%)';
-  }
-});
 function setFilter(mode) {
   filterMode = mode;
   document.getElementById('filterAll').className = 'btn' + (mode === 'all' ? ' active' : '');
