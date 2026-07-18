@@ -399,7 +399,9 @@
       <button class="modal-nav prev" id="navPrev" onclick="event.stopPropagation(); navModal(-1)">‹</button>
       <div class="carousel-viewport" id="carouselViewport">
         <img class="carousel-slide" src="" alt="">
+        <img class="carousel-slide" src="" alt="">
         <img class="carousel-slide" id="modalImg" src="" alt="">
+        <img class="carousel-slide" src="" alt="">
         <img class="carousel-slide" src="" alt="">
       </div>
       <button class="modal-nav next" id="navNext" onclick="event.stopPropagation(); navModal(1)">›</button>
@@ -766,6 +768,7 @@ function goToPage(page) {
 // ── Modal with navigation (scroll-snap) ──
 let scrollTimeout = null;
 let scrollSnapBusy = false;
+let updatingSlides = false; // block scroll events during slide reset
 
 function openModal(filename) {
   const decoded = decodeURIComponent(filename);
@@ -791,24 +794,23 @@ function showModalImage() {
 
 function updateCarouselSlides() {
   const slides = document.querySelectorAll('#carouselViewport .carousel-slide');
-  if (slides.length < 3) return;
-  const prevImg = modalImageList[modalIndex - 1];
-  const currImg = modalImageList[modalIndex];
-  const nextImg = modalImageList[modalIndex + 1];
+  if (slides.length < 5) return;
 
-  slides[0].src = prevImg ? `/raw/${encodeURIComponent(prevImg.filename)}` : '';
-  slides[1].src = `/raw/${encodeURIComponent(currImg.filename)}`;
-  slides[2].src = nextImg ? `/raw/${encodeURIComponent(nextImg.filename)}` : '';
+  for (let offset = -2; offset <= 2; offset++) {
+    const idx = modalIndex + offset;
+    const img = (idx >= 0 && idx < modalImageList.length) ? modalImageList[idx] : null;
+    slides[offset + 2].src = img ? `/raw/${encodeURIComponent(img.filename)}` : '';
+  }
 
-  // Scroll to current slide silently
+  // Scroll to current slide (index 2) silently
+  updatingSlides = true;
   const vp = document.getElementById('carouselViewport');
   const sw = vp.offsetWidth;
-  // Temporarily disable smooth scroll for instant positioning
   vp.style.scrollBehavior = 'auto';
-  vp.scrollLeft = sw;
-  // Force reflow then re-enable smooth
+  vp.scrollLeft = sw * 2;
   vp.offsetHeight;
   vp.style.scrollBehavior = 'smooth';
+  setTimeout(() => { updatingSlides = false; }, 50);
 }
 
 function navModal(direction) {
@@ -852,6 +854,7 @@ function navModal(direction) {
 
 // Scroll-snap: detect when user finishes scrolling and update state
 document.getElementById('carouselViewport').addEventListener('scroll', () => {
+  if (updatingSlides && !scrollSnapBusy) return; // skip programmatic resets, allow navModal
   clearTimeout(scrollTimeout);
   scrollTimeout = setTimeout(() => {
     const vp = document.getElementById('carouselViewport');
@@ -859,19 +862,19 @@ document.getElementById('carouselViewport').addEventListener('scroll', () => {
     if (sw === 0) return;
     const slideIdx = Math.round(vp.scrollLeft / sw);
 
-    if (slideIdx === 1) {
+    if (slideIdx === 2) {
       // Stayed on current — just ensure smooth is on
       vp.style.scrollBehavior = 'smooth';
       scrollSnapBusy = false;
       return;
     }
 
-    const direction = slideIdx === 0 ? -1 : 1;
+    const direction = slideIdx - 2; // -2, -1, 1, or 2
     const newIdx = modalIndex + direction;
     if (newIdx < 0 || newIdx >= modalImageList.length) {
       // At boundary — snap back to current
       vp.style.scrollBehavior = 'smooth';
-      vp.scrollLeft = sw;
+      vp.scrollLeft = sw * 2;
       scrollSnapBusy = false;
       return;
     }
