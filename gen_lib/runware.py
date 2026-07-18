@@ -26,6 +26,7 @@ MODELS = {
     "pony-xl":        {"id": "liangwc:3@1", "name": "Prefect Pony XL v3", "price": "$0.0013/张"},
     "prefect-ill-xl": {"id": "liangwc:6@1", "name": "Prefect Illustrious XL v8", "price": "~$0.003/张"},
     "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "$0.0019/次"},
+    "flux-uncensored": {"id": "loraimagegen:11111@11111", "name": "FLUX Uncensored", "price": "$0.0038/张"},
 }
 
 # Aspect ratio → (width, height)
