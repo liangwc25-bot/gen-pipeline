@@ -1,6 +1,6 @@
 {
   "version": "1.5",
-  "updated": "2026-07-14",
+  "updated": "2026-07-18",
   "loras": [
     {
       "id": "lora3-3d-campus-girl",
@@ -4477,10 +4477,20 @@
       "name": "棋钟 (qizhong)",
       "file": "",
       "url": "https://huggingface.co/liangwc25/qizhong-lora-pub",
-      "trigger_words": ["qizhong"],
-      "tags": ["flux", "lora", "portrait", "runware-verified"],
+      "trigger_words": [
+        "qizhong"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
       "default_scale": 0.85,
-      "scale_range": [0.6, 1.2],
+      "scale_range": [
+        0.6,
+        1.2
+      ],
       "description": "棋钟 — FLUX.1 dev LoRA, trained from 12 Douyin live screenshots",
       "base_model": "flux-dev",
       "category": "character_style",
@@ -4494,10 +4504,20 @@
       "name": "拳拳 (quanquan)",
       "file": "",
       "url": "https://huggingface.co/liangwc25/quanquan-lora",
-      "trigger_words": ["quanquan"],
-      "tags": ["flux", "lora", "portrait", "runware-verified"],
+      "trigger_words": [
+        "quanquan"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
       "default_scale": 0.85,
-      "scale_range": [0.6, 1.2],
+      "scale_range": [
+        0.6,
+        1.2
+      ],
       "description": "拳拳 — FLUX.1 dev LoRA, trained from 12 Douyin screenshots",
       "base_model": "flux-dev",
       "category": "character_style",
@@ -4511,10 +4531,20 @@
       "name": "拳拳 V2 (quanquan)",
       "file": "",
       "url": "https://huggingface.co/liangwc25/quanquan-lora-v2",
-      "trigger_words": ["quanquan"],
-      "tags": ["flux", "lora", "portrait", "runware-verified"],
+      "trigger_words": [
+        "quanquan"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
       "default_scale": 0.85,
-      "scale_range": [0.6, 1.2],
+      "scale_range": [
+        0.6,
+        1.2
+      ],
       "description": "拳拳 V2 — FLUX.1 dev LoRA, 6 high-signal images (3 refs + 3 gen)",
       "base_model": "flux-dev",
       "category": "character_style",
@@ -4528,16 +4558,186 @@
       "name": "拳拳 V3 (quanquan)",
       "file": "",
       "url": "https://huggingface.co/liangwc25/quanquan-lora-v3",
-      "trigger_words": ["quanquan"],
-      "tags": ["flux", "lora", "portrait", "runware-verified"],
+      "trigger_words": [
+        "quanquan"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
       "default_scale": 0.85,
-      "scale_range": [0.6, 1.2],
+      "scale_range": [
+        0.6,
+        1.2
+      ],
       "description": "拳拳 V3 — FLUX.1 dev LoRA, all user-verified",
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": false,
       "incompatible_with": [],
       "notes": "2026-07-17: V3 on Replicate, rank 16, 1000 steps."
+    },
+    {
+      "id": "quanquan-v4",
+      "runware_air_id": "liangwc:quanquan-v4@1",
+      "name": "拳拳 V4 (quanquan)",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/quanquan-lora-v4",
+      "trigger_words": [
+        "quanquan"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
+      "default_scale": 0.85,
+      "scale_range": [
+        0.6,
+        1.2
+      ],
+      "description": "拳拳 V4 — FLUX.1 dev LoRA, single ref_03 image only",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false,
+      "incompatible_with": [],
+      "notes": "2026-07-18: V4 on Replicate, rank 16, 1000 steps, 1 image only."
+    },
+    {
+      "id": "quanquan-v5",
+      "runware_air_id": "liangwc:quanquan-v5@1",
+      "name": "拳拳 V5 (quanquan)",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/quanquan-lora-v5",
+      "trigger_words": [
+        "quanquan"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
+      "default_scale": 0.85,
+      "scale_range": [
+        0.6,
+        1.2
+      ],
+      "description": "拳拳 V5 — FLUX.1 dev LoRA, 8 images (V4 outputs + ref_03)",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false,
+      "incompatible_with": [],
+      "notes": "2026-07-18: V5 on Replicate, rank 16, 1000 steps."
+    },
+    {
+      "id": "quanquan-v6",
+      "runware_air_id": "liangwc:quanquan-v6@1",
+      "name": "拳拳 V6 (quanquan)",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/quanquan-lora-v6",
+      "trigger_words": [
+        "quanquan"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
+      "default_scale": 0.85,
+      "scale_range": [
+        0.6,
+        1.2
+      ],
+      "description": "拳拳 V6 — FLUX.1 dev LoRA, 3 HD neutral images",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false,
+      "incompatible_with": [],
+      "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
+    },
+    {
+      "id": "body-weight-slider",
+      "runware_air_id": "liangwc:body-weight-slider@3013455",
+      "name": "Body Weight Slider",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/lora-body-weight-slider",
+      "trigger_words": [],
+      "tags": [
+        "body",
+        "weight",
+        "slender",
+        "flux",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Body Weight Slider - Non Face Changing [FLUX] - adjust body shape without affecting face. Flux.1 D base.",
+      "base_model": "flux-dev",
+      "category": "concept",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-18: Runware uploaded ✅"
+    },
+    {
+      "id": "tiny-puffy-nipples",
+      "runware_air_id": "liangwc:tiny-puffy-nipples@2378905",
+      "name": "Tiny breasts & puffy nipples",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/lora-tiny-puffy-nipples",
+      "trigger_words": [],
+      "tags": [
+        "body",
+        "tiny",
+        "breasts",
+        "nipples",
+        "flux",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Body - Tiny breasts and (kind of) puffy nipples — FLUX body type LoRA.",
+      "base_model": "flux-dev",
+      "category": "concept",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-18: Runware uploaded ✅"
+    },
+    {
+      "id": "flat-chest",
+      "runware_air_id": "liangwc:flat-chest@1014705",
+      "name": "Flat Chested - Body Type",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/lora-flat-chest",
+      "trigger_words": [],
+      "tags": [
+        "body",
+        "flat",
+        "chest",
+        "flux",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Flat Chested - Body Type — FLUX body type LoRA for flat chest / no breasts.",
+      "base_model": "flux-dev",
+      "category": "concept",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-18: Runware uploaded ✅"
     }
   ],
   "categories": {
