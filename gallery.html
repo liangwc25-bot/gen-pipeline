@@ -783,12 +783,14 @@ function showModalImage() {
   if (!img) return;
 
   modalFilename = img.filename;
-  updateCarouselSlides();
-  updateModalUI(img);
 
+  // Open modal first so viewport has width for scroll positioning
   const modal = document.getElementById('modal');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  updateCarouselSlides();
+  updateModalUI(img);
   modal.querySelector('.modal').scrollTop = 0;
 }
 
