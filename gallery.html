@@ -357,6 +357,17 @@
   .batch-btn.trash:hover { background: rgba(239,68,68,0.25); }
   .batch-btn.cancel { background: rgba(255,255,255,0.06); color: var(--text2); }
   [data-theme="light"] .batch-bar { border-top-color: rgba(0,0,0,0.08); }
+
+  .filter-bar { display:flex; gap:8px; margin-bottom:16px; align-items:center; flex-wrap:wrap; }
+  .filter-bar select, .filter-bar input {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 6px 12px; color: var(--text); font-size: 0.85rem;
+    outline: none; min-width: 180px;
+  }
+  .filter-bar select:focus, .filter-bar input:focus { border-color: var(--accent); }
+  [data-theme="light"] .filter-bar select, [data-theme="light"] .filter-bar input {
+    background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.08);
+  }
 </style>
 </head>
 <body>
@@ -369,6 +380,12 @@
     <button class="btn" onclick="rescan()" id="rescanBtn">⟳ 扫描</button>
     <button class="btn" id="selectBtn" onclick="toggleSelectMode()">☐ 选择</button>
   </div>
+</div>
+<div class="filter-bar" id="filterBar">
+  <select id="modelFilter" onchange="applyFilters()">
+    <option value="">🔮 全部模型</option>
+  </select>
+  <input type="text" id="searchInput" placeholder="🔍 搜索 prompt…" oninput="applyFiltersDebounced()">
 </div>
 <div id="grid" class="grid"></div>
 <div id="batchBar" class="batch-bar">
@@ -668,12 +685,29 @@ async function loadPage(page) {
   else if (filterMode === 'fav') apiFilter = 'fav';
   else apiFilter = 'all';
 
-  const res = await fetch(`/api/images?page=${page}&per_page=${PER_PAGE}&filter=${apiFilter}`);
+  const model = document.getElementById('modelFilter').value;
+  const search = document.getElementById('searchInput').value.trim();
+
+  let url = `/api/images?page=${page}&per_page=${PER_PAGE}&filter=${apiFilter}`;
+  if (model) url += `&model=${encodeURIComponent(model)}`;
+  if (search) url += `&search=${encodeURIComponent(search)}`;
+
+  const res = await fetch(url);
   const data = await res.json();
   currentPage = data.page;
   totalPages = data.total_pages;
   totalImages = data.total;
   allImages = data.images;
+
+  // Populate model dropdown from server response
+  if (data.models && data.models.length) {
+    const sel = document.getElementById('modelFilter');
+    const currentVal = sel.value;
+    sel.innerHTML = '<option value="">🔮 全部模型</option>';
+    data.models.forEach(m => {
+      sel.innerHTML += `<option value=\"${escapeHtml(m)}\" ${m === currentVal ? 'selected' : ''}>${escapeHtml(m)}</option>`;
+    });
+  }
 
   let displayImages = allImages;
   if (filterMode === 'fav') {
@@ -685,6 +719,16 @@ async function loadPage(page) {
   renderPagination(displayImages.length);
   document.getElementById('count').textContent = `${data.total} 张`;
   document.getElementById('empty').style.display = data.total === 0 ? 'block' : 'none';
+}
+
+function applyFilters() {
+  loadPage(1);
+}
+
+let _searchTimer = null;
+function applyFiltersDebounced() {
+  if (_searchTimer) clearTimeout(_searchTimer);
+  _searchTimer = setTimeout(() => loadPage(1), 300);
 }
 
 function enc(f) { return encodeURIComponent(f); }

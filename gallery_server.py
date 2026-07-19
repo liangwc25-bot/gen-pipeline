@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gallery server — serves image gallery with PNG metadata display."""
+"""Gallery server — serves image gallery with SQLite metadata index."""
 import json
 import os
 import io
@@ -19,163 +19,58 @@ from PIL.PngImagePlugin import PngInfo
 
 # GIF zoom
 from gen_lib.gif_zoom import make_gif
+from gen_lib.metadata_db import (
+    init_db, list_images, count_images, distinct_models,
+    set_favorited, set_archived, is_favorited, is_archived,
+    get_meta, delete_record, insert,
+)
 
 IMAGES_DIR = Path(__file__).parent / "output" / "images"
 ARCHIVE_DIR = Path(__file__).parent / "output" / "archived"
 TRASH_DIR = Path(__file__).parent / "output" / ".trash"
-FAVORITES_FILE = Path.home() / ".hermes" / "gallery_favorites.json"
 PORT = 8089
 THUMB_SIZE = (300, 300)
-CACHE = {}  # {"main": [...], "archive": [...]}
 
-def load_favorites() -> list:
-    """Load favorited filenames."""
-    if FAVORITES_FILE.exists():
-        try:
-            data = json.loads(FAVORITES_FILE.read_text())
-            return data if isinstance(data, list) else []
-        except Exception:
-            return []
-    return []
+# Ensure DB exists
+init_db()
 
-def save_favorites(files: list):
-    """Save favorited filenames."""
-    FAVORITES_FILE.parent.mkdir(parents=True, exist_ok=True)
-    FAVORITES_FILE.write_text(json.dumps(files, indent=2))
+# ── Utility ──
+
+def _find_file(filename: str) -> Path | None:
+    """Find an image file in IMAGES_DIR or ARCHIVE_DIR (for backward compat)."""
+    for d in (IMAGES_DIR, ARCHIVE_DIR):
+        fp = d / filename
+        if fp.exists():
+            return fp
+    return None
+
 
 def toggle_favorite(filename: str) -> bool:
-    """Toggle a filename in favorites. Returns new state (True=favorited)."""
-    favs = load_favorites()
-    if filename in favs:
-        favs.remove(filename)
-        save_favorites(favs)
-        CACHE.pop("main", None)
-        CACHE.pop("archive", None)
-        return False
-    else:
-        favs.append(filename)
-        save_favorites(favs)
-        CACHE.pop("main", None)
-        CACHE.pop("archive", None)
-        return True
+    """Toggle favorite. Returns new state."""
+    current = is_favorited(filename)
+    new_state = not current
+    set_favorited(filename, new_state)
+    return new_state
 
-def is_archived(filename: str) -> bool:
-    """Check if a file exists in the archive directory."""
-    return (ARCHIVE_DIR / filename).exists()
+
+def toggle_archive(filename: str) -> dict | None:
+    """Toggle archive flag in DB (no file moving)."""
+    current = is_archived(filename)
+    new_state = not current
+    set_archived(filename, new_state)
+    return {"archived": new_state, "filename": filename}
+
 
 def move_to_trash(filename: str) -> dict | None:
-    """Move an image file to the trash directory. Tries main dir first, then archive.
-    Returns {trashed: true, filename: str} or None if not found."""
+    """Move file to trash + delete DB record."""
     TRASH_DIR.mkdir(parents=True, exist_ok=True)
     for src_dir in (IMAGES_DIR, ARCHIVE_DIR):
         fp = src_dir / filename
         if fp.exists():
             shutil.move(str(fp), str(TRASH_DIR / filename))
-            CACHE.pop("main", None)
-            CACHE.pop("archive", None)
+            delete_record(filename)
             return {"trashed": True, "filename": filename}
     return None
-
-def toggle_archive(filename: str) -> dict | None:
-    """Move file between main and archive dirs. Returns {archived: bool, filename: str} or None if not found."""
-    main_path = IMAGES_DIR / filename
-    arch_path = ARCHIVE_DIR / filename
-
-    if main_path.exists():
-        # Archive: move main → archive
-        ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
-        shutil.move(str(main_path), str(arch_path))
-        # Invalidate both caches
-        CACHE.pop("main", None)
-        CACHE.pop("archive", None)
-        return {"archived": True, "filename": filename}
-    elif arch_path.exists():
-        # Unarchive: move archive → main
-        shutil.move(str(arch_path), str(main_path))
-        CACHE.pop("main", None)
-        CACHE.pop("archive", None)
-        return {"archived": False, "filename": filename}
-    return None
-
-def parse_png_metadata(filepath: Path) -> dict:
-    """Extract tEXt parameters chunk from a PNG file."""
-    meta = {"prompt": "", "seed": "", "model": "", "params": ""}
-    try:
-        img = Image.open(filepath)
-        for key, value in img.text.items():
-            if key == "parameters":
-                meta["params"] = value
-                # Try newline-separated format (AUTOMATIC1111: "Prompt: xxx\nSteps: 28, Seed: ...")
-                lines = value.split("\n")
-                for line in lines:
-                    line = line.strip()
-                    if line.startswith("Prompt: "):
-                        prompt_raw = line[8:].strip()
-                        for sep in [", Negative prompt:", "\nNegative prompt:"]:
-                            idx = prompt_raw.find(sep)
-                            if idx > 0:
-                                prompt_raw = prompt_raw[:idx]
-                                break
-                        meta["prompt"] = prompt_raw
-                    elif line.startswith("Steps:"):
-                        parts = line.split(", ")
-                        for part in parts:
-                            if part.startswith("Seed: "):
-                                meta["seed"] = part[6:].strip()
-                            elif part.startswith("Model: "):
-                                meta["model"] = part[7:].strip()
-                # Fallback
-                if not meta["prompt"]:
-                    for line in lines:
-                        line = line.strip()
-                        if line and not line.startswith("Negative") and not line.startswith("Steps"):
-                            meta["prompt"] = line
-                            break
-                if not meta.get("seed") or not meta.get("model"):
-                    parts = value.split(", ")
-                    for part in parts:
-                        if part.startswith("Seed: "):
-                            meta["seed"] = part[6:].strip()
-                        elif part.startswith("Model: "):
-                            meta["model"] = part[7:].strip()
-                break
-        img.close()
-    except Exception:
-        pass
-    return meta
-
-def get_images(source="main", force_refresh=False) -> list:
-    """Fast scan — filenames + stat only, no PNG metadata parsing.
-    source: 'main' (IMAGES_DIR) or 'archive' (ARCHIVE_DIR). Cached per source."""
-    cache_key = source
-    if CACHE.get(cache_key) is not None and not force_refresh:
-        return CACHE[cache_key]
-
-    target_dir = ARCHIVE_DIR if source == "archive" else IMAGES_DIR
-    images = []
-    if not target_dir.exists():
-        CACHE[cache_key] = images
-        return images
-
-    favs = load_favorites()
-
-    for f in sorted(target_dir.iterdir(), key=lambda p: p.stat().st_mtime, reverse=True):
-        if f.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp", ".mp4", ".gif"):
-            st = f.stat()
-            images.append({
-                "filename": f.name,
-                "size_kb": st.st_size // 1024,
-                "mtime": int(st.st_mtime),
-                "prompt": "",
-                "seed": "",
-                "model": "",
-                "params": "",
-                "favorited": f.name in favs,
-                "archived": source == "archive",
-            })
-
-    CACHE[cache_key] = images
-    return images
 
 def make_thumbnail(filepath: Path) -> bytes | None:
     """Generate thumbnail, return PNG bytes. Returns None on failure."""
@@ -226,7 +121,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         for fn in filenames:
             try:
                 if action == "favorite":
-                    if fn not in load_favorites():
+                    if not is_favorited(fn):
                         toggle_favorite(fn)
                     success.append(fn)
                 elif action == "archive":
@@ -290,8 +185,18 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 cycles=data.get("cycles", 1),
             )
             elapsed = time.time() - t0
-            CACHE.pop("main", None)  # force rescan on next list
-            CACHE.pop("archive", None)
+            # Insert new GIF into metadata index
+            try:
+                insert(
+                    filename=output_name,
+                    prompt="GIF zoom",
+                    seed="",
+                    model="gif-zoom",
+                    params="",
+                    mtime=int(output_path.stat().st_mtime),
+                )
+            except Exception:
+                pass
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
@@ -348,46 +253,65 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 self.send_error(404)
             return
 
-        # API: list images
+        # API: list images (from SQLite)
         if path == "/api/images":
             page = int(params.get("page", [1])[0])
             per_page = int(params.get("per_page", [50])[0])
             filter_mode = params.get("filter", ["all"])[0]
+            model_filter = params.get("model", [""])[0]
+            search = params.get("search", [""])[0]
 
-            source = "archive" if filter_mode == "archive" else "main"
-            all_images = get_images(source)
+            archived = filter_mode == "archive"
+            favorited_only = filter_mode == "fav"
 
-            # For fav filter, scan BOTH dirs (favs may be in archive)
-            if filter_mode == "fav":
-                all_images = get_images("main") + get_images("archive")
-                all_images = [img for img in all_images if img["favorited"]]
-                # Re-sort by mtime desc
-                all_images.sort(key=lambda x: x["mtime"], reverse=True)
-
-            total = len(all_images)
+            all_images = list_images(
+                model_filter=model_filter,
+                search=search,
+                archived=archived,
+                favorited_only=favorited_only,
+                offset=(page - 1) * per_page,
+                limit=per_page,
+            )
+            total = count_images(
+                model_filter=model_filter,
+                search=search,
+                archived=archived,
+                favorited_only=favorited_only,
+            )
             total_pages = max(1, math.ceil(total / per_page))
-            start = (page - 1) * per_page
-            end = start + per_page
-            page_images = all_images[start:end]
+
+            # Enrich with file stats
+            for img in all_images:
+                fp = _find_file(img["filename"])
+                if fp:
+                    st = fp.stat()
+                    img["size_kb"] = st.st_size // 1024
+                    img["mtime"] = img.get("mtime", 0) or int(st.st_mtime)
+                else:
+                    img["size_kb"] = 0
+                img["favorited"] = bool(img.get("favorited", 0))
+                img["archived"] = bool(img.get("archived", 0))
 
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             self.wfile.write(json.dumps({
-                "images": page_images,
+                "images": all_images,
                 "page": page,
                 "per_page": per_page,
                 "total": total,
                 "total_pages": total_pages,
+                "models": distinct_models(),
             }).encode())
             return
 
-        # API: rescan
+        # API: rescan (refresh DB from directories)
         if path == "/api/rescan":
-            CACHE.clear()
-            main_count = len(get_images("main"))
-            arch_count = len(get_images("archive"))
+            from gen_lib.metadata_db import backfill
+            n = backfill(IMAGES_DIR, ARCHIVE_DIR)
+            main_count = count_images(archived=False)
+            arch_count = count_images(archived=True)
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
@@ -395,6 +319,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 "ok": True,
                 "count": main_count,
                 "archived_count": arch_count,
+                "indexed": n,
             }).encode())
             return
 
@@ -412,9 +337,9 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 self.send_error(400, "Missing filename")
             return
 
-        # API: list favorites
+        # API: list favorites (from DB)
         if path == "/api/favorites":
-            favs = load_favorites()
+            favs = [img["filename"] for img in list_images(favorited_only=True, limit=99999)]
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
@@ -439,14 +364,9 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 self.send_error(400, "Missing filename")
             return
 
-        # API: list archived filenames
+        # API: list archived filenames (from DB)
         if path == "/api/archived":
-            archived = []
-            if ARCHIVE_DIR.exists():
-                for f in ARCHIVE_DIR.iterdir():
-                    if f.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp", ".gif"):
-                        archived.append(f.name)
-            archived.sort()
+            archived = [img["filename"] for img in list_images(archived=True, limit=99999)]
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
@@ -471,28 +391,25 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 self.send_error(400, "Missing filename")
             return
 
-        # API: single-file metadata (on-demand, lazy)
+        # API: single-file metadata (from SQLite, fallback to PNG)
         if path == "/api/meta":
             filename = params.get("filename", [None])[0]
             if filename:
-                filepath = IMAGES_DIR / filename
-                if not filepath.exists():
-                    filepath = ARCHIVE_DIR / filename
-                if filepath.exists():
-                    meta = parse_png_metadata(filepath)
+                meta = get_meta(filename)
+                if meta:
                     self.send_response(200)
                     self.send_header("Content-Type", "application/json")
                     self.send_header("Access-Control-Allow-Origin", "*")
                     self.end_headers()
                     self.wfile.write(json.dumps({
                         "filename": filename,
-                        "prompt": meta["prompt"],
-                        "seed": meta["seed"],
-                        "model": meta["model"],
-                        "params": meta["params"],
+                        "prompt": meta.get("prompt", ""),
+                        "seed": meta.get("seed", ""),
+                        "model": meta.get("model", ""),
+                        "params": meta.get("params", ""),
                     }).encode())
                 else:
-                    self.send_error(404, "File not found")
+                    self.send_error(404, "File not found in index")
             else:
                 self.send_error(400, "Missing filename")
             return
