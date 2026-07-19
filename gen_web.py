@@ -38,10 +38,21 @@ def result_err(msg):
     return {"success": False, "error": str(msg)}
 
 
+def _translate_prompt(prompt: str, args: dict) -> str:
+    """Translate CN prompt to EN if translate flag is set."""
+    if args.get("translate") and prompt:
+        from gen_lib.translate import translate_cn_to_en
+        translated = translate_cn_to_en(prompt)
+        if translated:
+            return translated
+    return prompt
+
+
 def _generate_runware(args: dict) -> dict:
     """Runware path."""
     from gen_lib.runware import generate as gen_runware
     prompt = args.get("prompt", "").strip()
+    prompt = _translate_prompt(prompt, args)
     negative = args.get("negative_prompt", "")
     model = args.get("model", "flux-dev")
     seed = args.get("seed")
@@ -111,6 +122,7 @@ def _generate_modelslab(args: dict) -> dict:
     """
     from gen_lib.modelslab import generate as gen_modelslab
     prompt = args.get("prompt", "").strip()
+    prompt = _translate_prompt(prompt, args)
     negative = args.get("negative_prompt", "")
     model = args.get("model", "pony")
     seed = args.get("seed")
