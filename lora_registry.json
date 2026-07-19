@@ -1,6 +1,6 @@
 {
   "version": "1.5",
-  "updated": "2026-07-18",
+  "updated": "2026-07-19",
   "loras": [
     {
       "id": "lora3-3d-campus-girl",
@@ -21,7 +21,7 @@
         0.5,
         1.2
       ],
-      "description": "3D semi-realistic style campus girl — Flux.1 D base. Runware AIR verified ✅.",
+      "description": "3D semi-realistic style campus girl \u2014 Flux.1 D base. Runware AIR verified \u2705.",
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": false,
@@ -231,7 +231,7 @@
       "base_model": "illustrious",
       "category": "character",
       "nsfw": false,
-      "notes": "Ahri 九尾狐"
+      "notes": "Ahri \u4e5d\u5c3e\u72d0"
     },
     {
       "id": "ani-grok",
@@ -250,7 +250,7 @@
       "base_model": "illustrious",
       "category": "character",
       "nsfw": false,
-      "notes": "Grok Companion 角色"
+      "notes": "Grok Companion \u89d2\u8272"
     },
     {
       "id": "flux_685674_767398",
@@ -419,7 +419,7 @@
     {
       "id": "body-weight-slider",
       "runware_air_id": "liangwc:body-weight-slider@2825512",
-      "name": "Body Weight Slider (Skinny→Fat)",
+      "name": "Body Weight Slider (Skinny\u2192Fat)",
       "url": "https://civitai.com/models/2513759",
       "tags": [
         "illustrious",
@@ -655,7 +655,7 @@
         0.5,
         1.2
       ],
-      "description": "Building Sized Giantess v2 — Illustrious base. Runware AIR verified ✅.",
+      "description": "Building Sized Giantess v2 \u2014 Illustrious base. Runware AIR verified \u2705.",
       "base_model": "illustrious",
       "category": "character_style",
       "nsfw": true,
@@ -954,12 +954,12 @@
         0.3,
         0.8
       ],
-      "description": "仅 19MB / dim=2 — FLUX 女性器官细节 LoRA。专门用于添加 vagina/labia，不带写实风格 bias。AIR: liangwc:vagina-hq@935742",
+      "description": "\u4ec5 19MB / dim=2 \u2014 FLUX \u5973\u6027\u5668\u5b98\u7ec6\u8282 LoRA\u3002\u4e13\u95e8\u7528\u4e8e\u6dfb\u52a0 vagina/labia\uff0c\u4e0d\u5e26\u5199\u5b9e\u98ce\u683c bias\u3002AIR: liangwc:vagina-hq@935742",
       "base_model": "flux-dev",
       "category": "anatomy",
       "nsfw": true,
       "incompatible_with": [],
-      "notes": "2026-07-05 上传验证。堆叠风格 LoRA + NSFW MASTER 0.5 时用此加器官细节。19MB dim=2 不会压风格。单独使用时 FLUX 会取巧遮挡。"
+      "notes": "2026-07-05 \u4e0a\u4f20\u9a8c\u8bc1\u3002\u5806\u53e0\u98ce\u683c LoRA + NSFW MASTER 0.5 \u65f6\u7528\u6b64\u52a0\u5668\u5b98\u7ec6\u8282\u300219MB dim=2 \u4e0d\u4f1a\u538b\u98ce\u683c\u3002\u5355\u72ec\u4f7f\u7528\u65f6 FLUX \u4f1a\u53d6\u5de7\u906e\u6321\u3002"
     },
     {
       "id": "disgusted-face",
@@ -1485,7 +1485,7 @@
       "category": "style",
       "nsfw": true,
       "incompatible_with": [],
-      "notes": "2026-07-05 uploaded. 18MB — too weak for reliable NSFW. Not recommended."
+      "notes": "2026-07-05 uploaded. 18MB \u2014 too weak for reliable NSFW. Not recommended."
     },
     {
       "id": "flux-asian-beauty",
@@ -1634,7 +1634,7 @@
         0.5,
         1.2
       ],
-      "description": "Large Futanari Penis 18+ — Pony base. Runware AIR verified ✅.",
+      "description": "Large Futanari Penis 18+ \u2014 Pony base. Runware AIR verified \u2705.",
       "base_model": "pony",
       "category": "character_style",
       "nsfw": true,
@@ -1752,7 +1752,7 @@
         0.5,
         1.2
       ],
-      "description": "Girl x Giant XL 18+ — Pony base. Runware AIR verified ✅.",
+      "description": "Girl x Giant XL 18+ \u2014 Pony base. Runware AIR verified \u2705.",
       "base_model": "pony",
       "category": "character_style",
       "nsfw": true,
@@ -1817,12 +1817,12 @@
       "base_model": "pony",
       "category": "style",
       "nsfw": false,
-      "notes": "鹿鹿常用。Runware AIR verified ✅"
+      "notes": "\u9e7f\u9e7f\u5e38\u7528\u3002Runware AIR verified \u2705"
     },
     {
       "id": "gufeng",
       "runware_air_id": "liangwc:gufeng@954662",
-      "name": "Gufeng / 古风 / 国风",
+      "name": "Gufeng / \u53e4\u98ce / \u56fd\u98ce",
       "url": "https://civitai.com/models/853112",
       "tags": [
         "pony",
@@ -1837,12 +1837,12 @@
       "base_model": "pony",
       "category": "style",
       "nsfw": false,
-      "notes": "古风/国风 style"
+      "notes": "\u53e4\u98ce/\u56fd\u98ce style"
     },
     {
       "id": "gufeng-ill",
       "runware_air_id": "liangwc:gufeng-ill@2748805",
-      "name": "Gufeng/国风/仙子 (Illustrious)",
+      "name": "Gufeng/\u56fd\u98ce/\u4ed9\u5b50 (Illustrious)",
       "url": "https://civitai.com/models/2444773",
       "tags": [
         "illustrious",
@@ -1861,7 +1861,7 @@
     {
       "id": "guo-feng-face",
       "runware_air_id": "liangwc:guo-feng-face@2244520",
-      "name": "Guo Feng Face (国风脸)",
+      "name": "Guo Feng Face (\u56fd\u98ce\u8138)",
       "url": "https://civitai.com/models/1982867",
       "tags": [
         "illustrious",
@@ -2548,7 +2548,7 @@
       "base_model": "pony",
       "category": "concept",
       "nsfw": false,
-      "notes": "神楽/符札/巫女/僵尸/乳房贴纸等概念"
+      "notes": "\u795e\u697d/\u7b26\u672d/\u5deb\u5973/\u50f5\u5c38/\u4e73\u623f\u8d34\u7eb8\u7b49\u6982\u5ff5"
     },
     {
       "id": "ohogao",
@@ -2604,7 +2604,7 @@
         0.5,
         1.2
       ],
-      "description": "Oppai / Large breasts slim body 18+ — Pony base. Runware AIR verified ✅.",
+      "description": "Oppai / Large breasts slim body 18+ \u2014 Pony base. Runware AIR verified \u2705.",
       "base_model": "pony",
       "category": "character_style",
       "nsfw": true,
@@ -2932,12 +2932,12 @@
       "base_model": "pony",
       "category": "character",
       "nsfw": false,
-      "notes": "Ranma Saotome 早乙女乱馬"
+      "notes": "Ranma Saotome \u65e9\u4e59\u5973\u4e71\u99ac"
     },
     {
       "id": "realist-beauty",
       "runware_air_id": "liangwc:realist-beauty@383192",
-      "name": "Realist Beauty Model N°1",
+      "name": "Realist Beauty Model N\u00b01",
       "url": "https://civitai.com/models/339129",
       "tags": [
         "pony",
@@ -3298,7 +3298,7 @@
       "base_model": "illustrious",
       "category": "character",
       "nsfw": false,
-      "notes": "Dead by Daylight 恐怖角色"
+      "notes": "Dead by Daylight \u6050\u6016\u89d2\u8272"
     },
     {
       "id": "flux_1128892_1276091",
@@ -3336,7 +3336,7 @@
       "base_model": "illustrious",
       "category": "character",
       "nsfw": false,
-      "notes": "Tifa FF7R 23套服装"
+      "notes": "Tifa FF7R 23\u5957\u670d\u88c5"
     },
     {
       "id": "tinker-bell",
@@ -3437,14 +3437,14 @@
         0.5,
         1.2
       ],
-      "description": "Tomie-style uncanny beauty. ⚠️ FLUX cannot do true Tomie eyes (outputs 'foreigner drawing Japanese'). Use Pony base instead.",
+      "description": "Tomie-style uncanny beauty. \u26a0\ufe0f FLUX cannot do true Tomie eyes (outputs 'foreigner drawing Japanese'). Use Pony base instead.",
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": false,
       "incompatible_with": [
         "cute-kawaii-style"
       ],
-      "notes": "2026-06-24: FLUX不适合Tomie。Pony base better but needs NSFW LoRA."
+      "notes": "2026-06-24: FLUX\u4e0d\u9002\u5408Tomie\u3002Pony base better but needs NSFW LoRA."
     },
     {
       "id": "toned-body-slider",
@@ -3697,7 +3697,7 @@
       "base_model": "illustrious",
       "category": "character",
       "nsfw": false,
-      "notes": "FFX/X-2 3套服装"
+      "notes": "FFX/X-2 3\u5957\u670d\u88c5"
     },
     {
       "id": "zelda-botw",
@@ -3738,7 +3738,7 @@
     {
       "id": "sanguosha-style",
       "runware_air_id": "liangwc:sanguosha-style@1569919",
-      "name": "三国杀风格",
+      "name": "\u4e09\u56fd\u6740\u98ce\u683c",
       "url": "https://civitai.com/models/1389166",
       "tags": [
         "flux",
@@ -3757,7 +3757,7 @@
     {
       "id": "mai-shiranui-ill",
       "runware_air_id": "liangwc:mai-shiranui-ill@1360277",
-      "name": "不知火舞 Mai (Illu)",
+      "name": "\u4e0d\u77e5\u706b\u821e Mai (Illu)",
       "url": "https://civitai.com/models/540718",
       "tags": [
         "illustrious",
@@ -3776,7 +3776,7 @@
     {
       "id": "mai-shiranui-pony",
       "runware_air_id": "liangwc:mai-shiranui-pony@601161",
-      "name": "不知火舞 Mai (Pony)",
+      "name": "\u4e0d\u77e5\u706b\u821e Mai (Pony)",
       "url": "https://civitai.com/models/540718",
       "tags": [
         "pony",
@@ -3795,7 +3795,7 @@
     {
       "id": "miku-pony",
       "runware_air_id": "liangwc:miku-pony@404551",
-      "name": "初音ミク Miku (Pony)",
+      "name": "\u521d\u97f3\u30df\u30af Miku (Pony)",
       "url": "https://civitai.com/models/362031",
       "tags": [
         "pony",
@@ -3814,7 +3814,7 @@
     {
       "id": "racing-miku",
       "runware_air_id": "liangwc:racing-miku@2487845",
-      "name": "初音ミク Racing Miku 2022",
+      "name": "\u521d\u97f3\u30df\u30af Racing Miku 2022",
       "url": "https://civitai.com/models/2209692",
       "tags": [
         "illustrious",
@@ -3833,7 +3833,7 @@
     {
       "id": "jianlai-he-xiaoliang",
       "runware_air_id": "liangwc:lora10@1425098",
-      "name": "剑来贺小凉 (lora10)",
+      "name": "\u5251\u6765\u8d3a\u5c0f\u51c9 (lora10)",
       "file": "",
       "url": "https://huggingface.co/liangwc25/lora-lora10/resolve/main/model.safetensors",
       "trigger_words": [],
@@ -3849,7 +3849,7 @@
         0.5,
         1.2
       ],
-      "description": "剑来贺小凉 — Flux.1 D character LoRA, cartoon/anime style. Uploaded via HF relay. Runware AIR verified ✅.",
+      "description": "\u5251\u6765\u8d3a\u5c0f\u51c9 \u2014 Flux.1 D character LoRA, cartoon/anime style. Uploaded via HF relay. Runware AIR verified \u2705.",
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": false,
@@ -3859,7 +3859,7 @@
     {
       "id": "daji-wangzhe",
       "runware_air_id": "liangwc:daji-wangzhe@3083699",
-      "name": "妲己·王者荣耀",
+      "name": "\u59b2\u5df1\u00b7\u738b\u8005\u8363\u8000",
       "url": "https://civitai.com/models/2331448",
       "tags": [
         "illustrious",
@@ -3878,7 +3878,7 @@
     {
       "id": "daji-jiuwei",
       "runware_air_id": "liangwc:daji-jiuwei@3078443",
-      "name": "妲己·青丘九尾",
+      "name": "\u59b2\u5df1\u00b7\u9752\u4e18\u4e5d\u5c3e",
       "url": "https://civitai.com/models/2737650",
       "tags": [
         "illustrious",
@@ -3897,7 +3897,7 @@
     {
       "id": "sunshangxiang",
       "runware_air_id": "liangwc:sunshangxiang@2049582",
-      "name": "孙尚香·王者荣耀",
+      "name": "\u5b59\u5c1a\u9999\u00b7\u738b\u8005\u8363\u8000",
       "url": "https://civitai.com/models/1811137",
       "tags": [
         "illustrious",
@@ -3916,7 +3916,7 @@
     {
       "id": "sunshangxiang-v2",
       "runware_air_id": "liangwc:sunshangxiang-v2@2644919",
-      "name": "孙尚香·王者荣耀V2",
+      "name": "\u5b59\u5c1a\u9999\u00b7\u738b\u8005\u8363\u8000V2",
       "url": "https://civitai.com/models/2351626",
       "tags": [
         "illustrious",
@@ -3935,7 +3935,7 @@
     {
       "id": "ningyao",
       "runware_air_id": "liangwc:ningyao@2168402",
-      "name": "宁姚/剑来",
+      "name": "\u5b81\u59da/\u5251\u6765",
       "url": "https://civitai.com/models/1915847",
       "tags": [
         "illustrious",
@@ -3954,7 +3954,7 @@
     {
       "id": "ankela-kuluomi",
       "runware_air_id": "liangwc:ankela-kuluomi@3005489",
-      "name": "安琪拉·库洛米",
+      "name": "\u5b89\u742a\u62c9\u00b7\u5e93\u6d1b\u7c73",
       "url": "https://civitai.com/models/2676704",
       "tags": [
         "illustrious",
@@ -3973,7 +3973,7 @@
     {
       "id": "ankela-mojing",
       "runware_air_id": "liangwc:ankela-mojing@2687940",
-      "name": "安琪拉·魔镜",
+      "name": "\u5b89\u742a\u62c9\u00b7\u9b54\u955c",
       "url": "https://civitai.com/models/2390576",
       "tags": [
         "illustrious",
@@ -3992,7 +3992,7 @@
     {
       "id": "lora5-shao-siyuan",
       "runware_air_id": "liangwc:lora5@1645600",
-      "name": "少司缘ssy (lora5)",
+      "name": "\u5c11\u53f8\u7f18ssy (lora5)",
       "file": "",
       "url": "https://civitai.com/models/1645600",
       "trigger_words": [],
@@ -4000,14 +4000,14 @@
         "character",
         "illustrious",
         "runware-verified",
-        "王者荣耀"
+        "\u738b\u8005\u8363\u8000"
       ],
       "default_scale": 0.8,
       "scale_range": [
         0.5,
         1.2
       ],
-      "description": "少司缘 — 王者荣耀 character, Illustrious base. Runware AIR verified ✅.",
+      "description": "\u5c11\u53f8\u7f18 \u2014 \u738b\u8005\u8363\u8000 character, Illustrious base. Runware AIR verified \u2705.",
       "base_model": "illustrious",
       "category": "character_style",
       "nsfw": false,
@@ -4017,7 +4017,7 @@
     {
       "id": "ssy-sanxingdui",
       "runware_air_id": "liangwc:ssy-sanxingdui@2846547",
-      "name": "少司缘·三星堆",
+      "name": "\u5c11\u53f8\u7f18\u00b7\u4e09\u661f\u5806",
       "url": "https://civitai.com/models/2532812",
       "tags": [
         "illustrious",
@@ -4036,7 +4036,7 @@
     {
       "id": "ssy-wulishishen",
       "runware_air_id": "liangwc:ssy-wulishishen@2317184",
-      "name": "少司缘·巫礼祀神",
+      "name": "\u5c11\u53f8\u7f18\u00b7\u5deb\u793c\u7940\u795e",
       "url": "https://civitai.com/models/2047406",
       "tags": [
         "illustrious",
@@ -4055,7 +4055,7 @@
     {
       "id": "ssy-wulishishen-v2",
       "runware_air_id": "liangwc:ssy-wulishishen-v2@2894054",
-      "name": "少司缘·巫礼祀神V2",
+      "name": "\u5c11\u53f8\u7f18\u00b7\u5deb\u793c\u7940\u795eV2",
       "url": "https://civitai.com/models/2575923",
       "tags": [
         "illustrious",
@@ -4074,7 +4074,7 @@
     {
       "id": "ssy-tushan-honghong",
       "runware_air_id": "liangwc:ssy-tushan-honghong@2829173",
-      "name": "少司缘·涂山红红联动",
+      "name": "\u5c11\u53f8\u7f18\u00b7\u6d82\u5c71\u7ea2\u7ea2\u8054\u52a8",
       "url": "https://civitai.com/models/2517086",
       "tags": [
         "illustrious",
@@ -4093,7 +4093,7 @@
     {
       "id": "ssy-linggua",
       "runware_air_id": "liangwc:ssy-linggua@2126391",
-      "name": "少司缘·灵卦秘语",
+      "name": "\u5c11\u53f8\u7f18\u00b7\u7075\u5366\u79d8\u8bed",
       "url": "https://civitai.com/models/1878659",
       "tags": [
         "illustrious",
@@ -4112,7 +4112,7 @@
     {
       "id": "ssy-pony",
       "runware_air_id": "liangwc:ssy-pony@774815",
-      "name": "少司缘·王者荣耀 (Pony)",
+      "name": "\u5c11\u53f8\u7f18\u00b7\u738b\u8005\u8363\u8000 (Pony)",
       "url": "https://civitai.com/models/666782",
       "tags": [
         "pony",
@@ -4131,7 +4131,7 @@
     {
       "id": "mary-saotome",
       "runware_air_id": "liangwc:mary-saotome@1104328",
-      "name": "早乙女芽亜里 Mary (Kakegurui)",
+      "name": "\u65e9\u4e59\u5973\u82bd\u4e9c\u91cc Mary (Kakegurui)",
       "url": "https://civitai.com/models/985819",
       "tags": [
         "illustrious",
@@ -4150,7 +4150,7 @@
     {
       "id": "yueying-dynasty-warriors",
       "runware_air_id": "liangwc:yueying-dynasty-warriors@2121618",
-      "name": "月英 Yueying (三國無双)",
+      "name": "\u6708\u82f1 Yueying (\u4e09\u570b\u7121\u53cc)",
       "url": "https://civitai.com/models/1874429",
       "tags": [
         "illustrious",
@@ -4169,7 +4169,7 @@
     {
       "id": "hk-comic-style-jinyong",
       "runware_air_id": "liangwc:hk-comic-style-jinyong@2164436",
-      "name": "港漫风·金庸 (黄玉郎/邱福龙)",
+      "name": "\u6e2f\u6f2b\u98ce\u00b7\u91d1\u5eb8 (\u9ec4\u7389\u90ce/\u90b1\u798f\u9f99)",
       "url": "https://civitai.com/models/1912298",
       "tags": [
         "illustrious",
@@ -4188,7 +4188,7 @@
     {
       "id": "yao-wangzhe",
       "runware_air_id": "liangwc:yao-wangzhe@2824482",
-      "name": "瑶·王者荣耀V2.2",
+      "name": "\u7476\u00b7\u738b\u8005\u8363\u8000V2.2",
       "url": "https://civitai.com/models/2512847",
       "tags": [
         "illustrious",
@@ -4207,7 +4207,7 @@
     {
       "id": "zhenji-dynasty-warriors",
       "runware_air_id": "liangwc:zhenji-dynasty-warriors@2047208",
-      "name": "甄姬 Zhenji (三國無双)",
+      "name": "\u7504\u59ec Zhenji (\u4e09\u570b\u7121\u53cc)",
       "url": "https://civitai.com/models/1809007",
       "tags": [
         "illustrious",
@@ -4226,7 +4226,7 @@
     {
       "id": "dynasty-warriors-style",
       "runware_air_id": "liangwc:dynasty-warriors-style@3045074",
-      "name": "真三国无双8 Artist Style",
+      "name": "\u771f\u4e09\u56fd\u65e0\u53cc8 Artist Style",
       "url": "https://civitai.com/models/2710670",
       "tags": [
         "illustrious",
@@ -4244,7 +4244,7 @@
     {
       "id": "yumeko-jabami",
       "runware_air_id": "liangwc:yumeko-jabami@1104324",
-      "name": "蛇喰夢子 Yumeko (Kakegurui)",
+      "name": "\u86c7\u55b0\u5922\u5b50 Yumeko (Kakegurui)",
       "url": "https://civitai.com/models/985815",
       "tags": [
         "illustrious",
@@ -4263,7 +4263,7 @@
     {
       "id": "charlady",
       "runware_air_id": "liangwc:charlady@1",
-      "name": "Charlady (本地训练)",
+      "name": "Charlady (\u672c\u5730\u8bad\u7ec3)",
       "url": "https://huggingface.co/liangwc25/charlady",
       "tags": [
         "flux",
@@ -4281,7 +4281,7 @@
     {
       "id": "qizhong",
       "runware_air_id": "liangwc:qizhong@1",
-      "name": "棋钟 (qizhong)",
+      "name": "\u68cb\u949f (qizhong)",
       "file": "",
       "url": "https://huggingface.co/liangwc25/qizhong-lora-pub",
       "trigger_words": [
@@ -4298,7 +4298,7 @@
         0.6,
         1.2
       ],
-      "description": "棋钟 — FLUX.1 dev LoRA, trained from 12 Douyin live screenshots",
+      "description": "\u68cb\u949f \u2014 FLUX.1 dev LoRA, trained from 12 Douyin live screenshots",
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": false,
@@ -4306,144 +4306,9 @@
       "notes": "2026-07-16: first run on Replicate, rank 16, 1000 steps."
     },
     {
-      "id": "quanquan",
-      "runware_air_id": "liangwc:quanquan@1",
-      "name": "拳拳 (quanquan)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/quanquan-lora",
-      "trigger_words": [
-        "quanquan"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "拳拳 — FLUX.1 dev LoRA, trained from 12 Douyin screenshots",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-17: first run on Replicate, rank 16, 1000 steps."
-    },
-    {
-      "id": "quanquan-v2",
-      "runware_air_id": "liangwc:quanquan-v2@1",
-      "name": "拳拳 V2 (quanquan)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/quanquan-lora-v2",
-      "trigger_words": [
-        "quanquan"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "拳拳 V2 — FLUX.1 dev LoRA, 6 high-signal images (3 refs + 3 gen)",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-17: V2 trained on Replicate, rank 16, 1000 steps."
-    },
-    {
-      "id": "quanquan-v3",
-      "runware_air_id": "liangwc:quanquan-v3@1",
-      "name": "拳拳 V3 (quanquan)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/quanquan-lora-v3",
-      "trigger_words": [
-        "quanquan"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "拳拳 V3 — FLUX.1 dev LoRA, all user-verified",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-17: V3 on Replicate, rank 16, 1000 steps."
-    },
-    {
-      "id": "quanquan-v4",
-      "runware_air_id": "liangwc:quanquan-v4@1",
-      "name": "拳拳 V4 (quanquan)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/quanquan-lora-v4",
-      "trigger_words": [
-        "quanquan"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "拳拳 V4 — FLUX.1 dev LoRA, single ref_03 image only",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-18: V4 on Replicate, rank 16, 1000 steps, 1 image only."
-    },
-    {
-      "id": "quanquan-v5",
-      "runware_air_id": "liangwc:quanquan-v5@1",
-      "name": "拳拳 V5 (quanquan)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/quanquan-lora-v5",
-      "trigger_words": [
-        "quanquan"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "拳拳 V5 — FLUX.1 dev LoRA, 8 images (V4 outputs + ref_03)",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-18: V5 on Replicate, rank 16, 1000 steps."
-    },
-    {
       "id": "quanquan-v6",
       "runware_air_id": "liangwc:quanquan-v6@1",
-      "name": "拳拳 V6 (quanquan)",
+      "name": "\u62f3\u62f3 V6 (quanquan)",
       "file": "",
       "url": "https://huggingface.co/liangwc25/quanquan-lora-v6",
       "trigger_words": [
@@ -4460,12 +4325,39 @@
         0.6,
         1.2
       ],
-      "description": "拳拳 V6 — FLUX.1 dev LoRA, 3 HD neutral images",
+      "description": "\u62f3\u62f3 V6 \u2014 FLUX.1 dev LoRA, 3 HD neutral images",
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": false,
       "incompatible_with": [],
       "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
+    },
+    {
+      "id": "quanquan-v61",
+      "runware_air_id": "liangwc:quanquan-v61@1",
+      "name": "\u62f3\u62f3 V6.1 (quanquan)",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/quanquan-lora-v61",
+      "trigger_words": [
+        "quanquan"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
+      "default_scale": 0.85,
+      "scale_range": [
+        0.6,
+        1.2
+      ],
+      "description": "\u62f3\u62f3 V6.1 \u2014 FLUX.1 dev LoRA, 2 blue-ray HD images, no ref_01",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false,
+      "incompatible_with": [],
+      "notes": "2026-07-18: V6.1 on Replicate, rank 16, 1000 steps."
     },
     {
       "id": "body-weight-slider",
@@ -4491,7 +4383,7 @@
       "category": "concept",
       "nsfw": true,
       "incompatible_with": [],
-      "notes": "2026-07-18: Runware uploaded ✅"
+      "notes": "2026-07-18: Runware uploaded \u2705"
     },
     {
       "id": "tiny-puffy-nipples",
@@ -4513,12 +4405,12 @@
         0.5,
         1.2
       ],
-      "description": "Body - Tiny breasts and (kind of) puffy nipples — FLUX body type LoRA.",
+      "description": "Body - Tiny breasts and (kind of) puffy nipples \u2014 FLUX body type LoRA.",
       "base_model": "flux-dev",
       "category": "concept",
       "nsfw": true,
       "incompatible_with": [],
-      "notes": "2026-07-18: Runware uploaded ✅"
+      "notes": "2026-07-18: Runware uploaded \u2705"
     },
     {
       "id": "flat-chest",
@@ -4539,12 +4431,12 @@
         0.5,
         1.2
       ],
-      "description": "Flat Chested - Body Type — FLUX body type LoRA for flat chest / no breasts.",
+      "description": "Flat Chested - Body Type \u2014 FLUX body type LoRA for flat chest / no breasts.",
       "base_model": "flux-dev",
       "category": "concept",
       "nsfw": true,
       "incompatible_with": [],
-      "notes": "2026-07-18: Runware uploaded ✅"
+      "notes": "2026-07-18: Runware uploaded \u2705"
     },
     {
       "id": "age-slider",
@@ -4565,39 +4457,12 @@
         0.5,
         1.2
       ],
-      "description": "Age Slider — FLUX body type LoRA for adjusting apparent age of subjects.",
+      "description": "Age Slider \u2014 FLUX body type LoRA for adjusting apparent age of subjects.",
       "base_model": "flux-dev",
       "category": "concept",
       "nsfw": true,
       "incompatible_with": [],
       "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
-    },
-    {
-      "id": "quanquan-v61",
-      "runware_air_id": "liangwc:quanquan-v61@1",
-      "name": "拳拳 V6.1 (quanquan)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/quanquan-lora-v61",
-      "trigger_words": [
-        "quanquan"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "拳拳 V6.1 — FLUX.1 dev LoRA, 2 blue-ray HD images, no ref_01",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-18: V6.1 on Replicate, rank 16, 1000 steps."
     },
     {
       "id": "bukkake",
@@ -4618,16 +4483,43 @@
         0.5,
         1.2
       ],
-      "description": "Bukkake / excessive cum — Pony SDXL LoRA.",
+      "description": "Bukkake / excessive cum \u2014 Pony SDXL LoRA.",
       "base_model": "pony",
       "category": "concept",
       "nsfw": true,
       "incompatible_with": [],
       "notes": "2026-07-18: restored after accidental deletion"
+    },
+    {
+      "id": "yannin-lora",
+      "runware_air_id": "liangwc:yannin-lora@1",
+      "name": "Su Yanning (\u82cf\u781a\u5b81) V2",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/yannin-lora",
+      "trigger_words": [
+        "yannin"
+      ],
+      "tags": [
+        "flux",
+        "character",
+        "su-yanning",
+        "v2"
+      ],
+      "default_scale": 0.85,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Su Yanning (\u82cf\u781a\u5b81) V2 \u2014 yannin trigger. Trained on Replicate. 14 images (leotard + underwear), 1500 steps, autocaption.",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false,
+      "incompatible_with": [],
+      "notes": "2026-07-19: V2 trained on Replicate for $0.01. HF: liangwc25/yannin-lora. Runware: liangwc:yannin-lora@1"
     }
   ],
   "categories": {
-    "character_style": "Character LoRAs. ⚠️ Same-category stacking dilutes both.",
+    "character_style": "Character LoRAs. \u26a0\ufe0f Same-category stacking dilutes both.",
     "texture": "Material and fabric textures",
     "environment": "Background and environment",
     "lighting": "Lighting styles",
