@@ -116,6 +116,19 @@ def _generate_runware(args: dict) -> dict:
         if result and result.exists():
             resp["size"] = result.stat().st_size
             resp["seed"] = used_seed
+            # Write to metadata index
+            try:
+                from gen_lib.metadata_db import insert
+                insert(
+                    filename=result.name,
+                    prompt=prompt,
+                    seed=str(used_seed) if used_seed is not None else "",
+                    model=model,
+                    params=f"cfg={cfg_scale}" if cfg_scale else "",
+                    mtime=int(result.stat().st_mtime),
+                )
+            except Exception:
+                pass
         return resp
     except Exception as e:
         return result_err(f"{type(e).__name__}: {e}\n{_log if '_log' in dir() else ''}")
@@ -162,6 +175,19 @@ def _generate_modelslab(args: dict) -> dict:
         if result and result.exists():
             resp["size"] = result.stat().st_size
             resp["seed"] = used_seed
+            # Write to metadata index
+            try:
+                from gen_lib.metadata_db import insert
+                insert(
+                    filename=result.name,
+                    prompt=prompt,
+                    seed=str(seed) if seed is not None else "",
+                    model=model,
+                    params="",
+                    mtime=int(result.stat().st_mtime),
+                )
+            except Exception:
+                pass
         return resp
     except Exception as e:
         return result_err(f"{type(e).__name__}: {e}\n{_log if '_log' in dir() else ''}")
