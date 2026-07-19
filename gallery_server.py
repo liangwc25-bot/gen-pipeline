@@ -65,8 +65,23 @@ def move_to_trash(filename: str) -> dict | None:
     if fp.exists():
         shutil.move(str(fp), str(TRASH_DIR / filename))
         delete_record(filename)
+        _cleanup_old_trash()
         return {"trashed": True, "filename": filename}
     return None
+
+
+def _cleanup_old_trash() -> None:
+    """Delete trash files older than 7 days."""
+    now = time.time()
+    week = 7 * 86400
+    if not TRASH_DIR.exists():
+        return
+    for f in list(TRASH_DIR.iterdir()):
+        if f.is_file() and (now - f.stat().st_mtime) > week:
+            try:
+                f.unlink()
+            except OSError:
+                pass
 
 def make_thumbnail(filepath: Path) -> bytes | None:
     """Generate thumbnail, return PNG bytes. Returns None on failure."""
@@ -306,6 +321,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         if path == "/api/rescan":
             from gen_lib.metadata_db import backfill
             n = backfill(IMAGES_DIR)
+            _cleanup_old_trash()
             main_count = count_images(archived=False)
             arch_count = count_images(archived=True)
             self.send_response(200)
