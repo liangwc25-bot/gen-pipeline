@@ -663,24 +663,6 @@
       "notes": "2026-07-01: uploaded to Runware. Illustrious base model."
     },
     {
-      "id": "flux_1346321_1520518",
-      "runware_air_id": "liangwc:flux_1346321_1520518@1520518",
-      "name": "Bukkake Realistic Cum Facial",
-      "url": "https://civitai.com/models/1346321",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "cg-style-girl-flux",
       "runware_air_id": "liangwc:cg-style-girl-flux@847113",
       "name": "CG Style Girl FLUX",
@@ -4616,6 +4598,32 @@
       "nsfw": false,
       "incompatible_with": [],
       "notes": "2026-07-18: V6.1 on Replicate, rank 16, 1000 steps."
+    },
+    {
+      "id": "bukkake",
+      "runware_air_id": "liangwc:bukkake@595414",
+      "name": "Bukkake / Excessive Cum",
+      "file": "",
+      "url": "https://civitai.com/models/109745",
+      "trigger_words": [],
+      "tags": [
+        "bukkake",
+        "cum",
+        "excessive",
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Bukkake / excessive cum — Pony SDXL LoRA.",
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-18: restored after accidental deletion"
     }
   ],
   "categories": {
