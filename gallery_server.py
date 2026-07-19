@@ -37,12 +37,9 @@ init_db()
 # ── Utility ──
 
 def _find_file(filename: str) -> Path | None:
-    """Find an image file in IMAGES_DIR or ARCHIVE_DIR (for backward compat)."""
-    for d in (IMAGES_DIR, ARCHIVE_DIR):
-        fp = d / filename
-        if fp.exists():
-            return fp
-    return None
+    """Find an image file in IMAGES_DIR."""
+    fp = IMAGES_DIR / filename
+    return fp if fp.exists() else None
 
 
 def toggle_favorite(filename: str) -> bool:
@@ -64,12 +61,11 @@ def toggle_archive(filename: str) -> dict | None:
 def move_to_trash(filename: str) -> dict | None:
     """Move file to trash + delete DB record."""
     TRASH_DIR.mkdir(parents=True, exist_ok=True)
-    for src_dir in (IMAGES_DIR, ARCHIVE_DIR):
-        fp = src_dir / filename
-        if fp.exists():
-            shutil.move(str(fp), str(TRASH_DIR / filename))
-            delete_record(filename)
-            return {"trashed": True, "filename": filename}
+    fp = IMAGES_DIR / filename
+    if fp.exists():
+        shutil.move(str(fp), str(TRASH_DIR / filename))
+        delete_record(filename)
+        return {"trashed": True, "filename": filename}
     return None
 
 def make_thumbnail(filepath: Path) -> bytes | None:
@@ -309,7 +305,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         # API: rescan (refresh DB from directories)
         if path == "/api/rescan":
             from gen_lib.metadata_db import backfill
-            n = backfill(IMAGES_DIR, ARCHIVE_DIR)
+            n = backfill(IMAGES_DIR)
             main_count = count_images(archived=False)
             arch_count = count_images(archived=True)
             self.send_response(200)
