@@ -214,24 +214,6 @@
       "nsfw": false
     },
     {
-      "id": "flux_854713_956303",
-      "runware_air_id": "liangwc:flux_854713_956303@956303",
-      "name": "Ahegao (Non-Face Altering)",
-      "url": "https://civitai.com/models/854713",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
       "id": "ahri",
       "runware_air_id": "liangwc:ahri@2702288",
       "name": "Ahri (LoL)",
@@ -252,24 +234,6 @@
       "notes": "Ahri 九尾狐"
     },
     {
-      "id": "flux-anal-gape",
-      "runware_air_id": "liangwc:flux-anal-gape@808007",
-      "name": "Anal Gape FLUX",
-      "url": "https://civitai.com/models/722641",
-      "tags": [
-        "flux",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "ani-grok",
       "runware_air_id": "liangwc:ani-grok@2017854",
       "name": "Ani (Grok)",
@@ -287,24 +251,6 @@
       "category": "character",
       "nsfw": false,
       "notes": "Grok Companion 角色"
-    },
-    {
-      "id": "anran-virtual-asian-14",
-      "runware_air_id": "liangwc:anran-virtual-asian-14@846589",
-      "name": "anran Virtual Asian Female 14",
-      "url": "https://civitai.com/models/753851",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
     },
     {
       "id": "flux_685674_767398",
@@ -717,24 +663,6 @@
       "notes": "2026-07-01: uploaded to Runware. Illustrious base model."
     },
     {
-      "id": "bukkake",
-      "runware_air_id": "liangwc:bukkake@595414",
-      "name": "Bukkake / Excessive Cum",
-      "url": "https://civitai.com/models/109745",
-      "tags": [
-        "pony",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "flux_1346321_1520518",
       "runware_air_id": "liangwc:flux_1346321_1520518@1520518",
       "name": "Bukkake Realistic Cum Facial",
@@ -787,30 +715,6 @@
       "base_model": "pony",
       "category": "character",
       "nsfw": false
-    },
-    {
-      "id": "lora6-cof-cum-on-flux",
-      "runware_air_id": "liangwc:lora6@1576616",
-      "name": "COF Cum On Flux 18+ (lora6)",
-      "file": "",
-      "url": "https://civitai.com/models/1576616",
-      "trigger_words": [],
-      "tags": [
-        "nsfw",
-        "flux",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "COF Cum On Flux 18+ — Flux.1 D base. Runware AIR verified ✅.",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-01: uploaded to Runware."
     },
     {
       "id": "cowgirl-position",
@@ -1756,24 +1660,6 @@
       "notes": "2026-07-01: uploaded to Runware."
     },
     {
-      "id": "flux_701694_914983",
-      "runware_air_id": "liangwc:flux_701694_914983@914983",
-      "name": "Futanari Bulge FLUX",
-      "url": "https://civitai.com/models/701694",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
       "id": "flux_653203_880875",
       "runware_air_id": "liangwc:flux_653203_880875@880875",
       "name": "Futanari Realistic",
@@ -1827,24 +1713,6 @@
       "base_model": "pony",
       "category": "style",
       "nsfw": false
-    },
-    {
-      "id": "flux_770295_1202059",
-      "runware_air_id": "liangwc:flux_770295_1202059@1202059",
-      "name": "Giant Breasts Gigantomastia",
-      "url": "https://civitai.com/models/770295",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
     },
     {
       "id": "giantess-building-fuck",
@@ -1968,31 +1836,6 @@
       "category": "style",
       "nsfw": false,
       "notes": "鹿鹿常用。Runware AIR verified ✅"
-    },
-    {
-      "id": "lora4-gts-gigagts",
-      "runware_air_id": "liangwc:lora4@813828",
-      "name": "GTS - GigaGTS (lora4)",
-      "file": "",
-      "url": "https://civitai.com/models/813828",
-      "trigger_words": [],
-      "tags": [
-        "giantess",
-        "gts",
-        "flux",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Giantess (GTS - GigaGTS) — Flux.1 D base. Runware AIR verified ✅.",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-01: uploaded to Runware."
     },
     {
       "id": "gufeng",
@@ -3363,24 +3206,6 @@
       "base_model": "pony",
       "category": "character",
       "nsfw": false
-    },
-    {
-      "id": "flux_925361_1035790",
-      "runware_air_id": "liangwc:flux_925361_1035790@1035790",
-      "name": "Side Petite Doggy Pose",
-      "url": "https://civitai.com/models/925361",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
     },
     {
       "id": "flux_1302256_1947551",
@@ -4763,7 +4588,34 @@
       "category": "concept",
       "nsfw": true,
       "incompatible_with": [],
-      "notes": "2026-07-18: Runware uploaded ✅ (filename had spaces, needed URL encoding)"
+      "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
+    },
+    {
+      "id": "quanquan-v61",
+      "runware_air_id": "liangwc:quanquan-v61@1",
+      "name": "拳拳 V6.1 (quanquan)",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/quanquan-lora-v61",
+      "trigger_words": [
+        "quanquan"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
+      "default_scale": 0.85,
+      "scale_range": [
+        0.6,
+        1.2
+      ],
+      "description": "拳拳 V6.1 — FLUX.1 dev LoRA, 2 blue-ray HD images, no ref_01",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false,
+      "incompatible_with": [],
+      "notes": "2026-07-18: V6.1 on Replicate, rank 16, 1000 steps."
     }
   ],
   "categories": {
