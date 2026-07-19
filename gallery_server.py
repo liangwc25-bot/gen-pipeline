@@ -10,13 +10,11 @@ import time
 import urllib.parse
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from socketserver import ThreadingMixIn
-
 class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):
     daemon_threads = True
 from pathlib import Path
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
-
 # GIF zoom
 from gen_lib.gif_zoom import make_gif
 from gen_lib.metadata_db import (
@@ -24,40 +22,30 @@ from gen_lib.metadata_db import (
     set_favorited, set_archived, is_favorited, is_archived,
     get_meta, delete_record, insert,
 )
-
 IMAGES_DIR = Path(__file__).parent / "output" / "images"
-ARCHIVE_DIR = Path(__file__).parent / "output" / "archived"
+THUMB_DIR = Path(__file__).parent / "output" / ".thumbnails"
 TRASH_DIR = Path(__file__).parent / "output" / ".trash"
 PORT = 8089
 THUMB_SIZE = (300, 300)
-
 # Ensure DB exists
 init_db()
-
 # ── Utility ──
-
 def _find_file(filename: str) -> Path | None:
     """Find an image file in IMAGES_DIR."""
     fp = IMAGES_DIR / filename
     return fp if fp.exists() else None
-
-
 def toggle_favorite(filename: str) -> bool:
     """Toggle favorite. Returns new state."""
     current = is_favorited(filename)
     new_state = not current
     set_favorited(filename, new_state)
     return new_state
-
-
 def toggle_archive(filename: str) -> dict | None:
     """Toggle archive flag in DB (no file moving)."""
     current = is_archived(filename)
     new_state = not current
     set_archived(filename, new_state)
     return {"archived": new_state, "filename": filename}
-
-
 def move_to_trash(filename: str) -> dict | None:
     """Move file to trash + delete DB record."""
     TRASH_DIR.mkdir(parents=True, exist_ok=True)
@@ -68,8 +56,6 @@ def move_to_trash(filename: str) -> dict | None:
         _cleanup_old_trash()
         return {"trashed": True, "filename": filename}
     return None
-
-
 def _cleanup_old_trash() -> None:
     """Delete trash files older than 7 days."""
     now = time.time()
@@ -82,22 +68,32 @@ def _cleanup_old_trash() -> None:
                 f.unlink()
             except OSError:
                 pass
-
 def make_thumbnail(filepath: Path) -> bytes | None:
-    """Generate thumbnail, return PNG bytes. Returns None on failure."""
+    """Generate thumbnail, with disk caching. Returns PNG bytes. Returns None on failure."""
+    THUMB_DIR.mkdir(parents=True, exist_ok=True)
+    cache_path = THUMB_DIR / (filepath.name + ".thumb.png")
+
+    # Serve from cache if exists and newer than source
+    if cache_path.exists() and cache_path.stat().st_mtime >= filepath.stat().st_mtime:
+        return cache_path.read_bytes()
+
     try:
         img = Image.open(filepath)
         img.thumbnail(THUMB_SIZE, Image.LANCZOS)
         buf = io.BytesIO()
         img.save(buf, "PNG")
         img.close()
-        return buf.getvalue()
+        data = buf.getvalue()
+        # Write to cache
+        try:
+            cache_path.write_bytes(data)
+        except OSError:
+            pass
+        return data
     except Exception:
         return None
-
 def unq(s):
     return urllib.parse.unquote(s)
-
 class GalleryHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         try:
@@ -107,7 +103,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         except Exception as e:
             import traceback
             traceback.print_exc()
-
     def do_POST(self):
         if self.path == "/api/batch":
             return self._handle_batch()
@@ -115,7 +110,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             return self._handle_gif_zoom()
         self.send_response(405)
         self.end_headers()
-
     def _handle_batch(self):
         """Handle batch operations (POST /api/batch)."""
         content_len = int(self.headers.get("Content-Length", 0))
@@ -124,11 +118,9 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         except json.JSONDecodeError:
             self.send_error(400, "Invalid JSON")
             return
-        
         action = data.get("action", "")
         filenames = data.get("filenames", [])
         success, failed = [], []
-        
         for fn in filenames:
             try:
                 if action == "favorite":
@@ -145,7 +137,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                     else: failed.append(fn)
             except Exception:
                 failed.append(fn)
-        
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
         self.send_header("Access-Control-Allow-Origin", "*")
@@ -155,7 +146,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             "failed": len(failed),
             "total": len(filenames),
         }).encode())
-
     def _handle_gif_zoom(self):
         """POST /api/gif-zoom — create a breathing GIF from an existing image."""
         content_len = int(self.headers.get("Content-Length", 0))
@@ -165,25 +155,20 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         except json.JSONDecodeError:
             self.send_error(400, "Invalid JSON")
             return
-
         filename = data.get("filename", "").strip()
         if not filename:
             self.send_error(400, "Missing filename")
             return
-
         input_path = IMAGES_DIR / filename
         if not input_path.exists():
             self.send_error(404, "File not found")
             return
-
         if input_path.suffix.lower() not in (".png", ".jpg", ".jpeg", ".webp"):
             self.send_error(400, "Unsupported format")
             return
-
         stem = input_path.stem
         output_name = f"{stem}_breathing.gif"
         output_path = IMAGES_DIR / output_name
-
         try:
             t0 = time.time()
             make_gif(
@@ -229,12 +214,10 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode())
-
     def _do_get(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
         params = urllib.parse.parse_qs(parsed.query)
-
         # Serve gallery HTML
         if path == "/" or path == "/index.html":
             self.send_response(200)
@@ -243,7 +226,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             with open(Path(__file__).parent / "gallery.html") as f:
                 self.wfile.write(f.read().encode())
             return
-
         # PWA static files
         _static_files = {
             "/manifest.json": ("application/json", "gallery-manifest.json"),
@@ -263,7 +245,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(404)
             return
-
         # API: list images (from SQLite)
         if path == "/api/images":
             page = int(params.get("page", [1])[0])
@@ -271,10 +252,8 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             filter_mode = params.get("filter", ["all"])[0]
             model_filter = params.get("model", [""])[0]
             search = params.get("search", [""])[0]
-
             archived = filter_mode == "archive"
             favorited_only = filter_mode == "fav"
-
             all_images = list_images(
                 model_filter=model_filter,
                 search=search,
@@ -290,7 +269,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 favorited_only=favorited_only,
             )
             total_pages = max(1, math.ceil(total / per_page))
-
             # Enrich with file stats
             for img in all_images:
                 fp = _find_file(img["filename"])
@@ -302,7 +280,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                     img["size_kb"] = 0
                 img["favorited"] = bool(img.get("favorited", 0))
                 img["archived"] = bool(img.get("archived", 0))
-
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
@@ -316,7 +293,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 "models": distinct_models(),
             }).encode())
             return
-
         # API: rescan (refresh DB from directories)
         if path == "/api/rescan":
             from gen_lib.metadata_db import backfill
@@ -334,7 +310,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 "indexed": n,
             }).encode())
             return
-
         # API: toggle favorite
         if path == "/api/favorite":
             filename = params.get("filename", [None])[0]
@@ -348,7 +323,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(400, "Missing filename")
             return
-
         # API: list favorites (from DB)
         if path == "/api/favorites":
             favs = [img["filename"] for img in list_images(favorited_only=True, limit=99999)]
@@ -358,7 +332,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({"favorites": favs}).encode())
             return
-
         # API: toggle archive
         if path == "/api/archive":
             filename = params.get("filename", [None])[0]
@@ -375,7 +348,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(400, "Missing filename")
             return
-
         # API: list archived filenames (from DB)
         if path == "/api/archived":
             archived = [img["filename"] for img in list_images(archived=True, limit=99999)]
@@ -385,7 +357,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({"archived": archived}).encode())
             return
-
         # API: move to trash
         if path == "/api/trash":
             filename = params.get("filename", [None])[0]
@@ -402,7 +373,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(400, "Missing filename")
             return
-
         # API: single-file metadata (from SQLite, fallback to PNG)
         if path == "/api/meta":
             filename = params.get("filename", [None])[0]
@@ -425,14 +395,11 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(400, "Missing filename")
             return
-
         # API: send to Telegram
         if path == "/api/send":
             filename = params.get("filename", [None])[0]
             if filename:
                 filepath = IMAGES_DIR / filename
-                if not filepath.exists():
-                    filepath = ARCHIVE_DIR / filename
                 if filepath.exists():
                     try:
                         result = subprocess.run(
@@ -463,12 +430,9 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(400, "Missing filename")
             return
-
-            
             action = data.get("action", "")
             filenames = data.get("filenames", [])
             success, failed = [], []
-            
             for fn in filenames:
                 try:
                     if action == "favorite":
@@ -485,7 +449,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                         else: failed.append(fn)
                 except Exception:
                     failed.append(fn)
-            
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
@@ -496,13 +459,10 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 "total": len(filenames),
             }).encode())
             return
-
         # Serve thumbnail — try main dir first, then archive
         if path.startswith("/thumb/"):
             filename = unq(path[7:])
             filepath = IMAGES_DIR / filename
-            if not filepath.exists():
-                filepath = ARCHIVE_DIR / filename
             if filepath.exists():
                 thumb = make_thumbnail(filepath)
                 if thumb is None:
@@ -516,13 +476,10 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(404)
             return
-
-        # Serve raw image — try main dir first, then archive
+        # Serve raw image
         if path.startswith("/raw/"):
             filename = unq(path[5:])
             filepath = IMAGES_DIR / filename
-            if not filepath.exists():
-                filepath = ARCHIVE_DIR / filename
             if filepath.exists():
                 ext = filepath.suffix.lower()
                 mime = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp", "gif": "image/gif"}
@@ -539,20 +496,14 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(404)
             return
-
         self.send_error(404)
-
     def log_message(self, format, *args):
         pass  # quiet
-
 if __name__ == "__main__":
     print(f"🚀 Gallery server on http://127.0.0.1:{PORT}")
     print(f"   Images: {IMAGES_DIR}")
-    print(f"   Archive: {ARCHIVE_DIR}")
     import threading
     total_files = len(list(IMAGES_DIR.glob("*"))) if IMAGES_DIR.exists() else 0
-    print(f"   Pre-warming cache ({total_files}+ files) in background...")
-    threading.Thread(target=lambda: (get_images("main"), get_images("archive")), daemon=True).start()
     server = ThreadingHTTPServer(("127.0.0.1", PORT), GalleryHandler)
     try:
         server.serve_forever()

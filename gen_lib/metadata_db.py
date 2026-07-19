@@ -69,6 +69,11 @@ def init_db() -> None:
             mtime      INTEGER NOT NULL DEFAULT 0
         )
     """)
+    # Indexes for fast filtering
+    db.execute("CREATE INDEX IF NOT EXISTS idx_favorited ON images(favorited)")
+    db.execute("CREATE INDEX IF NOT EXISTS idx_archived ON images(archived)")
+    db.execute("CREATE INDEX IF NOT EXISTS idx_mtime ON images(mtime DESC)")
+    db.execute("CREATE INDEX IF NOT EXISTS idx_model ON images(model)")
     # FTS5 content-sync table — stays in sync with images automatically
     db.execute("""
         CREATE VIRTUAL TABLE IF NOT EXISTS images_fts USING fts5(
