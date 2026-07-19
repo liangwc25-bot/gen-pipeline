@@ -4206,25 +4206,6 @@
       "nsfw": false
     },
     {
-      "id": "yumeko-jabami",
-      "runware_air_id": "liangwc:yumeko-jabami@1104324",
-      "name": "蛇喰夢子 Yumeko (Kakegurui)",
-      "url": "https://civitai.com/models/985815",
-      "tags": [
-        "illustrious",
-        "character",
-        "anime"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false
-    },
-    {
       "id": "charlady",
       "runware_air_id": "liangwc:charlady@1",
       "name": "Charlady (本地训练)",
