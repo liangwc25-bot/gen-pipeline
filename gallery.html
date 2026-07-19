@@ -1097,11 +1097,11 @@ async function batchOp(action) {
   updateBatchBar();
 }
 
-// Init — rescan on every refresh, bfcache restore, and tab return
+// Init — DB is authoritative, gen_web.py inserts on generation. No rescan needed.
 async function initGallery() {
-  await fetch('/api/rescan').catch(() => {});
   await Promise.all([loadFavorites(), loadArchived()]);
-  loadPage(1);
+  await loadPage(1);
+  _firstLoad = false;
 }
 initGallery();
 
@@ -1109,10 +1109,11 @@ initGallery();
 window.addEventListener('pageshow', e => {
   if (e.persisted) initGallery();
 });
-// Tab return: rescan when user comes back
+// Tab return: refresh list only (no rescan — metadata DB is authoritative)
+let _firstLoad = true;
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible') {
-    fetch('/api/rescan').then(() => loadPage(currentPage)).catch(() => {});
+  if (document.visibilityState === 'visible' && !_firstLoad && currentPage > 0) {
+    loadPage(currentPage);
   }
 });
 </script>
