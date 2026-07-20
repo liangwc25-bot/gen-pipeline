@@ -124,6 +124,8 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             return self._handle_batch()
         if self.path == "/api/i2v":
             return self._handle_i2v()
+        if self.path == "/api/upload-source":
+            return self._handle_upload_source()
         self.send_response(405)
         self.end_headers()
     def _handle_batch(self):
@@ -273,16 +275,99 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             self.wfile.write(json.dumps({"job_id": job_id, "status": "running"}).encode())
+    
+    def _handle_upload_source(self):
+        """POST /api/upload-source — upload a local image for I2V."""
+        content_type = self.headers.get("Content-Type", "")
+        if "multipart/form-data" not in content_type:
+            self.send_error(400, "Expected multipart/form-data")
+            return
+        
+        # Parse multipart
+        import cgi
+        from io import BytesIO
+        content_len = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_len)
+        
+        # Simple boundary-based parsing
+        boundary = content_type.split("boundary=", 1)[1].strip()
+        if boundary.startswith('"') and boundary.endswith('"'):
+            boundary = boundary[1:-1]
+        
+        parts = body.split(b"--" + boundary.encode())
+        for part in parts:
+            if b"Content-Disposition" not in part:
+                continue
+            if b"filename=" not in part:
+                continue
+            
+            # Extract filename
+            header_end = part.index(b"\r\n\r\n")
+            header = part[:header_end].decode(errors="replace")
+            content = part[header_end + 4:]
+            # Remove trailing \r\n-- if present
+            if content.endswith(b"\r\n"):
+                content = content[:-2]
+            if content.endswith(b"--"):
+                content = content[:-2]
+            
+            # Get filename from header
+            import re
+            m = re.search(r'filename="([^"]+)"', header)
+            if not m:
+                continue
+            orig_name = m.group(1)
+            
+            # Save to images dir with timestamp prefix
+            from datetime import datetime
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+            safe_name = f"upload_{ts}.png"
+            out_path = IMAGES_DIR / safe_name
+            
+            # Convert to PNG and save
+            from PIL import Image
+            img = Image.open(BytesIO(content))
+            if img.mode in ("RGBA", "P"):
+                img = img.convert("RGB")
+            img.save(str(out_path), "PNG")
+            img.close()
+            
+            # Insert into metadata DB
+            try:
+                from gen_lib.metadata_db import insert
+                insert(
+                    filename=safe_name,
+                    prompt="[I2V upload]",
+                    seed="",
+                    model="upload",
+                    params="",
+                    mtime=int(out_path.stat().st_mtime),
+                )
+            except Exception:
+                pass
+            
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "success": True,
+                "filename": safe_name,
+            }).encode())
+            return
+        
+        self.send_error(400, "No file found")
     def _do_get(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
         params = urllib.parse.parse_qs(parsed.query)
         # Serve gallery HTML
-        if path == "/" or path == "/index.html":
+        if path == "/" or path == "/index.html" or path == "/i2v.html":
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
             self.end_headers()
-            with open(Path(__file__).parent / "gallery.html") as f:
+            html_file = "gallery.html" if path != "/i2v.html" else "i2v.html"
+            with open(Path(__file__).parent / html_file) as f:
                 self.wfile.write(f.read().encode())
             return
         # PWA static files
