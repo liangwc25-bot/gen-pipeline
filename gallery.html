@@ -111,6 +111,12 @@
     pointer-events: none; z-index: 1;
   }
   .thumb-card:hover .card-overlay { opacity: 1; }
+  .vid-badge {
+    position: absolute; top: 6px; left: 6px;
+    background: rgba(124,92,252,0.85); color: #fff;
+    font-size: 0.7rem; padding: 2px 6px; border-radius: 6px;
+    z-index: 2; pointer-events: none;
+  }
   .card-overlay .card-name {
     color: #fff; font-size: 0.75rem; font-weight: 500;
     line-height: 1.3; overflow: hidden;
@@ -386,6 +392,9 @@
   </div>
 </div>
 <div class="filter-bar" id="filterBar">
+  <button class="btn active" id="filterImg" onclick="setTypeFilter('img')">🖼️ 图片</button>
+  <button class="btn" id="filterVideo" onclick="setTypeFilter('video')">🎬 视频</button>
+  <button class="btn" id="filterAllType" onclick="setTypeFilter('all')" style="display:none;">全部</button>
   <select id="modelFilter" onchange="applyFilters()">
     <option value="">🔮 全部模型</option>
   </select>
@@ -447,6 +456,7 @@ let modalIndex = -1;
 let favorites = new Set();
 let archived = new Set();
 let filterMode = 'all';
+let typeFilter = 'img';  // 'img', 'video', 'all'
 const PER_PAGE = 50;
 
 // ── Load favorites ──
@@ -570,7 +580,7 @@ function updateArchUI(filename) {
 // ── I2V → navigate to standalone page ──
 function openI2V() {
   if (!modalFilename) return;
-  window.open(`/i2v.html?source=${encodeURIComponent(modalFilename)}`, '_blank');
+  window.open(`https://i2v.0x01.qzz.io/?source=${encodeURIComponent(modalFilename)}`, '_blank');
 }
 
 function updateAllUI(filename) {
@@ -670,7 +680,7 @@ async function loadPage(page) {
   const model = document.getElementById('modelFilter').value;
   const search = document.getElementById('searchInput').value.trim();
 
-  let url = `/api/images?page=${page}&per_page=${PER_PAGE}&filter=${apiFilter}`;
+  let url = `/api/images?page=${page}&per_page=${PER_PAGE}&filter=${apiFilter}&type=${typeFilter}`;
   if (model) url += `&model=${encodeURIComponent(model)}`;
   if (search) url += `&search=${encodeURIComponent(search)}`;
 
@@ -733,8 +743,11 @@ function renderGrid(images) {
   grid.innerHTML = images.map(img => {
     const isFav = favorites.has(img.filename);
     const isArch = archived.has(img.filename);
+    const isVideo = img.filename.toLowerCase().endsWith('.mp4');
+    const badge = isVideo ? '<div class="vid-badge">🎬</div>' : '';
     return `
     <div class="thumb-card" data-file="${escapeHtml(img.filename)}" onclick="selectCard(this, event)">
+      ${badge}
       <button class="arch-btn ${isArch ? 'on' : 'off'}" data-file="${escapeHtml(img.filename)}"
               onclick="event.stopPropagation(); toggleArch('${escapeHtml(img.filename)}', updateAllUI)">📦</button>
       <button class="fav-star ${isFav ? 'on' : 'off'}" data-file="${escapeHtml(img.filename)}"
@@ -1019,6 +1032,13 @@ function closeModal(e) {
     if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
+function setTypeFilter(mode) {
+  typeFilter = mode;
+  document.getElementById('filterImg').className = 'btn' + (mode === 'img' ? ' active' : '');
+  document.getElementById('filterVideo').className = 'btn' + (mode === 'video' ? ' active' : '');
+  loadPage(1);
+}
+
 function setFilter(mode) {
   filterMode = mode;
   document.getElementById('filterAll').className = 'btn' + (mode === 'all' ? ' active' : '');
@@ -1129,6 +1149,17 @@ document.addEventListener('visibilitychange', () => {
     loadPage(currentPage);
   }
 });
+// Video swipe navigation
+(function(){
+  const video = document.getElementById('modalVideo');
+  if (!video) return;
+  let startX = 0;
+  video.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
+  video.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 60) navModal(dx < 0 ? 1 : -1);
+  });
+})();
 </script>
 
 <button id="theme-toggle" style="position:fixed;bottom:20px;right:20px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(128,128,128,0.3);background:var(--card);color:var(--text);font-size:1.2rem;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;transition:.2s;box-shadow:0 2px 8px rgba(0,0,0,0.15)" onclick="toggleTheme()" title="切换主题">☀️</button>

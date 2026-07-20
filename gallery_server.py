@@ -361,16 +361,48 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
         params = urllib.parse.parse_qs(parsed.query)
-        # Serve gallery HTML
-        if path == "/" or path == "/index.html" or path == "/i2v.html":
+        
+        host = self.headers.get("Host", "")
+        is_i2v_host = host.startswith("i2v")
+        
+        # Serve HTML based on host
+        if path == "/" or path == "/index.html":
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
             self.end_headers()
-            html_file = "gallery.html" if path != "/i2v.html" else "i2v.html"
+            html_file = "i2v.html" if is_i2v_host else "gallery.html"
             with open(Path(__file__).parent / html_file) as f:
                 self.wfile.write(f.read().encode())
             return
-        # PWA static files
+        
+        # Also serve /i2v.html on gallery host as a fallback
+        if path == "/i2v.html" and not is_i2v_host:
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.end_headers()
+            with open(Path(__file__).parent / "i2v.html") as f:
+                self.wfile.write(f.read().encode())
+            return
+        
+        # PWA static files — host-aware
+        if is_i2v_host:
+            _i2v_static = {
+                "/manifest.json": ("application/json", "i2v-manifest.json"),
+                "/sw.js": ("application/javascript", "i2v-sw.js"),
+            }
+            if path in _i2v_static:
+                mime, fname = _i2v_static[path]
+                fpath = Path(__file__).parent / fname
+                if fpath.exists():
+                    self.send_response(200)
+                    self.send_header("Content-Type", mime)
+                    self.send_header("Cache-Control", "max-age=86400")
+                    self.end_headers()
+                    self.wfile.write(fpath.read_bytes())
+                else:
+                    self.send_error(404)
+                return
+        
         _static_files = {
             "/manifest.json": ("application/json", "gallery-manifest.json"),
             "/sw.js": ("application/javascript", "gallery-sw.js"),
@@ -396,13 +428,17 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             filter_mode = params.get("filter", ["all"])[0]
             model_filter = params.get("model", [""])[0]
             search = params.get("search", [""])[0]
+            type_filter = params.get("type", ["all"])[0]
             archived = filter_mode == "archive"
             favorited_only = filter_mode == "fav"
+            video_only = None if type_filter == "all" else (type_filter == "video")
+            
             all_images = list_images(
                 model_filter=model_filter,
                 search=search,
                 archived=archived,
                 favorited_only=favorited_only,
+                video_only=video_only,
                 offset=(page - 1) * per_page,
                 limit=per_page,
             )
@@ -411,6 +447,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 search=search,
                 archived=archived,
                 favorited_only=favorited_only,
+                video_only=video_only,
             )
             total_pages = max(1, math.ceil(total / per_page))
             # Enrich with file stats
