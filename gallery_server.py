@@ -18,8 +18,6 @@ class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):
 from pathlib import Path
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
-# GIF zoom
-from gen_lib.gif_zoom import make_gif
 from gen_lib.metadata_db import (
     init_db, list_images, count_images, distinct_models,
     set_favorited, set_archived, is_favorited, is_archived,
@@ -124,8 +122,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if self.path == "/api/batch":
             return self._handle_batch()
-        if self.path == "/api/gif-zoom":
-            return self._handle_gif_zoom()
         if self.path == "/api/i2v":
             return self._handle_i2v()
         self.send_response(405)
@@ -166,74 +162,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             "failed": len(failed),
             "total": len(filenames),
         }).encode())
-    def _handle_gif_zoom(self):
-        """POST /api/gif-zoom — create a breathing GIF from an existing image."""
-        content_len = int(self.headers.get("Content-Length", 0))
-        body = self.rfile.read(content_len)
-        try:
-            data = json.loads(body)
-        except json.JSONDecodeError:
-            self.send_error(400, "Invalid JSON")
-            return
-        filename = data.get("filename", "").strip()
-        if not filename:
-            self.send_error(400, "Missing filename")
-            return
-        input_path = IMAGES_DIR / filename
-        if not input_path.exists():
-            self.send_error(404, "File not found")
-            return
-        if input_path.suffix.lower() not in (".png", ".jpg", ".jpeg", ".webp"):
-            self.send_error(400, "Unsupported format")
-            return
-        stem = input_path.stem
-        output_name = f"{stem}_breathing.gif"
-        output_path = IMAGES_DIR / output_name
-        try:
-            t0 = time.time()
-            make_gif(
-                input_path, output_path,
-                zoom_factor=data.get("zoom_factor", 0.04),
-                pan_x=data.get("pan_x", 4),
-                pan_y=data.get("pan_y", 3),
-                fps=data.get("fps", 12),
-                cycle_s=data.get("cycle_s", 2.0),
-                cycles=data.get("cycles", 1),
-            )
-            elapsed = time.time() - t0
-            # Insert new GIF into metadata index
-            try:
-                insert(
-                    filename=output_name,
-                    prompt="GIF zoom",
-                    seed="",
-                    model="gif-zoom",
-                    params="",
-                    mtime=int(output_path.stat().st_mtime),
-                )
-            except Exception:
-                pass
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.end_headers()
-            self.wfile.write(json.dumps({
-                "success": True,
-                "filename": output_name,
-                "url": f"/api/images/{output_name}",
-                "size": output_path.stat().st_size,
-                "elapsed_s": round(elapsed, 2),
-            }).encode())
-        except subprocess.CalledProcessError as e:
-            self.send_response(500)
-            self.send_header("Content-Type", "application/json")
-            self.end_headers()
-            self.wfile.write(json.dumps({"success": False, "error": f"FFmpeg error: {e.stderr[:300]}"}).encode())
-        except Exception as e:
-            self.send_response(500)
-            self.send_header("Content-Type", "application/json")
-            self.end_headers()
-            self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode())
     def _handle_i2v(self):
         """POST /api/i2v — generate video from an existing image (async)."""
         content_len = int(self.headers.get("Content-Length", 0))
