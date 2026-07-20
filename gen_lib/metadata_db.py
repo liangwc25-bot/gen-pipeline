@@ -36,6 +36,7 @@ MODEL_NORMALIZE = {
     "Qwen-Image-Edit": "qwen-edit",
     "SDXL": "sdxl",
     "gif-zoom": "gif-zoom",
+    "i2v-replicate-wan": "Wan 2.2 Video",
     "Test": "test",
 }
 
