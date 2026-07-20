@@ -139,8 +139,12 @@ def is_archived(filename: str) -> bool:
 
 
 def list_images(model_filter: str = "", search: str = "", archived: bool = False,
-                favorited_only: bool = False, offset: int = 0, limit: int = 50) -> list[dict]:
-    """List images with optional filters. Returns [{filename, ...}, ...]."""
+                favorited_only: bool = False, video_only: bool = None,
+                offset: int = 0, limit: int = 50) -> list[dict]:
+    """List images with optional filters. Returns [{filename, ...}, ...].
+    
+    video_only: None=all, True=video only, False=image only.
+    """
     db = _conn()
     db.row_factory = sqlite3.Row
 
@@ -153,6 +157,11 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
 
     if favorited_only:
         conditions.append("favorited = 1")
+    
+    if video_only is True:
+        conditions.append("model LIKE 'i2v-%'")
+    elif video_only is False:
+        conditions.append("model NOT LIKE 'i2v-%' OR model IS NULL OR model = ''")
 
     where = " AND ".join(conditions)
 
@@ -186,8 +195,11 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
 
 
 def count_images(model_filter: str = "", search: str = "", archived: bool = False,
-                 favorited_only: bool = False) -> int:
-    """Count images matching filters."""
+                 favorited_only: bool = False, video_only: bool = None) -> int:
+    """Count images matching filters.
+    
+    video_only: None=all, True=video only, False=image only.
+    """
     db = _conn()
 
     conditions = ["archived = ?"]
@@ -199,6 +211,11 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
 
     if favorited_only:
         conditions.append("favorited = 1")
+    
+    if video_only is True:
+        conditions.append("model LIKE 'i2v-%'")
+    elif video_only is False:
+        conditions.append("model NOT LIKE 'i2v-%' OR model IS NULL OR model = ''")
 
     where = " AND ".join(conditions)
 
