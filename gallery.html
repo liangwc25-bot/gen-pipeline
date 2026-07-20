@@ -294,6 +294,13 @@
   }
   .i2v-status.success { color: var(--green); }
   .i2v-status.error { color: var(--red); }
+  .modal-video {
+    width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+    background: #000;
+  }
+  .carousel-viewport.hidden { display: none; }
   .modal-copy-btn {
     background: none; border: 1px solid rgba(255,255,255,0.1);
     border-radius: 6px; color: var(--text2); cursor: pointer;
@@ -485,6 +492,7 @@
         <img class="carousel-slide" src="" alt="">
         <img class="carousel-slide" src="" alt="">
       </div>
+      <video class="modal-video" id="modalVideo" controls playsinline style="display:none;"></video>
       <button class="modal-nav next" id="navNext" onclick="event.stopPropagation(); navModal(1)">›</button>
     </div>
     <div class="modal-meta" id="modalMeta"></div>
@@ -1040,12 +1048,28 @@ function showModalImage() {
   document.getElementById('i2vStatus').textContent = '';
   document.getElementById('i2vStatus').className = 'i2v-status';
 
+  const isVideo = modalFilename.toLowerCase().endsWith('.mp4');
+  const vp = document.getElementById('carouselViewport');
+  const video = document.getElementById('modalVideo');
+
   // Open modal first so viewport has width for scroll positioning
   const modal = document.getElementById('modal');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 
-  updateCarouselSlides();
+  if (isVideo) {
+    vp.classList.add('hidden');
+    video.style.display = 'block';
+    video.src = `/raw/${encodeURIComponent(modalFilename)}`;
+    video.load();
+  } else {
+    vp.classList.remove('hidden');
+    video.style.display = 'none';
+    video.pause();
+    video.removeAttribute('src');
+    updateCarouselSlides();
+  }
+
   updateModalUI(img);
   modal.querySelector('.modal').scrollTop = 0;
 }
@@ -1075,6 +1099,13 @@ function navModal(direction) {
   const newIdx = modalIndex + direction;
   // Same-page: use scroll-snap slide
   if (newIdx >= 0 && newIdx < modalImageList.length) {
+    // If navigating to/from a video, use direct showModalImage instead of scroll-snap
+    const nextItem = modalImageList[newIdx];
+    if (modalFilename.endsWith('.mp4') || nextItem.filename.endsWith('.mp4')) {
+      modalIndex = newIdx;
+      showModalImage();
+      return;
+    }
     const vp = document.getElementById('carouselViewport');
     const sw = vp.offsetWidth;
     scrollSnapBusy = true;
@@ -1141,6 +1172,11 @@ document.getElementById('carouselViewport').addEventListener('scroll', () => {
     modalIndex = newIdx;
     const img = modalImageList[modalIndex];
     modalFilename = img.filename;
+    if (img.filename.endsWith('.mp4')) {
+      showModalImage();
+      scrollSnapBusy = false;
+      return;
+    }
     updateCarouselSlides();
     updateModalUI(img);
     document.getElementById('modal').querySelector('.modal').scrollTop = 0;

@@ -597,6 +597,18 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         if path.startswith("/thumb/"):
             filename = unq(path[7:])
             filepath = IMAGES_DIR / filename
+            # For videos, use source image's thumbnail
+            if not filepath.exists() and filename.endswith('.mp4'):
+                # Try without .mp4 extension for files that might have name mismatches
+                pass
+            if filepath.suffix.lower() == '.mp4' and filepath.exists():
+                from gen_lib.metadata_db import get_meta
+                meta = get_meta(filename)
+                if meta and meta.get('params', '').startswith('source='):
+                    source_fn = meta['params'].replace('source=', '')
+                    source_path = IMAGES_DIR / source_fn
+                    if source_path.exists():
+                        filepath = source_path
             if filepath.exists():
                 thumb = make_thumbnail(filepath)
                 if thumb is None:
