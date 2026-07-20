@@ -1,0 +1,14 @@
+[
+  {
+    "id": "wan-fingering-pussy",
+    "name": "Fingering Pussy",
+    "url": "https://huggingface.co/liangwc25/wan-fingering-pussy/resolve/main/wan_fingering_pussy_i2v2.2hi_v10.safetensors",
+    "base_model": "wan-2.2-i2v-a14b",
+    "default_scale": 1.0,
+    "scale_range": [0.1, 2.0],
+    "tags": ["nsfw", "action", "intimate"],
+    "description": "Fingering action — intimate touch, slow movement",
+    "category": "action",
+    "nsfw": true
+  }
+]
