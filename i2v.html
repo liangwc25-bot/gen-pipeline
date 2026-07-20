@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f0f14">
+<title>🎬 图转视频 · I2V</title>
+<style>
+:root {
+  --bg: #0f0f14; --card: #1a1a24; --accent: #7c5cfc;
+  --green: #4ade80; --red: #f87171; --text: #e2e8f0; --text2: #94a3b8;
+  --radius: 12px;
+}
+[data-theme="light"] {
+  --bg: #f8f9fc; --card: #fff; --accent: #6c4ce0;
+  --green: #16a34a; --red: #dc2626; --text: #1e293b; --text2: #64748b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; padding: 20px;
+  max-width: 600px; margin: 0 auto;
+}
+h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+.back-link { color: var(--text2); font-size: 0.85rem; text-decoration: none; margin-bottom: 16px; display: inline-block; }
+.back-link:hover { color: var(--accent); }
+.card {
+  background: var(--card); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius); padding: 16px; margin-bottom: 14px;
+}
+.source-section { display: flex; align-items: center; gap: 12px; }
+.source-section img {
+  width: 120px; height: 120px; object-fit: cover;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+  background: var(--bg);
+}
+.source-info { flex: 1; min-width: 0; }
+.source-name { font-size: 0.82rem; color: var(--text2); word-break: break-all; margin-bottom: 6px; }
+.upload-btn {
+  background: none; border: 1px solid var(--accent); color: var(--accent);
+  border-radius: 8px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer;
+  transition: .15s;
+}
+.upload-btn:hover { background: rgba(124,92,252,0.1); }
+.file-input { display: none; }
+
+label.section-label {
+  display: block; font-size: 0.78rem; color: var(--text2);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+}
+textarea, input[type="text"], select {
+  width: 100%; background: var(--bg); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; color: var(--text); padding: 10px 12px;
+  font-size: 0.9rem; font-family: inherit;
+}
+textarea:focus, input:focus, select:focus {
+  outline: none; border-color: var(--accent);
+}
+textarea { resize: vertical; min-height: 60px; }
+.params-row {
+  display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap;
+}
+.param-item { flex: 1; min-width: 80px; }
+.param-item label { display: block; font-size: 0.75rem; color: var(--text2); margin-bottom: 4px; }
+.param-item input, .param-item select { padding: 8px 10px; font-size: 0.85rem; }
+.lora-row { margin-top: 10px; display: flex; gap: 8px; align-items: flex-end; }
+.lora-row input[type="text"] { flex: 1; }
+
+.submit-btn {
+  width: 100%; background: var(--accent); border: none;
+  border-radius: var(--radius); color: #fff; padding: 14px;
+  font-size: 1rem; font-weight: 600; cursor: pointer;
+  transition: .15s; margin-top: 16px;
+}
+.submit-btn:hover { opacity: 0.85; }
+.submit-btn:disabled { opacity: 0.5; pointer-events: none; }
+
+.status-box {
+  margin-top: 12px; padding: 12px; border-radius: 8px;
+  font-size: 0.85rem;
+  background: rgba(124,92,252,0.08); border: 1px solid rgba(124,92,252,0.2);
+  display: none;
+}
+.status-box.show { display: block; }
+.status-box.success { background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.3); }
+.status-box.error { background: rgba(248,113,113,0.08); border-color: rgba(248,113,113,0.3); }
+
+.result-section { display: none; margin-top: 16px; }
+.result-section.show { display: block; }
+.result-section video {
+  width: 100%; max-height: 60vh; border-radius: var(--radius);
+  background: #000;
+}
+.result-actions { display: flex; gap: 8px; margin-top: 10px; }
+.result-actions button {
+  flex: 1; background: var(--card); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; color: var(--text); padding: 8px; font-size: 0.85rem;
+  cursor: pointer; transition: .15s;
+}
+.result-actions button:hover { border-color: var(--accent); }
+
+.job-list { margin-top: 20px; }
+.job-list h3 { font-size: 0.9rem; color: var(--text2); margin-bottom: 8px; }
+.job-item {
+  background: var(--card); border-radius: 8px; padding: 12px;
+  border: 1px solid rgba(255,255,255,0.06); margin-bottom: 8px;
+  font-size: 0.82rem;
+}
+.job-item .job-prompt { color: var(--text); margin-bottom: 4px; }
+.job-item .job-meta { color: var(--text2); font-size: 0.75rem; display: flex; gap: 12px; }
+.job-item .job-status { font-weight: 600; }
+.job-item .job-status.done { color: var(--green); }
+.job-item .job-status.running { color: var(--accent); }
+.job-item .job-status.failed { color: var(--red); }
+
+@media (max-width: 480px) {
+  body { padding: 12px; }
+  .source-section { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<a href="/" class="back-link">← 回到图库</a>
+<h1>🎬 图转视频</h1>
+
+<!-- Source -->
+<div class="card">
+  <label class="section-label">源图</label>
+  <div class="source-section">
+    <img id="sourceImg" src="" alt="未选择">
+    <div class="source-info">
+      <div class="source-name" id="sourceName">未选择图片</div>
+      <input type="file" id="sourceFile" class="file-input" accept="image/*,.png,.jpg,.jpeg,.webp">
+      <button class="upload-btn" onclick="document.getElementById('sourceFile').click()">📁 选图</button>
+    </div>
+  </div>
+</div>
+
+<!-- Prompt -->
+<div class="card">
+  <label class="section-label">动作描述</label>
+  <textarea id="prompt" placeholder="英文动作描述: She slowly turns, gentle breathing, soft breeze through hair..."></textarea>
+</div>
+
+<!-- Params -->
+<div class="card">
+  <label class="section-label">参数</label>
+  <div class="params-row">
+    <div class="param-item">
+      <label>帧数</label>
+      <input type="number" id="frames" value="81" min="81" max="121">
+    </div>
+    <div class="param-item">
+      <label>fps</label>
+      <input type="number" id="fps" value="20" min="5" max="30">
+    </div>
+    <div class="param-item">
+      <label>分辨率</label>
+      <select id="res">
+        <option value="720p" selected>720p</option>
+        <option value="480p">480p</option>
+      </select>
+    </div>
+  </div>
+  <div class="lora-row">
+    <div style="flex:1;">
+      <label style="display:block;font-size:0.75rem;color:var(--text2);margin-bottom:4px;">LoRA URL (可选)</label>
+      <input type="text" id="loraUrl" placeholder="https://huggingface.co/.../resolve/main/xxx.safetensors">
+    </div>
+    <div class="param-item" style="max-width:70px;">
+      <label>Scale</label>
+      <input type="number" id="loraScale" value="1.0" min="0.1" max="2.0" step="0.1">
+    </div>
+  </div>
+</div>
+
+<button class="submit-btn" id="submitBtn" onclick="submitI2V()">▶ 生成视频 ($0.11)</button>
+
+<!-- Status -->
+<div class="status-box" id="statusBox"></div>
+
+<!-- Result -->
+<div class="result-section" id="resultSection">
+  <video id="resultVideo" controls playsinline></video>
+  <div class="result-actions">
+    <button onclick="navigator.clipboard.writeText(document.getElementById('resultVideo').src)">📋 复制地址</button>
+    <button onclick="window.open(document.getElementById('resultVideo').src, '_blank')">🔗 新窗口打开</button>
+  </div>
+</div>
+
+<!-- Job History -->
+<div class="job-list" id="jobList"></div>
+
+<script>
+// ── Init from URL params ──
+const params = new URLSearchParams(location.search);
+const sourceFilename = params.get('source');
+let currentJobId = null;
+let currentJobPoll = null;
+let currentSourceFile = null;  // for uploaded files
+
+if (sourceFilename) {
+  document.getElementById('sourceImg').src = `/raw/${encodeURIComponent(sourceFilename)}`;
+  document.getElementById('sourceName').textContent = sourceFilename;
+  currentSourceFile = sourceFilename;  // use server file
+}
+
+// File upload
+document.getElementById('sourceFile').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  currentSourceFile = file;
+  document.getElementById('sourceImg').src = URL.createObjectURL(file);
+  document.getElementById('sourceName').textContent = file.name;
+  // Clear URL source
+  history.replaceState(null, '', location.pathname);
+});
+
+// ── Restore pending jobs from localStorage ──
+restoreJobs();
+
+function restoreJobs() {
+  const jobs = loadJobs();
+  const pending = jobs.filter(j => j.status === 'running');
+  if (pending.length > 0) {
+    const job = pending[0];
+    document.getElementById('prompt').value = job.prompt || '';
+    document.getElementById('frames').value = job.frames || 81;
+    document.getElementById('fps').value = job.fps || 20;
+    document.getElementById('res').value = job.resolution || '720p';
+    document.getElementById('loraUrl').value = job.loraUrl || '';
+    document.getElementById('loraScale').value = job.loraScale || 1.0;
+    if (job.source) {
+      currentSourceFile = job.source;
+      document.getElementById('sourceName').textContent = job.source;
+      document.getElementById('sourceImg').src = `/raw/${encodeURIComponent(job.source)}`;
+    }
+    currentJobId = job.jobId;
+    showStatus(`⏳ 恢复之前的任务…`, '');
+    pollJob(job.jobId);
+  }
+  renderJobHistory();
+}
+
+function loadJobs() {
+  try { return JSON.parse(localStorage.getItem('i2v_jobs') || '[]'); }
+  catch(e) { return []; }
+}
+
+function saveJob(job) {
+  const jobs = loadJobs();
+  const idx = jobs.findIndex(j => j.jobId === job.jobId);
+  if (idx >= 0) jobs[idx] = job;
+  else jobs.unshift(job);
+  if (jobs.length > 20) jobs.length = 20;
+  localStorage.setItem('i2v_jobs', JSON.stringify(jobs));
+}
+
+// ── Submit ──
+async function submitI2V() {
+  if (!currentSourceFile) {
+    showStatus('⚠ 请先选择源图', 'error');
+    return;
+  }
+  const prompt = document.getElementById('prompt').value.trim();
+  if (!prompt) {
+    showStatus('⚠ 请填写动作描述', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ 提交中…';
+  document.getElementById('statusBox').classList.remove('success', 'error', 'show');
+
+  const frames = parseInt(document.getElementById('frames').value) || 81;
+  const fps = parseInt(document.getElementById('fps').value) || 20;
+  const resolution = document.getElementById('res').value;
+  const loraUrl = document.getElementById('loraUrl').value.trim();
+  const loraScale = parseFloat(document.getElementById('loraScale').value) || 1.0;
+
+  try {
+    let filename = currentSourceFile;
+
+    // If it's a File object (uploaded), we need to send it differently
+    if (currentSourceFile instanceof File) {
+      // Upload the file first via a simple endpoint, or use data URL
+      // For now: use the existing approach — POST with filename that we'll handle server-side
+      // Actually, let's use a different approach: create a temp upload endpoint
+      const formData = new FormData();
+      formData.append('file', currentSourceFile);
+      
+      const uploadRes = await fetch('/api/upload-source', {
+        method: 'POST',
+        body: formData,
+      });
+      const uploadData = await uploadRes.json();
+      if (!uploadData.success) {
+        showStatus('❌ 上传失败: ' + (uploadData.error || 'unknown'), 'error');
+        btn.disabled = false;
+        btn.textContent = '▶ 重试';
+        return;
+      }
+      filename = uploadData.filename;
+    }
+
+    const body = {
+      filename: filename,
+      prompt: prompt,
+      provider: 'replicate-wan',
+      num_frames: frames,
+      fps: fps,
+      resolution: resolution,
+    };
+    if (loraUrl) {
+      body.lora_url = loraUrl;
+      body.lora_scale = loraScale;
+    }
+
+    const res = await fetch('/api/i2v', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!data.success || !data.job_id) {
+      showStatus('❌ 提交失败: ' + (data.error || 'unknown'), 'error');
+      btn.disabled = false;
+      btn.textContent = '▶ 重试';
+      return;
+    }
+
+    currentJobId = data.job_id;
+    btn.textContent = '⏳ 生成中…';
+
+    // Save job to localStorage
+    const sourceName = currentSourceFile instanceof File ? currentSourceFile.name : currentSourceFile;
+    saveJob({
+      jobId: data.job_id,
+      status: 'running',
+      prompt: prompt,
+      source: typeof currentSourceFile === 'string' ? currentSourceFile : null,
+      sourceName: sourceName,
+      frames: frames,
+      fps: fps,
+      resolution: resolution,
+      loraUrl: loraUrl,
+      loraScale: loraScale,
+      startedAt: Date.now(),
+    });
+    renderJobHistory();
+
+    // Start polling
+    showStatus('提交成功，等待 Replicate…', '');
+    pollJob(data.job_id);
+
+  } catch(e) {
+    showStatus('❌ 网络错误: ' + e.message, 'error');
+    btn.disabled = false;
+    btn.textContent = '▶ 重试';
+  }
+}
+
+function showStatus(msg, cls) {
+  const box = document.getElementById('statusBox');
+  box.textContent = msg;
+  box.className = 'status-box show ' + cls;
+}
+
+// ── Poll ──
+function pollJob(jobId) {
+  if (currentJobPoll) clearTimeout(currentJobPoll);
+  
+  const poll = async () => {
+    try {
+      const res = await fetch(`/api/job?job=${encodeURIComponent(jobId)}`);
+      const data = await res.json();
+      const btn = document.getElementById('submitBtn');
+      
+      if (data.status === 'done') {
+        currentJobPoll = null;
+        const result = data.result;
+        if (result.success) {
+          showStatus(`✅ 完成！(${result.elapsed_s}s)`, 'success');
+          btn.textContent = '▶ 再来一次';
+          btn.disabled = false;
+          // Show video
+          const video = document.getElementById('resultVideo');
+          video.src = `/raw/${encodeURIComponent(result.filename)}`;
+          video.load();
+          document.getElementById('resultSection').classList.add('show');
+          // Update job
+          updateJob(jobId, {status: 'done', result: result, endedAt: Date.now()});
+        } else {
+          showStatus('❌ ' + (result.error || '失败'), 'error');
+          btn.textContent = '▶ 重试';
+          btn.disabled = false;
+          updateJob(jobId, {status: 'failed', error: result.error, endedAt: Date.now()});
+        }
+        renderJobHistory();
+        return;
+      }
+
+      // Still running
+      const elapsed = Math.floor((Date.now() - getJobStartTime(jobId)) / 1000);
+      const mins = Math.floor(elapsed / 60);
+      const secs = elapsed % 60;
+      showStatus(`⏳ 生成中… ${mins > 0 ? mins + '分' : ''}${secs}秒`, '');
+      currentJobPoll = setTimeout(poll, 3000);
+      
+    } catch(e) {
+      currentJobPoll = setTimeout(poll, 5000);
+    }
+  };
+  
+  currentJobPoll = setTimeout(poll, 3000);
+}
+
+function getJobStartTime(jobId) {
+  const jobs = loadJobs();
+  const j = jobs.find(j => j.jobId === jobId);
+  return j ? j.startedAt : Date.now();
+}
+
+function updateJob(jobId, updates) {
+  const jobs = loadJobs();
+  const j = jobs.find(j => j.jobId === jobId);
+  if (j) Object.assign(j, updates);
+  localStorage.setItem('i2v_jobs', JSON.stringify(jobs));
+}
+
+function renderJobHistory() {
+  const jobs = loadJobs();
+  if (jobs.length === 0) {
+    document.getElementById('jobList').innerHTML = '';
+    return;
+  }
+  let html = '<h3>📋 历史</h3>';
+  for (const j of jobs) {
+    const statusCls = j.status === 'done' ? 'done' : j.status === 'failed' ? 'failed' : 'running';
+    const statusText = j.status === 'done' ? '✅ 完成' : j.status === 'failed' ? '❌ 失败' : '⏳ 运行中';
+    const elapsed = j.endedAt ? Math.floor((j.endedAt - j.startedAt) / 1000) + 's' : '';
+    html += `<div class="job-item">
+      <div class="job-prompt">${escapeHtml(j.prompt?.substring(0, 80) || '')}</div>
+      <div class="job-meta">
+        <span>${j.frames}f @ ${j.fps}fps · ${j.resolution}</span>
+        <span class="job-status ${statusCls}">${statusText}</span>
+        ${elapsed ? `<span>${elapsed}</span>` : ''}
+      </div>
+      ${j.status === 'done' ? `<div class="job-meta" style="margin-top:4px;"><a href="/" style="color:var(--accent);text-decoration:none;font-size:0.75rem;">→ 在图库中查看</a></div>` : ''}
+    </div>`;
+  }
+  document.getElementById('jobList').innerHTML = html;
+}
+
+function escapeHtml(s) {
+  const div = document.createElement('div');
+  div.textContent = s;
+  return div.innerHTML;
+}
+
+// ── Keyboard shortcut ──
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && e.ctrlKey) {
+    submitI2V();
+  }
+});
+</script>
+</body>
+</html>

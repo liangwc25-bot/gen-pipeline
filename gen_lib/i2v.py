@@ -12,7 +12,7 @@ load_env()
 I2V_PROVIDERS = {
     "replicate-wan": {
         "name": "Replicate Wan 2.2 I2V Fast",
-        "price": "$0.11/run",
+        "price": "$0.11/run (81-121帧 flat)",
         "supports_lora": True,
         "params": {
             "num_frames": 81,
