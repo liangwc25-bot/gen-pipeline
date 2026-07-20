@@ -668,8 +668,8 @@ async function submitI2V() {
   const btn = document.getElementById('i2vSubmitBtn');
   const status = document.getElementById('i2vStatus');
   btn.disabled = true;
-  btn.textContent = '⏳ 生成中…（约 2-5 分钟）';
-  status.textContent = '提交到 Replicate...';
+  btn.textContent = '⏳ 提交中…';
+  status.textContent = '';
   status.className = 'i2v-status';
 
   const numFrames = parseInt(document.getElementById('i2vFrames').value) || 81;
@@ -677,6 +677,7 @@ async function submitI2V() {
   const resolution = document.getElementById('i2vRes').value;
 
   try {
+    // 1. Submit job
     const res = await fetch('/api/i2v', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -689,23 +690,77 @@ async function submitI2V() {
         resolution: resolution,
       }),
     });
-    const data = await res.json();
-    if (data.success) {
-      status.textContent = `✅ 完成！(${data.elapsed_s}s) — 刷新页面查看视频`;
-      status.className = 'i2v-status success';
-      btn.textContent = '▶ 生成视频';
-      btn.disabled = false;
-      // Refresh grid and open the video
-      setTimeout(async () => {
-        await loadPage(currentPage);
-        openModal(data.filename);
-      }, 1500);
-    } else {
-      status.textContent = '❌ ' + (data.error || '失败');
+    const submitData = await res.json();
+    if (!submitData.success || !submitData.job_id) {
+      status.textContent = '❌ 提交失败: ' + (submitData.error || 'unknown');
       status.className = 'i2v-status error';
       btn.textContent = '▶ 重试';
       btn.disabled = false;
+      return;
     }
+    const jobId = submitData.job_id;
+    btn.textContent = '⏳ 生成中…（约 2-5 分钟）';
+    status.textContent = '提交成功，等待 Replicate...';
+
+    // 2. Poll until done
+    const maxPolls = 200; // ~10 min at 3s intervals
+    let polls = 0;
+    const pollInterval = 3000;
+
+    const poll = async () => {
+      try {
+        const pollRes = await fetch(`/api/job?job=${encodeURIComponent(jobId)}`);
+        const jobData = await pollRes.json();
+        polls++;
+
+        if (jobData.status === 'done') {
+          const result = jobData.result;
+          if (result.success) {
+            status.textContent = `✅ 完成！(${result.elapsed_s}s)`;
+            status.className = 'i2v-status success';
+            btn.textContent = '▶ 生成视频';
+            btn.disabled = false;
+            // Refresh grid and open video
+            setTimeout(async () => {
+              await loadPage(currentPage);
+              openModal(result.filename);
+            }, 1500);
+          } else {
+            status.textContent = '❌ ' + (result.error || '失败');
+            status.className = 'i2v-status error';
+            btn.textContent = '▶ 重试';
+            btn.disabled = false;
+          }
+          return;
+        }
+
+        // Still running — update status
+        const elapsed = polls * 3;
+        const mins = Math.floor(elapsed / 60);
+        const secs = elapsed % 60;
+        status.textContent = `⏳ 生成中… ${mins > 0 ? mins + '分' : ''}${secs}秒`;
+        
+        if (polls < maxPolls) {
+          setTimeout(poll, pollInterval);
+        } else {
+          status.textContent = '❌ 超时（超过 10 分钟）';
+          status.className = 'i2v-status error';
+          btn.textContent = '▶ 重试';
+          btn.disabled = false;
+        }
+      } catch(e) {
+        if (polls < maxPolls) {
+          setTimeout(poll, pollInterval);
+        } else {
+          status.textContent = '❌ 轮询失败: ' + e.message;
+          status.className = 'i2v-status error';
+          btn.textContent = '▶ 重试';
+          btn.disabled = false;
+        }
+      }
+    };
+
+    setTimeout(poll, pollInterval);
   } catch(e) {
     status.textContent = '❌ 网络错误: ' + e.message;
     status.className = 'i2v-status error';

@@ -8,6 +8,9 @@ import math
 import shutil
 import time
 import urllib.parse
+import threading
+import uuid
+from collections import OrderedDict
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from socketserver import ThreadingMixIn
 class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):
@@ -27,6 +30,21 @@ THUMB_DIR = Path(__file__).parent / "output" / ".thumbnails"
 TRASH_DIR = Path(__file__).parent / "output" / ".trash"
 PORT = 8089
 THUMB_SIZE = (300, 300)
+
+# Async job tracking (for long-running operations like I2V)
+JOBS = OrderedDict()
+MAX_JOBS = 50
+
+def _trim_jobs():
+    """Remove oldest completed jobs when over MAX_JOBS."""
+    while len(JOBS) > MAX_JOBS:
+        for jid, job in list(JOBS.items()):
+            if job.get("status") == "done":
+                JOBS.pop(jid)
+                break
+        else:
+            break
+
 # Ensure DB exists
 init_db()
 # ── Utility ──
@@ -217,7 +235,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode())
     def _handle_i2v(self):
-        """POST /api/i2v — generate video from an existing image."""
+        """POST /api/i2v — generate video from an existing image (async)."""
         content_len = int(self.headers.get("Content-Length", 0))
         body = self.rfile.read(content_len)
         try:
@@ -238,53 +256,95 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         if not input_path.exists():
             self.send_error(404, "File not found")
             return
-        try:
-            from gen_lib.i2v import generate_i2v, I2V_PROVIDERS
-            overrides = {}
-            for k in ("num_frames", "fps", "resolution", "go_fast"):
-                if k in data:
-                    overrides[k] = data[k]
-            t0 = time.time()
-            out_path = generate_i2v(
-                provider=provider,
-                image_path=str(input_path),
-                prompt=prompt_i2v,
-                **overrides,
-            )
-            elapsed = time.time() - t0
-            # Insert into metadata DB
+        
+        job_id = uuid.uuid4().hex[:8]
+        JOBS[job_id] = {"status": "running", "result": None}
+        
+        overrides = {}
+        for k in ("num_frames", "fps", "resolution", "go_fast"):
+            if k in data:
+                overrides[k] = data[k]
+        
+        def _await():
             try:
-                from gen_lib.metadata_db import insert
-                prov_name = I2V_PROVIDERS.get(provider, {}).get("name", provider)
-                insert(
-                    filename=out_path.name,
-                    prompt=f"[I2V] {prompt_i2v}",
-                    seed="",
-                    model=f"i2v-{provider}",
-                    params=f"source={filename}",
-                    mtime=int(out_path.stat().st_mtime),
+                from gen_lib.i2v import generate_i2v, I2V_PROVIDERS
+                t0 = time.time()
+                out_path = generate_i2v(
+                    provider=provider,
+                    image_path=str(input_path),
+                    prompt=prompt_i2v,
+                    **overrides,
                 )
-            except Exception:
-                pass
+                elapsed = time.time() - t0
+                # Insert into metadata DB
+                try:
+                    from gen_lib.metadata_db import insert
+                    insert(
+                        filename=out_path.name,
+                        prompt=f"[I2V] {prompt_i2v}",
+                        seed="",
+                        model=f"i2v-{provider}",
+                        params=f"source={filename}",
+                        mtime=int(out_path.stat().st_mtime),
+                    )
+                except Exception:
+                    pass
+                JOBS[job_id]["result"] = {
+                    "success": True,
+                    "filename": out_path.name,
+                    "url": f"/api/images/{out_path.name}",
+                    "provider": provider,
+                    "elapsed_s": round(elapsed, 1),
+                }
+                JOBS[job_id]["status"] = "done"
+                _trim_jobs()
+            except SystemExit:
+                JOBS[job_id]["result"] = {"success": False, "error": "Generation failed (system exit)"}
+                JOBS[job_id]["status"] = "done"
+                _trim_jobs()
+            except Exception as e:
+                import traceback
+                traceback.print_exc()
+                JOBS[job_id]["result"] = {"success": False, "error": str(e)}
+                JOBS[job_id]["status"] = "done"
+                _trim_jobs()
+        
+        threading.Thread(target=_await, daemon=True).start()
+        
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps({
+            "success": True,
+            "job_id": job_id,
+            "status": "queued",
+        }).encode())
+    
+    def _handle_job(self):
+        """GET /api/job?job=xxx — check async job status."""
+        params = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+        job_id = params.get("job", [None])[0]
+        if not job_id:
+            self.send_error(400, "Missing job_id")
+            return
+        job = JOBS.get(job_id)
+        if not job:
+            self.send_error(404, "Job not found")
+            return
+        if job["status"] == "done":
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
-            self.wfile.write(json.dumps({
-                "success": True,
-                "filename": out_path.name,
-                "url": f"/api/images/{out_path.name}",
-                "provider": provider,
-                "elapsed_s": round(elapsed, 1),
-            }).encode())
-        except Exception as e:
-            import traceback
-            traceback.print_exc()
-            self.send_response(500)
+            resp = {"job_id": job_id, "status": "done", "result": job["result"]}
+            self.wfile.write(json.dumps(resp).encode())
+        else:
+            self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
-            self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode())
+            self.wfile.write(json.dumps({"job_id": job_id, "status": "running"}).encode())
     def _do_get(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
@@ -466,6 +526,9 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(400, "Missing filename")
             return
+        # API: job status (for async operations like I2V)
+        if path == "/api/job":
+            return self._handle_job()
         # API: send to Telegram
         if path == "/api/send":
             filename = params.get("filename", [None])[0]
