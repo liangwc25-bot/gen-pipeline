@@ -108,6 +108,8 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             return self._handle_batch()
         if self.path == "/api/gif-zoom":
             return self._handle_gif_zoom()
+        if self.path == "/api/i2v":
+            return self._handle_i2v()
         self.send_response(405)
         self.end_headers()
     def _handle_batch(self):
@@ -212,6 +214,75 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         except Exception as e:
             self.send_response(500)
             self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode())
+    def _handle_i2v(self):
+        """POST /api/i2v — generate video from an existing image."""
+        content_len = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_len)
+        try:
+            data = json.loads(body)
+        except json.JSONDecodeError:
+            self.send_error(400, "Invalid JSON")
+            return
+        filename = data.get("filename", "").strip()
+        prompt_i2v = data.get("prompt", "").strip()
+        provider = data.get("provider", "replicate-wan")
+        if not filename:
+            self.send_error(400, "Missing filename")
+            return
+        if not prompt_i2v:
+            self.send_error(400, "Missing prompt")
+            return
+        input_path = IMAGES_DIR / filename
+        if not input_path.exists():
+            self.send_error(404, "File not found")
+            return
+        try:
+            from gen_lib.i2v import generate_i2v, I2V_PROVIDERS
+            overrides = {}
+            for k in ("num_frames", "fps", "resolution", "go_fast"):
+                if k in data:
+                    overrides[k] = data[k]
+            t0 = time.time()
+            out_path = generate_i2v(
+                provider=provider,
+                image_path=str(input_path),
+                prompt=prompt_i2v,
+                **overrides,
+            )
+            elapsed = time.time() - t0
+            # Insert into metadata DB
+            try:
+                from gen_lib.metadata_db import insert
+                prov_name = I2V_PROVIDERS.get(provider, {}).get("name", provider)
+                insert(
+                    filename=out_path.name,
+                    prompt=f"[I2V] {prompt_i2v}",
+                    seed="",
+                    model=f"i2v-{provider}",
+                    params=f"source={filename}",
+                    mtime=int(out_path.stat().st_mtime),
+                )
+            except Exception:
+                pass
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "success": True,
+                "filename": out_path.name,
+                "url": f"/api/images/{out_path.name}",
+                "provider": provider,
+                "elapsed_s": round(elapsed, 1),
+            }).encode())
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode())
     def _do_get(self):
@@ -483,7 +554,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             filepath = IMAGES_DIR / filename
             if filepath.exists():
                 ext = filepath.suffix.lower()
-                mime = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp", "gif": "image/gif"}
+                mime = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "webp": "image/webp", "gif": "image/gif", "mp4": "video/mp4"}
                 ct = mime.get(ext.lstrip("."), "application/octet-stream")
                 self.send_response(200)
                 self.send_header("Content-Type", ct)

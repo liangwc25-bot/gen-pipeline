@@ -230,6 +230,70 @@
   }
   .modal-gif-btn:hover { border-color: var(--green); color: var(--green); }
   .modal-gif-btn.sending { border-color: var(--green); color: var(--green); opacity: 0.6; pointer-events: none; }
+  .modal-i2v-btn {
+    background: none; border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px; padding: 6px 10px;
+    color: var(--text2); font-size: 0.85rem; cursor: pointer;
+    transition: .15s; margin-left: 4px; white-space: nowrap;
+  }
+  .modal-i2v-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .modal-i2v-btn.sending { border-color: var(--accent); color: var(--accent); opacity: 0.6; pointer-events: none; }
+  /* I2V Panel */
+  .i2v-panel {
+    display: none;
+    margin-top: 12px;
+    padding: 14px;
+    background: rgba(124, 92, 252, 0.06);
+    border: 1px solid rgba(124, 92, 252, 0.2);
+    border-radius: 10px;
+  }
+  .i2v-panel.show { display: block; }
+  .i2v-panel textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: var(--text);
+    padding: 10px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 60px;
+  }
+  .i2v-panel textarea:focus { outline: none; border-color: var(--accent); }
+  .i2v-params {
+    display: flex; gap: 8px;
+    margin-top: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .i2v-params label {
+    color: var(--text2); font-size: 0.78rem;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .i2v-params input, .i2v-params select {
+    background: var(--card); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; color: var(--text); padding: 4px 8px;
+    font-size: 0.82rem; width: 55px;
+  }
+  .i2v-params select { width: auto; }
+  .i2v-params input:focus, .i2v-params select:focus {
+    outline: none; border-color: var(--accent);
+  }
+  .i2v-submit-btn {
+    background: var(--accent); border: none;
+    border-radius: 8px; color: #fff; padding: 8px 18px;
+    font-size: 0.85rem; cursor: pointer; transition: .15s;
+    margin-top: 10px;
+  }
+  .i2v-submit-btn:hover { opacity: 0.85; }
+  .i2v-submit-btn:disabled { opacity: 0.5; pointer-events: none; }
+  .i2v-status {
+    margin-top: 8px; font-size: 0.8rem; color: var(--text2);
+  }
+  .i2v-status.success { color: var(--green); }
+  .i2v-status.error { color: var(--red); }
   .modal-copy-btn {
     background: none; border: 1px solid rgba(255,255,255,0.1);
     border-radius: 6px; color: var(--text2); cursor: pointer;
@@ -428,6 +492,23 @@
     <div class="modal-bottom-actions">
       <button class="modal-send-btn" id="modalSendBtn" onclick="sendToTg()">📱 传送</button>
       <button class="modal-gif-btn" id="modalGifBtn" onclick="makeGif()">🎞 GIF</button>
+      <button class="modal-i2v-btn" id="modalI2vBtn" onclick="toggleI2vPanel()">🎬 转视频</button>
+    </div>
+    <!-- I2V Panel -->
+    <div class="i2v-panel" id="i2vPanel">
+      <textarea id="i2vPrompt" placeholder="动作描述（英文）: She slowly turns, hair flowing..."></textarea>
+      <div class="i2v-params">
+        <label>帧数 <input type="number" id="i2vFrames" value="81" min="1" max="200"></label>
+        <label>fps <input type="number" id="i2vFps" value="20" min="8" max="30"></label>
+        <label>分辨率
+          <select id="i2vRes">
+            <option value="720p">720p</option>
+            <option value="480p">480p</option>
+          </select>
+        </label>
+      </div>
+      <button class="i2v-submit-btn" id="i2vSubmitBtn" onclick="submitI2V()">▶ 生成视频</button>
+      <div class="i2v-status" id="i2vStatus"></div>
     </div>
   </div>
 </div>
@@ -559,6 +640,77 @@ function updateArchUI(filename) {
   if (modalArch.dataset.file === filename) {
     modalArch.textContent = archived.has(filename) ? '📤 取出' : '📦 存档';
     modalArch.className = 'modal-arch-btn ' + (archived.has(filename) ? 'on' : '');
+  }
+}
+
+// ── I2V (Image to Video) ──
+function toggleI2vPanel() {
+  const panel = document.getElementById('i2vPanel');
+  const status = document.getElementById('i2vStatus');
+  panel.classList.toggle('show');
+  status.textContent = '';
+  status.className = 'i2v-status';
+  // Populate default prompt if empty
+  const promptEl = document.getElementById('i2vPrompt');
+  if (!promptEl.value.trim()) {
+    promptEl.value = 'She slowly moves, gentle breathing, soft breeze through hair';
+  }
+}
+
+async function submitI2V() {
+  if (!modalFilename) return;
+  const prompt = document.getElementById('i2vPrompt').value.trim();
+  if (!prompt) {
+    document.getElementById('i2vStatus').textContent = '⚠ 请填写动作描述';
+    document.getElementById('i2vStatus').className = 'i2v-status error';
+    return;
+  }
+  const btn = document.getElementById('i2vSubmitBtn');
+  const status = document.getElementById('i2vStatus');
+  btn.disabled = true;
+  btn.textContent = '⏳ 生成中…（约 2-5 分钟）';
+  status.textContent = '提交到 Replicate...';
+  status.className = 'i2v-status';
+
+  const numFrames = parseInt(document.getElementById('i2vFrames').value) || 81;
+  const fps = parseInt(document.getElementById('i2vFps').value) || 20;
+  const resolution = document.getElementById('i2vRes').value;
+
+  try {
+    const res = await fetch('/api/i2v', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        filename: modalFilename,
+        prompt: prompt,
+        provider: 'replicate-wan',
+        num_frames: numFrames,
+        fps: fps,
+        resolution: resolution,
+      }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      status.textContent = `✅ 完成！(${data.elapsed_s}s) — 刷新页面查看视频`;
+      status.className = 'i2v-status success';
+      btn.textContent = '▶ 生成视频';
+      btn.disabled = false;
+      // Refresh grid and open the video
+      setTimeout(async () => {
+        await loadPage(currentPage);
+        openModal(data.filename);
+      }, 1500);
+    } else {
+      status.textContent = '❌ ' + (data.error || '失败');
+      status.className = 'i2v-status error';
+      btn.textContent = '▶ 重试';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    status.textContent = '❌ 网络错误: ' + e.message;
+    status.className = 'i2v-status error';
+    btn.textContent = '▶ 重试';
+    btn.disabled = false;
   }
 }
 
@@ -827,6 +979,11 @@ function showModalImage() {
   if (!img) return;
 
   modalFilename = img.filename;
+
+  // Reset I2V panel
+  document.getElementById('i2vPanel').classList.remove('show');
+  document.getElementById('i2vStatus').textContent = '';
+  document.getElementById('i2vStatus').className = 'i2v-status';
 
   // Open modal first so viewport has width for scroll positioning
   const modal = document.getElementById('modal');
