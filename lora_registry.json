@@ -234,25 +234,6 @@
       "notes": "Ahri 九尾狐"
     },
     {
-      "id": "ani-grok",
-      "runware_air_id": "liangwc:ani-grok@2017854",
-      "name": "Ani (Grok)",
-      "url": "https://civitai.com/models/1776155",
-      "tags": [
-        "illustrious",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "notes": "Grok Companion 角色"
-    },
-    {
       "id": "flux_685674_767398",
       "runware_air_id": "liangwc:flux_685674_767398@767398",
       "name": "ARI (NSFW)",
@@ -308,24 +289,6 @@
       "nsfw": true
     },
     {
-      "id": "atlaseuu-influencer",
-      "runware_air_id": "liangwc:atlaseuu-influencer@1802916",
-      "name": "Atlaseuu Influencer",
-      "url": "https://civitai.com/models/1593187",
-      "tags": [
-        "illustrious",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
       "id": "backless-panties",
       "runware_air_id": "liangwc:backless-panties@1170807",
       "name": "Backless Panties",
@@ -342,24 +305,6 @@
       "base_model": "illustrious",
       "category": "concept",
       "nsfw": false
-    },
-    {
-      "id": "barbie-insertion",
-      "runware_air_id": "liangwc:barbie-insertion@2565241",
-      "name": "Barbie Insertion",
-      "url": "https://civitai.com/models/2279199",
-      "tags": [
-        "illustrious",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
     },
     {
       "id": "princess-belle",
@@ -504,24 +449,6 @@
         1.0
       ],
       "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "breasts-rest-on-clothes",
-      "runware_air_id": "liangwc:breasts-rest-on-clothes@1123109",
-      "name": "Breasts Rest on Clothes",
-      "url": "https://civitai.com/models/404470",
-      "tags": [
-        "illustrious",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
       "category": "concept",
       "nsfw": false
     },
