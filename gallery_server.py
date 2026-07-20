@@ -189,7 +189,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         JOBS[job_id] = {"status": "running", "result": None}
         
         overrides = {}
-        for k in ("num_frames", "fps", "resolution", "go_fast"):
+        for k in ("num_frames", "fps", "resolution", "go_fast", "lora_url", "lora_scale"):
             if k in data:
                 overrides[k] = data[k]
         
