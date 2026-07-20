@@ -368,16 +368,27 @@
   .batch-btn.cancel { background: rgba(255,255,255,0.06); color: var(--text2); }
   [data-theme="light"] .batch-bar { border-top-color: rgba(0,0,0,0.08); }
 
-  .filter-bar { display:flex; gap:8px; margin-bottom:16px; align-items:center; }
+  .filter-bar { display:flex; gap:6px; margin-bottom:16px; align-items:center; flex-wrap:wrap; }
   .filter-bar select, .filter-bar input {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
     border-radius: 8px; padding: 6px 12px; color: var(--text); font-size: 0.85rem;
-    outline: none; min-width: 180px;
+    outline: none; min-width: 0;
   }
+  .filter-bar select { min-width: 120px; }
+  .filter-bar input { flex: 1; min-width: 140px; }
   .filter-bar select:focus, .filter-bar input:focus { border-color: var(--accent); }
   [data-theme="light"] .filter-bar select, [data-theme="light"] .filter-bar input {
     background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.08);
   }
+  /* Filter toggle buttons */
+  .filter-btn {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 5px 10px; color: var(--text2);
+    font-size: 0.8rem; cursor: pointer; transition: .15s;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 </style>
 </head>
 <body>
@@ -392,9 +403,8 @@
   </div>
 </div>
 <div class="filter-bar" id="filterBar">
-  <button class="btn active" id="filterImg" onclick="setTypeFilter('img')">🖼️ 图片</button>
-  <button class="btn" id="filterVideo" onclick="setTypeFilter('video')">🎬 视频</button>
-  <button class="btn" id="filterAllType" onclick="setTypeFilter('all')" style="display:none;">全部</button>
+  <button class="filter-btn active" id="filterImg" onclick="setTypeFilter('img')">🖼️ 图片</button>
+  <button class="filter-btn" id="filterVideo" onclick="setTypeFilter('video')">🎬 视频</button>
   <select id="modelFilter" onchange="applyFilters()">
     <option value="">🔮 全部模型</option>
   </select>
@@ -1034,8 +1044,8 @@ function closeModal(e) {
 }
 function setTypeFilter(mode) {
   typeFilter = mode;
-  document.getElementById('filterImg').className = 'btn' + (mode === 'img' ? ' active' : '');
-  document.getElementById('filterVideo').className = 'btn' + (mode === 'video' ? ' active' : '');
+  document.getElementById('filterImg').className = 'filter-btn' + (mode === 'img' ? ' active' : '');
+  document.getElementById('filterVideo').className = 'filter-btn' + (mode === 'video' ? ' active' : '');
   loadPage(1);
 }
 
