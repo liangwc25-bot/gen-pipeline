@@ -92,7 +92,6 @@ def generate(image_path: str, prompt: str, *,
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-        "Prefer": "wait",  # Try to get result synchronously (may still be async for long tasks)
     }
     
     data = json.dumps(create_payload).encode()
