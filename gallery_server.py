@@ -251,6 +251,19 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             "status": "queued",
         }).encode())
     
+    def _handle_list_i2v_loras(self):
+        """GET /api/i2v-loras — list registered I2V LoRAs."""
+        reg_path = Path(__file__).parent / "i2v_lora_registry.json"
+        try:
+            loras = json.loads(reg_path.read_text())
+        except Exception:
+            loras = []
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps({"loras": loras}).encode())
+    
     def _handle_job(self):
         """GET /api/job?job=xxx — check async job status."""
         params = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
@@ -579,6 +592,9 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         # API: job status (for async operations like I2V)
         if path == "/api/job":
             return self._handle_job()
+        # API: list I2V LoRAs
+        if path == "/api/i2v-loras":
+            return self._handle_list_i2v_loras()
         # API: send to Telegram
         if path == "/api/send":
             filename = params.get("filename", [None])[0]
