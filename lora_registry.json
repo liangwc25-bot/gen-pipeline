@@ -1148,25 +1148,6 @@
       "nsfw": true
     },
     {
-      "id": "extreme-bdsm",
-      "runware_air_id": "liangwc:miyue@1208501",
-      "name": "Extreme BDSM / JM",
-      "url": "https://civitai.com/models/1076509",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "fetish"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "bounty-pov",
       "runware_air_id": "liangwc:daji-wangzhe-v2@2733172",
       "name": "Extreme Close-up Pov [Bounty]",
@@ -1352,25 +1333,6 @@
       "nsfw": true
     },
     {
-      "id": "femboy-chinese",
-      "runware_air_id": "liangwc:femboy-chinese@2162123",
-      "name": "Femboy Chinese",
-      "url": "https://civitai.com/models/1910272",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "femboy-flux",
       "runware_air_id": "liangwc:femboy-flux@779648",
       "name": "Femboy FLUX",
@@ -1394,25 +1356,6 @@
       "runware_air_id": "liangwc:femboy-ill@2693790",
       "name": "Femboy Illustrious",
       "url": "https://civitai.com/models/1738161",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "femboy-japanese",
-      "runware_air_id": "liangwc:femboy-japanese@2113673",
-      "name": "Femboy Japanese",
-      "url": "https://civitai.com/models/1867456",
       "tags": [
         "illustrious",
         "nsfw",
@@ -1559,25 +1502,6 @@
       ],
       "base_model": "illustrious",
       "category": "concept",
-      "nsfw": true
-    },
-    {
-      "id": "futa-taker-pov",
-      "runware_air_id": "liangwc:futa-taker-pov@1362426",
-      "name": "Futa Taker POV",
-      "url": "https://civitai.com/models/1209676",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pov"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
       "nsfw": true
     },
     {
@@ -2006,25 +1930,6 @@
         1.2
       ],
       "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "jasmine-ill",
-      "runware_air_id": "liangwc:jasmine-ill@1363706",
-      "name": "Jasmine (Aladdin) Illu",
-      "url": "https://civitai.com/models/48875",
-      "tags": [
-        "illustrious",
-        "character",
-        "disney"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
       "category": "character",
       "nsfw": false
     },
@@ -3226,25 +3131,6 @@
       "nsfw": false
     },
     {
-      "id": "extreme-fear",
-      "runware_air_id": "liangwc:luban@1960256",
-      "name": "Terrified / Extreme Fear",
-      "url": "https://civitai.com/models/1732009",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "expression"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "onryo",
       "runware_air_id": "liangwc:onryo@2870965",
       "name": "The Onryo (Sadako)",
@@ -3664,24 +3550,6 @@
       "notes": "FFX/X-2 3套服装"
     },
     {
-      "id": "zelda-botw",
-      "runware_air_id": "liangwc:zelda-botw@1393168",
-      "name": "Zelda (Breath of the Wild)",
-      "url": "https://civitai.com/models/91825",
-      "tags": [
-        "illustrious",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false
-    },
-    {
       "id": "zyd-chinese-girl-flux",
       "runware_air_id": "liangwc:zyd-chinese-girl-flux@2084379",
       "name": "zyd232 Chinese Girl FLUX",
@@ -4089,25 +3957,6 @@
         1.2
       ],
       "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "mary-saotome",
-      "runware_air_id": "liangwc:mary-saotome@1104328",
-      "name": "早乙女芽亜里 Mary (Kakegurui)",
-      "url": "https://civitai.com/models/985819",
-      "tags": [
-        "illustrious",
-        "character",
-        "anime"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
       "category": "character",
       "nsfw": false
     },
