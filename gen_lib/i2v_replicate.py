@@ -63,8 +63,14 @@ def generate(image_path: str, prompt: str, *,
              fps: int = 20,
              resolution: str = "720p",
              disable_safety_checker: bool = True,
-             go_fast: bool = True) -> Path:
+             go_fast: bool = True,
+             lora_url: str = None,
+             lora_scale: float = 1.0) -> Path:
     """Generate video from image via Replicate Wan 2.2 I2V Fast.
+    
+    Args:
+        lora_url: Optional HF URL to a Wan-compatible LoRA safetensors file.
+        lora_scale: LoRA strength (0.0-2.0). Default 1.0.
     
     Returns path to the downloaded .mp4 file.
     """
@@ -82,6 +88,10 @@ def generate(image_path: str, prompt: str, *,
         "disable_safety_checker": disable_safety_checker,
         "go_fast": go_fast,
     }
+    
+    if lora_url:
+        input_payload["lora_weights_transformer"] = lora_url
+        input_payload["lora_scale_transformer"] = lora_scale
     
     # ── Create prediction ────────────────────────────────────────────────
     create_payload = {

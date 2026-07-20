@@ -13,7 +13,7 @@ I2V_PROVIDERS = {
     "replicate-wan": {
         "name": "Replicate Wan 2.2 I2V Fast",
         "price": "$0.11/run",
-        "supports_lora": False,
+        "supports_lora": True,
         "params": {
             "num_frames": 81,
             "fps": 20,
@@ -63,6 +63,8 @@ def generate_i2v(provider: str, image_path: str, prompt: str, **overrides) -> Pa
             resolution=params["resolution"],
             disable_safety_checker=params["disable_safety_checker"],
             go_fast=params["go_fast"],
+            lora_url=overrides.get("lora_url"),
+            lora_scale=overrides.get("lora_scale", 1.0),
         )
 
     raise ValueError(f"Provider {provider} not implemented")
