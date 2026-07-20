@@ -220,16 +220,6 @@
   .modal-del-btn:hover { border-color: #ef4444; color: #ef4444; }
   .modal-send-btn:hover { border-color: #3b82f6; color: #3b82f6; }
   .modal-send-btn.sending { border-color: #3b82f6; color: #3b82f6; opacity: 0.6; pointer-events: none; }
-  .modal-gif-btn {
-    background: none; border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 8px; padding: 6px 10px;
-    color: var(--text2); font-size: 0.85rem; cursor: pointer;
-    transition: .15s;
-    margin-left: 4px;
-    white-space: nowrap;
-  }
-  .modal-gif-btn:hover { border-color: var(--green); color: var(--green); }
-  .modal-gif-btn.sending { border-color: var(--green); color: var(--green); opacity: 0.6; pointer-events: none; }
   .modal-i2v-btn {
     background: none; border: 1px solid rgba(255,255,255,0.15);
     border-radius: 8px; padding: 6px 10px;
@@ -499,7 +489,6 @@
     <div class="modal-info" id="modalInfo"></div>
     <div class="modal-bottom-actions">
       <button class="modal-send-btn" id="modalSendBtn" onclick="sendToTg()">📱 传送</button>
-      <button class="modal-gif-btn" id="modalGifBtn" onclick="makeGif()">🎞 GIF</button>
       <button class="modal-i2v-btn" id="modalI2vBtn" onclick="toggleI2vPanel()">🎬 转视频</button>
     </div>
     <!-- I2V Panel -->
@@ -835,35 +824,6 @@ async function sendToTg() {
   }
 }
 
-// ── Make Breathing GIF ──
-async function makeGif() {
-  if (!modalFilename) return;
-  const btn = document.getElementById('modalGifBtn');
-  btn.textContent = '⏳ 生成中…';
-  btn.classList.add('sending');
-  try {
-    const res = await fetch('/api/gif-zoom', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({filename: modalFilename}),
-    });
-    const data = await res.json();
-    if (data.success) {
-      btn.textContent = '✅ 完成';
-      setTimeout(() => { btn.textContent = '🎞 GIF'; btn.classList.remove('sending'); }, 3000);
-      // Refresh the grid and open the GIF
-      await loadPage(currentPage);
-      openModal(data.filename);
-    } else {
-      btn.textContent = '❌ ' + (data.error || '失败');
-      setTimeout(() => { btn.textContent = '🎞 GIF'; btn.classList.remove('sending'); }, 3000);
-    }
-  } catch(e) {
-    btn.textContent = '❌ 失败';
-    setTimeout(() => { btn.textContent = '🎞 GIF'; btn.classList.remove('sending'); }, 3000);
-  }
-}
-
 // ── Trash ──
 async function moveToTrash() {
   if (!modalFilename) return;
@@ -1062,12 +1022,15 @@ function showModalImage() {
     video.style.display = 'block';
     video.src = `/raw/${encodeURIComponent(modalFilename)}`;
     video.load();
+    // Hide I2V button on video (can't convert video to video)
+    document.getElementById('modalI2vBtn').style.display = 'none';
   } else {
     vp.classList.remove('hidden');
     video.style.display = 'none';
     video.pause();
     video.removeAttribute('src');
     updateCarouselSlides();
+    document.getElementById('modalI2vBtn').style.display = '';
   }
 
   updateModalUI(img);
