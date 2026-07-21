@@ -160,9 +160,9 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
         conditions.append("favorited = 1")
     
     if video_only is True:
-        conditions.append("model LIKE 'i2v-%'")
+        conditions.append("(model LIKE 'i2v-%' OR model = 'Wan 2.2 Video')")
     elif video_only is False:
-        conditions.append("model NOT LIKE 'i2v-%' OR model IS NULL OR model = ''")
+        conditions.append("(model NOT LIKE 'i2v-%' AND model != 'Wan 2.2 Video')")
 
     where = " AND ".join(conditions)
 
@@ -214,9 +214,9 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
         conditions.append("favorited = 1")
     
     if video_only is True:
-        conditions.append("model LIKE 'i2v-%'")
+        conditions.append("(model LIKE 'i2v-%' OR model = 'Wan 2.2 Video')")
     elif video_only is False:
-        conditions.append("model NOT LIKE 'i2v-%' OR model IS NULL OR model = ''")
+        conditions.append("(model NOT LIKE 'i2v-%' AND model != 'Wan 2.2 Video')")
 
     where = " AND ".join(conditions)
 
