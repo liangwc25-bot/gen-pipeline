@@ -57,5 +57,27 @@
     "description": "Ultimate DeepThroat I2V Wan2.2 — 深喉/口交动作 LoRA for Wan I2V",
     "category": "action",
     "nsfw": true
+  },
+  {
+    "id": "jfj-deepthroat",
+    "name": "Deepthroat Blowjob Wan 2.X (JFJ)",
+    "url": "https://huggingface.co/liangwc25/wan-jfj-deepthroat/resolve/main/jfj-deepthroat-W22-I2V-LN.safetensors",
+    "base_model": "wan-2.2-i2v-a14b",
+    "default_scale": 1.0,
+    "scale_range": [
+      0.1,
+      2.0
+    ],
+    "tags": [
+      "nsfw",
+      "action",
+      "oral",
+      "deepthroat",
+      "blowjob",
+      "585mb"
+    ],
+    "description": "Deepthroat, Blowjob - Wan 2.X I2V & T2V (JFJ) — 585MB, possibly includes anatomy training",
+    "category": "action",
+    "nsfw": true
   }
 ]
