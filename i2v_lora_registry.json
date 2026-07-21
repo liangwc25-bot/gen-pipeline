@@ -37,5 +37,25 @@
     "description": "Hip Swing Twist (Swing Dance Focus) — 大摆锤，腰部扭动/摇摆动作 LoRA for Wan I2V",
     "category": "action",
     "nsfw": false
+  },
+  {
+    "id": "ultimatedeepthroat",
+    "name": "Ultimate DeepThroat I2V",
+    "url": "https://huggingface.co/liangwc25/wan-ultimatedeepthroat/resolve/main/wan22-ultimatedeepthroat-i2v-102epoc-high-k3nk.safetensors",
+    "base_model": "wan-2.2-i2v-a14b",
+    "default_scale": 1.0,
+    "scale_range": [
+      0.1,
+      2.0
+    ],
+    "tags": [
+      "nsfw",
+      "action",
+      "oral",
+      "deepthroat"
+    ],
+    "description": "Ultimate DeepThroat I2V Wan2.2 — 深喉/口交动作 LoRA for Wan I2V",
+    "category": "action",
+    "nsfw": true
   }
 ]
