@@ -184,11 +184,11 @@ textarea { resize: vertical; min-height: 60px; }
   <div class="params-row">
     <div class="param-item">
       <label>帧数</label>
-      <input type="number" id="frames" value="81" min="81" max="121">
+      <input type="number" id="frames" value="121" min="81" max="121">
     </div>
     <div class="param-item">
       <label>fps</label>
-      <input type="number" id="fps" value="20" min="5" max="30">
+      <input type="number" id="fps" value="18" min="5" max="30">
     </div>
     <div class="param-item">
       <label>分辨率</label>
@@ -373,8 +373,8 @@ function restoreJobs() {
   if (pending.length > 0) {
     const job = pending[0];
     document.getElementById('prompt').value = job.prompt || '';
-    document.getElementById('frames').value = job.frames || 81;
-    document.getElementById('fps').value = job.fps || 20;
+    document.getElementById('frames').value = job.frames || 121;
+    document.getElementById('fps').value = job.fps || 18;
     document.getElementById('res').value = job.resolution || '720p';
     document.getElementById('loraUrl').value = job.loraUrl || '';
     document.getElementById('loraScale').value = job.loraScale || 1.0;

@@ -15,8 +15,8 @@ I2V_PROVIDERS = {
         "price": "$0.11/run (81-121帧 flat)",
         "supports_lora": True,
         "params": {
-            "num_frames": 81,
-            "fps": 20,
+            "num_frames": 121,
+            "fps": 18,
             "resolution": "720p",
             "disable_safety_checker": True,
             "go_fast": True,
