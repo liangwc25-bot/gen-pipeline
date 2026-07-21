@@ -142,5 +142,27 @@
     "description": "Ultimate DeepThroat I2V Wan2.2 — Low Noise v1.1, more stable/consistent output",
     "category": "action",
     "nsfw": true
+  },
+  {
+    "id": "jfj-deepthroat-high",
+    "name": "Deepthroat Blowjob Wan 2.X (JFJ) HIGH",
+    "url": "https://huggingface.co/liangwc25/wan-jfj-deepthroat-high/resolve/main/jfj-deepthroat-W22-I2V-HN.safetensors",
+    "base_model": "wan-2.2-i2v-a14b",
+    "default_scale": 1.0,
+    "scale_range": [
+      0.1,
+      2.0
+    ],
+    "tags": [
+      "nsfw",
+      "action",
+      "oral",
+      "deepthroat",
+      "blowjob",
+      "high-noise"
+    ],
+    "description": "JFJ Deepthroat I2V — High Noise v1.0, more creative/flexible output. 220MB.",
+    "category": "action",
+    "nsfw": true
   }
 ]
