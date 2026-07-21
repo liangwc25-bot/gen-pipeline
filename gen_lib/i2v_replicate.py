@@ -65,7 +65,9 @@ def generate(image_path: str, prompt: str, *,
              disable_safety_checker: bool = True,
              go_fast: bool = True,
              lora_url: str = None,
-             lora_scale: float = 1.0) -> Path:
+             lora_scale: float = 1.0,
+             lora_url_2: str = None,
+             lora_scale_2: float = 1.0) -> Path:
     """Generate video from image via Replicate Wan 2.2 I2V Fast.
     
     Args:
@@ -92,6 +94,9 @@ def generate(image_path: str, prompt: str, *,
     if lora_url:
         input_payload["lora_weights_transformer"] = lora_url
         input_payload["lora_scale_transformer"] = lora_scale
+    if lora_url_2:
+        input_payload["lora_weights_transformer_2"] = lora_url_2
+        input_payload["lora_scale_transformer_2"] = lora_scale_2
     
     # ── Create prediction ────────────────────────────────────────────────
     create_payload = {

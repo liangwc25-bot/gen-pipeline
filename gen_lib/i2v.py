@@ -65,6 +65,8 @@ def generate_i2v(provider: str, image_path: str, prompt: str, **overrides) -> Pa
             go_fast=params["go_fast"],
             lora_url=overrides.get("lora_url"),
             lora_scale=overrides.get("lora_scale", 1.0),
+            lora_url_2=overrides.get("lora_url_2"),
+            lora_scale_2=overrides.get("lora_scale_2", 1.0),
         )
 
     raise ValueError(f"Provider {provider} not implemented")
