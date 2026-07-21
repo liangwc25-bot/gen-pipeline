@@ -84,6 +84,24 @@ def _cleanup_old_trash() -> None:
                 f.unlink()
             except OSError:
                 pass
+def _make_video_thumb(video_path: Path) -> bytes | None:
+    """Extract first frame from video as PNG thumbnail using ffmpeg."""
+    cache_path = THUMB_DIR / (video_path.name + ".vthumb.png")
+    if cache_path.exists() and cache_path.stat().st_mtime >= video_path.stat().st_mtime:
+        return cache_path.read_bytes()
+    try:
+        r = subprocess.run([
+            "ffmpeg", "-y", "-i", str(video_path),
+            "-vframes", "1", "-vf", f"scale={THUMB_SIZE[0]}:{THUMB_SIZE[1]}:force_original_aspect_ratio=decrease,pad={THUMB_SIZE[0]}:{THUMB_SIZE[1]}:(ow-iw)/2:(oh-ih)/2",
+            "-f", "image2pipe", "-vcodec", "png", "-"
+        ], capture_output=True, timeout=10)
+        if r.returncode == 0 and r.stdout:
+            cache_path.write_bytes(r.stdout)
+            return r.stdout
+    except Exception:
+        pass
+    return None
+
 def make_thumbnail(filepath: Path) -> bytes | None:
     """Generate thumbnail, with disk caching. Returns PNG bytes. Returns None on failure."""
     THUMB_DIR.mkdir(parents=True, exist_ok=True)
@@ -345,19 +363,8 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             img.save(str(out_path), "PNG")
             img.close()
             
-            # Insert into metadata DB
-            try:
-                from gen_lib.metadata_db import insert
-                insert(
-                    filename=safe_name,
-                    prompt="[I2V upload]",
-                    seed="",
-                    model="upload",
-                    params="",
-                    mtime=int(out_path.stat().st_mtime),
-                )
-            except Exception:
-                pass
+            # NOT inserting into metadata_db — uploaded images are transient
+            # and shouldn't clutter the gallery. I2V videos get their own entries.
             
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
@@ -665,11 +672,9 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         if path.startswith("/thumb/"):
             filename = unq(path[7:])
             filepath = IMAGES_DIR / filename
-            # For videos, use source image's thumbnail
-            if not filepath.exists() and filename.endswith('.mp4'):
-                # Try without .mp4 extension for files that might have name mismatches
-                pass
-            if filepath.suffix.lower() == '.mp4' and filepath.exists():
+            # For videos, use source image's thumbnail or extract first frame
+            is_video = filepath.suffix.lower() == '.mp4' and filepath.exists()
+            if is_video:
                 from gen_lib.metadata_db import get_meta
                 meta = get_meta(filename)
                 if meta and meta.get('params', '').startswith('source='):
@@ -677,6 +682,28 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                     source_path = IMAGES_DIR / source_fn
                     if source_path.exists():
                         filepath = source_path
+                    else:
+                        # Source image gone — extract first frame from video
+                        thumb_data = _make_video_thumb(filepath)
+                        if thumb_data:
+                            self.send_response(200)
+                            self.send_header("Content-Type", "image/png")
+                            self.send_header("Content-Length", str(len(thumb_data)))
+                            self.send_header("Cache-Control", "public, max-age=86400, immutable")
+                            self.end_headers()
+                            self.wfile.write(thumb_data)
+                            return
+                else:
+                    # No source metadata — extract first frame
+                    thumb_data = _make_video_thumb(filepath)
+                    if thumb_data:
+                        self.send_response(200)
+                        self.send_header("Content-Type", "image/png")
+                        self.send_header("Content-Length", str(len(thumb_data)))
+                        self.send_header("Cache-Control", "public, max-age=86400, immutable")
+                        self.end_headers()
+                        self.wfile.write(thumb_data)
+                        return
             if filepath.exists():
                 thumb = make_thumbnail(filepath)
                 if thumb is None:
