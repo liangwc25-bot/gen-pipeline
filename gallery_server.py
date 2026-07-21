@@ -579,25 +579,30 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             return
         # API: single-file metadata (from SQLite, fallback to PNG)
         if path == "/api/meta":
-            filename = params.get("filename", [None])[0]
-            if filename:
-                meta = get_meta(filename)
-                if meta:
-                    self.send_response(200)
-                    self.send_header("Content-Type", "application/json")
-                    self.send_header("Access-Control-Allow-Origin", "*")
-                    self.end_headers()
-                    self.wfile.write(json.dumps({
-                        "filename": filename,
-                        "prompt": meta.get("prompt", ""),
-                        "seed": meta.get("seed", ""),
-                        "model": meta.get("model", ""),
-                        "params": meta.get("params", ""),
-                    }).encode())
+            try:
+                filename = params.get("filename", [None])[0]
+                if filename:
+                    meta = get_meta(filename)
+                    if meta:
+                        self.send_response(200)
+                        self.send_header("Content-Type", "application/json")
+                        self.send_header("Access-Control-Allow-Origin", "*")
+                        self.end_headers()
+                        self.wfile.write(json.dumps({
+                            "filename": filename,
+                            "prompt": meta.get("prompt", ""),
+                            "seed": meta.get("seed", ""),
+                            "model": meta.get("model", ""),
+                            "params": meta.get("params", ""),
+                        }).encode())
+                    else:
+                        self.send_error(404, "File not found in index")
                 else:
-                    self.send_error(404, "File not found in index")
-            else:
-                self.send_error(400, "Missing filename")
+                    self.send_error(400, "Missing filename")
+            except Exception as e:
+                import traceback
+                traceback.print_exc()
+                self.send_error(500, str(e))
             return
         # API: job status (for async operations like I2V)
         if path == "/api/job":
@@ -640,35 +645,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(400, "Missing filename")
             return
-            action = data.get("action", "")
-            filenames = data.get("filenames", [])
-            success, failed = [], []
-            for fn in filenames:
-                try:
-                    if action == "favorite":
-                        if fn not in load_favorites():
-                            toggle_favorite(fn)
-                        success.append(fn)
-                    elif action == "archive":
-                        result = toggle_archive(fn)
-                        if result: success.append(fn)
-                        else: failed.append(fn)
-                    elif action == "trash":
-                        result = move_to_trash(fn)
-                        if result: success.append(fn)
-                        else: failed.append(fn)
-                except Exception:
-                    failed.append(fn)
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.send_header("Access-Control-Allow-Origin", "*")
-            self.end_headers()
-            self.wfile.write(json.dumps({
-                "success": len(success),
-                "failed": len(failed),
-                "total": len(filenames),
-            }).encode())
-            return
         # Serve thumbnail — try main dir first, then archive
         if path.startswith("/thumb/"):
             filename = unq(path[7:])
@@ -676,7 +652,6 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             # For videos, use source image's thumbnail or extract first frame
             is_video = filepath.suffix.lower() == '.mp4' and filepath.exists()
             if is_video:
-                from gen_lib.metadata_db import get_meta
                 meta = get_meta(filename)
                 if meta and meta.get('params', '').startswith('source='):
                     source_fn = meta['params'].replace('source=', '')
