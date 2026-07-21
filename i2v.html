@@ -215,6 +215,21 @@ textarea { resize: vertical; min-height: 60px; }
     </div>
   </div>
   <div id="loraSelected" style="display:none;margin-top:6px;font-size:0.78rem;color:var(--accent);"></div>
+  <div class="lora-row" style="margin-top:8px;">
+    <div style="flex:1;position:relative;">
+      <label style="display:block;font-size:0.75rem;color:var(--text2);margin-bottom:4px;">LoRA #2 (LOW, 可选)</label>
+      <input type="text" id="loraSearch2" placeholder="搜索 LoRA…" autocomplete="off"
+        style="width:100%;" onfocus="showLoraDropdown2()" oninput="filterLoraDropdown2()" onkeydown="if(event.key==='Enter'){event.preventDefault();selectFirstLora2()}">
+      <div class="lora-dropdown" id="loraDropdown2"></div>
+      <input type="hidden" id="loraUrl2">
+      <input type="hidden" id="loraId2">
+    </div>
+    <div class="param-item" style="max-width:70px;">
+      <label>Scale</label>
+      <input type="number" id="loraScale2" value="1.0" min="0.1" max="2.0" step="0.1">
+    </div>
+  </div>
+  <div id="loraSelected2" style="display:none;margin-top:6px;font-size:0.78rem;color:var(--accent);"></div>
   </div>
 </div>
 
@@ -349,6 +364,49 @@ document.addEventListener('click', function(e) {
   }
 });
 
+// ── LoRA #2 (LOW) ──
+function showLoraDropdown2() { filterLoraDropdown2(); document.getElementById('loraDropdown2').classList.add('show'); }
+function filterLoraDropdown2() {
+  var q = (document.getElementById('loraSearch2').value || '').toLowerCase().trim();
+  var dd = document.getElementById('loraDropdown2');
+  var items = loraRegistry;
+  if (q) items = loraRegistry.filter(function(l) { return l.name.toLowerCase().indexOf(q) >= 0 || (l.tags || []).some(function(t) { return t.toLowerCase().indexOf(q) >= 0; }); });
+  var html = '<div class="lora-opt clear" onclick="clearLora2()">— 不启用 —</div>';
+  items.forEach(function(l) { html += '<div class="lora-opt" onclick="selectLora2(\'' + escapeHtml(l.id) + '\')"><div>' + escapeHtml(l.name) + '</div></div>'; });
+  if (q && items.length === 0) html += '<div class="lora-opt custom" onclick="customLoraUrl2()">✏️ 手动输入 URL: "' + escapeHtml(q) + '"</div>';
+  else html += '<div class="lora-opt custom" onclick="customLoraUrl2()">✏️ 手动输入 URL…</div>';
+  dd.innerHTML = html; dd.classList.add('show');
+}
+function selectFirstLora2() { var o = document.querySelectorAll('#loraDropdown2 .lora-opt'); if (o.length > 1) o[1].click(); else if (o.length > 0) o[0].click(); }
+function selectLora2(id) {
+  var l = loraRegistry.find(function(l) { return l.id === id; }); if (!l) return;
+  document.getElementById('loraUrl2').value = l.url_2 || l.url;
+  document.getElementById('loraId2').value = l.id;
+  document.getElementById('loraScale2').value = l.default_scale || 1.0;
+  document.getElementById('loraSearch2').value = '';
+  document.getElementById('loraDropdown2').classList.remove('show');
+  var s = document.getElementById('loraSelected2'); s.style.display = 'block';
+  s.innerHTML = '<span class="lora-selected"><span class="lora-name">🎬 ' + escapeHtml(l.name) + ' (LOW)</span><button class="lora-clear" onclick="clearLora2()">✕</button></span>';
+}
+function clearLora2() {
+  document.getElementById('loraUrl2').value = ''; document.getElementById('loraId2').value = '';
+  document.getElementById('loraSearch2').value = ''; document.getElementById('loraDropdown2').classList.remove('show');
+  document.getElementById('loraSelected2').style.display = 'none'; document.getElementById('loraSelected2').innerHTML = '';
+}
+function customLoraUrl2() {
+  var q = document.getElementById('loraSearch2').value.trim();
+  var url = prompt('输入 LoRA #2 .safetensors URL:', q || '');
+  if (!url) return;
+  document.getElementById('loraUrl2').value = url; document.getElementById('loraId2').value = '';
+  document.getElementById('loraSearch2').value = ''; document.getElementById('loraDropdown2').classList.remove('show');
+  var s = document.getElementById('loraSelected2'); s.style.display = 'block';
+  s.innerHTML = '<span class="lora-selected"><span class="lora-name">🔗 自定义 URL #2</span><button class="lora-clear" onclick="clearLora2()">✕</button></span>';
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#loraSearch2') && !e.target.closest('#loraDropdown2'))
+    document.getElementById('loraDropdown2').classList.remove('show');
+});
+
 if (sourceFilename) {
   document.getElementById('sourceImg').src = `/raw/${encodeURIComponent(sourceFilename)}`;
   document.getElementById('sourceName').textContent = sourceFilename;
@@ -380,6 +438,8 @@ function restoreJobs() {
     document.getElementById('res').value = job.resolution || '720p';
     document.getElementById('loraUrl').value = job.loraUrl || '';
     document.getElementById('loraScale').value = job.loraScale || 1.0;
+    document.getElementById('loraUrl2').value = job.loraUrl2 || '';
+    document.getElementById('loraScale2').value = job.loraScale2 || 1.0;
     if (job.source) {
       currentSourceFile = job.source;
       document.getElementById('sourceName').textContent = job.source;
@@ -428,6 +488,8 @@ async function submitI2V() {
   const resolution = document.getElementById('res').value;
   const loraUrl = document.getElementById('loraUrl').value.trim();
   const loraScale = parseFloat(document.getElementById('loraScale').value) || 1.0;
+  const loraUrl2 = document.getElementById('loraUrl2').value.trim();
+  const loraScale2 = parseFloat(document.getElementById('loraScale2').value) || 1.0;
 
   try {
     let filename = currentSourceFile;
@@ -466,6 +528,10 @@ async function submitI2V() {
       body.lora_url = loraUrl;
       body.lora_scale = loraScale;
     }
+    if (loraUrl2) {
+      body.lora_url_2 = loraUrl2;
+      body.lora_scale_2 = loraScale2;
+    }
 
     const res = await fetch('/api/i2v', {
       method: 'POST',
@@ -496,6 +562,8 @@ async function submitI2V() {
       resolution: resolution,
       loraUrl: loraUrl,
       loraScale: loraScale,
+      loraUrl2: loraUrl2,
+      loraScale2: loraScale2,
       startedAt: Date.now(),
     });
     renderJobHistory();
