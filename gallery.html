@@ -590,7 +590,7 @@ function updateArchUI(filename) {
 // ── I2V → navigate to standalone page ──
 function openI2V() {
   if (!modalFilename) return;
-  window.open(`https://i2v.0x01.qzz.io/?source=${encodeURIComponent(modalFilename)}`, '_blank');
+  window.open(`https://i2v.0x01.qzz.io/?source=${encodeURIComponent(modalFilename)}&_=${Date.now()}`, 'i2v_window');
 }
 
 function updateAllUI(filename) {
