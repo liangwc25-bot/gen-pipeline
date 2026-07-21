@@ -5,10 +5,37 @@
     "url": "https://huggingface.co/liangwc25/wan-fingering-pussy/resolve/main/wan_fingering_pussy_i2v2.2hi_v10.safetensors",
     "base_model": "wan-2.2-i2v-a14b",
     "default_scale": 1.0,
-    "scale_range": [0.1, 2.0],
-    "tags": ["nsfw", "action", "intimate"],
+    "scale_range": [
+      0.1,
+      2.0
+    ],
+    "tags": [
+      "nsfw",
+      "action",
+      "intimate"
+    ],
     "description": "Fingering action — intimate touch, slow movement",
     "category": "action",
     "nsfw": true
+  },
+  {
+    "id": "dabaichui",
+    "name": "大摆锤 (Hip Swing Twist)",
+    "url": "https://huggingface.co/liangwc25/wan-dabaichui/resolve/main/dabaichuiV1.0.safetensors",
+    "base_model": "wan-2.2-i2v-a14b",
+    "default_scale": 1.0,
+    "scale_range": [
+      0.1,
+      2.0
+    ],
+    "tags": [
+      "action",
+      "dance",
+      "swing",
+      "大摆锤"
+    ],
+    "description": "Hip Swing Twist (Swing Dance Focus) — 大摆锤，腰部扭动/摇摆动作 LoRA for Wan I2V",
+    "category": "action",
+    "nsfw": false
   }
 ]
