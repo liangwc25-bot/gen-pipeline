@@ -25,8 +25,9 @@ MODELS = {
     "sdxl":           {"id": "runware:100@1", "name": "SDXL", "price": "~$0.003/张"},
     "pony-xl":        {"id": "liangwc:3@1", "name": "Prefect Pony XL v3", "price": "$0.0013/张"},
     "prefect-ill-xl": {"id": "liangwc:6@1", "name": "Prefect Illustrious XL v8", "price": "~$0.003/张"},
+    "guofeng4-xl":    {"id": "liangwc:guofeng4-xl@1", "name": "国风4 GuoFeng4 XL", "price": "~$0.003/张"},
+    "pornmaster":     {"id": "liangwc:pornmaster@1", "name": "PornMaster-色情大师", "price": "~$0.003/张"},
     "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "$0.0019/次"},
-    "flux-uncensored": {"id": "loraimagegen:11111@11111", "name": "FLUX Uncensored", "price": "$0.0038/张"},
 }
 
 # Aspect ratio → (width, height)
@@ -102,7 +103,7 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
         "width": w,
         "height": h,
         "steps": 28,
-        "CFGScale": cfg_scale if cfg_scale is not None else (6.0 if model_key in ("pony-xl", "prefect-ill-xl") else 3.5),
+        "CFGScale": cfg_scale if cfg_scale is not None else (6.0 if model_key in ("pony-xl", "prefect-ill-xl", "guofeng4-xl", "pornmaster") else 3.5),
         "safety": {"checkContent": False},
         "outputFormat": "PNG",
         "includeCost": True,
