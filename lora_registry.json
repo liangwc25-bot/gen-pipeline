@@ -4315,6 +4315,32 @@
       "category": "concept",
       "nsfw": true,
       "description": "Sagging breasts slider"
+    },
+    {
+      "id": "multiple-xl-sliders-v1",
+      "runware_air_id": "civitai:238419@268828",
+      "name": "Multiple XL Sliders v1 (Age/Weight/Hands)",
+      "url": "https://civitai.com/models/238419",
+      "tags": ["sdxl", "slider", "body", "age", "weight"],
+      "default_scale": 0.5,
+      "scale_range": [0.0, 1.5],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Multiple XL sliders pack — age, weight, hands, etc"
+    },
+    {
+      "id": "multiple-xl-sliders-v2",
+      "runware_air_id": "civitai:238419@268823",
+      "name": "Multiple XL Sliders v2 (Age/Weight/Hands)",
+      "url": "https://civitai.com/models/238419",
+      "tags": ["sdxl", "slider", "body", "age", "weight"],
+      "default_scale": 0.5,
+      "scale_range": [0.0, 1.5],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Multiple XL sliders pack v2 — age, weight, hands, etc"
     }
   ],
   "categories": {
