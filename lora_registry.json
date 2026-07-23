@@ -4341,6 +4341,71 @@
       "category": "concept",
       "nsfw": false,
       "description": "Multiple XL sliders pack v2 — age, weight, hands, etc"
+    },
+    {
+      "id": "pornmaster-chinese-style",
+      "runware_air_id": "liangwc:pornmaster-chinese-style@2435259",
+      "name": "PornMaster-中国风/汉服",
+      "url": "https://civitai.com/models/475960",
+      "tags": ["sdxl", "style", "chinese", "hanfu", "nsfw"],
+      "default_scale": 0.8,
+      "scale_range": [0.3, 1.2],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": true,
+      "description": "PornMaster NSFW 中国风/汉服/角色扮演 style LoRA"
+    },
+    {
+      "id": "ink-style-sdxl",
+      "runware_air_id": "liangwc:ink-style-sdxl@625661",
+      "name": "Ink Style SDXL",
+      "url": "https://civitai.com/models/549045",
+      "tags": ["sdxl", "style", "ink", "水墨"],
+      "default_scale": 0.7,
+      "scale_range": [0.3, 1.2],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "Ink wash painting style — 水墨风格"
+    },
+    {
+      "id": "pubic-tattoo-ill",
+      "runware_air_id": "liangwc:pubic-tattoo-ill@1060578",
+      "name": "淫紋 pubic tattoo (Illustrious)",
+      "url": "https://civitai.com/models/461662",
+      "tags": ["illustrious", "nsfw", "tattoo", "body-mod"],
+      "default_scale": 0.8,
+      "scale_range": [0.3, 1.2],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "淫紋/pub tattoo — Illustrious base"
+    },
+    {
+      "id": "pubic-tattoo-pony",
+      "runware_air_id": "liangwc:pubic-tattoo-pony@513762",
+      "name": "淫紋 pubic tattoo (Pony)",
+      "url": "https://civitai.com/models/461662",
+      "tags": ["pony", "nsfw", "tattoo", "body-mod"],
+      "default_scale": 0.8,
+      "scale_range": [0.3, 1.2],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "description": "淫紋/pub tattoo — Pony base"
+    },
+    {
+      "id": "pubic-tattoo-sdxl",
+      "runware_air_id": "liangwc:pubic-tattoo-sdxl@513961",
+      "name": "淫紋 pubic tattoo (SDXL)",
+      "url": "https://civitai.com/models/461662",
+      "tags": ["sdxl", "nsfw", "tattoo", "body-mod"],
+      "default_scale": 0.8,
+      "scale_range": [0.3, 1.2],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": true,
+      "description": "淫紋/pub tattoo — SDXL base"
     }
   ],
   "categories": {
