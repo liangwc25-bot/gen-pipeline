@@ -437,14 +437,6 @@ function setPlatform(p) {
   const dropdown = wrap.querySelector('.custom-select-dropdown');
   const label = wrap.querySelector('.custom-select-label');
   const hidden = document.getElementById('model');
-  const baseLabel = id => ({
-    'flux-dev': 'FLUX', 'flux-schnell': 'FLUX', 'flux-uncensored': 'FLUX',
-    'flux-2-pro': 'FLUX', 'pony-xl': 'Pony SDXL', 'prefect-ill-xl': 'Illustrious XL',
-    'guofeng4-xl': 'SDXL 1.0', 'pornmaster': 'SDXL 1.0', 'lustify': 'SDXL 1.0',
-    'sdxl-base': 'SDXL 1.0', 'dreamshaper-xl': 'SDXL 1.0', 'juggernaut-xl': 'SDXL 1.0',
-    'qwen-edit': 'Qwen', 'pony': 'Pony SDXL', 'illustrious': 'Illustrious XL',
-    'sdxl': 'SDXL 1.0', 'flux': 'FLUX',
-  }[id] || 'SDXL 1.0');
 
   if (p === 'modelslab') {
     const models = [
@@ -472,6 +464,16 @@ function setPlatform(p) {
   onModelChange();
   saveDraft();
 }
+
+// ── Base label lookup ──
+const baseLabel = id => ({
+  'flux-dev': 'FLUX', 'flux-schnell': 'FLUX', 'flux-uncensored': 'FLUX',
+  'flux-2-pro': 'FLUX', 'pony-xl': 'Pony SDXL', 'prefect-ill-xl': 'Illustrious XL',
+  'guofeng4-xl': 'SDXL 1.0', 'pornmaster': 'SDXL 1.0', 'lustify': 'SDXL 1.0',
+  'sdxl-base': 'SDXL 1.0', 'dreamshaper-xl': 'SDXL 1.0', 'juggernaut-xl': 'SDXL 1.0',
+  'qwen-edit': 'Qwen', 'pony': 'Pony SDXL', 'illustrious': 'Illustrious XL',
+  'sdxl': 'SDXL 1.0', 'flux': 'FLUX',
+}[id] || 'SDXL 1.0');
 
 // ════════════════════ Models ════════════════════
 async function init() {
