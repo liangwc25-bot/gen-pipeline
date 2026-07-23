@@ -4442,6 +4442,48 @@
       "category": "concept",
       "nsfw": true,
       "description": "淫紋/pub tattoo — SDXL base"
+    },
+    {
+      "id": "ink-wash-il",
+      "runware_air_id": "liangwc:ink-wash-il@2784911",
+      "name": "Ink Wash IL V1.0",
+      "url": "https://civitai.com/models/2477012",
+      "tags": [
+        "illustrious",
+        "style",
+        "ink",
+        "水墨"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false,
+      "description": "Ink wash painting style for Illustrious — 水墨风格"
+    },
+    {
+      "id": "modern-chinese-painting-il",
+      "runware_air_id": "liangwc:modern-chinese-painting-il@2231812",
+      "name": "近现代国画风格 (Illustrious)",
+      "url": "https://civitai.com/models/1971776",
+      "tags": [
+        "illustrious",
+        "style",
+        "chinese-painting",
+        "国画"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false,
+      "description": "Modern Chinese painting style for Illustrious"
     }
   ],
   "categories": {
