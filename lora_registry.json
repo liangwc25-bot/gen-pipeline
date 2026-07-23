@@ -4484,6 +4484,47 @@
       "category": "style",
       "nsfw": false,
       "description": "Modern Chinese painting style for Illustrious"
+    },
+    {
+      "id": "ink-wash-sdxl",
+      "runware_air_id": "liangwc:ink-wash-sdxl@1521933",
+      "name": "Ink - Wash style SDXL",
+      "url": "https://civitai.com/models/1347466",
+      "tags": [
+        "sdxl",
+        "style",
+        "ink",
+        "水墨"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "Ink wash painting style — SDXL base"
+    },
+    {
+      "id": "quan-v62-sdxl",
+      "runware_air_id": "liangwc:quan-v62@1",
+      "name": "拳拳 v6.2 SDXL",
+      "url": "https://huggingface.co/liangwc25/quan-v62-sdxl-lora",
+      "tags": [
+        "sdxl",
+        "character",
+        "quanquan"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "拳拳 (quanquan) v6.2 — trained on Replicate SDXL. May not work on fine-tuned SDXL checkpoints."
     }
   ],
   "categories": {
