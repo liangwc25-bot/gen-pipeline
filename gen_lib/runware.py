@@ -27,6 +27,7 @@ MODELS = {
     "prefect-ill-xl": {"id": "liangwc:6@1", "name": "Prefect Illustrious XL v8", "price": "~$0.003/张"},
     "guofeng4-xl":    {"id": "liangwc:guofeng4-xl@1", "name": "国风4 GuoFeng4 XL", "price": "~$0.003/张"},
     "pornmaster":     {"id": "liangwc:pornmaster@1", "name": "PornMaster-色情大师", "price": "~$0.003/张"},
+    "lustify":        {"id": "hassakuxl:573152@2155386", "name": "LUSTIFY SDXL", "price": "~$0.003/张"},
     "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "$0.0019/次"},
 }
 
