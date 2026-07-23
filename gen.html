@@ -437,6 +437,15 @@ function setPlatform(p) {
   const dropdown = wrap.querySelector('.custom-select-dropdown');
   const label = wrap.querySelector('.custom-select-label');
   const hidden = document.getElementById('model');
+  const baseLabel = id => ({
+    'flux-dev': 'FLUX', 'flux-schnell': 'FLUX', 'flux-uncensored': 'FLUX',
+    'flux-2-pro': 'FLUX', 'pony-xl': 'Pony SDXL', 'prefect-ill-xl': 'Illustrious XL',
+    'guofeng4-xl': 'SDXL 1.0', 'pornmaster': 'SDXL 1.0', 'lustify': 'SDXL 1.0',
+    'sdxl-base': 'SDXL 1.0', 'dreamshaper-xl': 'SDXL 1.0', 'juggernaut-xl': 'SDXL 1.0',
+    'qwen-edit': 'Qwen', 'pony': 'Pony SDXL', 'illustrious': 'Illustrious XL',
+    'sdxl': 'SDXL 1.0', 'flux': 'FLUX',
+  }[id] || 'SDXL 1.0');
+
   if (p === 'modelslab') {
     const models = [
       { id: 'pony', name: 'Pony Diffusion' },
@@ -445,11 +454,11 @@ function setPlatform(p) {
       { id: 'flux', name: 'FLUX.1-dev' },
     ];
     dropdown.innerHTML = models.map(m =>
-      `<div class="custom-opt${m.id === hidden.value ? ' active' : ''}" data-value="${m.id}">${m.name}</div>`
+      `<div class="custom-opt${m.id === hidden.value ? ' active' : ''}" data-value="${m.id}">${m.name} (${baseLabel(m.id)})</div>`
     ).join('');
     const cur = models.find(m => m.id === hidden.value);
     if (!cur && models[0]) { hidden.value = models[0].id; }
-    label.textContent = cur ? cur.name : models[0].name;
+    label.textContent = cur ? `${cur.name} (${baseLabel(cur.id)})` : `${models[0].name} (${baseLabel(models[0].id)})`;
   } else {
     loadModels();
   }
@@ -526,18 +535,18 @@ async function loadModels() {
     }
     const curVal = hidden.value;
     dropdown.innerHTML = models.map(m =>
-      `<div class="custom-opt${m.id === curVal ? ' active' : ''}" data-value="${m.id}">${m.name}</div>`
+      `<div class="custom-opt${m.id === curVal ? ' active' : ''}" data-value="${m.id}">${m.name} (${baseLabel(m.id)})</div>`
     ).join('');
     // Update label
     const active = models.find(m => m.id === curVal);
-    label.textContent = active ? active.name : (models[0] ? models[0].name : '');
+    label.textContent = active ? `${active.name} (${baseLabel(active.id)})` : (models[0] ? `${models[0].name} (${baseLabel(models[0].id)})` : '');
     if (!active && models[0]) { hidden.value = models[0].id; }
   } catch(e) {
     dropdown.innerHTML = [
       { id: 'flux-dev', name: 'FLUX.1-dev' },
       { id: 'pony-xl', name: 'Prefect Pony XL v3' },
       { id: 'prefect-ill-xl', name: 'Prefect Illustrious XL v8' },
-    ].map(m => `<div class="custom-opt${m.id === hidden.value ? ' active' : ''}" data-value="${m.id}">${m.name}</div>`).join('');
+    ].map(m => `<div class="custom-opt${m.id === hidden.value ? ' active' : ''}" data-value="${m.id}">${m.name} (${baseLabel(m.id)})</div>`).join('');
     const cur = dropdown.querySelector('.custom-opt.active');
     label.textContent = cur ? cur.textContent : 'FLUX.1-dev';
   }
