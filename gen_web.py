@@ -215,7 +215,7 @@ def list_loras(model: str = None) -> dict:
 
     all_loras = registry.get("loras", [])
     # Normalize model aliases for filtering
-    model_aliases = {"pony-xl": "pony", "prefect-ill-xl": "illustrious", "flux-uncensored": "flux-dev", "guofeng4-xl": "sdxl", "pornmaster": "sdxl", "lustify": "sdxl"}
+    model_aliases = {"pony-xl": "pony", "prefect-ill-xl": "illustrious", "flux-uncensored": "flux-dev", "guofeng4-xl": "sdxl", "pornmaster": "sdxl", "lustify": "sdxl", "sdxl-base": "sdxl", "dreamshaper-xl": "sdxl", "juggernaut-xl": "sdxl"}
     match_base = model_aliases.get(model, model) if model else None
     result = []
     for l in all_loras:
@@ -245,7 +245,7 @@ def list_models(platform: str = "runware") -> dict:
         return {"success": True, "models": models}
     else:
         from gen_lib.runware import MODELS as RUNWARE_MODELS
-        web_models = ["flux-dev", "pony-xl", "prefect-ill-xl", "guofeng4-xl", "pornmaster", "lustify", "qwen-edit", "flux-uncensored"]
+        web_models = ["flux-dev", "pony-xl", "prefect-ill-xl", "guofeng4-xl", "pornmaster", "lustify", "sdxl-base", "dreamshaper-xl", "juggernaut-xl", "qwen-edit", "flux-uncensored"]
         models = [{"id": k, "name": RUNWARE_MODELS[k]["name"], "price": RUNWARE_MODELS[k]["price"]}
                   for k in web_models if k in RUNWARE_MODELS]
         return {"success": True, "models": models}
