@@ -4,38 +4,18 @@ gen_lib/fal.py — fal.ai image generation.
 Platforms:
   - FLUX Schnell (fastest, $0.003/MP)
   - FLUX Pro + img2img (~$0.05-0.10/MP)
-  - FLUX + LoRA (~$0.035/MP) — SFW only, safety checker blocks NSFW
 """
 
 from pathlib import Path
 from gen_lib.common import get_key, save_image, image_to_data_url, http_post, download_bytes
 import sys
 
-LORA_URL = "https://huggingface.co/liangwc25/NSFW_FLUX-1.DEV/resolve/main/NSFW_FLUX-1.DEV.safetensors"
-
-
 def generate(prompt: str, *, negative_prompt: str = "", seed: int = None,
-             image_path: str = None, strength: float = 0.6,
-             lora: bool = False) -> Path:
+             image_path: str = None, strength: float = 0.6) -> Path:
     """Generate image via fal.ai."""
     api_key = get_key("FAL_KEY")
 
-    if lora:
-        endpoint = "https://fal.run/fal-ai/flux-lora"
-        payload = {
-            "prompt": prompt,
-            "negative_prompt": negative_prompt,
-            "lora_url": LORA_URL,
-            "lora_scale": 0.8,
-            "num_images": 1,
-            "image_size": "landscape_16_9",
-            "enable_safety_checker": False,
-            "output_format": "jpeg",
-        }
-        prefix = "fal_lora"
-        model_name = "FLUX + LoRA"
-        print(f"🎨 fal.ai {model_name} (~$0.035/MP)")
-    elif image_path:
+    if image_path:
         endpoint = "https://fal.run/fal-ai/flux-pro"
         payload = {
             "prompt": prompt,

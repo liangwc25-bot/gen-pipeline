@@ -8,7 +8,6 @@ gen.py — AI 图片/视频生成 dispatcher。
   runware    Runware FLUX.1-dev/Pony/SDXL + LoRA + img2img ($0.0013/张)
   fal        fal.ai FLUX Schnell ($0.003/张)
   fal-pro    fal.ai FLUX Pro + img2img (~$0.05-0.10)
-  fal-lora   fal.ai FLUX + LoRA (SFW only)
   replicate  Replicate FLUX NSFW (~$0.025/张)
   grok       xAI Grok Imagine ($0.02/张)
   together   Together AI (Dreamshaper/SDXL/etc)
@@ -47,7 +46,6 @@ PLATFORM_DISPATCH = {
     "runware":    ("gen_lib.runware",    "generate"),
     "fal":        ("gen_lib.fal",        "generate"),
     "fal-pro":    ("gen_lib.fal",        "generate"),
-    "fal-lora":   ("gen_lib.fal",        "generate"),
     "grok":       ("gen_lib.grok",       "generate"),
     "together":   ("gen_lib.together",   "generate"),
     "replicate":  ("gen_lib.replicate",  "generate"),
@@ -144,8 +142,6 @@ def main():
         kwargs["strength"] = args.strength
         if args.seed is not None:
             kwargs["seed"] = args.seed
-    elif args.platform == "fal-lora":
-        kwargs["lora"] = True
     elif args.platform == "fal":
         if args.seed is not None:
             kwargs["seed"] = args.seed
