@@ -256,7 +256,7 @@
 
       <!-- ModelsLab info -->
       <div class="form-group" id="modelslab-info" style="display:none">
-        <div class="hint nsfw">🧪 Pony/Illustrious 在 prompt 中加 rating_explicit 解锁 NSFW · SAFETY_CHECKER 已关 · ~$0.0047/张</div>
+        <div class="hint nsfw">🧪 Pony/Illustrious 在 prompt 中加 rating_explicit 解锁 NSFW · SAFETY_CHECKER 已关 · 按量计费</div>
         <div class="hint" style="margin-top:4px">💡 FLUX/SDXL 裸跑有底座 alignment，Pony/Illu 原生 NSFW</div>
       </div>
 
@@ -439,17 +439,17 @@ function setPlatform(p) {
   const hidden = document.getElementById('model');
   if (p === 'modelslab') {
     const models = [
-      { id: 'pony', name: 'Pony Diffusion', price: '~$0.0047' },
-      { id: 'illustrious', name: 'Illustrious Hassaku XL', price: '~$0.0047' },
-      { id: 'sdxl', name: 'SDXL', price: '~$0.0047' },
-      { id: 'flux', name: 'FLUX.1-dev', price: '~$0.0047' },
+      { id: 'pony', name: 'Pony Diffusion' },
+      { id: 'illustrious', name: 'Illustrious Hassaku XL' },
+      { id: 'sdxl', name: 'SDXL' },
+      { id: 'flux', name: 'FLUX.1-dev' },
     ];
     dropdown.innerHTML = models.map(m =>
-      `<div class="custom-opt${m.id === hidden.value ? ' active' : ''}" data-value="${m.id}">${m.name} (${m.price})</div>`
+      `<div class="custom-opt${m.id === hidden.value ? ' active' : ''}" data-value="${m.id}">${m.name}</div>`
     ).join('');
     const cur = models.find(m => m.id === hidden.value);
     if (!cur && models[0]) { hidden.value = models[0].id; }
-    label.textContent = cur ? `${cur.name} (${cur.price})` : `${models[0].name} (${models[0].price})`;
+    label.textContent = cur ? cur.name : models[0].name;
   } else {
     loadModels();
   }
@@ -518,19 +518,19 @@ async function loadModels() {
       models = data.models;
     } else {
       models = [
-        { id: 'flux-dev', name: 'FLUX.1-dev', price: '$0.0013/张' },
-        { id: 'pony-xl', name: 'Prefect Pony XL v3', price: '$0.0013/张' },
-        { id: 'prefect-ill-xl', name: 'Prefect Illustrious XL v8', price: '~$0.003/张' },
-        { id: 'qwen-edit', name: 'Qwen-Image-Edit', price: '$0.0019/次' },
+        { id: 'flux-dev', name: 'FLUX.1-dev' },
+        { id: 'pony-xl', name: 'Prefect Pony XL v3' },
+        { id: 'prefect-ill-xl', name: 'Prefect Illustrious XL v8' },
+        { id: 'qwen-edit', name: 'Qwen-Image-Edit' },
       ];
     }
     const curVal = hidden.value;
     dropdown.innerHTML = models.map(m =>
-      `<div class="custom-opt${m.id === curVal ? ' active' : ''}" data-value="${m.id}">${m.name} (${m.price})</div>`
+      `<div class="custom-opt${m.id === curVal ? ' active' : ''}" data-value="${m.id}">${m.name}</div>`
     ).join('');
     // Update label
     const active = models.find(m => m.id === curVal);
-    label.textContent = active ? `${active.name} (${active.price})` : (models[0] ? `${models[0].name} (${models[0].price})` : '');
+    label.textContent = active ? active.name : (models[0] ? models[0].name : '');
     if (!active && models[0]) { hidden.value = models[0].id; }
   } catch(e) {
     dropdown.innerHTML = [
