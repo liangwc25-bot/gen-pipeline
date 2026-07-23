@@ -4381,27 +4381,6 @@
       "description": "PornMaster NSFW 中国风/汉服/角色扮演 style LoRA"
     },
     {
-      "id": "ink-style-sdxl",
-      "runware_air_id": "liangwc:ink-style-sdxl@625661",
-      "name": "Ink Style SDXL",
-      "url": "https://civitai.com/models/549045",
-      "tags": [
-        "sdxl",
-        "style",
-        "ink",
-        "水墨"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": false,
-      "description": "Ink wash painting style — 水墨风格"
-    },
-    {
       "id": "pubic-tattoo-ill",
       "runware_air_id": "liangwc:pubic-tattoo-ill@1060578",
       "name": "淫紋 pubic tattoo (Illustrious)",
