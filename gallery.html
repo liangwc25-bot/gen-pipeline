@@ -467,7 +467,7 @@ let favorites = new Set();
 let archived = new Set();
 let filterMode = 'all';
 let typeFilter = 'img';  // 'img', 'video', 'all'
-const PER_PAGE = 50;
+const PER_PAGE = 500;
 
 // ── Load favorites ──
 async function loadFavorites() {
@@ -898,15 +898,67 @@ function navModal(direction) {
     const sw = vp.offsetWidth;
     scrollSnapBusy = true;
     vp.scrollBy({ left: direction * sw, behavior: 'smooth' });
+    // Pre-fetch adjacent page when near edge
+    _prefetchNearby(direction, newIdx);
     return;
   }
 
-  // Cross-page navigation
+  // Cross-page navigation — use pre-fetched data if available
   const targetPage = direction > 0 ? currentPage + 1 : currentPage - 1;
   if (targetPage < 1 || targetPage > totalPages) return;
 
-  document.getElementById('modalImg').style.opacity = '0.4';
+  const cacheKey = direction > 0 ? 'next' : 'prev';
+  if (_pageCache[cacheKey] && _pageCache[cacheKey].page === targetPage) {
+    _applyCachedPage(direction, cacheKey);
+  } else {
+    _fetchAndApplyPage(direction, targetPage);
+  }
+}
 
+// ── Page cache for smooth cross-page navigation ──
+const _pageCache = {};
+
+function _prefetchNearby(direction, newIdx) {
+  const threshold = 3;
+  // Near end of current page → prefetch next
+  if (direction > 0 && newIdx >= modalImageList.length - threshold) {
+    _prefetchPage(currentPage + 1, 'next');
+  }
+  // Near start of current page → prefetch prev
+  if (direction < 0 && newIdx <= threshold) {
+    _prefetchPage(currentPage - 1, 'prev');
+  }
+}
+
+function _prefetchPage(page, slot) {
+  if (page < 1 || page > totalPages) return;
+  if (_pageCache[slot] && _pageCache[slot].page === page) return;
+  let apiFilter = filterMode === 'archive' ? 'archive' : 'all';
+  if (filterMode === 'fav') apiFilter = 'fav';
+  fetch(`/api/images?page=${page}&per_page=${PER_PAGE}&filter=${apiFilter}`)
+    .then(r => r.json())
+    .then(data => {
+      let imgs = data.images;
+      if (filterMode === 'fav') imgs = imgs.filter(img => favorites.has(img.filename));
+      _pageCache[slot] = { page, images: imgs };
+    })
+    .catch(() => {});
+}
+
+function _applyCachedPage(direction, cacheKey) {
+  const cached = _pageCache[cacheKey];
+  const newImages = cached.images;
+  currentPage = cached.page;
+  _pageCache[cacheKey] = null;
+  // Update allImages for grid rendering on close
+  allImages = newImages;
+  modalImageList = newImages;
+  modalIndex = direction > 0 ? 0 : newImages.length - 1;
+  showModalImage();
+}
+
+function _fetchAndApplyPage(direction, targetPage) {
+  document.getElementById('modalImg').style.opacity = '0.4';
   let apiFilter = filterMode === 'archive' ? 'archive' : 'all';
   if (filterMode === 'fav') apiFilter = 'fav';
   fetch(`/api/images?page=${targetPage}&per_page=${PER_PAGE}&filter=${apiFilter}`)
@@ -915,15 +967,11 @@ function navModal(direction) {
       currentPage = data.page;
       totalPages = data.total_pages;
       totalImages = data.total;
-      allImages = data.images;
-
-      let displayImages = allImages;
-      if (filterMode === 'fav') {
-        displayImages = allImages.filter(img => favorites.has(img.filename));
-      }
-      modalImageList = displayImages;
-
-      modalIndex = direction > 0 ? 0 : modalImageList.length - 1;
+      let imgs = data.images;
+      if (filterMode === 'fav') imgs = imgs.filter(img => favorites.has(img.filename));
+      allImages = imgs;
+      modalImageList = imgs;
+      modalIndex = direction > 0 ? 0 : imgs.length - 1;
       showModalImage();
       document.getElementById('modalImg').style.opacity = '';
     });
