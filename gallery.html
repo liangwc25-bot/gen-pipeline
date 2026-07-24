@@ -682,6 +682,9 @@ async function moveToTrash() {
 
 // ── Load page ──
 async function loadPage(page) {
+  // Clear page cache when loading a new page (filter/search may have changed)
+  _pageCache.next = null;
+  _pageCache.prev = null;
   let apiFilter = filterMode;
   if (filterMode === 'archive') apiFilter = 'archive';
   else if (filterMode === 'fav') apiFilter = 'fav';
