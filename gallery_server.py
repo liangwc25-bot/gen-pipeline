@@ -393,6 +393,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         if path == "/" or path == "/index.html":
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Cache-Control", "no-cache")
             self.end_headers()
             html_file = "i2v.html" if is_i2v_host else "gallery.html"
             with open(Path(__file__).parent / html_file) as f:
@@ -403,6 +404,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         if path == "/i2v.html" and not is_i2v_host:
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Cache-Control", "no-cache")
             self.end_headers()
             with open(Path(__file__).parent / "i2v.html") as f:
                 self.wfile.write(f.read().encode())

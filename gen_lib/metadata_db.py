@@ -355,6 +355,13 @@ def backfill(image_dir: Path, archive_dir: Path | None = None) -> int:
             indexed += 1
 
     db.commit()
+    # Clean up ghost entries: remove DB records for files no longer on disk
+    if not archive_dir:
+        all_disk = {f.name for f in image_dir.iterdir() if f.is_file()}
+        db.execute("DELETE FROM images WHERE filename NOT IN ({}) AND archived = 0".format(
+            ",".join("?" for _ in all_disk)
+        ), list(all_disk))
+        db.commit()
     db.close()
     return indexed
 
