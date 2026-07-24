@@ -67,7 +67,7 @@ def _normalize_model(raw: str) -> str:
 
 
 def _conn() -> sqlite3.Connection:
-    db = sqlite3.connect(str(DB_PATH))
+    db = sqlite3.connect(str(DB_PATH), timeout=5)
     db.execute("PRAGMA journal_mode=WAL")
     db.execute("PRAGMA synchronous=NORMAL")
     return db
@@ -334,8 +334,11 @@ def backfill(image_dir: Path, archive_dir: Path | None = None) -> int:
         for f in sorted(d.iterdir()):
             if f.suffix.lower() not in (".png", ".jpg", ".jpeg", ".webp"):
                 continue
-            meta = _parse_png(f) if f.suffix.lower() == ".png" else {}
-            mtime = int(f.stat().st_mtime)
+            try:
+                meta = _parse_png(f) if f.suffix.lower() == ".png" else {}
+                mtime = int(f.stat().st_mtime)
+            except FileNotFoundError:
+                continue  # file moved/trashed by another thread
             db.execute("""
                 INSERT OR REPLACE INTO images (filename, prompt, seed, model, params, favorited, archived, mtime)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
