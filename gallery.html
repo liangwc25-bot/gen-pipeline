@@ -654,11 +654,12 @@ async function sendToTg() {
 // ── Trash ──
 async function moveToTrash() {
   if (!modalFilename) { alert('BUG: modalFilename 为空!'); return; }
-  const url = `/api/trash?filename=${encodeURIComponent(modalFilename)}`;
+  const filename = modalFilename;
+  const url = `/api/trash?filename=${encodeURIComponent(filename)}`;
   const res = await fetch(url);
-  if (!res.ok) { const body = await res.text(); alert(`删除失败: HTTP ${res.status}\n${body.slice(0,200)}`); return; }
+  if (!res.ok) { const body = await res.text(); alert(`删除失败: HTTP ${res.status}\n文件名: ${filename}\n响应: ${body.slice(0,200)}`); return; }
   const data = await res.json();
-  if (!data.trashed) { alert(`删除失败: API 返回 trashed=false\n${JSON.stringify(data)}`); return; }
+  if (!data.trashed) { alert(`删除失败: API 返回 trashed=false\n文件名: ${filename}\n响应: ${JSON.stringify(data)}`); return; }
 
   favorites.delete(modalFilename);
   archived.delete(modalFilename);
@@ -669,8 +670,6 @@ async function moveToTrash() {
   allImages = allImages.filter(img => img.filename !== modalFilename);
   modalImageList = modalImageList.filter(img => img.filename !== modalFilename);
   totalImages--;
-  refreshCache();
-
   if (modalImageList.length === 0) {
     closeModal();
     return;
