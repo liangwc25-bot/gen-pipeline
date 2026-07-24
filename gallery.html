@@ -653,11 +653,12 @@ async function sendToTg() {
 
 // ── Trash ──
 async function moveToTrash() {
-  if (!modalFilename) return;
-  const res = await fetch(`/api/trash?filename=${encodeURIComponent(modalFilename)}`);
-  if (!res.ok) return;
+  if (!modalFilename) { alert('BUG: modalFilename 为空!'); return; }
+  const url = `/api/trash?filename=${encodeURIComponent(modalFilename)}`;
+  const res = await fetch(url);
+  if (!res.ok) { const body = await res.text(); alert(`删除失败: HTTP ${res.status}\n${body.slice(0,200)}`); return; }
   const data = await res.json();
-  if (!data.trashed) return;
+  if (!data.trashed) { alert(`删除失败: API 返回 trashed=false\n${JSON.stringify(data)}`); return; }
 
   favorites.delete(modalFilename);
   archived.delete(modalFilename);
