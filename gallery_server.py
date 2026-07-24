@@ -68,7 +68,10 @@ def move_to_trash(filename: str) -> dict | None:
     fp = IMAGES_DIR / filename
     if fp.exists():
         shutil.move(str(fp), str(TRASH_DIR / filename))
-        delete_record(filename)
+        try:
+            delete_record(filename)
+        except Exception:
+            pass  # DB may be locked by concurrent rescan; file already moved
         _cleanup_old_trash()
         return {"trashed": True, "filename": filename}
     return None
