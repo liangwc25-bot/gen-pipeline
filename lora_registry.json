@@ -4525,6 +4525,47 @@
       "category": "character_style",
       "nsfw": false,
       "description": "拳拳 (quanquan) v6.2 — trained on Replicate SDXL. May not work on fine-tuned SDXL checkpoints."
+    },
+    {
+      "id": "faceless-hood",
+      "runware_air_id": "liangwc:faceless-hood@2499767",
+      "name": "faceless hood",
+      "url": "https://civitai.com/models/2220431",
+      "tags": [
+        "illustrious",
+        "concept",
+        "hood"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Faceless hood — Illustrious XL base. Blank hood covering the face."
+    },
+    {
+      "id": "faceless-mask",
+      "runware_air_id": "liangwc:faceless-mask@1677068",
+      "name": "Faceless mask [Patterned/Armor/Robot]",
+      "url": "https://civitai.com/models/1123592",
+      "tags": [
+        "illustrious",
+        "pony",
+        "concept",
+        "mask"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Faceless mask — patterned/armor/robot styles. Supports Pony & Illustrious."
     }
   ],
   "categories": {
