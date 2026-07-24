@@ -1143,6 +1143,11 @@ async function batchOp(action) {
 
 // Init — DB is authoritative, gen_web.py inserts on generation. No rescan needed.
 async function initGallery() {
+  // Force-unregister any old Service Worker (cache-first SW was blocking page updates)
+  if ('serviceWorker' in navigator) {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    for (const reg of registrations) await reg.unregister();
+  }
   await Promise.all([loadFavorites(), loadArchived()]);
   await loadPage(1);
   _firstLoad = false;
