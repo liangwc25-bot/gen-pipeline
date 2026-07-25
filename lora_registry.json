@@ -4355,6 +4355,111 @@
       "category": "concept",
       "nsfw": false,
       "description": "Faceless mask — patterned/armor/robot styles. Supports Pony & Illustrious."
+    },
+    {
+      "id": "facesitting-pov-buttcrush",
+      "runware_air_id": "liangwc:facesitting-pov@1617237",
+      "name": "Facesitting (Close-up Reverse POV)/POV Buttcrush",
+      "url": "https://civitai.com/models/1190058",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "pov",
+        "facesitting"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Facesitting close-up reverse POV / POV buttcrush"
+    },
+    {
+      "id": "choking-pov",
+      "runware_air_id": "liangwc:choking-pov@2922107",
+      "name": "Choking POV IL&ZIT",
+      "url": "https://civitai.com/models/2602338",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "pov",
+        "choking"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Choking POV — Shrekman Hentai Loras"
+    },
+    {
+      "id": "guandao-weapon",
+      "runware_air_id": "liangwc:guandao-weapon@2075943",
+      "name": "Guandao weapon [IL]",
+      "url": "https://civitai.com/models/1834456",
+      "tags": [
+        "illustrious",
+        "concept",
+        "weapon",
+        "guandao"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Guandao weapon — traditional Chinese polearm"
+    },
+    {
+      "id": "revenant-scythe",
+      "runware_air_id": "liangwc:revenant-scythe@1759850",
+      "name": "Revenant Scythe - v2",
+      "url": "https://civitai.com/models/1511090",
+      "tags": [
+        "illustrious",
+        "concept",
+        "weapon",
+        "scythe"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Revenant Scythe — large curved blade weapon"
+    },
+    {
+      "id": "pov-on-stomach",
+      "runware_air_id": "liangwc:on-stomach-pony@862041",
+      "name": "POV On Stomach (Thirst Trap) [Pony]",
+      "url": "https://civitai.com/models/770731",
+      "tags": [
+        "pony",
+        "pov",
+        "on-stomach",
+        "thirst-trap"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "description": "POV On Stomach (Thirst Trap) — Pony base"
     }
   ],
   "categories": {
