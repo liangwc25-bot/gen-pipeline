@@ -4460,6 +4460,27 @@
       "category": "concept",
       "nsfw": true,
       "description": "POV On Stomach (Thirst Trap) — Pony base"
+    },
+    {
+      "id": "anal-dilator",
+      "runware_air_id": "liangwc:lora-2446854@2751245",
+      "name": "Anal dilator - Illustrious",
+      "url": "https://civitai.com/models/2446854",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "anal",
+        "dilator"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Anal dilator — Illustrious XL base"
     }
   ],
   "categories": {
