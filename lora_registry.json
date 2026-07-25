@@ -66,25 +66,6 @@
       "nsfw": false
     },
     {
-      "id": "add-micro-details",
-      "runware_air_id": "liangwc:add-micro-details@2832991",
-      "name": "Add Micro Details",
-      "url": "https://civitai.com/models/1377820",
-      "tags": [
-        "illustrious",
-        "concept",
-        "enhancer"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
       "id": "adjusting-clothes",
       "runware_air_id": "liangwc:adjusting-clothes@856243",
       "name": "Adjusting Clothes",
@@ -212,26 +193,6 @@
       "base_model": "illustrious",
       "category": "concept",
       "nsfw": false
-    },
-    {
-      "id": "ahri",
-      "runware_air_id": "liangwc:ahri@2702288",
-      "name": "Ahri (LoL)",
-      "url": "https://civitai.com/models/406449",
-      "tags": [
-        "illustrious",
-        "character",
-        "league of legends"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "notes": "Ahri 九尾狐"
     },
     {
       "id": "flux_685674_767398",
@@ -453,82 +414,6 @@
       "nsfw": false
     },
     {
-      "id": "bss-detail-slider-ill",
-      "runware_air_id": "liangwc:bss-detail-slider@2181616",
-      "name": "BSS Detail Enhancer Slider (Illu)",
-      "url": "https://civitai.com/models/1850267",
-      "tags": [
-        "illustrious",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "bss-detail-slider-pony",
-      "runware_air_id": "liangwc:bss-detail-slider@2181616",
-      "name": "BSS Detail Enhancer Slider (Pony)",
-      "url": "https://civitai.com/models/1850267",
-      "tags": [
-        "pony",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "bss-visual-slider-ill",
-      "runware_air_id": "liangwc:bss-visual-slider@2832193",
-      "name": "BSS Visual Enhancer Slider (Illu)",
-      "url": "https://civitai.com/models/1844250",
-      "tags": [
-        "illustrious",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "bss-visual-slider-pony",
-      "runware_air_id": "liangwc:bss-visual-slider@2832193",
-      "name": "BSS Visual Enhancer Slider (Pony)",
-      "url": "https://civitai.com/models/1844250",
-      "tags": [
-        "pony",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
       "id": "building-insertion-giantess",
       "runware_air_id": "liangwc:building-insertion-giantess@1610430",
       "name": "Building Insertion / Giantess",
@@ -627,25 +512,6 @@
       "nsfw": true
     },
     {
-      "id": "cum-amount-slider",
-      "runware_air_id": "liangwc:cum-amount-slider@3072145",
-      "name": "Cum Amount Slider",
-      "url": "https://civitai.com/models/2732497",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
       "id": "cum-bath",
       "runware_air_id": "liangwc:cum-bath@895430",
       "name": "Cum Bath",
@@ -687,25 +553,6 @@
       "runware_air_id": "liangwc:cum-disgust@2307512",
       "name": "Cum Disgust",
       "url": "https://civitai.com/models/2038763",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
-      "id": "cum-ill",
-      "runware_air_id": "liangwc:cum-ill@1178301",
-      "name": "Cum Ill",
-      "url": "https://civitai.com/models/1050099",
       "tags": [
         "illustrious",
         "nsfw",
@@ -1412,26 +1259,6 @@
       "nsfw": true
     },
     {
-      "id": "lewd-details-enchancer",
-      "runware_air_id": "liangwc:yangyuhuan@1613410",
-      "name": "Fucked Silly / Lewd Details Enchancer",
-      "url": "https://civitai.com/models/1273929",
-      "tags": [
-        "illustrious",
-        "concept",
-        "enhancer",
-        "nsfw"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
       "id": "flux_713466_1185074",
       "runware_air_id": "liangwc:flux_713466_1185074@1185074",
       "name": "Futa Woman Sevenof9",
@@ -1931,25 +1758,6 @@
       "base_model": "pony",
       "category": "concept",
       "nsfw": false
-    },
-    {
-      "id": "lady-bulge",
-      "runware_air_id": "liangwc:lady-bulge@2353585",
-      "name": "Lady Bulge",
-      "url": "https://civitai.com/models/2001019",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true
     },
     {
       "id": "large-insertion-pov",
@@ -3296,25 +3104,6 @@
       "base_model": "pony",
       "category": "concept",
       "nsfw": true
-    },
-    {
-      "id": "unknown-slider",
-      "runware_air_id": "liangwc:unknown-slider@2654369",
-      "name": "Unknown Slider",
-      "url": "https://civitai.com/models/2360095",
-      "tags": [
-        "illustrious",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
     },
     {
       "id": "upshorts",
