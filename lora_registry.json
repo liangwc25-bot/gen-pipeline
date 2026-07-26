@@ -4886,6 +4886,136 @@
       "category": "concept",
       "nsfw": true,
       "description": "tiny demon Lilith -101 — Pony base"
+    },
+    {
+      "id": "fairy-sex",
+      "runware_air_id": "liangwc:fairy-sex@2602748",
+      "name": "Fairy Sex",
+      "url": "https://civitai.com/models/2021842",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "fairy",
+        "sex",
+        "tiny"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Fairy Sex — fairy sized person, Illustrious"
+    },
+    {
+      "id": "shiny-nai-il",
+      "runware_air_id": "liangwc:shiny-nai-il@2786889",
+      "name": "Shiny Nai style ILXL",
+      "url": "https://civitai.com/models/618752",
+      "tags": [
+        "illustrious",
+        "concept",
+        "shiny",
+        "nai",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Shiny Nai style — Illustrious"
+    },
+    {
+      "id": "shiny-nai-pony",
+      "runware_air_id": "liangwc:shiny-nai-pony@691705",
+      "name": "Shiny Nai style Pony",
+      "url": "https://civitai.com/models/618752",
+      "tags": [
+        "pony",
+        "concept",
+        "shiny",
+        "nai",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Shiny Nai style — Pony"
+    },
+    {
+      "id": "minidress",
+      "runware_air_id": "liangwc:minidress@2852556",
+      "name": "minidress",
+      "url": "https://civitai.com/models/2538201",
+      "tags": [
+        "illustrious",
+        "concept",
+        "minidress",
+        "clothing"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "minidress — Illustrious"
+    },
+    {
+      "id": "detailed-pussy",
+      "runware_air_id": "liangwc:detailed-pussy@2572081",
+      "name": "Detailed Pussy",
+      "url": "https://civitai.com/models/1864062",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "pussy",
+        "detailed"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Detailed Pussy — Illustrious"
+    },
+    {
+      "id": "iyaena-slave-jewelry",
+      "runware_air_id": "liangwc:iyaena-jewelry@2443554",
+      "name": "Iyaena - Slave jewelry",
+      "url": "https://civitai.com/models/2169897",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "slave",
+        "jewelry",
+        "iyaena"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Iyaena - Slave jewelry — Illustrious"
     }
   ],
   "categories": {
