@@ -5342,6 +5342,156 @@
       "category": "concept",
       "nsfw": true,
       "description": "0625 Chinese bunny girl — Pony"
+    },
+    {
+      "id": "dw-doll-flux",
+      "runware_air_id": "liangwc:dw-doll-flux@925355",
+      "name": "DW Chinese Doll Flux",
+      "url": "https://civitai.com/models/825160",
+      "tags": [
+        "flux",
+        "concept",
+        "chinese",
+        "doll",
+        "dw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "concept",
+      "nsfw": false,
+      "description": "DW Digital Warlock Chinese Doll Likeliness — Flux"
+    },
+    {
+      "id": "gufeng-qingqu",
+      "runware_air_id": "liangwc:gufeng-qingqu@539310",
+      "name": "Chinese lingerie 古风小情趣",
+      "url": "https://civitai.com/models/141682",
+      "tags": [
+        "pony",
+        "nsfw",
+        "lingerie",
+        "chinese",
+        "gufeng"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Chinese lingerie Clothing 古风小情趣 — Pony"
+    },
+    {
+      "id": "ccs-chinese-fantasy",
+      "runware_air_id": "liangwc:ccs-chinese-fantasy@1606488",
+      "name": "CC's Chinese Fantasy",
+      "url": "https://civitai.com/models/1373599",
+      "tags": [
+        "illustrious",
+        "concept",
+        "chinese",
+        "fantasy"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "CC's Chinese Fantasy — Illustrious"
+    },
+    {
+      "id": "dark-empress",
+      "runware_air_id": "liangwc:dark-empress@2191527",
+      "name": "Dark empress Wuxia",
+      "url": "https://civitai.com/models/1936327",
+      "tags": [
+        "illustrious",
+        "concept",
+        "dark",
+        "empress",
+        "wuxia"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Dark empress — Ancient Chinese/Wuxia style"
+    },
+    {
+      "id": "yeo-jiwok",
+      "runware_air_id": "liangwc:yeo-jiwok@2374913",
+      "name": "Yeo Jiwok Manhwa",
+      "url": "https://civitai.com/models/2099063",
+      "tags": [
+        "illustrious",
+        "concept",
+        "manhwa",
+        "webtoon"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Yeo Jiwok — God Bless You Manhwa/Webtoon style"
+    },
+    {
+      "id": "shuixian-wuxia",
+      "runware_air_id": "liangwc:shuixian@2233416",
+      "name": "Shuixian Wuxia",
+      "url": "https://civitai.com/models/1973164",
+      "tags": [
+        "illustrious",
+        "concept",
+        "wuxia",
+        "shuixian"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Shuixian — Wuxia Style"
+    },
+    {
+      "id": "wu-zetian",
+      "runware_air_id": "liangwc:wu-zetian@2253222",
+      "name": "Wu Zetian Wuxia",
+      "url": "https://civitai.com/models/1990530",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wu-zetian",
+        "wuxia"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Wu Zetian — China great sovereign Wuxia style"
     }
   ],
   "categories": {
