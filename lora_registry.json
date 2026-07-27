@@ -4846,7 +4846,7 @@
     },
     {
       "id": "tinygirl-illustrious",
-      "runware_air_id": "liangwc:tinygirl-ill@1694875",
+      "runware_air_id": "liangwc:lora-1694875@1694875",
       "name": "Tinygirl - Illustrious",
       "url": "https://civitai.com/models/1107790",
       "tags": [
@@ -5016,6 +5016,69 @@
       "category": "concept",
       "nsfw": true,
       "description": "Iyaena - Slave jewelry — Illustrious"
+    },
+    {
+      "id": "kneeling-submissive",
+      "runware_air_id": "liangwc:kneeling-submissive@898161",
+      "name": "Kneeling/submissive",
+      "url": "https://civitai.com/models/803266",
+      "tags": [
+        "pony",
+        "nsfw",
+        "kneeling",
+        "submissive"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Kneeling/submissive — Pony base"
+    },
+    {
+      "id": "submissive-concept",
+      "runware_air_id": "liangwc:submissive-concept@2809867",
+      "name": "Submissive Concept",
+      "url": "https://civitai.com/models/2499647",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "submissive"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Submissive Concept — Illustrious"
+    },
+    {
+      "id": "flaccid-foreskin",
+      "runware_air_id": "liangwc:flaccid-foreskin@2916039",
+      "name": "small flaccid foreskin penis",
+      "url": "https://civitai.com/models/2595872",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "flaccid",
+        "foreskin",
+        "penis"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "small flaccid foreskin penis — Illustrious"
     }
   ],
   "categories": {
