@@ -5495,7 +5495,7 @@
     },
     {
       "id": "guoman-pony",
-      "runware_air_id": "",
+      "runware_air_id": "liangwc:guoman-pony@801320",
       "name": "XE GuoMan LoRA",
       "url": "https://civitai.com/models/709435",
       "tags": [
@@ -5512,6 +5512,93 @@
       "category": "concept",
       "nsfw": false,
       "description": "XE: GuoMan LoRA — Pony base"
+    },
+    {
+      "id": "xian-nu",
+      "runware_air_id": "liangwc:xian-nu@1943863",
+      "name": "xian nu chinese style",
+      "url": "https://civitai.com/models/1717691",
+      "tags": [
+        "illustrious",
+        "concept",
+        "chinese",
+        "xian-nu"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "xian nu chinese style 古風母豬 — Illustrious"
+    },
+    {
+      "id": "crimson-xiannu",
+      "runware_air_id": "liangwc:crimson-xiannu@2178043",
+      "name": "Crimson Xiannu Wuxia",
+      "url": "https://civitai.com/models/1924359",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wuxia",
+        "crimson",
+        "xiannu"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Crimson Xiannu — Wuxia style"
+    },
+    {
+      "id": "bailing-miao",
+      "runware_air_id": "liangwc:bailing-miao@2339664",
+      "name": "BaiLing Miao Wuxia",
+      "url": "https://civitai.com/models/2067654",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wuxia",
+        "bailing",
+        "miao"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "BaiLing Miao — Wuxia"
+    },
+    {
+      "id": "dw-doll-pony",
+      "runware_air_id": "liangwc:dw-doll-pony@922756",
+      "name": "DW Chinese Doll Pony",
+      "url": "https://civitai.com/models/825160",
+      "tags": [
+        "pony",
+        "concept",
+        "chinese",
+        "doll",
+        "dw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false,
+      "description": "DW Digital Warlock Chinese Doll Likeliness — Pony"
     }
   ],
   "categories": {
