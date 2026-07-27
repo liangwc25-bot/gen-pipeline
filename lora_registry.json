@@ -5492,6 +5492,26 @@
       "category": "concept",
       "nsfw": true,
       "description": "Wu Zetian — China great sovereign Wuxia style"
+    },
+    {
+      "id": "guoman-pony",
+      "runware_air_id": "",
+      "name": "XE GuoMan LoRA",
+      "url": "https://civitai.com/models/709435",
+      "tags": [
+        "pony",
+        "concept",
+        "guoman"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false,
+      "description": "XE: GuoMan LoRA — Pony base"
     }
   ],
   "categories": {
