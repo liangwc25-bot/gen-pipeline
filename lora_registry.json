@@ -5079,6 +5079,269 @@
       "category": "concept",
       "nsfw": true,
       "description": "small flaccid foreskin penis — Illustrious"
+    },
+    {
+      "id": "dudou",
+      "runware_air_id": "liangwc:dudou@1185044",
+      "name": "Chinese Lingerie 肚兜 Dudou",
+      "url": "https://civitai.com/models/1056103",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "lingerie",
+        "dudou",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Chinese Lingerie 肚兜 Dudou — Illustrious"
+    },
+    {
+      "id": "chinese-wedding-1007",
+      "runware_air_id": "liangwc:chinese-wedding-pony1@886207",
+      "name": "1007 Chinese wedding dress",
+      "url": "https://civitai.com/models/792527",
+      "tags": [
+        "pony",
+        "concept",
+        "chinese",
+        "wedding",
+        "dress"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false,
+      "description": "1007 Chinese wedding dress — Pony"
+    },
+    {
+      "id": "chinese-wedding-0711",
+      "runware_air_id": "liangwc:chinese-wedding-pony2@595282",
+      "name": "0711 Chinese wedding dress",
+      "url": "https://civitai.com/models/535514",
+      "tags": [
+        "pony",
+        "concept",
+        "chinese",
+        "wedding",
+        "dress"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false,
+      "description": "0711 Chinese wedding dress — Pony"
+    },
+    {
+      "id": "chinese-swimsuit",
+      "runware_air_id": "liangwc:chinese-swimsuit@889459",
+      "name": "1010 Chinese swimsuit",
+      "url": "https://civitai.com/models/795447",
+      "tags": [
+        "pony",
+        "concept",
+        "chinese",
+        "swimsuit"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false,
+      "description": "1010 Chinese style printed one piece swimsuit — Pony"
+    },
+    {
+      "id": "cheongsam",
+      "runware_air_id": "liangwc:cheongsam@549164",
+      "name": "0632 Chinese cheongsam",
+      "url": "https://civitai.com/models/493956",
+      "tags": [
+        "pony",
+        "concept",
+        "cheongsam",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false,
+      "description": "0632 Chinese cheongsam — Pony"
+    },
+    {
+      "id": "sexy-lingerie",
+      "runware_air_id": "liangwc:sexy-lingerie@1951432",
+      "name": "Chinese Style Sexy Lingerie",
+      "url": "https://civitai.com/models/1724344",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "lingerie",
+        "chinese",
+        "sexy"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Chinese Style Sexy Lingerie — Illustrious (325MB)"
+    },
+    {
+      "id": "wedding-dress2",
+      "runware_air_id": "liangwc:wedding-dress2@2069519",
+      "name": "Chinese style wedding dress 2",
+      "url": "https://civitai.com/models/1828738",
+      "tags": [
+        "illustrious",
+        "concept",
+        "chinese",
+        "wedding",
+        "dress"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Chinese style wedding dress 2 — Illustrious"
+    },
+    {
+      "id": "chinese-wedding-pony3",
+      "runware_air_id": "liangwc:chinese-wedding-pony3@1002426",
+      "name": "Chinese wedding dress 中式婚纱",
+      "url": "https://civitai.com/models/895809",
+      "tags": [
+        "pony",
+        "nsfw",
+        "chinese",
+        "wedding",
+        "lingerie"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Chinese wedding dress 中式婚纱 Sexy lingerie — Pony"
+    },
+    {
+      "id": "wuxia-green-dress",
+      "runware_air_id": "liangwc:wuxia-green@2469026",
+      "name": "Chinese wuxia green dress",
+      "url": "https://civitai.com/models/2192806",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wuxia",
+        "green",
+        "dress",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Chinese wuxia green dress — Illustrious"
+    },
+    {
+      "id": "wuxia-girl-2",
+      "runware_air_id": "liangwc:wuxia-girl2@2491859",
+      "name": "Chinese Wuxia girl 2",
+      "url": "https://civitai.com/models/2213299",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wuxia",
+        "girl",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Chinese Wuxia girl-武侠风格女侠2 — Illustrious"
+    },
+    {
+      "id": "wuxia-girl-1",
+      "runware_air_id": "liangwc:wuxia-girl1@2468438",
+      "name": "Chinese Wuxia girl 1",
+      "url": "https://civitai.com/models/2186100",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wuxia",
+        "girl",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Chinese Wuxia girl-武侠风格女侠 — Illustrious"
+    },
+    {
+      "id": "chinese-bunny-girl",
+      "runware_air_id": "liangwc:bunny-girl@542799",
+      "name": "0625 Chinese bunny girl",
+      "url": "https://civitai.com/models/488143",
+      "tags": [
+        "pony",
+        "nsfw",
+        "chinese",
+        "bunny",
+        "girl"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "description": "0625 Chinese bunny girl — Pony"
     }
   ],
   "categories": {
