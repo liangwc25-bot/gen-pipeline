@@ -31,7 +31,7 @@ MODELS = {
     "sdxl-vanilla":   {"id": "liangwc:sdxl-vanilla@1", "name": "SDXL Vanilla 1.0", "price": "~$0.003/张"},
     "dreamshaper-xl": {"id": "civitai:112902@121931", "name": "DreamShaper XL", "price": "~$0.003/张"},
     "juggernaut-xl":  {"id": "rundiffusion:133005@288982", "name": "JuggernautXL V8", "price": "~$0.003/张"},
-    "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "$0.0019/次"},
+    "qwen-edit":      {"id": "liangwc:qwen-edit-2509-abliterated@1", "name": "Qwen-Edit 无审查版", "price": "~$0.003/张"},
 }
 
 # Aspect ratio → (width, height)
