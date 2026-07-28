@@ -5599,6 +5599,199 @@
       "category": "concept",
       "nsfw": false,
       "description": "DW Digital Warlock Chinese Doll Likeliness — Pony"
+    },
+    {
+      "id": "gufeng-sdxl",
+      "runware_air_id": "liangwc:gufeng-sdxl@157067",
+      "name": "Chinese lingerie 古风小情趣 SDXL",
+      "url": "https://civitai.com/models/141682",
+      "tags": [
+        "sdxl",
+        "nsfw",
+        "lingerie",
+        "chinese",
+        "gufeng"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Chinese lingerie 古风小情趣 — SDXL 1.0 (注意是clean SDXL, 非Pony/Illu底座)"
+    },
+    {
+      "id": "jiachen-dragon",
+      "runware_air_id": "liangwc:jiachen-dragon@358317",
+      "name": "甲辰青龙小女儿 China Dress",
+      "url": "https://civitai.com/models/315911",
+      "tags": [
+        "sdxl",
+        "concept",
+        "dragon",
+        "chinese",
+        "dress"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Jiachen Little Dragon Girl China Dress — SDXL 1.0"
+    },
+    {
+      "id": "pornmaster-lora",
+      "runware_air_id": "liangwc:pornmaster-lora@1977042",
+      "name": "PornMaster Asian Babe (lycoris)",
+      "url": "https://civitai.com/models/88558",
+      "tags": [
+        "sdxl",
+        "nsfw",
+        "pornmaster",
+        "asian"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": true,
+      "description": "PornMaster Asian Babe — lycoris格式, SDXL 1.0"
+    },
+    {
+      "id": "guofeng-q",
+      "runware_air_id": "liangwc:guofeng-q@616971",
+      "name": "国风Q版 Chinese Q-version",
+      "url": "https://civitai.com/models/554376",
+      "tags": [
+        "sdxl",
+        "concept",
+        "q-version",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "国风Q版 — SDXL 1.0"
+    },
+    {
+      "id": "guofeng-chahua",
+      "runware_air_id": "liangwc:guofeng-chahua@130709",
+      "name": "国风插画 Chinese style illustration",
+      "url": "https://civitai.com/models/120206",
+      "tags": [
+        "sdxl",
+        "concept",
+        "illustration",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "国风插画 — SDXL 1.0 (325MB)"
+    },
+    {
+      "id": "femboy-chinese",
+      "runware_air_id": "liangwc:femboy-chinese@1079657",
+      "name": "Femboy Chinese",
+      "url": "https://civitai.com/models/964323",
+      "tags": [
+        "sdxl",
+        "nsfw",
+        "femboy",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Femboy Chinese — SDXL 1.0"
+    },
+    {
+      "id": "guofeng-shaonv",
+      "runware_air_id": "liangwc:guofeng-shaonv@226403",
+      "name": "国风少女系列 Chinese-style girl",
+      "url": "https://civitai.com/models/201159",
+      "tags": [
+        "sdxl",
+        "concept",
+        "chinese",
+        "girl"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "国风少女系列 Traditional Chinese-style girl — SDXL 1.0"
+    },
+    {
+      "id": "guofeng-mengwan",
+      "runware_air_id": "liangwc:guofeng-mengwan@170956",
+      "name": "国风萌玩 Chinese style cute doll",
+      "url": "https://civitai.com/models/152738",
+      "tags": [
+        "sdxl",
+        "concept",
+        "cute",
+        "doll",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "国风萌玩 Chinese style cute doll — SDXL 1.0"
+    },
+    {
+      "id": "dark-sovereign",
+      "runware_air_id": "liangwc:dark-sovereign@2198025",
+      "name": "Dark sovereign Wuxia",
+      "url": "https://civitai.com/models/1942047",
+      "tags": [
+        "illustrious",
+        "concept",
+        "dark",
+        "sovereign",
+        "wuxia"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Dark sovereign — Wuxia Style (重试成功!)"
     }
   ],
   "categories": {
