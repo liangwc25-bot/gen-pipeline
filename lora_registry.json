@@ -5814,6 +5814,26 @@
       "category": "concept",
       "nsfw": false,
       "description": "Fight Chinese Dress 女侠战袍 — SDXL 1.0"
+    },
+    {
+      "id": "quanquan-v63",
+      "runware_air_id": "liangwc:quanquan-v63@1",
+      "name": "拳拳 v63 FLUX",
+      "url": "https://replicate.com/liangwc25-bot/quanquan-v63-flux",
+      "tags": [
+        "flux",
+        "character",
+        "quanquan"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "拳拳 v63 — FLUX LoRA, 3000 steps, rank 16, Replicate训练"
     }
   ],
   "categories": {
