@@ -5792,6 +5792,28 @@
       "category": "concept",
       "nsfw": false,
       "description": "Dark sovereign — Wuxia Style (重试成功!)"
+    },
+    {
+      "id": "fight-dress",
+      "runware_air_id": "liangwc:fight-dress@156360",
+      "name": "Fight Chinese Dress 女侠战袍",
+      "url": "https://civitai.com/models/141057",
+      "tags": [
+        "sdxl",
+        "concept",
+        "chinese",
+        "dress",
+        "fight"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Fight Chinese Dress 女侠战袍 — SDXL 1.0"
     }
   ],
   "categories": {
