@@ -159,10 +159,11 @@ def is_archived(filename: str) -> bool:
 
 def list_images(model_filter: str = "", search: str = "", archived: bool = False,
                 favorited_only: bool = False, video_only: bool = None,
-                offset: int = 0, limit: int = 50) -> list[dict]:
+                time_filter: str = "", offset: int = 0, limit: int = 50) -> list[dict]:
     """List images with optional filters. Returns [{filename, ...}, ...].
     
     video_only: None=all, True=video only, False=image only.
+    time_filter: 'today' (since midnight UTC), 'week' (last 7 days), '' (all).
     """
     db = _conn()
     db.row_factory = sqlite3.Row
@@ -181,6 +182,11 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
         conditions.append("(model LIKE 'i2v-%' OR model = 'Wan 2.2 Video')")
     elif video_only is False:
         conditions.append("(model NOT LIKE 'i2v-%' AND model != 'Wan 2.2 Video')")
+
+    if time_filter == "today":
+        conditions.append("mtime >= unixepoch('now', 'start of day')")
+    elif time_filter == "week":
+        conditions.append("mtime >= unixepoch('now', '-7 days')")
 
     where = " AND ".join(conditions)
 
@@ -214,10 +220,12 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
 
 
 def count_images(model_filter: str = "", search: str = "", archived: bool = False,
-                 favorited_only: bool = False, video_only: bool = None) -> int:
+                 favorited_only: bool = False, video_only: bool = None,
+                 time_filter: str = "") -> int:
     """Count images matching filters.
     
     video_only: None=all, True=video only, False=image only.
+    time_filter: 'today' (since midnight UTC), 'week' (last 7 days), '' (all).
     """
     db = _conn()
 
@@ -235,6 +243,11 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
         conditions.append("(model LIKE 'i2v-%' OR model = 'Wan 2.2 Video')")
     elif video_only is False:
         conditions.append("(model NOT LIKE 'i2v-%' AND model != 'Wan 2.2 Video')")
+
+    if time_filter == "today":
+        conditions.append("mtime >= unixepoch('now', 'start of day')")
+    elif time_filter == "week":
+        conditions.append("mtime >= unixepoch('now', '-7 days')")
 
     where = " AND ".join(conditions)
 

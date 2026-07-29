@@ -457,6 +457,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             model_filter = params.get("model", [""])[0]
             search = params.get("search", [""])[0]
             type_filter = params.get("type", ["all"])[0]
+            time_filter = params.get("time", [""])[0]
             archived = filter_mode == "archive"
             favorited_only = filter_mode == "fav"
             video_only = None if type_filter == "all" else (type_filter == "video")
@@ -467,6 +468,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 archived=archived,
                 favorited_only=favorited_only,
                 video_only=video_only,
+                time_filter=time_filter,
                 offset=(page - 1) * per_page,
                 limit=per_page,
             )
@@ -476,6 +478,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 archived=archived,
                 favorited_only=favorited_only,
                 video_only=video_only,
+                time_filter=time_filter,
             )
             total_pages = max(1, math.ceil(total / per_page))
             # Enrich with file stats

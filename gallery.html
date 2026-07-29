@@ -405,9 +405,14 @@
 <div class="filter-bar" id="filterBar">
   <button class="filter-btn active" id="filterImg" onclick="setTypeFilter('img')">🖼️ 图片</button>
   <button class="filter-btn" id="filterVideo" onclick="setTypeFilter('video')">🎬 视频</button>
-  <select id="modelFilter" onchange="applyFilters()">
-    <option value="">🔮 全部模型</option>
-  </select>
+  <button class="filter-btn active" id="modelAll" onclick="setModelFilter('')">🔮 全部</button>
+  <button class="filter-btn" id="modelPony" onclick="setModelFilter('pony-xl')">Pony</button>
+  <button class="filter-btn" id="modelIll" onclick="setModelFilter('prefect-ill-xl')">Illustrious</button>
+  <button class="filter-btn" id="modelFlux" onclick="setModelFilter('flux-dev')">FLUX</button>
+  <span style="color:var(--text2);font-size:0.7rem;margin:0 2px">|</span>
+  <button class="filter-btn active" id="timeAll" onclick="setTimeFilter('')">📅 全部</button>
+  <button class="filter-btn" id="timeToday" onclick="setTimeFilter('today')">今天</button>
+  <button class="filter-btn" id="timeWeek" onclick="setTimeFilter('week')">本周</button>
   <input type="text" id="searchInput" placeholder="🔍 搜索 prompt…" oninput="applyFiltersDebounced()">
 </div>
 <div id="grid" class="grid"></div>
@@ -467,6 +472,8 @@ let favorites = new Set();
 let archived = new Set();
 let filterMode = 'all';
 let typeFilter = 'img';  // 'img', 'video', 'all'
+let modelFilter = '';    // '' = all, 'pony-xl', 'prefect-ill-xl', 'flux-dev', etc.
+let timeFilter = '';     // '' = all, 'today', 'week'
 const PER_PAGE = 500;
 
 // ── Load favorites ──
@@ -690,12 +697,13 @@ async function loadPage(page) {
   else if (filterMode === 'fav') apiFilter = 'fav';
   else apiFilter = 'all';
 
-  const model = document.getElementById('modelFilter').value;
+  const model = modelFilter;
   const search = document.getElementById('searchInput').value.trim();
 
   let url = `/api/images?page=${page}&per_page=${PER_PAGE}&filter=${apiFilter}&type=${typeFilter}`;
   if (model) url += `&model=${encodeURIComponent(model)}`;
   if (search) url += `&search=${encodeURIComponent(search)}`;
+  if (timeFilter) url += `&time=${encodeURIComponent(timeFilter)}`;
 
   const res = await fetch(url);
   const data = await res.json();
@@ -703,16 +711,6 @@ async function loadPage(page) {
   totalPages = data.total_pages;
   totalImages = data.total;
   allImages = data.images;
-
-  // Populate model dropdown from server response
-  if (data.models && data.models.length) {
-    const sel = document.getElementById('modelFilter');
-    const currentVal = sel.value;
-    sel.innerHTML = '<option value="">🔮 全部模型</option>';
-    data.models.forEach(m => {
-      sel.innerHTML += `<option value=\"${escapeHtml(m)}\" ${m === currentVal ? 'selected' : ''}>${escapeHtml(m)}</option>`;
-    });
-  }
 
   let displayImages = allImages;
   if (filterMode === 'fav') {
@@ -1105,6 +1103,23 @@ function setFilter(mode) {
   document.getElementById('filterAll').className = 'btn' + (mode === 'all' ? ' active' : '');
   document.getElementById('filterFav').className = 'btn' + (mode === 'fav' ? ' active' : '');
   document.getElementById('filterArchive').className = 'btn' + (mode === 'archive' ? ' archive-active' : '');
+  loadPage(1);
+}
+
+function setModelFilter(m) {
+  modelFilter = m;
+  document.getElementById('modelAll').className = 'filter-btn' + (m === '' ? ' active' : '');
+  document.getElementById('modelPony').className = 'filter-btn' + (m === 'pony-xl' ? ' active' : '');
+  document.getElementById('modelIll').className = 'filter-btn' + (m === 'prefect-ill-xl' ? ' active' : '');
+  document.getElementById('modelFlux').className = 'filter-btn' + (m === 'flux-dev' ? ' active' : '');
+  loadPage(1);
+}
+
+function setTimeFilter(t) {
+  timeFilter = t;
+  document.getElementById('timeAll').className = 'filter-btn' + (t === '' ? ' active' : '');
+  document.getElementById('timeToday').className = 'filter-btn' + (t === 'today' ? ' active' : '');
+  document.getElementById('timeWeek').className = 'filter-btn' + (t === 'week' ? ' active' : '');
   loadPage(1);
 }
 
