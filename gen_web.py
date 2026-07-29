@@ -64,6 +64,9 @@ def _generate_runware(args: dict) -> dict:
     lora_id = args.get("lora_id")
     lora_scale = args.get("lora_scale", 0.8)
     cfg_scale = args.get("cfg_scale")  # float or None (None = use model default)
+    steps = args.get("steps")
+    aspect = args.get("aspect", "9:16")
+    sampler = args.get("sampler")
     nsfw_lora = args.get("nsfw_lora", False)
     nsfw = args.get("nsfw", model in ("pony-xl", "prefect-ill-xl"))
 
@@ -101,7 +104,10 @@ def _generate_runware(args: dict) -> dict:
             result = gen_runware(prompt,
                 model_key=model, negative_prompt=negative,
                 lora_id=effective_lora_id, lora_scale=effective_lora_scale,
-                seed=seed, image_path=_qwen_tmp.name if _qwen_tmp else None, cfg_scale=cfg_scale)
+                seed=seed, image_path=_qwen_tmp.name if _qwen_tmp else None,
+                cfg_scale=cfg_scale, aspect=aspect,
+                steps=int(steps) if steps else 28,
+                sampler=sampler if sampler else None)
             if isinstance(result, tuple):
                 result, used_seed = result
             else:

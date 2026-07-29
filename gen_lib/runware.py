@@ -81,7 +81,8 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
              negative_prompt: str = "", image_path: str = None,
              strength: float = 0.8, lora_id: str = None,
              lora_scale: float = 0.8, seed: int = None,
-             aspect: str = "9:16", cfg_scale: float = None) -> Path:
+             aspect: str = "9:16", cfg_scale: float = None,
+             steps: int = 28, sampler: str = None) -> Path:
     """Generate image via Runware AI."""
     api_key = get_key("RUNWARE_API_KEY")
 
@@ -107,7 +108,7 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
         "negativePrompt": negative_prompt or "ugly, deformed, bad anatomy",
         "width": w,
         "height": h,
-        "steps": 28,
+        "steps": steps,
         "CFGScale": cfg_scale if cfg_scale is not None else (6.0 if model_key in ("pony-xl", "prefect-ill-xl", "guofeng4-xl", "pornmaster", "sdxl-vanilla", "dreamshaper-xl", "juggernaut-xl", "lustify", "fantasy-reality-xl") else 3.5),
         "safety": {"checkContent": False},
         "outputFormat": "PNG",
@@ -153,6 +154,16 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
                         for mid, s in zip(ids, scales[:len(ids)])]
         for mid, s in zip(ids, scales[:len(ids)]):
             print(f"🔗 LoRA: {mid} (scale={s})")
+
+    if sampler:
+        task["scheduler"] = sampler
+
+    # Clip skip 2 for SDXL-family models (Pony/Illu/etc.) — community standard
+    _sdxl_models = ("pony-xl", "prefect-ill-xl", "guofeng4-xl", "pornmaster",
+                     "sdxl-vanilla", "dreamshaper-xl", "juggernaut-xl",
+                     "lustify", "fantasy-reality-xl")
+    if model_key in _sdxl_models:
+        task["clipSkip"] = 2
 
     result = http_post(API_URL, [task], api_key, auth_prefix="Bearer")
 
