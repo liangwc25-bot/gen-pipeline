@@ -106,7 +106,7 @@
     transition: .12s; position: relative;
   }
   .snippet-item:hover { background: rgba(124,92,252,0.12); }
-  .snippet-item .snippet-text { color: var(--text2); font-size: 0.72rem; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .snippet-item .snippet-text { color: var(--text2); font-size: 0.72rem; margin-top: 1px; white-space: normal; word-break: break-word; }
   .snippet-item .snippet-label { font-weight: 500; }
   .snippet-footer {
     border-top: 1px solid rgba(255,255,255,0.06);
@@ -1235,6 +1235,12 @@ function closeSnippetEditor() {
     if (!newSnippets[group]) newSnippets[group] = [];
   }
   snippets = newSnippets;
+  // Ensure 自定义 always at top
+  if (snippets["✏️ 自定义"] !== undefined && Object.keys(snippets)[0] !== "✏️ 自定义") {
+    const custom = snippets["✏️ 自定义"];
+    delete snippets["✏️ 自定义"];
+    snippets = { "✏️ 自定义": custom, ...snippets };
+  }
   saveSnippets();
   document.getElementById('snippet-editor-overlay').classList.remove('open');
 }
