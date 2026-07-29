@@ -191,9 +191,10 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
     where = " AND ".join(conditions)
 
     if search:
-        # FTS5 search — join against images_fts for ranking
+        # FTS5 search — add * prefix match unless user already has FTS5 syntax
+        fts_query = search if any(c in search for c in '*"()') else f"{search}*"
         fts_where = "images_fts MATCH ?"
-        fts_params = [search]
+        fts_params = [fts_query]
         # In FTS join path, qualify model references with table alias 'i'
         where_qualified = where.replace("model ", "i.model ").replace("model)", "i.model)")
         query = f"""
@@ -251,13 +252,14 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
     where = " AND ".join(conditions)
 
     if search:
+        fts_query = search if any(c in search for c in '*"()') else f"{search}*"
         where_qualified = where.replace("model ", "i.model ").replace("model)", "i.model)")
         query = f"""
             SELECT COUNT(*) FROM images i
             INNER JOIN images_fts fts ON i.rowid = fts.rowid
             WHERE images_fts MATCH ? AND {where_qualified}
         """
-        row = db.execute(query, [search] + params).fetchone()
+        row = db.execute(query, [fts_query] + params).fetchone()
     else:
         query = f"SELECT COUNT(*) FROM images WHERE {where}"
         row = db.execute(query, params).fetchone()
