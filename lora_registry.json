@@ -5854,6 +5854,26 @@
       "category": "character_style",
       "nsfw": false,
       "description": "拳拳 v64 — SeaArt Pony Diffusion V6 XL训练, rank 32"
+    },
+    {
+      "id": "quanquan-v64-sdxl",
+      "runware_air_id": "liangwc:quanquan-v64@1",
+      "name": "拳拳 v64 SeaArt (SDXL)",
+      "url": "",
+      "tags": [
+        "sdxl",
+        "character",
+        "quanquan"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "拳拳 v64 — 从Pony训的, SDXL下试试能不能跑"
     }
   ],
   "categories": {
