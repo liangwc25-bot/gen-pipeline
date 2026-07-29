@@ -1089,6 +1089,7 @@ function hideError() { document.getElementById('error-msg').style.display = 'non
 
 // ════════════════════ Snippets ════════════════════
 const DEFAULT_SNIPPETS = {
+  "✏️ 自定义": [],
   "🎨 画质": [
     { label: "masterpiece", text: "masterpiece, best quality" },
     { label: "8k 高清", text: "8k, high detail, absurdres, intricate details" },
@@ -1126,6 +1127,11 @@ async function loadSnippets() {
       // No saved snippets yet — seed with defaults and save
       snippets = JSON.parse(JSON.stringify(DEFAULT_SNIPPETS));
       saveSnippets();
+    }
+    // Ensure "自定义" group always exists at top
+    if (!snippets["✏️ 自定义"]) {
+      const custom = { "✏️ 自定义": [] };
+      snippets = { ...custom, ...snippets };
     }
   } catch(e) {
     snippets = JSON.parse(JSON.stringify(DEFAULT_SNIPPETS));
