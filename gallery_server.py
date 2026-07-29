@@ -462,24 +462,33 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             favorited_only = filter_mode == "fav"
             video_only = None if type_filter == "all" else (type_filter == "video")
             
-            all_images = list_images(
-                model_filter=model_filter,
-                search=search,
-                archived=archived,
-                favorited_only=favorited_only,
-                video_only=video_only,
-                time_filter=time_filter,
-                offset=(page - 1) * per_page,
-                limit=per_page,
-            )
-            total = count_images(
-                model_filter=model_filter,
-                search=search,
-                archived=archived,
-                favorited_only=favorited_only,
-                video_only=video_only,
-                time_filter=time_filter,
-            )
+            try:
+                all_images = list_images(
+                    model_filter=model_filter,
+                    search=search,
+                    archived=archived,
+                    favorited_only=favorited_only,
+                    video_only=video_only,
+                    time_filter=time_filter,
+                    offset=(page - 1) * per_page,
+                    limit=per_page,
+                )
+                total = count_images(
+                    model_filter=model_filter,
+                    search=search,
+                    archived=archived,
+                    favorited_only=favorited_only,
+                    video_only=video_only,
+                    time_filter=time_filter,
+                )
+            except Exception as e:
+                import sys, traceback as tb
+                tb.print_exc(file=sys.stderr)
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": str(e)}).encode())
+                return
             total_pages = max(1, math.ceil(total / per_page))
             # Enrich with file stats
             for img in all_images:
