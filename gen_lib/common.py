@@ -49,7 +49,7 @@ def timestamp() -> str:
 
 def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
                model: str = "", seed: int = None, lora_id: str = None,
-               steps: int = 28, negative_prompt: str = "") -> Path:
+               steps: int = 35, negative_prompt: str = "") -> Path:
     """Save image data as PNG with AUTOMATIC1111-compatible metadata embedded.
 
     EVERY call to this function produces a PNG with full parameters in the

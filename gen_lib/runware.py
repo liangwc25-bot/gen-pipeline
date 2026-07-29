@@ -82,7 +82,7 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
              strength: float = 0.8, lora_id: str = None,
              lora_scale: float = 0.8, seed: int = None,
              aspect: str = "9:16", cfg_scale: float = None,
-             steps: int = 28, sampler: str = None) -> Path:
+             steps: int = 35, sampler: str = None) -> Path:
     """Generate image via Runware AI."""
     api_key = get_key("RUNWARE_API_KEY")
 
