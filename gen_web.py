@@ -125,12 +125,26 @@ def _generate_runware(args: dict) -> dict:
             # Write to metadata index
             try:
                 from gen_lib.metadata_db import insert
+                # Build params string matching save_image() AUTOMATIC1111 format
+                _param_parts = [f"Steps: {int(steps) if steps else 28}"]
+                if used_seed is not None:
+                    _param_parts.append(f"Seed: {used_seed}")
+                if aspect:
+                    _w, _h = {"9:16":(768,1024),"16:9":(1024,768),"1:1":(1024,1024),"3:2":(1152,768),"2:3":(768,1152),"4:3":(1088,832),"3:4":(832,1088)}.get(aspect, (768,1024))
+                    _param_parts.append(f"Size: {_w}x{_h}")
+                _param_parts.append(f"Model: {model}")
+                if lora_id:
+                    _param_parts.append(f"Lora: {lora_id}")
+                if cfg_scale:
+                    _param_parts.append(f"CFG: {cfg_scale}")
+                if sampler:
+                    _param_parts.append(f"Sampler: {sampler}")
                 insert(
                     filename=result.name,
                     prompt=prompt,
                     seed=str(used_seed) if used_seed is not None else "",
                     model=model,
-                    params=f"cfg={cfg_scale}" if cfg_scale else "",
+                    params=", ".join(_param_parts),
                     mtime=int(result.stat().st_mtime),
                 )
             except Exception:
