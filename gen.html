@@ -1034,16 +1034,33 @@ const DEFAULT_SNIPPETS = {
   ],
 };
 let snippets = {};
+let _snippetsLoaded = false;
 
-function loadSnippets() {
+async function loadSnippets() {
   try {
-    const raw = localStorage.getItem('gen_snippets');
-    snippets = raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(DEFAULT_SNIPPETS));
+    const r = await fetch('/api/snippets');
+    const data = await r.json();
+    if (data.success && data.snippets && Object.keys(data.snippets).length > 0) {
+      snippets = data.snippets;
+    } else {
+      // No saved snippets yet — seed with defaults and save
+      snippets = JSON.parse(JSON.stringify(DEFAULT_SNIPPETS));
+      saveSnippets();
+    }
   } catch(e) {
     snippets = JSON.parse(JSON.stringify(DEFAULT_SNIPPETS));
   }
+  _snippetsLoaded = true;
 }
-function saveSnippets() { localStorage.setItem('gen_snippets', JSON.stringify(snippets)); }
+async function saveSnippets() {
+  try {
+    await fetch('/api/snippets', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ snippets }),
+    });
+  } catch(e) { /* silent */ }
+}
 
 // ── Dropdown ──
 function toggleSnippetDropdown(e, targetId) {

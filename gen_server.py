@@ -16,6 +16,7 @@ RUNWARE_KEY = _runware_key or os.environ.get("RUNWARE_API_KEY", "")
 GEN_DIR = Path(__file__).parent
 GEN_WEB_PY = GEN_DIR / "gen_web.py"
 OUTPUT_DIR = GEN_DIR / "output" / "images"
+SNIPPETS_FILE = GEN_DIR / "snippets.json"
 
 # Import GIF zoom
 from gen_lib.gif_zoom import make_gif
@@ -52,6 +53,8 @@ class GenHandler(SimpleHTTPRequestHandler):
             return self._handle_output_image()
         if self._parsed_path.startswith("/api/job"):
             return self._handle_job()
+        if self._parsed_path == "/api/snippets":
+            return self._handle_get_snippets()
         
         # Static files
         if self._parsed_path == "/":
@@ -74,6 +77,8 @@ class GenHandler(SimpleHTTPRequestHandler):
             return self._handle_generate()
         if self.path == "/api/gif-zoom":
             return self._handle_gif_zoom()
+        if self.path == "/api/snippets":
+            return self._handle_post_snippets()
         self.send_response(404)
         self.end_headers()
         self.wfile.write(b"Not found")
@@ -185,6 +190,32 @@ class GenHandler(SimpleHTTPRequestHandler):
         if job["status"] == "done":
             return self._json_response({"job_id": job_id, "status": "done", "result": job["result"]})
         return self._json_response({"job_id": job_id, "status": "running"})
+
+    def _handle_get_snippets(self):
+        if SNIPPETS_FILE.exists():
+            try:
+                data = json.loads(SNIPPETS_FILE.read_text())
+            except (json.JSONDecodeError, Exception):
+                data = {}
+        else:
+            data = {}
+        self._json_response({"success": True, "snippets": data})
+
+    def _handle_post_snippets(self):
+        content_len = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_len)
+        try:
+            data = json.loads(body)
+        except json.JSONDecodeError:
+            return self._json_response({"success": False, "error": "Invalid JSON"}, 400)
+        snippets = data.get("snippets")
+        if not isinstance(snippets, dict):
+            return self._json_response({"success": False, "error": "snippets must be an object"}, 400)
+        try:
+            SNIPPETS_FILE.write_text(json.dumps(snippets, ensure_ascii=False, indent=2))
+        except Exception as e:
+            return self._json_response({"success": False, "error": str(e)})
+        self._json_response({"success": True})
 
     def _handle_gif_zoom(self):
         """POST /api/gif-zoom — create a breathing GIF from an existing image."""
