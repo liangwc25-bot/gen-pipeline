@@ -194,13 +194,12 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
         # FTS5 search — join against images_fts for ranking
         fts_where = "images_fts MATCH ?"
         fts_params = [search]
-        if model_filter:
-            # model already filtered above, but FTS also indexes model — fine for double-filter
-            pass
+        # In FTS join path, qualify model references with table alias 'i'
+        where_qualified = where.replace("model ", "i.model ").replace("model)", "i.model)")
         query = f"""
             SELECT i.* FROM images i
             INNER JOIN images_fts fts ON i.rowid = fts.rowid
-            WHERE {fts_where} AND {where}
+            WHERE {fts_where} AND {where_qualified}
             ORDER BY rank
             LIMIT ? OFFSET ?
         """
@@ -252,10 +251,11 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
     where = " AND ".join(conditions)
 
     if search:
+        where_qualified = where.replace("model ", "i.model ").replace("model)", "i.model)")
         query = f"""
             SELECT COUNT(*) FROM images i
             INNER JOIN images_fts fts ON i.rowid = fts.rowid
-            WHERE images_fts MATCH ? AND {where}
+            WHERE images_fts MATCH ? AND {where_qualified}
         """
         row = db.execute(query, [search] + params).fetchone()
     else:
