@@ -642,6 +642,7 @@ const baseLabel = id => ({
   'sdxl-vanilla': 'SDXL 1.0', 'dreamshaper-xl': 'SDXL 1.0', 'juggernaut-xl': 'SDXL 1.0',
   'qwen-edit': 'Qwen', 'pony': 'Pony SDXL', 'illustrious': 'Illustrious XL',
   'sdxl': 'SDXL 1.0', 'fantasy-reality-xl': 'SDXL 1.0', 'flux': 'FLUX',
+  'zimage-turbo': 'Z-Image', 'zimage-alibaba': 'Z-Image', 'zimage-moody': 'Z-Image',
 }[id] || 'SDXL 1.0');
 
 // ════════════════════ Models ════════════════════
@@ -751,7 +752,7 @@ async function onModelChange() {
   document.getElementById('qwen-image-group').style.display = model === 'qwen-edit' ? 'block' : 'none';
   // Auto-set CFG placeholder per model
   const cfgInput = document.getElementById('cfg');
-  const defaults = { 'flux-dev': 3.5, 'pony-xl': 6, 'prefect-ill-xl': 6, 'flux-uncensored': 3.5, 'guofeng4-xl': 6, 'pornmaster': 6, 'lustify': 6, 'sdxl-base': 6, 'dreamshaper-xl': 6, 'juggernaut-xl': 6, 'fantasy-reality-xl': 6, 'qwen-edit': null };
+  const defaults = { 'flux-dev': 3.5, 'pony-xl': 6, 'prefect-ill-xl': 6, 'flux-uncensored': 3.5, 'guofeng4-xl': 6, 'pornmaster': 6, 'lustify': 6, 'sdxl-base': 6, 'dreamshaper-xl': 6, 'juggernaut-xl': 6, 'fantasy-reality-xl': 6, 'qwen-edit': null, 'zimage-turbo': 3.5, 'zimage-alibaba': 3.5, 'zimage-moody': 3.5 };
   cfgInput.placeholder = defaults[model] != null ? `默认 ${defaults[model]}` : 'N/A';
   if (model === 'qwen-edit') { cfgInput.disabled = true; cfgInput.value = ''; }
   else { cfgInput.disabled = false; }
