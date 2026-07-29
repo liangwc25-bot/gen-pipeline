@@ -80,19 +80,69 @@
   .btn:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(124,92,252,0.3); }
   .btn:active { transform: translateY(0) scale(0.98); }
   .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; filter: none; box-shadow: none; }
-    width: 100%; padding: 12px; border: none; border-radius: 8px;
-    font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
-    background: var(--accent); color: white;
-  }
-  .btn:hover { filter: brightness(1.15); transform: translateY(-1px); }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; filter: none; }
   .result-panel { display: flex; flex-direction: column; gap: 16px; }
-  .result-placeholder {
-    flex: 1; display: flex; align-items: center; justify-content: center;
-    border: 2px dashed rgba(255,255,255,0.06); border-radius: var(--radius);
-    color: var(--text2); font-size: 0.85rem; min-height: 320px; text-align: center; padding: 24px;
-    transition: border-color .3s ease;
+  /* ── Snippet button & dropdown ── */
+  .snippet-btn {
+    display: inline-flex; align-items: center; gap: 2px;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px; color: var(--text2); font-size: 0.72rem;
+    padding: 2px 6px; cursor: pointer; transition: .15s; margin-left: 6px;
+    vertical-align: middle; white-space: nowrap;
   }
+  .snippet-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .snippet-dropdown {
+    display: none; position: absolute; z-index: 200;
+    background: var(--card); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px;
+    min-width: 240px; max-height: 380px; overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5); padding: 4px 0;
+  }
+  .snippet-dropdown.open { display: block; }
+  .snippet-group-label {
+    padding: 6px 12px 2px; font-size: 0.7rem; font-weight: 700; color: var(--text2);
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .snippet-item {
+    padding: 6px 12px; cursor: pointer; font-size: 0.8rem; color: var(--text);
+    transition: .12s; position: relative;
+  }
+  .snippet-item:hover { background: rgba(124,92,252,0.12); }
+  .snippet-item .snippet-text { color: var(--text2); font-size: 0.72rem; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .snippet-item .snippet-label { font-weight: 500; }
+  .snippet-footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 6px 12px; cursor: pointer; font-size: 0.75rem; color: var(--accent);
+    text-align: center; transition: .12s;
+  }
+  .snippet-footer:hover { background: rgba(124,92,252,0.08); }
+  /* ── Snippet editor modal ── */
+  .snippet-editor-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+    z-index: 9999; align-items: center; justify-content: center;
+  }
+  .snippet-editor-overlay.open { display: flex; }
+  .snippet-editor {
+    background: var(--card); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+    padding: 20px; max-width: 520px; width: 90%; max-height: 80vh; overflow-y: auto;
+  }
+  .snippet-editor h3 { margin: 0 0 16px; font-size: 1rem; }
+  .snippet-editor .se-group { margin-bottom: 16px; }
+  .snippet-editor .se-group-label { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .snippet-editor .se-row { display: flex; gap: 6px; margin-bottom: 4px; align-items: center; }
+  .snippet-editor .se-row input { flex: 1; font-size: 0.78rem; padding: 5px 8px; min-width: 0; }
+  .snippet-editor .se-row .se-del {
+    background: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 5px;
+    color: var(--text2); font-size: 0.75rem; padding: 4px 8px; cursor: pointer; transition: .12s;
+  }
+  .snippet-editor .se-row .se-del:hover { border-color: var(--red); color: var(--red); }
+  .snippet-editor .se-add { margin-top: 4px; }
+  .snippet-editor .se-add button {
+    background: none; border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px;
+    color: var(--text2); font-size: 0.75rem; padding: 4px 10px; cursor: pointer; transition: .12s;
+  }
+  .snippet-editor .se-add button:hover { border-color: var(--accent); color: var(--accent); }
+  .snippet-editor .se-actions { margin-top: 16px; text-align: right; }
+  .snippet-editor .se-close { background: var(--accent); border: none; color: #fff; border-radius: 6px; padding: 6px 16px; cursor: pointer; font-size: 0.85rem; }
+  .snippet-wrap { position: relative; display: inline; }
   .result-placeholder {
     flex: 1; display: flex; align-items: center; justify-content: center;
     border: 2px dashed rgba(255,255,255,0.08); border-radius: var(--radius);
@@ -219,7 +269,7 @@
       </div>
 
       <div class="form-group">
-        <label for="prompt">Prompt</label>
+        <label for="prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'prompt')" title="插入预设词">📌 预设</button><div class="snippet-dropdown" id="snippet-dd-prompt"></div></span></label>
         <textarea id="prompt" placeholder="输入 prompt…" style="min-height:200px"></textarea>
         <label class="toggle" style="margin-top:8px">
           <input type="checkbox" id="translate_cn"> 🇨🇳→🇬🇧 中文翻译
@@ -228,7 +278,7 @@
       </div>
 
       <div class="form-group">
-        <label for="negative">Negative Prompt（可选）</label>
+        <label for="negative">Negative Prompt（可选） <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'negative')" title="插入预设词">📌 预设</button><div class="snippet-dropdown" id="snippet-dd-negative"></div></span></label>
         <textarea id="negative" placeholder="不想出现的内容…" style="min-height:100px"></textarea>
       </div>
 
@@ -316,6 +366,17 @@
         <button class="btn btn-secondary" onclick="downloadResult()" id="dl-btn" style="display:none">💾 下载</button>
         <button class="btn btn-secondary" onclick="openResult()" id="open-btn" style="display:none">🔗 新标签打开</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Snippet editor overlay -->
+<div class="snippet-editor-overlay" id="snippet-editor-overlay" onclick="if(event.target===this)closeSnippetEditor()">
+  <div class="snippet-editor">
+    <h3>✏️ 编辑预设词</h3>
+    <div id="snippet-editor-groups"></div>
+    <div class="se-actions">
+      <button class="se-close" onclick="closeSnippetEditor()">完成</button>
     </div>
   </div>
 </div>
@@ -945,6 +1006,155 @@ function hideError() { document.getElementById('error-msg').style.display = 'non
     if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
   }, 0);
 })();
+
+// ════════════════════ Snippets ════════════════════
+const DEFAULT_SNIPPETS = {
+  "🎨 画质": [
+    { label: "masterpiece", text: "masterpiece, best quality" },
+    { label: "8k 高清", text: "8k, high detail, absurdres, intricate details" },
+    { label: "光影增强", text: "dramatic lighting, volumetric lighting, cinematic" },
+  ],
+  "🎭 构图": [
+    { label: "单人", text: "solo, 1girl" },
+    { label: "半身", text: "cowboy shot" },
+    { label: "全身", text: "full body" },
+    { label: "仰视", text: "from below, low angle" },
+    { label: "俯视", text: "from above, high angle" },
+    { label: "特写脸", text: "close-up, face focus, detailed face" },
+  ],
+  "🔞 NSFW": [
+    { label: "rating_explicit", text: "rating_explicit" },
+    { label: "裸体", text: "nude, naked, completely nude" },
+    { label: "无码", text: "uncensored, no censorship" },
+  ],
+  "❌ 负面": [
+    { label: "基础负词", text: "worst quality, low quality, bad anatomy, extra fingers, blurry" },
+    { label: "防崩脸", text: "disfigured, deformed, bad face, ugly" },
+    { label: "禁衣", text: "clothes, clothing, shirt, dress, bra" },
+  ],
+};
+let snippets = {};
+
+function loadSnippets() {
+  try {
+    const raw = localStorage.getItem('gen_snippets');
+    snippets = raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(DEFAULT_SNIPPETS));
+  } catch(e) {
+    snippets = JSON.parse(JSON.stringify(DEFAULT_SNIPPETS));
+  }
+}
+function saveSnippets() { localStorage.setItem('gen_snippets', JSON.stringify(snippets)); }
+
+// ── Dropdown ──
+function toggleSnippetDropdown(e, targetId) {
+  e.stopPropagation();
+  const dd = document.getElementById('snippet-dd-' + targetId);
+  const wasOpen = dd.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
+  if (wasOpen) return;
+  // Build
+  let html = '';
+  for (const [group, items] of Object.entries(snippets)) {
+    html += `<div class="snippet-group-label">${escHtml(group)}</div>`;
+    for (const item of items) {
+      html += `<div class="snippet-item" data-snippet-text="${escHtml(item.text)}" data-target="${targetId}"><div class="snippet-label">${escHtml(item.label)}</div><div class="snippet-text">${escHtml(item.text)}</div></div>`;
+    }
+  }
+  html += `<div class="snippet-footer" onclick="openSnippetEditor(); return false;">✏️ 编辑预设…</div>`;
+  dd.innerHTML = html;
+  dd.classList.add('open');
+  dd._targetId = targetId;
+}
+// Delegated click for snippet items (avoids inline JS string injection)
+document.addEventListener('click', function(e) {
+  const item = e.target.closest('.snippet-item');
+  if (!item) return;
+  const text = item.dataset.snippetText;
+  const targetId = item.dataset.target;
+  if (text && targetId) insertSnippet(text, targetId);
+});
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
+}
+
+// ── Insert at cursor ──
+function insertSnippet(text, targetId) {
+  const ta = document.getElementById(targetId);
+  const start = ta.selectionStart, end = ta.selectionEnd;
+  const before = ta.value.substring(0, start);
+  const after = ta.value.substring(end);
+  const sep = before.length > 0 && !before.endsWith(',') && !before.endsWith(' ') ? ', ' : '';
+  ta.value = before + sep + text + ' ' + after;
+  const pos = (before + sep + text + ' ').length;
+  ta.setSelectionRange(pos, pos);
+  ta.focus();
+  document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
+  saveDraft();
+}
+
+// ── Editor ──
+function openSnippetEditor() {
+  document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
+  const container = document.getElementById('snippet-editor-groups');
+  let html = '';
+  for (const [group, items] of Object.entries(snippets)) {
+    html += `<div class="se-group"><div class="se-group-label">${escHtml(group)}</div>`;
+    items.forEach((item, i) => {
+      html += `<div class="se-row"><input value="${escHtml(item.label)}" data-group="${escHtml(group)}" data-idx="${i}" data-field="label" placeholder="标签"><input value="${escHtml(item.text)}" data-group="${escHtml(group)}" data-idx="${i}" data-field="text" placeholder="词条"><button class="se-del" onclick="deleteSnippetItem('${escHtml(group)}',${i})">×</button></div>`;
+    });
+    html += `<div class="se-add"><button onclick="addSnippetItem('${escHtml(group)}')">+ 添加</button></div></div>`;
+  }
+  container.innerHTML = html;
+  document.getElementById('snippet-editor-overlay').classList.add('open');
+}
+function closeSnippetEditor() {
+  // Read back all inputs
+  const rows = document.querySelectorAll('#snippet-editor-groups .se-row');
+  const newSnippets = {};
+  rows.forEach(row => {
+    const labelInp = row.querySelector('[data-field="label"]');
+    const textInp = row.querySelector('[data-field="text"]');
+    if (!labelInp || !textInp) return;
+    const group = labelInp.dataset.group;
+    const label = labelInp.value.trim();
+    const text = textInp.value.trim();
+    if (!label && !text) return;
+    if (!newSnippets[group]) newSnippets[group] = [];
+    newSnippets[group].push({ label: label || text.slice(0,20), text });
+  });
+  // Preserve groups that were emptied (keep them with empty arrays)
+  for (const group of Object.keys(snippets)) {
+    if (!newSnippets[group]) newSnippets[group] = [];
+  }
+  // Preserve DEFAULT keys
+  for (const group of Object.keys(DEFAULT_SNIPPETS)) {
+    if (!newSnippets[group]) newSnippets[group] = [];
+  }
+  snippets = newSnippets;
+  saveSnippets();
+  document.getElementById('snippet-editor-overlay').classList.remove('open');
+}
+function deleteSnippetItem(group, idx) {
+  if (snippets[group]) snippets[group].splice(idx, 1);
+  saveSnippets();
+  openSnippetEditor(); // refresh
+}
+function addSnippetItem(group) {
+  if (!snippets[group]) snippets[group] = [];
+  snippets[group].push({ label: '', text: '' });
+  saveSnippets();
+  openSnippetEditor(); // refresh
+}
+
+// ── Close dropdowns on outside click ──
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.snippet-wrap') && !e.target.closest('.snippet-dropdown')) {
+    document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
+  }
+});
+
+loadSnippets();
 
 init();
 </script>
