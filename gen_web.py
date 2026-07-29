@@ -106,7 +106,7 @@ def _generate_runware(args: dict) -> dict:
                 lora_id=effective_lora_id, lora_scale=effective_lora_scale,
                 seed=seed, image_path=_qwen_tmp.name if _qwen_tmp else None,
                 cfg_scale=cfg_scale, aspect=aspect,
-                steps=int(steps) if steps else 28,
+                steps=int(steps) if steps else 35,
                 sampler=sampler if sampler else None)
             if isinstance(result, tuple):
                 result, used_seed = result
@@ -126,7 +126,7 @@ def _generate_runware(args: dict) -> dict:
             try:
                 from gen_lib.metadata_db import insert
                 # Build params string matching save_image() AUTOMATIC1111 format
-                _param_parts = [f"Steps: {int(steps) if steps else 28}"]
+                _param_parts = [f"Steps: {int(steps) if steps else 35}"]
                 if used_seed is not None:
                     _param_parts.append(f"Seed: {used_seed}")
                 if aspect:
