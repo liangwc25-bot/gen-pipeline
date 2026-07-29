@@ -158,13 +158,6 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
     if sampler:
         task["scheduler"] = sampler
 
-    # Clip skip 2 for SDXL-family models (Pony/Illu/etc.) — community standard
-    _sdxl_models = ("pony-xl", "prefect-ill-xl", "guofeng4-xl", "pornmaster",
-                     "sdxl-vanilla", "dreamshaper-xl", "juggernaut-xl",
-                     "lustify", "fantasy-reality-xl")
-    if model_key in _sdxl_models:
-        task["clipSkip"] = 2
-
     result = http_post(API_URL, [task], api_key, auth_prefix="Bearer")
 
     data_list = result.get("data", [])
