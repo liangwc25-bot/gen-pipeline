@@ -241,6 +241,18 @@
   [data-theme="light"] .lora-dropdown .lora-opt { border-bottom-color: rgba(0,0,0,0.06); }
   [data-theme="light"] .panel { box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
   [data-theme="light"] .platform-tabs { background: rgba(0,0,0,0.04); }
+  /* ── Collapsible section ── */
+  .adv-toggle {
+    width: 100%; background: none; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px; color: var(--text2); font-size: 0.82rem; font-weight: 600;
+    padding: 8px 14px; cursor: pointer; text-align: left; transition: .15s;
+    margin-bottom: 0; display: flex; align-items: center; gap: 8px;
+  }
+  .adv-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .adv-toggle .adv-arrow { font-size: 0.65rem; transition: transform .25s; }
+  .adv-toggle.open .adv-arrow { transform: rotate(90deg); }
+  .adv-body { display: none; padding-top: 12px; }
+  .adv-body.open { display: block; }
 </style>
 </head>
 <body>
@@ -268,41 +280,52 @@
         <input type="hidden" id="model" value="flux-dev">
       </div>
 
-      <div class="row">
-        <div class="form-group">
-          <label>画幅</label>
-          <div class="custom-select" id="aspect-wrap">
-            <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
-              <span class="custom-select-label">9:16 竖版</span><span class="arrow">▾</span>
-            </button>
-            <div class="custom-select-dropdown">
-              <div class="custom-opt active" data-value="9:16">9:16 竖版</div>
-              <div class="custom-opt" data-value="16:9">16:9 横版</div>
-              <div class="custom-opt" data-value="1:1">1:1 方形</div>
-              <div class="custom-opt" data-value="3:2">3:2 横版</div>
-              <div class="custom-opt" data-value="2:3">2:3 竖版</div>
-              <div class="custom-opt" data-value="4:3">4:3 横版</div>
-              <div class="custom-opt" data-value="3:4">3:4 竖版</div>
+      <button class="adv-toggle" id="adv-toggle-btn" onclick="toggleAdvanced()">
+        <span class="adv-arrow">▶</span> ⚙️ 高级设置
+      </button>
+      <div class="adv-body" id="adv-body">
+        <div class="row">
+          <div class="form-group">
+            <label>画幅</label>
+            <div class="custom-select" id="aspect-wrap">
+              <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+                <span class="custom-select-label">9:16 竖版</span><span class="arrow">▾</span>
+              </button>
+              <div class="custom-select-dropdown">
+                <div class="custom-opt active" data-value="9:16">9:16 竖版</div>
+                <div class="custom-opt" data-value="16:9">16:9 横版</div>
+                <div class="custom-opt" data-value="1:1">1:1 方形</div>
+                <div class="custom-opt" data-value="3:2">3:2 横版</div>
+                <div class="custom-opt" data-value="2:3">2:3 竖版</div>
+                <div class="custom-opt" data-value="4:3">4:3 横版</div>
+                <div class="custom-opt" data-value="3:4">3:4 竖版</div>
+              </div>
             </div>
+            <input type="hidden" id="aspect" value="9:16">
           </div>
-          <input type="hidden" id="aspect" value="9:16">
+          <div class="form-group">
+            <label>采样器</label>
+            <div class="custom-select" id="sampler-wrap">
+              <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+                <span class="custom-select-label">自动（默认）</span><span class="arrow">▾</span>
+              </button>
+              <div class="custom-select-dropdown">
+                <div class="custom-opt active" data-value="">自动（默认）</div>
+                <div class="custom-opt" data-value="Euler">Euler</div>
+                <div class="custom-opt" data-value="Euler A">Euler A</div>
+                <div class="custom-opt" data-value="DPM++ 2M Karras">DPM++ 2M Karras</div>
+                <div class="custom-opt" data-value="DDIM">DDIM</div>
+                <div class="custom-opt" data-value="UniPC">UniPC</div>
+              </div>
+            </div>
+            <input type="hidden" id="sampler" value="">
+          </div>
         </div>
-        <div class="form-group">
-          <label>采样器</label>
-          <div class="custom-select" id="sampler-wrap">
-            <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
-              <span class="custom-select-label">自动</span><span class="arrow">▾</span>
-            </button>
-            <div class="custom-select-dropdown">
-              <div class="custom-opt active" data-value="">自动（默认）</div>
-              <div class="custom-opt" data-value="Euler">Euler</div>
-              <div class="custom-opt" data-value="Euler A">Euler A</div>
-              <div class="custom-opt" data-value="DPM++ 2M Karras">DPM++ 2M Karras</div>
-              <div class="custom-opt" data-value="DDIM">DDIM</div>
-              <div class="custom-opt" data-value="UniPC">UniPC</div>
-            </div>
+        <div class="row">
+          <div class="form-group">
+            <label for="steps">Steps</label>
+            <input type="number" id="steps" placeholder="28" min="10" max="50" value="28">
           </div>
-          <input type="hidden" id="sampler" value="">
         </div>
       </div>
 
@@ -355,7 +378,7 @@
         <div class="hint">ModelsLab LoRA model_id · 社区预加载直接用</div>
       </div>
 
-      <!-- Seed + CFG + Steps -->
+      <!-- Seed + CFG -->
       <div class="row" id="seed-group">
         <div class="form-group">
           <label for="seed">Seed（留空随机）</label>
@@ -364,10 +387,6 @@
         <div class="form-group" id="cfg-group">
           <label for="cfg">CFG Scale</label>
           <input type="number" id="cfg" placeholder="自动" min="0.5" max="20" step="0.5">
-        </div>
-        <div class="form-group">
-          <label for="steps">Steps</label>
-          <input type="number" id="steps" placeholder="28" min="10" max="50" value="28">
         </div>
       </div>
 
@@ -1223,6 +1242,20 @@ function addSnippetItem(group) {
   snippets[group].push({ label: '', text: '' });
   saveSnippets();
   openSnippetEditor(); // refresh
+}
+
+// ── Advanced settings toggle ──
+function toggleAdvanced() {
+  const btn = document.getElementById('adv-toggle-btn');
+  const body = document.getElementById('adv-body');
+  const isOpen = body.classList.contains('open');
+  if (isOpen) {
+    body.classList.remove('open');
+    btn.classList.remove('open');
+  } else {
+    body.classList.add('open');
+    btn.classList.add('open');
+  }
 }
 
 // ── Close dropdowns on outside click ──
