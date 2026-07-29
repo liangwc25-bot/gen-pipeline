@@ -268,6 +268,44 @@
         <input type="hidden" id="model" value="flux-dev">
       </div>
 
+      <div class="row">
+        <div class="form-group">
+          <label>画幅</label>
+          <div class="custom-select" id="aspect-wrap">
+            <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+              <span class="custom-select-label">9:16 竖版</span><span class="arrow">▾</span>
+            </button>
+            <div class="custom-select-dropdown">
+              <div class="custom-opt active" data-value="9:16">9:16 竖版</div>
+              <div class="custom-opt" data-value="16:9">16:9 横版</div>
+              <div class="custom-opt" data-value="1:1">1:1 方形</div>
+              <div class="custom-opt" data-value="3:2">3:2 横版</div>
+              <div class="custom-opt" data-value="2:3">2:3 竖版</div>
+              <div class="custom-opt" data-value="4:3">4:3 横版</div>
+              <div class="custom-opt" data-value="3:4">3:4 竖版</div>
+            </div>
+          </div>
+          <input type="hidden" id="aspect" value="9:16">
+        </div>
+        <div class="form-group">
+          <label>采样器</label>
+          <div class="custom-select" id="sampler-wrap">
+            <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+              <span class="custom-select-label">自动</span><span class="arrow">▾</span>
+            </button>
+            <div class="custom-select-dropdown">
+              <div class="custom-opt active" data-value="">自动（默认）</div>
+              <div class="custom-opt" data-value="Euler">Euler</div>
+              <div class="custom-opt" data-value="Euler A">Euler A</div>
+              <div class="custom-opt" data-value="DPM++ 2M Karras">DPM++ 2M Karras</div>
+              <div class="custom-opt" data-value="DDIM">DDIM</div>
+              <div class="custom-opt" data-value="UniPC">UniPC</div>
+            </div>
+          </div>
+          <input type="hidden" id="sampler" value="">
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'prompt')" title="插入预设词">📌 预设</button><div class="snippet-dropdown" id="snippet-dd-prompt"></div></span></label>
         <textarea id="prompt" placeholder="输入 prompt…" style="min-height:200px"></textarea>
@@ -317,7 +355,7 @@
         <div class="hint">ModelsLab LoRA model_id · 社区预加载直接用</div>
       </div>
 
-      <!-- Seed + CFG -->
+      <!-- Seed + CFG + Steps -->
       <div class="row" id="seed-group">
         <div class="form-group">
           <label for="seed">Seed（留空随机）</label>
@@ -326,6 +364,10 @@
         <div class="form-group" id="cfg-group">
           <label for="cfg">CFG Scale</label>
           <input type="number" id="cfg" placeholder="自动" min="0.5" max="20" step="0.5">
+        </div>
+        <div class="form-group">
+          <label for="steps">Steps</label>
+          <input type="number" id="steps" placeholder="28" min="10" max="50" value="28">
         </div>
       </div>
 
@@ -402,6 +444,9 @@ function saveDraft() {
     count: document.getElementById('count').value,
     seed: document.getElementById('seed').value,
     cfg: document.getElementById('cfg').value,
+    steps: document.getElementById('steps').value,
+    aspect: document.getElementById('aspect').value,
+    sampler: document.getElementById('sampler').value,
     translate: document.getElementById('translate_cn').checked,
     loras,
   }));
@@ -424,6 +469,19 @@ function restoreDraft() {
     }
     if (d.seed) document.getElementById('seed').value = d.seed;
     if (d.cfg) document.getElementById('cfg').value = d.cfg;
+    if (d.steps) document.getElementById('steps').value = d.steps;
+    if (d.aspect) {
+      document.getElementById('aspect').value = d.aspect;
+      const al = document.getElementById('aspect-wrap').querySelector('.custom-select-label');
+      const ao = document.getElementById('aspect-wrap').querySelector(`.custom-opt[data-value="${d.aspect}"]`);
+      if (al && ao) { al.textContent = ao.textContent; }
+    }
+    if (d.sampler != null) {
+      document.getElementById('sampler').value = d.sampler || '';
+      const sl = document.getElementById('sampler-wrap').querySelector('.custom-select-label');
+      const so = document.getElementById('sampler-wrap').querySelector(`.custom-opt[data-value="${d.sampler || ''}"]`);
+      if (sl && so) { sl.textContent = so.textContent; }
+    }
     if (d.translate != null) document.getElementById('translate_cn').checked = d.translate;
     window._draftModel = d.model;
     window._draftLoras = d.loras;
@@ -828,6 +886,9 @@ async function generate() {
     model: model,
     seed: null, // will set per-image
     translate: document.getElementById('translate_cn').checked,
+    aspect: document.getElementById('aspect').value || '9:16',
+    sampler: document.getElementById('sampler').value || null,
+    steps: parseInt(document.getElementById('steps').value) || 28,
   };
 
   if (state.platform === 'runware') {
