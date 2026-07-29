@@ -173,7 +173,7 @@ textarea { resize: vertical; min-height: 60px; }
 
 <!-- Prompt -->
 <div class="card">
-  <label class="section-label">动作描述</label>
+  <label class="section-label">动作描述 <span style="position:relative;display:inline"><button class="snippet-btn" onclick="toggleMotionPresets(event)" style="font-size:0.7rem;padding:2px 6px;margin-left:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:var(--text2);cursor:pointer">📌 预设</button><div class="snippet-dropdown" id="motion-presets-dd" style="display:none;position:absolute;z-index:200;background:var(--card);border:1px solid rgba(255,255,255,0.12);border-radius:10px;min-width:280px;max-height:300px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.5);padding:4px 0;top:100%;left:0"></div></span></label>
   <textarea id="prompt" placeholder="英文动作描述: She slowly turns, gentle breathing, soft breeze through hair..."></textarea>
 </div>
 
@@ -678,6 +678,37 @@ function escapeHtml(s) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Enter' && e.ctrlKey) {
     submitI2V();
+  }
+});
+// ── Motion presets ──
+const MOTION_PRESETS = [
+  { label: '🌬️ 呼吸+微风', text: 'Gentle breathing, soft breeze through hair, subtle head tilt, slight shoulder movement, natural expression, warm ambient light' },
+  { label: '👁️ 眼神+微动', text: 'Subtle eye movement, slow blink, gentle smile forming, slight head turn, hair softly swaying, natural lighting, cinematic' },
+  { label: '🌸 轻转身', text: 'Slow graceful turn, gentle movement, hair flowing naturally, soft breeze, subtle body sway, dreamy atmosphere' },
+  { label: '✨ 静静发光', text: 'Still and serene, subtle light changes, gentle breathing visible in chest, soft sparkle in eyes, atmospheric, cinematic slow motion' },
+  { label: '💃 轻微摆动', text: 'Subtle swaying motion, gentle weight shift, hair dancing in light wind, soft fabric movement, relaxed natural pose, warm lighting' },
+  { label: '🎭 表情变化', text: 'Slow change of expression, gentle smile emerging, eyes softening, subtle emotion shift, natural lighting, cinematic close-up' },
+];
+function toggleMotionPresets(e) {
+  e.stopPropagation();
+  const dd = document.getElementById('motion-presets-dd');
+  if (dd.style.display === 'block') { dd.style.display = 'none'; return; }
+  let html = '<div style="padding:4px 12px;font-size:0.7rem;color:var(--text2);font-weight:700">选择一个预设动作…</div>';
+  MOTION_PRESETS.forEach((p, i) => {
+    html += `<div onclick="insertMotionPreset(${i})" style="padding:6px 12px;cursor:pointer;font-size:0.8rem;color:var(--text);transition:.12s" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'"><div style="font-weight:500">${p.label}</div><div style="font-size:0.72rem;color:var(--text2);margin-top:1px">${p.text}</div></div>`;
+  });
+  dd.innerHTML = html;
+  dd.style.display = 'block';
+}
+function insertMotionPreset(idx) {
+  const ta = document.getElementById('prompt');
+  ta.value = MOTION_PRESETS[idx].text;
+  document.getElementById('motion-presets-dd').style.display = 'none';
+  ta.focus();
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#motion-presets-dd') && !e.target.closest('.snippet-btn')) {
+    document.getElementById('motion-presets-dd').style.display = 'none';
   }
 });</script>
 </body>
