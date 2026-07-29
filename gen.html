@@ -413,6 +413,7 @@
       </div>
 
       <button class="btn" id="generate-btn" onclick="generate()">🚀 生成</button>
+      <button class="btn btn-secondary" style="margin-top:6px" onclick="resetAll()">🔄 重置</button>
       <div class="error-msg" id="error-msg"></div>
       <div class="status-bar" id="status-bar"></div>
     </div>
@@ -1065,6 +1066,51 @@ function downloadResult() {
   }
 }
 function openResult() { if (state.resultUrl) window.open(state.resultUrl, '_blank'); }
+
+function resetAll() {
+  if (!confirm('确定要清空所有参数并恢复默认值吗？')) return;
+  // Prompt & negative
+  document.getElementById('prompt').value = '';
+  document.getElementById('negative').value = '';
+  document.getElementById('translate_cn').checked = false;
+  // LoRA — keep one empty row
+  const container = document.getElementById('lora-rows');
+  container.innerHTML = '';
+  state.loraRowCount = 0;
+  const model = document.getElementById('model').value;
+  const loras = state.lorasCache[model] || [];
+  const row = createLoraRow(loras);
+  container.appendChild(row);
+  state.loraRowCount = 1;
+  updateLoraCount();
+  updateRemoveButtons();
+  // NSFW
+  if (document.getElementById('nsfw_pony')) document.getElementById('nsfw_pony').checked = true;
+  // Seed, CFG, Steps
+  document.getElementById('seed').value = '';
+  document.getElementById('cfg').value = '';
+  document.getElementById('steps').value = '35';
+  // Aspect — reset to 9:16
+  document.getElementById('aspect').value = '9:16';
+  const al = document.getElementById('aspect-wrap').querySelector('.custom-select-label');
+  const ao = document.getElementById('aspect-wrap').querySelector('.custom-opt[data-value="9:16"]');
+  if (al) al.textContent = '9:16 竖版';
+  if (ao) { document.getElementById('aspect-wrap').querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active')); ao.classList.add('active'); }
+  // Sampler — reset to auto
+  document.getElementById('sampler').value = '';
+  const sl = document.getElementById('sampler-wrap').querySelector('.custom-select-label');
+  const so = document.getElementById('sampler-wrap').querySelector('.custom-opt[data-value=""]');
+  if (sl) sl.textContent = '自动（默认）';
+  if (so) { document.getElementById('sampler-wrap').querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active')); so.classList.add('active'); }
+  // Count — reset to 1
+  document.getElementById('count').value = '1';
+  const cl = document.getElementById('count-wrap').querySelector('.custom-select-label');
+  const co = document.getElementById('count-wrap').querySelector('.custom-opt[data-value="1"]');
+  if (cl && co) { cl.textContent = co.textContent; document.getElementById('count-wrap').querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active')); co.classList.add('active'); }
+  saveDraft();
+  hideError();
+  document.getElementById('status-bar').innerHTML = '';
+}
 function setGenerating(v) { document.getElementById('generate-btn').disabled = v; document.getElementById('generate-btn').textContent = v ? '⏳ 生成中…' : '🚀 生成'; }
 function setStatus(msg, cls) { const el = document.getElementById('status-bar'); el.innerHTML = msg ? `<span class="${cls}">${msg}</span>` : ''; }
 function showError(msg) { const el = document.getElementById('error-msg'); el.textContent = '⚠ ' + msg; el.style.display = 'block'; }
