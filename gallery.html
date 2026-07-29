@@ -405,15 +405,17 @@
 <div class="filter-bar" id="filterBar">
   <button class="filter-btn active" id="filterImg" onclick="setTypeFilter('img')">🖼️ 图片</button>
   <button class="filter-btn" id="filterVideo" onclick="setTypeFilter('video')">🎬 视频</button>
-  <button class="filter-btn active" id="modelAll" onclick="setModelFilter('')">🔮 全部</button>
-  <button class="filter-btn" id="modelPony" onclick="setModelFilter('pony-xl')">Pony</button>
-  <button class="filter-btn" id="modelIll" onclick="setModelFilter('prefect-ill-xl')">Illustrious</button>
-  <button class="filter-btn" id="modelFlux" onclick="setModelFilter('flux-dev')">FLUX</button>
   <span style="color:var(--text2);font-size:0.7rem;margin:0 2px">|</span>
   <button class="filter-btn active" id="timeAll" onclick="setTimeFilter('')">📅 全部</button>
   <button class="filter-btn" id="timeToday" onclick="setTimeFilter('today')">今天</button>
   <button class="filter-btn" id="timeWeek" onclick="setTimeFilter('week')">本周</button>
-  <input type="text" id="searchInput" placeholder="🔍 搜索 prompt…" oninput="applyFiltersDebounced()">
+  <input type="text" id="searchInput" placeholder="🔍 搜索 prompt…" oninput="applyFiltersDebounced()" style="margin-left:auto">
+</div>
+<div class="filter-bar" style="margin-top:4px">
+  <button class="filter-btn active" id="modelAll" onclick="setModelFilter('')">🔮 全部</button>
+  <button class="filter-btn" id="modelPony" onclick="setModelFilter('pony-xl')">Pony</button>
+  <button class="filter-btn" id="modelIll" onclick="setModelFilter('prefect-ill-xl')">Illustrious</button>
+  <button class="filter-btn" id="modelFlux" onclick="setModelFilter('flux-dev')">FLUX</button>
 </div>
 <div id="grid" class="grid"></div>
 <div id="batchBar" class="batch-bar">
