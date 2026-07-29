@@ -142,7 +142,26 @@
   .snippet-editor .se-add button:hover { border-color: var(--accent); color: var(--accent); }
   .snippet-editor .se-actions { margin-top: 16px; text-align: right; }
   .snippet-editor .se-close { background: var(--accent); border: none; color: #fff; border-radius: 6px; padding: 6px 16px; cursor: pointer; font-size: 0.85rem; }
-  .snippet-wrap { position: relative; display: inline; }
+ .snippet-wrap { position: relative; display: inline; }
+ /* ── Reset confirm modal ── */
+ .reset-overlay {
+   display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+   z-index: 9999; align-items: center; justify-content: center;
+ }
+ .reset-overlay.open { display: flex; }
+ .reset-dialog {
+   background: var(--card); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+   padding: 24px; max-width: 360px; width: 90%; text-align: center;
+ }
+ .reset-dialog p { margin: 0 0 20px; font-size: 0.9rem; color: var(--text); }
+ .reset-dialog .reset-actions { display: flex; gap: 10px; justify-content: center; }
+ .reset-dialog .reset-actions button {
+   padding: 8px 20px; border-radius: 8px; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: .15s;
+ }
+ .reset-dialog .reset-ok { background: var(--red); color: #fff; }
+ .reset-dialog .reset-ok:hover { filter: brightness(1.2); }
+ .reset-dialog .reset-cancel { background: rgba(255,255,255,0.08); color: var(--text2); }
+ .reset-dialog .reset-cancel:hover { background: rgba(255,255,255,0.14); color: var(--text); }
   .result-placeholder {
     flex: 1; display: flex; align-items: center; justify-content: center;
     border: 2px dashed rgba(255,255,255,0.08); border-radius: var(--radius);
@@ -413,7 +432,7 @@
       </div>
 
       <button class="btn" id="generate-btn" onclick="generate()">🚀 生成</button>
-      <button class="btn btn-secondary" style="margin-top:6px" onclick="resetAll()">🔄 重置</button>
+      <button class="btn btn-secondary" style="margin-top:6px" onclick="showResetModal()">🔄 重置</button>
       <div class="error-msg" id="error-msg"></div>
       <div class="status-bar" id="status-bar"></div>
     </div>
@@ -439,6 +458,17 @@
     <div id="snippet-editor-groups"></div>
     <div class="se-actions">
       <button class="se-close" onclick="closeSnippetEditor()">完成</button>
+    </div>
+  </div>
+</div>
+
+<!-- Reset confirm overlay -->
+<div class="reset-overlay" id="reset-overlay" onclick="if(event.target===this)hideResetModal()">
+  <div class="reset-dialog">
+    <p>确定要清空所有参数并恢复默认值吗？</p>
+    <div class="reset-actions">
+      <button class="reset-cancel" onclick="hideResetModal()">取消</button>
+      <button class="reset-ok" onclick="doReset()">重置</button>
     </div>
   </div>
 </div>
@@ -1067,8 +1097,11 @@ function downloadResult() {
 }
 function openResult() { if (state.resultUrl) window.open(state.resultUrl, '_blank'); }
 
-function resetAll() {
-  if (!confirm('确定要清空所有参数并恢复默认值吗？')) return;
+function showResetModal() { document.getElementById('reset-overlay').classList.add('open'); }
+function hideResetModal() { document.getElementById('reset-overlay').classList.remove('open'); }
+
+function doReset() {
+  hideResetModal();
   // Prompt & negative
   document.getElementById('prompt').value = '';
   document.getElementById('negative').value = '';
