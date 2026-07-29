@@ -5834,6 +5834,26 @@
       "category": "character_style",
       "nsfw": false,
       "description": "拳拳 v63 — FLUX LoRA, 3000 steps, rank 16, Replicate训练"
+    },
+    {
+      "id": "quanquan-v64-pony",
+      "runware_air_id": "liangwc:quanquan-v64@1",
+      "name": "拳拳 v64 SeaArt Pony",
+      "url": "",
+      "tags": [
+        "pony",
+        "character",
+        "quanquan"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "拳拳 v64 — SeaArt Pony Diffusion V6 XL训练, rank 32"
     }
   ],
   "categories": {
