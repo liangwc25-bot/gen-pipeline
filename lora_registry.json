@@ -6186,6 +6186,306 @@
       "base_model": "zimage-turbo",
       "category": "character",
       "nsfw": false
+    },
+    {
+      "id": "chinese-zombie",
+      "runware_air_id": "liangwc:chinese-zombie@1",
+      "name": "Chinese Zombie Costume 丐版大清国僵尸服",
+      "url": "https://civitai.com/models/866223",
+      "tags": [
+        "flux",
+        "chinese",
+        "zombie",
+        "costume",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "yingqi-girl",
+      "runware_air_id": "liangwc:yingqi-girl@1",
+      "name": "Chinese/Asian Girl Cool Style 英气女子",
+      "url": "https://civitai.com/models/1050811",
+      "tags": [
+        "flux",
+        "chinese",
+        "girl",
+        "cool-style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "chinese-lingerie",
+      "runware_air_id": "liangwc:chinese-lingerie@1",
+      "name": "Chinese Lingerie 中式露奶内衣",
+      "url": "https://civitai.com/models/996854",
+      "tags": [
+        "flux",
+        "chinese",
+        "lingerie",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": true
+    },
+    {
+      "id": "chinese-hanfu",
+      "runware_air_id": "liangwc:chinese-hanfu@1",
+      "name": "Ancient Chinese Hanfu Style",
+      "url": "https://civitai.com/models/758777",
+      "tags": [
+        "flux",
+        "chinese",
+        "hanfu",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-wife-nsfw",
+      "runware_air_id": "liangwc:chinese-wife-nsfw@1",
+      "name": "Flux Chinese Wife (NSFW)",
+      "url": "https://civitai.com/models/820791",
+      "tags": [
+        "flux",
+        "chinese",
+        "wife",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "elegance-chinese-lady",
+      "runware_air_id": "liangwc:elegance-chinese-lady@1",
+      "name": "Elegance Chinese Lady",
+      "url": "https://civitai.com/models/2015123",
+      "tags": [
+        "flux",
+        "chinese",
+        "elegance",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "chinese-wife-v1",
+      "runware_air_id": "liangwc:chinese-wife-v1@1",
+      "name": "Flux Chinese Wife v1.1",
+      "url": "https://civitai.com/models/751804",
+      "tags": [
+        "flux",
+        "chinese",
+        "wife",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "dl-chinese-arch",
+      "runware_air_id": "liangwc:dl-chinese-arch@1",
+      "name": "DL Chinese Style Ancient Architecture",
+      "url": "https://civitai.com/models/1945746",
+      "tags": [
+        "flux",
+        "chinese",
+        "architecture",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-heroine",
+      "runware_air_id": "liangwc:chinese-heroine@1",
+      "name": "Flux Ancient Chinese Heroine Long Skirt",
+      "url": "https://civitai.com/models/791438",
+      "tags": [
+        "flux",
+        "chinese",
+        "heroine",
+        "long-skirt",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "yaohu-foxx",
+      "runware_air_id": "liangwc:yaohu-foxx@1",
+      "name": "Yaohu Foxx 🇨🇳 - Original Character Chinese Woman",
+      "url": "https://civitai.com/models/1608220",
+      "tags": [
+        "flux",
+        "chinese",
+        "yaohu",
+        "fox",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "martial-arts-style",
+      "runware_air_id": "liangwc:martial-arts-style@1",
+      "name": "Martial Arts Style",
+      "url": "https://civitai.com/models/803002",
+      "tags": [
+        "flux",
+        "chinese",
+        "martial-arts",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "chun-li-flux",
+      "runware_air_id": "liangwc:chun-li-flux@1",
+      "name": "Flux Chun Li",
+      "url": "https://civitai.com/models/2069705",
+      "tags": [
+        "flux",
+        "chun-li",
+        "street-fighter",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "dw-chinese-doll-sdxl",
+      "runware_air_id": "liangwc:dw-chinese-doll-sdxl@1",
+      "name": "[DW] Chinese Doll Likeliness - SDXL",
+      "url": "https://civitai.com/models/825160",
+      "tags": [
+        "sdxl",
+        "chinese",
+        "doll",
+        "digital-warlock",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "dramatic-lighting-slider",
+      "runware_air_id": "liangwc:dramatic-lighting-slider@1",
+      "name": "Dramatic Lighting Slider [Pony/Illustrious]",
+      "url": "https://civitai.com/models/1105685",
+      "tags": [
+        "sdxl",
+        "pony",
+        "illustrious",
+        "slider",
+        "lighting",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 1.0,
+      "scale_range": [
+        0.5,
+        2.0
+      ],
+      "base_model": "illustrious",
+      "category": "tool",
+      "nsfw": false
     }
   ],
   "categories": {
