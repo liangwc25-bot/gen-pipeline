@@ -6742,6 +6742,28 @@
       "base_model": "zimage-turbo",
       "category": "style",
       "nsfw": false
+    },
+    {
+      "id": "nexblend-m02-asian-male",
+      "runware_air_id": "liangwc:nexblend-m02-asian-male@1",
+      "name": "NexBlend m02 Asian Male Realistic LoRA",
+      "url": "https://civitai.com/models/2708478",
+      "tags": [
+        "zimage",
+        "asian",
+        "male",
+        "realistic",
+        "face",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": false
     }
   ],
   "categories": {
