@@ -6466,6 +6466,282 @@
       "base_model": "illustrious",
       "category": "tool",
       "nsfw": false
+    },
+    {
+      "id": "korean-women-ai",
+      "runware_air_id": "liangwc:korean-women-ai@1",
+      "name": "Ai Influence Korean Women [NSFW+SFW]",
+      "url": "https://civitai.com/models/2175576",
+      "tags": [
+        "zimage",
+        "korean",
+        "women",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "chinesegirlstyle",
+      "runware_air_id": "liangwc:chinesegirlstyle@1",
+      "name": "AI Chinesegirlstyle",
+      "url": "https://civitai.com/models/2344854",
+      "tags": [
+        "zimage",
+        "chinese",
+        "girl",
+        "style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "chinesegirlstyle-v2",
+      "runware_air_id": "liangwc:chinesegirlstyle-v2@1",
+      "name": "AI Chinesegirlstyle V2",
+      "url": "https://civitai.com/models/2355541",
+      "tags": [
+        "zimage",
+        "chinese",
+        "girl",
+        "style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "zit-ancient-chinese-v4",
+      "runware_air_id": "liangwc:zit-ancient-chinese-v4@1",
+      "name": "ZIT Ancient Chinese Outfit V4",
+      "url": "https://civitai.com/models/2174846",
+      "tags": [
+        "zimage",
+        "chinese",
+        "ancient",
+        "outfit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "zyd232-chinese-female-zimage",
+      "runware_air_id": "liangwc:zyd232-chinese-female-zimage@1",
+      "name": "zyd232's Chinese Female LoRA [Z-Image]",
+      "url": "https://civitai.com/models/2201980",
+      "tags": [
+        "zimage",
+        "chinese",
+        "female",
+        "zyd232",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "oriental-elegance",
+      "runware_air_id": "liangwc:oriental-elegance@1",
+      "name": "东方雅序 - 青霭浮光 Mistborne Gleam",
+      "url": "https://civitai.com/models/1871757",
+      "tags": [
+        "zimage",
+        "chinese",
+        "oriental",
+        "elegance",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "zit-breast-slider",
+      "runware_air_id": "liangwc:zit-breast-slider@1",
+      "name": "[ZIT] Breast Slider",
+      "url": "https://civitai.com/models/2230417",
+      "tags": [
+        "zimage",
+        "slider",
+        "breast",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 1.0,
+      "scale_range": [
+        0.5,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "tool",
+      "nsfw": false
+    },
+    {
+      "id": "aesthetic-amateur-photo",
+      "runware_air_id": "liangwc:aesthetic-amateur-photo@1",
+      "name": "Aesthetic Amateur Photo",
+      "url": "https://civitai.com/models/689192",
+      "tags": [
+        "zimage",
+        "aesthetic",
+        "amateur",
+        "photo",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "pornmaster-flat-breasts",
+      "runware_air_id": "liangwc:pornmaster-flat-breasts@1",
+      "name": "PornMaster Flat Breasts Z-Image",
+      "url": "https://civitai.com/models/2196133",
+      "tags": [
+        "zimage",
+        "body",
+        "flat",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.5
+      ],
+      "base_model": "zimage-turbo",
+      "category": "tool",
+      "nsfw": true
+    },
+    {
+      "id": "asian-mix-lora",
+      "runware_air_id": "liangwc:asian-mix-lora@1",
+      "name": "[Z Image Turbo] Asian Mix LoRA - EOL",
+      "url": "https://civitai.com/models/2185778",
+      "tags": [
+        "zimage",
+        "asian",
+        "mix",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "style",
+      "nsfw": true
+    },
+    {
+      "id": "zimage-cum-on-body",
+      "runware_air_id": "liangwc:zimage-cum-on-body@1",
+      "name": "Z-Image Cum On Body",
+      "url": "https://civitai.com/models/2178509",
+      "tags": [
+        "zimage",
+        "cum",
+        "body",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "facial-cumshot",
+      "runware_air_id": "liangwc:facial-cumshot@1",
+      "name": "Facial Cumshot - Krea 2 / Z-Image Turbo",
+      "url": "https://civitai.com/models/2173844",
+      "tags": [
+        "zimage",
+        "facial",
+        "cumshot",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "comic-book-tome1",
+      "runware_air_id": "liangwc:comic-book-tome1@1",
+      "name": "Comic Book Tome 1",
+      "url": "https://civitai.com/models/830230",
+      "tags": [
+        "zimage",
+        "comic",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "style",
+      "nsfw": false
     }
   ],
   "categories": {
