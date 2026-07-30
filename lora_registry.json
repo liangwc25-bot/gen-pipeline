@@ -6489,28 +6489,6 @@
       "nsfw": false
     },
     {
-      "id": "chinesegirlstyle",
-      "runware_air_id": "liangwc:chinesegirlstyle@1",
-      "name": "AI Chinesegirlstyle",
-      "url": "https://civitai.com/models/2344854",
-      "tags": [
-        "zimage",
-        "chinese",
-        "girl",
-        "style",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "character",
-      "nsfw": true
-    },
-    {
       "id": "chinesegirlstyle-v2",
       "runware_air_id": "liangwc:chinesegirlstyle-v2@1",
       "name": "AI Chinesegirlstyle V2",
