@@ -6640,27 +6640,6 @@
       "nsfw": false
     },
     {
-      "id": "pornmaster-flat-breasts",
-      "runware_air_id": "liangwc:pornmaster-flat-breasts@1",
-      "name": "PornMaster Flat Breasts Z-Image",
-      "url": "https://civitai.com/models/2196133",
-      "tags": [
-        "zimage",
-        "body",
-        "flat",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.5
-      ],
-      "base_model": "zimage-turbo",
-      "category": "tool",
-      "nsfw": true
-    },
-    {
       "id": "asian-mix-lora",
       "runware_air_id": "liangwc:asian-mix-lora@1",
       "name": "[Z Image Turbo] Asian Mix LoRA - EOL",
@@ -6679,27 +6658,6 @@
       ],
       "base_model": "zimage-turbo",
       "category": "style",
-      "nsfw": true
-    },
-    {
-      "id": "zimage-cum-on-body",
-      "runware_air_id": "liangwc:zimage-cum-on-body@1",
-      "name": "Z-Image Cum On Body",
-      "url": "https://civitai.com/models/2178509",
-      "tags": [
-        "zimage",
-        "cum",
-        "body",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "concept",
       "nsfw": true
     },
     {
