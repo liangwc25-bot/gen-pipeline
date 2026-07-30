@@ -6102,6 +6102,90 @@
       "base_model": "flux-dev",
       "category": "style",
       "nsfw": false
+    },
+    {
+      "id": "zit-age-slider",
+      "runware_air_id": "liangwc:zit-age-slider@1",
+      "name": "ZIT Age Slider",
+      "url": "https://civitai.com/models/2240908",
+      "tags": [
+        "zimage",
+        "slider",
+        "age",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 1.0,
+      "scale_range": [
+        0.5,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "tool",
+      "nsfw": false
+    },
+    {
+      "id": "zit-breast-size-slider",
+      "runware_air_id": "liangwc:zit-breast-size-slider@1",
+      "name": "Breast Size Slider (Krea-2 + ZIT)",
+      "url": "https://civitai.com/models/2540187",
+      "tags": [
+        "zimage",
+        "slider",
+        "breast",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 1.0,
+      "scale_range": [
+        0.5,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "tool",
+      "nsfw": true
+    },
+    {
+      "id": "zit-white-hair-ai",
+      "runware_air_id": "liangwc:zit-white-hair-ai@1",
+      "name": "White Hair Ai Character / Influencer [SFW+NSFW]",
+      "url": "https://civitai.com/models/2446700",
+      "tags": [
+        "zimage",
+        "character",
+        "white-hair",
+        "ai-influencer",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "zit-young-javanese",
+      "runware_air_id": "liangwc:zit-young-javanese@1",
+      "name": "Young Javanese Ai Influencer [SFW+NSFW]",
+      "url": "https://civitai.com/models/2792602",
+      "tags": [
+        "zimage",
+        "character",
+        "young",
+        "javanese",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": false
     }
   ],
   "categories": {
