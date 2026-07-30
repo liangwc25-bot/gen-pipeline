@@ -1,6 +1,6 @@
 {
   "version": "1.5",
-  "updated": "2026-07-18",
+  "updated": "2026-07-30",
   "loras": [
     {
       "id": "lora3-3d-campus-girl",
@@ -5894,6 +5894,214 @@
       "category": "character_style",
       "nsfw": false,
       "description": "拳拳 v64 Pony训的, Illustrious试试 semi-realistic"
+    },
+    {
+      "id": "chinese-girl-realistic",
+      "runware_air_id": "civitai:715558@800194",
+      "name": "Chinese Girl Flux 1.d LoRA (Realistic Photography)",
+      "url": "https://civitai.com/models/715558",
+      "tags": [
+        "flux",
+        "chinese",
+        "girl",
+        "realistic",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "zyd232-chinese-girl",
+      "runware_air_id": "civitai:779099@976201",
+      "name": "zyd232's Chinese Girl LoRA [Flux.1]",
+      "url": "https://civitai.com/models/779099",
+      "tags": [
+        "flux",
+        "chinese",
+        "girl",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-wuxia",
+      "runware_air_id": "civitai:713395@798678",
+      "name": "Chinese WuXia",
+      "url": "https://civitai.com/models/713395",
+      "tags": [
+        "flux",
+        "chinese",
+        "wuxia",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "chinesegirl-realistic-flux",
+      "runware_air_id": "civitai:719734@804794",
+      "name": "Chinesegirl Realistic Flux",
+      "url": "https://civitai.com/models/719734",
+      "tags": [
+        "flux",
+        "chinese",
+        "girl",
+        "realistic",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-beauty",
+      "runware_air_id": "civitai:1111359@1248781",
+      "name": "Chinese Beauty",
+      "url": "https://civitai.com/models/1111359",
+      "tags": [
+        "flux",
+        "chinese",
+        "beauty",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "hanfu-chinese-girl",
+      "runware_air_id": "civitai:719331@804359",
+      "name": "Hanfu Chinese Girl Flux LoRA (Realistic Photography)",
+      "url": "https://civitai.com/models/719331",
+      "tags": [
+        "flux",
+        "chinese",
+        "hanfu",
+        "girl",
+        "realistic",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "flux-chinese-beautiful-girl",
+      "runware_air_id": "civitai:1079950@1212551",
+      "name": "Flux-Chinese Beautiful Girl",
+      "url": "https://civitai.com/models/1079950",
+      "tags": [
+        "flux",
+        "chinese",
+        "girl",
+        "beautiful",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "dw-chinese-doll",
+      "runware_air_id": "civitai:825160@925355",
+      "name": "[DW] Digital Warlock - Chinese Doll Likeliness - Flux",
+      "url": "https://civitai.com/models/825160",
+      "tags": [
+        "flux",
+        "chinese",
+        "doll",
+        "digital-warlock",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "ghost-bride-flux",
+      "runware_air_id": "civitai:846901@947481",
+      "name": "Ghost Bride [Flux]",
+      "url": "https://civitai.com/models/846901",
+      "tags": [
+        "flux",
+        "chinese",
+        "ghost-bride",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "kolors-asian-face-flux",
+      "runware_air_id": "civitai:730162@823089",
+      "name": "Kolors style Asian face for Flux1 dev",
+      "url": "https://civitai.com/models/730162",
+      "tags": [
+        "flux",
+        "asian",
+        "face",
+        "kolors",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
     }
   ],
   "categories": {
