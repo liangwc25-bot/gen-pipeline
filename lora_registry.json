@@ -6402,27 +6402,6 @@
       "nsfw": false
     },
     {
-      "id": "martial-arts-style",
-      "runware_air_id": "liangwc:martial-arts-style@1",
-      "name": "Martial Arts Style",
-      "url": "https://civitai.com/models/803002",
-      "tags": [
-        "flux",
-        "chinese",
-        "martial-arts",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
-    },
-    {
       "id": "chun-li-flux",
       "runware_air_id": "liangwc:chun-li-flux@1",
       "name": "Flux Chun Li",
@@ -6462,7 +6441,8 @@
       ],
       "base_model": "sdxl",
       "category": "character",
-      "nsfw": false
+      "nsfw": false,
+      "notes": "Works on SDXL Vanilla base only (not runware:100@1). 2026-07-30."
     },
     {
       "id": "dramatic-lighting-slider",
