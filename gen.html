@@ -637,7 +637,7 @@ function setPlatform(p) {
 // ── Base label lookup ──
 const baseLabel = id => ({
   'flux-dev': 'FLUX', 'flux-schnell': 'FLUX', 'flux-uncensored': 'FLUX',
-  'flux-2-pro': 'FLUX', 'pony-xl': 'Pony SDXL', 'prefect-ill-xl': 'Illustrious XL',
+  'flux-2-pro': 'FLUX', 'pony-xl': 'Pony SDXL', 'pony-real': 'Pony SDXL', 'prefect-ill-xl': 'Illustrious XL',
   'guofeng4-xl': 'SDXL 1.0', 'pornmaster': 'SDXL 1.0', 'lustify': 'SDXL 1.0',
   'sdxl-vanilla': 'SDXL 1.0', 'dreamshaper-xl': 'SDXL 1.0', 'juggernaut-xl': 'SDXL 1.0',
   'qwen-edit': 'Qwen', 'pony': 'Pony SDXL', 'illustrious': 'Illustrious XL',
@@ -752,7 +752,7 @@ async function onModelChange() {
   document.getElementById('qwen-image-group').style.display = model === 'qwen-edit' ? 'block' : 'none';
   // Auto-set CFG placeholder per model
   const cfgInput = document.getElementById('cfg');
-  const defaults = { 'flux-dev': 3.5, 'pony-xl': 6, 'prefect-ill-xl': 6, 'flux-uncensored': 3.5, 'guofeng4-xl': 6, 'pornmaster': 6, 'lustify': 6, 'sdxl-base': 6, 'dreamshaper-xl': 6, 'juggernaut-xl': 6, 'fantasy-reality-xl': 6, 'qwen-edit': null, 'zimage-turbo': 3.5, 'zimage-alibaba': 3.5, 'zimage-moody': 3.5 };
+  const defaults = { 'flux-dev': 3.5, 'pony-xl': 6, 'pony-real': 6, 'prefect-ill-xl': 6, 'flux-uncensored': 3.5, 'guofeng4-xl': 6, 'pornmaster': 6, 'lustify': 6, 'sdxl-base': 6, 'dreamshaper-xl': 6, 'juggernaut-xl': 6, 'fantasy-reality-xl': 6, 'qwen-edit': null, 'zimage-turbo': 3.5, 'zimage-alibaba': 3.5, 'zimage-moody': 3.5 };
   cfgInput.placeholder = defaults[model] != null ? `默认 ${defaults[model]}` : 'N/A';
   if (model === 'qwen-edit') { cfgInput.disabled = true; cfgInput.value = ''; }
   else { cfgInput.disabled = false; }
