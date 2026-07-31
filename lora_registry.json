@@ -1173,32 +1173,35 @@
       "notes": "2026-07-16: first run on Replicate, rank 16, 1000 steps."
     },
     {
-      "id": "pov-footworship",
-      "runware_air_id": "liangwc:pov-footworship@1171421",
-      "name": "[Pov] FootWorship",
-      "url": "https://civitai.com/models/946498",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pov"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "ada-wong",
-      "runware_air_id": "liangwc:ada-wong@396269",
-      "name": "Ada Wong (Resident Evil)",
-      "url": "https://civitai.com/models/354374",
+      "id": "detail-enhancer-pony",
+      "runware_air_id": "liangwc:detail-enhancer-pony@1719171",
+      "name": "Detail Enhancer Pony",
+      "url": "https://civitai.com/models/1450571",
       "tags": [
         "pony",
-        "character"
+        "concept",
+        "enhancer"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "dw-doll-pony",
+      "runware_air_id": "liangwc:dw-doll-pony@922756",
+      "name": "DW Chinese Doll Pony",
+      "url": "https://civitai.com/models/825160",
+      "tags": [
+        "pony",
+        "concept",
+        "chinese",
+        "doll",
+        "dw"
       ],
       "default_scale": 0.8,
       "scale_range": [
@@ -1206,8 +1209,366 @@
         1.2
       ],
       "base_model": "pony",
-      "category": "character",
+      "category": "style",
+      "nsfw": false,
+      "description": "DW Digital Warlock Chinese Doll Likeliness — Pony"
+    },
+    {
+      "id": "expressive-h",
+      "runware_air_id": "liangwc:expressive-h@382152",
+      "name": "ExpressiveH (Hentai LoRA Style)",
+      "url": "https://civitai.com/models/341353",
+      "tags": [
+        "pony",
+        "style",
+        "hen",
+        "nsfw"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": true
+    },
+    {
+      "id": "geekpower-styles",
+      "runware_air_id": "liangwc:geekpower-styles@354128",
+      "name": "Geekpower AI Styles",
+      "url": "https://civitai.com/models/315703",
+      "tags": [
+        "pony",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "pony",
+      "category": "style",
       "nsfw": false
+    },
+    {
+      "id": "gothic-detail-enhancer-pony",
+      "runware_air_id": "liangwc:gothic-detail-enhancer@1672292",
+      "name": "Gothic Detail Enhancer (Pony)",
+      "url": "https://civitai.com/models/1478407",
+      "tags": [
+        "pony",
+        "concept",
+        "enhancer",
+        "gothic"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "gothic-retro-anime",
+      "runware_air_id": "liangwc:gothic-retro-anime@501154",
+      "name": "Gothic Retro Anime",
+      "url": "https://civitai.com/models/888235",
+      "tags": [
+        "pony",
+        "style",
+        "anime"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false,
+      "notes": "鹿鹿常用。Runware AIR verified ✅"
+    },
+    {
+      "id": "gufeng",
+      "runware_air_id": "liangwc:gufeng@954662",
+      "name": "Gufeng / 古风 / 国风",
+      "url": "https://civitai.com/models/853112",
+      "tags": [
+        "pony",
+        "style",
+        "chinese"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false,
+      "notes": "古风/国风 style"
+    },
+    {
+      "id": "shiny-nai-pony",
+      "runware_air_id": "liangwc:shiny-nai-pony@691705",
+      "name": "Shiny Nai style Pony",
+      "url": "https://civitai.com/models/618752",
+      "tags": [
+        "pony",
+        "concept",
+        "shiny",
+        "nai",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false,
+      "description": "Shiny Nai style — Pony"
+    },
+    {
+      "id": "age-slider",
+      "runware_air_id": "liangwc:age-slider@448977",
+      "name": "Age Slider",
+      "url": "https://civitai.com/models/402667",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        1.0
+      ],
+      "base_model": "pony",
+      "category": "tools",
+      "nsfw": false
+    },
+    {
+      "id": "anal-gape-pony",
+      "runware_air_id": "liangwc:anal-gape-pony@1226443",
+      "name": "Anal Gape Slider - PONY",
+      "url": "https://civitai.com/models/1091956",
+      "tags": [
+        "pony",
+        "nsfw",
+        "anal",
+        "gape",
+        "slider"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "tools",
+      "nsfw": true,
+      "description": "Anal gape slider — Pony base"
+    },
+    {
+      "id": "breast-size-pony",
+      "runware_air_id": "liangwc:breast-size-pony@534952",
+      "name": "Breast Size Slider (Pony)",
+      "url": "https://civitai.com/models/481016",
+      "tags": [
+        "pony",
+        "slider"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "pony",
+      "category": "tools",
+      "nsfw": false
+    },
+    {
+      "id": "darker-images-slider",
+      "runware_air_id": "liangwc:darker-images-slider@989098",
+      "name": "Darker Images Slider",
+      "url": "https://civitai.com/models/883616",
+      "tags": [
+        "pony",
+        "concept",
+        "slider"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "pony",
+      "category": "tools",
+      "nsfw": false
+    },
+    {
+      "id": "gape-slider",
+      "runware_air_id": "liangwc:gape-slider@835177",
+      "name": "Gape Slider",
+      "url": "https://civitai.com/models/746852",
+      "tags": [
+        "pony",
+        "slider",
+        "nsfw"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "pony",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "nipple-size-pony",
+      "runware_air_id": "liangwc:nipple-size-pony@1264945",
+      "name": "Nipple Size Slider (Pony)",
+      "url": "https://civitai.com/models/1074781",
+      "tags": [
+        "pony",
+        "slider",
+        "nsfw"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "pony",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "penis-bulge-slider",
+      "runware_air_id": "liangwc:penis-bulge-slider@575298",
+      "name": "Penis Bulge Slider",
+      "url": "https://civitai.com/models/517729",
+      "tags": [
+        "pony",
+        "concept",
+        "slider"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "pony",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "penis-size-pony",
+      "runware_air_id": "liangwc:penis-size-pony@517898",
+      "name": "Penis Size Slider (Pony)",
+      "url": "https://civitai.com/models/465379",
+      "tags": [
+        "pony",
+        "slider",
+        "nsfw"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "pony",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "pregnancy-slider",
+      "runware_air_id": "liangwc:pregnancy-slider@541806",
+      "name": "Pregnancy Slider",
+      "url": "https://civitai.com/models/487226",
+      "tags": [
+        "pony",
+        "slider",
+        "body"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "pony",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "chinese-bunny-girl",
+      "runware_air_id": "liangwc:bunny-girl@542799",
+      "name": "0625 Chinese bunny girl",
+      "url": "https://civitai.com/models/488143",
+      "tags": [
+        "pony",
+        "nsfw",
+        "chinese",
+        "bunny",
+        "girl"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "0625 Chinese bunny girl — Pony"
+    },
+    {
+      "id": "cheongsam",
+      "runware_air_id": "liangwc:cheongsam@549164",
+      "name": "0632 Chinese cheongsam",
+      "url": "https://civitai.com/models/493956",
+      "tags": [
+        "pony",
+        "concept",
+        "cheongsam",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "0632 Chinese cheongsam — Pony"
+    },
+    {
+      "id": "chinese-wedding-1007",
+      "runware_air_id": "liangwc:chinese-wedding-pony1@886207",
+      "name": "1007 Chinese wedding dress",
+      "url": "https://civitai.com/models/792527",
+      "tags": [
+        "pony",
+        "concept",
+        "chinese",
+        "wedding",
+        "dress"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "1007 Chinese wedding dress — Pony"
     },
     {
       "id": "adjusting-clothes",
@@ -1228,6 +1589,901 @@
       "nsfw": false
     },
     {
+      "id": "anal-fisting-pony",
+      "runware_air_id": "liangwc:anal-fisting-pony@1406801",
+      "name": "Anal Fisting and Stretching Pony",
+      "url": "https://civitai.com/models/483771",
+      "tags": [
+        "pony",
+        "nsfw",
+        "anal",
+        "fisting"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Anal fisting and stretching — Pony"
+    },
+    {
+      "id": "cum-on-tongue",
+      "runware_air_id": "liangwc:cum-on-tongue@814441",
+      "name": "Better Cum on Tongue",
+      "url": "https://civitai.com/models/728342",
+      "tags": [
+        "pony",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "bodysuit",
+      "runware_air_id": "liangwc:bodysuit@585932",
+      "name": "Bodysuit",
+      "url": "https://civitai.com/models/527354",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "gufeng-qingqu",
+      "runware_air_id": "liangwc:gufeng-qingqu@539310",
+      "name": "Chinese lingerie 古风小情趣",
+      "url": "https://civitai.com/models/141682",
+      "tags": [
+        "pony",
+        "nsfw",
+        "lingerie",
+        "chinese",
+        "gufeng"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "Chinese lingerie Clothing 古风小情趣 — Pony"
+    },
+    {
+      "id": "chinese-wedding-pony3",
+      "runware_air_id": "liangwc:chinese-wedding-pony3@1002426",
+      "name": "Chinese wedding dress 中式婚纱",
+      "url": "https://civitai.com/models/895809",
+      "tags": [
+        "pony",
+        "nsfw",
+        "chinese",
+        "wedding",
+        "lingerie"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "Chinese wedding dress 中式婚纱 Sexy lingerie — Pony"
+    },
+    {
+      "id": "cum-bath",
+      "runware_air_id": "liangwc:cum-bath@895430",
+      "name": "Cum Bath",
+      "url": "https://civitai.com/models/800803",
+      "tags": [
+        "pony",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "doggystyle-facing-viewer",
+      "runware_air_id": "liangwc:doggystyle-facing-viewer@674332",
+      "name": "Doggystyle Facing Viewer",
+      "url": "https://civitai.com/models/603258",
+      "tags": [
+        "pony",
+        "nsfw",
+        "pose"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "exploding-clothes-pony",
+      "runware_air_id": "liangwc:exploding-clothes-pony@482046",
+      "name": "Exploding Clothes / Torn Clothes (Pony)",
+      "url": "https://civitai.com/models/432701",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "extreme-insertion-pony",
+      "runware_air_id": "liangwc:extreme-insertion-pony@520278",
+      "name": "Extreme Insertion (Pony)",
+      "url": "https://civitai.com/models/444807",
+      "tags": [
+        "pony",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "lora9-futanari",
+      "runware_air_id": "liangwc:lora9@564643",
+      "name": "Futanari 18+ (lora9)",
+      "file": "",
+      "url": "https://civitai.com/models/564643",
+      "trigger_words": [],
+      "tags": [
+        "nsfw",
+        "pony",
+        "futanari",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Large Futanari Penis 18+ — Pony base. Runware AIR verified ✅.",
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-01: uploaded to Runware."
+    },
+    {
+      "id": "giantess-building-fuck",
+      "runware_air_id": "liangwc:giantess-building-fuck@847258",
+      "name": "Giantess Building Fuck",
+      "url": "https://civitai.com/models/757709",
+      "tags": [
+        "pony",
+        "nsfw",
+        "giantess"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "lora7-girl-x-giant",
+      "runware_air_id": "liangwc:lora7@1169441",
+      "name": "Girl x Giant XL 18+ (lora7)",
+      "file": "",
+      "url": "https://civitai.com/models/1169441",
+      "trigger_words": [],
+      "tags": [
+        "giantess",
+        "nsfw",
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Girl x Giant XL 18+ — Pony base. Runware AIR verified ✅.",
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-01: uploaded to Runware."
+    },
+    {
+      "id": "kneeling-submissive",
+      "runware_air_id": "liangwc:kneeling-submissive@898161",
+      "name": "Kneeling/submissive",
+      "url": "https://civitai.com/models/803266",
+      "tags": [
+        "pony",
+        "nsfw",
+        "kneeling",
+        "submissive"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Kneeling/submissive — Pony base"
+    },
+    {
+      "id": "korean-girl-face",
+      "runware_air_id": "liangwc:korean-girl-face@1189291",
+      "name": "Korean Girl Style Face",
+      "url": "https://civitai.com/models/691463",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "leggings",
+      "runware_air_id": "liangwc:leggings@508497",
+      "name": "Leggings",
+      "url": "https://civitai.com/models/454682",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "micro-panties-pony",
+      "runware_air_id": "liangwc:micro-panties-pony@791802",
+      "name": "Micro Panties (Pony)",
+      "url": "https://civitai.com/models/707896",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "multiple-insertion",
+      "runware_air_id": "liangwc:multiple-insertion@812378",
+      "name": "Multiple Insertion / Penetration",
+      "url": "https://civitai.com/models/89125",
+      "tags": [
+        "pony",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "ofuda-pony",
+      "runware_air_id": "liangwc:ofuda-pony@593678",
+      "name": "Ofuda (miko/jiangshi/pasties)",
+      "url": "https://civitai.com/models/250482",
+      "tags": [
+        "pony",
+        "style",
+        "concept"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.4,
+        1.0
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false,
+      "notes": "神楽/符札/巫女/僵尸/乳房贴纸等概念"
+    },
+    {
+      "id": "lora8-oppai-large-breasts",
+      "runware_air_id": "liangwc:lora8@623811",
+      "name": "Oppai Large Breasts 18+ (lora8)",
+      "file": "",
+      "url": "https://civitai.com/models/623811",
+      "trigger_words": [],
+      "tags": [
+        "nsfw",
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Oppai / Large breasts slim body 18+ — Pony base. Runware AIR verified ✅.",
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-01: uploaded to Runware."
+    },
+    {
+      "id": "pov-facesitting-v2",
+      "runware_air_id": "liangwc:pov-facesitting-v2@576510",
+      "name": "POV Facesitting v2",
+      "url": "https://civitai.com/models/518838",
+      "tags": [
+        "pony",
+        "nsfw",
+        "pov"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "race-ethnicity-pony",
+      "runware_air_id": "liangwc:race-ethnicity-pony@2212053",
+      "name": "Race & Ethnicity Helper (Pony)",
+      "url": "https://civitai.com/models/620668",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "slutty-dress",
+      "runware_air_id": "liangwc:slutty-dress@859460",
+      "name": "Slutty Dress / Bodycon",
+      "url": "https://civitai.com/models/768438",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "tiny-creatures",
+      "runware_air_id": "liangwc:tiny-creatures@1810137",
+      "name": "Tiny Creatures",
+      "url": "https://civitai.com/models/1599588",
+      "tags": [
+        "pony",
+        "concept",
+        "tiny",
+        "creatures"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Tiny Creatures — Pony base"
+    },
+    {
+      "id": "tiny-girl-pony",
+      "runware_air_id": "liangwc:tiny-girl-pony@480044",
+      "name": "Tiny Girl - Pony",
+      "url": "https://civitai.com/models/430863",
+      "tags": [
+        "pony",
+        "nsfw",
+        "tiny",
+        "girl"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Tiny Girl — Pony base"
+    },
+    {
+      "id": "transparent-wedding-dress",
+      "runware_air_id": "liangwc:transparent-wedding-dress@1533007",
+      "name": "Transparent Wedding Dress",
+      "url": "https://civitai.com/models/1346525",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "uncensored-ponyxl",
+      "runware_air_id": "liangwc:uncensored-ponyxl@416689",
+      "name": "Uncensored PonyXL",
+      "url": "https://civitai.com/models/339269",
+      "tags": [
+        "pony",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "guoman-pony",
+      "runware_air_id": "liangwc:guoman-pony@801320",
+      "name": "XE GuoMan LoRA",
+      "url": "https://civitai.com/models/709435",
+      "tags": [
+        "pony",
+        "concept",
+        "guoman"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false,
+      "description": "XE: GuoMan LoRA — Pony base"
+    },
+    {
+      "id": "pubic-tattoo-pony",
+      "runware_air_id": "liangwc:pubic-tattoo-pony@513762",
+      "name": "淫紋 pubic tattoo (Pony)",
+      "url": "https://civitai.com/models/461662",
+      "tags": [
+        "pony",
+        "nsfw",
+        "tattoo",
+        "body-mod"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "淫紋/pub tattoo — Pony base"
+    },
+    {
+      "id": "ada-wong",
+      "runware_air_id": "liangwc:ada-wong@396269",
+      "name": "Ada Wong (Resident Evil)",
+      "url": "https://civitai.com/models/354374",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "princess-belle",
+      "runware_air_id": "liangwc:princess-belle@430511",
+      "name": "Belle (Beauty and the Beast)",
+      "url": "https://civitai.com/models/43711",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "elsa-frozen",
+      "runware_air_id": "liangwc:elsa-frozen@402464",
+      "name": "Elsa (Frozen)",
+      "url": "https://civitai.com/models/112492",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "faceless-alien-goddess",
+      "runware_air_id": "liangwc:faceless-alien-goddess@660456",
+      "name": "Faceless Alien Goddess",
+      "url": "https://civitai.com/models/591480",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "jasmine-disney",
+      "runware_air_id": "liangwc:jasmine-disney@390371",
+      "name": "Jasmine (Aladdin)",
+      "url": "https://civitai.com/models/48875",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "jessica-rabbit",
+      "runware_air_id": "liangwc:jessica-rabbit@726862",
+      "name": "Jessica Rabbit",
+      "url": "https://civitai.com/models/385769",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "jill-valentine",
+      "runware_air_id": "liangwc:jill-valentine@655583",
+      "name": "Jill Valentine (Resident Evil)",
+      "url": "https://civitai.com/models/435001",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "ranma",
+      "runware_air_id": "liangwc:ranma@928097",
+      "name": "Ranma 1/2",
+      "url": "https://civitai.com/models/628474",
+      "tags": [
+        "pony",
+        "character",
+        "anime"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false,
+      "notes": "Ranma Saotome 早乙女乱馬"
+    },
+    {
+      "id": "sadako",
+      "runware_air_id": "liangwc:sadako@566749",
+      "name": "Sadako (The Ring)",
+      "url": "https://civitai.com/models/509946",
+      "tags": [
+        "pony",
+        "character",
+        "horror",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "selena-goth-punk",
+      "runware_air_id": "liangwc:selena-goth-punk@607167",
+      "name": "Selena Goth Punk Girl",
+      "url": "https://civitai.com/models/545935",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "shampoo-ranma",
+      "runware_air_id": "liangwc:shampoo-ranma@550900",
+      "name": "Shampoo (Ranma 1/2)",
+      "url": "https://civitai.com/models/25873",
+      "tags": [
+        "pony",
+        "character"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "tiny-demon-lilith",
+      "runware_air_id": "liangwc:tiny-demon-lilith@1083814",
+      "name": "tiny demon Lilith -101",
+      "url": "https://civitai.com/models/967989",
+      "tags": [
+        "pony",
+        "nsfw",
+        "tiny",
+        "demon",
+        "lilith"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": true,
+      "description": "tiny demon Lilith -101 — Pony base"
+    },
+    {
+      "id": "tomie-pony",
+      "runware_air_id": "liangwc:tomie-pony@686806",
+      "name": "Tomie Kawakami (Pony)",
+      "url": "https://civitai.com/models/614372",
+      "tags": [
+        "pony",
+        "character",
+        "horror"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "mai-shiranui-pony",
+      "runware_air_id": "liangwc:mai-shiranui-pony@601161",
+      "name": "不知火舞 Mai (Pony)",
+      "url": "https://civitai.com/models/540718",
+      "tags": [
+        "pony",
+        "character",
+        "kof"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "miku-pony",
+      "runware_air_id": "liangwc:miku-pony@404551",
+      "name": "初音ミク Miku (Pony)",
+      "url": "https://civitai.com/models/362031",
+      "tags": [
+        "pony",
+        "character",
+        "vocaloid"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "ssy-pony",
+      "runware_air_id": "liangwc:ssy-pony@774815",
+      "name": "少司缘·王者荣耀 (Pony)",
+      "url": "https://civitai.com/models/666782",
+      "tags": [
+        "pony",
+        "character",
+        "wangzhe"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "quanquan-v64-pony",
+      "runware_air_id": "liangwc:quanquan-v64@1",
+      "name": "拳拳 v64 SeaArt Pony",
+      "url": "",
+      "tags": [
+        "pony",
+        "character",
+        "quanquan"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character",
+      "nsfw": false,
+      "description": "拳拳 v64 — SeaArt Pony Diffusion V6 XL训练, rank 32"
+    },
+    {
+      "id": "pov-footworship",
+      "runware_air_id": "liangwc:pov-footworship@1171421",
+      "name": "[Pov] FootWorship",
+      "url": "https://civitai.com/models/946498",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "pov"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
       "id": "aerith-ff7-il",
       "runware_air_id": "liangwc:aerith-ff7-il@3042581",
       "name": "Aerith (FF7 IL)",
@@ -1244,24 +2500,6 @@
       ],
       "base_model": "illustrious",
       "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "age-slider",
-      "runware_air_id": "liangwc:age-slider@448977",
-      "name": "Age Slider",
-      "url": "https://civitai.com/models/402667",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
       "nsfw": false
     },
     {
@@ -1321,43 +2559,6 @@
       "nsfw": false
     },
     {
-      "id": "princess-belle",
-      "runware_air_id": "liangwc:princess-belle@430511",
-      "name": "Belle (Beauty and the Beast)",
-      "url": "https://civitai.com/models/43711",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "cum-on-tongue",
-      "runware_air_id": "liangwc:cum-on-tongue@814441",
-      "name": "Better Cum on Tongue",
-      "url": "https://civitai.com/models/728342",
-      "tags": [
-        "pony",
-        "nsfw",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
       "id": "body-weight-slider",
       "runware_air_id": "liangwc:body-weight-slider@2825512",
       "name": "Body Weight Slider (Skinny→Fat)",
@@ -1373,24 +2574,6 @@
         1.0
       ],
       "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "bodysuit",
-      "runware_air_id": "liangwc:bodysuit@585932",
-      "name": "Bodysuit",
-      "url": "https://civitai.com/models/527354",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
       "category": "concept",
       "nsfw": false
     },
@@ -1429,24 +2612,6 @@
       "base_model": "illustrious",
       "category": "character_style",
       "nsfw": true
-    },
-    {
-      "id": "breast-size-pony",
-      "runware_air_id": "liangwc:breast-size-pony@534952",
-      "name": "Breast Size Slider (Pony)",
-      "url": "https://civitai.com/models/481016",
-      "tags": [
-        "pony",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
     },
     {
       "id": "building-insertion-giantess",
@@ -1492,24 +2657,6 @@
       "notes": "2026-07-01: uploaded to Runware. Illustrious base model."
     },
     {
-      "id": "classic-lara-croft",
-      "runware_air_id": "liangwc:classic-lara-croft@892309",
-      "name": "Classic Lara Croft",
-      "url": "https://civitai.com/models/423786",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
       "id": "cowgirl-position",
       "runware_air_id": "liangwc:cowgirl-position@1797834",
       "name": "Cowgirl Position Sex",
@@ -1525,24 +2672,6 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "cum-bath",
-      "runware_air_id": "liangwc:cum-bath@895430",
-      "name": "Cum Bath",
-      "url": "https://civitai.com/models/800803",
-      "tags": [
-        "pony",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
       "category": "character_style",
       "nsfw": true
     },
@@ -1623,25 +2752,6 @@
       "nsfw": true
     },
     {
-      "id": "darker-images-slider",
-      "runware_air_id": "liangwc:darker-images-slider@989098",
-      "name": "Darker Images Slider",
-      "url": "https://civitai.com/models/883616",
-      "tags": [
-        "pony",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
       "id": "detail-enhancer-ill",
       "runware_air_id": "liangwc:detail-enhancer-ill@1983243",
       "name": "Detail Enhancer IL",
@@ -1657,25 +2767,6 @@
         0.8
       ],
       "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "detail-enhancer-pony",
-      "runware_air_id": "liangwc:detail-enhancer-pony@1719171",
-      "name": "Detail Enhancer Pony",
-      "url": "https://civitai.com/models/1450571",
-      "tags": [
-        "pony",
-        "concept",
-        "enhancer"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "pony",
       "category": "concept",
       "nsfw": false
     },
@@ -1718,25 +2809,6 @@
       "nsfw": false
     },
     {
-      "id": "doggystyle-facing-viewer",
-      "runware_air_id": "liangwc:doggystyle-facing-viewer@674332",
-      "name": "Doggystyle Facing Viewer",
-      "url": "https://civitai.com/models/603258",
-      "tags": [
-        "pony",
-        "nsfw",
-        "pose"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "donut-anus",
       "runware_air_id": "liangwc:donut-anus@1638285",
       "name": "Donut Anus",
@@ -1774,24 +2846,6 @@
       "nsfw": false
     },
     {
-      "id": "elsa-frozen",
-      "runware_air_id": "liangwc:elsa-frozen@402464",
-      "name": "Elsa (Frozen)",
-      "url": "https://civitai.com/models/112492",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
       "id": "exploding-clothes-ill",
       "runware_air_id": "liangwc:exploding-clothes-ill@1368542",
       "name": "Exploding Clothes / Torn Clothes (Illu)",
@@ -1808,44 +2862,6 @@
       "base_model": "illustrious",
       "category": "concept",
       "nsfw": false
-    },
-    {
-      "id": "exploding-clothes-pony",
-      "runware_air_id": "liangwc:exploding-clothes-pony@482046",
-      "name": "Exploding Clothes / Torn Clothes (Pony)",
-      "url": "https://civitai.com/models/432701",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "expressive-h",
-      "runware_air_id": "liangwc:expressive-h@382152",
-      "name": "ExpressiveH (Hentai LoRA Style)",
-      "url": "https://civitai.com/models/341353",
-      "tags": [
-        "pony",
-        "style",
-        "hen",
-        "nsfw"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": true
     },
     {
       "id": "bounty-pov",
@@ -1904,24 +2920,6 @@
       "nsfw": true
     },
     {
-      "id": "extreme-insertion-pony",
-      "runware_air_id": "liangwc:extreme-insertion-pony@520278",
-      "name": "Extreme Insertion (Pony)",
-      "url": "https://civitai.com/models/444807",
-      "tags": [
-        "pony",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "extreme-spread",
       "runware_air_id": "liangwc:yin-nvtu@2221663",
       "name": "Extreme Spread Pussy Anal",
@@ -1938,42 +2936,6 @@
       "base_model": "illustrious",
       "category": "character_style",
       "nsfw": true
-    },
-    {
-      "id": "eye-size-slider",
-      "runware_air_id": "liangwc:eye-size-slider@535841",
-      "name": "Eye Size Slider",
-      "url": "https://civitai.com/models/481810",
-      "tags": [
-        "pony",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "faceless-alien-goddess",
-      "runware_air_id": "liangwc:faceless-alien-goddess@660456",
-      "name": "Faceless Alien Goddess",
-      "url": "https://civitai.com/models/591480",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
     },
     {
       "id": "fairy-fleshlight",
@@ -2070,87 +3032,6 @@
       "nsfw": true
     },
     {
-      "id": "lora9-futanari",
-      "runware_air_id": "liangwc:lora9@564643",
-      "name": "Futanari 18+ (lora9)",
-      "file": "",
-      "url": "https://civitai.com/models/564643",
-      "trigger_words": [],
-      "tags": [
-        "nsfw",
-        "pony",
-        "futanari",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Large Futanari Penis 18+ — Pony base. Runware AIR verified ✅.",
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-01: uploaded to Runware."
-    },
-    {
-      "id": "gape-slider",
-      "runware_air_id": "liangwc:gape-slider@835177",
-      "name": "Gape Slider",
-      "url": "https://civitai.com/models/746852",
-      "tags": [
-        "pony",
-        "slider",
-        "nsfw"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
-      "id": "geekpower-styles",
-      "runware_air_id": "liangwc:geekpower-styles@354128",
-      "name": "Geekpower AI Styles",
-      "url": "https://civitai.com/models/315703",
-      "tags": [
-        "pony",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "giantess-building-fuck",
-      "runware_air_id": "liangwc:giantess-building-fuck@847258",
-      "name": "Giantess Building Fuck",
-      "url": "https://civitai.com/models/757709",
-      "tags": [
-        "pony",
-        "nsfw",
-        "giantess"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "giantess-xl",
       "runware_air_id": "liangwc:giantess-xl@2495565",
       "name": "Giantess XL",
@@ -2168,31 +3049,6 @@
       "base_model": "illustrious",
       "category": "character_style",
       "nsfw": true
-    },
-    {
-      "id": "lora7-girl-x-giant",
-      "runware_air_id": "liangwc:lora7@1169441",
-      "name": "Girl x Giant XL 18+ (lora7)",
-      "file": "",
-      "url": "https://civitai.com/models/1169441",
-      "trigger_words": [],
-      "tags": [
-        "giantess",
-        "nsfw",
-        "pony",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Girl x Giant XL 18+ — Pony base. Runware AIR verified ✅.",
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-01: uploaded to Runware."
     },
     {
       "id": "gothic-detail-enhancer-ill",
@@ -2213,66 +3069,6 @@
       "base_model": "illustrious",
       "category": "concept",
       "nsfw": false
-    },
-    {
-      "id": "gothic-detail-enhancer-pony",
-      "runware_air_id": "liangwc:gothic-detail-enhancer@1672292",
-      "name": "Gothic Detail Enhancer (Pony)",
-      "url": "https://civitai.com/models/1478407",
-      "tags": [
-        "pony",
-        "concept",
-        "enhancer",
-        "gothic"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "gothic-retro-anime",
-      "runware_air_id": "liangwc:gothic-retro-anime@501154",
-      "name": "Gothic Retro Anime",
-      "url": "https://civitai.com/models/888235",
-      "tags": [
-        "pony",
-        "style",
-        "anime"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false,
-      "notes": "鹿鹿常用。Runware AIR verified ✅"
-    },
-    {
-      "id": "gufeng",
-      "runware_air_id": "liangwc:gufeng@954662",
-      "name": "Gufeng / 古风 / 国风",
-      "url": "https://civitai.com/models/853112",
-      "tags": [
-        "pony",
-        "style",
-        "chinese"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false,
-      "notes": "古风/国风 style"
     },
     {
       "id": "gufeng-ill",
@@ -2390,24 +3186,6 @@
       "nsfw": true
     },
     {
-      "id": "hyper-gape",
-      "runware_air_id": "liangwc:hyper-gape@447230",
-      "name": "Hyper Gape",
-      "url": "https://civitai.com/models/339025",
-      "tags": [
-        "pony",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "hyperrealistic",
       "runware_air_id": "liangwc:hyperrealistic@1914557",
       "name": "Hyperrealistic",
@@ -2423,78 +3201,6 @@
         0.8
       ],
       "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "jasmine-disney",
-      "runware_air_id": "liangwc:jasmine-disney@390371",
-      "name": "Jasmine (Aladdin)",
-      "url": "https://civitai.com/models/48875",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "jessica-rabbit",
-      "runware_air_id": "liangwc:jessica-rabbit@726862",
-      "name": "Jessica Rabbit",
-      "url": "https://civitai.com/models/385769",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "jill-valentine",
-      "runware_air_id": "liangwc:jill-valentine@655583",
-      "name": "Jill Valentine (Resident Evil)",
-      "url": "https://civitai.com/models/435001",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "korean-girl-face",
-      "runware_air_id": "liangwc:korean-girl-face@1189291",
-      "name": "Korean Girl Style Face",
-      "url": "https://civitai.com/models/691463",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
       "category": "concept",
       "nsfw": false
     },
@@ -2518,24 +3224,6 @@
       "nsfw": true
     },
     {
-      "id": "leggings",
-      "runware_air_id": "liangwc:leggings@508497",
-      "name": "Leggings",
-      "url": "https://civitai.com/models/454682",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
       "id": "loose-tank-top",
       "runware_air_id": "liangwc:loose-tank-top@2130429",
       "name": "Loose Tank Top",
@@ -2550,25 +3238,6 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "lowleg-clothes-slider",
-      "runware_air_id": "liangwc:lowleg-clothes-slider@1006962",
-      "name": "Lowleg Clothes Slider",
-      "url": "https://civitai.com/models/899950",
-      "tags": [
-        "pony",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
       "category": "concept",
       "nsfw": false
     },
@@ -2610,24 +3279,6 @@
       "nsfw": false
     },
     {
-      "id": "micro-panties-pony",
-      "runware_air_id": "liangwc:micro-panties-pony@791802",
-      "name": "Micro Panties (Pony)",
-      "url": "https://civitai.com/models/707896",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
       "id": "gothic-niji-style",
       "runware_air_id": "liangwc:gothic-niji-style@2498503",
       "name": "MoriiMee Gothic Niji Style",
@@ -2645,24 +3296,6 @@
       "base_model": "illustrious",
       "category": "style",
       "nsfw": false
-    },
-    {
-      "id": "multiple-insertion",
-      "runware_air_id": "liangwc:multiple-insertion@812378",
-      "name": "Multiple Insertion / Penetration",
-      "url": "https://civitai.com/models/89125",
-      "tags": [
-        "pony",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true
     },
     {
       "id": "niji-goth-style",
@@ -2721,25 +3354,6 @@
       "nsfw": true
     },
     {
-      "id": "nipple-size-pony",
-      "runware_air_id": "liangwc:nipple-size-pony@1264945",
-      "name": "Nipple Size Slider (Pony)",
-      "url": "https://civitai.com/models/1074781",
-      "tags": [
-        "pony",
-        "slider",
-        "nsfw"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
       "id": "nsfw-slider",
       "runware_air_id": "liangwc:nsfw-slider@2876566",
       "name": "NSFW Slider",
@@ -2778,26 +3392,6 @@
       "nsfw": true
     },
     {
-      "id": "ofuda-pony",
-      "runware_air_id": "liangwc:ofuda-pony@593678",
-      "name": "Ofuda (miko/jiangshi/pasties)",
-      "url": "https://civitai.com/models/250482",
-      "tags": [
-        "pony",
-        "style",
-        "concept"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.4,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false,
-      "notes": "神楽/符札/巫女/僵尸/乳房贴纸等概念"
-    },
-    {
       "id": "ohogao",
       "runware_air_id": "liangwc:ohogao@1192192",
       "name": "Ohogao SDXL",
@@ -2817,67 +3411,6 @@
       "nsfw": true
     },
     {
-      "id": "oily-bodystocking",
-      "runware_air_id": "liangwc:oily-bodystocking@502478",
-      "name": "Oily Bodystocking",
-      "url": "https://civitai.com/models/451279",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "lora8-oppai-large-breasts",
-      "runware_air_id": "liangwc:lora8@623811",
-      "name": "Oppai Large Breasts 18+ (lora8)",
-      "file": "",
-      "url": "https://civitai.com/models/623811",
-      "trigger_words": [],
-      "tags": [
-        "nsfw",
-        "pony",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Oppai / Large breasts slim body 18+ — Pony base. Runware AIR verified ✅.",
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-01: uploaded to Runware."
-    },
-    {
-      "id": "penis-bulge-slider",
-      "runware_air_id": "liangwc:penis-bulge-slider@575298",
-      "name": "Penis Bulge Slider",
-      "url": "https://civitai.com/models/517729",
-      "tags": [
-        "pony",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
       "id": "penis-size-ill",
       "runware_air_id": "liangwc:penis-size-ill@1831724",
       "name": "Penis Size Slider (Illu)",
@@ -2893,25 +3426,6 @@
         1.0
       ],
       "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
-      "id": "penis-size-pony",
-      "runware_air_id": "liangwc:penis-size-pony@517898",
-      "name": "Penis Size Slider (Pony)",
-      "url": "https://civitai.com/models/465379",
-      "tags": [
-        "pony",
-        "slider",
-        "nsfw"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
       "category": "concept",
       "nsfw": true
     },
@@ -2950,25 +3464,6 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "pov-facesitting-v2",
-      "runware_air_id": "liangwc:pov-facesitting-v2@576510",
-      "name": "POV Facesitting v2",
-      "url": "https://civitai.com/models/518838",
-      "tags": [
-        "pony",
-        "nsfw",
-        "pov"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
       "category": "character_style",
       "nsfw": true
     },
@@ -3027,25 +3522,6 @@
       ],
       "base_model": "illustrious",
       "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "pregnancy-slider",
-      "runware_air_id": "liangwc:pregnancy-slider@541806",
-      "name": "Pregnancy Slider",
-      "url": "https://civitai.com/models/487226",
-      "tags": [
-        "pony",
-        "slider",
-        "body"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "concept",
       "nsfw": true
     },
     {
@@ -3108,44 +3584,6 @@
       "nsfw": false
     },
     {
-      "id": "race-ethnicity-pony",
-      "runware_air_id": "liangwc:race-ethnicity-pony@2212053",
-      "name": "Race & Ethnicity Helper (Pony)",
-      "url": "https://civitai.com/models/620668",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "ranma",
-      "runware_air_id": "liangwc:ranma@928097",
-      "name": "Ranma 1/2",
-      "url": "https://civitai.com/models/628474",
-      "tags": [
-        "pony",
-        "character",
-        "anime"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false,
-      "notes": "Ranma Saotome 早乙女乱馬"
-    },
-    {
       "id": "realistic-anime-style-v1",
       "runware_air_id": "liangwc:waner-v1@595948",
       "name": "Realistic Anime Style (SDXL)",
@@ -3182,26 +3620,6 @@
       "nsfw": false
     },
     {
-      "id": "sadako",
-      "runware_air_id": "liangwc:sadako@566749",
-      "name": "Sadako (The Ring)",
-      "url": "https://civitai.com/models/509946",
-      "tags": [
-        "pony",
-        "character",
-        "horror",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": true
-    },
-    {
       "id": "see-through-silhouette",
       "runware_air_id": "liangwc:see-through-silhouette@2616907",
       "name": "See-Through Silhouette",
@@ -3217,97 +3635,6 @@
       ],
       "base_model": "illustrious",
       "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "selena-goth-punk",
-      "runware_air_id": "liangwc:selena-goth-punk@607167",
-      "name": "Selena Goth Punk Girl",
-      "url": "https://civitai.com/models/545935",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "sentient-onahole-pony",
-      "runware_air_id": "liangwc:sentient-onahole-pony@439470",
-      "name": "Sentient Onahole (Pony)",
-      "url": "https://civitai.com/models/246523",
-      "tags": [
-        "pony",
-        "nsfw",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
-      "id": "shampoo-ranma",
-      "runware_air_id": "liangwc:shampoo-ranma@550900",
-      "name": "Shampoo (Ranma 1/2)",
-      "url": "https://civitai.com/models/25873",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "slutty-dress",
-      "runware_air_id": "liangwc:slutty-dress@859460",
-      "name": "Slutty Dress / Bodycon",
-      "url": "https://civitai.com/models/768438",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "stocking-anarchy",
-      "runware_air_id": "liangwc:stocking-anarchy@848046",
-      "name": "Stocking Anarchy",
-      "url": "https://civitai.com/models/758439",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
       "nsfw": false
     },
     {
@@ -3388,25 +3715,6 @@
       "nsfw": false
     },
     {
-      "id": "tiny-girl",
-      "runware_air_id": "liangwc:shangguan-waner@480044",
-      "name": "Tiny Girl",
-      "url": "https://civitai.com/models/430863",
-      "tags": [
-        "pony",
-        "nsfw",
-        "giantess"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "tomie-anime-ill",
       "runware_air_id": "liangwc:tomie-anime-ill@1305890",
       "name": "Tomie Anime Style (Illu)",
@@ -3422,25 +3730,6 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "tomie-pony",
-      "runware_air_id": "liangwc:tomie-pony@686806",
-      "name": "Tomie Kawakami (Pony)",
-      "url": "https://civitai.com/models/614372",
-      "tags": [
-        "pony",
-        "character",
-        "horror"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
       "category": "character",
       "nsfw": false
     },
@@ -3462,43 +3751,6 @@
       "base_model": "illustrious",
       "category": "concept",
       "nsfw": false
-    },
-    {
-      "id": "transparent-wedding-dress",
-      "runware_air_id": "liangwc:transparent-wedding-dress@1533007",
-      "name": "Transparent Wedding Dress",
-      "url": "https://civitai.com/models/1346525",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "uncensored-ponyxl",
-      "runware_air_id": "liangwc:uncensored-ponyxl@416689",
-      "name": "Uncensored PonyXL",
-      "url": "https://civitai.com/models/339269",
-      "tags": [
-        "pony",
-        "nsfw",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true
     },
     {
       "id": "upshorts",
@@ -3628,44 +3880,6 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "mai-shiranui-pony",
-      "runware_air_id": "liangwc:mai-shiranui-pony@601161",
-      "name": "不知火舞 Mai (Pony)",
-      "url": "https://civitai.com/models/540718",
-      "tags": [
-        "pony",
-        "character",
-        "kof"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "miku-pony",
-      "runware_air_id": "liangwc:miku-pony@404551",
-      "name": "初音ミク Miku (Pony)",
-      "url": "https://civitai.com/models/362031",
-      "tags": [
-        "pony",
-        "character",
-        "vocaloid"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
       "category": "character",
       "nsfw": false
     },
@@ -3942,25 +4156,6 @@
       "nsfw": false
     },
     {
-      "id": "ssy-pony",
-      "runware_air_id": "liangwc:ssy-pony@774815",
-      "name": "少司缘·王者荣耀 (Pony)",
-      "url": "https://civitai.com/models/666782",
-      "tags": [
-        "pony",
-        "character",
-        "wangzhe"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
-    },
-    {
       "id": "yueying-dynasty-warriors",
       "runware_air_id": "liangwc:yueying-dynasty-warriors@2121618",
       "name": "月英 Yueying (三國無双)",
@@ -4055,174 +4250,6 @@
       "nsfw": false
     },
     {
-      "id": "detail-enhancer-sdxl",
-      "runware_air_id": "civitai:162967@183635",
-      "name": "Detail Enhancer (SDXL)",
-      "url": "https://civitai.com/models/162967",
-      "tags": [
-        "sdxl",
-        "enhancer",
-        "detail"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.1,
-        1.0
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": false,
-      "description": "SDXL detail enhancer — enhance texture/sharpness"
-    },
-    {
-      "id": "undress-striptease",
-      "runware_air_id": "liangwc:undress-striptease@419214",
-      "name": "undress | striptease slider",
-      "url": "https://civitai.com/models/375374",
-      "tags": [
-        "sdxl",
-        "slider",
-        "nsfw",
-        "undress"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Undress / striptease slider — from clothed to nude"
-    },
-    {
-      "id": "waist-slider-xl",
-      "runware_air_id": "civitai:128616@140842",
-      "name": "Waist Slider XL (Microwaist XL)",
-      "url": "https://civitai.com/models/128616",
-      "tags": [
-        "sdxl",
-        "slider",
-        "body",
-        "waist"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Waist size slider — adjust waist thinness"
-    },
-    {
-      "id": "photorealistic-slider-sdxl",
-      "runware_air_id": "civitai:117060@126807",
-      "name": "Photorealistic Slider SDXL",
-      "url": "https://civitai.com/models/117060",
-      "tags": [
-        "sdxl",
-        "slider",
-        "style",
-        "photorealistic"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": false,
-      "description": "Photorealistic slider — adjust toward realism"
-    },
-    {
-      "id": "undressing-lora-sdxl",
-      "runware_air_id": "civitai:242034@273478",
-      "name": "Undressing LoRA SDXL",
-      "url": "https://civitai.com/models/242034",
-      "tags": [
-        "sdxl",
-        "slider",
-        "nsfw",
-        "undress"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Undressing LoRA — progressive undress slider"
-    },
-    {
-      "id": "breasts-adjust-xl",
-      "runware_air_id": "liangwc:breasts-adjust-xl@155308",
-      "name": "breasts adjust_XL",
-      "url": "https://civitai.com/models/139625",
-      "tags": [
-        "sdxl",
-        "slider",
-        "body",
-        "breasts"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Breast size adjuster — chest slider"
-    },
-    {
-      "id": "sagging-breasts-sdxl",
-      "runware_air_id": "civitai:139131@298272",
-      "name": "Sagging Breasts SDXL",
-      "url": "https://civitai.com/models/139131",
-      "tags": [
-        "sdxl",
-        "slider",
-        "body",
-        "breasts"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Sagging breasts slider"
-    },
-    {
-      "id": "pornmaster-chinese-style",
-      "runware_air_id": "liangwc:pornmaster-chinese-style@2435259",
-      "name": "PornMaster-中国风/汉服",
-      "url": "https://civitai.com/models/475960",
-      "tags": [
-        "sdxl",
-        "style",
-        "chinese",
-        "hanfu",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": true,
-      "description": "PornMaster NSFW 中国风/汉服/角色扮演 style LoRA"
-    },
-    {
       "id": "pubic-tattoo-ill",
       "runware_air_id": "liangwc:pubic-tattoo-ill@1060578",
       "name": "淫紋 pubic tattoo (Illustrious)",
@@ -4242,48 +4269,6 @@
       "category": "concept",
       "nsfw": true,
       "description": "淫紋/pub tattoo — Illustrious base"
-    },
-    {
-      "id": "pubic-tattoo-pony",
-      "runware_air_id": "liangwc:pubic-tattoo-pony@513762",
-      "name": "淫紋 pubic tattoo (Pony)",
-      "url": "https://civitai.com/models/461662",
-      "tags": [
-        "pony",
-        "nsfw",
-        "tattoo",
-        "body-mod"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "淫紋/pub tattoo — Pony base"
-    },
-    {
-      "id": "pubic-tattoo-sdxl",
-      "runware_air_id": "liangwc:pubic-tattoo-sdxl@513961",
-      "name": "淫紋 pubic tattoo (SDXL)",
-      "url": "https://civitai.com/models/461662",
-      "tags": [
-        "sdxl",
-        "nsfw",
-        "tattoo",
-        "body-mod"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": true,
-      "description": "淫紋/pub tattoo — SDXL base"
     },
     {
       "id": "ink-wash-il",
@@ -4326,47 +4311,6 @@
       "category": "style",
       "nsfw": false,
       "description": "Modern Chinese painting style for Illustrious"
-    },
-    {
-      "id": "ink-wash-sdxl",
-      "runware_air_id": "liangwc:ink-wash-sdxl@1521933",
-      "name": "Ink - Wash style SDXL",
-      "url": "https://civitai.com/models/1347466",
-      "tags": [
-        "sdxl",
-        "style",
-        "ink",
-        "水墨"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": false,
-      "description": "Ink wash painting style — SDXL base"
-    },
-    {
-      "id": "quan-v62-sdxl",
-      "runware_air_id": "liangwc:quan-v62@1",
-      "name": "拳拳 v6.2 SDXL",
-      "url": "https://huggingface.co/liangwc25/quan-v62-sdxl-lora",
-      "tags": [
-        "sdxl",
-        "character",
-        "quanquan"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "character_style",
-      "nsfw": false,
-      "description": "拳拳 (quanquan) v6.2 — trained on Replicate SDXL. May not work on fine-tuned SDXL checkpoints."
     },
     {
       "id": "faceless-hood",
@@ -4494,27 +4438,6 @@
       "description": "Revenant Scythe — large curved blade weapon"
     },
     {
-      "id": "pov-on-stomach",
-      "runware_air_id": "liangwc:on-stomach-pony@862041",
-      "name": "POV On Stomach (Thirst Trap) [Pony]",
-      "url": "https://civitai.com/models/770731",
-      "tags": [
-        "pony",
-        "pov",
-        "on-stomach",
-        "thirst-trap"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "POV On Stomach (Thirst Trap) — Pony base"
-    },
-    {
       "id": "anal-dilator",
       "runware_air_id": "liangwc:lora-2446854@2751245",
       "name": "Anal dilator - Illustrious",
@@ -4580,28 +4503,6 @@
       "description": "Anal gape slider — Illustrious XL"
     },
     {
-      "id": "anal-gape-pony",
-      "runware_air_id": "liangwc:anal-gape-pony@1226443",
-      "name": "Anal Gape Slider - PONY",
-      "url": "https://civitai.com/models/1091956",
-      "tags": [
-        "pony",
-        "nsfw",
-        "anal",
-        "gape",
-        "slider"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Anal gape slider — Pony base"
-    },
-    {
       "id": "figure-sex",
       "runware_air_id": "liangwc:figure-sex@1771517",
       "name": "Figure Sex [Grip one handed]",
@@ -4643,27 +4544,6 @@
       "category": "concept",
       "nsfw": false,
       "description": "Tiny fairy girls / mini girl — Illustrious"
-    },
-    {
-      "id": "anal-fisting-pony",
-      "runware_air_id": "liangwc:anal-fisting-pony@1406801",
-      "name": "Anal Fisting and Stretching Pony",
-      "url": "https://civitai.com/models/483771",
-      "tags": [
-        "pony",
-        "nsfw",
-        "anal",
-        "fisting"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Anal fisting and stretching — Pony"
     },
     {
       "id": "anal-fisting-il",
@@ -4856,48 +4736,6 @@
       "description": "ass worship — Illustrious (435MB)"
     },
     {
-      "id": "tiny-creatures",
-      "runware_air_id": "liangwc:tiny-creatures@1810137",
-      "name": "Tiny Creatures",
-      "url": "https://civitai.com/models/1599588",
-      "tags": [
-        "pony",
-        "concept",
-        "tiny",
-        "creatures"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Tiny Creatures — Pony base"
-    },
-    {
-      "id": "tiny-girl-pony",
-      "runware_air_id": "liangwc:tiny-girl-pony@480044",
-      "name": "Tiny Girl - Pony",
-      "url": "https://civitai.com/models/430863",
-      "tags": [
-        "pony",
-        "nsfw",
-        "tiny",
-        "girl"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Tiny Girl — Pony base"
-    },
-    {
       "id": "tinygirl-illustrious",
       "runware_air_id": "liangwc:lora-1694875@1694875",
       "name": "Tinygirl - Illustrious",
@@ -4917,28 +4755,6 @@
       "category": "concept",
       "nsfw": true,
       "description": "Tinygirl — Illustrious base"
-    },
-    {
-      "id": "tiny-demon-lilith",
-      "runware_air_id": "liangwc:tiny-demon-lilith@1083814",
-      "name": "tiny demon Lilith -101",
-      "url": "https://civitai.com/models/967989",
-      "tags": [
-        "pony",
-        "nsfw",
-        "tiny",
-        "demon",
-        "lilith"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "tiny demon Lilith -101 — Pony base"
     },
     {
       "id": "fairy-sex",
@@ -4983,28 +4799,6 @@
       "category": "concept",
       "nsfw": false,
       "description": "Shiny Nai style — Illustrious"
-    },
-    {
-      "id": "shiny-nai-pony",
-      "runware_air_id": "liangwc:shiny-nai-pony@691705",
-      "name": "Shiny Nai style Pony",
-      "url": "https://civitai.com/models/618752",
-      "tags": [
-        "pony",
-        "concept",
-        "shiny",
-        "nai",
-        "style"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Shiny Nai style — Pony"
     },
     {
       "id": "minidress",
@@ -5071,27 +4865,6 @@
       "description": "Iyaena - Slave jewelry — Illustrious"
     },
     {
-      "id": "kneeling-submissive",
-      "runware_air_id": "liangwc:kneeling-submissive@898161",
-      "name": "Kneeling/submissive",
-      "url": "https://civitai.com/models/803266",
-      "tags": [
-        "pony",
-        "nsfw",
-        "kneeling",
-        "submissive"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Kneeling/submissive — Pony base"
-    },
-    {
       "id": "submissive-concept",
       "runware_air_id": "liangwc:submissive-concept@2809867",
       "name": "Submissive Concept",
@@ -5156,92 +4929,6 @@
       "description": "Chinese Lingerie 肚兜 Dudou — Illustrious"
     },
     {
-      "id": "chinese-wedding-1007",
-      "runware_air_id": "liangwc:chinese-wedding-pony1@886207",
-      "name": "1007 Chinese wedding dress",
-      "url": "https://civitai.com/models/792527",
-      "tags": [
-        "pony",
-        "concept",
-        "chinese",
-        "wedding",
-        "dress"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false,
-      "description": "1007 Chinese wedding dress — Pony"
-    },
-    {
-      "id": "chinese-wedding-0711",
-      "runware_air_id": "liangwc:chinese-wedding-pony2@595282",
-      "name": "0711 Chinese wedding dress",
-      "url": "https://civitai.com/models/535514",
-      "tags": [
-        "pony",
-        "concept",
-        "chinese",
-        "wedding",
-        "dress"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false,
-      "description": "0711 Chinese wedding dress — Pony"
-    },
-    {
-      "id": "chinese-swimsuit",
-      "runware_air_id": "liangwc:chinese-swimsuit@889459",
-      "name": "1010 Chinese swimsuit",
-      "url": "https://civitai.com/models/795447",
-      "tags": [
-        "pony",
-        "concept",
-        "chinese",
-        "swimsuit"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false,
-      "description": "1010 Chinese style printed one piece swimsuit — Pony"
-    },
-    {
-      "id": "cheongsam",
-      "runware_air_id": "liangwc:cheongsam@549164",
-      "name": "0632 Chinese cheongsam",
-      "url": "https://civitai.com/models/493956",
-      "tags": [
-        "pony",
-        "concept",
-        "cheongsam",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false,
-      "description": "0632 Chinese cheongsam — Pony"
-    },
-    {
       "id": "sexy-lingerie",
       "runware_air_id": "liangwc:sexy-lingerie@1951432",
       "name": "Chinese Style Sexy Lingerie",
@@ -5284,28 +4971,6 @@
       "category": "concept",
       "nsfw": false,
       "description": "Chinese style wedding dress 2 — Illustrious"
-    },
-    {
-      "id": "chinese-wedding-pony3",
-      "runware_air_id": "liangwc:chinese-wedding-pony3@1002426",
-      "name": "Chinese wedding dress 中式婚纱",
-      "url": "https://civitai.com/models/895809",
-      "tags": [
-        "pony",
-        "nsfw",
-        "chinese",
-        "wedding",
-        "lingerie"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Chinese wedding dress 中式婚纱 Sexy lingerie — Pony"
     },
     {
       "id": "wuxia-green-dress",
@@ -5373,50 +5038,6 @@
       "category": "concept",
       "nsfw": true,
       "description": "Chinese Wuxia girl-武侠风格女侠 — Illustrious"
-    },
-    {
-      "id": "chinese-bunny-girl",
-      "runware_air_id": "liangwc:bunny-girl@542799",
-      "name": "0625 Chinese bunny girl",
-      "url": "https://civitai.com/models/488143",
-      "tags": [
-        "pony",
-        "nsfw",
-        "chinese",
-        "bunny",
-        "girl"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "0625 Chinese bunny girl — Pony"
-    },
-    {
-      "id": "gufeng-qingqu",
-      "runware_air_id": "liangwc:gufeng-qingqu@539310",
-      "name": "Chinese lingerie 古风小情趣",
-      "url": "https://civitai.com/models/141682",
-      "tags": [
-        "pony",
-        "nsfw",
-        "lingerie",
-        "chinese",
-        "gufeng"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Chinese lingerie Clothing 古风小情趣 — Pony"
     },
     {
       "id": "ccs-chinese-fantasy",
@@ -5525,26 +5146,6 @@
       "description": "Wu Zetian — China great sovereign Wuxia style"
     },
     {
-      "id": "guoman-pony",
-      "runware_air_id": "liangwc:guoman-pony@801320",
-      "name": "XE GuoMan LoRA",
-      "url": "https://civitai.com/models/709435",
-      "tags": [
-        "pony",
-        "concept",
-        "guoman"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false,
-      "description": "XE: GuoMan LoRA — Pony base"
-    },
-    {
       "id": "xian-nu",
       "runware_air_id": "liangwc:xian-nu@1943863",
       "name": "xian nu chinese style",
@@ -5610,26 +5211,299 @@
       "description": "BaiLing Miao — Wuxia"
     },
     {
-      "id": "dw-doll-pony",
-      "runware_air_id": "liangwc:dw-doll-pony@922756",
-      "name": "DW Chinese Doll Pony",
-      "url": "https://civitai.com/models/825160",
+      "id": "dark-sovereign",
+      "runware_air_id": "liangwc:dark-sovereign@2198025",
+      "name": "Dark sovereign Wuxia",
+      "url": "https://civitai.com/models/1942047",
       "tags": [
-        "pony",
+        "illustrious",
         "concept",
-        "chinese",
-        "doll",
-        "dw"
+        "dark",
+        "sovereign",
+        "wuxia"
       ],
       "default_scale": 0.8,
       "scale_range": [
         0.5,
         1.2
       ],
-      "base_model": "pony",
+      "base_model": "illustrious",
       "category": "concept",
       "nsfw": false,
-      "description": "DW Digital Warlock Chinese Doll Likeliness — Pony"
+      "description": "Dark sovereign — Wuxia Style (重试成功!)"
+    },
+    {
+      "id": "quanquan-v64-illustrious",
+      "runware_air_id": "liangwc:quanquan-v64@1",
+      "name": "拳拳 v64 SeaArt (Illustrious)",
+      "url": "",
+      "tags": [
+        "illustrious",
+        "character",
+        "quanquan"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "拳拳 v64 Pony训的, Illustrious试试 semi-realistic"
+    },
+    {
+      "id": "dramatic-lighting-slider",
+      "runware_air_id": "liangwc:dramatic-lighting-slider@1",
+      "name": "Dramatic Lighting Slider [Pony/Illustrious]",
+      "url": "https://civitai.com/models/1105685",
+      "tags": [
+        "sdxl",
+        "pony",
+        "illustrious",
+        "slider",
+        "lighting",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 1.0,
+      "scale_range": [
+        0.5,
+        2.0
+      ],
+      "base_model": "illustrious",
+      "category": "tool",
+      "nsfw": false
+    },
+    {
+      "id": "detail-enhancer-sdxl",
+      "runware_air_id": "civitai:162967@183635",
+      "name": "Detail Enhancer (SDXL)",
+      "url": "https://civitai.com/models/162967",
+      "tags": [
+        "sdxl",
+        "enhancer",
+        "detail"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.1,
+        1.0
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "SDXL detail enhancer — enhance texture/sharpness"
+    },
+    {
+      "id": "undress-striptease",
+      "runware_air_id": "liangwc:undress-striptease@419214",
+      "name": "undress | striptease slider",
+      "url": "https://civitai.com/models/375374",
+      "tags": [
+        "sdxl",
+        "slider",
+        "nsfw",
+        "undress"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Undress / striptease slider — from clothed to nude"
+    },
+    {
+      "id": "waist-slider-xl",
+      "runware_air_id": "civitai:128616@140842",
+      "name": "Waist Slider XL (Microwaist XL)",
+      "url": "https://civitai.com/models/128616",
+      "tags": [
+        "sdxl",
+        "slider",
+        "body",
+        "waist"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Waist size slider — adjust waist thinness"
+    },
+    {
+      "id": "photorealistic-slider-sdxl",
+      "runware_air_id": "civitai:117060@126807",
+      "name": "Photorealistic Slider SDXL",
+      "url": "https://civitai.com/models/117060",
+      "tags": [
+        "sdxl",
+        "slider",
+        "style",
+        "photorealistic"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "Photorealistic slider — adjust toward realism"
+    },
+    {
+      "id": "undressing-lora-sdxl",
+      "runware_air_id": "civitai:242034@273478",
+      "name": "Undressing LoRA SDXL",
+      "url": "https://civitai.com/models/242034",
+      "tags": [
+        "sdxl",
+        "slider",
+        "nsfw",
+        "undress"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Undressing LoRA — progressive undress slider"
+    },
+    {
+      "id": "breasts-adjust-xl",
+      "runware_air_id": "liangwc:breasts-adjust-xl@155308",
+      "name": "breasts adjust_XL",
+      "url": "https://civitai.com/models/139625",
+      "tags": [
+        "sdxl",
+        "slider",
+        "body",
+        "breasts"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Breast size adjuster — chest slider"
+    },
+    {
+      "id": "sagging-breasts-sdxl",
+      "runware_air_id": "civitai:139131@298272",
+      "name": "Sagging Breasts SDXL",
+      "url": "https://civitai.com/models/139131",
+      "tags": [
+        "sdxl",
+        "slider",
+        "body",
+        "breasts"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Sagging breasts slider"
+    },
+    {
+      "id": "pornmaster-chinese-style",
+      "runware_air_id": "liangwc:pornmaster-chinese-style@2435259",
+      "name": "PornMaster-中国风/汉服",
+      "url": "https://civitai.com/models/475960",
+      "tags": [
+        "sdxl",
+        "style",
+        "chinese",
+        "hanfu",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": true,
+      "description": "PornMaster NSFW 中国风/汉服/角色扮演 style LoRA"
+    },
+    {
+      "id": "pubic-tattoo-sdxl",
+      "runware_air_id": "liangwc:pubic-tattoo-sdxl@513961",
+      "name": "淫紋 pubic tattoo (SDXL)",
+      "url": "https://civitai.com/models/461662",
+      "tags": [
+        "sdxl",
+        "nsfw",
+        "tattoo",
+        "body-mod"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "concept",
+      "nsfw": true,
+      "description": "淫紋/pub tattoo — SDXL base"
+    },
+    {
+      "id": "ink-wash-sdxl",
+      "runware_air_id": "liangwc:ink-wash-sdxl@1521933",
+      "name": "Ink - Wash style SDXL",
+      "url": "https://civitai.com/models/1347466",
+      "tags": [
+        "sdxl",
+        "style",
+        "ink",
+        "水墨"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "Ink wash painting style — SDXL base"
+    },
+    {
+      "id": "quan-v62-sdxl",
+      "runware_air_id": "liangwc:quan-v62@1",
+      "name": "拳拳 v6.2 SDXL",
+      "url": "https://huggingface.co/liangwc25/quan-v62-sdxl-lora",
+      "tags": [
+        "sdxl",
+        "character",
+        "quanquan"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "拳拳 (quanquan) v6.2 — trained on Replicate SDXL. May not work on fine-tuned SDXL checkpoints."
     },
     {
       "id": "gufeng-sdxl",
@@ -5803,28 +5677,6 @@
       "description": "国风萌玩 Chinese style cute doll — SDXL 1.0"
     },
     {
-      "id": "dark-sovereign",
-      "runware_air_id": "liangwc:dark-sovereign@2198025",
-      "name": "Dark sovereign Wuxia",
-      "url": "https://civitai.com/models/1942047",
-      "tags": [
-        "illustrious",
-        "concept",
-        "dark",
-        "sovereign",
-        "wuxia"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Dark sovereign — Wuxia Style (重试成功!)"
-    },
-    {
       "id": "fight-dress",
       "runware_air_id": "liangwc:fight-dress@156360",
       "name": "Fight Chinese Dress 女侠战袍",
@@ -5847,26 +5699,6 @@
       "description": "Fight Chinese Dress 女侠战袍 — SDXL 1.0"
     },
     {
-      "id": "quanquan-v64-pony",
-      "runware_air_id": "liangwc:quanquan-v64@1",
-      "name": "拳拳 v64 SeaArt Pony",
-      "url": "",
-      "tags": [
-        "pony",
-        "character",
-        "quanquan"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": false,
-      "description": "拳拳 v64 — SeaArt Pony Diffusion V6 XL训练, rank 32"
-    },
-    {
       "id": "quanquan-v64-sdxl",
       "runware_air_id": "liangwc:quanquan-v64@1",
       "name": "拳拳 v64 SeaArt (SDXL)",
@@ -5887,24 +5719,26 @@
       "description": "拳拳 v64 — 从Pony训的, SDXL下试试能不能跑"
     },
     {
-      "id": "quanquan-v64-illustrious",
-      "runware_air_id": "liangwc:quanquan-v64@1",
-      "name": "拳拳 v64 SeaArt (Illustrious)",
-      "url": "",
+      "id": "dw-chinese-doll-sdxl",
+      "runware_air_id": "liangwc:dw-chinese-doll-sdxl@1",
+      "name": "[DW] Chinese Doll Likeliness - SDXL",
+      "url": "https://civitai.com/models/825160",
       "tags": [
-        "illustrious",
-        "character",
-        "quanquan"
+        "sdxl",
+        "chinese",
+        "doll",
+        "digital-warlock",
+        "runware-verified"
       ],
       "default_scale": 0.8,
       "scale_range": [
         0.5,
         1.2
       ],
-      "base_model": "illustrious",
-      "category": "character_style",
+      "base_model": "sdxl",
+      "category": "character",
       "nsfw": false,
-      "description": "拳拳 v64 Pony训的, Illustrious试试 semi-realistic"
+      "notes": "Works on SDXL Vanilla base only (not runware:100@1). 2026-07-30."
     },
     {
       "id": "zit-age-slider",
@@ -5988,51 +5822,6 @@
       ],
       "base_model": "zimage-turbo",
       "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "dw-chinese-doll-sdxl",
-      "runware_air_id": "liangwc:dw-chinese-doll-sdxl@1",
-      "name": "[DW] Chinese Doll Likeliness - SDXL",
-      "url": "https://civitai.com/models/825160",
-      "tags": [
-        "sdxl",
-        "chinese",
-        "doll",
-        "digital-warlock",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "character",
-      "nsfw": false,
-      "notes": "Works on SDXL Vanilla base only (not runware:100@1). 2026-07-30."
-    },
-    {
-      "id": "dramatic-lighting-slider",
-      "runware_air_id": "liangwc:dramatic-lighting-slider@1",
-      "name": "Dramatic Lighting Slider [Pony/Illustrious]",
-      "url": "https://civitai.com/models/1105685",
-      "tags": [
-        "sdxl",
-        "pony",
-        "illustrious",
-        "slider",
-        "lighting",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 1.0,
-      "scale_range": [
-        0.5,
-        2.0
-      ],
-      "base_model": "illustrious",
-      "category": "tool",
       "nsfw": false
     },
     {
