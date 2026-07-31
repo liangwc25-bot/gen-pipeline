@@ -23,10 +23,1154 @@
       ],
       "description": "3D semi-realistic style campus girl — Flux.1 D base. Runware AIR verified ✅.",
       "base_model": "flux-dev",
-      "category": "character_style",
+      "category": "style",
       "nsfw": false,
       "incompatible_with": [],
       "notes": "2026-07-01: uploaded to Runware."
+    },
+    {
+      "id": "cg-style-girl-flux",
+      "runware_air_id": "liangwc:cg-style-girl-flux@847113",
+      "name": "CG Style Girl FLUX",
+      "url": "https://civitai.com/models/753247",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-wuxia",
+      "runware_air_id": "civitai:713395@798678",
+      "name": "Chinese WuXia",
+      "url": "https://civitai.com/models/713395",
+      "tags": [
+        "flux",
+        "chinese",
+        "wuxia",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "dw-doll-flux",
+      "runware_air_id": "liangwc:dw-doll-flux@925355",
+      "name": "DW Chinese Doll Flux",
+      "url": "https://civitai.com/models/825160",
+      "tags": [
+        "flux",
+        "concept",
+        "chinese",
+        "doll",
+        "dw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false,
+      "description": "DW Digital Warlock Chinese Doll Likeliness — Flux"
+    },
+    {
+      "id": "eastmix-asian-face",
+      "runware_air_id": "liangwc:eastmix-asian-face@1390428",
+      "name": "Eastmix Asian Girl Face",
+      "url": "https://civitai.com/models/1233843",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "kolors-asian-face-flux",
+      "runware_air_id": "civitai:730162@823089",
+      "name": "Kolors style Asian face for Flux1 dev",
+      "url": "https://civitai.com/models/730162",
+      "tags": [
+        "flux",
+        "asian",
+        "face",
+        "kolors",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "niji-anime-style-flux",
+      "runware_air_id": "liangwc:niji-anime-style-flux@1423082",
+      "name": "Niji Anime Style (FLUX)",
+      "url": "https://civitai.com/models/1261988",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": true
+    },
+    {
+      "id": "realistic-anime-style-flux",
+      "runware_air_id": "liangwc:waner-flux@769980",
+      "name": "Realistic Anime Style (FLUX)",
+      "url": "https://civitai.com/models/536084",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_754435_843598",
+      "runware_air_id": "liangwc:flux_754435_843598@843598",
+      "name": "Semi-Realistic Anime Style",
+      "url": "https://civitai.com/models/754435",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "ultra-real-anime-flux",
+      "runware_air_id": "liangwc:ultra-real-anime-flux@1272367",
+      "name": "Ultra Real Anime FLUX",
+      "url": "https://civitai.com/models/1131779",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "zyd-chinese-girl-flux",
+      "runware_air_id": "liangwc:zyd-chinese-girl-flux@2084379",
+      "name": "zyd232 Chinese Girl FLUX",
+      "url": "https://civitai.com/models/779099",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "sanguosha-style",
+      "runware_air_id": "liangwc:sanguosha-style@1569919",
+      "name": "三国杀风格",
+      "url": "https://civitai.com/models/1389166",
+      "tags": [
+        "flux",
+        "style",
+        "guoman"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "age-slider",
+      "runware_air_id": "liangwc:age-slider@2962055",
+      "name": "Age Slider",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/lora-age-slider",
+      "trigger_words": [],
+      "tags": [
+        "body",
+        "age",
+        "slider",
+        "flux",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Age Slider — FLUX body type LoRA for adjusting apparent age of subjects.",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
+    },
+    {
+      "id": "flux_649568_726726",
+      "runware_air_id": "liangwc:flux_649568_726726@726726",
+      "name": "Asian Pubic Hair FLUX",
+      "url": "https://civitai.com/models/649568",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "body-weight-slider",
+      "runware_air_id": "liangwc:body-weight-slider@3013455",
+      "name": "Body Weight Slider",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/lora-body-weight-slider",
+      "trigger_words": [],
+      "tags": [
+        "body",
+        "weight",
+        "slender",
+        "flux",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Body Weight Slider - Non Face Changing [FLUX] - adjust body shape without affecting face. Flux.1 D base.",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-18: Runware uploaded ✅"
+    },
+    {
+      "id": "flux_663135_932482",
+      "runware_air_id": "liangwc:flux_663135_932482@932482",
+      "name": "Breast Size Slider (FLUX)",
+      "url": "https://civitai.com/models/663135",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-lingerie",
+      "runware_air_id": "liangwc:chinese-lingerie@1",
+      "name": "Chinese Lingerie 中式露奶内衣",
+      "url": "https://civitai.com/models/996854",
+      "tags": [
+        "flux",
+        "chinese",
+        "lingerie",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "chinese-zombie",
+      "runware_air_id": "liangwc:chinese-zombie@1",
+      "name": "Chinese Zombie Costume 丐版大清国僵尸服",
+      "url": "https://civitai.com/models/866223",
+      "tags": [
+        "flux",
+        "chinese",
+        "zombie",
+        "costume",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "vagina-hq",
+      "runware_air_id": "liangwc:vagina-hq@935742",
+      "name": "Detailed Woman Genitals (FLUX)",
+      "url": "https://civitai.com/models/796605",
+      "tags": [
+        "flux",
+        "nsfw",
+        "anatomy",
+        "runware-uploaded"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.3,
+        0.8
+      ],
+      "description": "仅 19MB / dim=2 — FLUX 女性器官细节 LoRA。专门用于添加 vagina/labia，不带写实风格 bias。AIR: liangwc:vagina-hq@935742",
+      "base_model": "flux-dev",
+      "category": "anatomy",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-05 上传验证。堆叠风格 LoRA + NSFW MASTER 0.5 时用此加器官细节。19MB dim=2 不会压风格。单独使用时 FLUX 会取巧遮挡。"
+    },
+    {
+      "id": "eastmix-asian-body",
+      "runware_air_id": "liangwc:eastmix-asian-body@1304653",
+      "name": "Eastmix Asian Body",
+      "url": "https://civitai.com/models/1133395",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "femboy-flux",
+      "runware_air_id": "liangwc:femboy-flux@779648",
+      "name": "Femboy FLUX",
+      "url": "https://civitai.com/models/696714",
+      "tags": [
+        "flux",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "chinese-heroine",
+      "runware_air_id": "liangwc:chinese-heroine@1",
+      "name": "Flux Ancient Chinese Heroine Long Skirt",
+      "url": "https://civitai.com/models/791438",
+      "tags": [
+        "flux",
+        "chinese",
+        "heroine",
+        "long-skirt",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_674027_780667",
+      "runware_air_id": "liangwc:flux_674027_780667@780667",
+      "name": "FLUX NSFW unlock",
+      "url": "https://civitai.com/models/674027",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_653203_880875",
+      "runware_air_id": "liangwc:flux_653203_880875@880875",
+      "name": "Futanari Realistic",
+      "url": "https://civitai.com/models/653203",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_713498_819961",
+      "runware_air_id": "liangwc:flux_713498_819961@819961",
+      "name": "Korean Doll Face FLUX",
+      "url": "https://civitai.com/models/713498",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "mystic-hentai",
+      "runware_air_id": "liangwc:mystic-hentai@1892397",
+      "name": "Mystic Hentai (FLUX NSFW)",
+      "url": "https://civitai.com/models/1671936",
+      "tags": [
+        "flux",
+        "nsfw",
+        "anime",
+        "runware-uploaded"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.4,
+        1.0
+      ],
+      "description": "Fork from Mystic XXX: explicitly trained for non-realistic NSFW images. 146MB FLUX LoRA. AIR: liangwc:mystic-hentai@1892397",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-05 uploaded. 146MB, non-realistic style. Works at 0.6-0.8 for top nudity. Does NOT push to full genital detail alone."
+    },
+    {
+      "id": "mystic-toon",
+      "runware_air_id": "liangwc:mystic-toon@1911266",
+      "name": "Mystic Toon (FLUX NSFW)",
+      "url": "https://civitai.com/models/1688726",
+      "tags": [
+        "flux",
+        "nsfw",
+        "toon",
+        "anime",
+        "runware-uploaded"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.4,
+        1.0
+      ],
+      "description": "Fork from Mystic Hentai: toon/anime style NSFW. 146MB FLUX LoRA. AIR: liangwc:mystic-toon@1911266",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-05 uploaded. 146MB toon style. Similar to Mystic Hentai but more cartoony. Top nudity only."
+    },
+    {
+      "id": "flux_380283_746029",
+      "runware_air_id": "liangwc:flux_380283_746029@746029",
+      "name": "POV Deepthroat/Blowjob Flux",
+      "url": "https://civitai.com/models/380283",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "flux_990976_1110224",
+      "runware_air_id": "liangwc:flux_990976_1110224@1110224",
+      "name": "Realistic Male Dick FLUX",
+      "url": "https://civitai.com/models/990976",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_730405_831470",
+      "runware_air_id": "liangwc:flux_730405_831470@831470",
+      "name": "Remove Clothing Censors",
+      "url": "https://civitai.com/models/730405",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "seashell-bikini",
+      "runware_air_id": "liangwc:seashell-bikini@1948245",
+      "name": "Seashell Bikini",
+      "url": "https://civitai.com/models/1721575",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "tiny-puffy-nipples",
+      "runware_air_id": "liangwc:tiny-puffy-nipples@2378905",
+      "name": "Tiny breasts & puffy nipples",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/lora-tiny-puffy-nipples",
+      "trigger_words": [],
+      "tags": [
+        "body",
+        "tiny",
+        "breasts",
+        "nipples",
+        "flux",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Body - Tiny breasts and (kind of) puffy nipples — FLUX body type LoRA.",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-18: Runware uploaded ✅"
+    },
+    {
+      "id": "tomie-uncanny",
+      "name": "Tomie Uncanny Beauty",
+      "url": "",
+      "trigger_words": [
+        "tomie",
+        "uncanny beauty",
+        "dark hair bob",
+        "dangerous smile",
+        "black bob haircut"
+      ],
+      "tags": [
+        "portrait",
+        "uncanny",
+        "dark",
+        "japanese horror",
+        "tomie"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Tomie-style uncanny beauty. ⚠️ FLUX cannot do true Tomie eyes (outputs 'foreigner drawing Japanese'). Use Pony base instead.",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false,
+      "incompatible_with": [
+        "cute-kawaii-style"
+      ],
+      "notes": "2026-06-24: FLUX不适合Tomie。Pony base better but needs NSFW LoRA."
+    },
+    {
+      "id": "aerith-ff7-flux",
+      "runware_air_id": "liangwc:aerith-ff7-flux@1688439",
+      "name": "Aerith (FF7 FLUX)",
+      "url": "https://civitai.com/models/1376392",
+      "tags": [
+        "flux",
+        "character",
+        "final fantasy"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "afg20-virtual-asian-20",
+      "runware_air_id": "liangwc:afg20-virtual-asian-20@1051873",
+      "name": "afg20 Virtual Asian Female 20",
+      "url": "https://civitai.com/models/783464",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "afg26-virtual-asian-26",
+      "runware_air_id": "liangwc:afg26-virtual-asian-26@1038777",
+      "name": "afg26 Virtual Asian Female 26",
+      "url": "https://civitai.com/models/927990",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-hanfu",
+      "runware_air_id": "liangwc:chinese-hanfu@1",
+      "name": "Ancient Chinese Hanfu Style",
+      "url": "https://civitai.com/models/758777",
+      "tags": [
+        "flux",
+        "chinese",
+        "hanfu",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "flux_685674_767398",
+      "runware_air_id": "liangwc:flux_685674_767398@767398",
+      "name": "ARI (NSFW)",
+      "url": "https://civitai.com/models/685674",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "charlady",
+      "runware_air_id": "liangwc:charlady@1",
+      "name": "Charlady (本地训练)",
+      "url": "https://huggingface.co/liangwc25/charlady",
+      "tags": [
+        "flux",
+        "character"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-beauty",
+      "runware_air_id": "civitai:1111359@1248781",
+      "name": "Chinese Beauty",
+      "url": "https://civitai.com/models/1111359",
+      "tags": [
+        "flux",
+        "chinese",
+        "beauty",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-girl-realistic",
+      "runware_air_id": "civitai:715558@800194",
+      "name": "Chinese Girl Flux 1.d LoRA (Realistic Photography)",
+      "url": "https://civitai.com/models/715558",
+      "tags": [
+        "flux",
+        "chinese",
+        "girl",
+        "realistic",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "yingqi-girl",
+      "runware_air_id": "liangwc:yingqi-girl@1",
+      "name": "Chinese/Asian Girl Cool Style 英气女子",
+      "url": "https://civitai.com/models/1050811",
+      "tags": [
+        "flux",
+        "chinese",
+        "girl",
+        "cool-style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "chinesegirl-realistic-flux",
+      "runware_air_id": "civitai:719734@804794",
+      "name": "Chinesegirl Realistic Flux",
+      "url": "https://civitai.com/models/719734",
+      "tags": [
+        "flux",
+        "chinese",
+        "girl",
+        "realistic",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "elegance-chinese-lady",
+      "runware_air_id": "liangwc:elegance-chinese-lady@1",
+      "name": "Elegance Chinese Lady",
+      "url": "https://civitai.com/models/2015123",
+      "tags": [
+        "flux",
+        "chinese",
+        "elegance",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "flux-asian-beauty",
+      "runware_air_id": "liangwc:flux-asian-beauty@893860",
+      "name": "Flux Asian Beauty",
+      "url": "https://civitai.com/models/799377",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-wife-nsfw",
+      "runware_air_id": "liangwc:chinese-wife-nsfw@1",
+      "name": "Flux Chinese Wife (NSFW)",
+      "url": "https://civitai.com/models/820791",
+      "tags": [
+        "flux",
+        "chinese",
+        "wife",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "chun-li-flux",
+      "runware_air_id": "liangwc:chun-li-flux@1",
+      "name": "Flux Chun Li",
+      "url": "https://civitai.com/models/2069705",
+      "tags": [
+        "flux",
+        "chun-li",
+        "street-fighter",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "flux-chinese-beautiful-girl",
+      "runware_air_id": "civitai:1079950@1212551",
+      "name": "Flux-Chinese Beautiful Girl",
+      "url": "https://civitai.com/models/1079950",
+      "tags": [
+        "flux",
+        "chinese",
+        "girl",
+        "beautiful",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "ghost-bride-flux",
+      "runware_air_id": "civitai:846901@947481",
+      "name": "Ghost Bride [Flux]",
+      "url": "https://civitai.com/models/846901",
+      "tags": [
+        "flux",
+        "chinese",
+        "ghost-bride",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "hanfu-chinese-girl",
+      "runware_air_id": "civitai:719331@804359",
+      "name": "Hanfu Chinese Girl Flux LoRA (Realistic Photography)",
+      "url": "https://civitai.com/models/719331",
+      "tags": [
+        "flux",
+        "chinese",
+        "hanfu",
+        "girl",
+        "realistic",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "yannin-lora",
+      "runware_air_id": "liangwc:yannin-lora@1",
+      "name": "Su Yanning (苏砚宁) V2",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/yannin-lora",
+      "trigger_words": [
+        "yannin"
+      ],
+      "tags": [
+        "flux",
+        "character",
+        "su-yanning",
+        "v2"
+      ],
+      "default_scale": 0.85,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Su Yanning (苏砚宁) V2 — yannin trigger. Trained on Replicate. 14 images (leotard + underwear), 1500 steps, autocaption.",
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false,
+      "incompatible_with": [],
+      "notes": "2026-07-19: V2 trained on Replicate for $0.01. HF: liangwc25/yannin-lora. Runware: liangwc:yannin-lora@1"
+    },
+    {
+      "id": "yaohu-foxx",
+      "runware_air_id": "liangwc:yaohu-foxx@1",
+      "name": "Yaohu Foxx 🇨🇳 - Original Character Chinese Woman",
+      "url": "https://civitai.com/models/1608220",
+      "tags": [
+        "flux",
+        "chinese",
+        "yaohu",
+        "fox",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "quanquan-v6",
+      "runware_air_id": "liangwc:quanquan-v6@1",
+      "name": "拳拳 V6 (quanquan)",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/quanquan-lora-v6",
+      "trigger_words": [
+        "quanquan"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
+      "default_scale": 0.85,
+      "scale_range": [
+        0.6,
+        1.2
+      ],
+      "description": "拳拳 V6 — FLUX.1 dev LoRA, 3 HD neutral images",
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false,
+      "incompatible_with": [],
+      "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
+    },
+    {
+      "id": "quanquan-v61",
+      "runware_air_id": "liangwc:quanquan-v61@1",
+      "name": "拳拳 V6.1 (quanquan)",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/quanquan-lora-v61",
+      "trigger_words": [
+        "quanquan"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
+      "default_scale": 0.85,
+      "scale_range": [
+        0.6,
+        1.2
+      ],
+      "description": "拳拳 V6.1 — FLUX.1 dev LoRA, 2 blue-ray HD images, no ref_01",
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false,
+      "incompatible_with": [],
+      "notes": "2026-07-18: V6.1 on Replicate, rank 16, 1000 steps."
+    },
+    {
+      "id": "quanquan-v63",
+      "runware_air_id": "liangwc:quanquan-v63@1",
+      "name": "拳拳 v63 FLUX",
+      "url": "https://replicate.com/liangwc25-bot/quanquan-v63-flux",
+      "tags": [
+        "flux",
+        "character",
+        "quanquan"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false,
+      "description": "拳拳 v63 — FLUX LoRA, 3000 steps, rank 16, Replicate训练"
+    },
+    {
+      "id": "qizhong",
+      "runware_air_id": "liangwc:qizhong@1",
+      "name": "棋钟 (qizhong)",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/qizhong-lora-pub",
+      "trigger_words": [
+        "qizhong"
+      ],
+      "tags": [
+        "flux",
+        "lora",
+        "portrait",
+        "runware-verified"
+      ],
+      "default_scale": 0.85,
+      "scale_range": [
+        0.6,
+        1.2
+      ],
+      "description": "棋钟 — FLUX.1 dev LoRA, trained from 12 Douyin live screenshots",
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": false,
+      "incompatible_with": [],
+      "notes": "2026-07-16: first run on Replicate, rank 16, 1000 steps."
     },
     {
       "id": "pov-footworship",
@@ -84,25 +1228,6 @@
       "nsfw": false
     },
     {
-      "id": "aerith-ff7-flux",
-      "runware_air_id": "liangwc:aerith-ff7-flux@1688439",
-      "name": "Aerith (FF7 FLUX)",
-      "url": "https://civitai.com/models/1376392",
-      "tags": [
-        "flux",
-        "character",
-        "final fantasy"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false
-    },
-    {
       "id": "aerith-ff7-il",
       "runware_air_id": "liangwc:aerith-ff7-il@3042581",
       "name": "Aerith (FF7 IL)",
@@ -119,42 +1244,6 @@
       ],
       "base_model": "illustrious",
       "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "afg20-virtual-asian-20",
-      "runware_air_id": "liangwc:afg20-virtual-asian-20@1051873",
-      "name": "afg20 Virtual Asian Female 20",
-      "url": "https://civitai.com/models/783464",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "afg26-virtual-asian-26",
-      "runware_air_id": "liangwc:afg26-virtual-asian-26@1038777",
-      "name": "afg26 Virtual Asian Female 26",
-      "url": "https://civitai.com/models/927990",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
       "nsfw": false
     },
     {
@@ -195,24 +1284,6 @@
       "nsfw": false
     },
     {
-      "id": "flux_685674_767398",
-      "runware_air_id": "liangwc:flux_685674_767398@767398",
-      "name": "ARI (NSFW)",
-      "url": "https://civitai.com/models/685674",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
       "id": "armless-amputee",
       "runware_air_id": "liangwc:mulan@1222872",
       "name": "Armless / Double Amputee",
@@ -228,24 +1299,6 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "flux_649568_726726",
-      "runware_air_id": "liangwc:flux_649568_726726@726726",
-      "name": "Asian Pubic Hair FLUX",
-      "url": "https://civitai.com/models/649568",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": true
     },
@@ -378,24 +1431,6 @@
       "nsfw": true
     },
     {
-      "id": "flux_663135_932482",
-      "runware_air_id": "liangwc:flux_663135_932482@932482",
-      "name": "Breast Size Slider (FLUX)",
-      "url": "https://civitai.com/models/663135",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
       "id": "breast-size-pony",
       "runware_air_id": "liangwc:breast-size-pony@534952",
       "name": "Breast Size Slider (Pony)",
@@ -455,24 +1490,6 @@
       "nsfw": true,
       "incompatible_with": [],
       "notes": "2026-07-01: uploaded to Runware. Illustrious base model."
-    },
-    {
-      "id": "cg-style-girl-flux",
-      "runware_air_id": "liangwc:cg-style-girl-flux@847113",
-      "name": "CG Style Girl FLUX",
-      "url": "https://civitai.com/models/753247",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
     },
     {
       "id": "classic-lara-croft",
@@ -606,38 +1623,6 @@
       "nsfw": true
     },
     {
-      "id": "dark-noir-lighting",
-      "name": "Dark Noir Lighting",
-      "url": "",
-      "trigger_words": [
-        "noir lighting",
-        "dark noir",
-        "film noir",
-        "chiaroscuro",
-        "dramatic shadows"
-      ],
-      "tags": [
-        "lighting",
-        "noir",
-        "dark",
-        "shadows",
-        "dramatic",
-        "moody",
-        "cinematic"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "description": "Film noir dramatic lighting for moody atmosphere.",
-      "base_model": "flux-dev",
-      "category": "lighting",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "Keep scale 0.3-0.6 when stacking with other LoRAs."
-    },
-    {
       "id": "darker-images-slider",
       "runware_air_id": "liangwc:darker-images-slider@989098",
       "name": "Darker Images Slider",
@@ -693,29 +1678,6 @@
       "base_model": "pony",
       "category": "concept",
       "nsfw": false
-    },
-    {
-      "id": "vagina-hq",
-      "runware_air_id": "liangwc:vagina-hq@935742",
-      "name": "Detailed Woman Genitals (FLUX)",
-      "url": "https://civitai.com/models/796605",
-      "tags": [
-        "flux",
-        "nsfw",
-        "anatomy",
-        "runware-uploaded"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.3,
-        0.8
-      ],
-      "description": "仅 19MB / dim=2 — FLUX 女性器官细节 LoRA。专门用于添加 vagina/labia，不带写实风格 bias。AIR: liangwc:vagina-hq@935742",
-      "base_model": "flux-dev",
-      "category": "anatomy",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-05 上传验证。堆叠风格 LoRA + NSFW MASTER 0.5 时用此加器官细节。19MB dim=2 不会压风格。单独使用时 FLUX 会取巧遮挡。"
     },
     {
       "id": "disgusted-face",
@@ -809,42 +1771,6 @@
       ],
       "base_model": "illustrious",
       "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "eastmix-asian-body",
-      "runware_air_id": "liangwc:eastmix-asian-body@1304653",
-      "name": "Eastmix Asian Body",
-      "url": "https://civitai.com/models/1133395",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "eastmix-asian-face",
-      "runware_air_id": "liangwc:eastmix-asian-face@1390428",
-      "name": "Eastmix Asian Girl Face",
-      "url": "https://civitai.com/models/1233843",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
       "nsfw": false
     },
     {
@@ -1107,25 +2033,6 @@
       "nsfw": true
     },
     {
-      "id": "femboy-flux",
-      "runware_air_id": "liangwc:femboy-flux@779648",
-      "name": "Femboy FLUX",
-      "url": "https://civitai.com/models/696714",
-      "tags": [
-        "flux",
-        "nsfw",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "femboy-ill",
       "runware_air_id": "liangwc:femboy-ill@2693790",
       "name": "Femboy Illustrious",
@@ -1145,102 +2052,6 @@
       "nsfw": true
     },
     {
-      "id": "flux_906779_1014705",
-      "runware_air_id": "liangwc:flux_906779_1014705@1014705",
-      "name": "Flat Chested Body Type",
-      "url": "https://civitai.com/models/906779",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "flux-anime-nsfw",
-      "runware_air_id": "liangwc:flux-anime-nsfw@775500",
-      "name": "FLUX ANIME NSFW STYLE",
-      "url": "https://civitai.com/models/692960",
-      "tags": [
-        "flux",
-        "nsfw",
-        "anime",
-        "lightweight",
-        "runware-uploaded"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "description": "Lightweight 18MB FLUX anime NSFW style LoRA. Too small for reliable NSFW. AIR: liangwc:flux-anime-nsfw@775500",
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-05 uploaded. 18MB — too weak for reliable NSFW. Not recommended."
-    },
-    {
-      "id": "flux-asian-beauty",
-      "runware_air_id": "liangwc:flux-asian-beauty@893860",
-      "name": "Flux Asian Beauty",
-      "url": "https://civitai.com/models/799377",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "flux_972173_1160192",
-      "runware_air_id": "liangwc:flux_972173_1160192@1160192",
-      "name": "FLUX Clothes On/Off",
-      "url": "https://civitai.com/models/972173",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "flux_674027_780667",
-      "runware_air_id": "liangwc:flux_674027_780667@780667",
-      "name": "FLUX NSFW unlock",
-      "url": "https://civitai.com/models/674027",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
       "id": "freaky-dicks",
       "runware_air_id": "liangwc:freaky-dicks@2267798",
       "name": "Freaky Dicks",
@@ -1255,24 +2066,6 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "flux_713466_1185074",
-      "runware_air_id": "liangwc:flux_713466_1185074@1185074",
-      "name": "Futa Woman Sevenof9",
-      "url": "https://civitai.com/models/713466",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": true
     },
@@ -1300,24 +2093,6 @@
       "nsfw": true,
       "incompatible_with": [],
       "notes": "2026-07-01: uploaded to Runware."
-    },
-    {
-      "id": "flux_653203_880875",
-      "runware_air_id": "liangwc:flux_653203_880875@880875",
-      "name": "Futanari Realistic",
-      "url": "https://civitai.com/models/653203",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
     },
     {
       "id": "gape-slider",
@@ -1615,24 +2390,6 @@
       "nsfw": true
     },
     {
-      "id": "flux_655286_1105560",
-      "runware_air_id": "liangwc:flux_655286_1105560@1105560",
-      "name": "Huge Insertion Bulge",
-      "url": "https://civitai.com/models/655286",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "hyper-gape",
       "runware_air_id": "liangwc:hyper-gape@447230",
       "name": "Hyper Gape",
@@ -1721,24 +2478,6 @@
       ],
       "base_model": "pony",
       "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "flux_713498_819961",
-      "runware_air_id": "liangwc:flux_713498_819961@819961",
-      "name": "Korean Doll Face FLUX",
-      "url": "https://civitai.com/models/713498",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
       "nsfw": false
     },
     {
@@ -1922,120 +2661,6 @@
         1.2
       ],
       "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "mystic-hentai",
-      "runware_air_id": "liangwc:mystic-hentai@1892397",
-      "name": "Mystic Hentai (FLUX NSFW)",
-      "url": "https://civitai.com/models/1671936",
-      "tags": [
-        "flux",
-        "nsfw",
-        "anime",
-        "runware-uploaded"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.4,
-        1.0
-      ],
-      "description": "Fork from Mystic XXX: explicitly trained for non-realistic NSFW images. 146MB FLUX LoRA. AIR: liangwc:mystic-hentai@1892397",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-05 uploaded. 146MB, non-realistic style. Works at 0.6-0.8 for top nudity. Does NOT push to full genital detail alone."
-    },
-    {
-      "id": "mystic-toon",
-      "runware_air_id": "liangwc:mystic-toon@1911266",
-      "name": "Mystic Toon (FLUX NSFW)",
-      "url": "https://civitai.com/models/1688726",
-      "tags": [
-        "flux",
-        "nsfw",
-        "toon",
-        "anime",
-        "runware-uploaded"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.4,
-        1.0
-      ],
-      "description": "Fork from Mystic Hentai: toon/anime style NSFW. 146MB FLUX LoRA. AIR: liangwc:mystic-toon@1911266",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-05 uploaded. 146MB toon style. Similar to Mystic Hentai but more cartoony. Top nudity only."
-    },
-    {
-      "id": "flux_781869_874396",
-      "runware_air_id": "liangwc:flux_781869_874396@874396",
-      "name": "Natural Saggy Breasts FLUX",
-      "url": "https://civitai.com/models/781869",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "neon-cyberpunk",
-      "name": "Neon Cyberpunk City",
-      "url": "",
-      "trigger_words": [
-        "neon city",
-        "cyberpunk",
-        "neon lights",
-        "future city"
-      ],
-      "tags": [
-        "cyberpunk",
-        "neon",
-        "city",
-        "night",
-        "sci-fi",
-        "urban",
-        "dark"
-      ],
-      "default_scale": 0.75,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "description": "Neon-lit cyberpunk cityscape for environment/background.",
-      "base_model": "flux-dev",
-      "category": "environment",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "Scale 0.5-0.7 as background, 1.0+ for dominant style."
-    },
-    {
-      "id": "niji-anime-style-flux",
-      "runware_air_id": "liangwc:niji-anime-style-flux@1423082",
-      "name": "Niji Anime Style (FLUX)",
-      "url": "https://civitai.com/models/1261988",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": true
     },
@@ -2234,24 +2859,6 @@
       "notes": "2026-07-01: uploaded to Runware."
     },
     {
-      "id": "flux_696577_779502",
-      "runware_air_id": "liangwc:flux_696577_779502@779502",
-      "name": "Orgasm Face Flux",
-      "url": "https://civitai.com/models/696577",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "penis-bulge-slider",
       "runware_air_id": "liangwc:penis-bulge-slider@575298",
       "name": "Penis Bulge Slider",
@@ -2343,24 +2950,6 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "flux_380283_746029",
-      "runware_air_id": "liangwc:flux_380283_746029@746029",
-      "name": "POV Deepthroat/Blowjob Flux",
-      "url": "https://civitai.com/models/380283",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": true
     },
@@ -2557,24 +3146,6 @@
       "notes": "Ranma Saotome 早乙女乱馬"
     },
     {
-      "id": "realistic-anime-style-flux",
-      "runware_air_id": "liangwc:waner-flux@769980",
-      "name": "Realistic Anime Style (FLUX)",
-      "url": "https://civitai.com/models/536084",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
-    },
-    {
       "id": "realistic-anime-style-v1",
       "runware_air_id": "liangwc:waner-v1@595948",
       "name": "Realistic Anime Style (SDXL)",
@@ -2611,60 +3182,6 @@
       "nsfw": false
     },
     {
-      "id": "flux_990976_1110224",
-      "runware_air_id": "liangwc:flux_990976_1110224@1110224",
-      "name": "Realistic Male Dick FLUX",
-      "url": "https://civitai.com/models/990976",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "flux_767717_858659",
-      "runware_air_id": "liangwc:flux_767717_858659@858659",
-      "name": "Realistic Massive Breast",
-      "url": "https://civitai.com/models/767717",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "flux_730405_831470",
-      "runware_air_id": "liangwc:flux_730405_831470@831470",
-      "name": "Remove Clothing Censors",
-      "url": "https://civitai.com/models/730405",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
       "id": "sadako",
       "runware_air_id": "liangwc:sadako@566749",
       "name": "Sadako (The Ring)",
@@ -2683,24 +3200,6 @@
       "base_model": "pony",
       "category": "character",
       "nsfw": true
-    },
-    {
-      "id": "seashell-bikini",
-      "runware_air_id": "liangwc:seashell-bikini@1948245",
-      "name": "Seashell Bikini",
-      "url": "https://civitai.com/models/1721575",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
     },
     {
       "id": "see-through-silhouette",
@@ -2739,24 +3238,6 @@
       "nsfw": false
     },
     {
-      "id": "flux_754435_843598",
-      "runware_air_id": "liangwc:flux_754435_843598@843598",
-      "name": "Semi-Realistic Anime Style",
-      "url": "https://civitai.com/models/754435",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
       "id": "sentient-onahole-pony",
       "runware_air_id": "liangwc:sentient-onahole-pony@439470",
       "name": "Sentient Onahole (Pony)",
@@ -2791,24 +3272,6 @@
       ],
       "base_model": "pony",
       "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "flux_1302256_1947551",
-      "runware_air_id": "liangwc:flux_1302256_1947551@1947551",
-      "name": "Skinny & Big Breasts",
-      "url": "https://civitai.com/models/1302256",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
       "nsfw": false
     },
     {
@@ -2884,24 +3347,6 @@
       "category": "character",
       "nsfw": false,
       "notes": "Dead by Daylight 恐怖角色"
-    },
-    {
-      "id": "flux_1128892_1276091",
-      "runware_air_id": "liangwc:flux_1128892_1276091@1276091",
-      "name": "The Pussy",
-      "url": "https://civitai.com/models/1128892",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
     },
     {
       "id": "tifa-ff7",
@@ -3000,38 +3445,6 @@
       "nsfw": false
     },
     {
-      "id": "tomie-uncanny",
-      "name": "Tomie Uncanny Beauty",
-      "url": "",
-      "trigger_words": [
-        "tomie",
-        "uncanny beauty",
-        "dark hair bob",
-        "dangerous smile",
-        "black bob haircut"
-      ],
-      "tags": [
-        "portrait",
-        "uncanny",
-        "dark",
-        "japanese horror",
-        "tomie"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Tomie-style uncanny beauty. ⚠️ FLUX cannot do true Tomie eyes (outputs 'foreigner drawing Japanese'). Use Pony base instead.",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [
-        "cute-kawaii-style"
-      ],
-      "notes": "2026-06-24: FLUX不适合Tomie。Pony base better but needs NSFW LoRA."
-    },
-    {
       "id": "toned-body-slider",
       "runware_air_id": "liangwc:toned-body-slider@2868740",
       "name": "Toned Body Slider",
@@ -3066,24 +3479,6 @@
       ],
       "base_model": "pony",
       "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "ultra-real-anime-flux",
-      "runware_air_id": "liangwc:ultra-real-anime-flux@1272367",
-      "name": "Ultra Real Anime FLUX",
-      "url": "https://civitai.com/models/1131779",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
       "nsfw": false
     },
     {
@@ -3122,24 +3517,6 @@
       "base_model": "illustrious",
       "category": "concept",
       "nsfw": false
-    },
-    {
-      "id": "flux_947385_1060705",
-      "runware_air_id": "liangwc:flux_947385_1060705@1060705",
-      "name": "Upskirt Naked Pussy FLUX",
-      "url": "https://civitai.com/models/947385",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
     },
     {
       "id": "virgin-killer-sweater",
@@ -3216,36 +3593,6 @@
       "nsfw": false
     },
     {
-      "id": "wet-silk-fabric",
-      "name": "Wet Silk Fabric",
-      "url": "",
-      "trigger_words": [
-        "wet silk",
-        "translucent fabric",
-        "see-through fabric",
-        "wet dress",
-        "wet clothing"
-      ],
-      "tags": [
-        "fabric",
-        "wet",
-        "translucent",
-        "silk",
-        "texture"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.3,
-        1.0
-      ],
-      "description": "Wet/semi-transparent silk fabric texture.",
-      "base_model": "flux-dev",
-      "category": "texture",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "Scale sweet spot: 0.5-0.7."
-    },
-    {
       "id": "yuna-ffx",
       "runware_air_id": "liangwc:yuna-ffx@1982307",
       "name": "Yuna (FFX)",
@@ -3264,43 +3611,6 @@
       "category": "character",
       "nsfw": false,
       "notes": "FFX/X-2 3套服装"
-    },
-    {
-      "id": "zyd-chinese-girl-flux",
-      "runware_air_id": "liangwc:zyd-chinese-girl-flux@2084379",
-      "name": "zyd232 Chinese Girl FLUX",
-      "url": "https://civitai.com/models/779099",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "sanguosha-style",
-      "runware_air_id": "liangwc:sanguosha-style@1569919",
-      "name": "三国杀风格",
-      "url": "https://civitai.com/models/1389166",
-      "tags": [
-        "flux",
-        "style",
-        "guoman"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
     },
     {
       "id": "mai-shiranui-ill",
@@ -3377,32 +3687,6 @@
       "base_model": "illustrious",
       "category": "character",
       "nsfw": false
-    },
-    {
-      "id": "jianlai-he-xiaoliang",
-      "runware_air_id": "liangwc:lora10@1425098",
-      "name": "剑来贺小凉 (lora10)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/lora-lora10/resolve/main/model.safetensors",
-      "trigger_words": [],
-      "tags": [
-        "cartoon",
-        "character",
-        "flux",
-        "guoman",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "剑来贺小凉 — Flux.1 D character LoRA, cartoon/anime style. Uploaded via HF relay. Runware AIR verified ✅.",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-01: uploaded to Runware via liangwc25/lora-lora10 on HF. 293MB safetensors."
     },
     {
       "id": "daji-wangzhe",
@@ -3769,237 +4053,6 @@
       "base_model": "illustrious",
       "category": "style",
       "nsfw": false
-    },
-    {
-      "id": "charlady",
-      "runware_air_id": "liangwc:charlady@1",
-      "name": "Charlady (本地训练)",
-      "url": "https://huggingface.co/liangwc25/charlady",
-      "tags": [
-        "flux",
-        "character"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "qizhong",
-      "runware_air_id": "liangwc:qizhong@1",
-      "name": "棋钟 (qizhong)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/qizhong-lora-pub",
-      "trigger_words": [
-        "qizhong"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "棋钟 — FLUX.1 dev LoRA, trained from 12 Douyin live screenshots",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-16: first run on Replicate, rank 16, 1000 steps."
-    },
-    {
-      "id": "quanquan-v6",
-      "runware_air_id": "liangwc:quanquan-v6@1",
-      "name": "拳拳 V6 (quanquan)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/quanquan-lora-v6",
-      "trigger_words": [
-        "quanquan"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "拳拳 V6 — FLUX.1 dev LoRA, 3 HD neutral images",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
-    },
-    {
-      "id": "quanquan-v61",
-      "runware_air_id": "liangwc:quanquan-v61@1",
-      "name": "拳拳 V6.1 (quanquan)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/quanquan-lora-v61",
-      "trigger_words": [
-        "quanquan"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "拳拳 V6.1 — FLUX.1 dev LoRA, 2 blue-ray HD images, no ref_01",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-18: V6.1 on Replicate, rank 16, 1000 steps."
-    },
-    {
-      "id": "body-weight-slider",
-      "runware_air_id": "liangwc:body-weight-slider@3013455",
-      "name": "Body Weight Slider",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/lora-body-weight-slider",
-      "trigger_words": [],
-      "tags": [
-        "body",
-        "weight",
-        "slender",
-        "flux",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Body Weight Slider - Non Face Changing [FLUX] - adjust body shape without affecting face. Flux.1 D base.",
-      "base_model": "flux-dev",
-      "category": "concept",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-18: Runware uploaded ✅"
-    },
-    {
-      "id": "tiny-puffy-nipples",
-      "runware_air_id": "liangwc:tiny-puffy-nipples@2378905",
-      "name": "Tiny breasts & puffy nipples",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/lora-tiny-puffy-nipples",
-      "trigger_words": [],
-      "tags": [
-        "body",
-        "tiny",
-        "breasts",
-        "nipples",
-        "flux",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Body - Tiny breasts and (kind of) puffy nipples — FLUX body type LoRA.",
-      "base_model": "flux-dev",
-      "category": "concept",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-18: Runware uploaded ✅"
-    },
-    {
-      "id": "flat-chest",
-      "runware_air_id": "liangwc:flat-chest@1014705",
-      "name": "Flat Chested - Body Type",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/lora-flat-chest",
-      "trigger_words": [],
-      "tags": [
-        "body",
-        "flat",
-        "chest",
-        "flux",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Flat Chested - Body Type — FLUX body type LoRA for flat chest / no breasts.",
-      "base_model": "flux-dev",
-      "category": "concept",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-18: Runware uploaded ✅"
-    },
-    {
-      "id": "age-slider",
-      "runware_air_id": "liangwc:age-slider@2962055",
-      "name": "Age Slider",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/lora-age-slider",
-      "trigger_words": [],
-      "tags": [
-        "body",
-        "age",
-        "slider",
-        "flux",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Age Slider — FLUX body type LoRA for adjusting apparent age of subjects.",
-      "base_model": "flux-dev",
-      "category": "concept",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
-    },
-    {
-      "id": "yannin-lora",
-      "runware_air_id": "liangwc:yannin-lora@1",
-      "name": "Su Yanning (苏砚宁) V2",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/yannin-lora",
-      "trigger_words": [
-        "yannin"
-      ],
-      "tags": [
-        "flux",
-        "character",
-        "su-yanning",
-        "v2"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Su Yanning (苏砚宁) V2 — yannin trigger. Trained on Replicate. 14 images (leotard + underwear), 1500 steps, autocaption.",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-19: V2 trained on Replicate for $0.01. HF: liangwc25/yannin-lora. Runware: liangwc:yannin-lora@1"
     },
     {
       "id": "detail-enhancer-sdxl",
@@ -5344,28 +5397,6 @@
       "description": "0625 Chinese bunny girl — Pony"
     },
     {
-      "id": "dw-doll-flux",
-      "runware_air_id": "liangwc:dw-doll-flux@925355",
-      "name": "DW Chinese Doll Flux",
-      "url": "https://civitai.com/models/825160",
-      "tags": [
-        "flux",
-        "concept",
-        "chinese",
-        "doll",
-        "dw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "concept",
-      "nsfw": false,
-      "description": "DW Digital Warlock Chinese Doll Likeliness — Flux"
-    },
-    {
       "id": "gufeng-qingqu",
       "runware_air_id": "liangwc:gufeng-qingqu@539310",
       "name": "Chinese lingerie 古风小情趣",
@@ -5816,26 +5847,6 @@
       "description": "Fight Chinese Dress 女侠战袍 — SDXL 1.0"
     },
     {
-      "id": "quanquan-v63",
-      "runware_air_id": "liangwc:quanquan-v63@1",
-      "name": "拳拳 v63 FLUX",
-      "url": "https://replicate.com/liangwc25-bot/quanquan-v63-flux",
-      "tags": [
-        "flux",
-        "character",
-        "quanquan"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "description": "拳拳 v63 — FLUX LoRA, 3000 steps, rank 16, Replicate训练"
-    },
-    {
       "id": "quanquan-v64-pony",
       "runware_air_id": "liangwc:quanquan-v64@1",
       "name": "拳拳 v64 SeaArt Pony",
@@ -5894,214 +5905,6 @@
       "category": "character_style",
       "nsfw": false,
       "description": "拳拳 v64 Pony训的, Illustrious试试 semi-realistic"
-    },
-    {
-      "id": "chinese-girl-realistic",
-      "runware_air_id": "civitai:715558@800194",
-      "name": "Chinese Girl Flux 1.d LoRA (Realistic Photography)",
-      "url": "https://civitai.com/models/715558",
-      "tags": [
-        "flux",
-        "chinese",
-        "girl",
-        "realistic",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "zyd232-chinese-girl",
-      "runware_air_id": "civitai:779099@976201",
-      "name": "zyd232's Chinese Girl LoRA [Flux.1]",
-      "url": "https://civitai.com/models/779099",
-      "tags": [
-        "flux",
-        "chinese",
-        "girl",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "chinese-wuxia",
-      "runware_air_id": "civitai:713395@798678",
-      "name": "Chinese WuXia",
-      "url": "https://civitai.com/models/713395",
-      "tags": [
-        "flux",
-        "chinese",
-        "wuxia",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "chinesegirl-realistic-flux",
-      "runware_air_id": "civitai:719734@804794",
-      "name": "Chinesegirl Realistic Flux",
-      "url": "https://civitai.com/models/719734",
-      "tags": [
-        "flux",
-        "chinese",
-        "girl",
-        "realistic",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "chinese-beauty",
-      "runware_air_id": "civitai:1111359@1248781",
-      "name": "Chinese Beauty",
-      "url": "https://civitai.com/models/1111359",
-      "tags": [
-        "flux",
-        "chinese",
-        "beauty",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "hanfu-chinese-girl",
-      "runware_air_id": "civitai:719331@804359",
-      "name": "Hanfu Chinese Girl Flux LoRA (Realistic Photography)",
-      "url": "https://civitai.com/models/719331",
-      "tags": [
-        "flux",
-        "chinese",
-        "hanfu",
-        "girl",
-        "realistic",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "flux-chinese-beautiful-girl",
-      "runware_air_id": "civitai:1079950@1212551",
-      "name": "Flux-Chinese Beautiful Girl",
-      "url": "https://civitai.com/models/1079950",
-      "tags": [
-        "flux",
-        "chinese",
-        "girl",
-        "beautiful",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "dw-chinese-doll",
-      "runware_air_id": "civitai:825160@925355",
-      "name": "[DW] Digital Warlock - Chinese Doll Likeliness - Flux",
-      "url": "https://civitai.com/models/825160",
-      "tags": [
-        "flux",
-        "chinese",
-        "doll",
-        "digital-warlock",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "ghost-bride-flux",
-      "runware_air_id": "civitai:846901@947481",
-      "name": "Ghost Bride [Flux]",
-      "url": "https://civitai.com/models/846901",
-      "tags": [
-        "flux",
-        "chinese",
-        "ghost-bride",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "kolors-asian-face-flux",
-      "runware_air_id": "civitai:730162@823089",
-      "name": "Kolors style Asian face for Flux1 dev",
-      "url": "https://civitai.com/models/730162",
-      "tags": [
-        "flux",
-        "asian",
-        "face",
-        "kolors",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
     },
     {
       "id": "zit-age-slider",
@@ -6186,241 +5989,6 @@
       "base_model": "zimage-turbo",
       "category": "character",
       "nsfw": false
-    },
-    {
-      "id": "chinese-zombie",
-      "runware_air_id": "liangwc:chinese-zombie@1",
-      "name": "Chinese Zombie Costume 丐版大清国僵尸服",
-      "url": "https://civitai.com/models/866223",
-      "tags": [
-        "flux",
-        "chinese",
-        "zombie",
-        "costume",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": true
-    },
-    {
-      "id": "yingqi-girl",
-      "runware_air_id": "liangwc:yingqi-girl@1",
-      "name": "Chinese/Asian Girl Cool Style 英气女子",
-      "url": "https://civitai.com/models/1050811",
-      "tags": [
-        "flux",
-        "chinese",
-        "girl",
-        "cool-style",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": true
-    },
-    {
-      "id": "chinese-lingerie",
-      "runware_air_id": "liangwc:chinese-lingerie@1",
-      "name": "Chinese Lingerie 中式露奶内衣",
-      "url": "https://civitai.com/models/996854",
-      "tags": [
-        "flux",
-        "chinese",
-        "lingerie",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": true
-    },
-    {
-      "id": "chinese-hanfu",
-      "runware_air_id": "liangwc:chinese-hanfu@1",
-      "name": "Ancient Chinese Hanfu Style",
-      "url": "https://civitai.com/models/758777",
-      "tags": [
-        "flux",
-        "chinese",
-        "hanfu",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "chinese-wife-nsfw",
-      "runware_air_id": "liangwc:chinese-wife-nsfw@1",
-      "name": "Flux Chinese Wife (NSFW)",
-      "url": "https://civitai.com/models/820791",
-      "tags": [
-        "flux",
-        "chinese",
-        "wife",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": true
-    },
-    {
-      "id": "elegance-chinese-lady",
-      "runware_air_id": "liangwc:elegance-chinese-lady@1",
-      "name": "Elegance Chinese Lady",
-      "url": "https://civitai.com/models/2015123",
-      "tags": [
-        "flux",
-        "chinese",
-        "elegance",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": true
-    },
-    {
-      "id": "chinese-wife-v1",
-      "runware_air_id": "liangwc:chinese-wife-v1@1",
-      "name": "Flux Chinese Wife v1.1",
-      "url": "https://civitai.com/models/751804",
-      "tags": [
-        "flux",
-        "chinese",
-        "wife",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": true
-    },
-    {
-      "id": "dl-chinese-arch",
-      "runware_air_id": "liangwc:dl-chinese-arch@1",
-      "name": "DL Chinese Style Ancient Architecture",
-      "url": "https://civitai.com/models/1945746",
-      "tags": [
-        "flux",
-        "chinese",
-        "architecture",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "chinese-heroine",
-      "runware_air_id": "liangwc:chinese-heroine@1",
-      "name": "Flux Ancient Chinese Heroine Long Skirt",
-      "url": "https://civitai.com/models/791438",
-      "tags": [
-        "flux",
-        "chinese",
-        "heroine",
-        "long-skirt",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": true
-    },
-    {
-      "id": "yaohu-foxx",
-      "runware_air_id": "liangwc:yaohu-foxx@1",
-      "name": "Yaohu Foxx 🇨🇳 - Original Character Chinese Woman",
-      "url": "https://civitai.com/models/1608220",
-      "tags": [
-        "flux",
-        "chinese",
-        "yaohu",
-        "fox",
-        "character",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "chun-li-flux",
-      "runware_air_id": "liangwc:chun-li-flux@1",
-      "name": "Flux Chun Li",
-      "url": "https://civitai.com/models/2069705",
-      "tags": [
-        "flux",
-        "chun-li",
-        "street-fighter",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": true
     },
     {
       "id": "dw-chinese-doll-sdxl",
