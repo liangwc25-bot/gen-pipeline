@@ -60,7 +60,12 @@ class GenHandler(SimpleHTTPRequestHandler):
         if self._parsed_path == "/":
             self._parsed_path = "/gen.html"
         
-        _static = {"/gen.html": "text/html", "/gen-manifest.json": "application/json"}
+        _static = {
+            "/gen.html": "text/html",
+            "/gen-manifest.json": "application/json",
+            "/icon-192.png": "image/png",
+            "/icon-512.png": "image/png",
+        }
         if self._parsed_path in _static:
             fp = GEN_DIR / self._parsed_path.lstrip("/")
             if fp.exists():
