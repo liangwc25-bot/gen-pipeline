@@ -140,6 +140,9 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         except Exception as e:
             import traceback
             traceback.print_exc()
+    def do_HEAD(self):
+        """HEAD requests go through the same path as GET."""
+        self.do_GET()
     def do_POST(self):
         if self.path == "/api/batch":
             return self._handle_batch()
@@ -422,9 +425,11 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 mime, fname = _i2v_static[path]
                 fpath = Path(__file__).parent / fname
                 if fpath.exists():
+                    is_cacheable = fname.endswith((".js", ".json"))
                     self.send_response(200)
                     self.send_header("Content-Type", mime)
-                    self.send_header("Cache-Control", "max-age=86400")
+                    self.send_header("Cache-Control",
+                        "no-cache" if is_cacheable else "max-age=86400")
                     self.end_headers()
                     self.wfile.write(fpath.read_bytes())
                 else:
@@ -441,9 +446,11 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             mime, fname = _static_files[path]
             fpath = Path(__file__).parent / fname
             if fpath.exists():
+                is_cacheable = fname.endswith((".js", ".json"))
                 self.send_response(200)
                 self.send_header("Content-Type", mime)
-                self.send_header("Cache-Control", "max-age=86400")
+                self.send_header("Cache-Control",
+                    "no-cache" if is_cacheable else "max-age=86400")
                 self.end_headers()
                 self.wfile.write(fpath.read_bytes())
             else:
