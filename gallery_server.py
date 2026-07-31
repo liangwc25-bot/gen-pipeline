@@ -418,8 +418,8 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             _i2v_static = {
                 "/manifest.json": ("application/json", "i2v-manifest.json"),
                 "/sw.js": ("application/javascript", "i2v-sw.js"),
-                "/icon-192.png": ("image/png", "i2v-icon-192.png"),
-                "/icon-512.png": ("image/png", "i2v-icon-512.png"),
+                "/icon-192.png": ("image/png", "i2v-icon-192-v2.png"),
+                "/icon-512.png": ("image/png", "i2v-icon-512-v2.png"),
             }
             if path in _i2v_static:
                 mime, fname = _i2v_static[path]
