@@ -1,4 +1,4 @@
-const CACHE = 'i2v-v3';
+const CACHE = 'i2v-v4';
 const ALWAYS_NETWORK = ['/api/'];
 self.addEventListener('install', e => {
   self.skipWaiting();
