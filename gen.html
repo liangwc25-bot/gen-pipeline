@@ -772,7 +772,7 @@ function createLoraRow(loras, selectedId, selectedScale) {
   row.className = 'lora-row';
   row.innerHTML = `
     <div class="lora-picker-wrap">
-      <input type="text" class="lora-search" placeholder="搜索 LoRA 或输入 CivitAI ID…" autocomplete="off">
+      <input type="text" class="lora-search" placeholder="搜索 LoRA…" autocomplete="off">
       <input type="hidden" class="lora-value" value="${selectedId || ''}">
       <div class="lora-dropdown"></div>
     </div>
@@ -815,12 +815,10 @@ function filterLoraDropdown(row, loras) {
   let html = '';
   // "— 不启用 —" always first
   html += `<div class="lora-opt none" onclick="selectLora(this)">— 不启用 —</div>`;
-  // "✏️ 手动输入" — when there's text, or always
-  html += `<div class="lora-opt custom" onclick="selectLora(this)">✏️ 手动输入 CivitAI ID…</div>`;
 
   const filtered = (loras || []).filter(l => l.name.toLowerCase().includes(q));
   if (filtered.length === 0 && q) {
-    html += `<div class="lora-no-results">无匹配 — 按回车使用「${search.value}」</div>`;
+    html += `<div class="lora-no-results">无匹配</div>`;
   } else if (q) {
     // With search query: flat list
     html += filtered.map(l => {
@@ -862,13 +860,7 @@ function selectLora(el) {
     valueEl.value = '';
     search.value = '';
     search.classList.remove('has-value');
-    search.placeholder = '搜索 LoRA 或输入 CivitAI ID…';
-  } else if (el.classList.contains('custom')) {
-    // Custom — use whatever user typed
-    const q = search.value.trim();
-    valueEl.value = q;
-    search.value = q;
-    search.classList.add('has-value');
+    search.placeholder = '搜索 LoRA…';
   } else {
     valueEl.value = el.dataset.id;
     search.value = el.textContent;
