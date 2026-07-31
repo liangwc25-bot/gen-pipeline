@@ -210,6 +210,10 @@
   .lora-dropdown .lora-opt.custom { color: var(--orange); font-style: italic; }
   .lora-dropdown .lora-opt.none { color: var(--text2); opacity: 0.6; }
   .lora-dropdown .lora-no-results { padding: 10px 12px; font-size: 0.8rem; color: var(--text2); text-align: center; }
+  .lora-dropdown .lora-group-label {
+    padding: 8px 12px 2px; font-size: 0.68rem; font-weight: 700; color: var(--text2);
+    text-transform: uppercase; letter-spacing: 0.05em; user-select: none;
+  }
   input.lora-scale { width: 48px; min-width: 48px; max-width: 48px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: var(--text); padding: 8px 0; font-size: 0.8rem; text-align: center; -moz-appearance: textfield; box-sizing: border-box; }
   input.lora-scale::-webkit-outer-spin-button,
   input.lora-scale::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
@@ -817,11 +821,30 @@ function filterLoraDropdown(row, loras) {
   const filtered = (loras || []).filter(l => l.name.toLowerCase().includes(q));
   if (filtered.length === 0 && q) {
     html += `<div class="lora-no-results">无匹配 — 按回车使用「${search.value}」</div>`;
-  } else {
+  } else if (q) {
+    // With search query: flat list
     html += filtered.map(l => {
       const sel = l.air_id === valueEl.value ? ' selected' : '';
       return `<div class="lora-opt${sel}" data-id="${l.air_id}" data-scale="${l.default_scale}" data-min="${l.scale_range[0]}" data-max="${l.scale_range[1]}" onclick="selectLora(this)">${l.name}</div>`;
     }).join('');
+  } else {
+    // No query: group by category, like snippet groups
+    const catOrder = { 'character': 0, 'character_style': 1, 'style': 2, 'concept': 3, 'tools': 4, 'tool': 4 };
+    const catEmoji = { 'character': '👤', 'character_style': '👤🎨', 'style': '🎨', 'concept': '💡', 'tools': '🔧', 'tool': '🔧' };
+    const catLabel = { 'character': '角色', 'character_style': '角色+风格', 'style': '风格', 'concept': '概念', 'tools': '工具', 'tool': '工具' };
+    const groups = {};
+    filtered.forEach(l => {
+      const c = l.category || 'concept';
+      (groups[c] = groups[c] || []).push(l);
+    });
+    const cats = Object.keys(groups).sort((a, b) => (catOrder[a] ?? 9) - (catOrder[b] ?? 9));
+    cats.forEach(c => {
+      html += `<div class="lora-group-label">${catEmoji[c] || '📦'} ${catLabel[c] || c}</div>`;
+      html += groups[c].map(l => {
+        const sel = l.air_id === valueEl.value ? ' selected' : '';
+        return `<div class="lora-opt${sel}" data-id="${l.air_id}" data-scale="${l.default_scale}" data-min="${l.scale_range[0]}" data-max="${l.scale_range[1]}" onclick="selectLora(this)">${l.name}</div>`;
+      }).join('');
+    });
   }
   dropdown.innerHTML = html;
   dropdown.classList.add('open');
