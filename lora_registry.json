@@ -1571,64 +1571,6 @@
       "description": "1007 Chinese wedding dress — Pony"
     },
     {
-      "id": "adjusting-clothes",
-      "runware_air_id": "liangwc:adjusting-clothes@856243",
-      "name": "Adjusting Clothes",
-      "url": "https://civitai.com/models/93524",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "anal-fisting-pony",
-      "runware_air_id": "liangwc:anal-fisting-pony@1406801",
-      "name": "Anal Fisting and Stretching Pony",
-      "url": "https://civitai.com/models/483771",
-      "tags": [
-        "pony",
-        "nsfw",
-        "anal",
-        "fisting"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Anal fisting and stretching — Pony"
-    },
-    {
-      "id": "cum-on-tongue",
-      "runware_air_id": "liangwc:cum-on-tongue@814441",
-      "name": "Better Cum on Tongue",
-      "url": "https://civitai.com/models/728342",
-      "tags": [
-        "pony",
-        "nsfw",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
       "id": "bodysuit",
       "runware_air_id": "liangwc:bodysuit@585932",
       "name": "Bodysuit",
@@ -1689,6 +1631,263 @@
       "category": "character_style",
       "nsfw": true,
       "description": "Chinese wedding dress 中式婚纱 Sexy lingerie — Pony"
+    },
+    {
+      "id": "lora9-futanari",
+      "runware_air_id": "liangwc:lora9@564643",
+      "name": "Futanari 18+ (lora9)",
+      "file": "",
+      "url": "https://civitai.com/models/564643",
+      "trigger_words": [],
+      "tags": [
+        "nsfw",
+        "pony",
+        "futanari",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Large Futanari Penis 18+ — Pony base. Runware AIR verified ✅.",
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-01: uploaded to Runware."
+    },
+    {
+      "id": "leggings",
+      "runware_air_id": "liangwc:leggings@508497",
+      "name": "Leggings",
+      "url": "https://civitai.com/models/454682",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "micro-panties-pony",
+      "runware_air_id": "liangwc:micro-panties-pony@791802",
+      "name": "Micro Panties (Pony)",
+      "url": "https://civitai.com/models/707896",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "ofuda-pony",
+      "runware_air_id": "liangwc:ofuda-pony@593678",
+      "name": "Ofuda (miko/jiangshi/pasties)",
+      "url": "https://civitai.com/models/250482",
+      "tags": [
+        "pony",
+        "style",
+        "concept"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.4,
+        1.0
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false,
+      "notes": "神楽/符札/巫女/僵尸/乳房贴纸等概念"
+    },
+    {
+      "id": "lora8-oppai-large-breasts",
+      "runware_air_id": "liangwc:lora8@623811",
+      "name": "Oppai Large Breasts 18+ (lora8)",
+      "file": "",
+      "url": "https://civitai.com/models/623811",
+      "trigger_words": [],
+      "tags": [
+        "nsfw",
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Oppai / Large breasts slim body 18+ — Pony base. Runware AIR verified ✅.",
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-01: uploaded to Runware."
+    },
+    {
+      "id": "race-ethnicity-pony",
+      "runware_air_id": "liangwc:race-ethnicity-pony@2212053",
+      "name": "Race & Ethnicity Helper (Pony)",
+      "url": "https://civitai.com/models/620668",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "slutty-dress",
+      "runware_air_id": "liangwc:slutty-dress@859460",
+      "name": "Slutty Dress / Bodycon",
+      "url": "https://civitai.com/models/768438",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "transparent-wedding-dress",
+      "runware_air_id": "liangwc:transparent-wedding-dress@1533007",
+      "name": "Transparent Wedding Dress",
+      "url": "https://civitai.com/models/1346525",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "uncensored-ponyxl",
+      "runware_air_id": "liangwc:uncensored-ponyxl@416689",
+      "name": "Uncensored PonyXL",
+      "url": "https://civitai.com/models/339269",
+      "tags": [
+        "pony",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "pubic-tattoo-pony",
+      "runware_air_id": "liangwc:pubic-tattoo-pony@513762",
+      "name": "淫紋 pubic tattoo (Pony)",
+      "url": "https://civitai.com/models/461662",
+      "tags": [
+        "pony",
+        "nsfw",
+        "tattoo",
+        "body-mod"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "淫紋/pub tattoo — Pony base"
+    },
+    {
+      "id": "adjusting-clothes",
+      "runware_air_id": "liangwc:adjusting-clothes@856243",
+      "name": "Adjusting Clothes",
+      "url": "https://civitai.com/models/93524",
+      "tags": [
+        "pony",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "anal-fisting-pony",
+      "runware_air_id": "liangwc:anal-fisting-pony@1406801",
+      "name": "Anal Fisting and Stretching Pony",
+      "url": "https://civitai.com/models/483771",
+      "tags": [
+        "pony",
+        "nsfw",
+        "anal",
+        "fisting"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Anal fisting and stretching — Pony"
+    },
+    {
+      "id": "cum-on-tongue",
+      "runware_air_id": "liangwc:cum-on-tongue@814441",
+      "name": "Better Cum on Tongue",
+      "url": "https://civitai.com/models/728342",
+      "tags": [
+        "pony",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "concept",
+      "nsfw": true
     },
     {
       "id": "cum-bath",
@@ -1762,31 +1961,6 @@
       "base_model": "pony",
       "category": "concept",
       "nsfw": true
-    },
-    {
-      "id": "lora9-futanari",
-      "runware_air_id": "liangwc:lora9@564643",
-      "name": "Futanari 18+ (lora9)",
-      "file": "",
-      "url": "https://civitai.com/models/564643",
-      "trigger_words": [],
-      "tags": [
-        "nsfw",
-        "pony",
-        "futanari",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Large Futanari Penis 18+ — Pony base. Runware AIR verified ✅.",
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-01: uploaded to Runware."
     },
     {
       "id": "giantess-building-fuck",
@@ -1872,42 +2046,6 @@
       "nsfw": false
     },
     {
-      "id": "leggings",
-      "runware_air_id": "liangwc:leggings@508497",
-      "name": "Leggings",
-      "url": "https://civitai.com/models/454682",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "micro-panties-pony",
-      "runware_air_id": "liangwc:micro-panties-pony@791802",
-      "name": "Micro Panties (Pony)",
-      "url": "https://civitai.com/models/707896",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
       "id": "multiple-insertion",
       "runware_air_id": "liangwc:multiple-insertion@812378",
       "name": "Multiple Insertion / Penetration",
@@ -1924,50 +2062,6 @@
       "base_model": "pony",
       "category": "concept",
       "nsfw": true
-    },
-    {
-      "id": "ofuda-pony",
-      "runware_air_id": "liangwc:ofuda-pony@593678",
-      "name": "Ofuda (miko/jiangshi/pasties)",
-      "url": "https://civitai.com/models/250482",
-      "tags": [
-        "pony",
-        "style",
-        "concept"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.4,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": false,
-      "notes": "神楽/符札/巫女/僵尸/乳房贴纸等概念"
-    },
-    {
-      "id": "lora8-oppai-large-breasts",
-      "runware_air_id": "liangwc:lora8@623811",
-      "name": "Oppai Large Breasts 18+ (lora8)",
-      "file": "",
-      "url": "https://civitai.com/models/623811",
-      "trigger_words": [],
-      "tags": [
-        "nsfw",
-        "pony",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Oppai / Large breasts slim body 18+ — Pony base. Runware AIR verified ✅.",
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-01: uploaded to Runware."
     },
     {
       "id": "pov-facesitting-v2",
@@ -1987,42 +2081,6 @@
       "base_model": "pony",
       "category": "concept",
       "nsfw": true
-    },
-    {
-      "id": "race-ethnicity-pony",
-      "runware_air_id": "liangwc:race-ethnicity-pony@2212053",
-      "name": "Race & Ethnicity Helper (Pony)",
-      "url": "https://civitai.com/models/620668",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "slutty-dress",
-      "runware_air_id": "liangwc:slutty-dress@859460",
-      "name": "Slutty Dress / Bodycon",
-      "url": "https://civitai.com/models/768438",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": false
     },
     {
       "id": "tiny-creatures",
@@ -2067,43 +2125,6 @@
       "description": "Tiny Girl — Pony base"
     },
     {
-      "id": "transparent-wedding-dress",
-      "runware_air_id": "liangwc:transparent-wedding-dress@1533007",
-      "name": "Transparent Wedding Dress",
-      "url": "https://civitai.com/models/1346525",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "uncensored-ponyxl",
-      "runware_air_id": "liangwc:uncensored-ponyxl@416689",
-      "name": "Uncensored PonyXL",
-      "url": "https://civitai.com/models/339269",
-      "tags": [
-        "pony",
-        "nsfw",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "guoman-pony",
       "runware_air_id": "liangwc:guoman-pony@801320",
       "name": "XE GuoMan LoRA",
@@ -2122,27 +2143,6 @@
       "category": "concept",
       "nsfw": false,
       "description": "XE: GuoMan LoRA — Pony base"
-    },
-    {
-      "id": "pubic-tattoo-pony",
-      "runware_air_id": "liangwc:pubic-tattoo-pony@513762",
-      "name": "淫紋 pubic tattoo (Pony)",
-      "url": "https://civitai.com/models/461662",
-      "tags": [
-        "pony",
-        "nsfw",
-        "tattoo",
-        "body-mod"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true,
-      "description": "淫紋/pub tattoo — Pony base"
     },
     {
       "id": "ada-wong",
