@@ -6036,6 +6036,87 @@
       "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "better-nudes-asians-zit",
+      "runware_air_id": "liangwc:better-nudes-asians@2886138",
+      "name": "Better Nudes - Asians (ZIT)",
+      "url": "https://civitai.com/models/2568592",
+      "tags": [
+        "zimage",
+        "asian",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "naoe-shadowy-asian-zit",
+      "runware_air_id": "liangwc:naoe-shadowy-asian@2897771",
+      "name": "Naoe Shadowy Asian Baddie (ZIT)",
+      "url": "https://civitai.com/models/2579355",
+      "tags": [
+        "zimage",
+        "asian",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "power-girl-dress-zit",
+      "runware_air_id": "liangwc:power-girl-dress@2475219",
+      "name": "Power Girl Dress (ZIT)",
+      "url": "https://civitai.com/models/2089731",
+      "tags": [
+        "zimage",
+        "outfit",
+        "dress",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "see-through-lingerie-zit",
+      "runware_air_id": "liangwc:see-through-lingerie@2910515",
+      "name": "See Through Lingerie V2 (ZIT)",
+      "url": "https://civitai.com/models/2169622",
+      "tags": [
+        "zimage",
+        "lingerie",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
