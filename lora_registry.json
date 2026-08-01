@@ -5844,7 +5844,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "character",
+      "category": "new",
       "nsfw": false
     },
     {
@@ -5865,7 +5865,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "style",
+      "category": "new",
       "nsfw": false
     },
     {
@@ -5886,7 +5886,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "style",
+      "category": "new",
       "nsfw": false
     },
     {
@@ -5908,7 +5908,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "style",
+      "category": "new",
       "nsfw": false
     },
     {
@@ -5929,7 +5929,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "character",
+      "category": "new",
       "nsfw": false
     },
     {
@@ -5950,7 +5950,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "character",
+      "category": "new",
       "nsfw": false
     },
     {
@@ -5971,7 +5971,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "style",
+      "category": "new",
       "nsfw": false
     },
     {
@@ -5992,7 +5992,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "character",
+      "category": "new",
       "nsfw": false
     },
     {
@@ -6013,7 +6013,7 @@
         1.2
       ],
       "base_model": "flux-dev",
-      "category": "style",
+      "category": "new",
       "nsfw": true
     },
     {
@@ -6034,7 +6034,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "style",
+      "category": "new",
       "nsfw": true
     }
   ],
