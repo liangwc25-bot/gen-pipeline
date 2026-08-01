@@ -6177,6 +6177,344 @@
       "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "nipple-pokies-zit",
+      "runware_air_id": "liangwc:nipple-pokies@2493795",
+      "name": "Nipple Pokies (ZIT)",
+      "url": "https://civitai.com/models/2215040",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "radiant-realism-pro-zit",
+      "runware_air_id": "liangwc:radiant-realism-pro@2812128",
+      "name": "Radiant Realism Pro (ZIT)",
+      "url": "https://civitai.com/models/2395852",
+      "tags": [
+        "zimage",
+        "realistic",
+        "skin",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "detail-slider-zit",
+      "runware_air_id": "liangwc:detail-slider@2479992",
+      "name": "Detail Slider (ZIT)",
+      "url": "https://civitai.com/models/2202638",
+      "tags": [
+        "zimage",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "anime-style-zit",
+      "runware_air_id": "liangwc:anime-style@2540433",
+      "name": "Anime Style (ZIT)",
+      "url": "https://civitai.com/models/2186398",
+      "tags": [
+        "zimage",
+        "anime",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "age-slider-zit",
+      "runware_air_id": "liangwc:age-slider@2846807",
+      "name": "Age Slider (ZIT)",
+      "url": "https://civitai.com/models/2533032",
+      "tags": [
+        "zimage",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "lowrise-highwaist-zit",
+      "runware_air_id": "liangwc:lowrise-highwaist@2846961",
+      "name": "Low-rise/High-waist Slider (ZIT)",
+      "url": "https://civitai.com/models/2527341",
+      "tags": [
+        "zimage",
+        "slider",
+        "outfit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "upskirt-view-zit",
+      "runware_air_id": "liangwc:upskirt-view@2536452",
+      "name": "Upskirt View (ZIT)",
+      "url": "https://civitai.com/models/2253206",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "big-penis-insertion-zit",
+      "runware_air_id": "liangwc:big-penis-insertion@2520706",
+      "name": "Big Penis Insertion (ZIT)",
+      "url": "https://civitai.com/models/899155",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "anatomy",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "lifting-clothing-mouth-zit",
+      "runware_air_id": "liangwc:lifting-clothing-mouth@2607934",
+      "name": "Lifting Clothing With Mouth (ZIT)",
+      "url": "https://civitai.com/models/1621208",
+      "tags": [
+        "zimage",
+        "outfit",
+        "pose",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "bondage-chair-flux",
+      "runware_air_id": "liangwc:bondage-chair@1891533",
+      "name": "Bondage Chair (FLUX)",
+      "url": "https://civitai.com/models/1671167",
+      "tags": [
+        "flux",
+        "bondage",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "breasts-clamp-zit",
+      "runware_air_id": "liangwc:breasts-clamp@2577812",
+      "name": "Breasts Clamp (ZIT)",
+      "url": "https://civitai.com/models/2290707",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "anatomy",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "breasts-clamper-zit",
+      "runware_air_id": "liangwc:breasts-clamper@2514882",
+      "name": "Breasts Clamper (ZIT)",
+      "url": "https://civitai.com/models/147083",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "anatomy",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "clothes-explosion-flux",
+      "runware_air_id": "liangwc:clothes-explosion@1880813",
+      "name": "Clothes Explosion (FLUX)",
+      "url": "https://civitai.com/models/1661706",
+      "tags": [
+        "flux",
+        "outfit",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "slippery-shoulders-flux",
+      "runware_air_id": "liangwc:slippery-shoulders@1831310",
+      "name": "Slippery Shoulders (FLUX)",
+      "url": "https://civitai.com/models/312790",
+      "tags": [
+        "flux",
+        "outfit",
+        "pose",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "naked-cherry-blossoms-flux",
+      "runware_air_id": "liangwc:naked-cherry-blossoms@1819867",
+      "name": "Naked Cherry Blossoms (FLUX)",
+      "url": "https://civitai.com/models/1608142",
+      "tags": [
+        "flux",
+        "nature",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "suspended-amputee-flux",
+      "runware_air_id": "liangwc:suspended-amputee@1682016",
+      "name": "Suspended Amputee (FLUX)",
+      "url": "https://civitai.com/models/1487003",
+      "tags": [
+        "flux",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "pan-jinlian-flux",
+      "runware_air_id": "liangwc:pan-jinlian@986129",
+      "name": "Pan Jinlian Hanfu (FLUX)",
+      "url": "https://civitai.com/models/880938",
+      "tags": [
+        "flux",
+        "chinese",
+        "hanfu",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
