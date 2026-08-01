@@ -6736,6 +6736,85 @@
       "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": false
+    },
+    {
+      "id": "holding-spread-legs-zit",
+      "runware_air_id": "liangwc:holding-spread-legs@2741069",
+      "name": "Holding Spread Legs (ZIT)",
+      "url": "https://civitai.com/models/2428293",
+      "tags": [
+        "zimage",
+        "pose",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "shadows-expressive-zit",
+      "runware_air_id": "liangwc:shadows-expressive@2602072",
+      "name": "Shadows of ExpressiveH (ZIT)",
+      "url": "https://civitai.com/models/2312812",
+      "tags": [
+        "zimage",
+        "style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "angelcore-zit",
+      "runware_air_id": "liangwc:angelcore@2725554",
+      "name": "Angelcore (ZIT)",
+      "url": "https://civitai.com/models/2424184",
+      "tags": [
+        "zimage",
+        "style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "rubicon-stx-zit",
+      "runware_air_id": "liangwc:rubicon-stx@2633652",
+      "name": "RUBICON BY STX (ZIT)",
+      "url": "https://civitai.com/models/2341413",
+      "tags": [
+        "zimage",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
     }
   ],
   "categories": {
