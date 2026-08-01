@@ -6515,6 +6515,207 @@
       "base_model": "flux-dev",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "saggy-slider-zit",
+      "runware_air_id": "liangwc:saggy-slider@2504398",
+      "name": "Saggy Slider (ZIT)",
+      "url": "https://civitai.com/models/2224601",
+      "tags": [
+        "zimage",
+        "slider",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "age-slider-v2-zit",
+      "runware_air_id": "liangwc:age-slider-v2@2957021",
+      "name": "Age Slider V2 (ZIT)",
+      "url": "https://civitai.com/models/2633687",
+      "tags": [
+        "zimage",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "realistic-ts-bulge-flux",
+      "runware_air_id": "liangwc:realistic-ts-bulge@1622153",
+      "name": "Realistic TS Bulge (FLUX)",
+      "url": "https://civitai.com/models/1435061",
+      "tags": [
+        "flux",
+        "anatomy",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "flaccid-penis-flux",
+      "runware_air_id": "liangwc:flaccid-penis@918849",
+      "name": "Flaccid Penis (FLUX)",
+      "url": "https://civitai.com/models/821693",
+      "tags": [
+        "flux",
+        "anatomy",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "upskirt-creepshots-zit",
+      "runware_air_id": "liangwc:upskirt-creepshots@2750487",
+      "name": "Upskirt Creepshots (ZIT)",
+      "url": "https://civitai.com/models/2446193",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "rim-lighting-slider-zit",
+      "runware_air_id": "liangwc:rim-lighting-slider@2521689",
+      "name": "Rim Lighting Slider (ZIT)",
+      "url": "https://civitai.com/models/2240056",
+      "tags": [
+        "zimage",
+        "slider",
+        "lighting",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "waist-sliders-zit",
+      "runware_air_id": "liangwc:waist-sliders@2648251",
+      "name": "Waist Sliders (ZIT)",
+      "url": "https://civitai.com/models/2354366",
+      "tags": [
+        "zimage",
+        "slider",
+        "body",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "human-onahole-zit",
+      "runware_air_id": "liangwc:human-onahole@2917732",
+      "name": "Human Onahole (ZIT)",
+      "url": "https://civitai.com/models/1319951",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "concept",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "hyper-gigantic-tits-zit",
+      "runware_air_id": "liangwc:hyper-gigantic-tits@2895788",
+      "name": "Hyper Gigantic Tits (ZIT)",
+      "url": "https://civitai.com/models/2212040",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "body",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "tgirl-bulge-zit",
+      "runware_air_id": "liangwc:tgirl-bulge@2454595",
+      "name": "Tgirl Bulge (ZIT)",
+      "url": "https://civitai.com/models/2179817",
+      "tags": [
+        "zimage",
+        "anatomy",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
