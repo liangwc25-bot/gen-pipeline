@@ -369,47 +369,6 @@
       "nsfw": true
     },
     {
-      "id": "vagina-hq",
-      "runware_air_id": "liangwc:vagina-hq@935742",
-      "name": "Detailed Woman Genitals (FLUX)",
-      "url": "https://civitai.com/models/796605",
-      "tags": [
-        "flux",
-        "nsfw",
-        "anatomy",
-        "runware-uploaded"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.3,
-        0.8
-      ],
-      "description": "仅 19MB / dim=2 — FLUX 女性器官细节 LoRA。专门用于添加 vagina/labia，不带写实风格 bias。AIR: liangwc:vagina-hq@935742",
-      "base_model": "flux-dev",
-      "category": "anatomy",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-05 上传验证。堆叠风格 LoRA + NSFW MASTER 0.5 时用此加器官细节。19MB dim=2 不会压风格。单独使用时 FLUX 会取巧遮挡。"
-    },
-    {
-      "id": "eastmix-asian-body",
-      "runware_air_id": "liangwc:eastmix-asian-body@1304653",
-      "name": "Eastmix Asian Body",
-      "url": "https://civitai.com/models/1133395",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
       "id": "femboy-flux",
       "runware_air_id": "liangwc:femboy-flux@779648",
       "name": "Femboy FLUX",
@@ -681,6 +640,47 @@
         "cute-kawaii-style"
       ],
       "notes": "2026-06-24: FLUX不适合Tomie。Pony base better but needs NSFW LoRA."
+    },
+    {
+      "id": "eastmix-asian-body",
+      "runware_air_id": "liangwc:eastmix-asian-body@1304653",
+      "name": "Eastmix Asian Body",
+      "url": "https://civitai.com/models/1133395",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "vagina-hq",
+      "runware_air_id": "liangwc:vagina-hq@935742",
+      "name": "Detailed Woman Genitals (FLUX)",
+      "url": "https://civitai.com/models/796605",
+      "tags": [
+        "flux",
+        "nsfw",
+        "anatomy",
+        "runware-uploaded"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.3,
+        0.8
+      ],
+      "description": "仅 19MB / dim=2 — FLUX 女性器官细节 LoRA。专门用于添加 vagina/labia，不带写实风格 bias。AIR: liangwc:vagina-hq@935742",
+      "base_model": "flux-dev",
+      "category": "anatomy",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-05 上传验证。堆叠风格 LoRA + NSFW MASTER 0.5 时用此加器官细节。19MB dim=2 不会压风格。单独使用时 FLUX 会取巧遮挡。"
     },
     {
       "id": "aerith-ff7-flux",
@@ -5233,26 +5233,6 @@
       "description": "Dark sovereign — Wuxia Style (重试成功!)"
     },
     {
-      "id": "quanquan-v64-illustrious",
-      "runware_air_id": "liangwc:quanquan-v64@1",
-      "name": "拳拳 v64 SeaArt (Illustrious)",
-      "url": "",
-      "tags": [
-        "illustrious",
-        "character",
-        "quanquan"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": false,
-      "description": "拳拳 v64 Pony训的, Illustrious试试 semi-realistic"
-    },
-    {
       "id": "dramatic-lighting-slider",
       "runware_air_id": "liangwc:dramatic-lighting-slider@1",
       "name": "Dramatic Lighting Slider [Pony/Illustrious]",
@@ -5291,51 +5271,30 @@
         1.0
       ],
       "base_model": "sdxl",
-      "category": "concept",
+      "category": "style",
       "nsfw": false,
       "description": "SDXL detail enhancer — enhance texture/sharpness"
     },
     {
-      "id": "undress-striptease",
-      "runware_air_id": "liangwc:undress-striptease@419214",
-      "name": "undress | striptease slider",
-      "url": "https://civitai.com/models/375374",
+      "id": "ink-wash-sdxl",
+      "runware_air_id": "liangwc:ink-wash-sdxl@1521933",
+      "name": "Ink - Wash style SDXL",
+      "url": "https://civitai.com/models/1347466",
       "tags": [
         "sdxl",
-        "slider",
-        "nsfw",
-        "undress"
+        "style",
+        "ink",
+        "水墨"
       ],
-      "default_scale": 0.8,
+      "default_scale": 0.7,
       "scale_range": [
-        0.0,
-        1.5
+        0.3,
+        1.2
       ],
       "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Undress / striptease slider — from clothed to nude"
-    },
-    {
-      "id": "waist-slider-xl",
-      "runware_air_id": "civitai:128616@140842",
-      "name": "Waist Slider XL (Microwaist XL)",
-      "url": "https://civitai.com/models/128616",
-      "tags": [
-        "sdxl",
-        "slider",
-        "body",
-        "waist"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
+      "category": "style",
       "nsfw": false,
-      "description": "Waist size slider — adjust waist thinness"
+      "description": "Ink wash painting style — SDXL base"
     },
     {
       "id": "photorealistic-slider-sdxl",
@@ -5357,69 +5316,6 @@
       "category": "style",
       "nsfw": false,
       "description": "Photorealistic slider — adjust toward realism"
-    },
-    {
-      "id": "undressing-lora-sdxl",
-      "runware_air_id": "civitai:242034@273478",
-      "name": "Undressing LoRA SDXL",
-      "url": "https://civitai.com/models/242034",
-      "tags": [
-        "sdxl",
-        "slider",
-        "nsfw",
-        "undress"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Undressing LoRA — progressive undress slider"
-    },
-    {
-      "id": "breasts-adjust-xl",
-      "runware_air_id": "liangwc:breasts-adjust-xl@155308",
-      "name": "breasts adjust_XL",
-      "url": "https://civitai.com/models/139625",
-      "tags": [
-        "sdxl",
-        "slider",
-        "body",
-        "breasts"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Breast size adjuster — chest slider"
-    },
-    {
-      "id": "sagging-breasts-sdxl",
-      "runware_air_id": "civitai:139131@298272",
-      "name": "Sagging Breasts SDXL",
-      "url": "https://civitai.com/models/139131",
-      "tags": [
-        "sdxl",
-        "slider",
-        "body",
-        "breasts"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Sagging breasts slider"
     },
     {
       "id": "pornmaster-chinese-style",
@@ -5444,56 +5340,143 @@
       "description": "PornMaster NSFW 中国风/汉服/角色扮演 style LoRA"
     },
     {
-      "id": "pubic-tattoo-sdxl",
-      "runware_air_id": "liangwc:pubic-tattoo-sdxl@513961",
-      "name": "淫紋 pubic tattoo (SDXL)",
-      "url": "https://civitai.com/models/461662",
+      "id": "guofeng-q",
+      "runware_air_id": "liangwc:guofeng-q@616971",
+      "name": "国风Q版 Chinese Q-version",
+      "url": "https://civitai.com/models/554376",
       "tags": [
         "sdxl",
-        "nsfw",
-        "tattoo",
-        "body-mod"
+        "concept",
+        "q-version",
+        "chinese"
       ],
       "default_scale": 0.8,
       "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": true,
-      "description": "淫紋/pub tattoo — SDXL base"
-    },
-    {
-      "id": "ink-wash-sdxl",
-      "runware_air_id": "liangwc:ink-wash-sdxl@1521933",
-      "name": "Ink - Wash style SDXL",
-      "url": "https://civitai.com/models/1347466",
-      "tags": [
-        "sdxl",
-        "style",
-        "ink",
-        "水墨"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.3,
+        0.5,
         1.2
       ],
       "base_model": "sdxl",
       "category": "style",
       "nsfw": false,
-      "description": "Ink wash painting style — SDXL base"
+      "description": "国风Q版 — SDXL 1.0"
     },
     {
-      "id": "quan-v62-sdxl",
-      "runware_air_id": "liangwc:quan-v62@1",
-      "name": "拳拳 v6.2 SDXL",
-      "url": "https://huggingface.co/liangwc25/quan-v62-sdxl-lora",
+      "id": "guofeng-shaonv",
+      "runware_air_id": "liangwc:guofeng-shaonv@226403",
+      "name": "国风少女系列 Chinese-style girl",
+      "url": "https://civitai.com/models/201159",
       "tags": [
         "sdxl",
-        "character",
-        "quanquan"
+        "concept",
+        "chinese",
+        "girl"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "国风少女系列 Traditional Chinese-style girl — SDXL 1.0"
+    },
+    {
+      "id": "guofeng-chahua",
+      "runware_air_id": "liangwc:guofeng-chahua@130709",
+      "name": "国风插画 Chinese style illustration",
+      "url": "https://civitai.com/models/120206",
+      "tags": [
+        "sdxl",
+        "concept",
+        "illustration",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "国风插画 — SDXL 1.0 (325MB)"
+    },
+    {
+      "id": "guofeng-mengwan",
+      "runware_air_id": "liangwc:guofeng-mengwan@170956",
+      "name": "国风萌玩 Chinese style cute doll",
+      "url": "https://civitai.com/models/152738",
+      "tags": [
+        "sdxl",
+        "concept",
+        "cute",
+        "doll",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "国风萌玩 Chinese style cute doll — SDXL 1.0"
+    },
+    {
+      "id": "undress-striptease",
+      "runware_air_id": "liangwc:undress-striptease@419214",
+      "name": "undress | striptease slider",
+      "url": "https://civitai.com/models/375374",
+      "tags": [
+        "sdxl",
+        "slider",
+        "nsfw",
+        "undress"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "tools",
+      "nsfw": true,
+      "description": "Undress / striptease slider — from clothed to nude"
+    },
+    {
+      "id": "waist-slider-xl",
+      "runware_air_id": "civitai:128616@140842",
+      "name": "Waist Slider XL (Microwaist XL)",
+      "url": "https://civitai.com/models/128616",
+      "tags": [
+        "sdxl",
+        "slider",
+        "body",
+        "waist"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "tools",
+      "nsfw": false,
+      "description": "Waist size slider — adjust waist thinness"
+    },
+    {
+      "id": "dw-chinese-doll-sdxl",
+      "runware_air_id": "liangwc:dw-chinese-doll-sdxl@1",
+      "name": "[DW] Chinese Doll Likeliness - SDXL",
+      "url": "https://civitai.com/models/825160",
+      "tags": [
+        "sdxl",
+        "chinese",
+        "doll",
+        "digital-warlock",
+        "runware-verified"
       ],
       "default_scale": 0.8,
       "scale_range": [
@@ -5503,7 +5486,28 @@
       "base_model": "sdxl",
       "category": "character_style",
       "nsfw": false,
-      "description": "拳拳 (quanquan) v6.2 — trained on Replicate SDXL. May not work on fine-tuned SDXL checkpoints."
+      "notes": "Works on SDXL Vanilla base only (not runware:100@1). 2026-07-30."
+    },
+    {
+      "id": "breasts-adjust-xl",
+      "runware_air_id": "liangwc:breasts-adjust-xl@155308",
+      "name": "breasts adjust_XL",
+      "url": "https://civitai.com/models/139625",
+      "tags": [
+        "sdxl",
+        "slider",
+        "body",
+        "breasts"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "Breast size adjuster — chest slider"
     },
     {
       "id": "gufeng-sdxl",
@@ -5523,21 +5527,21 @@
         1.2
       ],
       "base_model": "sdxl",
-      "category": "concept",
+      "category": "character_style",
       "nsfw": true,
       "description": "Chinese lingerie 古风小情趣 — SDXL 1.0 (注意是clean SDXL, 非Pony/Illu底座)"
     },
     {
-      "id": "jiachen-dragon",
-      "runware_air_id": "liangwc:jiachen-dragon@358317",
-      "name": "甲辰青龙小女儿 China Dress",
-      "url": "https://civitai.com/models/315911",
+      "id": "fight-dress",
+      "runware_air_id": "liangwc:fight-dress@156360",
+      "name": "Fight Chinese Dress 女侠战袍",
+      "url": "https://civitai.com/models/141057",
       "tags": [
         "sdxl",
         "concept",
-        "dragon",
         "chinese",
-        "dress"
+        "dress",
+        "fight"
       ],
       "default_scale": 0.8,
       "scale_range": [
@@ -5545,72 +5549,51 @@
         1.2
       ],
       "base_model": "sdxl",
-      "category": "concept",
+      "category": "character_style",
       "nsfw": false,
-      "description": "Jiachen Little Dragon Girl China Dress — SDXL 1.0"
+      "description": "Fight Chinese Dress 女侠战袍 — SDXL 1.0"
     },
     {
-      "id": "pornmaster-lora",
-      "runware_air_id": "liangwc:pornmaster-lora@1977042",
-      "name": "PornMaster Asian Babe (lycoris)",
-      "url": "https://civitai.com/models/88558",
+      "id": "sagging-breasts-sdxl",
+      "runware_air_id": "civitai:139131@298272",
+      "name": "Sagging Breasts SDXL",
+      "url": "https://civitai.com/models/139131",
+      "tags": [
+        "sdxl",
+        "slider",
+        "body",
+        "breasts"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "Sagging breasts slider"
+    },
+    {
+      "id": "pubic-tattoo-sdxl",
+      "runware_air_id": "liangwc:pubic-tattoo-sdxl@513961",
+      "name": "淫紋 pubic tattoo (SDXL)",
+      "url": "https://civitai.com/models/461662",
       "tags": [
         "sdxl",
         "nsfw",
-        "pornmaster",
-        "asian"
+        "tattoo",
+        "body-mod"
       ],
       "default_scale": 0.8,
       "scale_range": [
-        0.5,
+        0.3,
         1.2
       ],
       "base_model": "sdxl",
-      "category": "concept",
+      "category": "character_style",
       "nsfw": true,
-      "description": "PornMaster Asian Babe — lycoris格式, SDXL 1.0"
-    },
-    {
-      "id": "guofeng-q",
-      "runware_air_id": "liangwc:guofeng-q@616971",
-      "name": "国风Q版 Chinese Q-version",
-      "url": "https://civitai.com/models/554376",
-      "tags": [
-        "sdxl",
-        "concept",
-        "q-version",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": false,
-      "description": "国风Q版 — SDXL 1.0"
-    },
-    {
-      "id": "guofeng-chahua",
-      "runware_air_id": "liangwc:guofeng-chahua@130709",
-      "name": "国风插画 Chinese style illustration",
-      "url": "https://civitai.com/models/120206",
-      "tags": [
-        "sdxl",
-        "concept",
-        "illustration",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": false,
-      "description": "国风插画 — SDXL 1.0 (325MB)"
+      "description": "淫紋/pub tattoo — SDXL base"
     },
     {
       "id": "femboy-chinese",
@@ -5634,111 +5617,25 @@
       "description": "Femboy Chinese — SDXL 1.0"
     },
     {
-      "id": "guofeng-shaonv",
-      "runware_air_id": "liangwc:guofeng-shaonv@226403",
-      "name": "国风少女系列 Chinese-style girl",
-      "url": "https://civitai.com/models/201159",
+      "id": "undressing-lora-sdxl",
+      "runware_air_id": "civitai:242034@273478",
+      "name": "Undressing LoRA SDXL",
+      "url": "https://civitai.com/models/242034",
       "tags": [
         "sdxl",
-        "concept",
-        "chinese",
-        "girl"
+        "slider",
+        "nsfw",
+        "undress"
       ],
       "default_scale": 0.8,
       "scale_range": [
-        0.5,
-        1.2
+        0.0,
+        1.5
       ],
       "base_model": "sdxl",
       "category": "concept",
-      "nsfw": false,
-      "description": "国风少女系列 Traditional Chinese-style girl — SDXL 1.0"
-    },
-    {
-      "id": "guofeng-mengwan",
-      "runware_air_id": "liangwc:guofeng-mengwan@170956",
-      "name": "国风萌玩 Chinese style cute doll",
-      "url": "https://civitai.com/models/152738",
-      "tags": [
-        "sdxl",
-        "concept",
-        "cute",
-        "doll",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": false,
-      "description": "国风萌玩 Chinese style cute doll — SDXL 1.0"
-    },
-    {
-      "id": "fight-dress",
-      "runware_air_id": "liangwc:fight-dress@156360",
-      "name": "Fight Chinese Dress 女侠战袍",
-      "url": "https://civitai.com/models/141057",
-      "tags": [
-        "sdxl",
-        "concept",
-        "chinese",
-        "dress",
-        "fight"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Fight Chinese Dress 女侠战袍 — SDXL 1.0"
-    },
-    {
-      "id": "quanquan-v64-sdxl",
-      "runware_air_id": "liangwc:quanquan-v64@1",
-      "name": "拳拳 v64 SeaArt (SDXL)",
-      "url": "",
-      "tags": [
-        "sdxl",
-        "character",
-        "quanquan"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "character_style",
-      "nsfw": false,
-      "description": "拳拳 v64 — 从Pony训的, SDXL下试试能不能跑"
-    },
-    {
-      "id": "dw-chinese-doll-sdxl",
-      "runware_air_id": "liangwc:dw-chinese-doll-sdxl@1",
-      "name": "[DW] Chinese Doll Likeliness - SDXL",
-      "url": "https://civitai.com/models/825160",
-      "tags": [
-        "sdxl",
-        "chinese",
-        "doll",
-        "digital-warlock",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "character",
-      "nsfw": false,
-      "notes": "Works on SDXL Vanilla base only (not runware:100@1). 2026-07-30."
+      "nsfw": true,
+      "description": "Undressing LoRA — progressive undress slider"
     },
     {
       "id": "zit-age-slider",
