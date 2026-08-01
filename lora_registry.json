@@ -2465,14 +2465,15 @@
       "description": "拳拳 v64 — SeaArt Pony Diffusion V6 XL训练, rank 32"
     },
     {
-      "id": "pov-footworship",
-      "runware_air_id": "liangwc:pov-footworship@1171421",
-      "name": "[Pov] FootWorship",
-      "url": "https://civitai.com/models/946498",
+      "id": "ccs-chinese-fantasy",
+      "runware_air_id": "liangwc:ccs-chinese-fantasy@1606488",
+      "name": "CC's Chinese Fantasy",
+      "url": "https://civitai.com/models/1373599",
       "tags": [
         "illustrious",
-        "nsfw",
-        "pov"
+        "concept",
+        "chinese",
+        "fantasy"
       ],
       "default_scale": 0.8,
       "scale_range": [
@@ -2480,18 +2481,193 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
+      "category": "style",
+      "nsfw": false,
+      "description": "CC's Chinese Fantasy — Illustrious"
     },
     {
-      "id": "aerith-ff7-il",
-      "runware_air_id": "liangwc:aerith-ff7-il@3042581",
-      "name": "Aerith (FF7 IL)",
-      "url": "https://civitai.com/models/1118770",
+      "id": "detail-enhancer-ill",
+      "runware_air_id": "liangwc:detail-enhancer-ill@1983243",
+      "name": "Detail Enhancer IL",
+      "url": "https://civitai.com/models/1450571",
+      "tags": [
+        "illustrious",
+        "concept",
+        "enhancer"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "dramatic-lighting",
+      "runware_air_id": "liangwc:dramatic-lighting@2610246",
+      "name": "Dramatic Lighting & Realism Enhancer",
+      "url": "https://civitai.com/models/2250412",
+      "tags": [
+        "illustrious",
+        "concept",
+        "lighting"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "extreme-detailed",
+      "runware_air_id": "liangwc:moon-phase-yao@2569127",
+      "name": "Extreme Detailed",
+      "url": "https://civitai.com/models/2282704",
+      "tags": [
+        "illustrious",
+        "concept",
+        "enhancer"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "gufeng-ill",
+      "runware_air_id": "liangwc:gufeng-ill@2748805",
+      "name": "Gufeng/国风/仙子 (Illustrious)",
+      "url": "https://civitai.com/models/2444773",
+      "tags": [
+        "illustrious",
+        "style",
+        "chinese"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.4,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "guo-feng-face",
+      "runware_air_id": "liangwc:guo-feng-face@2244520",
+      "name": "Guo Feng Face (国风脸)",
+      "url": "https://civitai.com/models/1982867",
       "tags": [
         "illustrious",
         "character",
-        "final fantasy"
+        "face",
+        "chinese"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.5,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "horror-anime-style",
+      "runware_air_id": "liangwc:horror-anime-style@2162008",
+      "name": "Horror Anime Style",
+      "url": "https://civitai.com/models/848136",
+      "tags": [
+        "illustrious",
+        "style",
+        "horror"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "hyperrealistic",
+      "runware_air_id": "liangwc:hyperrealistic@1914557",
+      "name": "Hyperrealistic",
+      "url": "https://civitai.com/models/626603",
+      "tags": [
+        "illustrious",
+        "concept",
+        "enhancer"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "ink-wash-il",
+      "runware_air_id": "liangwc:ink-wash-il@2784911",
+      "name": "Ink Wash IL V1.0",
+      "url": "https://civitai.com/models/2477012",
+      "tags": [
+        "illustrious",
+        "style",
+        "ink",
+        "水墨"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false,
+      "description": "Ink wash painting style for Illustrious — 水墨风格"
+    },
+    {
+      "id": "gothic-niji-style",
+      "runware_air_id": "liangwc:gothic-niji-style@2498503",
+      "name": "MoriiMee Gothic Niji Style",
+      "url": "https://civitai.com/models/915918",
+      "tags": [
+        "illustrious",
+        "style",
+        "gothic"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "niji-goth-style",
+      "runware_air_id": "liangwc:niji-goth-style@1896419",
+      "name": "Niji Goth Style",
+      "url": "https://civitai.com/models/1675502",
+      "tags": [
+        "illustrious",
+        "style",
+        "gothic"
       ],
       "default_scale": 0.8,
       "scale_range": [
@@ -2499,8 +2675,160 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character",
+      "category": "style",
+      "nsfw": true
+    },
+    {
+      "id": "niji-semi-realistic",
+      "runware_air_id": "liangwc:niji-semi-realistic@2903425",
+      "name": "Niji Semi-Realistic",
+      "url": "https://civitai.com/models/2584434",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": true
+    },
+    {
+      "id": "realistic-anime-style-v1",
+      "runware_air_id": "liangwc:waner-v1@595948",
+      "name": "Realistic Anime Style (SDXL)",
+      "url": "https://civitai.com/models/536084",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
       "nsfw": false
+    },
+    {
+      "id": "realistic-filter",
+      "runware_air_id": "liangwc:realistic-filter@1124771",
+      "name": "Realistic Filter [IL]",
+      "url": "https://civitai.com/models/1003513",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "shiny-nai-il",
+      "runware_air_id": "liangwc:shiny-nai-il@2786889",
+      "name": "Shiny Nai style ILXL",
+      "url": "https://civitai.com/models/618752",
+      "tags": [
+        "illustrious",
+        "concept",
+        "shiny",
+        "nai",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false,
+      "description": "Shiny Nai style — Illustrious"
+    },
+    {
+      "id": "trex-studio-style",
+      "runware_air_id": "liangwc:trex-studio-style@1804885",
+      "name": "T-Rex Studio V2 Style",
+      "url": "https://civitai.com/models/960593",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "hk-comic-style-jinyong",
+      "runware_air_id": "liangwc:hk-comic-style-jinyong@2164436",
+      "name": "港漫风·金庸 (黄玉郎/邱福龙)",
+      "url": "https://civitai.com/models/1912298",
+      "tags": [
+        "illustrious",
+        "style",
+        "guoman"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "dynasty-warriors-style",
+      "runware_air_id": "liangwc:dynasty-warriors-style@3045074",
+      "name": "真三国无双8 Artist Style",
+      "url": "https://civitai.com/models/2710670",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "modern-chinese-painting-il",
+      "runware_air_id": "liangwc:modern-chinese-painting-il@2231812",
+      "name": "近现代国画风格 (Illustrious)",
+      "url": "https://civitai.com/models/1971776",
+      "tags": [
+        "illustrious",
+        "style",
+        "chinese-painting",
+        "国画"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false,
+      "description": "Modern Chinese painting style for Illustrious"
     },
     {
       "id": "age-slider-ill",
@@ -2518,18 +2846,20 @@
         1.0
       ],
       "base_model": "illustrious",
-      "category": "concept",
+      "category": "tools",
       "nsfw": false
     },
     {
-      "id": "armless-amputee",
-      "runware_air_id": "liangwc:mulan@1222872",
-      "name": "Armless / Double Amputee",
-      "url": "https://civitai.com/models/1088883",
+      "id": "anal-gape-il",
+      "runware_air_id": "liangwc:anal-gape-il@1523397",
+      "name": "Anal Gape Slider - Illustrious XL",
+      "url": "https://civitai.com/models/1348755",
       "tags": [
         "illustrious",
         "nsfw",
-        "fetish"
+        "anal",
+        "gape",
+        "slider"
       ],
       "default_scale": 0.8,
       "scale_range": [
@@ -2537,26 +2867,9 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "backless-panties",
-      "runware_air_id": "liangwc:backless-panties@1170807",
-      "name": "Backless Panties",
-      "url": "https://civitai.com/models/405133",
-      "tags": [
-        "illustrious",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
+      "category": "tools",
+      "nsfw": true,
+      "description": "Anal gape slider — Illustrious XL"
     },
     {
       "id": "body-weight-slider",
@@ -2574,7 +2887,7 @@
         1.0
       ],
       "base_model": "illustrious",
-      "category": "concept",
+      "category": "tools",
       "nsfw": false
     },
     {
@@ -2592,7 +2905,7 @@
         1.0
       ],
       "base_model": "illustrious",
-      "category": "concept",
+      "category": "tools",
       "nsfw": false
     },
     {
@@ -2610,8 +2923,926 @@
         1.2
       ],
       "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "cum-slider-ill",
+      "runware_air_id": "liangwc:cum-slider-ill@1903191",
+      "name": "Cum Slider",
+      "url": "https://civitai.com/models/1681513",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "slider"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "dramatic-lighting-slider",
+      "runware_air_id": "liangwc:dramatic-lighting-slider@1",
+      "name": "Dramatic Lighting Slider [Pony/Illustrious]",
+      "url": "https://civitai.com/models/1105685",
+      "tags": [
+        "sdxl",
+        "pony",
+        "illustrious",
+        "slider",
+        "lighting",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 1.0,
+      "scale_range": [
+        0.5,
+        2.0
+      ],
+      "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": false
+    },
+    {
+      "id": "mature-slider",
+      "runware_air_id": "liangwc:mature-slider@2396030",
+      "name": "Mature Slider",
+      "url": "https://civitai.com/models/2118055",
+      "tags": [
+        "illustrious",
+        "concept",
+        "slider"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "nipple-size-ill",
+      "runware_air_id": "liangwc:nipple-size-ill@1206518",
+      "name": "Nipple Size Slider (Illu)",
+      "url": "https://civitai.com/models/1074781",
+      "tags": [
+        "illustrious",
+        "slider",
+        "nsfw"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "nsfw-slider",
+      "runware_air_id": "liangwc:nsfw-slider@2876566",
+      "name": "NSFW Slider",
+      "url": "https://civitai.com/models/2559781",
+      "tags": [
+        "illustrious",
+        "concept",
+        "slider"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "penis-size-ill",
+      "runware_air_id": "liangwc:penis-size-ill@1831724",
+      "name": "Penis Size Slider (Illu)",
+      "url": "https://civitai.com/models/465379",
+      "tags": [
+        "illustrious",
+        "slider",
+        "nsfw"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "pregnancy-slider-ill",
+      "runware_air_id": "liangwc:pregnancy-slider-ill@1974468",
+      "name": "Pregnancy Slider (Illu)",
+      "url": "https://civitai.com/models/1744607",
+      "tags": [
+        "illustrious",
+        "concept",
+        "slider",
+        "nsfw"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "pussy-juice-slider",
+      "runware_air_id": "liangwc:pussy-juice-slider@3077821",
+      "name": "Pussy Juice Amount Slider",
+      "url": "https://civitai.com/models/2737148",
+      "tags": [
+        "illustrious",
+        "concept",
+        "slider",
+        "nsfw"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "toned-body-slider",
+      "runware_air_id": "liangwc:toned-body-slider@2868740",
+      "name": "Toned Body Slider",
+      "url": "https://civitai.com/models/2552628",
+      "tags": [
+        "illustrious",
+        "concept",
+        "slider"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": false
+    },
+    {
+      "id": "waist-slider",
+      "runware_air_id": "liangwc:waist-slider@2834076",
+      "name": "Waist Slider",
+      "url": "https://civitai.com/models/2521578",
+      "tags": [
+        "illustrious",
+        "concept",
+        "slider"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "tools",
+      "nsfw": false
+    },
+    {
+      "id": "anal-dilator",
+      "runware_air_id": "liangwc:lora-2446854@2751245",
+      "name": "Anal dilator - Illustrious",
+      "url": "https://civitai.com/models/2446854",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "anal",
+        "dilator"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "Anal dilator — Illustrious XL base"
+    },
+    {
+      "id": "backless-panties",
+      "runware_air_id": "liangwc:backless-panties@1170807",
+      "name": "Backless Panties",
+      "url": "https://civitai.com/models/405133",
+      "tags": [
+        "illustrious",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "black-shiny-nurse",
+      "runware_air_id": "liangwc:black-shiny-nurse@3118889",
+      "name": "Black Shiny Nurse Latex Cutout Uniform",
+      "url": "https://civitai.com/models/2770314",
+      "tags": [
+        "illustrious",
+        "concept",
+        "latex",
+        "nurse",
+        "uniform"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "Black shiny nurse latex cutout uniform"
+    },
+    {
+      "id": "dudou",
+      "runware_air_id": "liangwc:dudou@1185044",
+      "name": "Chinese Lingerie 肚兜 Dudou",
+      "url": "https://civitai.com/models/1056103",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "lingerie",
+        "dudou",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "Chinese Lingerie 肚兜 Dudou — Illustrious"
+    },
+    {
+      "id": "sexy-lingerie",
+      "runware_air_id": "liangwc:sexy-lingerie@1951432",
+      "name": "Chinese Style Sexy Lingerie",
+      "url": "https://civitai.com/models/1724344",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "lingerie",
+        "chinese",
+        "sexy"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "Chinese Style Sexy Lingerie — Illustrious (325MB)"
+    },
+    {
+      "id": "wedding-dress2",
+      "runware_air_id": "liangwc:wedding-dress2@2069519",
+      "name": "Chinese style wedding dress 2",
+      "url": "https://civitai.com/models/1828738",
+      "tags": [
+        "illustrious",
+        "concept",
+        "chinese",
+        "wedding",
+        "dress"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "Chinese style wedding dress 2 — Illustrious"
+    },
+    {
+      "id": "wuxia-green-dress",
+      "runware_air_id": "liangwc:wuxia-green@2469026",
+      "name": "Chinese wuxia green dress",
+      "url": "https://civitai.com/models/2192806",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wuxia",
+        "green",
+        "dress",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "Chinese wuxia green dress — Illustrious"
+    },
+    {
+      "id": "detailed-pussy",
+      "runware_air_id": "liangwc:detailed-pussy@2572081",
+      "name": "Detailed Pussy",
+      "url": "https://civitai.com/models/1864062",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "pussy",
+        "detailed"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "Detailed Pussy — Illustrious"
+    },
+    {
+      "id": "disgusted-face",
+      "runware_air_id": "liangwc:disgusted-face@2372164",
+      "name": "Disgusted Face",
+      "url": "https://civitai.com/models/196908",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "expression"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
       "category": "character_style",
       "nsfw": true
+    },
+    {
+      "id": "donut-anus",
+      "runware_air_id": "liangwc:donut-anus@1638285",
+      "name": "Donut Anus",
+      "url": "https://civitai.com/models/392589",
+      "tags": [
+        "illustrious",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "extreme-insertion-ill",
+      "runware_air_id": "liangwc:extreme-insertion-ill@1208756",
+      "name": "Extreme Insertion (Illustrious)",
+      "url": "https://civitai.com/models/444807",
+      "tags": [
+        "illustrious",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "extreme-spread",
+      "runware_air_id": "liangwc:yin-nvtu@2221663",
+      "name": "Extreme Spread Pussy Anal",
+      "url": "https://civitai.com/models/1962794",
+      "tags": [
+        "illustrious",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "faceless-hood",
+      "runware_air_id": "liangwc:faceless-hood@2499767",
+      "name": "faceless hood",
+      "url": "https://civitai.com/models/2220431",
+      "tags": [
+        "illustrious",
+        "concept",
+        "hood"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "Faceless hood — Illustrious XL base. Blank hood covering the face."
+    },
+    {
+      "id": "faceless-mask",
+      "runware_air_id": "liangwc:faceless-mask@1677068",
+      "name": "Faceless mask [Patterned/Armor/Robot]",
+      "url": "https://civitai.com/models/1123592",
+      "tags": [
+        "illustrious",
+        "pony",
+        "concept",
+        "mask"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "Faceless mask — patterned/armor/robot styles. Supports Pony & Illustrious."
+    },
+    {
+      "id": "fairy-fleshlight",
+      "runware_air_id": "liangwc:fairy-fleshlight@2042152",
+      "name": "Fairy Fleshlight",
+      "url": "https://civitai.com/models/1804503",
+      "tags": [
+        "illustrious",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "femboy-ill",
+      "runware_air_id": "liangwc:femboy-ill@2693790",
+      "name": "Femboy Illustrious",
+      "url": "https://civitai.com/models/1738161",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "guandao-weapon",
+      "runware_air_id": "liangwc:guandao-weapon@2075943",
+      "name": "Guandao weapon [IL]",
+      "url": "https://civitai.com/models/1834456",
+      "tags": [
+        "illustrious",
+        "concept",
+        "weapon",
+        "guandao"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "Guandao weapon — traditional Chinese polearm"
+    },
+    {
+      "id": "pov-hug-kiss",
+      "runware_air_id": "liangwc:pov-hug-kiss@1639019",
+      "name": "Hug/Kissing POV",
+      "url": "https://civitai.com/models/731660",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "pov"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "large-insertion-pov",
+      "runware_air_id": "liangwc:large-insertion-pov@2578214",
+      "name": "Large Insertion POV",
+      "url": "https://civitai.com/models/2291093",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "pov"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "loose-tank-top",
+      "runware_air_id": "liangwc:loose-tank-top@2130429",
+      "name": "Loose Tank Top",
+      "url": "https://civitai.com/models/1882235",
+      "tags": [
+        "illustrious",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "micro-panties-ill",
+      "runware_air_id": "liangwc:micro-panties-ill@1844946",
+      "name": "Micro Panties (Illu)",
+      "url": "https://civitai.com/models/707896",
+      "tags": [
+        "illustrious",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "minidress",
+      "runware_air_id": "liangwc:minidress@2852556",
+      "name": "minidress",
+      "url": "https://civitai.com/models/2538201",
+      "tags": [
+        "illustrious",
+        "concept",
+        "minidress",
+        "clothing"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "minidress — Illustrious"
+    },
+    {
+      "id": "race-ethnicity",
+      "runware_air_id": "liangwc:race-ethnicity@2168222",
+      "name": "Race & Ethnicity Helper",
+      "url": "https://civitai.com/models/620668",
+      "tags": [
+        "illustrious",
+        "concept",
+        "slider"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.2,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "revenant-scythe",
+      "runware_air_id": "liangwc:revenant-scythe@1759850",
+      "name": "Revenant Scythe - v2",
+      "url": "https://civitai.com/models/1511090",
+      "tags": [
+        "illustrious",
+        "concept",
+        "weapon",
+        "scythe"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "Revenant Scythe — large curved blade weapon"
+    },
+    {
+      "id": "see-through-silhouette",
+      "runware_air_id": "liangwc:see-through-silhouette@2616907",
+      "name": "See-Through Silhouette",
+      "url": "https://civitai.com/models/1522908",
+      "tags": [
+        "illustrious",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flaccid-foreskin",
+      "runware_air_id": "liangwc:flaccid-foreskin@2916039",
+      "name": "small flaccid foreskin penis",
+      "url": "https://civitai.com/models/2595872",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "flaccid",
+        "foreskin",
+        "penis"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "small flaccid foreskin penis — Illustrious"
+    },
+    {
+      "id": "virgin-killer-sweater",
+      "runware_air_id": "liangwc:virgin-killer-sweater@1378130",
+      "name": "Virgin Killer Sweater",
+      "url": "https://civitai.com/models/10185",
+      "tags": [
+        "illustrious",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "pubic-tattoo-ill",
+      "runware_air_id": "liangwc:pubic-tattoo-ill@1060578",
+      "name": "淫紋 pubic tattoo (Illustrious)",
+      "url": "https://civitai.com/models/461662",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "tattoo",
+        "body-mod"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character_style",
+      "nsfw": true,
+      "description": "淫紋/pub tattoo — Illustrious base"
+    },
+    {
+      "id": "pov-footworship",
+      "runware_air_id": "liangwc:pov-footworship@1171421",
+      "name": "[Pov] FootWorship",
+      "url": "https://civitai.com/models/946498",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "pov"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "anal-fisting-il",
+      "runware_air_id": "liangwc:anal-fisting-il@1376476",
+      "name": "Anal fisting v2.0 IL",
+      "url": "https://civitai.com/models/2730787",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "anal",
+        "fisting"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Anal fisting and stretching v2.0 — Illustrious"
+    },
+    {
+      "id": "anal-object-insertion",
+      "runware_air_id": "liangwc:anal-object-insertion@2566468",
+      "name": "Anal Object Insertion Illustrious",
+      "url": "https://civitai.com/models/1537041",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "anal",
+        "object",
+        "insertion"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Anal object insertion — Illustrious"
+    },
+    {
+      "id": "armless-amputee",
+      "runware_air_id": "liangwc:mulan@1222872",
+      "name": "Armless / Double Amputee",
+      "url": "https://civitai.com/models/1088883",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "fetish"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "armpit-musk",
+      "runware_air_id": "liangwc:armpit-musk@2257531",
+      "name": "Armpit worship musk of female",
+      "url": "https://civitai.com/models/1994464",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "armpit",
+        "musk"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Armpit worship — the musk of the female"
+    },
+    {
+      "id": "armpit-sweaty",
+      "runware_air_id": "liangwc:armpit-sweaty@2691923",
+      "name": "Armpit worship Sweaty Armpits",
+      "url": "https://civitai.com/models/2394119",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "armpit",
+        "sweaty"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Armpit worship — sweaty armpits & undress"
+    },
+    {
+      "id": "ass-worship",
+      "runware_air_id": "liangwc:ass-worship@1870706",
+      "name": "ass worship",
+      "url": "https://civitai.com/models/676403",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "ass",
+        "worship"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "ass worship — Illustrious (435MB)"
+    },
+    {
+      "id": "breeding-mount",
+      "runware_air_id": "liangwc:breeding-mount@1545661",
+      "name": "Breeding mount with someone inside",
+      "url": "https://civitai.com/models/1368140",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "breeding",
+        "mount"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Breeding mount with someone inside — Illustrious"
     },
     {
       "id": "building-insertion-giantess",
@@ -2629,7 +3860,7 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -2651,10 +3882,52 @@
       ],
       "description": "Building Sized Giantess v2 — Illustrious base. Runware AIR verified ✅.",
       "base_model": "illustrious",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true,
       "incompatible_with": [],
       "notes": "2026-07-01: uploaded to Runware. Illustrious base model."
+    },
+    {
+      "id": "choking-pov",
+      "runware_air_id": "liangwc:choking-pov@2922107",
+      "name": "Choking POV IL&ZIT",
+      "url": "https://civitai.com/models/2602338",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "pov",
+        "choking"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Choking POV — Shrekman Hentai Loras"
+    },
+    {
+      "id": "cock-worship",
+      "runware_air_id": "liangwc:cock-worship@1967523",
+      "name": "cock worship XL",
+      "url": "https://civitai.com/models/1653435",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "cock",
+        "worship"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "cock worship — Illustrious"
     },
     {
       "id": "cowgirl-position",
@@ -2672,7 +3945,7 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -2733,119 +4006,6 @@
       "nsfw": true
     },
     {
-      "id": "cum-slider-ill",
-      "runware_air_id": "liangwc:cum-slider-ill@1903191",
-      "name": "Cum Slider",
-      "url": "https://civitai.com/models/1681513",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
-      "id": "detail-enhancer-ill",
-      "runware_air_id": "liangwc:detail-enhancer-ill@1983243",
-      "name": "Detail Enhancer IL",
-      "url": "https://civitai.com/models/1450571",
-      "tags": [
-        "illustrious",
-        "concept",
-        "enhancer"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "disgusted-face",
-      "runware_air_id": "liangwc:disgusted-face@2372164",
-      "name": "Disgusted Face",
-      "url": "https://civitai.com/models/196908",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "expression"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "disney-princess",
-      "runware_air_id": "liangwc:disney-princess@1660164",
-      "name": "Disney Princess XL",
-      "url": "https://civitai.com/models/212532",
-      "tags": [
-        "illustrious",
-        "character",
-        "disney"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "donut-anus",
-      "runware_air_id": "liangwc:donut-anus@1638285",
-      "name": "Donut Anus",
-      "url": "https://civitai.com/models/392589",
-      "tags": [
-        "illustrious",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "dramatic-lighting",
-      "runware_air_id": "liangwc:dramatic-lighting@2610246",
-      "name": "Dramatic Lighting & Realism Enhancer",
-      "url": "https://civitai.com/models/2250412",
-      "tags": [
-        "illustrious",
-        "concept",
-        "lighting"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
       "id": "exploding-clothes-ill",
       "runware_air_id": "liangwc:exploding-clothes-ill@1368542",
       "name": "Exploding Clothes / Torn Clothes (Illu)",
@@ -2879,111 +4039,41 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true
     },
     {
-      "id": "extreme-detailed",
-      "runware_air_id": "liangwc:moon-phase-yao@2569127",
-      "name": "Extreme Detailed",
-      "url": "https://civitai.com/models/2282704",
+      "id": "facesitting-pov-buttcrush",
+      "runware_air_id": "liangwc:facesitting-pov@1617237",
+      "name": "Facesitting (Close-up Reverse POV)/POV Buttcrush",
+      "url": "https://civitai.com/models/1190058",
       "tags": [
         "illustrious",
-        "concept",
-        "enhancer"
+        "nsfw",
+        "pov",
+        "facesitting"
       ],
-      "default_scale": 0.5,
+      "default_scale": 0.8,
       "scale_range": [
-        0.2,
-        0.8
+        0.5,
+        1.2
       ],
       "base_model": "illustrious",
       "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "extreme-insertion-ill",
-      "runware_air_id": "liangwc:extreme-insertion-ill@1208756",
-      "name": "Extreme Insertion (Illustrious)",
-      "url": "https://civitai.com/models/444807",
-      "tags": [
-        "illustrious",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "extreme-spread",
-      "runware_air_id": "liangwc:yin-nvtu@2221663",
-      "name": "Extreme Spread Pussy Anal",
-      "url": "https://civitai.com/models/1962794",
-      "tags": [
-        "illustrious",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "fairy-fleshlight",
-      "runware_air_id": "liangwc:fairy-fleshlight@2042152",
-      "name": "Fairy Fleshlight",
-      "url": "https://civitai.com/models/1804503",
-      "tags": [
-        "illustrious",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "fairy-mge",
-      "runware_air_id": "liangwc:fairy-mge@2146447",
-      "name": "Fairy MGE",
-      "url": "https://civitai.com/models/1853472",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "monster girl"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
       "nsfw": true,
-      "notes": "Monster Girl Encyclopedia fairy/koonago"
+      "description": "Facesitting close-up reverse POV / POV buttcrush"
     },
     {
-      "id": "female-pov",
-      "runware_air_id": "liangwc:female-pov@2486222",
-      "name": "Female POV",
-      "url": "https://civitai.com/models/427349",
+      "id": "fairy-sex",
+      "runware_air_id": "liangwc:fairy-sex@2602748",
+      "name": "Fairy Sex",
+      "url": "https://civitai.com/models/2021842",
       "tags": [
         "illustrious",
         "nsfw",
-        "pov"
+        "fairy",
+        "sex",
+        "tiny"
       ],
       "default_scale": 0.8,
       "scale_range": [
@@ -2991,18 +4081,20 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
+      "category": "concept",
+      "nsfw": true,
+      "description": "Fairy Sex — fairy sized person, Illustrious"
     },
     {
-      "id": "femboy-ill",
-      "runware_air_id": "liangwc:femboy-ill@2693790",
-      "name": "Femboy Illustrious",
-      "url": "https://civitai.com/models/1738161",
+      "id": "figure-sex",
+      "runware_air_id": "liangwc:figure-sex@1771517",
+      "name": "Figure Sex [Grip one handed]",
+      "url": "https://civitai.com/models/1565477",
       "tags": [
         "illustrious",
         "nsfw",
-        "concept"
+        "figure",
+        "sex"
       ],
       "default_scale": 0.8,
       "scale_range": [
@@ -3010,26 +4102,9 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "freaky-dicks",
-      "runware_air_id": "liangwc:freaky-dicks@2267798",
-      "name": "Freaky Dicks",
-      "url": "https://civitai.com/models/1833177",
-      "tags": [
-        "illustrious",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
+      "category": "concept",
+      "nsfw": true,
+      "description": "Figure sex grip one handed — Illustrious"
     },
     {
       "id": "giantess-xl",
@@ -3047,7 +4122,7 @@
         1.0
       ],
       "base_model": "illustrious",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -3071,102 +4146,6 @@
       "nsfw": false
     },
     {
-      "id": "gufeng-ill",
-      "runware_air_id": "liangwc:gufeng-ill@2748805",
-      "name": "Gufeng/国风/仙子 (Illustrious)",
-      "url": "https://civitai.com/models/2444773",
-      "tags": [
-        "illustrious",
-        "style",
-        "chinese"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.4,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "guo-feng-face",
-      "runware_air_id": "liangwc:guo-feng-face@2244520",
-      "name": "Guo Feng Face (国风脸)",
-      "url": "https://civitai.com/models/1982867",
-      "tags": [
-        "illustrious",
-        "character",
-        "face",
-        "chinese"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.5,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "hermione-granger",
-      "runware_air_id": "liangwc:hermione-granger@2472457",
-      "name": "Hermione Granger",
-      "url": "https://civitai.com/models/1282238",
-      "tags": [
-        "illustrious",
-        "character",
-        "harry potter"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "horror-anime-style",
-      "runware_air_id": "liangwc:horror-anime-style@2162008",
-      "name": "Horror Anime Style",
-      "url": "https://civitai.com/models/848136",
-      "tags": [
-        "illustrious",
-        "style",
-        "horror"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "pov-hug-kiss",
-      "runware_air_id": "liangwc:pov-hug-kiss@1639019",
-      "name": "Hug/Kissing POV",
-      "url": "https://civitai.com/models/731660",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pov"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
       "id": "huge-cum-pool",
       "runware_air_id": "liangwc:huge-cum-pool@2494542",
       "name": "Huge Cum & Cum Pool",
@@ -3186,51 +4165,15 @@
       "nsfw": true
     },
     {
-      "id": "hyperrealistic",
-      "runware_air_id": "liangwc:hyperrealistic@1914557",
-      "name": "Hyperrealistic",
-      "url": "https://civitai.com/models/626603",
-      "tags": [
-        "illustrious",
-        "concept",
-        "enhancer"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "large-insertion-pov",
-      "runware_air_id": "liangwc:large-insertion-pov@2578214",
-      "name": "Large Insertion POV",
-      "url": "https://civitai.com/models/2291093",
+      "id": "loose-clothing",
+      "runware_air_id": "liangwc:loose-clothing@2400238",
+      "name": "Loose Clothing",
+      "url": "https://civitai.com/models/2121811",
       "tags": [
         "illustrious",
         "nsfw",
-        "pov"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "loose-tank-top",
-      "runware_air_id": "liangwc:loose-tank-top@2130429",
-      "name": "Loose Tank Top",
-      "url": "https://civitai.com/models/1882235",
-      "tags": [
-        "illustrious",
-        "concept"
+        "loose",
+        "clothing"
       ],
       "default_scale": 0.8,
       "scale_range": [
@@ -3239,157 +4182,8 @@
       ],
       "base_model": "illustrious",
       "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "mature-slider",
-      "runware_air_id": "liangwc:mature-slider@2396030",
-      "name": "Mature Slider",
-      "url": "https://civitai.com/models/2118055",
-      "tags": [
-        "illustrious",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
-      "id": "micro-panties-ill",
-      "runware_air_id": "liangwc:micro-panties-ill@1844946",
-      "name": "Micro Panties (Illu)",
-      "url": "https://civitai.com/models/707896",
-      "tags": [
-        "illustrious",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "gothic-niji-style",
-      "runware_air_id": "liangwc:gothic-niji-style@2498503",
-      "name": "MoriiMee Gothic Niji Style",
-      "url": "https://civitai.com/models/915918",
-      "tags": [
-        "illustrious",
-        "style",
-        "gothic"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "niji-goth-style",
-      "runware_air_id": "liangwc:niji-goth-style@1896419",
-      "name": "Niji Goth Style",
-      "url": "https://civitai.com/models/1675502",
-      "tags": [
-        "illustrious",
-        "style",
-        "gothic"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "niji-semi-realistic",
-      "runware_air_id": "liangwc:niji-semi-realistic@2903425",
-      "name": "Niji Semi-Realistic",
-      "url": "https://civitai.com/models/2584434",
-      "tags": [
-        "illustrious",
-        "style"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "nipple-size-ill",
-      "runware_air_id": "liangwc:nipple-size-ill@1206518",
-      "name": "Nipple Size Slider (Illu)",
-      "url": "https://civitai.com/models/1074781",
-      "tags": [
-        "illustrious",
-        "slider",
-        "nsfw"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
-      "id": "nsfw-slider",
-      "runware_air_id": "liangwc:nsfw-slider@2876566",
-      "name": "NSFW Slider",
-      "url": "https://civitai.com/models/2559781",
-      "tags": [
-        "illustrious",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
-      "id": "silent-hill-nurse",
-      "runware_air_id": "liangwc:silent-hill-nurse@2341418",
-      "name": "Nurses - Silent Hill (horror)",
-      "url": "https://civitai.com/models/155163",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "horror"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
+      "nsfw": true,
+      "description": "Loose clothing — Illustrious"
     },
     {
       "id": "ohogao",
@@ -3405,25 +4199,6 @@
       "scale_range": [
         0.5,
         1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "penis-size-ill",
-      "runware_air_id": "liangwc:penis-size-ill@1831724",
-      "name": "Penis Size Slider (Illu)",
-      "url": "https://civitai.com/models/465379",
-      "tags": [
-        "illustrious",
-        "slider",
-        "nsfw"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
       ],
       "base_model": "illustrious",
       "category": "concept",
@@ -3445,7 +4220,7 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -3464,7 +4239,7 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -3483,7 +4258,7 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -3502,7 +4277,7 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -3521,94 +4296,18 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "pregnancy-slider-ill",
-      "runware_air_id": "liangwc:pregnancy-slider-ill@1974468",
-      "name": "Pregnancy Slider (Illu)",
-      "url": "https://civitai.com/models/1744607",
-      "tags": [
-        "illustrious",
-        "concept",
-        "slider",
-        "nsfw"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
       "category": "concept",
       "nsfw": true
     },
     {
-      "id": "pussy-juice-slider",
-      "runware_air_id": "liangwc:pussy-juice-slider@3077821",
-      "name": "Pussy Juice Amount Slider",
-      "url": "https://civitai.com/models/2737148",
+      "id": "submissive-concept",
+      "runware_air_id": "liangwc:submissive-concept@2809867",
+      "name": "Submissive Concept",
+      "url": "https://civitai.com/models/2499647",
       "tags": [
         "illustrious",
-        "concept",
-        "slider",
-        "nsfw"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true
-    },
-    {
-      "id": "race-ethnicity",
-      "runware_air_id": "liangwc:race-ethnicity@2168222",
-      "name": "Race & Ethnicity Helper",
-      "url": "https://civitai.com/models/620668",
-      "tags": [
-        "illustrious",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "realistic-anime-style-v1",
-      "runware_air_id": "liangwc:waner-v1@595948",
-      "name": "Realistic Anime Style (SDXL)",
-      "url": "https://civitai.com/models/536084",
-      "tags": [
-        "illustrious",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "realistic-filter",
-      "runware_air_id": "liangwc:realistic-filter@1124771",
-      "name": "Realistic Filter [IL]",
-      "url": "https://civitai.com/models/1003513",
-      "tags": [
-        "illustrious",
-        "style"
+        "nsfw",
+        "submissive"
       ],
       "default_scale": 0.8,
       "scale_range": [
@@ -3616,14 +4315,58 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
+      "category": "concept",
+      "nsfw": true,
+      "description": "Submissive Concept — Illustrious"
     },
     {
-      "id": "see-through-silhouette",
-      "runware_air_id": "liangwc:see-through-silhouette@2616907",
-      "name": "See-Through Silhouette",
-      "url": "https://civitai.com/models/1522908",
+      "id": "tiny-fairy",
+      "runware_air_id": "liangwc:tiny-fairy@1319597",
+      "name": "Tiny Fairy Girls / Mini Girl",
+      "url": "https://civitai.com/models/1172814",
+      "tags": [
+        "illustrious",
+        "concept",
+        "tiny",
+        "fairy",
+        "mini"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": false,
+      "description": "Tiny fairy girls / mini girl — Illustrious"
+    },
+    {
+      "id": "tinygirl-illustrious",
+      "runware_air_id": "liangwc:lora-1694875@1694875",
+      "name": "Tinygirl - Illustrious",
+      "url": "https://civitai.com/models/1107790",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "tiny",
+        "girl"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "concept",
+      "nsfw": true,
+      "description": "Tinygirl — Illustrious base"
+    },
+    {
+      "id": "upshorts",
+      "runware_air_id": "liangwc:upshorts@1692823",
+      "name": "Upshorts",
+      "url": "https://civitai.com/models/1496488",
       "tags": [
         "illustrious",
         "concept"
@@ -3638,22 +4381,294 @@
       "nsfw": false
     },
     {
-      "id": "trex-studio-style",
-      "runware_air_id": "liangwc:trex-studio-style@1804885",
-      "name": "T-Rex Studio V2 Style",
-      "url": "https://civitai.com/models/960593",
+      "id": "vore-internals",
+      "runware_air_id": "liangwc:vore-internals@1086041",
+      "name": "Vore Internals",
+      "url": "https://civitai.com/models/20837",
       "tags": [
         "illustrious",
-        "style"
+        "nsfw",
+        "fetish"
       ],
-      "default_scale": 0.6,
+      "default_scale": 0.8,
       "scale_range": [
-        0.3,
-        0.9
+        0.5,
+        1.2
       ],
       "base_model": "illustrious",
-      "category": "style",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "aerith-ff7-il",
+      "runware_air_id": "liangwc:aerith-ff7-il@3042581",
+      "name": "Aerith (FF7 IL)",
+      "url": "https://civitai.com/models/1118770",
+      "tags": [
+        "illustrious",
+        "character",
+        "final fantasy"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
       "nsfw": false
+    },
+    {
+      "id": "bailing-miao",
+      "runware_air_id": "liangwc:bailing-miao@2339664",
+      "name": "BaiLing Miao Wuxia",
+      "url": "https://civitai.com/models/2067654",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wuxia",
+        "bailing",
+        "miao"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": true,
+      "description": "BaiLing Miao — Wuxia"
+    },
+    {
+      "id": "wuxia-girl-1",
+      "runware_air_id": "liangwc:wuxia-girl1@2468438",
+      "name": "Chinese Wuxia girl 1",
+      "url": "https://civitai.com/models/2186100",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wuxia",
+        "girl",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": true,
+      "description": "Chinese Wuxia girl-武侠风格女侠 — Illustrious"
+    },
+    {
+      "id": "wuxia-girl-2",
+      "runware_air_id": "liangwc:wuxia-girl2@2491859",
+      "name": "Chinese Wuxia girl 2",
+      "url": "https://civitai.com/models/2213299",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wuxia",
+        "girl",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": true,
+      "description": "Chinese Wuxia girl-武侠风格女侠2 — Illustrious"
+    },
+    {
+      "id": "crimson-xiannu",
+      "runware_air_id": "liangwc:crimson-xiannu@2178043",
+      "name": "Crimson Xiannu Wuxia",
+      "url": "https://civitai.com/models/1924359",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wuxia",
+        "crimson",
+        "xiannu"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": true,
+      "description": "Crimson Xiannu — Wuxia style"
+    },
+    {
+      "id": "dark-empress",
+      "runware_air_id": "liangwc:dark-empress@2191527",
+      "name": "Dark empress Wuxia",
+      "url": "https://civitai.com/models/1936327",
+      "tags": [
+        "illustrious",
+        "concept",
+        "dark",
+        "empress",
+        "wuxia"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false,
+      "description": "Dark empress — Ancient Chinese/Wuxia style"
+    },
+    {
+      "id": "dark-sovereign",
+      "runware_air_id": "liangwc:dark-sovereign@2198025",
+      "name": "Dark sovereign Wuxia",
+      "url": "https://civitai.com/models/1942047",
+      "tags": [
+        "illustrious",
+        "concept",
+        "dark",
+        "sovereign",
+        "wuxia"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false,
+      "description": "Dark sovereign — Wuxia Style (重试成功!)"
+    },
+    {
+      "id": "disney-princess",
+      "runware_air_id": "liangwc:disney-princess@1660164",
+      "name": "Disney Princess XL",
+      "url": "https://civitai.com/models/212532",
+      "tags": [
+        "illustrious",
+        "character",
+        "disney"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "fairy-mge",
+      "runware_air_id": "liangwc:fairy-mge@2146447",
+      "name": "Fairy MGE",
+      "url": "https://civitai.com/models/1853472",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "monster girl"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": true,
+      "notes": "Monster Girl Encyclopedia fairy/koonago"
+    },
+    {
+      "id": "hermione-granger",
+      "runware_air_id": "liangwc:hermione-granger@2472457",
+      "name": "Hermione Granger",
+      "url": "https://civitai.com/models/1282238",
+      "tags": [
+        "illustrious",
+        "character",
+        "harry potter"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "iyaena-slave-jewelry",
+      "runware_air_id": "liangwc:iyaena-jewelry@2443554",
+      "name": "Iyaena - Slave jewelry",
+      "url": "https://civitai.com/models/2169897",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "slave",
+        "jewelry",
+        "iyaena"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": true,
+      "description": "Iyaena - Slave jewelry — Illustrious"
+    },
+    {
+      "id": "silent-hill-nurse",
+      "runware_air_id": "liangwc:silent-hill-nurse@2341418",
+      "name": "Nurses - Silent Hill (horror)",
+      "url": "https://civitai.com/models/155163",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "horror"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": true
+    },
+    {
+      "id": "shuixian-wuxia",
+      "runware_air_id": "liangwc:shuixian@2233416",
+      "name": "Shuixian Wuxia",
+      "url": "https://civitai.com/models/1973164",
+      "tags": [
+        "illustrious",
+        "concept",
+        "wuxia",
+        "shuixian"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false,
+      "description": "Shuixian — Wuxia Style"
     },
     {
       "id": "onryo",
@@ -3734,99 +4749,6 @@
       "nsfw": false
     },
     {
-      "id": "toned-body-slider",
-      "runware_air_id": "liangwc:toned-body-slider@2868740",
-      "name": "Toned Body Slider",
-      "url": "https://civitai.com/models/2552628",
-      "tags": [
-        "illustrious",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "upshorts",
-      "runware_air_id": "liangwc:upshorts@1692823",
-      "name": "Upshorts",
-      "url": "https://civitai.com/models/1496488",
-      "tags": [
-        "illustrious",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "virgin-killer-sweater",
-      "runware_air_id": "liangwc:virgin-killer-sweater@1378130",
-      "name": "Virgin Killer Sweater",
-      "url": "https://civitai.com/models/10185",
-      "tags": [
-        "illustrious",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
-      "id": "vore-internals",
-      "runware_air_id": "liangwc:vore-internals@1086041",
-      "name": "Vore Internals",
-      "url": "https://civitai.com/models/20837",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "fetish"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "waist-slider",
-      "runware_air_id": "liangwc:waist-slider@2834076",
-      "name": "Waist Slider",
-      "url": "https://civitai.com/models/2521578",
-      "tags": [
-        "illustrious",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false
-    },
-    {
       "id": "wednesday-addams",
       "runware_air_id": "liangwc:wednesday-addams@1917432",
       "name": "Wednesday Addams",
@@ -3843,6 +4765,69 @@
       "base_model": "illustrious",
       "category": "character",
       "nsfw": false
+    },
+    {
+      "id": "wu-zetian",
+      "runware_air_id": "liangwc:wu-zetian@2253222",
+      "name": "Wu Zetian Wuxia",
+      "url": "https://civitai.com/models/1990530",
+      "tags": [
+        "illustrious",
+        "nsfw",
+        "wu-zetian",
+        "wuxia"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": true,
+      "description": "Wu Zetian — China great sovereign Wuxia style"
+    },
+    {
+      "id": "xian-nu",
+      "runware_air_id": "liangwc:xian-nu@1943863",
+      "name": "xian nu chinese style",
+      "url": "https://civitai.com/models/1717691",
+      "tags": [
+        "illustrious",
+        "concept",
+        "chinese",
+        "xian-nu"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false,
+      "description": "xian nu chinese style 古風母豬 — Illustrious"
+    },
+    {
+      "id": "yeo-jiwok",
+      "runware_air_id": "liangwc:yeo-jiwok@2374913",
+      "name": "Yeo Jiwok Manhwa",
+      "url": "https://civitai.com/models/2099063",
+      "tags": [
+        "illustrious",
+        "concept",
+        "manhwa",
+        "webtoon"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "character",
+      "nsfw": false,
+      "description": "Yeo Jiwok — God Bless You Manhwa/Webtoon style"
     },
     {
       "id": "yuna-ffx",
@@ -3979,48 +4964,10 @@
       "nsfw": false
     },
     {
-      "id": "ningyao",
-      "runware_air_id": "liangwc:ningyao@2168402",
-      "name": "宁姚/剑来",
-      "url": "https://civitai.com/models/1915847",
-      "tags": [
-        "illustrious",
-        "character",
-        "guoman"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false
-    },
-    {
       "id": "ankela-kuluomi",
       "runware_air_id": "liangwc:ankela-kuluomi@3005489",
       "name": "安琪拉·库洛米",
       "url": "https://civitai.com/models/2676704",
-      "tags": [
-        "illustrious",
-        "character",
-        "wangzhe"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "ankela-mojing",
-      "runware_air_id": "liangwc:ankela-mojing@2687940",
-      "name": "安琪拉·魔镜",
-      "url": "https://civitai.com/models/2390576",
       "tags": [
         "illustrious",
         "character",
@@ -4055,7 +5002,7 @@
       ],
       "description": "少司缘 — 王者荣耀 character, Illustrious base. Runware AIR verified ✅.",
       "base_model": "illustrious",
-      "category": "character_style",
+      "category": "character",
       "nsfw": false,
       "incompatible_with": [],
       "notes": "2026-07-01: uploaded to Runware."
@@ -4175,25 +5122,6 @@
       "nsfw": false
     },
     {
-      "id": "hk-comic-style-jinyong",
-      "runware_air_id": "liangwc:hk-comic-style-jinyong@2164436",
-      "name": "港漫风·金庸 (黄玉郎/邱福龙)",
-      "url": "https://civitai.com/models/1912298",
-      "tags": [
-        "illustrious",
-        "style",
-        "guoman"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
       "id": "yao-wangzhe",
       "runware_air_id": "liangwc:yao-wangzhe@2824482",
       "name": "瑶·王者荣耀V2.2",
@@ -4229,1030 +5157,6 @@
       ],
       "base_model": "illustrious",
       "category": "character",
-      "nsfw": false
-    },
-    {
-      "id": "dynasty-warriors-style",
-      "runware_air_id": "liangwc:dynasty-warriors-style@3045074",
-      "name": "真三国无双8 Artist Style",
-      "url": "https://civitai.com/models/2710670",
-      "tags": [
-        "illustrious",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "pubic-tattoo-ill",
-      "runware_air_id": "liangwc:pubic-tattoo-ill@1060578",
-      "name": "淫紋 pubic tattoo (Illustrious)",
-      "url": "https://civitai.com/models/461662",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "tattoo",
-        "body-mod"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "淫紋/pub tattoo — Illustrious base"
-    },
-    {
-      "id": "ink-wash-il",
-      "runware_air_id": "liangwc:ink-wash-il@2784911",
-      "name": "Ink Wash IL V1.0",
-      "url": "https://civitai.com/models/2477012",
-      "tags": [
-        "illustrious",
-        "style",
-        "ink",
-        "水墨"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false,
-      "description": "Ink wash painting style for Illustrious — 水墨风格"
-    },
-    {
-      "id": "modern-chinese-painting-il",
-      "runware_air_id": "liangwc:modern-chinese-painting-il@2231812",
-      "name": "近现代国画风格 (Illustrious)",
-      "url": "https://civitai.com/models/1971776",
-      "tags": [
-        "illustrious",
-        "style",
-        "chinese-painting",
-        "国画"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false,
-      "description": "Modern Chinese painting style for Illustrious"
-    },
-    {
-      "id": "faceless-hood",
-      "runware_air_id": "liangwc:faceless-hood@2499767",
-      "name": "faceless hood",
-      "url": "https://civitai.com/models/2220431",
-      "tags": [
-        "illustrious",
-        "concept",
-        "hood"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Faceless hood — Illustrious XL base. Blank hood covering the face."
-    },
-    {
-      "id": "faceless-mask",
-      "runware_air_id": "liangwc:faceless-mask@1677068",
-      "name": "Faceless mask [Patterned/Armor/Robot]",
-      "url": "https://civitai.com/models/1123592",
-      "tags": [
-        "illustrious",
-        "pony",
-        "concept",
-        "mask"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Faceless mask — patterned/armor/robot styles. Supports Pony & Illustrious."
-    },
-    {
-      "id": "facesitting-pov-buttcrush",
-      "runware_air_id": "liangwc:facesitting-pov@1617237",
-      "name": "Facesitting (Close-up Reverse POV)/POV Buttcrush",
-      "url": "https://civitai.com/models/1190058",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pov",
-        "facesitting"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Facesitting close-up reverse POV / POV buttcrush"
-    },
-    {
-      "id": "choking-pov",
-      "runware_air_id": "liangwc:choking-pov@2922107",
-      "name": "Choking POV IL&ZIT",
-      "url": "https://civitai.com/models/2602338",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pov",
-        "choking"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Choking POV — Shrekman Hentai Loras"
-    },
-    {
-      "id": "guandao-weapon",
-      "runware_air_id": "liangwc:guandao-weapon@2075943",
-      "name": "Guandao weapon [IL]",
-      "url": "https://civitai.com/models/1834456",
-      "tags": [
-        "illustrious",
-        "concept",
-        "weapon",
-        "guandao"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Guandao weapon — traditional Chinese polearm"
-    },
-    {
-      "id": "revenant-scythe",
-      "runware_air_id": "liangwc:revenant-scythe@1759850",
-      "name": "Revenant Scythe - v2",
-      "url": "https://civitai.com/models/1511090",
-      "tags": [
-        "illustrious",
-        "concept",
-        "weapon",
-        "scythe"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Revenant Scythe — large curved blade weapon"
-    },
-    {
-      "id": "anal-dilator",
-      "runware_air_id": "liangwc:lora-2446854@2751245",
-      "name": "Anal dilator - Illustrious",
-      "url": "https://civitai.com/models/2446854",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "anal",
-        "dilator"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Anal dilator — Illustrious XL base"
-    },
-    {
-      "id": "black-shiny-nurse",
-      "runware_air_id": "liangwc:black-shiny-nurse@3118889",
-      "name": "Black Shiny Nurse Latex Cutout Uniform",
-      "url": "https://civitai.com/models/2770314",
-      "tags": [
-        "illustrious",
-        "concept",
-        "latex",
-        "nurse",
-        "uniform"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Black shiny nurse latex cutout uniform"
-    },
-    {
-      "id": "anal-gape-il",
-      "runware_air_id": "liangwc:anal-gape-il@1523397",
-      "name": "Anal Gape Slider - Illustrious XL",
-      "url": "https://civitai.com/models/1348755",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "anal",
-        "gape",
-        "slider"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Anal gape slider — Illustrious XL"
-    },
-    {
-      "id": "figure-sex",
-      "runware_air_id": "liangwc:figure-sex@1771517",
-      "name": "Figure Sex [Grip one handed]",
-      "url": "https://civitai.com/models/1565477",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "figure",
-        "sex"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Figure sex grip one handed — Illustrious"
-    },
-    {
-      "id": "tiny-fairy",
-      "runware_air_id": "liangwc:tiny-fairy@1319597",
-      "name": "Tiny Fairy Girls / Mini Girl",
-      "url": "https://civitai.com/models/1172814",
-      "tags": [
-        "illustrious",
-        "concept",
-        "tiny",
-        "fairy",
-        "mini"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Tiny fairy girls / mini girl — Illustrious"
-    },
-    {
-      "id": "anal-fisting-il",
-      "runware_air_id": "liangwc:anal-fisting-il@1376476",
-      "name": "Anal fisting v2.0 IL",
-      "url": "https://civitai.com/models/2730787",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "anal",
-        "fisting"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Anal fisting and stretching v2.0 — Illustrious"
-    },
-    {
-      "id": "breeding-mount",
-      "runware_air_id": "liangwc:breeding-mount@1545661",
-      "name": "Breeding mount with someone inside",
-      "url": "https://civitai.com/models/1368140",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "breeding",
-        "mount"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Breeding mount with someone inside — Illustrious"
-    },
-    {
-      "id": "loose-clothing",
-      "runware_air_id": "liangwc:loose-clothing@2400238",
-      "name": "Loose Clothing",
-      "url": "https://civitai.com/models/2121811",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "loose",
-        "clothing"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Loose clothing — Illustrious"
-    },
-    {
-      "id": "cock-worship",
-      "runware_air_id": "liangwc:cock-worship@1967523",
-      "name": "cock worship XL",
-      "url": "https://civitai.com/models/1653435",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "cock",
-        "worship"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "cock worship — Illustrious"
-    },
-    {
-      "id": "armpit-sweaty",
-      "runware_air_id": "liangwc:armpit-sweaty@2691923",
-      "name": "Armpit worship Sweaty Armpits",
-      "url": "https://civitai.com/models/2394119",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "armpit",
-        "sweaty"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Armpit worship — sweaty armpits & undress"
-    },
-    {
-      "id": "armpit-musk",
-      "runware_air_id": "liangwc:armpit-musk@2257531",
-      "name": "Armpit worship musk of female",
-      "url": "https://civitai.com/models/1994464",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "armpit",
-        "musk"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Armpit worship — the musk of the female"
-    },
-    {
-      "id": "foot-worship",
-      "runware_air_id": "liangwc:foot-worship@2808576",
-      "name": "Female sub foot worship",
-      "url": "https://civitai.com/models/2498496",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "foot",
-        "worship"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Female sub foot worship — Illustrious"
-    },
-    {
-      "id": "anal-object-insertion",
-      "runware_air_id": "liangwc:anal-object-insertion@2566468",
-      "name": "Anal Object Insertion Illustrious",
-      "url": "https://civitai.com/models/1537041",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "anal",
-        "object",
-        "insertion"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Anal object insertion — Illustrious"
-    },
-    {
-      "id": "ass-worship",
-      "runware_air_id": "liangwc:ass-worship@1870706",
-      "name": "ass worship",
-      "url": "https://civitai.com/models/676403",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "ass",
-        "worship"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "ass worship — Illustrious (435MB)"
-    },
-    {
-      "id": "tinygirl-illustrious",
-      "runware_air_id": "liangwc:lora-1694875@1694875",
-      "name": "Tinygirl - Illustrious",
-      "url": "https://civitai.com/models/1107790",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "tiny",
-        "girl"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Tinygirl — Illustrious base"
-    },
-    {
-      "id": "fairy-sex",
-      "runware_air_id": "liangwc:fairy-sex@2602748",
-      "name": "Fairy Sex",
-      "url": "https://civitai.com/models/2021842",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "fairy",
-        "sex",
-        "tiny"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Fairy Sex — fairy sized person, Illustrious"
-    },
-    {
-      "id": "shiny-nai-il",
-      "runware_air_id": "liangwc:shiny-nai-il@2786889",
-      "name": "Shiny Nai style ILXL",
-      "url": "https://civitai.com/models/618752",
-      "tags": [
-        "illustrious",
-        "concept",
-        "shiny",
-        "nai",
-        "style"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Shiny Nai style — Illustrious"
-    },
-    {
-      "id": "minidress",
-      "runware_air_id": "liangwc:minidress@2852556",
-      "name": "minidress",
-      "url": "https://civitai.com/models/2538201",
-      "tags": [
-        "illustrious",
-        "concept",
-        "minidress",
-        "clothing"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "minidress — Illustrious"
-    },
-    {
-      "id": "detailed-pussy",
-      "runware_air_id": "liangwc:detailed-pussy@2572081",
-      "name": "Detailed Pussy",
-      "url": "https://civitai.com/models/1864062",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pussy",
-        "detailed"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Detailed Pussy — Illustrious"
-    },
-    {
-      "id": "iyaena-slave-jewelry",
-      "runware_air_id": "liangwc:iyaena-jewelry@2443554",
-      "name": "Iyaena - Slave jewelry",
-      "url": "https://civitai.com/models/2169897",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "slave",
-        "jewelry",
-        "iyaena"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Iyaena - Slave jewelry — Illustrious"
-    },
-    {
-      "id": "submissive-concept",
-      "runware_air_id": "liangwc:submissive-concept@2809867",
-      "name": "Submissive Concept",
-      "url": "https://civitai.com/models/2499647",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "submissive"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Submissive Concept — Illustrious"
-    },
-    {
-      "id": "flaccid-foreskin",
-      "runware_air_id": "liangwc:flaccid-foreskin@2916039",
-      "name": "small flaccid foreskin penis",
-      "url": "https://civitai.com/models/2595872",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "flaccid",
-        "foreskin",
-        "penis"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "small flaccid foreskin penis — Illustrious"
-    },
-    {
-      "id": "dudou",
-      "runware_air_id": "liangwc:dudou@1185044",
-      "name": "Chinese Lingerie 肚兜 Dudou",
-      "url": "https://civitai.com/models/1056103",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "lingerie",
-        "dudou",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Chinese Lingerie 肚兜 Dudou — Illustrious"
-    },
-    {
-      "id": "sexy-lingerie",
-      "runware_air_id": "liangwc:sexy-lingerie@1951432",
-      "name": "Chinese Style Sexy Lingerie",
-      "url": "https://civitai.com/models/1724344",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "lingerie",
-        "chinese",
-        "sexy"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Chinese Style Sexy Lingerie — Illustrious (325MB)"
-    },
-    {
-      "id": "wedding-dress2",
-      "runware_air_id": "liangwc:wedding-dress2@2069519",
-      "name": "Chinese style wedding dress 2",
-      "url": "https://civitai.com/models/1828738",
-      "tags": [
-        "illustrious",
-        "concept",
-        "chinese",
-        "wedding",
-        "dress"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Chinese style wedding dress 2 — Illustrious"
-    },
-    {
-      "id": "wuxia-green-dress",
-      "runware_air_id": "liangwc:wuxia-green@2469026",
-      "name": "Chinese wuxia green dress",
-      "url": "https://civitai.com/models/2192806",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "wuxia",
-        "green",
-        "dress",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Chinese wuxia green dress — Illustrious"
-    },
-    {
-      "id": "wuxia-girl-2",
-      "runware_air_id": "liangwc:wuxia-girl2@2491859",
-      "name": "Chinese Wuxia girl 2",
-      "url": "https://civitai.com/models/2213299",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "wuxia",
-        "girl",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Chinese Wuxia girl-武侠风格女侠2 — Illustrious"
-    },
-    {
-      "id": "wuxia-girl-1",
-      "runware_air_id": "liangwc:wuxia-girl1@2468438",
-      "name": "Chinese Wuxia girl 1",
-      "url": "https://civitai.com/models/2186100",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "wuxia",
-        "girl",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Chinese Wuxia girl-武侠风格女侠 — Illustrious"
-    },
-    {
-      "id": "ccs-chinese-fantasy",
-      "runware_air_id": "liangwc:ccs-chinese-fantasy@1606488",
-      "name": "CC's Chinese Fantasy",
-      "url": "https://civitai.com/models/1373599",
-      "tags": [
-        "illustrious",
-        "concept",
-        "chinese",
-        "fantasy"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "CC's Chinese Fantasy — Illustrious"
-    },
-    {
-      "id": "dark-empress",
-      "runware_air_id": "liangwc:dark-empress@2191527",
-      "name": "Dark empress Wuxia",
-      "url": "https://civitai.com/models/1936327",
-      "tags": [
-        "illustrious",
-        "concept",
-        "dark",
-        "empress",
-        "wuxia"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Dark empress — Ancient Chinese/Wuxia style"
-    },
-    {
-      "id": "yeo-jiwok",
-      "runware_air_id": "liangwc:yeo-jiwok@2374913",
-      "name": "Yeo Jiwok Manhwa",
-      "url": "https://civitai.com/models/2099063",
-      "tags": [
-        "illustrious",
-        "concept",
-        "manhwa",
-        "webtoon"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Yeo Jiwok — God Bless You Manhwa/Webtoon style"
-    },
-    {
-      "id": "shuixian-wuxia",
-      "runware_air_id": "liangwc:shuixian@2233416",
-      "name": "Shuixian Wuxia",
-      "url": "https://civitai.com/models/1973164",
-      "tags": [
-        "illustrious",
-        "concept",
-        "wuxia",
-        "shuixian"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Shuixian — Wuxia Style"
-    },
-    {
-      "id": "wu-zetian",
-      "runware_air_id": "liangwc:wu-zetian@2253222",
-      "name": "Wu Zetian Wuxia",
-      "url": "https://civitai.com/models/1990530",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "wu-zetian",
-        "wuxia"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Wu Zetian — China great sovereign Wuxia style"
-    },
-    {
-      "id": "xian-nu",
-      "runware_air_id": "liangwc:xian-nu@1943863",
-      "name": "xian nu chinese style",
-      "url": "https://civitai.com/models/1717691",
-      "tags": [
-        "illustrious",
-        "concept",
-        "chinese",
-        "xian-nu"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "xian nu chinese style 古風母豬 — Illustrious"
-    },
-    {
-      "id": "crimson-xiannu",
-      "runware_air_id": "liangwc:crimson-xiannu@2178043",
-      "name": "Crimson Xiannu Wuxia",
-      "url": "https://civitai.com/models/1924359",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "wuxia",
-        "crimson",
-        "xiannu"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Crimson Xiannu — Wuxia style"
-    },
-    {
-      "id": "bailing-miao",
-      "runware_air_id": "liangwc:bailing-miao@2339664",
-      "name": "BaiLing Miao Wuxia",
-      "url": "https://civitai.com/models/2067654",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "wuxia",
-        "bailing",
-        "miao"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "BaiLing Miao — Wuxia"
-    },
-    {
-      "id": "dark-sovereign",
-      "runware_air_id": "liangwc:dark-sovereign@2198025",
-      "name": "Dark sovereign Wuxia",
-      "url": "https://civitai.com/models/1942047",
-      "tags": [
-        "illustrious",
-        "concept",
-        "dark",
-        "sovereign",
-        "wuxia"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Dark sovereign — Wuxia Style (重试成功!)"
-    },
-    {
-      "id": "dramatic-lighting-slider",
-      "runware_air_id": "liangwc:dramatic-lighting-slider@1",
-      "name": "Dramatic Lighting Slider [Pony/Illustrious]",
-      "url": "https://civitai.com/models/1105685",
-      "tags": [
-        "sdxl",
-        "pony",
-        "illustrious",
-        "slider",
-        "lighting",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 1.0,
-      "scale_range": [
-        0.5,
-        2.0
-      ],
-      "base_model": "illustrious",
-      "category": "tool",
       "nsfw": false
     },
     {
