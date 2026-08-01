@@ -5638,27 +5638,6 @@
       "description": "Undressing LoRA — progressive undress slider"
     },
     {
-      "id": "asian-mix-lora",
-      "runware_air_id": "liangwc:asian-mix-lora@1",
-      "name": "[Z Image Turbo] Asian Mix LoRA - EOL",
-      "url": "https://civitai.com/models/2185778",
-      "tags": [
-        "zimage",
-        "asian",
-        "mix",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "style",
-      "nsfw": true
-    },
-    {
       "id": "aesthetic-amateur-photo",
       "runware_air_id": "liangwc:aesthetic-amateur-photo@1",
       "name": "Aesthetic Amateur Photo",
@@ -5689,27 +5668,6 @@
         "zimage",
         "comic",
         "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "oriental-elegance",
-      "runware_air_id": "liangwc:oriental-elegance@1",
-      "name": "东方雅序 - 青霭浮光 Mistborne Gleam",
-      "url": "https://civitai.com/models/1871757",
-      "tags": [
-        "zimage",
-        "chinese",
-        "oriental",
-        "elegance",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -5782,6 +5740,48 @@
       ],
       "base_model": "zimage-turbo",
       "category": "tools",
+      "nsfw": false
+    },
+    {
+      "id": "asian-mix-lora",
+      "runware_air_id": "liangwc:asian-mix-lora@1",
+      "name": "[Z Image Turbo] Asian Mix LoRA - EOL",
+      "url": "https://civitai.com/models/2185778",
+      "tags": [
+        "zimage",
+        "asian",
+        "mix",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "oriental-elegance",
+      "runware_air_id": "liangwc:oriental-elegance@1",
+      "name": "东方雅序 - 青霭浮光 Mistborne Gleam",
+      "url": "https://civitai.com/models/1871757",
+      "tags": [
+        "zimage",
+        "chinese",
+        "oriental",
+        "elegance",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character_style",
       "nsfw": false
     },
     {
