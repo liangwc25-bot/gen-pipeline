@@ -6117,6 +6117,66 @@
       "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "see-through-swimsuit-zit",
+      "runware_air_id": "liangwc:see-through-swimsuit@2919216",
+      "name": "See Through Swimsuit V2 (ZIT)",
+      "url": "https://civitai.com/models/2235507",
+      "tags": [
+        "zimage",
+        "swimsuit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "garbage-bag-outfit-zit",
+      "runware_air_id": "liangwc:garbage-bag-outfit@2496983",
+      "name": "Garbage Bag Outfit (ZIT)",
+      "url": "https://civitai.com/models/2217892",
+      "tags": [
+        "zimage",
+        "outfit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "fishnet-outfit-zit",
+      "runware_air_id": "liangwc:fishnet-outfit@2563748",
+      "name": "Fishnet Outfit V2 (ZIT)",
+      "url": "https://civitai.com/models/2207960",
+      "tags": [
+        "zimage",
+        "fishnet",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
