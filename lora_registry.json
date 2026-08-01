@@ -6716,6 +6716,26 @@
       "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "giantess-zit",
+      "runware_air_id": "liangwc:giantess@2507266",
+      "name": "Giantess (ZIT)",
+      "url": "https://civitai.com/models/2227172",
+      "tags": [
+        "zimage",
+        "giantess",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
     }
   ],
   "categories": {
