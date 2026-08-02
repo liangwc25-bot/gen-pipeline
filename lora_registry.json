@@ -8174,6 +8174,449 @@
       "base_model": "sd15",
       "category": "new",
       "nsfw": false
+    },
+    {
+      "id": "swordswoman-sd15",
+      "runware_air_id": "civitai:88828@94512",
+      "name": "侠女 Chinese Swordswoman (SD1.5)",
+      "url": "https://civitai.com/models/88828",
+      "tags": [
+        "sd15",
+        "chinese",
+        "sword",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "ghostdom-sd15",
+      "runware_air_id": "civitai:95050@101405",
+      "name": "彼岸 Ghostdom 冥界 (SD1.5)",
+      "url": "https://civitai.com/models/95050",
+      "tags": [
+        "sd15",
+        "horror",
+        "ghost",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "luhua-sd15",
+      "runware_air_id": "civitai:99017@105927",
+      "name": "露华浓 Ancient Chinese (SD1.5)",
+      "url": "https://civitai.com/models/99017",
+      "tags": [
+        "sd15",
+        "chinese",
+        "ancient",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "xianxia-sd15",
+      "runware_air_id": "civitai:96244@102800",
+      "name": "仙侠道 Xianxia Taoist (SD1.5)",
+      "url": "https://civitai.com/models/96244",
+      "tags": [
+        "sd15",
+        "xianxia",
+        "taoist",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "fantasy-girl-rpg-sd15",
+      "runware_air_id": "civitai:105161@112784",
+      "name": "日系 RPG Fantasy Girl (SD1.5)",
+      "url": "https://civitai.com/models/105161",
+      "tags": [
+        "sd15",
+        "rpg",
+        "fantasy",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "samurai-girl-sd15",
+      "runware_air_id": "civitai:149199@166573",
+      "name": "武士少女 Samurai Girl (SD1.5)",
+      "url": "https://civitai.com/models/149199",
+      "tags": [
+        "sd15",
+        "samurai",
+        "japanese",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "1990s-animation-sd15",
+      "runware_air_id": "civitai:124213@135566",
+      "name": "相约98 1990s Animation (SD1.5)",
+      "url": "https://civitai.com/models/124213",
+      "tags": [
+        "sd15",
+        "retro",
+        "animation",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sekiro-emma-sd15",
+      "runware_air_id": "civitai:104735@112313",
+      "name": "只狼 永真 Sekiro Emma (SD1.5)",
+      "url": "https://civitai.com/models/104735",
+      "tags": [
+        "sd15",
+        "sekiro",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "ink-painting-sd15",
+      "runware_air_id": "civitai:116512@126169",
+      "name": "倾尽天下 Chinese Ink Painting (SD1.5)",
+      "url": "https://civitai.com/models/116512",
+      "tags": [
+        "sd15",
+        "ink",
+        "chinese",
+        "painting",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "magic-circle-sd15",
+      "runware_air_id": "civitai:127864@139932",
+      "name": "魔法阵 Magic Circle (SD1.5)",
+      "url": "https://civitai.com/models/127864",
+      "tags": [
+        "sd15",
+        "magic",
+        "circle",
+        "concept",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "logo-design-sd15",
+      "runware_air_id": "civitai:104072@111514",
+      "name": "Logo 设计 (SD1.5)",
+      "url": "https://civitai.com/models/104072",
+      "tags": [
+        "sd15",
+        "logo",
+        "design",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "evil-spirits-sd15",
+      "runware_air_id": "civitai:103529@110883",
+      "name": "魑魅魍魉 Evil Spirits (SD1.5)",
+      "url": "https://civitai.com/models/103529",
+      "tags": [
+        "sd15",
+        "horror",
+        "spirits",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "thousand-faces-sd15",
+      "runware_air_id": "civitai:118438@128480",
+      "name": "千人千面 Thousand Faces (SD1.5)",
+      "url": "https://civitai.com/models/118438",
+      "tags": [
+        "sd15",
+        "faces",
+        "variety",
+        "concept",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "dragon-fantasy-sd15",
+      "runware_air_id": "civitai:225915@254858",
+      "name": "龙神幻想 Chinese Dragon (SD1.5)",
+      "url": "https://civitai.com/models/225915",
+      "tags": [
+        "sd15",
+        "dragon",
+        "chinese",
+        "fantasy",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "cyberpunk-avalokitesvara-sd15",
+      "runware_air_id": "civitai:121054@131697",
+      "name": "赛博观音 Cyberpunk Avalokitesvara (SD1.5)",
+      "url": "https://civitai.com/models/121054",
+      "tags": [
+        "sd15",
+        "cyberpunk",
+        "buddhist",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "armed-maidens-sd15",
+      "runware_air_id": "civitai:84189@89483",
+      "name": "武装少女 Armed Maidens (SD1.5)",
+      "url": "https://civitai.com/models/84189",
+      "tags": [
+        "sd15",
+        "armed",
+        "mecha",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "dragon-girl-sd15",
+      "runware_air_id": "civitai:293253@329603",
+      "name": "龙年立绘 Dragon and Girl (SD1.5)",
+      "url": "https://civitai.com/models/293253",
+      "tags": [
+        "sd15",
+        "dragon",
+        "chinese",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "splashing-ink-sd15",
+      "runware_air_id": "civitai:125500@137090",
+      "name": "高山流水 Splashing Ink (SD1.5)",
+      "url": "https://civitai.com/models/125500",
+      "tags": [
+        "sd15",
+        "ink",
+        "chinese",
+        "painting",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "hundred-ghosts-sd15",
+      "runware_air_id": "civitai:198853@223725",
+      "name": "百鬼夜行 Hundred Ghosts (SD1.5)",
+      "url": "https://civitai.com/models/198853",
+      "tags": [
+        "sd15",
+        "japanese",
+        "ghost",
+        "monster",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "white-hell-sd15",
+      "runware_air_id": "civitai:199610@224615",
+      "name": "纯白地狱 White Hell (SD1.5)",
+      "url": "https://civitai.com/models/199610",
+      "tags": [
+        "sd15",
+        "horror",
+        "white",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "girl-isshin-sd15",
+      "runware_air_id": "civitai:105178@112801",
+      "name": "娘化苇名一心 Girl Isshin (SD1.5)",
+      "url": "https://civitai.com/models/105178",
+      "tags": [
+        "sd15",
+        "sekiro",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
     }
   ],
   "categories": {
