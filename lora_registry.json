@@ -6915,6 +6915,493 @@
       "base_model": "sd15",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "detail-tweaker-sd15",
+      "runware_air_id": "civitai:58390@62833",
+      "name": "Detail Tweaker (SD1.5)",
+      "url": "https://civitai.com/models/58390",
+      "tags": [
+        "sd15",
+        "detail",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "add-more-details-sd15",
+      "runware_air_id": "civitai:82098@87153",
+      "name": "Add More Details (SD1.5)",
+      "url": "https://civitai.com/models/82098",
+      "tags": [
+        "sd15",
+        "detail",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "hipoly-3d-sd15",
+      "runware_air_id": "civitai:8730@44566",
+      "name": "Hipoly 3D Model (SD1.5)",
+      "url": "https://civitai.com/models/8730",
+      "tags": [
+        "sd15",
+        "3d",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "clothing-adjuster-sd15",
+      "runware_air_id": "civitai:88132@117151",
+      "name": "LEOSAM Clothing Adjuster (SD1.5)",
+      "url": "https://civitai.com/models/88132",
+      "tags": [
+        "sd15",
+        "clothing",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "japanese-doll-sd15",
+      "runware_air_id": "civitai:28811@34562",
+      "name": "JapaneseDollLikeness v1.5 (SD1.5)",
+      "url": "https://civitai.com/models/28811",
+      "tags": [
+        "sd15",
+        "japanese",
+        "face",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "korean-doll-sd15",
+      "runware_air_id": "civitai:26124@31284",
+      "name": "KoreanDollLikeness v2.0 (SD1.5)",
+      "url": "https://civitai.com/models/26124",
+      "tags": [
+        "sd15",
+        "korean",
+        "face",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "china-doll-sd15",
+      "runware_air_id": "civitai:61675@66172",
+      "name": "ChinaDollLikeness v1.0 (SD1.5)",
+      "url": "https://civitai.com/models/61675",
+      "tags": [
+        "sd15",
+        "chinese",
+        "face",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "taiwan-doll-sd15",
+      "runware_air_id": "civitai:48363@52974",
+      "name": "TaiwanDollLikeness v2.0 (SD1.5)",
+      "url": "https://civitai.com/models/48363",
+      "tags": [
+        "sd15",
+        "taiwanese",
+        "face",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "m-pixel-sd15",
+      "runware_air_id": "civitai:44960@52870",
+      "name": "M_Pixel 像素人人 (SD1.5)",
+      "url": "https://civitai.com/models/44960",
+      "tags": [
+        "sd15",
+        "pixel",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "russian-doll-sd15",
+      "runware_air_id": "civitai:13068@15396",
+      "name": "Russian Doll Likeness (SD1.5)",
+      "url": "https://civitai.com/models/13068",
+      "tags": [
+        "sd15",
+        "russian",
+        "face",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "perfect-pussy-sd15",
+      "runware_air_id": "civitai:10844@61391",
+      "name": "Perfect Pussy (SD1.5)",
+      "url": "https://civitai.com/models/10844",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "anatomy",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "asian-girls-face-sd15",
+      "runware_air_id": "civitai:62760@67325",
+      "name": "Asian Girls Face (SD1.5)",
+      "url": "https://civitai.com/models/62760",
+      "tags": [
+        "sd15",
+        "asian",
+        "face",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "bukkake-sd15",
+      "runware_air_id": "civitai:16722@19936",
+      "name": "Bukkake (SD1.5)",
+      "url": "https://civitai.com/models/16722",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "doggystyle-sd15",
+      "runware_air_id": "civitai:12961@16207",
+      "name": "Doggystyle Side View (SD1.5)",
+      "url": "https://civitai.com/models/12961",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "pose",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "pant-pull-down-sd15",
+      "runware_air_id": "civitai:11126@13184",
+      "name": "Pant Pull Down (SD1.5)",
+      "url": "https://civitai.com/models/11126",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "pose",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "jim-lee-style-sd15",
+      "runware_air_id": "civitai:8949@10580",
+      "name": "Jim Lee Style (SD1.5)",
+      "url": "https://civitai.com/models/8949",
+      "tags": [
+        "sd15",
+        "comic",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "stylized-3d-sd15",
+      "runware_air_id": "civitai:10679@44570",
+      "name": "Stylized 3D Model (SD1.5)",
+      "url": "https://civitai.com/models/10679",
+      "tags": [
+        "sd15",
+        "3d",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "eastasian-doll-sd15",
+      "runware_air_id": "civitai:19495@32382",
+      "name": "EastAsianDollLikeness (SD1.5)",
+      "url": "https://civitai.com/models/19495",
+      "tags": [
+        "sd15",
+        "eastasian",
+        "face",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "breast-asian-flat-sd15",
+      "runware_air_id": "civitai:29564@35553",
+      "name": "Breast Asian Flat Chest (SD1.5)",
+      "url": "https://civitai.com/models/29564",
+      "tags": [
+        "sd15",
+        "body",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "8bit-pixel-sd15",
+      "runware_air_id": "civitai:185743@636318",
+      "name": "8bitdiffuser 64x Pixel Art (SD1.5)",
+      "url": "https://civitai.com/models/185743",
+      "tags": [
+        "sd15",
+        "pixel",
+        "8bit",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pixel-art-xl15-sd15",
+      "runware_air_id": "civitai:43820@121559",
+      "name": "Pixel Art XL & 1.5 (SD1.5)",
+      "url": "https://civitai.com/models/43820",
+      "tags": [
+        "sd15",
+        "pixel",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "film-simulator-sd15",
+      "runware_air_id": "civitai:87080@93304",
+      "name": "Film Simulator 胶片摄影模拟器 (SD1.5)",
+      "url": "https://civitai.com/models/87080",
+      "tags": [
+        "sd15",
+        "film",
+        "photography",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "wuxia-v2-sd15",
+      "runware_air_id": "civitai:76637@90181",
+      "name": "武侠 Wuxia V2 (SD1.5)",
+      "url": "https://civitai.com/models/76637",
+      "tags": [
+        "sd15",
+        "chinese",
+        "wuxia",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pen-sketch-sd15",
+      "runware_air_id": "civitai:28687@35516",
+      "name": "Pen Sketch Style 线条速写风格 (SD1.5)",
+      "url": "https://civitai.com/models/28687",
+      "tags": [
+        "sd15",
+        "sketch",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
     }
   ],
   "categories": {
