@@ -52,6 +52,7 @@ MODELS = {
     "chilloutmix-15":    {"id": "civitai:6424@11745", "name": "ChilloutMix", "price": "~$0.003/张"},
     "chosen-mix-15":     {"id": "civitai:17148@125302", "name": "chosen-mix", "price": "~$0.003/张"},
     "abyss-orange-mix-15": {"id": "civitai:4449@5036", "name": "AbyssOrangeMix2 NSFW", "price": "~$0.003/张"},
+    "nwsj-real-mix-sdxl":  {"id": "civitai:125026@136555", "name": "NwsjRealMix SDXL", "price": "~$0.003/张"},
 }
 
 # Aspect ratio → (width, height)
