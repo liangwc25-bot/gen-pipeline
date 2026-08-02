@@ -50,6 +50,8 @@ MODELS = {
     "tastyrice-cg-15":   {"id": "civitai:207481@348685", "name": "TastyRice-CG国风MIX", "price": "~$0.003/张"},
     "onlyrealistic-15":  {"id": "civitai:112756@139087", "name": "OnlyRealistic 《唯》超高清真人写实", "price": "~$0.003/张"},
     "chilloutmix-15":    {"id": "civitai:6424@11745", "name": "ChilloutMix", "price": "~$0.003/张"},
+    "chosen-mix-15":     {"id": "civitai:17148@125302", "name": "chosen-mix", "price": "~$0.003/张"},
+    "abyss-orange-mix-15": {"id": "civitai:4449@5036", "name": "AbyssOrangeMix2 NSFW", "price": "~$0.003/张"},
 }
 
 # Aspect ratio → (width, height)
