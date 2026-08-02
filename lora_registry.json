@@ -7402,6 +7402,213 @@
       "base_model": "sd15",
       "category": "new",
       "nsfw": false
+    },
+    {
+      "id": "chillout-nsfw-fix-sd15",
+      "runware_air_id": "civitai:129957@142513",
+      "name": "Chillout NSFW Fix (SD1.5)",
+      "url": "https://civitai.com/models/129957",
+      "tags": [
+        "sd15",
+        "realistic",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "gothic-horror-sd15",
+      "runware_air_id": "civitai:39760@45545",
+      "name": "GothicHorrorAI (SD1.5)",
+      "url": "https://civitai.com/models/39760",
+      "tags": [
+        "sd15",
+        "horror",
+        "gothic",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "age-slider-sd15",
+      "runware_air_id": "civitai:104759@112321",
+      "name": "Easy Age Slider (SD1.5)",
+      "url": "https://civitai.com/models/104759",
+      "tags": [
+        "sd15",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "midjourney-anime-sd15",
+      "runware_air_id": "civitai:98401@105232",
+      "name": "百花缭乱 Midjourney Anime (SD1.5)",
+      "url": "https://civitai.com/models/98401",
+      "tags": [
+        "sd15",
+        "anime",
+        "midjourney",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "detailed-perfection-sd15",
+      "runware_air_id": "civitai:411088@486099",
+      "name": "Detailed Perfection (SD1.5)",
+      "url": "https://civitai.com/models/411088",
+      "tags": [
+        "sd15",
+        "detail",
+        "enhancer",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "3d-cg-style-sd15",
+      "runware_air_id": "civitai:42387@47063",
+      "name": "3D CG Style Realistic (SD1.5)",
+      "url": "https://civitai.com/models/42387",
+      "tags": [
+        "sd15",
+        "3d",
+        "cg",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "elixir-enhancer-sd15",
+      "runware_air_id": "civitai:78283@83081",
+      "name": "Elixir Enhancer (SD1.5)",
+      "url": "https://civitai.com/models/78283",
+      "tags": [
+        "sd15",
+        "enhancer",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "cyberpunk-mecha-sd15",
+      "runware_air_id": "civitai:84829@96474",
+      "name": "Cyberpunk Mecha Woman (SD1.5)",
+      "url": "https://civitai.com/models/84829",
+      "tags": [
+        "sd15",
+        "cyberpunk",
+        "mecha",
+        "style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "hairy-girls-sd15",
+      "runware_air_id": "civitai:88066@109085",
+      "name": "Hairy Girls (SD1.5)",
+      "url": "https://civitai.com/models/88066",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "anatomy",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "weird-reelhorror-sd15",
+      "runware_air_id": "civitai:67666@166646",
+      "name": "Weird ReelHorror (SD1.5)",
+      "url": "https://civitai.com/models/67666",
+      "tags": [
+        "sd15",
+        "horror",
+        "style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
