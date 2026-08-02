@@ -9463,6 +9463,66 @@
       "base_model": "sd15",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "succubus-womb-tattoos-sd15",
+      "runware_air_id": "civitai:14470@77517",
+      "name": "Photorealistic Succubus Womb Tattoos (SD1.5)",
+      "url": "https://civitai.com/models/14470",
+      "tags": [
+        "sd15",
+        "tattoo",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sexy-cosplay-costume-sd15",
+      "runware_air_id": "civitai:115663@129760",
+      "name": "Sexy Cosplay Costume Realistic (SD1.5)",
+      "url": "https://civitai.com/models/115663",
+      "tags": [
+        "sd15",
+        "cosplay",
+        "costume",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "transparent-bunny-suit-sd15",
+      "runware_air_id": "civitai:114051@123250",
+      "name": "Transparent Bunny Suit (SD1.5)",
+      "url": "https://civitai.com/models/114051",
+      "tags": [
+        "sd15",
+        "bunny",
+        "outfit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
     }
   ],
   "categories": {
