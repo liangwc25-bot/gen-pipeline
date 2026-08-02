@@ -6815,6 +6815,106 @@
       "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": false
+    },
+    {
+      "id": "zyd232-chinese-girl-sd15",
+      "runware_air_id": "civitai:13021@78057",
+      "name": "zyd232's Chinese Girl (SD1.5)",
+      "url": "https://civitai.com/models/13021",
+      "tags": [
+        "sd15",
+        "chinese",
+        "girl",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "tifa-lockhart-sd15",
+      "runware_air_id": "civitai:87167@311382",
+      "name": "Tifa Lockhart (SD1.5)",
+      "url": "https://civitai.com/models/87167",
+      "tags": [
+        "sd15",
+        "character",
+        "ff7",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sunshangxiang-sd15",
+      "runware_air_id": "civitai:36940@42974",
+      "name": "孙尚香 王者荣耀 (SD1.5)",
+      "url": "https://civitai.com/models/36940",
+      "tags": [
+        "sd15",
+        "chinese",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "bondage-outfit-sd15",
+      "runware_air_id": "civitai:19574@141123",
+      "name": "Bondage Outfit Dominatrix (SD1.5)",
+      "url": "https://civitai.com/models/19574",
+      "tags": [
+        "sd15",
+        "outfit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "virgin-killer-sweater-sd15",
+      "runware_air_id": "civitai:10185@258496",
+      "name": "Virgin Killer Sweater (SD1.5)",
+      "url": "https://civitai.com/models/10185",
+      "tags": [
+        "sd15",
+        "outfit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
