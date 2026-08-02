@@ -7609,6 +7609,212 @@
       "base_model": "sd15",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "real-dragons-sd15",
+      "runware_air_id": "civitai:82903@88077",
+      "name": "Real Dragons 真实龙 (SD1.5)",
+      "url": "https://civitai.com/models/82903",
+      "tags": [
+        "sd15",
+        "dragon",
+        "fantasy",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "age-slider-v2-sd15",
+      "runware_air_id": "civitai:128417@143150",
+      "name": "Age Slider V2 (SD1.5)",
+      "url": "https://civitai.com/models/128417",
+      "tags": [
+        "sd15",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "age-slider-anime-sd15",
+      "runware_air_id": "civitai:158272@183341",
+      "name": "Age Slider Anime (SD1.5)",
+      "url": "https://civitai.com/models/158272",
+      "tags": [
+        "sd15",
+        "slider",
+        "anime",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pregnancy-slider-sd15",
+      "runware_air_id": "civitai:139634@154666",
+      "name": "Pregnancy Slider (SD1.5)",
+      "url": "https://civitai.com/models/139634",
+      "tags": [
+        "sd15",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "age-slider-v3-sd15",
+      "runware_air_id": "civitai:179792@201776",
+      "name": "Age Slider V3 (SD1.5)",
+      "url": "https://civitai.com/models/179792",
+      "tags": [
+        "sd15",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "weight-slider-sd15",
+      "runware_air_id": "civitai:180008@202032",
+      "name": "Weight Slider (SD1.5)",
+      "url": "https://civitai.com/models/180008",
+      "tags": [
+        "sd15",
+        "slider",
+        "body",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "leg-slider-sd15",
+      "runware_air_id": "civitai:225310@254141",
+      "name": "Leg Slider (SD1.5)",
+      "url": "https://civitai.com/models/225310",
+      "tags": [
+        "sd15",
+        "slider",
+        "body",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pregnancy-slider-leco-sd15",
+      "runware_air_id": "civitai:327981@367572",
+      "name": "Pregnancy Slider LECO (SD1.5)",
+      "url": "https://civitai.com/models/327981",
+      "tags": [
+        "sd15",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "breast-size-slider-sd15",
+      "runware_air_id": "civitai:131864@146600",
+      "name": "Breast Size Slider (SD1.5)",
+      "url": "https://civitai.com/models/131864",
+      "tags": [
+        "sd15",
+        "slider",
+        "body",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "dick-size-adjuster-sd15",
+      "runware_air_id": "civitai:139061@153799",
+      "name": "Dick Size Adjuster (SD1.5)",
+      "url": "https://civitai.com/models/139061",
+      "tags": [
+        "sd15",
+        "slider",
+        "nsfw",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
