@@ -647,6 +647,10 @@ const baseLabel = id => ({
   'qwen-edit': 'Qwen', 'pony': 'Pony SDXL', 'illustrious': 'Illustrious XL',
   'sdxl': 'SDXL 1.0', 'fantasy-reality-xl': 'SDXL 1.0', 'flux': 'FLUX',
   'zimage-alibaba': 'Z-Image', 'zimage-moody': 'Z-Image',
+  'dreamshaper-15': 'SD 1.5', 'majicmix-real-15': 'SD 1.5', 'realcartoon3d-15': 'SD 1.5',
+  'aniverse-15': 'SD 1.5', 'chikmix-15': 'SD 1.5', 'realcartoon-real-15': 'SD 1.5',
+  'perfect-world-15': 'SD 1.5', 'majicmix-lux-15': 'SD 1.5', 'dark-sushi-25d-15': 'SD 1.5',
+  'guofeng-wuxia-15': 'SD 1.5', 'tastyrice-cg-15': 'SD 1.5', 'onlyrealistic-15': 'SD 1.5',
 }[id] || 'SDXL 1.0');
 
 // ════════════════════ Models ════════════════════
@@ -756,10 +760,15 @@ async function onModelChange() {
   document.getElementById('qwen-image-group').style.display = model === 'qwen-edit' ? 'block' : 'none';
   // Auto-set CFG placeholder per model
   const cfgInput = document.getElementById('cfg');
-  const defaults = { 'flux-dev': 3.5, 'pony-xl': 6, 'pony-real': 6, 'prefect-ill-xl': 6, 'flux-uncensored': 3.5, 'guofeng4-xl': 6, 'pornmaster': 6, 'lustify': 6, 'sdxl-base': 6, 'dreamshaper-xl': 6, 'juggernaut-xl': 6, 'fantasy-reality-xl': 6, 'qwen-edit': null, 'zimage-alibaba': 3.5, 'zimage-moody': 3.5 };
+  const defaults = { 'flux-dev': 3.5, 'pony-xl': 6, 'pony-real': 6, 'prefect-ill-xl': 6, 'flux-uncensored': 3.5, 'guofeng4-xl': 6, 'pornmaster': 6, 'lustify': 6, 'sdxl-base': 6, 'dreamshaper-xl': 6, 'juggernaut-xl': 6, 'fantasy-reality-xl': 6, 'qwen-edit': null, 'zimage-alibaba': 3.5, 'zimage-moody': 3.5, 'dreamshaper-15': 7, 'majicmix-real-15': 7, 'realcartoon3d-15': 7, 'aniverse-15': 7, 'chikmix-15': 7, 'realcartoon-real-15': 7, 'perfect-world-15': 7, 'majicmix-lux-15': 7, 'dark-sushi-25d-15': 7, 'guofeng-wuxia-15': 7, 'tastyrice-cg-15': 7, 'onlyrealistic-15': 7 };
   cfgInput.placeholder = defaults[model] != null ? `默认 ${defaults[model]}` : 'N/A';
   if (model === 'qwen-edit') { cfgInput.disabled = true; cfgInput.value = ''; }
   else { cfgInput.disabled = false; }
+  // Auto-set steps per model
+  const stepsDefaults = { 'flux-dev': 20, 'flux-uncensored': 20, 'pony-xl': 40, 'pony-real': 40, 'prefect-ill-xl': 40, 'guofeng4-xl': 40, 'pornmaster': 40, 'lustify': 40, 'sdxl-vanilla': 40, 'dreamshaper-xl': 40, 'juggernaut-xl': 40, 'fantasy-reality-xl': 40, 'zimage-alibaba': 4, 'zimage-moody': 4, 'qwen-edit': null, 'dreamshaper-15': 20, 'majicmix-real-15': 20, 'realcartoon3d-15': 20, 'aniverse-15': 20, 'chikmix-15': 20, 'realcartoon-real-15': 20, 'perfect-world-15': 20, 'majicmix-lux-15': 20, 'dark-sushi-25d-15': 20, 'guofeng-wuxia-15': 20, 'tastyrice-cg-15': 20, 'onlyrealistic-15': 20 };
+  const stepsInput = document.getElementById('steps');
+  const defSteps = stepsDefaults[model];
+  if (defSteps != null) { stepsInput.placeholder = defSteps; if (!stepsInput.value || stepsInput.value === '35') stepsInput.value = defSteps; }
 
   // Preload LoRA cache for search inputs
   await loadLoras(model);
