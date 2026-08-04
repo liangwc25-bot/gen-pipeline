@@ -837,7 +837,7 @@ function filterLoraDropdown(row, loras) {
     }).join('');
   } else {
     // No query: group by category, like snippet groups
-    const catOrder = { 'style': 0, 'tools': 1, 'tool': 1, 'character_style': 2, 'concept': 3, 'character': 4, 'new': 5 };
+    const catOrder = { 'tools': 0, 'tool': 0, 'character_style': 1, 'style': 2, 'concept': 3, 'character': 4, 'new': 5 };
     const catEmoji = { 'character': '👤', 'character_style': '👤🎨', 'style': '🎨', 'concept': '💡', 'tools': '🔧', 'tool': '🔧', 'new': '🆕' };
     const catLabel = { 'character': '角色', 'character_style': '微调', 'style': '风格', 'concept': '概念', 'tools': '工具', 'tool': '工具', 'new': '新增' };
     const groups = {};

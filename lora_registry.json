@@ -3,6 +3,374 @@
   "updated": "2026-07-30",
   "loras": [
     {
+      "id": "age-slider",
+      "runware_air_id": "liangwc:age-slider@2962055",
+      "name": "Age Slider",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/lora-age-slider",
+      "trigger_words": [],
+      "tags": [
+        "body",
+        "age",
+        "slider",
+        "flux",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Age Slider — FLUX body type LoRA for adjusting apparent age of subjects.",
+      "base_model": "flux-dev",
+      "category": "tools",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
+    },
+    {
+      "id": "body-weight-slider",
+      "runware_air_id": "liangwc:body-weight-slider@3013455",
+      "name": "Body Weight Slider",
+      "file": "",
+      "url": "https://huggingface.co/liangwc25/lora-body-weight-slider",
+      "trigger_words": [],
+      "tags": [
+        "body",
+        "weight",
+        "slender",
+        "flux",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "Body Weight Slider - Non Face Changing [FLUX] - adjust body shape without affecting face. Flux.1 D base.",
+      "base_model": "flux-dev",
+      "category": "tools",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-18: Runware uploaded ✅"
+    },
+    {
+      "id": "flux_663135_932482",
+      "runware_air_id": "liangwc:flux_663135_932482@932482",
+      "name": "Breast Size Slider (FLUX)",
+      "url": "https://civitai.com/models/663135",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "tools",
+      "nsfw": false
+    },
+    {
+      "id": "flux_730405_831470",
+      "runware_air_id": "liangwc:flux_730405_831470@831470",
+      "name": "Remove Clothing Censors",
+      "url": "https://civitai.com/models/730405",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "tools",
+      "nsfw": false
+    },
+    {
+      "id": "flux_649568_726726",
+      "runware_air_id": "liangwc:flux_649568_726726@726726",
+      "name": "Asian Pubic Hair FLUX",
+      "url": "https://civitai.com/models/649568",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "virgin-killer-sweater-flux",
+      "runware_air_id": "liangwc:virgin-killer-sweater-flux@1926677",
+      "name": "Backwards Virgin Killer Sweater (FLUX)",
+      "url": "https://civitai.com/models/1702449",
+      "tags": [
+        "flux",
+        "outfit",
+        "sweater",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "chinese-lingerie",
+      "runware_air_id": "liangwc:chinese-lingerie@1",
+      "name": "Chinese Lingerie 中式露奶内衣",
+      "url": "https://civitai.com/models/996854",
+      "tags": [
+        "flux",
+        "chinese",
+        "lingerie",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "chinese-zombie",
+      "runware_air_id": "liangwc:chinese-zombie@1",
+      "name": "Chinese Zombie Costume 丐版大清国僵尸服",
+      "url": "https://civitai.com/models/866223",
+      "tags": [
+        "flux",
+        "chinese",
+        "zombie",
+        "costume",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "vagina-hq",
+      "runware_air_id": "liangwc:vagina-hq@935742",
+      "name": "Detailed Woman Genitals (FLUX)",
+      "url": "https://civitai.com/models/796605",
+      "tags": [
+        "flux",
+        "nsfw",
+        "anatomy",
+        "runware-uploaded"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.3,
+        0.8
+      ],
+      "description": "仅 19MB / dim=2 — FLUX 女性器官细节 LoRA。专门用于添加 vagina/labia，不带写实风格 bias。AIR: liangwc:vagina-hq@935742",
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true,
+      "incompatible_with": [],
+      "notes": "2026-07-05 上传验证。堆叠风格 LoRA + NSFW MASTER 0.5 时用此加器官细节。19MB dim=2 不会压风格。单独使用时 FLUX 会取巧遮挡。"
+    },
+    {
+      "id": "dw-doll-flux",
+      "runware_air_id": "liangwc:dw-doll-flux@925355",
+      "name": "DW Chinese Doll Flux",
+      "url": "https://civitai.com/models/825160",
+      "tags": [
+        "flux",
+        "concept",
+        "chinese",
+        "doll",
+        "dw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false,
+      "description": "DW Digital Warlock Chinese Doll Likeliness — Flux"
+    },
+    {
+      "id": "eastmix-asian-face",
+      "runware_air_id": "liangwc:eastmix-asian-face@1390428",
+      "name": "Eastmix Asian Girl Face",
+      "url": "https://civitai.com/models/1233843",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-heroine",
+      "runware_air_id": "liangwc:chinese-heroine@1",
+      "name": "Flux Ancient Chinese Heroine Long Skirt",
+      "url": "https://civitai.com/models/791438",
+      "tags": [
+        "flux",
+        "chinese",
+        "heroine",
+        "long-skirt",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": true
+    },
+    {
+      "id": "kolors-asian-face-flux",
+      "runware_air_id": "civitai:730162@823089",
+      "name": "Kolors style Asian face for Flux1 dev",
+      "url": "https://civitai.com/models/730162",
+      "tags": [
+        "flux",
+        "asian",
+        "face",
+        "kolors",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_713498_819961",
+      "runware_air_id": "liangwc:flux_713498_819961@819961",
+      "name": "Korean Doll Face FLUX",
+      "url": "https://civitai.com/models/713498",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "naked-cherry-blossoms-flux",
+      "runware_air_id": "liangwc:naked-cherry-blossoms@1819867",
+      "name": "Naked Cherry Blossoms (FLUX)",
+      "url": "https://civitai.com/models/1608142",
+      "tags": [
+        "flux",
+        "nature",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "flux_990976_1110224",
+      "runware_air_id": "liangwc:flux_990976_1110224@1110224",
+      "name": "Realistic Male Dick FLUX",
+      "url": "https://civitai.com/models/990976",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "seashell-bikini",
+      "runware_air_id": "liangwc:seashell-bikini@1948245",
+      "name": "Seashell Bikini",
+      "url": "https://civitai.com/models/1721575",
+      "tags": [
+        "flux",
+        "concept"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "zyd-chinese-girl-flux",
+      "runware_air_id": "liangwc:zyd-chinese-girl-flux@2084379",
+      "name": "zyd232 Chinese Girl FLUX",
+      "url": "https://civitai.com/models/779099",
+      "tags": [
+        "flux",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "flux-dev",
+      "category": "character_style",
+      "nsfw": false
+    },
+    {
       "id": "lora3-3d-campus-girl",
       "runware_air_id": "liangwc:lora3@1711467",
       "name": "3D campus girl (lora3)",
@@ -203,333 +571,6 @@
       ],
       "base_model": "flux-dev",
       "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "age-slider",
-      "runware_air_id": "liangwc:age-slider@2962055",
-      "name": "Age Slider",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/lora-age-slider",
-      "trigger_words": [],
-      "tags": [
-        "body",
-        "age",
-        "slider",
-        "flux",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Age Slider — FLUX body type LoRA for adjusting apparent age of subjects.",
-      "base_model": "flux-dev",
-      "category": "tools",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
-    },
-    {
-      "id": "body-weight-slider",
-      "runware_air_id": "liangwc:body-weight-slider@3013455",
-      "name": "Body Weight Slider",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/lora-body-weight-slider",
-      "trigger_words": [],
-      "tags": [
-        "body",
-        "weight",
-        "slender",
-        "flux",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Body Weight Slider - Non Face Changing [FLUX] - adjust body shape without affecting face. Flux.1 D base.",
-      "base_model": "flux-dev",
-      "category": "tools",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-18: Runware uploaded ✅"
-    },
-    {
-      "id": "flux_663135_932482",
-      "runware_air_id": "liangwc:flux_663135_932482@932482",
-      "name": "Breast Size Slider (FLUX)",
-      "url": "https://civitai.com/models/663135",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "tools",
-      "nsfw": false
-    },
-    {
-      "id": "flux_730405_831470",
-      "runware_air_id": "liangwc:flux_730405_831470@831470",
-      "name": "Remove Clothing Censors",
-      "url": "https://civitai.com/models/730405",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "tools",
-      "nsfw": false
-    },
-    {
-      "id": "flux_649568_726726",
-      "runware_air_id": "liangwc:flux_649568_726726@726726",
-      "name": "Asian Pubic Hair FLUX",
-      "url": "https://civitai.com/models/649568",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "chinese-lingerie",
-      "runware_air_id": "liangwc:chinese-lingerie@1",
-      "name": "Chinese Lingerie 中式露奶内衣",
-      "url": "https://civitai.com/models/996854",
-      "tags": [
-        "flux",
-        "chinese",
-        "lingerie",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "chinese-zombie",
-      "runware_air_id": "liangwc:chinese-zombie@1",
-      "name": "Chinese Zombie Costume 丐版大清国僵尸服",
-      "url": "https://civitai.com/models/866223",
-      "tags": [
-        "flux",
-        "chinese",
-        "zombie",
-        "costume",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "vagina-hq",
-      "runware_air_id": "liangwc:vagina-hq@935742",
-      "name": "Detailed Woman Genitals (FLUX)",
-      "url": "https://civitai.com/models/796605",
-      "tags": [
-        "flux",
-        "nsfw",
-        "anatomy",
-        "runware-uploaded"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.3,
-        0.8
-      ],
-      "description": "仅 19MB / dim=2 — FLUX 女性器官细节 LoRA。专门用于添加 vagina/labia，不带写实风格 bias。AIR: liangwc:vagina-hq@935742",
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-05 上传验证。堆叠风格 LoRA + NSFW MASTER 0.5 时用此加器官细节。19MB dim=2 不会压风格。单独使用时 FLUX 会取巧遮挡。"
-    },
-    {
-      "id": "dw-doll-flux",
-      "runware_air_id": "liangwc:dw-doll-flux@925355",
-      "name": "DW Chinese Doll Flux",
-      "url": "https://civitai.com/models/825160",
-      "tags": [
-        "flux",
-        "concept",
-        "chinese",
-        "doll",
-        "dw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "description": "DW Digital Warlock Chinese Doll Likeliness — Flux"
-    },
-    {
-      "id": "eastmix-asian-face",
-      "runware_air_id": "liangwc:eastmix-asian-face@1390428",
-      "name": "Eastmix Asian Girl Face",
-      "url": "https://civitai.com/models/1233843",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "chinese-heroine",
-      "runware_air_id": "liangwc:chinese-heroine@1",
-      "name": "Flux Ancient Chinese Heroine Long Skirt",
-      "url": "https://civitai.com/models/791438",
-      "tags": [
-        "flux",
-        "chinese",
-        "heroine",
-        "long-skirt",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "kolors-asian-face-flux",
-      "runware_air_id": "civitai:730162@823089",
-      "name": "Kolors style Asian face for Flux1 dev",
-      "url": "https://civitai.com/models/730162",
-      "tags": [
-        "flux",
-        "asian",
-        "face",
-        "kolors",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "flux_713498_819961",
-      "runware_air_id": "liangwc:flux_713498_819961@819961",
-      "name": "Korean Doll Face FLUX",
-      "url": "https://civitai.com/models/713498",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "flux_990976_1110224",
-      "runware_air_id": "liangwc:flux_990976_1110224@1110224",
-      "name": "Realistic Male Dick FLUX",
-      "url": "https://civitai.com/models/990976",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "seashell-bikini",
-      "runware_air_id": "liangwc:seashell-bikini@1948245",
-      "name": "Seashell Bikini",
-      "url": "https://civitai.com/models/1721575",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false
-    },
-    {
-      "id": "zyd-chinese-girl-flux",
-      "runware_air_id": "liangwc:zyd-chinese-girl-flux@2084379",
-      "name": "zyd232 Chinese Girl FLUX",
-      "url": "https://civitai.com/models/779099",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
       "nsfw": false
     },
     {
@@ -991,6 +1032,27 @@
       "nsfw": false
     },
     {
+      "id": "pan-jinlian-flux",
+      "runware_air_id": "liangwc:pan-jinlian@986129",
+      "name": "Pan Jinlian Hanfu (FLUX)",
+      "url": "https://civitai.com/models/880938",
+      "tags": [
+        "flux",
+        "chinese",
+        "hanfu",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "character",
+      "nsfw": true
+    },
+    {
       "id": "yannin-lora",
       "runware_air_id": "liangwc:yannin-lora@1",
       "name": "Su Yanning (苏砚宁) V2",
@@ -1139,167 +1201,6 @@
       "nsfw": false,
       "incompatible_with": [],
       "notes": "2026-07-16: first run on Replicate, rank 16, 1000 steps."
-    },
-    {
-      "id": "detail-enhancer-pony",
-      "runware_air_id": "liangwc:detail-enhancer-pony@1719171",
-      "name": "Detail Enhancer Pony",
-      "url": "https://civitai.com/models/1450571",
-      "tags": [
-        "pony",
-        "concept",
-        "enhancer"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "dw-doll-pony",
-      "runware_air_id": "liangwc:dw-doll-pony@922756",
-      "name": "DW Chinese Doll Pony",
-      "url": "https://civitai.com/models/825160",
-      "tags": [
-        "pony",
-        "concept",
-        "chinese",
-        "doll",
-        "dw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false,
-      "description": "DW Digital Warlock Chinese Doll Likeliness — Pony"
-    },
-    {
-      "id": "expressive-h",
-      "runware_air_id": "liangwc:expressive-h@382152",
-      "name": "ExpressiveH (Hentai LoRA Style)",
-      "url": "https://civitai.com/models/341353",
-      "tags": [
-        "pony",
-        "style",
-        "hen",
-        "nsfw"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": true
-    },
-    {
-      "id": "geekpower-styles",
-      "runware_air_id": "liangwc:geekpower-styles@354128",
-      "name": "Geekpower AI Styles",
-      "url": "https://civitai.com/models/315703",
-      "tags": [
-        "pony",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "gothic-detail-enhancer-pony",
-      "runware_air_id": "liangwc:gothic-detail-enhancer@1672292",
-      "name": "Gothic Detail Enhancer (Pony)",
-      "url": "https://civitai.com/models/1478407",
-      "tags": [
-        "pony",
-        "concept",
-        "enhancer",
-        "gothic"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "gothic-retro-anime",
-      "runware_air_id": "liangwc:gothic-retro-anime@501154",
-      "name": "Gothic Retro Anime",
-      "url": "https://civitai.com/models/888235",
-      "tags": [
-        "pony",
-        "style",
-        "anime"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false,
-      "notes": "鹿鹿常用。Runware AIR verified ✅"
-    },
-    {
-      "id": "gufeng",
-      "runware_air_id": "liangwc:gufeng@954662",
-      "name": "Gufeng / 古风 / 国风",
-      "url": "https://civitai.com/models/853112",
-      "tags": [
-        "pony",
-        "style",
-        "chinese"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false,
-      "notes": "古风/国风 style"
-    },
-    {
-      "id": "shiny-nai-pony",
-      "runware_air_id": "liangwc:shiny-nai-pony@691705",
-      "name": "Shiny Nai style Pony",
-      "url": "https://civitai.com/models/618752",
-      "tags": [
-        "pony",
-        "concept",
-        "shiny",
-        "nai",
-        "style"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "style",
-      "nsfw": false,
-      "description": "Shiny Nai style — Pony"
     },
     {
       "id": "age-slider",
@@ -1798,6 +1699,167 @@
       "category": "character_style",
       "nsfw": true,
       "description": "淫紋/pub tattoo — Pony base"
+    },
+    {
+      "id": "detail-enhancer-pony",
+      "runware_air_id": "liangwc:detail-enhancer-pony@1719171",
+      "name": "Detail Enhancer Pony",
+      "url": "https://civitai.com/models/1450571",
+      "tags": [
+        "pony",
+        "concept",
+        "enhancer"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "dw-doll-pony",
+      "runware_air_id": "liangwc:dw-doll-pony@922756",
+      "name": "DW Chinese Doll Pony",
+      "url": "https://civitai.com/models/825160",
+      "tags": [
+        "pony",
+        "concept",
+        "chinese",
+        "doll",
+        "dw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false,
+      "description": "DW Digital Warlock Chinese Doll Likeliness — Pony"
+    },
+    {
+      "id": "expressive-h",
+      "runware_air_id": "liangwc:expressive-h@382152",
+      "name": "ExpressiveH (Hentai LoRA Style)",
+      "url": "https://civitai.com/models/341353",
+      "tags": [
+        "pony",
+        "style",
+        "hen",
+        "nsfw"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": true
+    },
+    {
+      "id": "geekpower-styles",
+      "runware_air_id": "liangwc:geekpower-styles@354128",
+      "name": "Geekpower AI Styles",
+      "url": "https://civitai.com/models/315703",
+      "tags": [
+        "pony",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "gothic-detail-enhancer-pony",
+      "runware_air_id": "liangwc:gothic-detail-enhancer@1672292",
+      "name": "Gothic Detail Enhancer (Pony)",
+      "url": "https://civitai.com/models/1478407",
+      "tags": [
+        "pony",
+        "concept",
+        "enhancer",
+        "gothic"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "gothic-retro-anime",
+      "runware_air_id": "liangwc:gothic-retro-anime@501154",
+      "name": "Gothic Retro Anime",
+      "url": "https://civitai.com/models/888235",
+      "tags": [
+        "pony",
+        "style",
+        "anime"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false,
+      "notes": "鹿鹿常用。Runware AIR verified ✅"
+    },
+    {
+      "id": "gufeng",
+      "runware_air_id": "liangwc:gufeng@954662",
+      "name": "Gufeng / 古风 / 国风",
+      "url": "https://civitai.com/models/853112",
+      "tags": [
+        "pony",
+        "style",
+        "chinese"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false,
+      "notes": "古风/国风 style"
+    },
+    {
+      "id": "shiny-nai-pony",
+      "runware_air_id": "liangwc:shiny-nai-pony@691705",
+      "name": "Shiny Nai style Pony",
+      "url": "https://civitai.com/models/618752",
+      "tags": [
+        "pony",
+        "concept",
+        "shiny",
+        "nai",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "style",
+      "nsfw": false,
+      "description": "Shiny Nai style — Pony"
     },
     {
       "id": "adjusting-clothes",
@@ -2431,372 +2493,6 @@
       "category": "character",
       "nsfw": false,
       "description": "拳拳 v64 — SeaArt Pony Diffusion V6 XL训练, rank 32"
-    },
-    {
-      "id": "ccs-chinese-fantasy",
-      "runware_air_id": "liangwc:ccs-chinese-fantasy@1606488",
-      "name": "CC's Chinese Fantasy",
-      "url": "https://civitai.com/models/1373599",
-      "tags": [
-        "illustrious",
-        "concept",
-        "chinese",
-        "fantasy"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false,
-      "description": "CC's Chinese Fantasy — Illustrious"
-    },
-    {
-      "id": "detail-enhancer-ill",
-      "runware_air_id": "liangwc:detail-enhancer-ill@1983243",
-      "name": "Detail Enhancer IL",
-      "url": "https://civitai.com/models/1450571",
-      "tags": [
-        "illustrious",
-        "concept",
-        "enhancer"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "dramatic-lighting",
-      "runware_air_id": "liangwc:dramatic-lighting@2610246",
-      "name": "Dramatic Lighting & Realism Enhancer",
-      "url": "https://civitai.com/models/2250412",
-      "tags": [
-        "illustrious",
-        "concept",
-        "lighting"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "extreme-detailed",
-      "runware_air_id": "liangwc:moon-phase-yao@2569127",
-      "name": "Extreme Detailed",
-      "url": "https://civitai.com/models/2282704",
-      "tags": [
-        "illustrious",
-        "concept",
-        "enhancer"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "gufeng-ill",
-      "runware_air_id": "liangwc:gufeng-ill@2748805",
-      "name": "Gufeng/国风/仙子 (Illustrious)",
-      "url": "https://civitai.com/models/2444773",
-      "tags": [
-        "illustrious",
-        "style",
-        "chinese"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.4,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "guo-feng-face",
-      "runware_air_id": "liangwc:guo-feng-face@2244520",
-      "name": "Guo Feng Face (国风脸)",
-      "url": "https://civitai.com/models/1982867",
-      "tags": [
-        "illustrious",
-        "character",
-        "face",
-        "chinese"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.5,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "horror-anime-style",
-      "runware_air_id": "liangwc:horror-anime-style@2162008",
-      "name": "Horror Anime Style",
-      "url": "https://civitai.com/models/848136",
-      "tags": [
-        "illustrious",
-        "style",
-        "horror"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "hyperrealistic",
-      "runware_air_id": "liangwc:hyperrealistic@1914557",
-      "name": "Hyperrealistic",
-      "url": "https://civitai.com/models/626603",
-      "tags": [
-        "illustrious",
-        "concept",
-        "enhancer"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.2,
-        0.8
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "ink-wash-il",
-      "runware_air_id": "liangwc:ink-wash-il@2784911",
-      "name": "Ink Wash IL V1.0",
-      "url": "https://civitai.com/models/2477012",
-      "tags": [
-        "illustrious",
-        "style",
-        "ink",
-        "水墨"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false,
-      "description": "Ink wash painting style for Illustrious — 水墨风格"
-    },
-    {
-      "id": "gothic-niji-style",
-      "runware_air_id": "liangwc:gothic-niji-style@2498503",
-      "name": "MoriiMee Gothic Niji Style",
-      "url": "https://civitai.com/models/915918",
-      "tags": [
-        "illustrious",
-        "style",
-        "gothic"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "niji-goth-style",
-      "runware_air_id": "liangwc:niji-goth-style@1896419",
-      "name": "Niji Goth Style",
-      "url": "https://civitai.com/models/1675502",
-      "tags": [
-        "illustrious",
-        "style",
-        "gothic"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": true
-    },
-    {
-      "id": "niji-semi-realistic",
-      "runware_air_id": "liangwc:niji-semi-realistic@2903425",
-      "name": "Niji Semi-Realistic",
-      "url": "https://civitai.com/models/2584434",
-      "tags": [
-        "illustrious",
-        "style"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": true
-    },
-    {
-      "id": "realistic-anime-style-v1",
-      "runware_air_id": "liangwc:waner-v1@595948",
-      "name": "Realistic Anime Style (SDXL)",
-      "url": "https://civitai.com/models/536084",
-      "tags": [
-        "illustrious",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "realistic-filter",
-      "runware_air_id": "liangwc:realistic-filter@1124771",
-      "name": "Realistic Filter [IL]",
-      "url": "https://civitai.com/models/1003513",
-      "tags": [
-        "illustrious",
-        "style"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "shiny-nai-il",
-      "runware_air_id": "liangwc:shiny-nai-il@2786889",
-      "name": "Shiny Nai style ILXL",
-      "url": "https://civitai.com/models/618752",
-      "tags": [
-        "illustrious",
-        "concept",
-        "shiny",
-        "nai",
-        "style"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false,
-      "description": "Shiny Nai style — Illustrious"
-    },
-    {
-      "id": "trex-studio-style",
-      "runware_air_id": "liangwc:trex-studio-style@1804885",
-      "name": "T-Rex Studio V2 Style",
-      "url": "https://civitai.com/models/960593",
-      "tags": [
-        "illustrious",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "hk-comic-style-jinyong",
-      "runware_air_id": "liangwc:hk-comic-style-jinyong@2164436",
-      "name": "港漫风·金庸 (黄玉郎/邱福龙)",
-      "url": "https://civitai.com/models/1912298",
-      "tags": [
-        "illustrious",
-        "style",
-        "guoman"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "dynasty-warriors-style",
-      "runware_air_id": "liangwc:dynasty-warriors-style@3045074",
-      "name": "真三国无双8 Artist Style",
-      "url": "https://civitai.com/models/2710670",
-      "tags": [
-        "illustrious",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "modern-chinese-painting-il",
-      "runware_air_id": "liangwc:modern-chinese-painting-il@2231812",
-      "name": "近现代国画风格 (Illustrious)",
-      "url": "https://civitai.com/models/1971776",
-      "tags": [
-        "illustrious",
-        "style",
-        "chinese-painting",
-        "国画"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false,
-      "description": "Modern Chinese painting style for Illustrious"
     },
     {
       "id": "age-slider-ill",
@@ -3646,6 +3342,372 @@
       "category": "character_style",
       "nsfw": true,
       "description": "淫紋/pub tattoo — Illustrious base"
+    },
+    {
+      "id": "ccs-chinese-fantasy",
+      "runware_air_id": "liangwc:ccs-chinese-fantasy@1606488",
+      "name": "CC's Chinese Fantasy",
+      "url": "https://civitai.com/models/1373599",
+      "tags": [
+        "illustrious",
+        "concept",
+        "chinese",
+        "fantasy"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false,
+      "description": "CC's Chinese Fantasy — Illustrious"
+    },
+    {
+      "id": "detail-enhancer-ill",
+      "runware_air_id": "liangwc:detail-enhancer-ill@1983243",
+      "name": "Detail Enhancer IL",
+      "url": "https://civitai.com/models/1450571",
+      "tags": [
+        "illustrious",
+        "concept",
+        "enhancer"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "dramatic-lighting",
+      "runware_air_id": "liangwc:dramatic-lighting@2610246",
+      "name": "Dramatic Lighting & Realism Enhancer",
+      "url": "https://civitai.com/models/2250412",
+      "tags": [
+        "illustrious",
+        "concept",
+        "lighting"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "extreme-detailed",
+      "runware_air_id": "liangwc:moon-phase-yao@2569127",
+      "name": "Extreme Detailed",
+      "url": "https://civitai.com/models/2282704",
+      "tags": [
+        "illustrious",
+        "concept",
+        "enhancer"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "gufeng-ill",
+      "runware_air_id": "liangwc:gufeng-ill@2748805",
+      "name": "Gufeng/国风/仙子 (Illustrious)",
+      "url": "https://civitai.com/models/2444773",
+      "tags": [
+        "illustrious",
+        "style",
+        "chinese"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.4,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "guo-feng-face",
+      "runware_air_id": "liangwc:guo-feng-face@2244520",
+      "name": "Guo Feng Face (国风脸)",
+      "url": "https://civitai.com/models/1982867",
+      "tags": [
+        "illustrious",
+        "character",
+        "face",
+        "chinese"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.5,
+        1.0
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "horror-anime-style",
+      "runware_air_id": "liangwc:horror-anime-style@2162008",
+      "name": "Horror Anime Style",
+      "url": "https://civitai.com/models/848136",
+      "tags": [
+        "illustrious",
+        "style",
+        "horror"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "hyperrealistic",
+      "runware_air_id": "liangwc:hyperrealistic@1914557",
+      "name": "Hyperrealistic",
+      "url": "https://civitai.com/models/626603",
+      "tags": [
+        "illustrious",
+        "concept",
+        "enhancer"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.2,
+        0.8
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "ink-wash-il",
+      "runware_air_id": "liangwc:ink-wash-il@2784911",
+      "name": "Ink Wash IL V1.0",
+      "url": "https://civitai.com/models/2477012",
+      "tags": [
+        "illustrious",
+        "style",
+        "ink",
+        "水墨"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false,
+      "description": "Ink wash painting style for Illustrious — 水墨风格"
+    },
+    {
+      "id": "gothic-niji-style",
+      "runware_air_id": "liangwc:gothic-niji-style@2498503",
+      "name": "MoriiMee Gothic Niji Style",
+      "url": "https://civitai.com/models/915918",
+      "tags": [
+        "illustrious",
+        "style",
+        "gothic"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "niji-goth-style",
+      "runware_air_id": "liangwc:niji-goth-style@1896419",
+      "name": "Niji Goth Style",
+      "url": "https://civitai.com/models/1675502",
+      "tags": [
+        "illustrious",
+        "style",
+        "gothic"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": true
+    },
+    {
+      "id": "niji-semi-realistic",
+      "runware_air_id": "liangwc:niji-semi-realistic@2903425",
+      "name": "Niji Semi-Realistic",
+      "url": "https://civitai.com/models/2584434",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": true
+    },
+    {
+      "id": "realistic-anime-style-v1",
+      "runware_air_id": "liangwc:waner-v1@595948",
+      "name": "Realistic Anime Style (SDXL)",
+      "url": "https://civitai.com/models/536084",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "realistic-filter",
+      "runware_air_id": "liangwc:realistic-filter@1124771",
+      "name": "Realistic Filter [IL]",
+      "url": "https://civitai.com/models/1003513",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "shiny-nai-il",
+      "runware_air_id": "liangwc:shiny-nai-il@2786889",
+      "name": "Shiny Nai style ILXL",
+      "url": "https://civitai.com/models/618752",
+      "tags": [
+        "illustrious",
+        "concept",
+        "shiny",
+        "nai",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false,
+      "description": "Shiny Nai style — Illustrious"
+    },
+    {
+      "id": "trex-studio-style",
+      "runware_air_id": "liangwc:trex-studio-style@1804885",
+      "name": "T-Rex Studio V2 Style",
+      "url": "https://civitai.com/models/960593",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "hk-comic-style-jinyong",
+      "runware_air_id": "liangwc:hk-comic-style-jinyong@2164436",
+      "name": "港漫风·金庸 (黄玉郎/邱福龙)",
+      "url": "https://civitai.com/models/1912298",
+      "tags": [
+        "illustrious",
+        "style",
+        "guoman"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "dynasty-warriors-style",
+      "runware_air_id": "liangwc:dynasty-warriors-style@3045074",
+      "name": "真三国无双8 Artist Style",
+      "url": "https://civitai.com/models/2710670",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.6,
+      "scale_range": [
+        0.3,
+        0.9
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "modern-chinese-painting-il",
+      "runware_air_id": "liangwc:modern-chinese-painting-il@2231812",
+      "name": "近现代国画风格 (Illustrious)",
+      "url": "https://civitai.com/models/1971776",
+      "tags": [
+        "illustrious",
+        "style",
+        "chinese-painting",
+        "国画"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "style",
+      "nsfw": false,
+      "description": "Modern Chinese painting style for Illustrious"
     },
     {
       "id": "pov-footworship",
@@ -5128,175 +5190,6 @@
       "nsfw": false
     },
     {
-      "id": "detail-enhancer-sdxl",
-      "runware_air_id": "civitai:162967@183635",
-      "name": "Detail Enhancer (SDXL)",
-      "url": "https://civitai.com/models/162967",
-      "tags": [
-        "sdxl",
-        "enhancer",
-        "detail"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.1,
-        1.0
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": false,
-      "description": "SDXL detail enhancer — enhance texture/sharpness"
-    },
-    {
-      "id": "ink-wash-sdxl",
-      "runware_air_id": "liangwc:ink-wash-sdxl@1521933",
-      "name": "Ink - Wash style SDXL",
-      "url": "https://civitai.com/models/1347466",
-      "tags": [
-        "sdxl",
-        "style",
-        "ink",
-        "水墨"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": false,
-      "description": "Ink wash painting style — SDXL base"
-    },
-    {
-      "id": "photorealistic-slider-sdxl",
-      "runware_air_id": "civitai:117060@126807",
-      "name": "Photorealistic Slider SDXL",
-      "url": "https://civitai.com/models/117060",
-      "tags": [
-        "sdxl",
-        "slider",
-        "style",
-        "photorealistic"
-      ],
-      "default_scale": 0.5,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": false,
-      "description": "Photorealistic slider — adjust toward realism"
-    },
-    {
-      "id": "pornmaster-chinese-style",
-      "runware_air_id": "liangwc:pornmaster-chinese-style@2435259",
-      "name": "PornMaster-中国风/汉服",
-      "url": "https://civitai.com/models/475960",
-      "tags": [
-        "sdxl",
-        "style",
-        "chinese",
-        "hanfu",
-        "nsfw"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.3,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": true,
-      "description": "PornMaster NSFW 中国风/汉服/角色扮演 style LoRA"
-    },
-    {
-      "id": "guofeng-q",
-      "runware_air_id": "liangwc:guofeng-q@616971",
-      "name": "国风Q版 Chinese Q-version",
-      "url": "https://civitai.com/models/554376",
-      "tags": [
-        "sdxl",
-        "concept",
-        "q-version",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": false,
-      "description": "国风Q版 — SDXL 1.0"
-    },
-    {
-      "id": "guofeng-shaonv",
-      "runware_air_id": "liangwc:guofeng-shaonv@226403",
-      "name": "国风少女系列 Chinese-style girl",
-      "url": "https://civitai.com/models/201159",
-      "tags": [
-        "sdxl",
-        "concept",
-        "chinese",
-        "girl"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": false,
-      "description": "国风少女系列 Traditional Chinese-style girl — SDXL 1.0"
-    },
-    {
-      "id": "guofeng-chahua",
-      "runware_air_id": "liangwc:guofeng-chahua@130709",
-      "name": "国风插画 Chinese style illustration",
-      "url": "https://civitai.com/models/120206",
-      "tags": [
-        "sdxl",
-        "concept",
-        "illustration",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": false,
-      "description": "国风插画 — SDXL 1.0 (325MB)"
-    },
-    {
-      "id": "guofeng-mengwan",
-      "runware_air_id": "liangwc:guofeng-mengwan@170956",
-      "name": "国风萌玩 Chinese style cute doll",
-      "url": "https://civitai.com/models/152738",
-      "tags": [
-        "sdxl",
-        "concept",
-        "cute",
-        "doll",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sdxl",
-      "category": "style",
-      "nsfw": false,
-      "description": "国风萌玩 Chinese style cute doll — SDXL 1.0"
-    },
-    {
       "id": "undress-striptease",
       "runware_air_id": "liangwc:undress-striptease@419214",
       "name": "undress | striptease slider",
@@ -5468,6 +5361,175 @@
       "description": "淫紋/pub tattoo — SDXL base"
     },
     {
+      "id": "detail-enhancer-sdxl",
+      "runware_air_id": "civitai:162967@183635",
+      "name": "Detail Enhancer (SDXL)",
+      "url": "https://civitai.com/models/162967",
+      "tags": [
+        "sdxl",
+        "enhancer",
+        "detail"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.1,
+        1.0
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "SDXL detail enhancer — enhance texture/sharpness"
+    },
+    {
+      "id": "ink-wash-sdxl",
+      "runware_air_id": "liangwc:ink-wash-sdxl@1521933",
+      "name": "Ink - Wash style SDXL",
+      "url": "https://civitai.com/models/1347466",
+      "tags": [
+        "sdxl",
+        "style",
+        "ink",
+        "水墨"
+      ],
+      "default_scale": 0.7,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "Ink wash painting style — SDXL base"
+    },
+    {
+      "id": "photorealistic-slider-sdxl",
+      "runware_air_id": "civitai:117060@126807",
+      "name": "Photorealistic Slider SDXL",
+      "url": "https://civitai.com/models/117060",
+      "tags": [
+        "sdxl",
+        "slider",
+        "style",
+        "photorealistic"
+      ],
+      "default_scale": 0.5,
+      "scale_range": [
+        0.0,
+        1.5
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "Photorealistic slider — adjust toward realism"
+    },
+    {
+      "id": "pornmaster-chinese-style",
+      "runware_air_id": "liangwc:pornmaster-chinese-style@2435259",
+      "name": "PornMaster-中国风/汉服",
+      "url": "https://civitai.com/models/475960",
+      "tags": [
+        "sdxl",
+        "style",
+        "chinese",
+        "hanfu",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.3,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": true,
+      "description": "PornMaster NSFW 中国风/汉服/角色扮演 style LoRA"
+    },
+    {
+      "id": "guofeng-q",
+      "runware_air_id": "liangwc:guofeng-q@616971",
+      "name": "国风Q版 Chinese Q-version",
+      "url": "https://civitai.com/models/554376",
+      "tags": [
+        "sdxl",
+        "concept",
+        "q-version",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "国风Q版 — SDXL 1.0"
+    },
+    {
+      "id": "guofeng-shaonv",
+      "runware_air_id": "liangwc:guofeng-shaonv@226403",
+      "name": "国风少女系列 Chinese-style girl",
+      "url": "https://civitai.com/models/201159",
+      "tags": [
+        "sdxl",
+        "concept",
+        "chinese",
+        "girl"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "国风少女系列 Traditional Chinese-style girl — SDXL 1.0"
+    },
+    {
+      "id": "guofeng-chahua",
+      "runware_air_id": "liangwc:guofeng-chahua@130709",
+      "name": "国风插画 Chinese style illustration",
+      "url": "https://civitai.com/models/120206",
+      "tags": [
+        "sdxl",
+        "concept",
+        "illustration",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "国风插画 — SDXL 1.0 (325MB)"
+    },
+    {
+      "id": "guofeng-mengwan",
+      "runware_air_id": "liangwc:guofeng-mengwan@170956",
+      "name": "国风萌玩 Chinese style cute doll",
+      "url": "https://civitai.com/models/152738",
+      "tags": [
+        "sdxl",
+        "concept",
+        "cute",
+        "doll",
+        "chinese"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "style",
+      "nsfw": false,
+      "description": "国风萌玩 Chinese style cute doll — SDXL 1.0"
+    },
+    {
       "id": "femboy-chinese",
       "runware_air_id": "liangwc:femboy-chinese@1079657",
       "name": "Femboy Chinese",
@@ -5508,48 +5570,6 @@
       "category": "concept",
       "nsfw": true,
       "description": "Undressing LoRA — progressive undress slider"
-    },
-    {
-      "id": "aesthetic-amateur-photo",
-      "runware_air_id": "liangwc:aesthetic-amateur-photo@1",
-      "name": "Aesthetic Amateur Photo",
-      "url": "https://civitai.com/models/689192",
-      "tags": [
-        "zimage",
-        "aesthetic",
-        "amateur",
-        "photo",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "style",
-      "nsfw": false
-    },
-    {
-      "id": "comic-book-tome1",
-      "runware_air_id": "liangwc:comic-book-tome1@1",
-      "name": "Comic Book Tome 1",
-      "url": "https://civitai.com/models/830230",
-      "tags": [
-        "zimage",
-        "comic",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "style",
-      "nsfw": false
     },
     {
       "id": "zit-breast-slider",
@@ -5654,6 +5674,48 @@
       ],
       "base_model": "zimage-turbo",
       "category": "character_style",
+      "nsfw": false
+    },
+    {
+      "id": "aesthetic-amateur-photo",
+      "runware_air_id": "liangwc:aesthetic-amateur-photo@1",
+      "name": "Aesthetic Amateur Photo",
+      "url": "https://civitai.com/models/689192",
+      "tags": [
+        "zimage",
+        "aesthetic",
+        "amateur",
+        "photo",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "comic-book-tome1",
+      "runware_air_id": "liangwc:comic-book-tome1@1",
+      "name": "Comic Book Tome 1",
+      "url": "https://civitai.com/models/830230",
+      "tags": [
+        "zimage",
+        "comic",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -5828,14 +5890,14 @@
       "nsfw": false
     },
     {
-      "id": "vivi-luvva-zit",
-      "runware_air_id": "liangwc:vivi-luvva@2669643",
-      "name": "Vivi Luvva (ZIT)",
-      "url": "https://civitai.com/models/1791202",
+      "id": "age-slider-zit",
+      "runware_air_id": "liangwc:age-slider@2846807",
+      "name": "Age Slider (ZIT)",
+      "url": "https://civitai.com/models/2533032",
       "tags": [
         "zimage",
-        "asian",
-        "character",
+        "slider",
+        "tool",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -5848,162 +5910,33 @@
       "nsfw": false
     },
     {
-      "id": "nexblend01-asian-zit",
-      "runware_air_id": "liangwc:nexblend01-asian@2836517",
-      "name": "NexBlend 01 Asian Realistic (ZIT)",
-      "url": "https://civitai.com/models/2523771",
+      "id": "age-slider-v2-zit",
+      "runware_air_id": "liangwc:age-slider-v2@2957021",
+      "name": "Age Slider V2 (ZIT)",
+      "url": "https://civitai.com/models/2633687",
       "tags": [
         "zimage",
-        "asian",
-        "realistic",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "angelcore-zit",
+      "runware_air_id": "liangwc:angelcore@2725554",
+      "name": "Angelcore (ZIT)",
+      "url": "https://civitai.com/models/2424184",
+      "tags": [
+        "zimage",
         "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "short-hair-asian-zit",
-      "runware_air_id": "liangwc:short-hair-asian@2736614",
-      "name": "Short Hair Asian (ZIT)",
-      "url": "https://civitai.com/models/2430763",
-      "tags": [
-        "zimage",
-        "asian",
-        "short-hair",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "lavender-hair-asian-zit",
-      "runware_air_id": "liangwc:lavender-hair-asian@2587195",
-      "name": "Lavender Hair Asian (ZIT)",
-      "url": "https://civitai.com/models/2299259",
-      "tags": [
-        "zimage",
-        "asian",
-        "lavender",
-        "hair",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "asian-milf-zit",
-      "runware_air_id": "liangwc:asian-milf@3062305",
-      "name": "ASIAN MILF (ZIT)",
-      "url": "https://civitai.com/models/2724636",
-      "tags": [
-        "zimage",
-        "asian",
-        "milf",
-        "character",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "hang-asian-baddie-zit",
-      "runware_air_id": "liangwc:hang-asian-baddie@2651712",
-      "name": "Hang Asian-American Baddie (ZIT)",
-      "url": "https://civitai.com/models/2357704",
-      "tags": [
-        "zimage",
-        "asian",
-        "baddie",
-        "character",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "nexblend05-asian-zit",
-      "runware_air_id": "liangwc:nexblend05-asian@2949870",
-      "name": "NexBlend 05 Asian Realistic (ZIT)",
-      "url": "https://civitai.com/models/2627379",
-      "tags": [
-        "zimage",
-        "asian",
-        "realistic",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "white-hair-asian-zit",
-      "runware_air_id": "liangwc:white-hair-asian@2893939",
-      "name": "White Hair Asian Woman (ZIT)",
-      "url": "https://civitai.com/models/2575824",
-      "tags": [
-        "zimage",
-        "asian",
-        "white-hair",
-        "character",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "virgin-killer-sweater-flux",
-      "runware_air_id": "liangwc:virgin-killer-sweater-flux@1926677",
-      "name": "Backwards Virgin Killer Sweater (FLUX)",
-      "url": "https://civitai.com/models/1702449",
-      "tags": [
-        "flux",
-        "outfit",
-        "sweater",
         "nsfw",
         "runware-verified"
       ],
@@ -6012,9 +5945,29 @@
         0.5,
         1.2
       ],
-      "base_model": "flux-dev",
+      "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "anime-style-zit",
+      "runware_air_id": "liangwc:anime-style@2540433",
+      "name": "Anime Style (ZIT)",
+      "url": "https://civitai.com/models/2186398",
+      "tags": [
+        "zimage",
+        "anime",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
     },
     {
       "id": "artificial-girl-zit",
@@ -6038,33 +5991,14 @@
       "nsfw": true
     },
     {
-      "id": "better-nudes-asians-zit",
-      "runware_air_id": "liangwc:better-nudes-asians@2886138",
-      "name": "Better Nudes - Asians (ZIT)",
-      "url": "https://civitai.com/models/2568592",
+      "id": "asian-milf-zit",
+      "runware_air_id": "liangwc:asian-milf@3062305",
+      "name": "ASIAN MILF (ZIT)",
+      "url": "https://civitai.com/models/2724636",
       "tags": [
         "zimage",
         "asian",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "naoe-shadowy-asian-zit",
-      "runware_air_id": "liangwc:naoe-shadowy-asian@2897771",
-      "name": "Naoe Shadowy Asian Baddie (ZIT)",
-      "url": "https://civitai.com/models/2579355",
-      "tags": [
-        "zimage",
-        "asian",
+        "milf",
         "character",
         "runware-verified"
       ],
@@ -6078,233 +6012,13 @@
       "nsfw": false
     },
     {
-      "id": "power-girl-dress-zit",
-      "runware_air_id": "liangwc:power-girl-dress@2475219",
-      "name": "Power Girl Dress (ZIT)",
-      "url": "https://civitai.com/models/2089731",
+      "id": "better-nudes-asians-zit",
+      "runware_air_id": "liangwc:better-nudes-asians@2886138",
+      "name": "Better Nudes - Asians (ZIT)",
+      "url": "https://civitai.com/models/2568592",
       "tags": [
         "zimage",
-        "outfit",
-        "dress",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "see-through-lingerie-zit",
-      "runware_air_id": "liangwc:see-through-lingerie@2910515",
-      "name": "See Through Lingerie V2 (ZIT)",
-      "url": "https://civitai.com/models/2169622",
-      "tags": [
-        "zimage",
-        "lingerie",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "see-through-swimsuit-zit",
-      "runware_air_id": "liangwc:see-through-swimsuit@2919216",
-      "name": "See Through Swimsuit V2 (ZIT)",
-      "url": "https://civitai.com/models/2235507",
-      "tags": [
-        "zimage",
-        "swimsuit",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "garbage-bag-outfit-zit",
-      "runware_air_id": "liangwc:garbage-bag-outfit@2496983",
-      "name": "Garbage Bag Outfit (ZIT)",
-      "url": "https://civitai.com/models/2217892",
-      "tags": [
-        "zimage",
-        "outfit",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "fishnet-outfit-zit",
-      "runware_air_id": "liangwc:fishnet-outfit@2563748",
-      "name": "Fishnet Outfit V2 (ZIT)",
-      "url": "https://civitai.com/models/2207960",
-      "tags": [
-        "zimage",
-        "fishnet",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "nipple-pokies-zit",
-      "runware_air_id": "liangwc:nipple-pokies@2493795",
-      "name": "Nipple Pokies (ZIT)",
-      "url": "https://civitai.com/models/2215040",
-      "tags": [
-        "zimage",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "radiant-realism-pro-zit",
-      "runware_air_id": "liangwc:radiant-realism-pro@2812128",
-      "name": "Radiant Realism Pro (ZIT)",
-      "url": "https://civitai.com/models/2395852",
-      "tags": [
-        "zimage",
-        "realistic",
-        "skin",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "detail-slider-zit",
-      "runware_air_id": "liangwc:detail-slider@2479992",
-      "name": "Detail Slider (ZIT)",
-      "url": "https://civitai.com/models/2202638",
-      "tags": [
-        "zimage",
-        "slider",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "anime-style-zit",
-      "runware_air_id": "liangwc:anime-style@2540433",
-      "name": "Anime Style (ZIT)",
-      "url": "https://civitai.com/models/2186398",
-      "tags": [
-        "zimage",
-        "anime",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "age-slider-zit",
-      "runware_air_id": "liangwc:age-slider@2846807",
-      "name": "Age Slider (ZIT)",
-      "url": "https://civitai.com/models/2533032",
-      "tags": [
-        "zimage",
-        "slider",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "lowrise-highwaist-zit",
-      "runware_air_id": "liangwc:lowrise-highwaist@2846961",
-      "name": "Low-rise/High-waist Slider (ZIT)",
-      "url": "https://civitai.com/models/2527341",
-      "tags": [
-        "zimage",
-        "slider",
-        "outfit",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "upskirt-view-zit",
-      "runware_air_id": "liangwc:upskirt-view@2536452",
-      "name": "Upskirt View (ZIT)",
-      "url": "https://civitai.com/models/2253206",
-      "tags": [
-        "zimage",
+        "asian",
         "nsfw",
         "runware-verified"
       ],
@@ -6336,45 +6050,6 @@
       "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": true
-    },
-    {
-      "id": "lifting-clothing-mouth-zit",
-      "runware_air_id": "liangwc:lifting-clothing-mouth@2607934",
-      "name": "Lifting Clothing With Mouth (ZIT)",
-      "url": "https://civitai.com/models/1621208",
-      "tags": [
-        "zimage",
-        "outfit",
-        "pose",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "bondage-chair-flux",
-      "runware_air_id": "liangwc:bondage-chair@1891533",
-      "name": "Bondage Chair (FLUX)",
-      "url": "https://civitai.com/models/1671167",
-      "tags": [
-        "flux",
-        "bondage",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "new",
-      "nsfw": false
     },
     {
       "id": "breasts-clamp-zit",
@@ -6417,14 +6092,14 @@
       "nsfw": true
     },
     {
-      "id": "clothes-explosion-flux",
-      "runware_air_id": "liangwc:clothes-explosion@1880813",
-      "name": "Clothes Explosion (FLUX)",
-      "url": "https://civitai.com/models/1661706",
+      "id": "detail-slider-zit",
+      "runware_air_id": "liangwc:detail-slider@2479992",
+      "name": "Detail Slider (ZIT)",
+      "url": "https://civitai.com/models/2202638",
       "tags": [
-        "flux",
-        "outfit",
-        "style",
+        "zimage",
+        "slider",
+        "tool",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -6432,219 +6107,99 @@
         0.5,
         1.2
       ],
-      "base_model": "flux-dev",
+      "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": false
     },
     {
-      "id": "slippery-shoulders-flux",
-      "runware_air_id": "liangwc:slippery-shoulders@1831310",
-      "name": "Slippery Shoulders (FLUX)",
-      "url": "https://civitai.com/models/312790",
+      "id": "fishnet-outfit-zit",
+      "runware_air_id": "liangwc:fishnet-outfit@2563748",
+      "name": "Fishnet Outfit V2 (ZIT)",
+      "url": "https://civitai.com/models/2207960",
       "tags": [
-        "flux",
+        "zimage",
+        "fishnet",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "garbage-bag-outfit-zit",
+      "runware_air_id": "liangwc:garbage-bag-outfit@2496983",
+      "name": "Garbage Bag Outfit (ZIT)",
+      "url": "https://civitai.com/models/2217892",
+      "tags": [
+        "zimage",
         "outfit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "giantess-zit",
+      "runware_air_id": "liangwc:giantess@2507266",
+      "name": "Giantess (ZIT)",
+      "url": "https://civitai.com/models/2227172",
+      "tags": [
+        "zimage",
+        "giantess",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "hang-asian-baddie-zit",
+      "runware_air_id": "liangwc:hang-asian-baddie@2651712",
+      "name": "Hang Asian-American Baddie (ZIT)",
+      "url": "https://civitai.com/models/2357704",
+      "tags": [
+        "zimage",
+        "asian",
+        "baddie",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "holding-spread-legs-zit",
+      "runware_air_id": "liangwc:holding-spread-legs@2741069",
+      "name": "Holding Spread Legs (ZIT)",
+      "url": "https://civitai.com/models/2428293",
+      "tags": [
+        "zimage",
         "pose",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "naked-cherry-blossoms-flux",
-      "runware_air_id": "liangwc:naked-cherry-blossoms@1819867",
-      "name": "Naked Cherry Blossoms (FLUX)",
-      "url": "https://civitai.com/models/1608142",
-      "tags": [
-        "flux",
-        "nature",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "suspended-amputee-flux",
-      "runware_air_id": "liangwc:suspended-amputee@1682016",
-      "name": "Suspended Amputee (FLUX)",
-      "url": "https://civitai.com/models/1487003",
-      "tags": [
-        "flux",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "pan-jinlian-flux",
-      "runware_air_id": "liangwc:pan-jinlian@986129",
-      "name": "Pan Jinlian Hanfu (FLUX)",
-      "url": "https://civitai.com/models/880938",
-      "tags": [
-        "flux",
-        "chinese",
-        "hanfu",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "saggy-slider-zit",
-      "runware_air_id": "liangwc:saggy-slider@2504398",
-      "name": "Saggy Slider (ZIT)",
-      "url": "https://civitai.com/models/2224601",
-      "tags": [
-        "zimage",
-        "slider",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "age-slider-v2-zit",
-      "runware_air_id": "liangwc:age-slider-v2@2957021",
-      "name": "Age Slider V2 (ZIT)",
-      "url": "https://civitai.com/models/2633687",
-      "tags": [
-        "zimage",
-        "slider",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "realistic-ts-bulge-flux",
-      "runware_air_id": "liangwc:realistic-ts-bulge@1622153",
-      "name": "Realistic TS Bulge (FLUX)",
-      "url": "https://civitai.com/models/1435061",
-      "tags": [
-        "flux",
-        "anatomy",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "flaccid-penis-flux",
-      "runware_air_id": "liangwc:flaccid-penis@918849",
-      "name": "Flaccid Penis (FLUX)",
-      "url": "https://civitai.com/models/821693",
-      "tags": [
-        "flux",
-        "anatomy",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "upskirt-creepshots-zit",
-      "runware_air_id": "liangwc:upskirt-creepshots@2750487",
-      "name": "Upskirt Creepshots (ZIT)",
-      "url": "https://civitai.com/models/2446193",
-      "tags": [
-        "zimage",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "rim-lighting-slider-zit",
-      "runware_air_id": "liangwc:rim-lighting-slider@2521689",
-      "name": "Rim Lighting Slider (ZIT)",
-      "url": "https://civitai.com/models/2240056",
-      "tags": [
-        "zimage",
-        "slider",
-        "lighting",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "waist-sliders-zit",
-      "runware_air_id": "liangwc:waist-sliders@2648251",
-      "name": "Waist Sliders (ZIT)",
-      "url": "https://civitai.com/models/2354366",
-      "tags": [
-        "zimage",
-        "slider",
-        "body",
         "nsfw",
         "runware-verified"
       ],
@@ -6698,13 +6253,56 @@
       "nsfw": true
     },
     {
-      "id": "tgirl-bulge-zit",
-      "runware_air_id": "liangwc:tgirl-bulge@2454595",
-      "name": "Tgirl Bulge (ZIT)",
-      "url": "https://civitai.com/models/2179817",
+      "id": "lavender-hair-asian-zit",
+      "runware_air_id": "liangwc:lavender-hair-asian@2587195",
+      "name": "Lavender Hair Asian (ZIT)",
+      "url": "https://civitai.com/models/2299259",
       "tags": [
         "zimage",
-        "anatomy",
+        "asian",
+        "lavender",
+        "hair",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "lifting-clothing-mouth-zit",
+      "runware_air_id": "liangwc:lifting-clothing-mouth@2607934",
+      "name": "Lifting Clothing With Mouth (ZIT)",
+      "url": "https://civitai.com/models/1621208",
+      "tags": [
+        "zimage",
+        "outfit",
+        "pose",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "lowrise-highwaist-zit",
+      "runware_air_id": "liangwc:lowrise-highwaist@2846961",
+      "name": "Low-rise/High-waist Slider (ZIT)",
+      "url": "https://civitai.com/models/2527341",
+      "tags": [
+        "zimage",
+        "slider",
+        "outfit",
         "nsfw",
         "runware-verified"
       ],
@@ -6718,14 +6316,14 @@
       "nsfw": true
     },
     {
-      "id": "giantess-zit",
-      "runware_air_id": "liangwc:giantess@2507266",
-      "name": "Giantess (ZIT)",
-      "url": "https://civitai.com/models/2227172",
+      "id": "naoe-shadowy-asian-zit",
+      "runware_air_id": "liangwc:naoe-shadowy-asian@2897771",
+      "name": "Naoe Shadowy Asian Baddie (ZIT)",
+      "url": "https://civitai.com/models/2579355",
       "tags": [
         "zimage",
-        "giantess",
-        "nsfw",
+        "asian",
+        "character",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -6738,13 +6336,195 @@
       "nsfw": false
     },
     {
-      "id": "holding-spread-legs-zit",
-      "runware_air_id": "liangwc:holding-spread-legs@2741069",
-      "name": "Holding Spread Legs (ZIT)",
-      "url": "https://civitai.com/models/2428293",
+      "id": "nexblend01-asian-zit",
+      "runware_air_id": "liangwc:nexblend01-asian@2836517",
+      "name": "NexBlend 01 Asian Realistic (ZIT)",
+      "url": "https://civitai.com/models/2523771",
       "tags": [
         "zimage",
-        "pose",
+        "asian",
+        "realistic",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "nexblend05-asian-zit",
+      "runware_air_id": "liangwc:nexblend05-asian@2949870",
+      "name": "NexBlend 05 Asian Realistic (ZIT)",
+      "url": "https://civitai.com/models/2627379",
+      "tags": [
+        "zimage",
+        "asian",
+        "realistic",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "nipple-pokies-zit",
+      "runware_air_id": "liangwc:nipple-pokies@2493795",
+      "name": "Nipple Pokies (ZIT)",
+      "url": "https://civitai.com/models/2215040",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "power-girl-dress-zit",
+      "runware_air_id": "liangwc:power-girl-dress@2475219",
+      "name": "Power Girl Dress (ZIT)",
+      "url": "https://civitai.com/models/2089731",
+      "tags": [
+        "zimage",
+        "outfit",
+        "dress",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "radiant-realism-pro-zit",
+      "runware_air_id": "liangwc:radiant-realism-pro@2812128",
+      "name": "Radiant Realism Pro (ZIT)",
+      "url": "https://civitai.com/models/2395852",
+      "tags": [
+        "zimage",
+        "realistic",
+        "skin",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "rim-lighting-slider-zit",
+      "runware_air_id": "liangwc:rim-lighting-slider@2521689",
+      "name": "Rim Lighting Slider (ZIT)",
+      "url": "https://civitai.com/models/2240056",
+      "tags": [
+        "zimage",
+        "slider",
+        "lighting",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "rubicon-stx-zit",
+      "runware_air_id": "liangwc:rubicon-stx@2633652",
+      "name": "RUBICON BY STX (ZIT)",
+      "url": "https://civitai.com/models/2341413",
+      "tags": [
+        "zimage",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "saggy-slider-zit",
+      "runware_air_id": "liangwc:saggy-slider@2504398",
+      "name": "Saggy Slider (ZIT)",
+      "url": "https://civitai.com/models/2224601",
+      "tags": [
+        "zimage",
+        "slider",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "see-through-lingerie-zit",
+      "runware_air_id": "liangwc:see-through-lingerie@2910515",
+      "name": "See Through Lingerie V2 (ZIT)",
+      "url": "https://civitai.com/models/2169622",
+      "tags": [
+        "zimage",
+        "lingerie",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "see-through-swimsuit-zit",
+      "runware_air_id": "liangwc:see-through-swimsuit@2919216",
+      "name": "See Through Swimsuit V2 (ZIT)",
+      "url": "https://civitai.com/models/2235507",
+      "tags": [
+        "zimage",
+        "swimsuit",
         "nsfw",
         "runware-verified"
       ],
@@ -6778,456 +6558,14 @@
       "nsfw": true
     },
     {
-      "id": "angelcore-zit",
-      "runware_air_id": "liangwc:angelcore@2725554",
-      "name": "Angelcore (ZIT)",
-      "url": "https://civitai.com/models/2424184",
+      "id": "short-hair-asian-zit",
+      "runware_air_id": "liangwc:short-hair-asian@2736614",
+      "name": "Short Hair Asian (ZIT)",
+      "url": "https://civitai.com/models/2430763",
       "tags": [
         "zimage",
-        "style",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "rubicon-stx-zit",
-      "runware_air_id": "liangwc:rubicon-stx@2633652",
-      "name": "RUBICON BY STX (ZIT)",
-      "url": "https://civitai.com/models/2341413",
-      "tags": [
-        "zimage",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "zyd232-chinese-girl-sd15",
-      "runware_air_id": "civitai:13021@78057",
-      "name": "zyd232's Chinese Girl (SD1.5)",
-      "url": "https://civitai.com/models/13021",
-      "tags": [
-        "sd15",
-        "chinese",
-        "girl",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "tifa-lockhart-sd15",
-      "runware_air_id": "civitai:87167@311382",
-      "name": "Tifa Lockhart (SD1.5)",
-      "url": "https://civitai.com/models/87167",
-      "tags": [
-        "sd15",
-        "character",
-        "ff7",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sunshangxiang-sd15",
-      "runware_air_id": "civitai:36940@42974",
-      "name": "孙尚香 王者荣耀 (SD1.5)",
-      "url": "https://civitai.com/models/36940",
-      "tags": [
-        "sd15",
-        "chinese",
-        "character",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "bondage-outfit-sd15",
-      "runware_air_id": "civitai:19574@141123",
-      "name": "Bondage Outfit Dominatrix (SD1.5)",
-      "url": "https://civitai.com/models/19574",
-      "tags": [
-        "sd15",
-        "outfit",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "virgin-killer-sweater-sd15",
-      "runware_air_id": "civitai:10185@258496",
-      "name": "Virgin Killer Sweater (SD1.5)",
-      "url": "https://civitai.com/models/10185",
-      "tags": [
-        "sd15",
-        "outfit",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "detail-tweaker-sd15",
-      "runware_air_id": "civitai:58390@62833",
-      "name": "Detail Tweaker (SD1.5)",
-      "url": "https://civitai.com/models/58390",
-      "tags": [
-        "sd15",
-        "detail",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "add-more-details-sd15",
-      "runware_air_id": "civitai:82098@87153",
-      "name": "Add More Details (SD1.5)",
-      "url": "https://civitai.com/models/82098",
-      "tags": [
-        "sd15",
-        "detail",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "hipoly-3d-sd15",
-      "runware_air_id": "civitai:8730@44566",
-      "name": "Hipoly 3D Model (SD1.5)",
-      "url": "https://civitai.com/models/8730",
-      "tags": [
-        "sd15",
-        "3d",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "clothing-adjuster-sd15",
-      "runware_air_id": "civitai:88132@117151",
-      "name": "LEOSAM Clothing Adjuster (SD1.5)",
-      "url": "https://civitai.com/models/88132",
-      "tags": [
-        "sd15",
-        "clothing",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "japanese-doll-sd15",
-      "runware_air_id": "civitai:28811@34562",
-      "name": "JapaneseDollLikeness v1.5 (SD1.5)",
-      "url": "https://civitai.com/models/28811",
-      "tags": [
-        "sd15",
-        "japanese",
-        "face",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "korean-doll-sd15",
-      "runware_air_id": "civitai:26124@31284",
-      "name": "KoreanDollLikeness v2.0 (SD1.5)",
-      "url": "https://civitai.com/models/26124",
-      "tags": [
-        "sd15",
-        "korean",
-        "face",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "china-doll-sd15",
-      "runware_air_id": "civitai:61675@66172",
-      "name": "ChinaDollLikeness v1.0 (SD1.5)",
-      "url": "https://civitai.com/models/61675",
-      "tags": [
-        "sd15",
-        "chinese",
-        "face",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "taiwan-doll-sd15",
-      "runware_air_id": "civitai:48363@52974",
-      "name": "TaiwanDollLikeness v2.0 (SD1.5)",
-      "url": "https://civitai.com/models/48363",
-      "tags": [
-        "sd15",
-        "taiwanese",
-        "face",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "m-pixel-sd15",
-      "runware_air_id": "civitai:44960@52870",
-      "name": "M_Pixel 像素人人 (SD1.5)",
-      "url": "https://civitai.com/models/44960",
-      "tags": [
-        "sd15",
-        "pixel",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "russian-doll-sd15",
-      "runware_air_id": "civitai:13068@15396",
-      "name": "Russian Doll Likeness (SD1.5)",
-      "url": "https://civitai.com/models/13068",
-      "tags": [
-        "sd15",
-        "russian",
-        "face",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "perfect-pussy-sd15",
-      "runware_air_id": "civitai:10844@61391",
-      "name": "Perfect Pussy (SD1.5)",
-      "url": "https://civitai.com/models/10844",
-      "tags": [
-        "sd15",
-        "nsfw",
-        "anatomy",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "asian-girls-face-sd15",
-      "runware_air_id": "civitai:62760@67325",
-      "name": "Asian Girls Face (SD1.5)",
-      "url": "https://civitai.com/models/62760",
-      "tags": [
-        "sd15",
         "asian",
-        "face",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "bukkake-sd15",
-      "runware_air_id": "civitai:16722@19936",
-      "name": "Bukkake (SD1.5)",
-      "url": "https://civitai.com/models/16722",
-      "tags": [
-        "sd15",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "doggystyle-sd15",
-      "runware_air_id": "civitai:12961@16207",
-      "name": "Doggystyle Side View (SD1.5)",
-      "url": "https://civitai.com/models/12961",
-      "tags": [
-        "sd15",
-        "nsfw",
-        "pose",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "pant-pull-down-sd15",
-      "runware_air_id": "civitai:11126@13184",
-      "name": "Pant Pull Down (SD1.5)",
-      "url": "https://civitai.com/models/11126",
-      "tags": [
-        "sd15",
-        "nsfw",
-        "pose",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "jim-lee-style-sd15",
-      "runware_air_id": "civitai:8949@10580",
-      "name": "Jim Lee Style (SD1.5)",
-      "url": "https://civitai.com/models/8949",
-      "tags": [
-        "sd15",
-        "comic",
+        "short-hair",
         "style",
         "runware-verified"
       ],
@@ -7236,59 +6574,140 @@
         0.5,
         1.2
       ],
-      "base_model": "sd15",
+      "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": false
     },
     {
-      "id": "stylized-3d-sd15",
-      "runware_air_id": "civitai:10679@44570",
-      "name": "Stylized 3D Model (SD1.5)",
-      "url": "https://civitai.com/models/10679",
+      "id": "tgirl-bulge-zit",
+      "runware_air_id": "liangwc:tgirl-bulge@2454595",
+      "name": "Tgirl Bulge (ZIT)",
+      "url": "https://civitai.com/models/2179817",
+      "tags": [
+        "zimage",
+        "anatomy",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "upskirt-creepshots-zit",
+      "runware_air_id": "liangwc:upskirt-creepshots@2750487",
+      "name": "Upskirt Creepshots (ZIT)",
+      "url": "https://civitai.com/models/2446193",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "upskirt-view-zit",
+      "runware_air_id": "liangwc:upskirt-view@2536452",
+      "name": "Upskirt View (ZIT)",
+      "url": "https://civitai.com/models/2253206",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "vivi-luvva-zit",
+      "runware_air_id": "liangwc:vivi-luvva@2669643",
+      "name": "Vivi Luvva (ZIT)",
+      "url": "https://civitai.com/models/1791202",
+      "tags": [
+        "zimage",
+        "asian",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "waist-sliders-zit",
+      "runware_air_id": "liangwc:waist-sliders@2648251",
+      "name": "Waist Sliders (ZIT)",
+      "url": "https://civitai.com/models/2354366",
+      "tags": [
+        "zimage",
+        "slider",
+        "body",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "white-hair-asian-zit",
+      "runware_air_id": "liangwc:white-hair-asian@2893939",
+      "name": "White Hair Asian Woman (ZIT)",
+      "url": "https://civitai.com/models/2575824",
+      "tags": [
+        "zimage",
+        "asian",
+        "white-hair",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "3d-cg-style-sd15",
+      "runware_air_id": "civitai:42387@47063",
+      "name": "3D CG Style Realistic (SD1.5)",
+      "url": "https://civitai.com/models/42387",
       "tags": [
         "sd15",
         "3d",
+        "cg",
         "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "eastasian-doll-sd15",
-      "runware_air_id": "civitai:19495@32382",
-      "name": "EastAsianDollLikeness (SD1.5)",
-      "url": "https://civitai.com/models/19495",
-      "tags": [
-        "sd15",
-        "eastasian",
-        "face",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "breast-asian-flat-sd15",
-      "runware_air_id": "civitai:29564@35553",
-      "name": "Breast Asian Flat Chest (SD1.5)",
-      "url": "https://civitai.com/models/29564",
-      "tags": [
-        "sd15",
-        "body",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -7322,14 +6741,12 @@
       "nsfw": false
     },
     {
-      "id": "pixel-art-xl15-sd15",
-      "runware_air_id": "civitai:43820@121559",
-      "name": "Pixel Art XL & 1.5 (SD1.5)",
-      "url": "https://civitai.com/models/43820",
+      "id": "sd15-71970-76724",
+      "runware_air_id": "civitai:71970@76724",
+      "name": "[badbro]-sexy underwear (SD1.5)",
+      "url": "https://civitai.com/models/71970",
       "tags": [
         "sd15",
-        "pixel",
-        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -7342,303 +6759,13 @@
       "nsfw": false
     },
     {
-      "id": "film-simulator-sd15",
-      "runware_air_id": "civitai:87080@93304",
-      "name": "Film Simulator 胶片摄影模拟器 (SD1.5)",
-      "url": "https://civitai.com/models/87080",
-      "tags": [
-        "sd15",
-        "film",
-        "photography",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "wuxia-v2-sd15",
-      "runware_air_id": "civitai:76637@90181",
-      "name": "武侠 Wuxia V2 (SD1.5)",
-      "url": "https://civitai.com/models/76637",
-      "tags": [
-        "sd15",
-        "chinese",
-        "wuxia",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "pen-sketch-sd15",
-      "runware_air_id": "civitai:28687@35516",
-      "name": "Pen Sketch Style 线条速写风格 (SD1.5)",
-      "url": "https://civitai.com/models/28687",
-      "tags": [
-        "sd15",
-        "sketch",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "chillout-nsfw-fix-sd15",
-      "runware_air_id": "civitai:129957@142513",
-      "name": "Chillout NSFW Fix (SD1.5)",
-      "url": "https://civitai.com/models/129957",
-      "tags": [
-        "sd15",
-        "realistic",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "gothic-horror-sd15",
-      "runware_air_id": "civitai:39760@45545",
-      "name": "GothicHorrorAI (SD1.5)",
-      "url": "https://civitai.com/models/39760",
-      "tags": [
-        "sd15",
-        "horror",
-        "gothic",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "age-slider-sd15",
-      "runware_air_id": "civitai:104759@112321",
-      "name": "Easy Age Slider (SD1.5)",
-      "url": "https://civitai.com/models/104759",
-      "tags": [
-        "sd15",
-        "slider",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "midjourney-anime-sd15",
-      "runware_air_id": "civitai:98401@105232",
-      "name": "百花缭乱 Midjourney Anime (SD1.5)",
-      "url": "https://civitai.com/models/98401",
-      "tags": [
-        "sd15",
-        "anime",
-        "midjourney",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "detailed-perfection-sd15",
-      "runware_air_id": "civitai:411088@486099",
-      "name": "Detailed Perfection (SD1.5)",
-      "url": "https://civitai.com/models/411088",
+      "id": "add-more-details-sd15",
+      "runware_air_id": "civitai:82098@87153",
+      "name": "Add More Details (SD1.5)",
+      "url": "https://civitai.com/models/82098",
       "tags": [
         "sd15",
         "detail",
-        "enhancer",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "3d-cg-style-sd15",
-      "runware_air_id": "civitai:42387@47063",
-      "name": "3D CG Style Realistic (SD1.5)",
-      "url": "https://civitai.com/models/42387",
-      "tags": [
-        "sd15",
-        "3d",
-        "cg",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "elixir-enhancer-sd15",
-      "runware_air_id": "civitai:78283@83081",
-      "name": "Elixir Enhancer (SD1.5)",
-      "url": "https://civitai.com/models/78283",
-      "tags": [
-        "sd15",
-        "enhancer",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "cyberpunk-mecha-sd15",
-      "runware_air_id": "civitai:84829@96474",
-      "name": "Cyberpunk Mecha Woman (SD1.5)",
-      "url": "https://civitai.com/models/84829",
-      "tags": [
-        "sd15",
-        "cyberpunk",
-        "mecha",
-        "style",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "hairy-girls-sd15",
-      "runware_air_id": "civitai:88066@109085",
-      "name": "Hairy Girls (SD1.5)",
-      "url": "https://civitai.com/models/88066",
-      "tags": [
-        "sd15",
-        "nsfw",
-        "anatomy",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "weird-reelhorror-sd15",
-      "runware_air_id": "civitai:67666@166646",
-      "name": "Weird ReelHorror (SD1.5)",
-      "url": "https://civitai.com/models/67666",
-      "tags": [
-        "sd15",
-        "horror",
-        "style",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "real-dragons-sd15",
-      "runware_air_id": "civitai:82903@88077",
-      "name": "Real Dragons 真实龙 (SD1.5)",
-      "url": "https://civitai.com/models/82903",
-      "tags": [
-        "sd15",
-        "dragon",
-        "fantasy",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "age-slider-v2-sd15",
-      "runware_air_id": "civitai:128417@143150",
-      "name": "Age Slider V2 (SD1.5)",
-      "url": "https://civitai.com/models/128417",
-      "tags": [
-        "sd15",
-        "slider",
         "tool",
         "runware-verified"
       ],
@@ -7673,10 +6800,31 @@
       "nsfw": false
     },
     {
-      "id": "pregnancy-slider-sd15",
-      "runware_air_id": "civitai:139634@154666",
-      "name": "Pregnancy Slider (SD1.5)",
-      "url": "https://civitai.com/models/139634",
+      "id": "age-slider-anime-v2-sd15",
+      "runware_air_id": "civitai:158272@183341",
+      "name": "Age Slider Anime V2 (SD1.5)",
+      "url": "https://civitai.com/models/158272",
+      "tags": [
+        "sd15",
+        "slider",
+        "anime",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "age-slider-v2-sd15",
+      "runware_air_id": "civitai:128417@143150",
+      "name": "Age Slider V2 (SD1.5)",
+      "url": "https://civitai.com/models/128417",
       "tags": [
         "sd15",
         "slider",
@@ -7713,15 +6861,14 @@
       "nsfw": false
     },
     {
-      "id": "weight-slider-sd15",
-      "runware_air_id": "civitai:180008@202032",
-      "name": "Weight Slider (SD1.5)",
-      "url": "https://civitai.com/models/180008",
+      "id": "asian-girls-face-sd15",
+      "runware_air_id": "civitai:62760@67325",
+      "name": "Asian Girls Face (SD1.5)",
+      "url": "https://civitai.com/models/62760",
       "tags": [
         "sd15",
-        "slider",
-        "body",
-        "tool",
+        "asian",
+        "face",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -7734,15 +6881,12 @@
       "nsfw": false
     },
     {
-      "id": "leg-slider-sd15",
-      "runware_air_id": "civitai:225310@254141",
-      "name": "Leg Slider (SD1.5)",
-      "url": "https://civitai.com/models/225310",
+      "id": "sd15-46823-51420",
+      "runware_air_id": "civitai:46823@51420",
+      "name": "Ballet Dance Dress (SD1.5)",
+      "url": "https://civitai.com/models/46823",
       "tags": [
         "sd15",
-        "slider",
-        "body",
-        "tool",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -7755,14 +6899,69 @@
       "nsfw": false
     },
     {
-      "id": "pregnancy-slider-leco-sd15",
-      "runware_air_id": "civitai:327981@367572",
-      "name": "Pregnancy Slider LECO (SD1.5)",
-      "url": "https://civitai.com/models/327981",
+      "id": "sd15-38567-44501",
+      "runware_air_id": "civitai:38567@44501",
+      "name": "betterCuteAsian (SD1.5)",
+      "url": "https://civitai.com/models/38567",
       "tags": [
         "sd15",
-        "slider",
-        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-21059-25062",
+      "runware_air_id": "civitai:21059@25062",
+      "name": "bodychainV2 (SD1.5)",
+      "url": "https://civitai.com/models/21059",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "bondage-outfit-sd15",
+      "runware_air_id": "civitai:19574@141123",
+      "name": "Bondage Outfit Dominatrix (SD1.5)",
+      "url": "https://civitai.com/models/19574",
+      "tags": [
+        "sd15",
+        "outfit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "breast-asian-flat-sd15",
+      "runware_air_id": "civitai:29564@35553",
+      "name": "Breast Asian Flat Chest (SD1.5)",
+      "url": "https://civitai.com/models/29564",
+      "tags": [
+        "sd15",
+        "body",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -7783,6 +6982,280 @@
         "sd15",
         "slider",
         "body",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "breasts-out-sd15",
+      "runware_air_id": "civitai:20355@24203",
+      "name": "Breasts Out Exposed (SD1.5)",
+      "url": "https://civitai.com/models/20355",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "outfit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-110990-119676",
+      "runware_air_id": "civitai:110990@119676",
+      "name": "breasts size (SD1.5)",
+      "url": "https://civitai.com/models/110990",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "bukkake-sd15",
+      "runware_air_id": "civitai:16722@19936",
+      "name": "Bukkake (SD1.5)",
+      "url": "https://civitai.com/models/16722",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "bukkake-excessive-sd15",
+      "runware_air_id": "civitai:109745@118273",
+      "name": "Bukkake Excessive Cum (SD1.5)",
+      "url": "https://civitai.com/models/109745",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "chillout-nsfw-fix-sd15",
+      "runware_air_id": "civitai:129957@142513",
+      "name": "Chillout NSFW Fix (SD1.5)",
+      "url": "https://civitai.com/models/129957",
+      "tags": [
+        "sd15",
+        "realistic",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "china-doll-sd15",
+      "runware_air_id": "civitai:61675@66172",
+      "name": "ChinaDollLikeness v1.0 (SD1.5)",
+      "url": "https://civitai.com/models/61675",
+      "tags": [
+        "sd15",
+        "chinese",
+        "face",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-77781-85137",
+      "runware_air_id": "civitai:77781@85137",
+      "name": "Chinese Dragon（中国龙）LoRa (SD1.5)",
+      "url": "https://civitai.com/models/77781",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "clear-swimsuit-sd15",
+      "runware_air_id": "civitai:115023@124402",
+      "name": "Clear Swimsuit (SD1.5)",
+      "url": "https://civitai.com/models/115023",
+      "tags": [
+        "sd15",
+        "outfit",
+        "swimsuit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "creampie-hairy-sd15",
+      "runware_air_id": "civitai:14557@18077",
+      "name": "Creampie & Hairy Pussy (SD1.5)",
+      "url": "https://civitai.com/models/14557",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "anatomy",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-122135-132951",
+      "runware_air_id": "civitai:122135@132951",
+      "name": "cum bath (SD1.5)",
+      "url": "https://civitai.com/models/122135",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "cyberpunk-mecha-sd15",
+      "runware_air_id": "civitai:84829@96474",
+      "name": "Cyberpunk Mecha Woman (SD1.5)",
+      "url": "https://civitai.com/models/84829",
+      "tags": [
+        "sd15",
+        "cyberpunk",
+        "mecha",
+        "style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-57737-62173",
+      "runware_air_id": "civitai:57737@62173",
+      "name": "Deep V-Neck Dress (SD1.5)",
+      "url": "https://civitai.com/models/57737",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "detail-tweaker-sd15",
+      "runware_air_id": "civitai:58390@62833",
+      "name": "Detail Tweaker (SD1.5)",
+      "url": "https://civitai.com/models/58390",
+      "tags": [
+        "sd15",
+        "detail",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "detailed-perfection-sd15",
+      "runware_air_id": "civitai:411088@486099",
+      "name": "Detailed Perfection (SD1.5)",
+      "url": "https://civitai.com/models/411088",
+      "tags": [
+        "sd15",
+        "detail",
+        "enhancer",
         "tool",
         "runware-verified"
       ],
@@ -7817,10 +7290,28 @@
       "nsfw": true
     },
     {
-      "id": "riding-dildo-sd15",
-      "runware_air_id": "civitai:8349@27100",
-      "name": "Riding Dildo (SD1.5)",
-      "url": "https://civitai.com/models/8349",
+      "id": "sd15-196908-221409",
+      "runware_air_id": "civitai:196908@221409",
+      "name": "Disgusted Face (illustrious/pony/sd1.5) | Goofy Ai (SD1.5)",
+      "url": "https://civitai.com/models/196908",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "doggystyle-sd15",
+      "runware_air_id": "civitai:12961@16207",
+      "name": "Doggystyle Side View (SD1.5)",
+      "url": "https://civitai.com/models/12961",
       "tags": [
         "sd15",
         "nsfw",
@@ -7835,6 +7326,85 @@
       "base_model": "sd15",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "eastasian-doll-sd15",
+      "runware_air_id": "civitai:19495@32382",
+      "name": "EastAsianDollLikeness (SD1.5)",
+      "url": "https://civitai.com/models/19495",
+      "tags": [
+        "sd15",
+        "eastasian",
+        "face",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "age-slider-sd15",
+      "runware_air_id": "civitai:104759@112321",
+      "name": "Easy Age Slider (SD1.5)",
+      "url": "https://civitai.com/models/104759",
+      "tags": [
+        "sd15",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-68624-73309",
+      "runware_air_id": "civitai:68624@73309",
+      "name": "Egyptian Bob hairstyle - (Hime cut Bob Hairstyle) (SD1.5)",
+      "url": "https://civitai.com/models/68624",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "elixir-enhancer-sd15",
+      "runware_air_id": "civitai:78283@83081",
+      "name": "Elixir Enhancer (SD1.5)",
+      "url": "https://civitai.com/models/78283",
+      "tags": [
+        "sd15",
+        "enhancer",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
     },
     {
       "id": "female-masturbation-sd15",
@@ -7857,6 +7427,196 @@
       "nsfw": true
     },
     {
+      "id": "film-simulator-sd15",
+      "runware_air_id": "civitai:87080@93304",
+      "name": "Film Simulator 胶片摄影模拟器 (SD1.5)",
+      "url": "https://civitai.com/models/87080",
+      "tags": [
+        "sd15",
+        "film",
+        "photography",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-287958-323858",
+      "runware_air_id": "civitai:287958@323858",
+      "name": "From Below | Low Angle Shot (SD1.5)",
+      "url": "https://civitai.com/models/287958",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-106762-114681",
+      "runware_air_id": "civitai:106762@114681",
+      "name": "Girl in bathtub: 浴缸里的女孩 | Siren Lora (SD1.5)",
+      "url": "https://civitai.com/models/106762",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "gothic-horror-sd15",
+      "runware_air_id": "civitai:39760@45545",
+      "name": "GothicHorrorAI (SD1.5)",
+      "url": "https://civitai.com/models/39760",
+      "tags": [
+        "sd15",
+        "horror",
+        "gothic",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-61209-65674",
+      "runware_air_id": "civitai:61209@65674",
+      "name": "Gym Outfit (SD1.5)",
+      "url": "https://civitai.com/models/61209",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "hairy-girls-sd15",
+      "runware_air_id": "civitai:88066@109085",
+      "name": "Hairy Girls (SD1.5)",
+      "url": "https://civitai.com/models/88066",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "anatomy",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-44395-104291",
+      "runware_air_id": "civitai:44395@104291",
+      "name": "hanfu tang 汉服唐风 (SD1.5)",
+      "url": "https://civitai.com/models/44395",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-58656-63102",
+      "runware_air_id": "civitai:58656@63102",
+      "name": "Has Wings (SD1.5)",
+      "url": "https://civitai.com/models/58656",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-63187-186812",
+      "runware_air_id": "civitai:63187@186812",
+      "name": "heartboob (SD1.5)",
+      "url": "https://civitai.com/models/63187",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "hipoly-3d-sd15",
+      "runware_air_id": "civitai:8730@44566",
+      "name": "Hipoly 3D Model (SD1.5)",
+      "url": "https://civitai.com/models/8730",
+      "tags": [
+        "sd15",
+        "3d",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
       "id": "hyper-penetration-sd15",
       "runware_air_id": "civitai:9651@79226",
       "name": "Hyper Penetration Stomach Bulge (SD1.5)",
@@ -7877,10 +7637,10 @@
       "nsfw": true
     },
     {
-      "id": "creampie-hairy-sd15",
-      "runware_air_id": "civitai:14557@18077",
-      "name": "Creampie & Hairy Pussy (SD1.5)",
-      "url": "https://civitai.com/models/14557",
+      "id": "insertion-sd15",
+      "runware_air_id": "civitai:102580@229045",
+      "name": "Insertion Put Stuff Into Holes (SD1.5)",
+      "url": "https://civitai.com/models/102580",
       "tags": [
         "sd15",
         "nsfw",
@@ -7897,14 +7657,35 @@
       "nsfw": true
     },
     {
-      "id": "pov-facesitting-sd15",
-      "runware_air_id": "civitai:37343@43354",
-      "name": "POV Facesitting (SD1.5)",
-      "url": "https://civitai.com/models/37343",
+      "id": "japanese-doll-sd15",
+      "runware_air_id": "civitai:28811@34562",
+      "name": "JapaneseDollLikeness v1.5 (SD1.5)",
+      "url": "https://civitai.com/models/28811",
       "tags": [
         "sd15",
+        "japanese",
+        "face",
         "nsfw",
-        "pose",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "jim-lee-style-sd15",
+      "runware_air_id": "civitai:8949@10580",
+      "name": "Jim Lee Style (SD1.5)",
+      "url": "https://civitai.com/models/8949",
+      "tags": [
+        "sd15",
+        "comic",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -7917,14 +7698,12 @@
       "nsfw": false
     },
     {
-      "id": "upshirt-underboob-sd15",
-      "runware_air_id": "civitai:13224@15588",
-      "name": "Upshirt Underboob (SD1.5)",
-      "url": "https://civitai.com/models/13224",
+      "id": "sd15-85996-124545",
+      "runware_air_id": "civitai:85996@124545",
+      "name": "JK lure dress JK战袍 (SD1.5)",
+      "url": "https://civitai.com/models/85996",
       "tags": [
         "sd15",
-        "nsfw",
-        "outfit",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -7937,12 +7716,32 @@
       "nsfw": true
     },
     {
-      "id": "bukkake-excessive-sd15",
-      "runware_air_id": "civitai:109745@118273",
-      "name": "Bukkake Excessive Cum (SD1.5)",
-      "url": "https://civitai.com/models/109745",
+      "id": "sd15-65090-69722",
+      "runware_air_id": "civitai:65090@69722",
+      "name": "Kitchen Apron - Naked & Not Naked (SD1.5)",
+      "url": "https://civitai.com/models/65090",
       "tags": [
         "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "korean-doll-sd15",
+      "runware_air_id": "civitai:26124@31284",
+      "name": "KoreanDollLikeness v2.0 (SD1.5)",
+      "url": "https://civitai.com/models/26124",
+      "tags": [
+        "sd15",
+        "korean",
+        "face",
         "nsfw",
         "runware-verified"
       ],
@@ -7956,14 +7755,15 @@
       "nsfw": true
     },
     {
-      "id": "breasts-out-sd15",
-      "runware_air_id": "civitai:20355@24203",
-      "name": "Breasts Out Exposed (SD1.5)",
-      "url": "https://civitai.com/models/20355",
+      "id": "leg-slider-sd15",
+      "runware_air_id": "civitai:225310@254141",
+      "name": "Leg Slider (SD1.5)",
+      "url": "https://civitai.com/models/225310",
       "tags": [
         "sd15",
-        "nsfw",
-        "outfit",
+        "slider",
+        "body",
+        "tool",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -7973,17 +7773,15 @@
       ],
       "base_model": "sd15",
       "category": "new",
-      "nsfw": true
+      "nsfw": false
     },
     {
-      "id": "orgasm-face-sd15",
-      "runware_air_id": "civitai:20781@24731",
-      "name": "Orgasm Face (SD1.5)",
-      "url": "https://civitai.com/models/20781",
+      "id": "sd15-57753-62193",
+      "runware_air_id": "civitai:57753@62193",
+      "name": "Leg Split Dress (SD1.5)",
+      "url": "https://civitai.com/models/57753",
       "tags": [
         "sd15",
-        "nsfw",
-        "expression",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -7993,17 +7791,17 @@
       ],
       "base_model": "sd15",
       "category": "new",
-      "nsfw": true
+      "nsfw": false
     },
     {
-      "id": "no-bra-sd15",
-      "runware_air_id": "civitai:20628@185325",
-      "name": "No Bra Covered Nipples (SD1.5)",
-      "url": "https://civitai.com/models/20628",
+      "id": "clothing-adjuster-sd15",
+      "runware_air_id": "civitai:88132@117151",
+      "name": "LEOSAM Clothing Adjuster (SD1.5)",
+      "url": "https://civitai.com/models/88132",
       "tags": [
         "sd15",
-        "nsfw",
-        "outfit",
+        "clothing",
+        "tool",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -8036,34 +7834,15 @@
       "nsfw": false
     },
     {
-      "id": "selfie-nudes-mirror-sd15",
-      "runware_air_id": "civitai:69674@74335",
-      "name": "Selfie Nudes Mirror (SD1.5)",
-      "url": "https://civitai.com/models/69674",
+      "id": "logo-design-sd15",
+      "runware_air_id": "civitai:104072@111514",
+      "name": "Logo 设计 (SD1.5)",
+      "url": "https://civitai.com/models/104072",
       "tags": [
         "sd15",
-        "nsfw",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "clear-swimsuit-sd15",
-      "runware_air_id": "civitai:115023@124402",
-      "name": "Clear Swimsuit (SD1.5)",
-      "url": "https://civitai.com/models/115023",
-      "tags": [
-        "sd15",
-        "outfit",
-        "swimsuit",
+        "logo",
+        "design",
+        "tool",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -8076,14 +7855,399 @@
       "nsfw": false
     },
     {
-      "id": "insertion-sd15",
-      "runware_air_id": "civitai:102580@229045",
-      "name": "Insertion Put Stuff Into Holes (SD1.5)",
-      "url": "https://civitai.com/models/102580",
+      "id": "sd15-70196-74842",
+      "runware_air_id": "civitai:70196@74842",
+      "name": "Long Ponytail Hairstyle (SD1.5)",
+      "url": "https://civitai.com/models/70196",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "m-pixel-sd15",
+      "runware_air_id": "civitai:44960@52870",
+      "name": "M_Pixel 像素人人 (SD1.5)",
+      "url": "https://civitai.com/models/44960",
+      "tags": [
+        "sd15",
+        "pixel",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-64877-69514",
+      "runware_air_id": "civitai:64877@69514",
+      "name": "Mini Dress (SD1.5)",
+      "url": "https://civitai.com/models/64877",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-56016-60410",
+      "runware_air_id": "civitai:56016@60410",
+      "name": "Miniature Microbikini (SD1.5)",
+      "url": "https://civitai.com/models/56016",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "no-bra-sd15",
+      "runware_air_id": "civitai:20628@185325",
+      "name": "No Bra Covered Nipples (SD1.5)",
+      "url": "https://civitai.com/models/20628",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "outfit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-117027-126761",
+      "runware_air_id": "civitai:117027@126761",
+      "name": "Open towel (SD1.5)",
+      "url": "https://civitai.com/models/117027",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "orgasm-face-sd15",
+      "runware_air_id": "civitai:20781@24731",
+      "name": "Orgasm Face (SD1.5)",
+      "url": "https://civitai.com/models/20781",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "expression",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-52978-57364",
+      "runware_air_id": "civitai:52978@57364",
+      "name": "Oversized Shirt (SD1.5)",
+      "url": "https://civitai.com/models/52978",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-52885-57273",
+      "runware_air_id": "civitai:52885@57273",
+      "name": "Oversized Sweater/Hoodie (SD1.5)",
+      "url": "https://civitai.com/models/52885",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pant-pull-down-sd15",
+      "runware_air_id": "civitai:11126@13184",
+      "name": "Pant Pull Down (SD1.5)",
+      "url": "https://civitai.com/models/11126",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "pose",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "pen-sketch-sd15",
+      "runware_air_id": "civitai:28687@35516",
+      "name": "Pen Sketch Style 线条速写风格 (SD1.5)",
+      "url": "https://civitai.com/models/28687",
+      "tags": [
+        "sd15",
+        "sketch",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "perfect-pussy-sd15",
+      "runware_air_id": "civitai:10844@61391",
+      "name": "Perfect Pussy (SD1.5)",
+      "url": "https://civitai.com/models/10844",
       "tags": [
         "sd15",
         "nsfw",
         "anatomy",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "succubus-womb-tattoos-sd15",
+      "runware_air_id": "civitai:14470@77517",
+      "name": "Photorealistic Succubus Womb Tattoos (SD1.5)",
+      "url": "https://civitai.com/models/14470",
+      "tags": [
+        "sd15",
+        "tattoo",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-67727-72391",
+      "runware_air_id": "civitai:67727@72391",
+      "name": "Pigtail Hairstyle (SD1.5)",
+      "url": "https://civitai.com/models/67727",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pixel-art-xl15-sd15",
+      "runware_air_id": "civitai:43820@121559",
+      "name": "Pixel Art XL & 1.5 (SD1.5)",
+      "url": "https://civitai.com/models/43820",
+      "tags": [
+        "sd15",
+        "pixel",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pov-facesitting-sd15",
+      "runware_air_id": "civitai:37343@43354",
+      "name": "POV Facesitting (SD1.5)",
+      "url": "https://civitai.com/models/37343",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "pose",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pregnancy-slider-sd15",
+      "runware_air_id": "civitai:139634@154666",
+      "name": "Pregnancy Slider (SD1.5)",
+      "url": "https://civitai.com/models/139634",
+      "tags": [
+        "sd15",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pregnancy-slider-leco-sd15",
+      "runware_air_id": "civitai:327981@367572",
+      "name": "Pregnancy Slider LECO (SD1.5)",
+      "url": "https://civitai.com/models/327981",
+      "tags": [
+        "sd15",
+        "slider",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "real-dragons-sd15",
+      "runware_air_id": "civitai:82903@88077",
+      "name": "Real Dragons 真实龙 (SD1.5)",
+      "url": "https://civitai.com/models/82903",
+      "tags": [
+        "sd15",
+        "dragon",
+        "fantasy",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-47852-52447",
+      "runware_air_id": "civitai:47852@52447",
+      "name": "Reverse Bunny Suit (SD1.5)",
+      "url": "https://civitai.com/models/47852",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "riding-dildo-sd15",
+      "runware_air_id": "civitai:8349@27100",
+      "name": "Riding Dildo (SD1.5)",
+      "url": "https://civitai.com/models/8349",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "pose",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -8116,15 +8280,15 @@
       "nsfw": true
     },
     {
-      "id": "age-slider-anime-v2-sd15",
-      "runware_air_id": "civitai:158272@183341",
-      "name": "Age Slider Anime V2 (SD1.5)",
-      "url": "https://civitai.com/models/158272",
+      "id": "russian-doll-sd15",
+      "runware_air_id": "civitai:13068@15396",
+      "name": "Russian Doll Likeness (SD1.5)",
+      "url": "https://civitai.com/models/13068",
       "tags": [
         "sd15",
-        "slider",
-        "anime",
-        "tool",
+        "russian",
+        "face",
+        "nsfw",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -8134,7 +8298,7 @@
       ],
       "base_model": "sd15",
       "category": "new",
-      "nsfw": false
+      "nsfw": true
     },
     {
       "id": "sagging-breasts-v2-sd15",
@@ -8156,6 +8320,335 @@
       "nsfw": false
     },
     {
+      "id": "sd15-56108-60510",
+      "runware_air_id": "civitai:56108@60510",
+      "name": "Sauna With Towel (SD1.5)",
+      "url": "https://civitai.com/models/56108",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-49597-54162",
+      "runware_air_id": "civitai:49597@54162",
+      "name": "See-Through Dress (SD1.5)",
+      "url": "https://civitai.com/models/49597",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "selfie-nudes-mirror-sd15",
+      "runware_air_id": "civitai:69674@74335",
+      "name": "Selfie Nudes Mirror (SD1.5)",
+      "url": "https://civitai.com/models/69674",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-295910-332520",
+      "runware_air_id": "civitai:295910@332520",
+      "name": "Selfie | POV (SD1.5)",
+      "url": "https://civitai.com/models/295910",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sexy-cosplay-costume-sd15",
+      "runware_air_id": "civitai:115663@129760",
+      "name": "Sexy Cosplay Costume Realistic (SD1.5)",
+      "url": "https://civitai.com/models/115663",
+      "tags": [
+        "sd15",
+        "cosplay",
+        "costume",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-21948-136384",
+      "runware_air_id": "civitai:21948@136384",
+      "name": "Slingshot Swimsuit v2 (SD1.5)",
+      "url": "https://civitai.com/models/21948",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "stylized-3d-sd15",
+      "runware_air_id": "civitai:10679@44570",
+      "name": "Stylized 3D Model (SD1.5)",
+      "url": "https://civitai.com/models/10679",
+      "tags": [
+        "sd15",
+        "3d",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-103473-110818",
+      "runware_air_id": "civitai:103473@110818",
+      "name": "super low angle from below | 超级低视角 (SD1.5)",
+      "url": "https://civitai.com/models/103473",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "taiwan-doll-sd15",
+      "runware_air_id": "civitai:48363@52974",
+      "name": "TaiwanDollLikeness v2.0 (SD1.5)",
+      "url": "https://civitai.com/models/48363",
+      "tags": [
+        "sd15",
+        "taiwanese",
+        "face",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "tifa-lockhart-sd15",
+      "runware_air_id": "civitai:87167@311382",
+      "name": "Tifa Lockhart (SD1.5)",
+      "url": "https://civitai.com/models/87167",
+      "tags": [
+        "sd15",
+        "character",
+        "ff7",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "transparent-bunny-suit-sd15",
+      "runware_air_id": "civitai:114051@123250",
+      "name": "Transparent Bunny Suit (SD1.5)",
+      "url": "https://civitai.com/models/114051",
+      "tags": [
+        "sd15",
+        "bunny",
+        "outfit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "upshirt-underboob-sd15",
+      "runware_air_id": "civitai:13224@15588",
+      "name": "Upshirt Underboob (SD1.5)",
+      "url": "https://civitai.com/models/13224",
+      "tags": [
+        "sd15",
+        "nsfw",
+        "outfit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-70173-74819",
+      "runware_air_id": "civitai:70173@74819",
+      "name": "Very Long Hair (SD1.5)",
+      "url": "https://civitai.com/models/70173",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "virgin-killer-sweater-sd15",
+      "runware_air_id": "civitai:10185@258496",
+      "name": "Virgin Killer Sweater (SD1.5)",
+      "url": "https://civitai.com/models/10185",
+      "tags": [
+        "sd15",
+        "outfit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-44239-48877",
+      "runware_air_id": "civitai:44239@48877",
+      "name": "Wedding Princess Dress (SD1.5)",
+      "url": "https://civitai.com/models/44239",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "weight-slider-sd15",
+      "runware_air_id": "civitai:180008@202032",
+      "name": "Weight Slider (SD1.5)",
+      "url": "https://civitai.com/models/180008",
+      "tags": [
+        "sd15",
+        "slider",
+        "body",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "weird-reelhorror-sd15",
+      "runware_air_id": "civitai:67666@166646",
+      "name": "Weird ReelHorror (SD1.5)",
+      "url": "https://civitai.com/models/67666",
+      "tags": [
+        "sd15",
+        "horror",
+        "style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
       "id": "womb-tattoo-sd15",
       "runware_air_id": "civitai:81409@86374",
       "name": "Womb Pubic Tattoo (SD1.5)",
@@ -8163,6 +8656,191 @@
       "tags": [
         "sd15",
         "tattoo",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-290649-326737",
+      "runware_air_id": "civitai:290649@326737",
+      "name": "Yoga Set - Long Sleeve Pilates Jumpsuit (SD1.5)",
+      "url": "https://civitai.com/models/290649",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-290649-327924",
+      "runware_air_id": "civitai:290649@327924",
+      "name": "Yoga Set - Oily Yoga Bodybuilding Bodysuit (SD1.5)",
+      "url": "https://civitai.com/models/290649",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-290649-327184",
+      "runware_air_id": "civitai:290649@327184",
+      "name": "Yoga Set - Ombre Micro-flare High-waist (SD1.5)",
+      "url": "https://civitai.com/models/290649",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-290649-326766",
+      "runware_air_id": "civitai:290649@326766",
+      "name": "Yoga Set - Ombre Yoga Pants (SD1.5)",
+      "url": "https://civitai.com/models/290649",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-290649-334766",
+      "runware_air_id": "civitai:290649@334766",
+      "name": "Yoga Set - White Yoga Set (SD1.5)",
+      "url": "https://civitai.com/models/290649",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-290649-327052",
+      "runware_air_id": "civitai:290649@327052",
+      "name": "Yoga Set - Zippered Long Sleeve Nude (SD1.5)",
+      "url": "https://civitai.com/models/290649",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "zyd232-chinese-girl-sd15",
+      "runware_air_id": "civitai:13021@78057",
+      "name": "zyd232's Chinese Girl (SD1.5)",
+      "url": "https://civitai.com/models/13021",
+      "tags": [
+        "sd15",
+        "chinese",
+        "girl",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sd15-16940-19996",
+      "runware_air_id": "civitai:16940@19996",
+      "name": "【Concept】Better Hair Censor 更好的头发遮胸 (SD1.5)",
+      "url": "https://civitai.com/models/16940",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sd15-171508-192663",
+      "runware_air_id": "civitai:171508@192663",
+      "name": "亚洲审美幼态脸美颜 Asian aeethetic face beautification (SD1.5)",
+      "url": "https://civitai.com/models/171508",
+      "tags": [
+        "sd15",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "xianxia-sd15",
+      "runware_air_id": "civitai:96244@102800",
+      "name": "仙侠道 Xianxia Taoist (SD1.5)",
+      "url": "https://civitai.com/models/96244",
+      "tags": [
+        "sd15",
+        "xianxia",
+        "taoist",
         "style",
         "runware-verified"
       ],
@@ -8197,152 +8875,6 @@
       "nsfw": false
     },
     {
-      "id": "ghostdom-sd15",
-      "runware_air_id": "civitai:95050@101405",
-      "name": "彼岸 Ghostdom 冥界 (SD1.5)",
-      "url": "https://civitai.com/models/95050",
-      "tags": [
-        "sd15",
-        "horror",
-        "ghost",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "luhua-sd15",
-      "runware_air_id": "civitai:99017@105927",
-      "name": "露华浓 Ancient Chinese (SD1.5)",
-      "url": "https://civitai.com/models/99017",
-      "tags": [
-        "sd15",
-        "chinese",
-        "ancient",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "xianxia-sd15",
-      "runware_air_id": "civitai:96244@102800",
-      "name": "仙侠道 Xianxia Taoist (SD1.5)",
-      "url": "https://civitai.com/models/96244",
-      "tags": [
-        "sd15",
-        "xianxia",
-        "taoist",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "fantasy-girl-rpg-sd15",
-      "runware_air_id": "civitai:105161@112784",
-      "name": "日系 RPG Fantasy Girl (SD1.5)",
-      "url": "https://civitai.com/models/105161",
-      "tags": [
-        "sd15",
-        "rpg",
-        "fantasy",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "samurai-girl-sd15",
-      "runware_air_id": "civitai:149199@166573",
-      "name": "武士少女 Samurai Girl (SD1.5)",
-      "url": "https://civitai.com/models/149199",
-      "tags": [
-        "sd15",
-        "samurai",
-        "japanese",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "1990s-animation-sd15",
-      "runware_air_id": "civitai:124213@135566",
-      "name": "相约98 1990s Animation (SD1.5)",
-      "url": "https://civitai.com/models/124213",
-      "tags": [
-        "sd15",
-        "retro",
-        "animation",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sekiro-emma-sd15",
-      "runware_air_id": "civitai:104735@112313",
-      "name": "只狼 永真 Sekiro Emma (SD1.5)",
-      "url": "https://civitai.com/models/104735",
-      "tags": [
-        "sd15",
-        "sekiro",
-        "character",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
       "id": "ink-painting-sd15",
       "runware_air_id": "civitai:116512@126169",
       "name": "倾尽天下 Chinese Ink Painting (SD1.5)",
@@ -8352,69 +8884,6 @@
         "ink",
         "chinese",
         "painting",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "magic-circle-sd15",
-      "runware_air_id": "civitai:127864@139932",
-      "name": "魔法阵 Magic Circle (SD1.5)",
-      "url": "https://civitai.com/models/127864",
-      "tags": [
-        "sd15",
-        "magic",
-        "circle",
-        "concept",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "logo-design-sd15",
-      "runware_air_id": "civitai:104072@111514",
-      "name": "Logo 设计 (SD1.5)",
-      "url": "https://civitai.com/models/104072",
-      "tags": [
-        "sd15",
-        "logo",
-        "design",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "evil-spirits-sd15",
-      "runware_air_id": "civitai:103529@110883",
-      "name": "魑魅魍魉 Evil Spirits (SD1.5)",
-      "url": "https://civitai.com/models/103529",
-      "tags": [
-        "sd15",
-        "horror",
-        "spirits",
         "style",
         "runware-verified"
       ],
@@ -8449,160 +8918,10 @@
       "nsfw": false
     },
     {
-      "id": "dragon-fantasy-sd15",
-      "runware_air_id": "civitai:225915@254858",
-      "name": "龙神幻想 Chinese Dragon (SD1.5)",
-      "url": "https://civitai.com/models/225915",
-      "tags": [
-        "sd15",
-        "dragon",
-        "chinese",
-        "fantasy",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "cyberpunk-avalokitesvara-sd15",
-      "runware_air_id": "civitai:121054@131697",
-      "name": "赛博观音 Cyberpunk Avalokitesvara (SD1.5)",
-      "url": "https://civitai.com/models/121054",
-      "tags": [
-        "sd15",
-        "cyberpunk",
-        "buddhist",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "armed-maidens-sd15",
-      "runware_air_id": "civitai:84189@89483",
-      "name": "武装少女 Armed Maidens (SD1.5)",
-      "url": "https://civitai.com/models/84189",
-      "tags": [
-        "sd15",
-        "armed",
-        "mecha",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "dragon-girl-sd15",
-      "runware_air_id": "civitai:293253@329603",
-      "name": "龙年立绘 Dragon and Girl (SD1.5)",
-      "url": "https://civitai.com/models/293253",
-      "tags": [
-        "sd15",
-        "dragon",
-        "chinese",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "splashing-ink-sd15",
-      "runware_air_id": "civitai:125500@137090",
-      "name": "高山流水 Splashing Ink (SD1.5)",
-      "url": "https://civitai.com/models/125500",
-      "tags": [
-        "sd15",
-        "ink",
-        "chinese",
-        "painting",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "hundred-ghosts-sd15",
-      "runware_air_id": "civitai:198853@223725",
-      "name": "百鬼夜行 Hundred Ghosts (SD1.5)",
-      "url": "https://civitai.com/models/198853",
-      "tags": [
-        "sd15",
-        "japanese",
-        "ghost",
-        "monster",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "white-hell-sd15",
-      "runware_air_id": "civitai:199610@224615",
-      "name": "纯白地狱 White Hell (SD1.5)",
-      "url": "https://civitai.com/models/199610",
-      "tags": [
-        "sd15",
-        "horror",
-        "white",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "girl-isshin-sd15",
-      "runware_air_id": "civitai:105178@112801",
-      "name": "娘化苇名一心 Girl Isshin (SD1.5)",
-      "url": "https://civitai.com/models/105178",
+      "id": "sekiro-emma-sd15",
+      "runware_air_id": "civitai:104735@112313",
+      "name": "只狼 永真 Sekiro Emma (SD1.5)",
+      "url": "https://civitai.com/models/104735",
       "tags": [
         "sd15",
         "sekiro",
@@ -8619,225 +8938,9 @@
       "nsfw": false
     },
     {
-      "id": "sd15-16940-19996",
-      "runware_air_id": "civitai:16940@19996",
-      "name": "【Concept】Better Hair Censor 更好的头发遮胸 (SD1.5)",
-      "url": "https://civitai.com/models/16940",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "sd15-103473-110818",
-      "runware_air_id": "civitai:103473@110818",
-      "name": "super low angle from below | 超级低视角 (SD1.5)",
-      "url": "https://civitai.com/models/103473",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-287958-323858",
-      "runware_air_id": "civitai:287958@323858",
-      "name": "From Below | Low Angle Shot (SD1.5)",
-      "url": "https://civitai.com/models/287958",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-196908-221409",
-      "runware_air_id": "civitai:196908@221409",
-      "name": "Disgusted Face (illustrious/pony/sd1.5) | Goofy Ai (SD1.5)",
-      "url": "https://civitai.com/models/196908",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "sd15-122135-132951",
-      "runware_air_id": "civitai:122135@132951",
-      "name": "cum bath (SD1.5)",
-      "url": "https://civitai.com/models/122135",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-77781-85137",
-      "runware_air_id": "civitai:77781@85137",
-      "name": "Chinese Dragon（中国龙）LoRa (SD1.5)",
-      "url": "https://civitai.com/models/77781",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-63187-186812",
-      "runware_air_id": "civitai:63187@186812",
-      "name": "heartboob (SD1.5)",
-      "url": "https://civitai.com/models/63187",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-171508-192663",
-      "runware_air_id": "civitai:171508@192663",
-      "name": "亚洲审美幼态脸美颜 Asian aeethetic face beautification (SD1.5)",
-      "url": "https://civitai.com/models/171508",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-110990-119676",
-      "runware_air_id": "civitai:110990@119676",
-      "name": "breasts size (SD1.5)",
-      "url": "https://civitai.com/models/110990",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-106762-114681",
-      "runware_air_id": "civitai:106762@114681",
-      "name": "Girl in bathtub: 浴缸里的女孩 | Siren Lora (SD1.5)",
-      "url": "https://civitai.com/models/106762",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "sd15-295910-332520",
-      "runware_air_id": "civitai:295910@332520",
-      "name": "Selfie | POV (SD1.5)",
-      "url": "https://civitai.com/models/295910",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-134579-163075",
-      "runware_air_id": "civitai:134579@163075",
-      "name": "唐风汉服 v8 (SD1.5)",
-      "url": "https://civitai.com/models/134579",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-134579-154655",
-      "runware_air_id": "civitai:134579@154655",
-      "name": "唐风汉服 v7 款式7 (SD1.5)",
+      "id": "sd15-134579-149411",
+      "runware_air_id": "civitai:134579@149411",
+      "name": "唐风汉服 v2 Transparent Tradition (SD1.5)",
       "url": "https://civitai.com/models/134579",
       "tags": [
         "sd15",
@@ -8889,9 +8992,9 @@
       "nsfw": false
     },
     {
-      "id": "sd15-134579-149411",
-      "runware_air_id": "civitai:134579@149411",
-      "name": "唐风汉服 v2 Transparent Tradition (SD1.5)",
+      "id": "sd15-134579-154655",
+      "runware_air_id": "civitai:134579@154655",
+      "name": "唐风汉服 v7 款式7 (SD1.5)",
       "url": "https://civitai.com/models/134579",
       "tags": [
         "sd15",
@@ -8907,10 +9010,10 @@
       "nsfw": false
     },
     {
-      "id": "sd15-290649-334766",
-      "runware_air_id": "civitai:290649@334766",
-      "name": "Yoga Set - White Yoga Set (SD1.5)",
-      "url": "https://civitai.com/models/290649",
+      "id": "sd15-134579-163075",
+      "runware_air_id": "civitai:134579@163075",
+      "name": "唐风汉服 v8 (SD1.5)",
+      "url": "https://civitai.com/models/134579",
       "tags": [
         "sd15",
         "runware-verified"
@@ -8925,12 +9028,14 @@
       "nsfw": false
     },
     {
-      "id": "sd15-290649-326737",
-      "runware_air_id": "civitai:290649@326737",
-      "name": "Yoga Set - Long Sleeve Pilates Jumpsuit (SD1.5)",
-      "url": "https://civitai.com/models/290649",
+      "id": "girl-isshin-sd15",
+      "runware_air_id": "civitai:105178@112801",
+      "name": "娘化苇名一心 Girl Isshin (SD1.5)",
+      "url": "https://civitai.com/models/105178",
       "tags": [
         "sd15",
+        "sekiro",
+        "character",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -8943,12 +9048,14 @@
       "nsfw": false
     },
     {
-      "id": "sd15-290649-326766",
-      "runware_air_id": "civitai:290649@326766",
-      "name": "Yoga Set - Ombre Yoga Pants (SD1.5)",
-      "url": "https://civitai.com/models/290649",
+      "id": "sunshangxiang-sd15",
+      "runware_air_id": "civitai:36940@42974",
+      "name": "孙尚香 王者荣耀 (SD1.5)",
+      "url": "https://civitai.com/models/36940",
       "tags": [
         "sd15",
+        "chinese",
+        "character",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -8961,12 +9068,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-290649-327052",
-      "runware_air_id": "civitai:290649@327052",
-      "name": "Yoga Set - Zippered Long Sleeve Nude (SD1.5)",
-      "url": "https://civitai.com/models/290649",
+      "id": "ghostdom-sd15",
+      "runware_air_id": "civitai:95050@101405",
+      "name": "彼岸 Ghostdom 冥界 (SD1.5)",
+      "url": "https://civitai.com/models/95050",
       "tags": [
         "sd15",
+        "horror",
+        "ghost",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -8979,12 +9089,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-290649-327184",
-      "runware_air_id": "civitai:290649@327184",
-      "name": "Yoga Set - Ombre Micro-flare High-waist (SD1.5)",
-      "url": "https://civitai.com/models/290649",
+      "id": "fantasy-girl-rpg-sd15",
+      "runware_air_id": "civitai:105161@112784",
+      "name": "日系 RPG Fantasy Girl (SD1.5)",
+      "url": "https://civitai.com/models/105161",
       "tags": [
         "sd15",
+        "rpg",
+        "fantasy",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -8997,12 +9110,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-290649-327924",
-      "runware_air_id": "civitai:290649@327924",
-      "name": "Yoga Set - Oily Yoga Bodybuilding Bodysuit (SD1.5)",
-      "url": "https://civitai.com/models/290649",
+      "id": "wuxia-v2-sd15",
+      "runware_air_id": "civitai:76637@90181",
+      "name": "武侠 Wuxia V2 (SD1.5)",
+      "url": "https://civitai.com/models/76637",
       "tags": [
         "sd15",
+        "chinese",
+        "wuxia",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9015,30 +9131,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-56016-60410",
-      "runware_air_id": "civitai:56016@60410",
-      "name": "Miniature Microbikini (SD1.5)",
-      "url": "https://civitai.com/models/56016",
+      "id": "samurai-girl-sd15",
+      "runware_air_id": "civitai:149199@166573",
+      "name": "武士少女 Samurai Girl (SD1.5)",
+      "url": "https://civitai.com/models/149199",
       "tags": [
         "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "sd15-44395-104291",
-      "runware_air_id": "civitai:44395@104291",
-      "name": "hanfu tang 汉服唐风 (SD1.5)",
-      "url": "https://civitai.com/models/44395",
-      "tags": [
-        "sd15",
+        "samurai",
+        "japanese",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9051,12 +9152,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-71970-76724",
-      "runware_air_id": "civitai:71970@76724",
-      "name": "[badbro]-sexy underwear (SD1.5)",
-      "url": "https://civitai.com/models/71970",
+      "id": "armed-maidens-sd15",
+      "runware_air_id": "civitai:84189@89483",
+      "name": "武装少女 Armed Maidens (SD1.5)",
+      "url": "https://civitai.com/models/84189",
       "tags": [
         "sd15",
+        "armed",
+        "mecha",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9069,30 +9173,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-21948-136384",
-      "runware_air_id": "civitai:21948@136384",
-      "name": "Slingshot Swimsuit v2 (SD1.5)",
-      "url": "https://civitai.com/models/21948",
+      "id": "midjourney-anime-sd15",
+      "runware_air_id": "civitai:98401@105232",
+      "name": "百花缭乱 Midjourney Anime (SD1.5)",
+      "url": "https://civitai.com/models/98401",
       "tags": [
         "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "sd15-52885-57273",
-      "runware_air_id": "civitai:52885@57273",
-      "name": "Oversized Sweater/Hoodie (SD1.5)",
-      "url": "https://civitai.com/models/52885",
-      "tags": [
-        "sd15",
+        "anime",
+        "midjourney",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9105,12 +9194,16 @@
       "nsfw": false
     },
     {
-      "id": "sd15-49597-54162",
-      "runware_air_id": "civitai:49597@54162",
-      "name": "See-Through Dress (SD1.5)",
-      "url": "https://civitai.com/models/49597",
+      "id": "hundred-ghosts-sd15",
+      "runware_air_id": "civitai:198853@223725",
+      "name": "百鬼夜行 Hundred Ghosts (SD1.5)",
+      "url": "https://civitai.com/models/198853",
       "tags": [
         "sd15",
+        "japanese",
+        "ghost",
+        "monster",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9123,12 +9216,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-57737-62173",
-      "runware_air_id": "civitai:57737@62173",
-      "name": "Deep V-Neck Dress (SD1.5)",
-      "url": "https://civitai.com/models/57737",
+      "id": "1990s-animation-sd15",
+      "runware_air_id": "civitai:124213@135566",
+      "name": "相约98 1990s Animation (SD1.5)",
+      "url": "https://civitai.com/models/124213",
       "tags": [
         "sd15",
+        "retro",
+        "animation",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9141,12 +9237,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-61209-65674",
-      "runware_air_id": "civitai:61209@65674",
-      "name": "Gym Outfit (SD1.5)",
-      "url": "https://civitai.com/models/61209",
+      "id": "white-hell-sd15",
+      "runware_air_id": "civitai:199610@224615",
+      "name": "纯白地狱 White Hell (SD1.5)",
+      "url": "https://civitai.com/models/199610",
       "tags": [
         "sd15",
+        "horror",
+        "white",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9159,12 +9258,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-65090-69722",
-      "runware_air_id": "civitai:65090@69722",
-      "name": "Kitchen Apron - Naked & Not Naked (SD1.5)",
-      "url": "https://civitai.com/models/65090",
+      "id": "cyberpunk-avalokitesvara-sd15",
+      "runware_air_id": "civitai:121054@131697",
+      "name": "赛博观音 Cyberpunk Avalokitesvara (SD1.5)",
+      "url": "https://civitai.com/models/121054",
       "tags": [
         "sd15",
+        "cyberpunk",
+        "buddhist",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9177,12 +9279,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-46823-51420",
-      "runware_air_id": "civitai:46823@51420",
-      "name": "Ballet Dance Dress (SD1.5)",
-      "url": "https://civitai.com/models/46823",
+      "id": "luhua-sd15",
+      "runware_air_id": "civitai:99017@105927",
+      "name": "露华浓 Ancient Chinese (SD1.5)",
+      "url": "https://civitai.com/models/99017",
       "tags": [
         "sd15",
+        "chinese",
+        "ancient",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9195,12 +9300,16 @@
       "nsfw": false
     },
     {
-      "id": "sd15-57753-62193",
-      "runware_air_id": "civitai:57753@62193",
-      "name": "Leg Split Dress (SD1.5)",
-      "url": "https://civitai.com/models/57753",
+      "id": "splashing-ink-sd15",
+      "runware_air_id": "civitai:125500@137090",
+      "name": "高山流水 Splashing Ink (SD1.5)",
+      "url": "https://civitai.com/models/125500",
       "tags": [
         "sd15",
+        "ink",
+        "chinese",
+        "painting",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9213,12 +9322,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-44239-48877",
-      "runware_air_id": "civitai:44239@48877",
-      "name": "Wedding Princess Dress (SD1.5)",
-      "url": "https://civitai.com/models/44239",
+      "id": "evil-spirits-sd15",
+      "runware_air_id": "civitai:103529@110883",
+      "name": "魑魅魍魉 Evil Spirits (SD1.5)",
+      "url": "https://civitai.com/models/103529",
       "tags": [
         "sd15",
+        "horror",
+        "spirits",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9231,12 +9343,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-56108-60510",
-      "runware_air_id": "civitai:56108@60510",
-      "name": "Sauna With Towel (SD1.5)",
-      "url": "https://civitai.com/models/56108",
+      "id": "magic-circle-sd15",
+      "runware_air_id": "civitai:127864@139932",
+      "name": "魔法阵 Magic Circle (SD1.5)",
+      "url": "https://civitai.com/models/127864",
       "tags": [
         "sd15",
+        "magic",
+        "circle",
+        "concept",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9249,12 +9364,15 @@
       "nsfw": false
     },
     {
-      "id": "sd15-58656-63102",
-      "runware_air_id": "civitai:58656@63102",
-      "name": "Has Wings (SD1.5)",
-      "url": "https://civitai.com/models/58656",
+      "id": "dragon-girl-sd15",
+      "runware_air_id": "civitai:293253@329603",
+      "name": "龙年立绘 Dragon and Girl (SD1.5)",
+      "url": "https://civitai.com/models/293253",
       "tags": [
         "sd15",
+        "dragon",
+        "chinese",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -9267,252 +9385,16 @@
       "nsfw": false
     },
     {
-      "id": "sd15-52978-57364",
-      "runware_air_id": "civitai:52978@57364",
-      "name": "Oversized Shirt (SD1.5)",
-      "url": "https://civitai.com/models/52978",
+      "id": "dragon-fantasy-sd15",
+      "runware_air_id": "civitai:225915@254858",
+      "name": "龙神幻想 Chinese Dragon (SD1.5)",
+      "url": "https://civitai.com/models/225915",
       "tags": [
         "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-64877-69514",
-      "runware_air_id": "civitai:64877@69514",
-      "name": "Mini Dress (SD1.5)",
-      "url": "https://civitai.com/models/64877",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-38567-44501",
-      "runware_air_id": "civitai:38567@44501",
-      "name": "betterCuteAsian (SD1.5)",
-      "url": "https://civitai.com/models/38567",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-67727-72391",
-      "runware_air_id": "civitai:67727@72391",
-      "name": "Pigtail Hairstyle (SD1.5)",
-      "url": "https://civitai.com/models/67727",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-70173-74819",
-      "runware_air_id": "civitai:70173@74819",
-      "name": "Very Long Hair (SD1.5)",
-      "url": "https://civitai.com/models/70173",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-70196-74842",
-      "runware_air_id": "civitai:70196@74842",
-      "name": "Long Ponytail Hairstyle (SD1.5)",
-      "url": "https://civitai.com/models/70196",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-68624-73309",
-      "runware_air_id": "civitai:68624@73309",
-      "name": "Egyptian Bob hairstyle - (Hime cut Bob Hairstyle) (SD1.5)",
-      "url": "https://civitai.com/models/68624",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-47852-52447",
-      "runware_air_id": "civitai:47852@52447",
-      "name": "Reverse Bunny Suit (SD1.5)",
-      "url": "https://civitai.com/models/47852",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-21059-25062",
-      "runware_air_id": "civitai:21059@25062",
-      "name": "bodychainV2 (SD1.5)",
-      "url": "https://civitai.com/models/21059",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "sd15-117027-126761",
-      "runware_air_id": "civitai:117027@126761",
-      "name": "Open towel (SD1.5)",
-      "url": "https://civitai.com/models/117027",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "sd15-85996-124545",
-      "runware_air_id": "civitai:85996@124545",
-      "name": "JK lure dress JK战袍 (SD1.5)",
-      "url": "https://civitai.com/models/85996",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "succubus-womb-tattoos-sd15",
-      "runware_air_id": "civitai:14470@77517",
-      "name": "Photorealistic Succubus Womb Tattoos (SD1.5)",
-      "url": "https://civitai.com/models/14470",
-      "tags": [
-        "sd15",
-        "tattoo",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "sexy-cosplay-costume-sd15",
-      "runware_air_id": "civitai:115663@129760",
-      "name": "Sexy Cosplay Costume Realistic (SD1.5)",
-      "url": "https://civitai.com/models/115663",
-      "tags": [
-        "sd15",
-        "cosplay",
-        "costume",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "transparent-bunny-suit-sd15",
-      "runware_air_id": "civitai:114051@123250",
-      "name": "Transparent Bunny Suit (SD1.5)",
-      "url": "https://civitai.com/models/114051",
-      "tags": [
-        "sd15",
-        "bunny",
-        "outfit",
+        "dragon",
+        "chinese",
+        "fantasy",
+        "style",
         "runware-verified"
       ],
       "default_scale": 0.8,
