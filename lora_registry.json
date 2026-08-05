@@ -5593,26 +5593,6 @@
       "nsfw": false
     },
     {
-      "id": "age-slider-zit",
-      "runware_air_id": "liangwc:age-slider@2846807",
-      "name": "Age Slider (ZIT)",
-      "url": "https://civitai.com/models/2533032",
-      "tags": [
-        "zimage",
-        "slider",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "tools",
-      "nsfw": false
-    },
-    {
       "id": "age-slider-v2-zit",
       "runware_air_id": "liangwc:age-slider-v2@2957021",
       "name": "Age Slider V2 (ZIT)",
@@ -5695,6 +5675,68 @@
       "nsfw": true
     },
     {
+      "id": "rim-lighting-slider-zit",
+      "runware_air_id": "liangwc:rim-lighting-slider@2521689",
+      "name": "Rim Lighting Slider (ZIT)",
+      "url": "https://civitai.com/models/2240056",
+      "tags": [
+        "zimage",
+        "slider",
+        "lighting",
+        "tool",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "tools",
+      "nsfw": false
+    },
+    {
+      "id": "saggy-slider-zit",
+      "runware_air_id": "liangwc:saggy-slider@2504398",
+      "name": "Saggy Slider (ZIT)",
+      "url": "https://civitai.com/models/2224601",
+      "tags": [
+        "zimage",
+        "slider",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
+      "id": "waist-sliders-zit",
+      "runware_air_id": "liangwc:waist-sliders@2648251",
+      "name": "Waist Sliders (ZIT)",
+      "url": "https://civitai.com/models/2354366",
+      "tags": [
+        "zimage",
+        "slider",
+        "body",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "tools",
+      "nsfw": true
+    },
+    {
       "id": "zit-age-slider",
       "runware_air_id": "liangwc:zit-age-slider@1",
       "name": "ZIT Age Slider",
@@ -5714,47 +5756,6 @@
       "base_model": "zimage-turbo",
       "category": "tools",
       "nsfw": false
-    },
-    {
-      "id": "asian-mix-lora",
-      "runware_air_id": "liangwc:asian-mix-lora@1",
-      "name": "[Z Image Turbo] Asian Mix LoRA - EOL",
-      "url": "https://civitai.com/models/2185778",
-      "tags": [
-        "zimage",
-        "asian",
-        "mix",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "character_style",
-      "nsfw": true
-    },
-    {
-      "id": "angelcore-zit",
-      "runware_air_id": "liangwc:angelcore@2725554",
-      "name": "Angelcore (ZIT)",
-      "url": "https://civitai.com/models/2424184",
-      "tags": [
-        "zimage",
-        "style",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "character_style",
-      "nsfw": true
     },
     {
       "id": "better-nudes-asians-zit",
@@ -5837,15 +5838,16 @@
       "nsfw": true
     },
     {
-      "id": "oriental-elegance",
-      "runware_air_id": "liangwc:oriental-elegance@1",
-      "name": "东方雅序 - 青霭浮光 Mistborne Gleam",
-      "url": "https://civitai.com/models/1871757",
+      "id": "zit-ancient-chinese-v4",
+      "runware_air_id": "liangwc:zit-ancient-chinese-v4@1",
+      "name": "ZIT Ancient Chinese Outfit V4",
+      "url": "https://civitai.com/models/2174846",
       "tags": [
         "zimage",
         "chinese",
-        "oriental",
-        "elegance",
+        "ancient",
+        "outfit",
+        "nsfw",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -5855,7 +5857,7 @@
       ],
       "base_model": "zimage-turbo",
       "category": "character_style",
-      "nsfw": false
+      "nsfw": true
     },
     {
       "id": "aesthetic-amateur-photo",
@@ -5880,13 +5882,13 @@
       "nsfw": false
     },
     {
-      "id": "comic-book-tome1",
-      "runware_air_id": "liangwc:comic-book-tome1@1",
-      "name": "Comic Book Tome 1",
-      "url": "https://civitai.com/models/830230",
+      "id": "anime-style-zit",
+      "runware_air_id": "liangwc:anime-style@2540433",
+      "name": "Anime Style (ZIT)",
+      "url": "https://civitai.com/models/2186398",
       "tags": [
         "zimage",
-        "comic",
+        "anime",
         "style",
         "runware-verified"
       ],
@@ -5898,6 +5900,45 @@
       "base_model": "zimage-turbo",
       "category": "style",
       "nsfw": false
+    },
+    {
+      "id": "rubicon-stx-zit",
+      "runware_air_id": "liangwc:rubicon-stx@2633652",
+      "name": "RUBICON BY STX (ZIT)",
+      "url": "https://civitai.com/models/2341413",
+      "tags": [
+        "zimage",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "style",
+      "nsfw": false
+    },
+    {
+      "id": "shadows-expressive-zit",
+      "runware_air_id": "liangwc:shadows-expressive@2602072",
+      "name": "Shadows of ExpressiveH (ZIT)",
+      "url": "https://civitai.com/models/2312812",
+      "tags": [
+        "zimage",
+        "style",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "style",
+      "nsfw": true
     },
     {
       "id": "facial-cumshot",
@@ -5918,6 +5959,106 @@
       ],
       "base_model": "zimage-turbo",
       "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "giantess-zit",
+      "runware_air_id": "liangwc:giantess@2507266",
+      "name": "Giantess (ZIT)",
+      "url": "https://civitai.com/models/2227172",
+      "tags": [
+        "zimage",
+        "giantess",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "holding-spread-legs-zit",
+      "runware_air_id": "liangwc:holding-spread-legs@2741069",
+      "name": "Holding Spread Legs (ZIT)",
+      "url": "https://civitai.com/models/2428293",
+      "tags": [
+        "zimage",
+        "pose",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "lifting-clothing-mouth-zit",
+      "runware_air_id": "liangwc:lifting-clothing-mouth@2607934",
+      "name": "Lifting Clothing With Mouth (ZIT)",
+      "url": "https://civitai.com/models/1621208",
+      "tags": [
+        "zimage",
+        "outfit",
+        "pose",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "concept",
+      "nsfw": false
+    },
+    {
+      "id": "upskirt-view-zit",
+      "runware_air_id": "liangwc:upskirt-view@2536452",
+      "name": "Upskirt View (ZIT)",
+      "url": "https://civitai.com/models/2253206",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "concept",
+      "nsfw": true
+    },
+    {
+      "id": "asian-mix-lora",
+      "runware_air_id": "liangwc:asian-mix-lora@1",
+      "name": "[Z Image Turbo] Asian Mix LoRA - EOL",
+      "url": "https://civitai.com/models/2185778",
+      "tags": [
+        "zimage",
+        "asian",
+        "mix",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
       "nsfw": true
     },
     {
@@ -5964,6 +6105,27 @@
       "nsfw": false
     },
     {
+      "id": "artificial-girl-zit",
+      "runware_air_id": "liangwc:artificial-girl@2511807",
+      "name": "Artificial Girl Model (ZIT)",
+      "url": "https://civitai.com/models/1495073",
+      "tags": [
+        "zimage",
+        "asian",
+        "realistic",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": true
+    },
+    {
       "id": "asian-milf-zit",
       "runware_air_id": "liangwc:asian-milf@3062305",
       "name": "ASIAN MILF (ZIT)",
@@ -5972,6 +6134,27 @@
         "zimage",
         "asian",
         "milf",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "hang-asian-baddie-zit",
+      "runware_air_id": "liangwc:hang-asian-baddie@2651712",
+      "name": "Hang Asian-American Baddie (ZIT)",
+      "url": "https://civitai.com/models/2357704",
+      "tags": [
+        "zimage",
+        "asian",
+        "baddie",
         "character",
         "runware-verified"
       ],
@@ -6112,6 +6295,26 @@
       "nsfw": false
     },
     {
+      "id": "vivi-luvva-zit",
+      "runware_air_id": "liangwc:vivi-luvva@2669643",
+      "name": "Vivi Luvva (ZIT)",
+      "url": "https://civitai.com/models/1791202",
+      "tags": [
+        "zimage",
+        "asian",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "character",
+      "nsfw": false
+    },
+    {
       "id": "zit-white-hair-ai",
       "runware_air_id": "liangwc:zit-white-hair-ai@1",
       "name": "White Hair Ai Character / Influencer [SFW+NSFW]",
@@ -6175,28 +6378,6 @@
       "nsfw": false
     },
     {
-      "id": "zit-ancient-chinese-v4",
-      "runware_air_id": "liangwc:zit-ancient-chinese-v4@1",
-      "name": "ZIT Ancient Chinese Outfit V4",
-      "url": "https://civitai.com/models/2174846",
-      "tags": [
-        "zimage",
-        "chinese",
-        "ancient",
-        "outfit",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "character",
-      "nsfw": true
-    },
-    {
       "id": "zyd232-chinese-female-zimage",
       "runware_air_id": "liangwc:zyd232-chinese-female-zimage@1",
       "name": "zyd232's Chinese Female LoRA [Z-Image]",
@@ -6216,387 +6397,6 @@
       "base_model": "zimage-turbo",
       "category": "character",
       "nsfw": false
-    },
-    {
-      "id": "anime-style-zit",
-      "runware_air_id": "liangwc:anime-style@2540433",
-      "name": "Anime Style (ZIT)",
-      "url": "https://civitai.com/models/2186398",
-      "tags": [
-        "zimage",
-        "anime",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "artificial-girl-zit",
-      "runware_air_id": "liangwc:artificial-girl@2511807",
-      "name": "Artificial Girl Model (ZIT)",
-      "url": "https://civitai.com/models/1495073",
-      "tags": [
-        "zimage",
-        "asian",
-        "realistic",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "big-penis-insertion-zit",
-      "runware_air_id": "liangwc:big-penis-insertion@2520706",
-      "name": "Big Penis Insertion (ZIT)",
-      "url": "https://civitai.com/models/899155",
-      "tags": [
-        "zimage",
-        "nsfw",
-        "anatomy",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "garbage-bag-outfit-zit",
-      "runware_air_id": "liangwc:garbage-bag-outfit@2496983",
-      "name": "Garbage Bag Outfit (ZIT)",
-      "url": "https://civitai.com/models/2217892",
-      "tags": [
-        "zimage",
-        "outfit",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "giantess-zit",
-      "runware_air_id": "liangwc:giantess@2507266",
-      "name": "Giantess (ZIT)",
-      "url": "https://civitai.com/models/2227172",
-      "tags": [
-        "zimage",
-        "giantess",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "hang-asian-baddie-zit",
-      "runware_air_id": "liangwc:hang-asian-baddie@2651712",
-      "name": "Hang Asian-American Baddie (ZIT)",
-      "url": "https://civitai.com/models/2357704",
-      "tags": [
-        "zimage",
-        "asian",
-        "baddie",
-        "character",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "holding-spread-legs-zit",
-      "runware_air_id": "liangwc:holding-spread-legs@2741069",
-      "name": "Holding Spread Legs (ZIT)",
-      "url": "https://civitai.com/models/2428293",
-      "tags": [
-        "zimage",
-        "pose",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "human-onahole-zit",
-      "runware_air_id": "liangwc:human-onahole@2917732",
-      "name": "Human Onahole (ZIT)",
-      "url": "https://civitai.com/models/1319951",
-      "tags": [
-        "zimage",
-        "nsfw",
-        "concept",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "hyper-gigantic-tits-zit",
-      "runware_air_id": "liangwc:hyper-gigantic-tits@2895788",
-      "name": "Hyper Gigantic Tits (ZIT)",
-      "url": "https://civitai.com/models/2212040",
-      "tags": [
-        "zimage",
-        "nsfw",
-        "body",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "lifting-clothing-mouth-zit",
-      "runware_air_id": "liangwc:lifting-clothing-mouth@2607934",
-      "name": "Lifting Clothing With Mouth (ZIT)",
-      "url": "https://civitai.com/models/1621208",
-      "tags": [
-        "zimage",
-        "outfit",
-        "pose",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "radiant-realism-pro-zit",
-      "runware_air_id": "liangwc:radiant-realism-pro@2812128",
-      "name": "Radiant Realism Pro (ZIT)",
-      "url": "https://civitai.com/models/2395852",
-      "tags": [
-        "zimage",
-        "realistic",
-        "skin",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "rim-lighting-slider-zit",
-      "runware_air_id": "liangwc:rim-lighting-slider@2521689",
-      "name": "Rim Lighting Slider (ZIT)",
-      "url": "https://civitai.com/models/2240056",
-      "tags": [
-        "zimage",
-        "slider",
-        "lighting",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "rubicon-stx-zit",
-      "runware_air_id": "liangwc:rubicon-stx@2633652",
-      "name": "RUBICON BY STX (ZIT)",
-      "url": "https://civitai.com/models/2341413",
-      "tags": [
-        "zimage",
-        "style",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "saggy-slider-zit",
-      "runware_air_id": "liangwc:saggy-slider@2504398",
-      "name": "Saggy Slider (ZIT)",
-      "url": "https://civitai.com/models/2224601",
-      "tags": [
-        "zimage",
-        "slider",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "shadows-expressive-zit",
-      "runware_air_id": "liangwc:shadows-expressive@2602072",
-      "name": "Shadows of ExpressiveH (ZIT)",
-      "url": "https://civitai.com/models/2312812",
-      "tags": [
-        "zimage",
-        "style",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "upskirt-creepshots-zit",
-      "runware_air_id": "liangwc:upskirt-creepshots@2750487",
-      "name": "Upskirt Creepshots (ZIT)",
-      "url": "https://civitai.com/models/2446193",
-      "tags": [
-        "zimage",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "upskirt-view-zit",
-      "runware_air_id": "liangwc:upskirt-view@2536452",
-      "name": "Upskirt View (ZIT)",
-      "url": "https://civitai.com/models/2253206",
-      "tags": [
-        "zimage",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "vivi-luvva-zit",
-      "runware_air_id": "liangwc:vivi-luvva@2669643",
-      "name": "Vivi Luvva (ZIT)",
-      "url": "https://civitai.com/models/1791202",
-      "tags": [
-        "zimage",
-        "asian",
-        "character",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "waist-sliders-zit",
-      "runware_air_id": "liangwc:waist-sliders@2648251",
-      "name": "Waist Sliders (ZIT)",
-      "url": "https://civitai.com/models/2354366",
-      "tags": [
-        "zimage",
-        "slider",
-        "body",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "zimage-turbo",
-      "category": "new",
-      "nsfw": true
     },
     {
       "id": "3d-cg-style-sd15",
