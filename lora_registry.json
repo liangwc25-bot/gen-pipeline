@@ -5572,6 +5572,144 @@
       "description": "Undressing LoRA — progressive undress slider"
     },
     {
+      "id": "artificial-woman-hsuhsu-sdxl",
+      "runware_air_id": "civitai:291675@327883",
+      "name": "Artificial Woman Hsuhsu (SDXL)",
+      "url": "https://civitai.com/models/291675",
+      "tags": [
+        "sdxl",
+        "character",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "artificial-woman-a1-sdxl",
+      "runware_air_id": "civitai:292287@328554",
+      "name": "Artificial Woman No.a1 (SDXL)",
+      "url": "https://civitai.com/models/292287",
+      "tags": [
+        "sdxl",
+        "character",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "artificial-woman-a2-sdxl",
+      "runware_air_id": "civitai:300170@337119",
+      "name": "Artificial Woman No.a2 (SDXL)",
+      "url": "https://civitai.com/models/300170",
+      "tags": [
+        "sdxl",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "artificial-woman-b1-sdxl",
+      "runware_air_id": "civitai:296300@332951",
+      "name": "Artificial Woman No.b1 (SDXL)",
+      "url": "https://civitai.com/models/296300",
+      "tags": [
+        "sdxl",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "punish-nun-clothing-sdxl",
+      "runware_air_id": "civitai:160893@181049",
+      "name": "Punish Nun Clothing (SDXL)",
+      "url": "https://civitai.com/models/160893",
+      "tags": [
+        "sdxl",
+        "nun",
+        "outfit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "see-through-kimono-sdxl",
+      "runware_air_id": "civitai:306979@344572",
+      "name": "See-through Kimono (SDXL)",
+      "url": "https://civitai.com/models/306979",
+      "tags": [
+        "sdxl",
+        "kimono",
+        "outfit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sin-nun-cross-bodysuit-sdxl",
+      "runware_air_id": "civitai:319936@358753",
+      "name": "Sin Nun Cross Bodysuit (SDXL)",
+      "url": "https://civitai.com/models/319936",
+      "tags": [
+        "sdxl",
+        "outfit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "new",
+      "nsfw": false
+    },
+    {
       "id": "zit-breast-slider",
       "runware_air_id": "liangwc:zit-breast-slider@1",
       "name": "[ZIT] Breast Slider",
@@ -9032,6 +9170,26 @@
         "3d",
         "cg",
         "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "more-like-east-asians-sd15",
+      "runware_air_id": "civitai:433745@483161",
+      "name": "More Like East Asians (SD1.5)",
+      "url": "https://civitai.com/models/433745",
+      "tags": [
+        "sd15",
+        "asian",
+        "face",
         "runware-verified"
       ],
       "default_scale": 0.8,
