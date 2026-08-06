@@ -9440,6 +9440,25 @@
       "nsfw": false
     },
     {
+      "id": "nwsj-realistic-sd15",
+      "runware_air_id": "civitai:53601@89527",
+      "name": "娜乌斯嘉 nwsj_realistic (SD1.5)",
+      "url": "https://civitai.com/models/53601",
+      "tags": [
+        "sd15",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": false
+    },
+    {
       "id": "wuxia-v2-sd15",
       "runware_air_id": "civitai:76637@90181",
       "name": "武侠 Wuxia V2 (SD1.5)",
