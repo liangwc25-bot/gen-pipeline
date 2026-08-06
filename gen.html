@@ -555,6 +555,16 @@
               <label for="batch-cfg">CFG Scale</label>
               <input type="number" id="batch-cfg" placeholder="自动" min="0.5" max="20" step="0.5">
             </div>
+          </div>
+          <div class="row" style="margin-top:14px">
+            <div class="form-group">
+              <label for="batch-width">宽度</label>
+              <input type="number" id="batch-width" placeholder="768" min="256" max="2048" step="64">
+            </div>
+            <div class="form-group">
+              <label for="batch-height">高度</label>
+              <input type="number" id="batch-height" placeholder="1024" min="256" max="2048" step="64">
+            </div>
             <div class="form-group">
               <label for="batch-seed">Seed（留空随机）</label>
               <input type="number" id="batch-seed" placeholder="留空随机" min="0" max="2147483647">
@@ -694,6 +704,8 @@ function saveBatchDraft() {
     steps: document.getElementById('batch-steps').value,
     cfg: document.getElementById('batch-cfg').value,
     seed: document.getElementById('batch-seed').value,
+    width: document.getElementById('batch-width').value,
+    height: document.getElementById('batch-height').value,
     aspect: document.getElementById('batch-aspect').value,
     sampler: document.getElementById('batch-sampler').value,
     loras,
@@ -713,6 +725,8 @@ function restoreBatchDraft() {
     if (d.steps) document.getElementById('batch-steps').value = d.steps;
     if (d.cfg) document.getElementById('batch-cfg').value = d.cfg;
     if (d.seed) document.getElementById('batch-seed').value = d.seed;
+    if (d.width) { document.getElementById('batch-width').value = d.width; document.getElementById('batch-width').dataset._auto = '0'; }
+    if (d.height) { document.getElementById('batch-height').value = d.height; document.getElementById('batch-height').dataset._auto = '0'; }
     if (d.aspect) {
       document.getElementById('batch-aspect').value = d.aspect;
       const al = document.getElementById('batch-aspect-wrap').querySelector('.custom-select-label');
@@ -751,6 +765,9 @@ document.addEventListener('input', e => {
   if (e.target.id === 'batch-prompt' || e.target.id === 'batch-negative' ||
       e.target.id === 'batch-seed' || e.target.id === 'batch-steps' ||
       e.target.id === 'batch-cfg' || e.target.closest('#batch-lora-rows .lora-row')) saveBatchDraft();
+  // Mark manual resolution override
+  if (e.target.id === 'batch-width') e.target.dataset._auto = '0';
+  if (e.target.id === 'batch-height') e.target.dataset._auto = '0';
 });
 document.addEventListener('change', e => {
   if (e.target.id === 'model' || e.target.id === 'translate_cn') saveDraft();
@@ -789,7 +806,10 @@ document.addEventListener('click', function(e) {
     opt.classList.add('active');
     wrap.classList.remove('open');
     saveDraft();
-    if (opt.closest('#batch-panel')) saveBatchDraft();
+    if (opt.closest('#batch-panel')) {
+      saveBatchDraft();
+      if (hidden.id === 'batch-aspect') updateBatchResolution();
+    }
     // Trigger model change if model selector
     if (hidden.id === 'model') onModelChange();
   // Init count active state
@@ -1654,9 +1674,26 @@ function selectBatchCat(cat, btn) {
 
   document.getElementById('batch-check-all').checked = false;
   updateBatchCount();
+  updateBatchResolution();
 
   // Load LoRAs for this category
   loadBatchLoras(cat).then(() => saveBatchDraft());
+}
+
+function updateBatchResolution() {
+  const cat = _batchCat;
+  const maxSide = cat === 'sd15' ? 768 : 1024;
+  const aspect = document.getElementById('batch-aspect').value || '9:16';
+  const [rw, rh] = { '9:16': [2,3], '16:9': [3,2], '1:1': [1,1], '3:2': [3,2], '2:3': [2,3], '4:3': [4,3], '3:4': [3,4] }[aspect] || [2,3];
+  // Scale so the longer side = maxSide
+  const scale = maxSide / Math.max(rw, rh);
+  const w = Math.round(rw * scale / 64) * 64;
+  const h = Math.round(rh * scale / 64) * 64;
+  const wEl = document.getElementById('batch-width');
+  const hEl = document.getElementById('batch-height');
+  // Only auto-set if user hasn't manually changed them (or are empty)
+  if (!wEl.value || wEl.dataset._auto === '1') { wEl.value = w; wEl.dataset._auto = '1'; wEl.placeholder = w; }
+  if (!hEl.value || hEl.dataset._auto === '1') { hEl.value = h; hEl.dataset._auto = '1'; hEl.placeholder = h; }
 }
 
 function toggleAllCheckpoints() {
@@ -1826,6 +1863,8 @@ async function batchGenerate() {
     aspect: document.getElementById('batch-aspect').value,
     sampler: document.getElementById('batch-sampler').value || null,
     seed: seedEl.value ? parseInt(seedEl.value) : null,
+    width: parseInt(document.getElementById('batch-width').value) || null,
+    height: parseInt(document.getElementById('batch-height').value) || null,
   };
 
   const res = await fetch('/api/batch', {

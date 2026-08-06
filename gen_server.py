@@ -234,6 +234,8 @@ class GenHandler(SimpleHTTPRequestHandler):
             "aspect": data.get("aspect", "9:16"),
             "sampler": data.get("sampler"),
             "seed": data.get("seed"),
+            "width": data.get("width"),
+            "height": data.get("height"),
             "nsfw_lora": data.get("nsfw_lora", False),
             "translate": data.get("translate", False),
         }
