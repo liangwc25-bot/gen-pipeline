@@ -276,6 +276,28 @@
   .adv-toggle.open .adv-arrow { transform: rotate(90deg); }
   .adv-body { display: none; padding-top: 12px; }
   .adv-body.open { display: block; }
+  /* ── Batch comparison ── */
+  .batch-cat-tabs { display: flex; gap: 0; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 2px; overflow: hidden; }
+  .batch-cat-tab {
+    flex: 1; padding: 7px 6px; border: none; background: transparent; color: var(--text2);
+    font-size: 0.75rem; font-weight: 500; cursor: pointer; transition: .2s;
+    text-align: center; border-radius: 8px; white-space: nowrap;
+  }
+  .batch-cat-tab.active { background: var(--accent); color: #fff; }
+  .batch-cat-tab:hover:not(.active) { color: var(--text); }
+  .batch-check-all-label { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text2); cursor: pointer; }
+  .batch-check-all-label input { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+  .batch-ckpt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; max-height: 240px; overflow-y: auto; margin-top: 6px; }
+  .batch-ckpt-item { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 6px; cursor: pointer; transition: .12s; font-size: 0.8rem; color: var(--text2); }
+  .batch-ckpt-item:hover { background: rgba(124,92,252,0.08); color: var(--text); }
+  .batch-ckpt-item input { width: 14px; height: 14px; accent-color: var(--accent); cursor: pointer; }
+  .batch-ckpt-item.checked { color: var(--accent); font-weight: 500; }
+  .batch-progress { font-size: 0.82rem; color: var(--text2); margin-top: 10px; text-align: center; }
+  .batch-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .batch-result-card { text-align: center; }
+  .batch-result-card img, .batch-result-card video { width: 100%; border-radius: 10px; }
+  .batch-result-card .card-label { font-size: 0.78rem; font-weight: 600; color: var(--text); margin: 6px 0 2px; }
+  .batch-result-card .card-sub { font-size: 0.7rem; color: var(--text2); }
 </style>
 </head>
 <body>
@@ -286,11 +308,13 @@
   <div class="platform-tabs">
     <div class="platform-tab active" id="tab-runware" onclick="setPlatform('runware')">🟣 Runware</div>
     <div class="platform-tab" id="tab-modelslab" onclick="setPlatform('modelslab')">🧪 ModelsLab</div>
+    <div class="platform-tab" id="tab-batch" onclick="setPlatform('batch')">📊 横评</div>
   </div>
 
   <div class="layout">
-    <div class="panel">
+    <div class="panel" id="left-panel">
       <h2>参数</h2>
+      <div id="normal-params">
 
       <div class="form-group">
         <label>模型</label>
@@ -439,6 +463,108 @@
       <button class="btn btn-secondary" style="margin-top:6px" onclick="showResetModal()">🔄 重置</button>
       <div class="error-msg" id="error-msg"></div>
       <div class="status-bar" id="status-bar"></div>
+      </div><!-- /#normal-params -->
+
+      <!-- Batch comparison panel -->
+      <div id="batch-panel" style="display:none">
+        <div class="form-group">
+          <label>底座类别</label>
+          <div class="batch-cat-tabs" id="batch-cat-tabs">
+            <button class="batch-cat-tab active" data-cat="flux" onclick="selectBatchCat('flux', this)">FLUX</button>
+            <button class="batch-cat-tab" data-cat="pony" onclick="selectBatchCat('pony', this)">Pony</button>
+            <button class="batch-cat-tab" data-cat="illustrious" onclick="selectBatchCat('illustrious', this)">Illustrious</button>
+            <button class="batch-cat-tab" data-cat="sdxl" onclick="selectBatchCat('sdxl', this)">SDXL</button>
+            <button class="batch-cat-tab" data-cat="zit" onclick="selectBatchCat('zit', this)">Z-Image</button>
+            <button class="batch-cat-tab" data-cat="sd15" onclick="selectBatchCat('sd15', this)">SD 1.5</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="batch-check-all-label">
+            <input type="checkbox" id="batch-check-all" onchange="toggleAllCheckpoints()"> 
+            选择 Checkpoint（<span id="batch-ckpt-count">0</span> 个已选）
+          </label>
+          <div class="batch-ckpt-grid" id="batch-ckpt-grid"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="batch-prompt">Prompt</label>
+          <textarea id="batch-prompt" placeholder="输入 prompt…" style="min-height:150px"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="batch-negative">Negative Prompt（可选）</label>
+          <textarea id="batch-negative" placeholder="不想出现的内容…" style="min-height:80px"></textarea>
+        </div>
+
+        <div class="form-group">
+          <div class="lora-label-row"><span>LoRA（所有 checkpoint 共享）</span><span id="batch-lora-count">0 个</span></div>
+          <div id="batch-lora-rows"></div>
+          <button class="lora-add" id="batch-lora-add-btn" onclick="addBatchLoraRow()">+ 添加 LoRA</button>
+        </div>
+
+        <button class="adv-toggle" id="batch-adv-toggle-btn" onclick="toggleBatchAdvanced()">
+          <span class="adv-arrow">▶</span> ⚙️ 高级设置
+        </button>
+        <div class="adv-body" id="batch-adv-body">
+          <div class="row">
+            <div class="form-group">
+              <label>画幅</label>
+              <div class="custom-select" id="batch-aspect-wrap">
+                <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+                  <span class="custom-select-label">9:16 竖版</span><span class="arrow">▾</span>
+                </button>
+                <div class="custom-select-dropdown">
+                  <div class="custom-opt active" data-value="9:16">9:16 竖版</div>
+                  <div class="custom-opt" data-value="16:9">16:9 横版</div>
+                  <div class="custom-opt" data-value="1:1">1:1 方形</div>
+                  <div class="custom-opt" data-value="3:2">3:2 横版</div>
+                  <div class="custom-opt" data-value="2:3">2:3 竖版</div>
+                  <div class="custom-opt" data-value="4:3">4:3 横版</div>
+                  <div class="custom-opt" data-value="3:4">3:4 竖版</div>
+                </div>
+              </div>
+              <input type="hidden" id="batch-aspect" value="9:16">
+            </div>
+            <div class="form-group">
+              <label>采样器</label>
+              <div class="custom-select" id="batch-sampler-wrap">
+                <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+                  <span class="custom-select-label">自动（默认）</span><span class="arrow">▾</span>
+                </button>
+                <div class="custom-select-dropdown">
+                  <div class="custom-opt active" data-value="">自动（默认）</div>
+                  <div class="custom-opt" data-value="Euler">Euler</div>
+                  <div class="custom-opt" data-value="Euler A">Euler A</div>
+                  <div class="custom-opt" data-value="DPM++ 2M Karras">DPM++ 2M Karras</div>
+                  <div class="custom-opt" data-value="DDIM">DDIM</div>
+                  <div class="custom-opt" data-value="UniPC">UniPC</div>
+                </div>
+              </div>
+              <input type="hidden" id="batch-sampler" value="">
+            </div>
+          </div>
+          <div class="row" style="margin-top:14px">
+            <div class="form-group">
+              <label for="batch-steps">Steps</label>
+              <input type="number" id="batch-steps" placeholder="35" min="4" max="50" value="35">
+            </div>
+            <div class="form-group">
+              <label for="batch-cfg">CFG Scale</label>
+              <input type="number" id="batch-cfg" placeholder="自动" min="0.5" max="20" step="0.5">
+            </div>
+            <div class="form-group">
+              <label for="batch-seed">Seed（留空随机）</label>
+              <input type="number" id="batch-seed" placeholder="留空随机" min="0" max="2147483647">
+            </div>
+          </div>
+        </div>
+
+        <button class="btn" id="batch-generate-btn" onclick="batchGenerate()">🚀 一键 Batch 生成</button>
+        <div class="error-msg" id="batch-error-msg"></div>
+        <div class="status-bar" id="batch-status-bar"></div>
+        <div class="batch-progress" id="batch-progress" style="display:none"></div>
+      </div><!-- /#batch-panel -->
     </div>
 
     <div class="panel result-panel">
@@ -605,6 +731,17 @@ function setPlatform(p) {
   state.platform = p;
   document.getElementById('tab-runware').classList.toggle('active', p === 'runware');
   document.getElementById('tab-modelslab').classList.toggle('active', p === 'modelslab');
+  document.getElementById('tab-batch').classList.toggle('active', p === 'batch');
+
+  const isBatch = p === 'batch';
+  document.getElementById('normal-params').style.display = isBatch ? 'none' : 'block';
+  document.getElementById('batch-panel').style.display = isBatch ? 'block' : 'none';
+
+  if (isBatch) {
+    // Initialize batch panel
+    if (!_batchInited) { selectBatchCat('flux', document.querySelector('.batch-cat-tab[data-cat=\"flux\"]')); _batchInited = true; }
+    return;
+  }
 
   const wrap = document.getElementById('model-wrap');
   const dropdown = wrap.querySelector('.custom-select-dropdown');
@@ -1389,6 +1526,291 @@ document.addEventListener('click', function(e) {
     document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
   }
 });
+
+// ════════════════════ Batch comparison ════════════════════
+let _batchInited = false;
+let _batchCat = 'flux';
+
+const MODEL_GROUPS = {
+  flux:       ['flux-dev', 'flux-uncensored'],
+  pony:       ['pony-xl', 'pony-real', 'wai-realmix-pony', 'wai-ani-hentai-pony', 'realcartoon-pony'],
+  illustrious: ['prefect-ill-xl'],
+  sdxl:       ['guofeng4-xl', 'pornmaster', 'lustify', 'sdxl-vanilla', 'dreamshaper-xl', 'juggernaut-xl', 'fantasy-reality-xl', 'nwsj-real-mix-sdxl'],
+  zit:        ['zimage-alibaba', 'zimage-moody'],
+  sd15:       ['dreamshaper-15', 'majicmix-real-15', 'realcartoon3d-15', 'aniverse-15', 'chikmix-15', 'realcartoon-real-15',
+               'perfect-world-15', 'majicmix-lux-15', 'dark-sushi-25d-15', 'guofeng-wuxia-15', 'tastyrice-cg-15',
+               'onlyrealistic-15', 'chilloutmix-15', 'chosen-mix-15', 'abyss-orange-mix-15', 'aom3-15',
+               'wanxiang-anything-15', 'lazymix-15', 'aom2-hardcore-15', 'dark-sushi-mix-15', 'realisian-15',
+               'anyhentai-15', 'majicmix-sombre-15', 'realcartoon-anime-15', 'fantexi-15', 'orangechillmix-15',
+               'camelliamix-15', 'astranime-15', 'kawaii-anime-mix-15', 'kakarot-28d-15', 'majicmix-reverie-15',
+               'majicmix-horror-15'],
+};
+
+// Maps model key → name from backend; populated via /api/list-models
+let _batchModelNames = {};
+
+function selectBatchCat(cat, btn) {
+  _batchCat = cat;
+  document.querySelectorAll('.batch-cat-tab').forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const models = MODEL_GROUPS[cat] || [];
+  const grid = document.getElementById('batch-ckpt-grid');
+  let html = '';
+  for (const mk of models) {
+    const name = _batchModelNames[mk] || mk;
+    html += `<label class="batch-ckpt-item"><input type="checkbox" value="${mk}" onchange="updateBatchCount()"> ${escHtml(name)}</label>`;
+  }
+  grid.innerHTML = html;
+
+  document.getElementById('batch-check-all').checked = false;
+  updateBatchCount();
+
+  // Load LoRAs for this category
+  loadBatchLoras(cat);
+}
+
+function toggleAllCheckpoints() {
+  const checked = document.getElementById('batch-check-all').checked;
+  document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]').forEach(cb => {
+    cb.checked = checked;
+    cb.parentElement.classList.toggle('checked', checked);
+  });
+  updateBatchCount();
+}
+
+function updateBatchCount() {
+  const cbs = document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]:checked');
+  document.getElementById('batch-ckpt-count').textContent = cbs.length;
+  cbs.forEach(cb => cb.parentElement.classList.toggle('checked', true));
+  document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]:not(:checked)').forEach(cb => cb.parentElement.classList.remove('checked'));
+}
+
+function getSelectedModels() {
+  const cbs = document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]:checked');
+  return Array.from(cbs).map(cb => cb.value);
+}
+
+// ── Batch LoRA ──
+let _batchLoras = [];
+let _batchLoraLoaded = false;
+
+async function loadBatchLoras(cat) {
+  // Map category to base_model alias for LoRA filtering
+  const baseMap = { flux: 'flux-dev', pony: 'pony', illustrious: 'illustrious', sdxl: 'sdxl', zit: 'zimage-turbo', sd15: 'sd15' };
+  const model = baseMap[cat] || cat;
+  try {
+    const r = await fetch('/api/list-loras?model=' + encodeURIComponent(model));
+    const data = await r.json();
+    _batchLoras = data.loras || [];
+    _batchLoraLoaded = true;
+  } catch(e) {
+    _batchLoras = [];
+  }
+}
+
+function addBatchLoraRow(airId, scale) {
+  const row = document.createElement('div');
+  row.className = 'lora-row';
+  const wrap = document.createElement('div');
+  wrap.className = 'lora-picker-wrap';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'lora-search';
+  input.placeholder = '搜索 LoRA…';
+  input.value = airId || '';
+  if (airId) input.classList.add('has-value');
+  input._airId = airId || '';
+  const dd = document.createElement('div');
+  dd.className = 'lora-dropdown';
+  // Build dropdown items
+  const rebuild = () => {
+    let q = input.value.toLowerCase().trim();
+    let html = '<div class="lora-opt none" data-air="" data-id="">— 不启用 —</div>';
+    for (const l of _batchLoras) {
+      if (q && !l.name.toLowerCase().includes(q) && !l.air_id.toLowerCase().includes(q) && !l.id.toLowerCase().includes(q)) continue;
+      const sel = input._airId === l.air_id ? ' selected' : '';
+      html += `<div class="lora-opt${sel}" data-air="${escHtml(l.air_id)}" data-id="${escHtml(l.id)}">${escHtml(l.name)}</div>`;
+    }
+    if (!q && _batchLoras.length === 0) html += '<div class="lora-no-results">暂无 LoRA</div>';
+    dd.innerHTML = html;
+  };
+  input.addEventListener('focus', () => {
+    rebuild();
+    dd.classList.add('open');
+  });
+  input.addEventListener('input', rebuild);
+  input.addEventListener('blur', () => setTimeout(() => dd.classList.remove('open'), 150));
+  dd.addEventListener('mousedown', (e) => {
+    const opt = e.target.closest('.lora-opt');
+    if (!opt) return;
+    e.preventDefault();
+    const air = opt.dataset.air || '';
+    const name = opt.dataset.id ? opt.textContent.trim() : (air || '');
+    input._airId = air;
+    input.value = air || '';
+    if (air) input.classList.add('has-value'); else input.classList.remove('has-value');
+    dd.classList.remove('open');
+  });
+  wrap.appendChild(input);
+  wrap.appendChild(dd);
+  row.appendChild(wrap);
+  const scaleInput = document.createElement('input');
+  scaleInput.type = 'number';
+  scaleInput.className = 'lora-scale';
+  scaleInput.value = scale != null ? scale : 0.8;
+  scaleInput.step = 0.05;
+  scaleInput.min = 0.05;
+  scaleInput.max = 2.0;
+  row.appendChild(scaleInput);
+  const removeBtn = document.createElement('button');
+  removeBtn.className = 'lora-remove';
+  removeBtn.textContent = '×';
+  removeBtn.onclick = () => { row.remove(); updateBatchLoraCount(); };
+  row.appendChild(removeBtn);
+  document.getElementById('batch-lora-rows').appendChild(row);
+  updateBatchLoraCount();
+}
+
+function updateBatchLoraCount() {
+  const rows = document.querySelectorAll('#batch-lora-rows .lora-row');
+  document.getElementById('batch-lora-count').textContent = rows.length + ' 个';
+}
+
+// ── Batch advanced toggle ──
+function toggleBatchAdvanced() {
+  const btn = document.getElementById('batch-adv-toggle-btn');
+  const body = document.getElementById('batch-adv-body');
+  const isOpen = body.classList.contains('open');
+  if (isOpen) { body.classList.remove('open'); btn.classList.remove('open'); }
+  else { body.classList.add('open'); btn.classList.add('open'); }
+}
+
+// ── Batch generate ──
+async function batchGenerate() {
+  const models = getSelectedModels();
+  if (models.length === 0) {
+    document.getElementById('batch-error-msg').style.display = 'block';
+    document.getElementById('batch-error-msg').textContent = '请至少选一个 checkpoint';
+    return;
+  }
+  const prompt = document.getElementById('batch-prompt').value.trim();
+  if (!prompt) {
+    document.getElementById('batch-error-msg').style.display = 'block';
+    document.getElementById('batch-error-msg').textContent = '请输入 Prompt';
+    return;
+  }
+
+  document.getElementById('batch-error-msg').style.display = 'none';
+  const btn = document.getElementById('batch-generate-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ 提交中…';
+
+  // Collect shared params
+  const loraRows = document.querySelectorAll('#batch-lora-rows .lora-row');
+  const loraIds = []; const loraScales = [];
+  loraRows.forEach(r => {
+    const air = r.querySelector('.lora-search')._airId;
+    const s = parseFloat(r.querySelector('.lora-scale').value) || 0.8;
+    if (air) { loraIds.push(air); loraScales.push(s); }
+  });
+
+  const cfgEl = document.getElementById('batch-cfg');
+  const seedEl = document.getElementById('batch-seed');
+  const stepsEl = document.getElementById('batch-steps');
+
+  const body = {
+    models,
+    prompt,
+    negative_prompt: document.getElementById('batch-negative').value,
+    lora_id: loraIds.length > 0 ? loraIds.join(',') : null,
+    lora_scale: loraScales.length > 0 ? loraScales.join(',') : 0.8,
+    cfg_scale: cfgEl.value ? parseFloat(cfgEl.value) : null,
+    steps: parseInt(stepsEl.value) || 35,
+    aspect: document.getElementById('batch-aspect').value,
+    sampler: document.getElementById('batch-sampler').value || null,
+    seed: seedEl.value ? parseInt(seedEl.value) : null,
+  };
+
+  const res = await fetch('/api/batch', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  if (!data.success) {
+    document.getElementById('batch-error-msg').style.display = 'block';
+    document.getElementById('batch-error-msg').textContent = data.error || '提交失败';
+    btn.disabled = false;
+    btn.textContent = '🚀 一键 Batch 生成';
+    return;
+  }
+
+  const batchId = data.batch_id;
+  btn.textContent = '⏳ 生成中…';
+  document.getElementById('batch-progress').style.display = 'block';
+  document.getElementById('batch-status-bar').textContent = '';
+
+  // Poll until done
+  const poll = async () => {
+    const r = await fetch('/api/batch?batch_id=' + batchId);
+    const d = await r.json();
+    const total = d.total || models.length;
+    const done = d.completed || 0;
+
+    document.getElementById('batch-progress').textContent = `⏳ ${done}/${total} 完成`;
+    document.getElementById('batch-status-bar').textContent = '';
+
+    if (d.status === 'done') {
+      btn.disabled = false;
+      btn.textContent = '🚀 一键 Batch 生成';
+      document.getElementById('batch-progress').style.display = 'none';
+      renderBatchResults(d.models, models);
+      return;
+    }
+    setTimeout(poll, 2000);
+  };
+  poll();
+}
+
+function renderBatchResults(modelsData, orderedKeys) {
+  const area = document.getElementById('result-area');
+  let html = '<div class="batch-result-grid">';
+  for (const mk of orderedKeys) {
+    const md = modelsData[mk];
+    const name = _batchModelNames[mk] || mk;
+    if (md && md.status === 'done' && md.result && md.result.success) {
+      const url = md.result.url || '';
+      html += `<div class="batch-result-card">
+        <a href="${url}" target="_blank"><img src="${url}" loading="lazy"></a>
+        <div class="card-label">${escHtml(name)}</div>
+        <div class="card-sub">seed: ${md.result.seed || '?'}</div>
+      </div>`;
+    } else {
+      const err = (md && md.result && md.result.error) ? md.result.error : '未知错误';
+      html += `<div class="batch-result-card">
+        <div style="padding:40px 10px;color:var(--red);font-size:0.8rem">${escHtml(name)}<br>❌ ${escHtml(err)}</div>
+      </div>`;
+    }
+  }
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+// Pre-load model names for batch
+async function loadBatchModelNames() {
+  try {
+    const r = await fetch('/api/list-models');
+    const data = await r.json();
+    if (data.models) {
+      for (const m of data.models) {
+        _batchModelNames[m.id] = m.name;
+      }
+    }
+  } catch(e) {}
+}
+
+loadBatchModelNames();
 
 loadSnippets();
 
