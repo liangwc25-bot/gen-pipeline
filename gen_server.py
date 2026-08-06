@@ -28,6 +28,7 @@ MAX_JOBS = 50
 # Batch jobs (model comparison)
 BATCH_JOBS = OrderedDict()
 MAX_BATCH_JOBS = 30
+BATCH_CONCURRENCY = 6  # max concurrent gen_web.py processes per batch
 
 
 def _trim_batch_jobs():
@@ -238,6 +239,7 @@ class GenHandler(SimpleHTTPRequestHandler):
         }
 
         batch_entry = {"status": "running", "total": len(models), "completed": 0, "models": {}}
+        sem = threading.BoundedSemaphore(BATCH_CONCURRENCY)
 
         for model_key in models:
             payload = dict(shared)
@@ -245,40 +247,43 @@ class GenHandler(SimpleHTTPRequestHandler):
             if shared["seed"] is None:
                 payload["seed"] = None  # let each get its own random seed
 
-            proc = subprocess.Popen(
-                ["python3", str(GEN_WEB_PY)],
-                stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                text=True,
-            )
-            proc.stdin.write(json.dumps(payload))
-            proc.stdin.close()
+            batch_entry["models"][model_key] = {"status": "queued"}
 
-            batch_entry["models"][model_key] = {"status": "running", "proc": proc}
+            def _run_model(mk, pl):
+                sem.acquire()
+                batch_entry["models"][mk]["status"] = "running"
+                proc = subprocess.Popen(
+                    ["python3", str(GEN_WEB_PY)],
+                    stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                    text=True,
+                )
+                proc.stdin.write(json.dumps(pl))
+                proc.stdin.close()
 
-            def _await_model(mk, p):
                 try:
-                    p.wait(timeout=300)
-                    stdout = p.stdout.read()
+                    proc.wait(timeout=300)
+                    stdout = proc.stdout.read()
                     try:
                         result = json.loads(stdout.strip())
                     except json.JSONDecodeError:
                         result = {"success": False, "error": f"Output invalid: {stdout[:300]}"}
                 except subprocess.TimeoutExpired:
-                    p.kill()
+                    proc.kill()
                     result = {"success": False, "error": "Timed out (300s)"}
                 except Exception as e:
                     result = {"success": False, "error": str(e)}
 
                 batch_entry["models"][mk]["result"] = result
                 batch_entry["models"][mk]["status"] = "done"
-                batch_entry["models"][mk].pop("proc", None)
                 batch_entry["completed"] += 1
+
+                sem.release()
 
                 if batch_entry["completed"] >= batch_entry["total"]:
                     batch_entry["status"] = "done"
                     _trim_batch_jobs()
 
-            threading.Thread(target=_await_model, args=(model_key, proc), daemon=True).start()
+            threading.Thread(target=_run_model, args=(model_key, payload), daemon=True).start()
 
         BATCH_JOBS[batch_id] = batch_entry
         self._json_response({
