@@ -277,9 +277,9 @@
   .adv-body { display: none; padding-top: 12px; }
   .adv-body.open { display: block; }
   /* ── Batch comparison ── */
-  .batch-cat-tabs { display: flex; gap: 0; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 2px; overflow: hidden; }
+  .batch-cat-tabs { display: flex; gap: 0; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 2px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .batch-cat-tab {
-    flex: 1; padding: 7px 6px; border: none; background: transparent; color: var(--text2);
+    flex: 0 0 auto; padding: 7px 10px; border: none; background: transparent; color: var(--text2);
     font-size: 0.75rem; font-weight: 500; cursor: pointer; transition: .2s;
     text-align: center; border-radius: 8px; white-space: nowrap;
   }
