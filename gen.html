@@ -1716,16 +1716,43 @@ function addBatchLoraRow(airId, scale) {
   input._airId = airId || '';
   const dd = document.createElement('div');
   dd.className = 'lora-dropdown';
+  const catEmoji = {'tools':'🔧','character_style':'🎨','style':'🎨','concept':'💡','character':'👤','new':'🆕','':''};
+  const catLabel = {'tools':'工具','character_style':'微调','style':'风格','concept':'概念','character':'角色','new':'新增'};
+  const catOrder = ['tools','character_style','style','concept','character','new'];
   // Build dropdown items
   const rebuild = () => {
     let q = input.value.toLowerCase().trim();
     let html = '<div class="lora-opt none" data-air="" data-id="">— 不启用 —</div>';
-    for (const l of _batchLoras) {
-      if (q && !l.name.toLowerCase().includes(q) && !l.air_id.toLowerCase().includes(q) && !l.id.toLowerCase().includes(q)) continue;
-      const sel = input._airId === l.air_id ? ' selected' : '';
-      html += `<div class="lora-opt${sel}" data-air="${escHtml(l.air_id)}" data-id="${escHtml(l.id)}">${escHtml(l.name)}</div>`;
+    if (!q) {
+      // Grouped view
+      const groups = {};
+      for (const l of _batchLoras) {
+        const cat = l.category || '';
+        if (!groups[cat]) groups[cat] = [];
+        groups[cat].push(l);
+      }
+      const sortedCats = Object.keys(groups).sort((a, b) => {
+        const ai = catOrder.indexOf(a); const bi = catOrder.indexOf(b);
+        return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+      });
+      for (const cat of sortedCats) {
+        const emoji = catEmoji[cat] || '📦';
+        const label = catLabel[cat] || cat;
+        html += `<div class="lora-group-label">${emoji} ${label}</div>`;
+        for (const l of groups[cat]) {
+          const sel = input._airId === l.air_id ? ' selected' : '';
+          html += `<div class="lora-opt${sel}" data-air="${escHtml(l.air_id)}" data-id="${escHtml(l.id)}">${escHtml(l.name)}</div>`;
+        }
+      }
+    } else {
+      // Flat filtered view
+      for (const l of _batchLoras) {
+        if (!l.name.toLowerCase().includes(q) && !l.air_id.toLowerCase().includes(q) && !l.id.toLowerCase().includes(q)) continue;
+        const sel = input._airId === l.air_id ? ' selected' : '';
+        html += `<div class="lora-opt${sel}" data-air="${escHtml(l.air_id)}" data-id="${escHtml(l.id)}">${escHtml(l.name)}</div>`;
+      }
     }
-    if (!q && _batchLoras.length === 0) html += '<div class="lora-no-results">暂无 LoRA</div>';
+    if (_batchLoras.length === 0) html += '<div class="lora-no-results">暂无 LoRA</div>';
     dd.innerHTML = html;
   };
   input.addEventListener('focus', () => {
