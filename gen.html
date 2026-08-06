@@ -672,13 +672,89 @@ function restoreDraft() {
   }
 }
 
+// ── Batch draft persistence ──
+function saveBatchDraft() {
+  const cbs = document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]');
+  const checkedModels = [];
+  cbs.forEach(cb => { if (cb.checked) checkedModels.push(cb.value); });
+
+  const loraRows = document.querySelectorAll('#batch-lora-rows .lora-row');
+  const loras = [];
+  loraRows.forEach(row => {
+    const air = row.querySelector('.lora-search')._airId;
+    const scale = row.querySelector('.lora-scale').value;
+    if (air) loras.push({ air_id: air, scale });
+  });
+
+  localStorage.setItem('batch_draft', JSON.stringify({
+    cat: _batchCat,
+    models: checkedModels,
+    prompt: document.getElementById('batch-prompt').value,
+    negative: document.getElementById('batch-negative').value,
+    steps: document.getElementById('batch-steps').value,
+    cfg: document.getElementById('batch-cfg').value,
+    seed: document.getElementById('batch-seed').value,
+    aspect: document.getElementById('batch-aspect').value,
+    sampler: document.getElementById('batch-sampler').value,
+    loras,
+  }));
+}
+
+function restoreBatchDraft() {
+  try {
+    const raw = localStorage.getItem('batch_draft');
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    if (d.cat && _batchCat !== d.cat) {
+      selectBatchCat(d.cat, document.querySelector(`.batch-cat-tab[data-cat="${d.cat}"]`));
+    }
+    if (d.prompt) document.getElementById('batch-prompt').value = d.prompt;
+    if (d.negative) document.getElementById('batch-negative').value = d.negative;
+    if (d.steps) document.getElementById('batch-steps').value = d.steps;
+    if (d.cfg) document.getElementById('batch-cfg').value = d.cfg;
+    if (d.seed) document.getElementById('batch-seed').value = d.seed;
+    if (d.aspect) {
+      document.getElementById('batch-aspect').value = d.aspect;
+      const al = document.getElementById('batch-aspect-wrap').querySelector('.custom-select-label');
+      const ao = document.getElementById('batch-aspect-wrap').querySelector(`.custom-opt[data-value="${d.aspect}"]`);
+      if (al && ao) al.textContent = ao.textContent;
+    }
+    if (d.sampler != null) {
+      document.getElementById('batch-sampler').value = d.sampler || '';
+      const sl = document.getElementById('batch-sampler-wrap').querySelector('.custom-select-label');
+      const so = document.getElementById('batch-sampler-wrap').querySelector(`.custom-opt[data-value="${d.sampler || ''}"]`);
+      if (sl && so) sl.textContent = so.textContent;
+    }
+    // Restore checkpoint selection (after a short delay for grid to populate)
+    if (d.models && d.models.length > 0) {
+      setTimeout(() => {
+        const cbs = document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]');
+        cbs.forEach(cb => { cb.checked = d.models.includes(cb.value); });
+        updateBatchCount();
+      }, 100);
+    }
+    // Restore LoRA rows
+    if (d.loras && d.loras.length > 0) {
+      setTimeout(() => {
+        document.getElementById('batch-lora-rows').innerHTML = '';
+        d.loras.forEach(l => addBatchLoraRow(l.air_id, parseFloat(l.scale) || 0.8));
+      }, 200);
+    }
+  } catch(e) {}
+}
+
 // Auto-save on input
 document.addEventListener('input', e => {
   if (['prompt','negative','seed','count'].includes(e.target.id) ||
       e.target.closest('.lora-row')) saveDraft();
+  // Batch panel auto-save
+  if (e.target.id === 'batch-prompt' || e.target.id === 'batch-negative' ||
+      e.target.id === 'batch-seed' || e.target.id === 'batch-steps' ||
+      e.target.id === 'batch-cfg' || e.target.closest('#batch-lora-rows .lora-row')) saveBatchDraft();
 });
 document.addEventListener('change', e => {
   if (e.target.id === 'model' || e.target.id === 'translate_cn') saveDraft();
+  if (e.target.closest('#batch-ckpt-grid')) saveBatchDraft();
 });
 // Platform tabs call setPlatform which calls onModelChange — saveDraft is handled there
 // via the lora/input listeners and init final save.
@@ -713,6 +789,7 @@ document.addEventListener('click', function(e) {
     opt.classList.add('active');
     wrap.classList.remove('open');
     saveDraft();
+    if (opt.closest('#batch-panel')) saveBatchDraft();
     // Trigger model change if model selector
     if (hidden.id === 'model') onModelChange();
   // Init count active state
@@ -741,7 +818,8 @@ function setPlatform(p) {
 
   if (isBatch) {
     // Initialize batch panel
-    if (!_batchInited) { selectBatchCat('flux', document.querySelector('.batch-cat-tab[data-cat=\"flux\"]')); _batchInited = true; }
+    if (!_batchInited) { selectBatchCat('flux', document.querySelector('.batch-cat-tab[data-cat="flux"]')); _batchInited = true; }
+    restoreBatchDraft();
     return;
   }
 
@@ -1578,7 +1656,7 @@ function selectBatchCat(cat, btn) {
   updateBatchCount();
 
   // Load LoRAs for this category
-  loadBatchLoras(cat);
+  loadBatchLoras(cat).then(() => saveBatchDraft());
 }
 
 function toggleAllCheckpoints() {
