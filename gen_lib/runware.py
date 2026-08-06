@@ -75,15 +75,24 @@ MODELS = {
     "nwsj-real-mix-sdxl":  {"id": "civitai:125026@136555", "name": "NwsjRealMix SDXL", "price": "~$0.003/张"},
 }
 
-# Aspect ratio → (width, height)
+# Aspect ratio → (width, height) — two variants: SD1.5 (max 768) and standard
 ASPECT_MAP = {
-    "16:9": (1024, 768),
-    "9:16": (768, 1024),
+    "16:9": (1216, 684),
+    "9:16": (684, 1216),
     "1:1":  (1024, 1024),
-    "3:2":  (1152, 768),
-    "2:3":  (768, 1152),
-    "4:3":  (1088, 832),
-    "3:4":  (832, 1088),
+    "3:2":  (1216, 832),
+    "2:3":  (832, 1216),
+    "4:3":  (1152, 896),
+    "3:4":  (896, 1152),
+}
+ASPECT_MAP_SD15 = {
+    "16:9": (768, 432),
+    "9:16": (432, 768),
+    "1:1":  (512, 512),
+    "3:2":  (768, 512),
+    "2:3":  (512, 768),
+    "4:3":  (682, 512),
+    "3:4":  (512, 682),
 }
 
 API_URL = "https://api.runware.ai/v1"
@@ -142,7 +151,9 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
     if width and height:
         w, h = width, height
     else:
-        w, h = ASPECT_MAP.get(aspect, (1024, 768))
+        is_sd15 = model_key.endswith("-15")
+        amap = ASPECT_MAP_SD15 if is_sd15 else ASPECT_MAP
+        w, h = amap.get(aspect, (is_sd15 and (512, 768)) or (832, 1216))
 
     task = {
         "taskType": "imageInference",
