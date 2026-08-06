@@ -101,13 +101,17 @@ def _generate_runware(args: dict) -> dict:
         _stderr_buf = io.StringIO()
         sys.stderr = sys.stdout = _stderr_buf
         try:
+            bwidth = args.get("width")
+            bheight = args.get("height")
             result = gen_runware(prompt,
                 model_key=model, negative_prompt=negative,
                 lora_id=effective_lora_id, lora_scale=effective_lora_scale,
                 seed=seed, image_path=_qwen_tmp.name if _qwen_tmp else None,
                 cfg_scale=cfg_scale, aspect=aspect,
                 steps=int(steps) if steps else 35,
-                sampler=sampler if sampler else None)
+                sampler=sampler if sampler else None,
+                width=int(bwidth) if bwidth else None,
+                height=int(bheight) if bheight else None)
             if isinstance(result, tuple):
                 result, used_seed = result
             else:
