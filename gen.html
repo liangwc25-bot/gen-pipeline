@@ -373,6 +373,14 @@
             <label for="steps">Steps</label>
             <input type="number" id="steps" placeholder="35" min="10" max="50" value="35">
           </div>
+          <div class="form-group">
+            <label for="gen-width">宽度</label>
+            <input type="number" id="gen-width" placeholder="auto" min="256" max="2048" step="64">
+          </div>
+          <div class="form-group">
+            <label for="gen-height">高度</label>
+            <input type="number" id="gen-height" placeholder="auto" min="256" max="2048" step="64">
+          </div>
         </div>
       </div>
 
@@ -640,6 +648,8 @@ function saveDraft() {
     aspect: document.getElementById('aspect').value,
     sampler: document.getElementById('sampler').value,
     translate: document.getElementById('translate_cn').checked,
+    width: document.getElementById('gen-width').value,
+    height: document.getElementById('gen-height').value,
     loras,
   }));
 }
@@ -662,6 +672,8 @@ function restoreDraft() {
     if (d.seed) document.getElementById('seed').value = d.seed;
     if (d.cfg) document.getElementById('cfg').value = d.cfg;
     if (d.steps) document.getElementById('steps').value = d.steps;
+    if (d.width) document.getElementById('gen-width').value = d.width;
+    if (d.height) document.getElementById('gen-height').value = d.height;
     if (d.aspect) {
       document.getElementById('aspect').value = d.aspect;
       const al = document.getElementById('aspect-wrap').querySelector('.custom-select-label');
@@ -1210,6 +1222,8 @@ async function generate() {
     aspect: document.getElementById('aspect').value || '9:16',
     sampler: document.getElementById('sampler').value || null,
     steps: parseInt(document.getElementById('steps').value) || 35,
+    width: parseInt(document.getElementById('gen-width').value) || null,
+    height: parseInt(document.getElementById('gen-height').value) || null,
   };
 
   if (state.platform === 'runware') {
