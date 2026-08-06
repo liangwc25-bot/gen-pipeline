@@ -69,6 +69,9 @@ MODELS = {
     "kakarot-28d-15":     {"id": "civitai:182723@458684", "name": "Kakarot 2.8D", "price": "~$0.003/张"},
     "majicmix-reverie-15": {"id": "civitai:65055@69687", "name": "majicMIX reverie 麦橘梦幻", "price": "~$0.003/张"},
     "majicmix-horror-15": {"id": "civitai:49216@53806", "name": "majicMIX horror 麦橘恐怖", "price": "~$0.003/张"},
+    "wai-realmix-pony":   {"id": "civitai:393905@868204", "name": "WAI-REALMIX (Pony)", "price": "~$0.003/张"},
+    "wai-ani-hentai-pony": {"id": "civitai:553648@952743", "name": "WAI-ANI-HENTAI-PONYXL", "price": "~$0.003/张"},
+    "realcartoon-pony":   {"id": "civitai:618329@1367762", "name": "RealCartoon-Pony", "price": "~$0.003/张"},
     "nwsj-real-mix-sdxl":  {"id": "civitai:125026@136555", "name": "NwsjRealMix SDXL", "price": "~$0.003/张"},
 }
 
