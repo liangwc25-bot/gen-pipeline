@@ -42,7 +42,7 @@
   @media (max-width: 700px) { .layout { grid-template-columns: 1fr; } }
   .panel {
     background: var(--card); border: 1px solid rgba(255,255,255,0.04);
-    border-radius: var(--radius); padding: 20px;
+    border-radius: var(--radius); padding: 20px; overflow: hidden;
     box-shadow: 0 2px 12px rgba(0,0,0,0.15);
   }
   .panel h2 { font-size: 0.85rem; font-weight: 600; color: var(--text2); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -466,7 +466,7 @@
       </div><!-- /#normal-params -->
 
       <!-- Batch comparison panel -->
-      <div id="batch-panel" style="display:none">
+      <div id="batch-panel" style="display:none;padding-bottom:16px">
         <div class="form-group">
           <label>底座类别</label>
           <div class="batch-cat-tabs" id="batch-cat-tabs">
@@ -560,7 +560,7 @@
           </div>
         </div>
 
-        <button class="btn" id="batch-generate-btn" onclick="batchGenerate()">🚀 一键 Batch 生成</button>
+        <button class="btn" id="batch-generate-btn" onclick="batchGenerate()" style="margin-top:16px">🚀 一键 Batch 生成</button>
         <div class="error-msg" id="batch-error-msg"></div>
         <div class="status-bar" id="batch-status-bar"></div>
         <div class="batch-progress" id="batch-progress" style="display:none"></div>
