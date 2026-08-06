@@ -86,6 +86,14 @@ MODELS = {
     "atomix-3d-pony":     {"id": "civitai:469465@522337", "name": "Atomix Pony 3D XL", "price": "~$0.003/张"},
     "miaomiao-3d-pony":   {"id": "civitai:431957@728705", "name": "MiaoMiao 3D Harem", "price": "~$0.003/张"},
     "powerpuffanimix-pony": {"id": "civitai:869046@972602", "name": "PowerPuffAnimix", "price": "~$0.003/张"},
+    # Illustrious / NoobAI checkpoints (Runware AIR IDs)
+    "wai-illustrious":     {"id": "aiki:827184@2883731", "name": "WAI-Illustrious-SDXL", "price": "~$0.003/张"},
+    "aoi-164":             {"id": "choosenmodelanime:4438@7355", "name": "Aoi 164 Character", "price": "~$0.003/张"},
+    "cat-citron-anime":    {"id": "choosenmodelanime:131986@1945419", "name": "CAT Citron Anime Treasure", "price": "~$0.003/张"},
+    "nova-anime-xl-noob":  {"id": "civitai:376130@1474209", "name": "Nova Anime XL (NoobAI)", "price": "~$0.003/张"},
+    "nova-reality-ill":    {"id": "civitai:453428@1478543", "name": "Nova Reality XL (Illustrious)", "price": "~$0.003/张"},
+    "nova-unreal-ill":     {"id": "civitai:982047@1445113", "name": "Nova Unreal XL (Illustrious)", "price": "~$0.003/张"},
+    "miaomiao-harem-ill":  {"id": "civitai:934764@1357881", "name": "MiaoMiao Harem (Illustrious)", "price": "~$0.003/张"},
     "nwsj-real-mix-sdxl":  {"id": "civitai:125026@136555", "name": "NwsjRealMix SDXL", "price": "~$0.003/张"},
 }
 
