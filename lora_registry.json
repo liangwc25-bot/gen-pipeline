@@ -1203,6 +1203,165 @@
       "notes": "2026-07-16: first run on Replicate, rank 16, 1000 steps."
     },
     {
+      "id": "54-school-uniform-flux",
+      "runware_air_id": "liangwc:54-school-uniform@1074124",
+      "name": "54 School Uniform (FLUX)",
+      "url": "https://civitai.com/models/959383",
+      "tags": [
+        "flux",
+        "uniform",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "artificial-girl-b2-flux",
+      "runware_air_id": "liangwc:artificial-girl-b2@1095524",
+      "name": "Artificial Girl Model b2 (FLUX)",
+      "url": "https://civitai.com/models/846701",
+      "tags": [
+        "flux",
+        "character",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "artificial-girl-beta-flux",
+      "runware_air_id": "liangwc:artificial-girl-beta@1000264",
+      "name": "Artificial Girl Model Beta (FLUX)",
+      "url": "https://civitai.com/models/893852",
+      "tags": [
+        "flux",
+        "character",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "artificial-girl-type1-flux",
+      "runware_air_id": "liangwc:artificial-girl-type1@1476942",
+      "name": "Artificial Girl Type.1 (FLUX)",
+      "url": "https://civitai.com/models/1308765",
+      "tags": [
+        "flux",
+        "character",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "artificial-girl-type2-flux",
+      "runware_air_id": "liangwc:artificial-girl-type2@1491168",
+      "name": "Artificial Girl Type.2 (FLUX)",
+      "url": "https://civitai.com/models/1320788",
+      "tags": [
+        "flux",
+        "character",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "black-silk-bodysuit-flux",
+      "runware_air_id": "liangwc:black-silk-bodysuit@1036733",
+      "name": "Black Silk Bodysuit (FLUX)",
+      "url": "https://civitai.com/models/926204",
+      "tags": [
+        "flux",
+        "bodysuit",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "bodycon-cutout-dress-flux",
+      "runware_air_id": "liangwc:bodycon-cutout-dress@1773913",
+      "name": "Bodycon Cutout Dress (FLUX)",
+      "url": "https://civitai.com/models/1567582",
+      "tags": [
+        "flux",
+        "dress",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "shorts-suspenders-flux",
+      "runware_air_id": "liangwc:shorts-suspenders@1866965",
+      "name": "Shorts Suspenders (FLUX)",
+      "url": "https://civitai.com/models/1649468",
+      "tags": [
+        "flux",
+        "outfit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": false
+    },
+    {
       "id": "age-slider",
       "runware_air_id": "liangwc:age-slider@448977",
       "name": "Age Slider",
@@ -5190,6 +5349,26 @@
       "nsfw": false
     },
     {
+      "id": "sin-nun-cross-bodysuit-ill",
+      "runware_air_id": "liangwc:sin-nun-cross-bodysuit-ill@1930042",
+      "name": "Sin Nun Cross Bodysuit (ILL)",
+      "url": "https://civitai.com/models/319936",
+      "tags": [
+        "illustrious",
+        "nun",
+        "outfit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
       "id": "undress-striptease",
       "runware_air_id": "liangwc:undress-striptease@419214",
       "name": "undress | striptease slider",
@@ -5638,6 +5817,26 @@
       "tags": [
         "sdxl",
         "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "sdxl",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "little-sweater-sdxl",
+      "runware_air_id": "liangwc:little-sweater@291279",
+      "name": "Little Sweater (SDXL)",
+      "url": "https://civitai.com/models/258322",
+      "tags": [
+        "sdxl",
+        "sweater",
+        "outfit",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -6534,6 +6733,45 @@
       ],
       "base_model": "zimage-turbo",
       "category": "character",
+      "nsfw": false
+    },
+    {
+      "id": "hello-kitty-bikini-zit",
+      "runware_air_id": "liangwc:hello-kitty-bikini@2505894",
+      "name": "Hello Kitty Bikini (ZIT)",
+      "url": "https://civitai.com/models/953364",
+      "tags": [
+        "zimage",
+        "bikini",
+        "nsfw",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "lace-slingshot-swimsuit-zit",
+      "runware_air_id": "liangwc:lace-slingshot-swimsuit@2543127",
+      "name": "Lace Slingshot Swimsuit (ZIT)",
+      "url": "https://civitai.com/models/1827223",
+      "tags": [
+        "zimage",
+        "swimsuit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
       "nsfw": false
     },
     {
