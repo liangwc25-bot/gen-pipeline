@@ -1698,6 +1698,8 @@ function toggleBatchAdvanced() {
 }
 
 // ── Batch generate ──
+let _batchGenId = 0;  // incremented each generate call, used to cancel stale polls
+
 async function batchGenerate() {
   const models = getSelectedModels();
   if (models.length === 0) {
@@ -1716,6 +1718,10 @@ async function batchGenerate() {
   const btn = document.getElementById('batch-generate-btn');
   btn.disabled = true;
   btn.textContent = '⏳ 提交中…';
+
+  // Clear old results and progress
+  document.getElementById('result-area').innerHTML = '<span>⏳ 提交中…</span>';
+  document.getElementById('batch-progress').style.display = 'none';
 
   // Collect shared params
   const loraRows = document.querySelectorAll('#batch-lora-rows .lora-row');
@@ -1758,19 +1764,28 @@ async function batchGenerate() {
   }
 
   const batchId = data.batch_id;
+  const genId = ++_batchGenId;  // capture this generation's id
   btn.textContent = '⏳ 生成中…';
   document.getElementById('batch-progress').style.display = 'block';
   document.getElementById('batch-status-bar').textContent = '';
 
   // Poll until done
   const poll = async () => {
-    const r = await fetch('/api/batch?batch_id=' + batchId);
-    const d = await r.json();
+    if (genId !== _batchGenId) return;  // stale poll, cancelled by newer generation
+    let d;
+    try {
+      const r = await fetch('/api/batch?batch_id=' + batchId);
+      d = await r.json();
+    } catch (e) {
+      // Network error — retry after a bit
+      setTimeout(poll, 3000);
+      return;
+    }
+    if (genId !== _batchGenId) return;
+
     const total = d.total || models.length;
     const done = d.completed || 0;
-
     document.getElementById('batch-progress').textContent = `⏳ ${done}/${total} 完成`;
-    document.getElementById('batch-status-bar').textContent = '';
 
     if (d.status === 'done') {
       btn.disabled = false;
