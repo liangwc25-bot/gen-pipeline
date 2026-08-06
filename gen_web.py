@@ -134,7 +134,7 @@ def _generate_runware(args: dict) -> dict:
                 if used_seed is not None:
                     _param_parts.append(f"Seed: {used_seed}")
                 if aspect:
-                    _w, _h = {"9:16":(768,1024),"16:9":(1024,768),"1:1":(1024,1024),"3:2":(1152,768),"2:3":(768,1152),"4:3":(1088,832),"3:4":(832,1088)}.get(aspect, (768,1024))
+                    _w, _h = {"9:16":(672,1184),"16:9":(1184,672),"1:1":(1024,1024),"3:2":(1216,816),"2:3":(816,1216),"4:3":(1152,864),"3:4":(864,1152)}.get(aspect, (672,1184))
                     _param_parts.append(f"Size: {_w}x{_h}")
                 _param_parts.append(f"Model: {model}")
                 if lora_id:
