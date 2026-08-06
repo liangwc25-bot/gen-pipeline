@@ -25,6 +25,20 @@ from gen_lib.gif_zoom import make_gif
 JOBS = OrderedDict()
 MAX_JOBS = 50
 
+# Batch jobs (model comparison)
+BATCH_JOBS = OrderedDict()
+MAX_BATCH_JOBS = 30
+
+
+def _trim_batch_jobs():
+    while len(BATCH_JOBS) > MAX_BATCH_JOBS:
+        for bid, bjob in list(BATCH_JOBS.items()):
+            if bjob["status"] == "done":
+                BATCH_JOBS.pop(bid)
+                break
+        else:
+            break
+
 
 def _trim_jobs():
     """Remove oldest completed jobs when over MAX_JOBS."""
@@ -53,6 +67,8 @@ class GenHandler(SimpleHTTPRequestHandler):
             return self._handle_output_image()
         if self._parsed_path.startswith("/api/job"):
             return self._handle_job()
+        if self._parsed_path.startswith("/api/batch"):
+            return self._handle_batch_get()
         if self._parsed_path == "/api/snippets":
             return self._handle_get_snippets()
         
@@ -62,6 +78,7 @@ class GenHandler(SimpleHTTPRequestHandler):
         
         _static = {
             "/gen.html": "text/html",
+            "/batch.html": "text/html",
             "/gen-manifest.json": "application/json",
             "/icon-192.png": "image/png",
             "/icon-512.png": "image/png",
@@ -80,6 +97,8 @@ class GenHandler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if self.path == "/api/generate":
             return self._handle_generate()
+        if self.path == "/api/batch":
+            return self._handle_batch()
         if self.path == "/api/gif-zoom":
             return self._handle_gif_zoom()
         if self.path == "/api/snippets":
@@ -184,6 +203,115 @@ class GenHandler(SimpleHTTPRequestHandler):
 
         threading.Thread(target=_await, daemon=True).start()
         self._json_response({"success": True, "job_id": job_id, "status": "queued"})
+
+    def _handle_batch(self):
+        """POST /api/batch — fire the same prompt across N checkpoints concurrently."""
+        content_len = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_len)
+        try:
+            data = json.loads(body)
+        except json.JSONDecodeError:
+            return self._json_response({"success": False, "error": "Invalid JSON"}, 400)
+
+        models = data.get("models", [])
+        if not models or not isinstance(models, list):
+            return self._json_response({"success": False, "error": "models[] required"}, 400)
+
+        prompt = data.get("prompt", "").strip()
+        if not prompt:
+            return self._json_response({"success": False, "error": "Prompt is required"}, 400)
+
+        batch_id = uuid.uuid4().hex[:8]
+        shared = {
+            "action": "generate",
+            "prompt": prompt,
+            "negative_prompt": data.get("negative_prompt", ""),
+            "lora_id": data.get("lora_id"),
+            "lora_scale": data.get("lora_scale", 0.8),
+            "cfg_scale": data.get("cfg_scale"),
+            "steps": data.get("steps", 35),
+            "aspect": data.get("aspect", "9:16"),
+            "sampler": data.get("sampler"),
+            "seed": data.get("seed"),
+            "nsfw_lora": data.get("nsfw_lora", False),
+            "translate": data.get("translate", False),
+        }
+
+        batch_entry = {"status": "running", "total": len(models), "completed": 0, "models": {}}
+
+        for model_key in models:
+            payload = dict(shared)
+            payload["model"] = model_key
+            if shared["seed"] is None:
+                payload["seed"] = None  # let each get its own random seed
+
+            proc = subprocess.Popen(
+                ["python3", str(GEN_WEB_PY)],
+                stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                text=True,
+            )
+            proc.stdin.write(json.dumps(payload))
+            proc.stdin.close()
+
+            batch_entry["models"][model_key] = {"status": "running", "proc": proc}
+
+            def _await_model(mk, p):
+                try:
+                    p.wait(timeout=300)
+                    stdout = p.stdout.read()
+                    try:
+                        result = json.loads(stdout.strip())
+                    except json.JSONDecodeError:
+                        result = {"success": False, "error": f"Output invalid: {stdout[:300]}"}
+                except subprocess.TimeoutExpired:
+                    p.kill()
+                    result = {"success": False, "error": "Timed out (300s)"}
+                except Exception as e:
+                    result = {"success": False, "error": str(e)}
+
+                batch_entry["models"][mk]["result"] = result
+                batch_entry["models"][mk]["status"] = "done"
+                batch_entry["models"][mk].pop("proc", None)
+                batch_entry["completed"] += 1
+
+                if batch_entry["completed"] >= batch_entry["total"]:
+                    batch_entry["status"] = "done"
+                    _trim_batch_jobs()
+
+            threading.Thread(target=_await_model, args=(model_key, proc), daemon=True).start()
+
+        BATCH_JOBS[batch_id] = batch_entry
+        self._json_response({
+            "success": True,
+            "batch_id": batch_id,
+            "status": "queued",
+            "total": len(models),
+        })
+
+    def _handle_batch_get(self):
+        from urllib.parse import urlparse, parse_qs
+        qs = parse_qs(urlparse(self.path).query)
+        batch_id = qs.get("batch_id", [""])[0]
+        if not batch_id:
+            return self._json_response({"error": "Missing batch_id"}, 400)
+        bj = BATCH_JOBS.get(batch_id)
+        if not bj:
+            return self._json_response({"error": "Batch not found"}, 404)
+
+        models_status = {}
+        for mk, ms in bj["models"].items():
+            if ms["status"] == "done":
+                models_status[mk] = {"status": "done", "result": ms.get("result")}
+            else:
+                models_status[mk] = {"status": "running"}
+
+        return self._json_response({
+            "batch_id": batch_id,
+            "status": bj["status"],
+            "total": bj["total"],
+            "completed": bj["completed"],
+            "models": models_status,
+        })
 
     def _handle_job(self):
         job_id = self.path.split("/api/job?job=", 1)[-1].split("&")[0] if "?" in self.path else ""
