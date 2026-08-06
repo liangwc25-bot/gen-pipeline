@@ -164,6 +164,7 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
     
     video_only: None=all, True=video only, False=image only.
     time_filter: 'today' (since midnight UTC), 'week' (last 7 days), '' (all).
+    model_filter: exact key, or 'sd15' (all *-15), 'zit' (all zimage-*).
     """
     db = _conn()
     db.row_factory = sqlite3.Row
@@ -172,8 +173,13 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
     params: list = [int(archived)]
 
     if model_filter:
-        conditions.append("model = ?")
-        params.append(model_filter)
+        if model_filter == "sd15":
+            conditions.append("model LIKE '%-15'")
+        elif model_filter == "zit":
+            conditions.append("model LIKE 'zimage-%'")
+        else:
+            conditions.append("model = ?")
+            params.append(model_filter)
 
     if favorited_only:
         conditions.append("favorited = 1")
@@ -226,6 +232,7 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
     
     video_only: None=all, True=video only, False=image only.
     time_filter: 'today' (since midnight UTC), 'week' (last 7 days), '' (all).
+    model_filter: exact key, or 'sd15' (all *-15), 'zit' (all zimage-*).
     """
     db = _conn()
 
@@ -233,8 +240,13 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
     params: list = [int(archived)]
 
     if model_filter:
-        conditions.append("model = ?")
-        params.append(model_filter)
+        if model_filter == "sd15":
+            conditions.append("model LIKE '%-15'")
+        elif model_filter == "zit":
+            conditions.append("model LIKE 'zimage-%'")
+        else:
+            conditions.append("model = ?")
+            params.append(model_filter)
 
     if favorited_only:
         conditions.append("favorited = 1")
