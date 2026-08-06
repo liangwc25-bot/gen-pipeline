@@ -24,6 +24,7 @@ from gen_lib.gif_zoom import make_gif
 # Completed jobs cap — prevent unbounded memory growth (OOM kills)
 JOBS = OrderedDict()
 MAX_JOBS = 50
+GEN_SEM = threading.BoundedSemaphore(6)  # max concurrent gen_web.py for normal generate
 
 # Batch jobs (model comparison)
 BATCH_JOBS = OrderedDict()
@@ -168,39 +169,38 @@ class GenHandler(SimpleHTTPRequestHandler):
         data["action"] = "generate"
         job_id = uuid.uuid4().hex[:8]
 
-        proc = subprocess.Popen(
-            ["python3", str(GEN_WEB_PY)],
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            text=True,
-        )
-        proc.stdin.write(json.dumps(data))
-        proc.stdin.close()
-
-        JOBS[job_id] = {"status": "running", "result": None, "proc": proc}
+        JOBS[job_id] = {"status": "queued", "result": None}
 
         def _await():
+            GEN_SEM.acquire()
+            JOBS[job_id]["status"] = "running"
             try:
-                proc.wait(timeout=300)
-                stdout = proc.stdout.read()
+                proc = subprocess.Popen(
+                    ["python3", str(GEN_WEB_PY)],
+                    stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                    text=True,
+                )
+                proc.stdin.write(json.dumps(data))
+                proc.stdin.close()
+
                 try:
-                    result = json.loads(stdout.strip())
-                except json.JSONDecodeError:
-                    result = {"success": False, "error": f"Output invalid: {stdout[:300]}"}
+                    proc.wait(timeout=300)
+                    stdout = proc.stdout.read()
+                    try:
+                        result = json.loads(stdout.strip())
+                    except json.JSONDecodeError:
+                        result = {"success": False, "error": f"Output invalid: {stdout[:300]}"}
+                except subprocess.TimeoutExpired:
+                    proc.kill()
+                    result = {"success": False, "error": "Timed out (300s)"}
+                except Exception as e:
+                    result = {"success": False, "error": str(e)}
+
                 JOBS[job_id]["result"] = result
                 JOBS[job_id]["status"] = "done"
-                JOBS[job_id].pop("proc", None)
                 _trim_jobs()
-            except subprocess.TimeoutExpired:
-                proc.kill()
-                JOBS[job_id]["result"] = {"success": False, "error": "Timed out (300s)"}
-                JOBS[job_id]["status"] = "done"
-                JOBS[job_id].pop("proc", None)
-                _trim_jobs()
-            except Exception as e:
-                JOBS[job_id]["result"] = {"success": False, "error": str(e)}
-                JOBS[job_id]["status"] = "done"
-                JOBS[job_id].pop("proc", None)
-                _trim_jobs()
+            finally:
+                GEN_SEM.release()
 
         threading.Thread(target=_await, daemon=True).start()
         self._json_response({"success": True, "job_id": job_id, "status": "queued"})
