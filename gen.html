@@ -1777,6 +1777,7 @@ function toggleBatchAdvanced() {
 
 // ── Batch generate ──
 let _batchGenId = 0;  // incremented each generate call, used to cancel stale polls
+let _batchPollFn = null;  // current polling function, called on visibility change
 
 async function batchGenerate() {
   const models = getSelectedModels();
@@ -1869,11 +1870,13 @@ async function batchGenerate() {
       btn.disabled = false;
       btn.textContent = '🚀 一键 Batch 生成';
       document.getElementById('batch-progress').style.display = 'none';
+      _batchPollFn = null;
       renderBatchResults(d.models, models);
       return;
     }
     setTimeout(poll, 2000);
   };
+  _batchPollFn = poll;
   poll();
 }
 
@@ -1921,6 +1924,11 @@ async function loadBatchModelNames() {
 }
 
 loadBatchModelNames();
+
+// Resume batch polling when tab returns to foreground
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && _batchPollFn) _batchPollFn();
+});
 
 loadSnippets();
 
