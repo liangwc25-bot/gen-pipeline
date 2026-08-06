@@ -415,6 +415,8 @@
   <button class="filter-btn" id="modelPony" onclick="setModelFilter('pony-xl')">Pony</button>
   <button class="filter-btn" id="modelIll" onclick="setModelFilter('prefect-ill-xl')">Illustrious</button>
   <button class="filter-btn" id="modelFlux" onclick="setModelFilter('flux-dev')">FLUX</button>
+  <button class="filter-btn" id="modelSD15" onclick="setModelFilter('sd15')">SD1.5</button>
+  <button class="filter-btn" id="modelZIT" onclick="setModelFilter('zit')">ZIT</button>
 </div>
 <div class="filter-bar" style="margin-top:6px">
   <input type="text" id="searchInput" placeholder="🔍 搜索 prompt…" oninput="applyFiltersDebounced()" style="flex:1">
@@ -1116,6 +1118,8 @@ function setModelFilter(m) {
   document.getElementById('modelPony').className = 'filter-btn' + (m === 'pony-xl' ? ' active' : '');
   document.getElementById('modelIll').className = 'filter-btn' + (m === 'prefect-ill-xl' ? ' active' : '');
   document.getElementById('modelFlux').className = 'filter-btn' + (m === 'flux-dev' ? ' active' : '');
+  document.getElementById('modelSD15').className = 'filter-btn' + (m === 'sd15' ? ' active' : '');
+  document.getElementById('modelZIT').className = 'filter-btn' + (m === 'zit' ? ' active' : '');
   loadPage(1);
 }
 
