@@ -1531,20 +1531,20 @@ document.addEventListener('click', function(e) {
 let _batchInited = false;
 let _batchCat = 'flux';
 
-const MODEL_GROUPS = {
-  flux:       ['flux-dev', 'flux-uncensored'],
-  pony:       ['pony-xl', 'pony-real', 'wai-realmix-pony', 'wai-ani-hentai-pony', 'realcartoon-pony'],
-  illustrious: ['prefect-ill-xl'],
-  sdxl:       ['guofeng4-xl', 'pornmaster', 'lustify', 'sdxl-vanilla', 'dreamshaper-xl', 'juggernaut-xl', 'fantasy-reality-xl', 'nwsj-real-mix-sdxl'],
-  zit:        ['zimage-alibaba', 'zimage-moody'],
-  sd15:       ['dreamshaper-15', 'majicmix-real-15', 'realcartoon3d-15', 'aniverse-15', 'chikmix-15', 'realcartoon-real-15',
-               'perfect-world-15', 'majicmix-lux-15', 'dark-sushi-25d-15', 'guofeng-wuxia-15', 'tastyrice-cg-15',
-               'onlyrealistic-15', 'chilloutmix-15', 'chosen-mix-15', 'abyss-orange-mix-15', 'aom3-15',
-               'wanxiang-anything-15', 'lazymix-15', 'aom2-hardcore-15', 'dark-sushi-mix-15', 'realisian-15',
-               'anyhentai-15', 'majicmix-sombre-15', 'realcartoon-anime-15', 'fantexi-15', 'orangechillmix-15',
-               'camelliamix-15', 'astranime-15', 'kawaii-anime-mix-15', 'kakarot-28d-15', 'majicmix-reverie-15',
-               'majicmix-horror-15'],
-};
+// Model key → category mapping (derived from model key naming)
+function _categorizeModel(mk) {
+  if (mk.startsWith('flux-')) return 'flux';
+  if (mk === 'pony-xl' || mk === 'pony-real' || mk.includes('-pony') || mk.startsWith('wai-') || mk.startsWith('realcartoon-pony')) return 'pony';
+  if (mk === 'prefect-ill-xl') return 'illustrious';
+  if (mk.startsWith('zimage-')) return 'zit';
+  if (mk.endsWith('-15')) return 'sd15';
+  // sdxl: everything else SDXL-family (guofeng4-xl, pornmaster, lustify, sdxl-vanilla, etc.)
+  if (mk === 'qwen-edit') return null; // skip qwen
+  return 'sdxl';
+}
+
+// Dynamic model groups — populated from /api/list-models
+let MODEL_GROUPS = { flux: [], pony: [], illustrious: [], sdxl: [], zit: [], sd15: [] };
 
 // Maps model key → name from backend; populated via /api/list-models
 let _batchModelNames = {};
@@ -1556,6 +1556,15 @@ function selectBatchCat(cat, btn) {
 
   const models = MODEL_GROUPS[cat] || [];
   const grid = document.getElementById('batch-ckpt-grid');
+  if (models.length === 0) {
+    // Models not yet loaded — show a retrying indicator
+    grid.innerHTML = '<div style="padding:12px;color:var(--text2);font-size:0.8rem">加载中…</div>';
+    // Retry after models load if needed
+    if (Object.values(MODEL_GROUPS).every(a => a.length === 0)) {
+      loadBatchModelNames().then(() => selectBatchCat(cat));
+      return;
+    }
+  }
   let html = '';
   for (const mk of models) {
     const name = _batchModelNames[mk] || mk;
@@ -1797,14 +1806,20 @@ function renderBatchResults(modelsData, orderedKeys) {
   area.innerHTML = html;
 }
 
-// Pre-load model names for batch
+// Pre-load model names and categorize for batch
 async function loadBatchModelNames() {
   try {
     const r = await fetch('/api/list-models');
     const data = await r.json();
     if (data.models) {
+      // Reset groups
+      MODEL_GROUPS = { flux: [], pony: [], illustrious: [], sdxl: [], zit: [], sd15: [] };
       for (const m of data.models) {
         _batchModelNames[m.id] = m.name;
+        const cat = _categorizeModel(m.id);
+        if (cat && MODEL_GROUPS[cat]) {
+          MODEL_GROUPS[cat].push(m.id);
+        }
       }
     }
   } catch(e) {}
