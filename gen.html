@@ -1709,7 +1709,9 @@ function addBatchLoraRow(airId, scale) {
   input.type = 'text';
   input.className = 'lora-search';
   input.placeholder = '搜索 LoRA…';
-  input.value = airId || '';
+  // Look up display name from registry for the saved airId
+  const nameForId = airId ? (_batchLoras.find(l => l.air_id === airId)?.name || airId) : '';
+  input.value = airId ? nameForId : '';
   if (airId) input.classList.add('has-value');
   input._airId = airId || '';
   const dd = document.createElement('div');
@@ -1737,9 +1739,8 @@ function addBatchLoraRow(airId, scale) {
     if (!opt) return;
     e.preventDefault();
     const air = opt.dataset.air || '';
-    const name = opt.dataset.id ? opt.textContent.trim() : (air || '');
     input._airId = air;
-    input.value = air || '';
+    input.value = air ? opt.textContent.trim() : '';
     if (air) input.classList.add('has-value'); else input.classList.remove('has-value');
     dd.classList.remove('open');
   });
