@@ -5349,6 +5349,25 @@
       "nsfw": false
     },
     {
+      "id": "atlaseuu-ill",
+      "runware_air_id": "liangwc:atlaseuu@1802916",
+      "name": "Atlaseuu (ILL)",
+      "url": "https://civitai.com/models/1593187",
+      "tags": [
+        "illustrious",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
       "id": "sin-nun-cross-bodysuit-ill",
       "runware_air_id": "liangwc:sin-nun-cross-bodysuit-ill@1930042",
       "name": "Sin Nun Cross Bodysuit (ILL)",
@@ -6736,6 +6755,63 @@
       "nsfw": false
     },
     {
+      "id": "asian-consistent-zit",
+      "runware_air_id": "liangwc:asian-consistent@2449748",
+      "name": "Asian Consistent (ZIT)",
+      "url": "https://civitai.com/models/2175402",
+      "tags": [
+        "zimage",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "asian-latina-zit",
+      "runware_air_id": "liangwc:asian-latina@3068575",
+      "name": "Asian Latina (ZIT)",
+      "url": "https://civitai.com/models/2729662",
+      "tags": [
+        "zimage",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "blonde-girl-zit",
+      "runware_air_id": "liangwc:blonde-girl@2640174",
+      "name": "Blonde Girl (ZIT)",
+      "url": "https://civitai.com/models/2347280",
+      "tags": [
+        "zimage",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
       "id": "hello-kitty-bikini-zit",
       "runware_air_id": "liangwc:hello-kitty-bikini@2505894",
       "name": "Hello Kitty Bikini (ZIT)",
@@ -6763,6 +6839,101 @@
       "tags": [
         "zimage",
         "swimsuit",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "photobox-zit",
+      "runware_air_id": "liangwc:photobox@2662887",
+      "name": "PhotoBOX (ZIT)",
+      "url": "https://civitai.com/models/2275756",
+      "tags": [
+        "zimage",
+        "style",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "young-consistency-zit",
+      "runware_air_id": "liangwc:young-consistency@3001108",
+      "name": "Young Consistency (ZIT)",
+      "url": "https://civitai.com/models/2672772",
+      "tags": [
+        "zimage",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "young-javanese-zit",
+      "runware_air_id": "liangwc:young-javanese@3147220",
+      "name": "Young Javanese (ZIT)",
+      "url": "https://civitai.com/models/2792602",
+      "tags": [
+        "zimage",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "chinese-influencer-zit",
+      "runware_air_id": "liangwc:chinese-influencer@3199752",
+      "name": "中国网红明星脸 Chinese Influencer (ZIT)",
+      "url": "https://civitai.com/models/2835239",
+      "tags": [
+        "zimage",
+        "character",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "nwsj-realistic-zit",
+      "runware_air_id": "liangwc:nwsj-realistic@2530097",
+      "name": "娜乌斯嘉 nwsj_realistic (ZIT)",
+      "url": "https://civitai.com/models/53601",
+      "tags": [
+        "zimage",
+        "character",
         "runware-verified"
       ],
       "default_scale": 0.8,
