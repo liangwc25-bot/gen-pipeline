@@ -1624,8 +1624,8 @@ let _batchCat = 'flux';
 // Model key → category mapping (derived from model key naming)
 function _categorizeModel(mk) {
   if (mk.startsWith('flux-')) return 'flux';
-  if (mk === 'pony-xl' || mk === 'pony-real' || mk.includes('-pony') || mk.startsWith('wai-') || mk.startsWith('realcartoon-pony')) return 'pony';
-  if (mk === 'prefect-ill-xl') return 'illustrious';
+  if (mk === 'pony-xl' || mk === 'pony-real' || (mk.includes('-pony') && !mk.startsWith('wai-illustrious')) || mk.startsWith('realcartoon-pony')) return 'pony';
+  if (mk === 'prefect-ill-xl' || mk === 'wai-illustrious' || mk.includes('illustrious') || mk === 'aoi-164' || mk.includes('cat-citron') || mk === 'nova-anime-xl-noob' || mk === 'nova-reality-ill' || mk === 'nova-unreal-ill' || mk === 'miaomiao-harem-ill') return 'illustrious';
   if (mk.startsWith('zimage-')) return 'zit';
   if (mk.endsWith('-15')) return 'sd15';
   // sdxl: everything else SDXL-family (guofeng4-xl, pornmaster, lustify, sdxl-vanilla, etc.)
