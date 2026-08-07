@@ -101,8 +101,8 @@ MODELS = {
     "kawaij-ill":          {"id": "civitai:1257951@1434449", "name": "Kawaij (Illustrious)", "price": "~$0.003/张"},
     "nova-orange-ill":     {"id": "civitai:967405@1428332", "name": "Nova Orange XL (Illustrious)", "price": "~$0.003/张"},
     "nova-flat-ill":       {"id": "civitai:1240874@1398523", "name": "Nova Flat XL (Illustrious)", "price": "~$0.003/张"},
-    "persona-ill":         {"id": "persona:242173@2788849", "name": "Persona (Illustrious)", "price": "~$0.003/张"},
-    "nwsj-real-mix-sdxl":  {"id": "civitai:125026@136555", "name": "NwsjRealMix SDXL", "price": "~$0.003/张"},
+    "persona-zit":         {"id": "persona:242173@2788849", "name": "Dark Beast 黑兽3.0 (ZIT)", "price": "~$0.003/张"},
+    # ZIT checkpoints (Runware AIR IDs)
 }
 
 # Aspect ratio → (width, height) — ALL values % 64 == 0 (Runware requirement)
