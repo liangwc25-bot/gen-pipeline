@@ -94,6 +94,14 @@ MODELS = {
     "nova-reality-ill":    {"id": "civitai:453428@1478543", "name": "Nova Reality XL (Illustrious)", "price": "~$0.003/张"},
     "nova-unreal-ill":     {"id": "civitai:982047@1445113", "name": "Nova Unreal XL (Illustrious)", "price": "~$0.003/张"},
     "miaomiao-harem-ill":  {"id": "civitai:934764@1357881", "name": "MiaoMiao Harem (Illustrious)", "price": "~$0.003/张"},
+    "animij-ill":          {"id": "aiki:1353314@2827109", "name": "Animij (Illustrious)", "price": "~$0.003/张"},
+    "illustrious-xl-2":    {"id": "imagerouter:1369089@1546777", "name": "Illustrious XL 2.0", "price": "~$0.003/张"},
+    "ilustmix-ill":        {"id": "civitai:1110783@1456068", "name": "iLustMix (Illustrious)", "price": "~$0.003/张"},
+    "pornmaster-ill":      {"id": "civitai:1045588@1412925", "name": "PornMaster-Pro Illustrious", "price": "~$0.003/张"},
+    "kawaij-ill":          {"id": "civitai:1257951@1434449", "name": "Kawaij (Illustrious)", "price": "~$0.003/张"},
+    "nova-orange-ill":     {"id": "civitai:967405@1428332", "name": "Nova Orange XL (Illustrious)", "price": "~$0.003/张"},
+    "nova-flat-ill":       {"id": "civitai:1240874@1398523", "name": "Nova Flat XL (Illustrious)", "price": "~$0.003/张"},
+    "persona-ill":         {"id": "persona:242173@2788849", "name": "Persona (Illustrious)", "price": "~$0.003/张"},
     "nwsj-real-mix-sdxl":  {"id": "civitai:125026@136555", "name": "NwsjRealMix SDXL", "price": "~$0.003/张"},
 }
 
