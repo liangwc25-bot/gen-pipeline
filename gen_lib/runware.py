@@ -36,6 +36,7 @@ MODELS = {
     "fantasy-reality-xl": {"id": "civitai:230569@260218", "name": "Fantasy Reality Fusion XL", "price": "~$0.003/张"},
     "zimage-alibaba": {"id": "runware:z-image@turbo", "name": "Alibaba Z-Image-Turbo", "price": "$0.0006/张"},
     "zimage-moody":   {"id": "persona:620406@2745677", "name": "Moody Pro Mix (Z-Image)", "price": "$0.0013/张"},
+    "zimage-stable-yogi": {"id": "liangwc:zimage-turbo-stable-yogi@3096324", "name": "Zimage Turbo by Stable Yogi (2603 Fp8)", "price": "~$0.0013/张"},
     # SD 1.5 Checkpoints
     "dreamshaper-15":    {"id": "civitai:4384@128713", "name": "DreamShaper 1.5", "price": "~$0.003/张"},
     "majicmix-real-15":  {"id": "civitai:43331@94640", "name": "majicMIX realistic 麦橘写实", "price": "~$0.003/张"},
