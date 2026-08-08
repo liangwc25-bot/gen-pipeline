@@ -37,6 +37,8 @@ MODELS = {
     "zimage-alibaba": {"id": "runware:z-image@turbo", "name": "Alibaba Z-Image-Turbo", "price": "$0.0006/张"},
     "zimage-moody":   {"id": "persona:620406@2745677", "name": "Moody Pro Mix (Z-Image)", "price": "$0.0013/张"},
     "zimage-stable-yogi": {"id": "liangwc:zimage-turbo-stable-yogi@3096324", "name": "Zimage Turbo by Stable Yogi (2603 Fp8)", "price": "~$0.0013/张"},
+    "zimage-ultimate-nsfw": {"id": "liangwc:zimage-ultimate-nsfw@2827368", "name": "Z Image Ultimate NSFW Unlock Turbo v2.0", "price": "~$0.0013/张"},
+    "zimage-turbo-anime": {"id": "liangwc:zimage-turbo-anime@2741210", "name": "Z-Image-Turbo Anime V2 Fp8", "price": "~$0.0013/张"},
     # SD 1.5 Checkpoints
     "dreamshaper-15":    {"id": "civitai:4384@128713", "name": "DreamShaper 1.5", "price": "~$0.003/张"},
     "majicmix-real-15":  {"id": "civitai:43331@94640", "name": "majicMIX realistic 麦橘写实", "price": "~$0.003/张"},
