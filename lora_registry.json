@@ -6297,6 +6297,27 @@
       "nsfw": true
     },
     {
+      "id": "project-realism-photo-zit",
+      "runware_air_id": "liangwc:project-realism-photo-zit@3028643",
+      "name": "Project Realism Photo (ZIT Spicy)",
+      "url": "https://civitai.com/models/2697105",
+      "tags": [
+        "zimage",
+        "realism",
+        "style",
+        "photoreal",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "style",
+      "nsfw": false
+    },
+    {
       "id": "facial-cumshot",
       "runware_air_id": "liangwc:facial-cumshot@1",
       "name": "Facial Cumshot - Krea 2 / Z-Image Turbo",
