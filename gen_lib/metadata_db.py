@@ -67,7 +67,10 @@ def _normalize_model(raw: str) -> str:
 
 
 def _conn() -> sqlite3.Connection:
-    db = sqlite3.connect(str(DB_PATH), timeout=5)
+    # timeout=10: during a rescan backfill still holds short write-lock windows
+    # (~1-3s per 50-row batch). 5s was too tight and favorites occasionally
+    # timed out with "database is locked" (2026-08-09). 10s = wait, never fail.
+    db = sqlite3.connect(str(DB_PATH), timeout=10)
     db.execute("PRAGMA journal_mode=WAL")
     db.execute("PRAGMA synchronous=NORMAL")
     return db
@@ -367,8 +370,14 @@ def backfill(image_dir: Path, archive_dir: Path | None = None) -> int:
             except FileNotFoundError:
                 continue  # file moved/trashed by another thread
             db.execute("""
-                INSERT OR REPLACE INTO images (filename, prompt, seed, model, params, favorited, archived, mtime)
+                INSERT INTO images (filename, prompt, seed, model, params, favorited, archived, mtime)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(filename) DO UPDATE SET
+                    prompt = excluded.prompt,
+                    seed = excluded.seed,
+                    model = excluded.model,
+                    params = excluded.params,
+                    mtime = excluded.mtime
             """, (
                 f.name,
                 meta.get("prompt", ""),
@@ -380,15 +389,31 @@ def backfill(image_dir: Path, archive_dir: Path | None = None) -> int:
                 mtime,
             ))
             indexed += 1
+            # Commit in batches — a single giant transaction would hold the
+            # write lock for 30-60s and block favorites/archive/trash (2026-08-09)
+            # 50 rows keeps the lock window ~1-2s, safely under busy_timeout=5s
+            if indexed % 50 == 0:
+                db.commit()
 
     db.commit()
     # Clean up ghost entries: remove DB records for files no longer on disk
+    # Batch the DELETE too — a single huge NOT IN + FTS sync can hold the
+    # write lock 5s+ and still block favorites during rescan (2026-08-09)
     if not archive_dir:
         all_disk = {f.name for f in image_dir.iterdir() if f.is_file()}
-        db.execute("DELETE FROM images WHERE filename NOT IN ({}) AND archived = 0".format(
-            ",".join("?" for _ in all_disk)
-        ), list(all_disk))
-        db.commit()
+        if all_disk:
+            placeholders = ",".join("?" for _ in all_disk)
+            ghosts = [r[0] for r in db.execute(
+                "SELECT filename FROM images WHERE archived = 0 AND filename NOT IN ({})".format(placeholders),
+                list(all_disk)).fetchall()]
+            for i in range(0, len(ghosts), 100):
+                batch = ghosts[i:i + 100]
+                db.execute("DELETE FROM images WHERE filename IN ({})".format(
+                    ",".join("?" for _ in batch)), batch)
+                db.commit()
+        else:
+            db.execute("DELETE FROM images WHERE archived = 0")
+            db.commit()
     db.close()
     return indexed
 

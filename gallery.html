@@ -533,16 +533,14 @@ async function toggleArch(filename, updateUI) {
     archived.delete(filename);
   }
   if (updateUI) updateUI(filename);
-  // If file moved away from current view, remove locally + background refresh
+  // Archive only flips a DB flag (file stays on disk). Remove from current view
+  // if it no longer belongs, but do NOT trigger a full rescan — backfill would
+  // hold the write lock for 30-60s and wipe favorites (2026-08-09).
   if ((filterMode === 'all' || filterMode === 'fav') && data.archived) {
     removeFromLocal(filename);
-    refreshCache();
-    return;
   }
   if (filterMode === 'archive' && !data.archived) {
     removeFromLocal(filename);
-    refreshCache();
-    return;
   }
 }
 

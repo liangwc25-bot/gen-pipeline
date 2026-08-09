@@ -29,6 +29,10 @@ TRASH_DIR = Path(__file__).parent / "output" / ".trash"
 PORT = 8089
 THUMB_SIZE = (300, 300)
 
+# Guards /api/rescan — concurrent backfills deadlock each other on the
+# SQLite write lock and drag scans out for minutes (2026-08-09)
+RESCAN_LOCK = threading.Lock()
+
 # Async job tracking (for long-running operations like I2V)
 JOBS = OrderedDict()
 MAX_JOBS = 50
@@ -524,7 +528,8 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         # API: rescan (refresh DB from directories)
         if path == "/api/rescan":
             from gen_lib.metadata_db import backfill
-            n = backfill(IMAGES_DIR)
+            with RESCAN_LOCK:  # prevent concurrent backfills deadlocking on the write lock
+                n = backfill(IMAGES_DIR)
             _cleanup_old_trash()
             main_count = count_images(archived=False)
             arch_count = count_images(archived=True)
