@@ -1631,7 +1631,7 @@ let _batchCat = 'flux';
 
 // Model key → category mapping (derived from model key naming)
 function _categorizeModel(mk) {
-  if (mk.startsWith('flux-')) return 'flux';
+  if (mk.startsWith('flux-') || mk.endsWith('-flux')) return 'flux';
   if (mk === 'pony-xl' || mk === 'pony-real' || (mk.includes('-pony') && !mk.endsWith('-ill')) || mk.startsWith('realcartoon-pony')) return 'pony';
   if (mk === 'prefect-ill-xl' || mk === 'wai-illustrious' || mk.includes('illustrious') || mk === 'aoi-164' || mk.includes('cat-citron') || mk.endsWith('-ill') || mk === 'nova-anime-xl-noob') return 'illustrious';
   if (mk.startsWith('zimage-') || mk === 'persona-zit') return 'zit';
