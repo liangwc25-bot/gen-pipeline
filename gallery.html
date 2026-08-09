@@ -180,6 +180,10 @@
   }
   .pagination .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
   .pagination .ellipsis { color: var(--text2); font-size: 0.85rem; padding: 0 4px; }
+  /* Top pagination — compact so it doesn't push the grid down */
+  #paginationTop { padding: 10px 24px 2px; }
+  #paginationTop .page-btn { min-width: 30px; height: 30px; font-size: 0.8rem; }
+  #paginationTop input#pageJump { height: 30px; }
 
   /* Modal */
   .modal-overlay {
@@ -372,7 +376,13 @@
   .batch-btn.cancel { background: rgba(255,255,255,0.06); color: var(--text2); }
   [data-theme="light"] .batch-bar { border-top-color: rgba(0,0,0,0.08); }
 
-  .filter-bar { display:flex; gap:6px; margin-bottom:16px; align-items:center; flex-wrap:wrap; }
+  .filter-bar {
+    display: flex; gap: 6px; margin-bottom: 16px; align-items: center;
+    flex-wrap: nowrap;   /* keep all filters on ONE row — scroll sideways if tight */
+    overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-bar > * { flex-shrink: 0; }
   .filter-bar select, .filter-bar input {
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
     border-radius: 8px; padding: 6px 12px; color: var(--text); font-size: 0.85rem;
@@ -425,6 +435,7 @@
 <div class="filter-bar" style="margin-top:6px">
   <input type="text" id="searchInput" placeholder="🔍 搜索 prompt…" oninput="applyFiltersDebounced()" style="flex:1">
 </div>
+<div id="paginationTop" class="pagination"></div>
 <div id="grid" class="grid"></div>
 <div id="batchBar" class="batch-bar">
   <span class="batch-count" id="batchCount">已选 0 张</span>
@@ -781,10 +792,12 @@ function renderGrid(images) {
 
 function renderPagination(displayCount) {
   const el = document.getElementById('pagination');
+  const topEl = document.getElementById('paginationTop');
+  const clear = () => { el.innerHTML = ''; if (topEl) topEl.innerHTML = ''; };
   if (filterMode === 'fav') {
-    if (totalImages <= PER_PAGE) { el.innerHTML = ''; return; }
+    if (totalImages <= PER_PAGE) { clear(); return; }
   }
-  if (totalPages <= 1) { el.innerHTML = ''; return; }
+  if (totalPages <= 1) { clear(); return; }
 
   let html = '';
   const p = currentPage, t = totalPages;
@@ -813,9 +826,11 @@ function renderPagination(displayCount) {
            style="width:48px;padding:4px 6px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:var(--card);color:var(--text);font-size:0.85rem;text-align:center;outline:none"
            onfocus="this.select()"
            onkeydown="if(event.key==='Enter')goToPage(this.value)">
-    <button class="page-btn" style="min-width:auto;padding:0 8px" onclick="goToPage(document.getElementById('pageJump').value)">跳</button>
+    <button class="page-btn" style="min-width:auto;padding:0 8px" onclick="goToPage(this.previousElementSibling.value)">跳</button>
   </span>`;
   el.innerHTML = html;
+  // Mirror to top pagination (user: scrolling to bottom to switch pages is annoying)
+  if (topEl) topEl.innerHTML = html;
 }
 
 function goToPage(page) {
