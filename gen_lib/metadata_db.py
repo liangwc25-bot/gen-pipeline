@@ -172,8 +172,13 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
     db = _conn()
     db.row_factory = sqlite3.Row
 
-    conditions = ["archived = ?"]
-    params: list = [int(archived)]
+    conditions = []
+    params: list = []
+    if not favorited_only:
+        # Fav view shows ALL favorites including archived ones —
+        # favorite + archive can coexist (2026-08-09)
+        conditions.append("archived = ?")
+        params.append(int(archived))
 
     if model_filter:
         if model_filter == "sd15":
@@ -239,8 +244,12 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
     """
     db = _conn()
 
-    conditions = ["archived = ?"]
-    params: list = [int(archived)]
+    conditions = []
+    params: list = []
+    if not favorited_only:
+        # Same coexistence rule as list_images (2026-08-09)
+        conditions.append("archived = ?")
+        params.append(int(archived))
 
     if model_filter:
         if model_filter == "sd15":
