@@ -80,13 +80,24 @@ def move_to_trash(filename: str) -> dict | None:
         return {"trashed": True, "filename": filename}
     return None
 def _cleanup_old_trash() -> None:
-    """Delete trash files older than 7 days."""
+    """Delete trash files older than 7 days.
+
+    ⚠️ 2026-08-09 fix: use ctime (when file ENTERED trash) instead of mtime
+    (when the image was generated). Old images have old mtime — under the old
+    code they were moved into .trash and immediately deleted by this cleanup
+    (mtime > 7 days), so the recycle bin never kept anything old. ctime is
+    updated by rename() into .trash, so it correctly measures time in trash.
+    """
     now = time.time()
     week = 7 * 86400
     if not TRASH_DIR.exists():
         return
     for f in list(TRASH_DIR.iterdir()):
-        if f.is_file() and (now - f.stat().st_mtime) > week:
+        try:
+            st = f.stat()
+        except OSError:
+            continue
+        if f.is_file() and (now - st.st_ctime) > week:
             try:
                 f.unlink()
             except OSError:
