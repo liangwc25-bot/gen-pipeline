@@ -294,9 +294,9 @@
   .batch-ckpt-item.checked { color: var(--accent); font-weight: 500; }
   .batch-progress { font-size: 0.82rem; color: var(--text2); margin-top: 10px; text-align: center; }
   .batch-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .batch-result-card { text-align: center; }
+  .batch-result-card { text-align: center; min-width: 0; max-width: 100%; }
   .batch-result-card img, .batch-result-card video { width: 100%; border-radius: 10px; }
-  .batch-result-card .card-label { font-size: 0.78rem; font-weight: 600; color: var(--text); margin: 6px 0 2px; }
+  .batch-result-card .card-label { font-size: 0.78rem; font-weight: 600; color: var(--text); margin: 6px 0 2px; word-break: break-word; overflow-wrap: anywhere; }
   .batch-result-card .card-sub { font-size: 0.7rem; color: var(--text2); }
 </style>
 </head>
