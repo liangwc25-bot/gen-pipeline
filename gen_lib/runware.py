@@ -39,6 +39,10 @@ MODELS = {
     "zimage-stable-yogi": {"id": "liangwc:zimage-turbo-stable-yogi@3096324", "name": "Zimage Turbo by Stable Yogi (2603 Fp8)", "price": "~$0.0013/张"},
     "zimage-ultimate-nsfw": {"id": "liangwc:zimage-ultimate-nsfw@2827368", "name": "Z Image Ultimate NSFW Unlock Turbo v2.0", "price": "~$0.0013/张"},
     "zimage-turbo-anime": {"id": "liangwc:zimage-turbo-anime@2741210", "name": "Z-Image-Turbo Anime V2 Fp8", "price": "~$0.0013/张"},
+    "zimage-visionary-nsfw": {"id": "liangwc:zit-visionary-nsfw@2565655", "name": "Z-ImageTurbo VISIONARY NSFW (ZIT-fp8)", "price": "~$0.0013/张"},
+    "zimage-tinzit-anime": {"id": "liangwc:tinzit-anime-fp8@3044495", "name": "TinZIT-ANIME-FP8 4steps 完全二次元", "price": "~$0.0013/张"},
+    "zimage-lau-anime": {"id": "liangwc:zanimimage-turbo-lau@2540933", "name": "z_animimage_turbo_by_Lau (semi-real bf16)", "price": "~$0.0013/张"},
+    "zimage-komposto-ani": {"id": "liangwc:komposto-zit-ani@2485111", "name": "Komposto ZIT_ANI (fp8)", "price": "~$0.0013/张"},
     # SD 1.5 Checkpoints
     "dreamshaper-15":    {"id": "civitai:4384@128713", "name": "DreamShaper 1.5", "price": "~$0.003/张"},
     "majicmix-real-15":  {"id": "civitai:43331@94640", "name": "majicMIX realistic 麦橘写实", "price": "~$0.003/张"},
