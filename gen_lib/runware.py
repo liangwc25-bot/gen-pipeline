@@ -29,6 +29,7 @@ MODELS = {
     "asian-flux":          {"id": "civitai:672618@752959", "name": "Flux.1[dev]Asian", "price": "~$0.0038/张"},
     "animeasy-flux":       {"id": "civitai:853344@954733", "name": "AnimEasy Flux", "price": "~$0.0038/张"},
     "myhuman-flux":        {"id": "civitai:775057@989443", "name": "MYHuman-墨幽随拍-Flux", "price": "~$0.0038/张"},
+    "redcraft-flux":       {"id": "civitai:958009@1387169", "name": "RedCraft | 红潮2 | 赤佬3 Scaled 加速", "price": "~$0.0038/张"},
     "pony":           {"id": "runware:777@1", "name": "Pony V7 (AuraFlow)", "price": "~$0.005/张"},
     "sdxl":           {"id": "runware:100@1", "name": "SDXL", "price": "~$0.003/张"},
     "pony-xl":        {"id": "liangwc:3@1", "name": "Prefect Pony XL v3", "price": "$0.0013/张"},
