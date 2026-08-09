@@ -288,7 +288,8 @@
   .batch-check-all-label { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text2); cursor: pointer; }
   .batch-check-all-label input { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
   .batch-ckpt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; max-height: 240px; overflow-y: auto; margin-top: 6px; }
-  .batch-ckpt-item { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 6px; cursor: pointer; transition: .12s; font-size: 0.8rem; color: var(--text2); }
+  .batch-ckpt-item { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 6px; cursor: pointer; transition: .12s; font-size: 0.8rem; color: var(--text2); min-width: 0; }
+  .batch-ckpt-item .batch-ckpt-name { word-break: keep-all; overflow-wrap: break-word; min-width: 0; }
   .batch-ckpt-item:hover { background: rgba(124,92,252,0.08); color: var(--text); }
   .batch-ckpt-item input { width: 14px; height: 14px; accent-color: var(--accent); cursor: pointer; }
   .batch-ckpt-item.checked { color: var(--accent); font-weight: 500; }
@@ -1663,7 +1664,7 @@ function selectBatchCat(cat, btn) {
   let html = '';
   for (const mk of models) {
     const name = _batchModelNames[mk] || mk;
-    html += `<label class="batch-ckpt-item"><input type="checkbox" value="${mk}" onchange="updateBatchCount()"> ${escHtml(name)}</label>`;
+    html += `<label class="batch-ckpt-item"><input type="checkbox" value="${mk}" onchange="updateBatchCount()"> <span class="batch-ckpt-name">${escHtml(name)}</span></label>`;
   }
   grid.innerHTML = html;
 
