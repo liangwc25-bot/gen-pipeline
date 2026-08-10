@@ -19,7 +19,13 @@ from gen_lib.common import get_key, save_image, http_post, download_bytes
 MODELS = {
     "flux-dev":       {"id": "runware:101@1", "name": "FLUX.1-dev", "price": "$0.0013/张"},
     "flux-schnell":   {"id": "bfl:1@1", "name": "FLUX Schnell", "price": "$0.0023/张"},
-    "flux-uncensored": {"id": "loraimagegen:11111@11111", "name": "Fluxedup NSFW", "price": "$0.0038/张"},
+    "flux-uncensored":  {"id": "loraimagegen:11111@11111","name": "Fluxedup NSFW",        "price": "$0.0038/张"},
+    "flux-ultrareal":   {"id": "khialmaster:978314@1413433", "name": "UltraReal Fine-Tune v4", "price": "~$0.003/张"},
+    "flux-artsy-dream": {"id": "civitai:870948@1213649", "name": "Artsy Dream v6 (FP16)", "price": "~$0.003/张"},
+    "flux-artsy-vibe":  {"id": "civitai:1162948@1308807", "name": "Artsy Vibe v1 (FP16)", "price": "~$0.003/张"},
+    "flux-nepotism":    {"id": "civitai:618792@1326315", "name": "Nepotism XI (DiT)", "price": "~$0.003/张"},
+    "flux-blue-pencil": {"id": "civitai:722776@808159", "name": "blue_pencil-flux1 v0.1.0", "price": "~$0.003/张"},
+    "flux-fluximation": {"id": "civitai:652994@730546", "name": "Fluximation v1", "price": "~$0.003/张"},
     "flux-2-pro":     {"id": "bfl:5@1", "name": "FLUX.2 Pro", "price": "$0.045/张"},
     # FLUX 1D community checkpoints (Runware cached, probed 2026-08-09)
     "iniverse-mix-flux":   {"id": "civitai:226533@973626", "name": "iNiverse Mix(SFW & NSFW)", "price": "~$0.0038/张"},
