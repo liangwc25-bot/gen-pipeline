@@ -9364,6 +9364,143 @@
       "base_model": "sd15",
       "category": "new",
       "nsfw": false
+    },
+    {
+      "id": "midjourney-artful-nsfw-zit",
+      "runware_air_id": "liangwc:midjourney-artful-nsfw@2599899",
+      "name": "Midjourney Artful NSFW (ZIT)",
+      "url": "https://civitai.com/models/837884",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "style",
+        "midjourney"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "z-image-art-zit",
+      "runware_air_id": "liangwc:z-image-art@2543201",
+      "name": "Z-Image-Art v3.0 (ZIT)",
+      "url": "https://civitai.com/models/2186776",
+      "tags": [
+        "zimage",
+        "art",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "zit-anime-style",
+      "runware_air_id": "liangwc:zit-anime-style@2542744",
+      "name": "ZImageTurbo动漫风格 anime style (ZIT)",
+      "url": "https://civitai.com/models/2258859",
+      "tags": [
+        "zimage",
+        "anime",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pixel-art-style-zit",
+      "runware_air_id": "liangwc:pixel-art-style-zit@2454660",
+      "name": "Pixel Art Style Lora v1.0 (ZIT)",
+      "url": "https://civitai.com/models/1770073",
+      "tags": [
+        "zimage",
+        "pixel",
+        "art",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "new-mecha-zit",
+      "runware_air_id": "liangwc:new-mecha-zit@2625836",
+      "name": "New Mecha style v2.0 (ZIT)",
+      "url": "https://civitai.com/models/2227157",
+      "tags": [
+        "zimage",
+        "mecha",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "impasto-25d-zit",
+      "runware_air_id": "liangwc:impasto-25d-zit@2511412",
+      "name": "Impasto 2.5D Anime Style v0.1 (ZIT)",
+      "url": "https://civitai.com/models/2230912",
+      "tags": [
+        "zimage",
+        "impasto",
+        "25d",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "liminal-horror-zit",
+      "runware_air_id": "liangwc:liminal-horror-zit@2571404",
+      "name": "Liminal Horror Style v2.0 (ZIT)",
+      "url": "https://civitai.com/models/2247758",
+      "tags": [
+        "zimage",
+        "horror",
+        "liminal",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
     }
   ],
   "categories": {
