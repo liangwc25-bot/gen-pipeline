@@ -309,7 +309,6 @@
   <div class="platform-tabs">
     <div class="platform-tab active" id="tab-runware" onclick="setPlatform('runware')">🟣 Runware</div>
     <div class="platform-tab" id="tab-modelslab" onclick="setPlatform('modelslab')">🧪 ModelsLab</div>
-    <div class="platform-tab" id="tab-batch" onclick="setPlatform('batch')">📊 横评</div>
   </div>
 
   <div class="layout">
@@ -468,8 +467,8 @@
       <div class="status-bar" id="status-bar"></div>
       </div><!-- /#normal-params -->
 
-      <!-- Batch comparison panel -->
-      <div id="batch-panel" style="display:none;padding-bottom:16px">
+      <!-- Runware (merged single + batch) panel -->
+      <div id="batch-panel" style="display:block;padding-bottom:16px">
         <div class="form-group">
           <label>底座类别</label>
           <div class="batch-cat-tabs" id="batch-cat-tabs">
@@ -491,13 +490,13 @@
         </div>
 
         <div class="form-group">
-          <label for="batch-prompt">Prompt</label>
-          <textarea id="batch-prompt" placeholder="输入 prompt…" style="min-height:150px"></textarea>
+          <label for="batch-prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-prompt')" title="插入预设词">📌 预设</button><div class="snippet-dropdown" id="snippet-dd-batch-prompt"></div></span></label>
+          <textarea id="batch-prompt" placeholder="输入 prompt…" style="min-height:200px"></textarea>
         </div>
 
         <div class="form-group">
-          <label for="batch-negative">Negative Prompt（可选）</label>
-          <textarea id="batch-negative" placeholder="不想出现的内容…" style="min-height:80px"></textarea>
+          <label for="batch-negative">Negative Prompt（可选） <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-negative')" title="插入预设词">📌 预设</button><div class="snippet-dropdown" id="snippet-dd-batch-negative"></div></span></label>
+          <textarea id="batch-negative" placeholder="不想出现的内容…" style="min-height:100px"></textarea>
         </div>
 
         <div class="form-group">
@@ -564,6 +563,7 @@
         </div>
 
         <button class="btn" id="batch-generate-btn" onclick="batchGenerate()" style="margin-top:16px">🚀 一键 Batch 生成</button>
+        <button class="btn btn-secondary" style="margin-top:6px" onclick="showBatchResetModal()">🔄 重置</button>
         <div class="error-msg" id="batch-error-msg"></div>
         <div class="status-bar" id="batch-status-bar"></div>
         <div class="batch-progress" id="batch-progress" style="display:none"></div>
@@ -602,6 +602,17 @@
     <div class="reset-actions">
       <button class="reset-cancel" onclick="hideResetModal()">取消</button>
       <button class="reset-ok" onclick="doReset()">重置</button>
+    </div>
+  </div>
+</div>
+
+<!-- Batch reset confirm overlay -->
+<div class="reset-overlay" id="batch-reset-overlay" onclick="if(event.target===this)hideBatchResetModal()">
+  <div class="reset-dialog">
+    <p>确定要清空 Batch 所有参数（含已选 checkpoint、LoRA、prompt）并恢复默认值吗？</p>
+    <div class="reset-actions">
+      <button class="reset-cancel" onclick="hideBatchResetModal()">取消</button>
+      <button class="reset-ok" onclick="doBatchReset()">重置</button>
     </div>
   </div>
 </div>
@@ -809,50 +820,49 @@ document.addEventListener('click', function(e) {
 });
 
 // ════════════════════ Platform switching ════════════════════
+// Runware tab now hosts the merged single + batch panel; ModelsLab keeps the single-gen form.
 function setPlatform(p) {
+  // Normalize legacy 'batch' value from old drafts → 'runware'
+  if (p === 'batch') p = 'runware';
   state.platform = p;
   document.getElementById('tab-runware').classList.toggle('active', p === 'runware');
   document.getElementById('tab-modelslab').classList.toggle('active', p === 'modelslab');
-  document.getElementById('tab-batch').classList.toggle('active', p === 'batch');
 
-  const isBatch = p === 'batch';
-  document.getElementById('normal-params').style.display = isBatch ? 'none' : 'block';
-  document.getElementById('batch-panel').style.display = isBatch ? 'block' : 'none';
+  const isRunware = p === 'runware';
+  const isModelslab = p === 'modelslab';
 
-  if (isBatch) {
+  document.getElementById('batch-panel').style.display = isRunware ? 'block' : 'none';
+  document.getElementById('normal-params').style.display = isModelslab ? 'block' : 'none';
+
+  if (isRunware) {
     // Initialize batch panel
     if (!_batchInited) { selectBatchCat('flux', document.querySelector('.batch-cat-tab[data-cat="flux"]')); _batchInited = true; }
     restoreBatchDraft();
     return;
   }
 
+  // ModelsLab single-gen setup
   const wrap = document.getElementById('model-wrap');
   const dropdown = wrap.querySelector('.custom-select-dropdown');
   const label = wrap.querySelector('.custom-select-label');
   const hidden = document.getElementById('model');
 
-  if (p === 'modelslab') {
-    const models = [
-      { id: 'pony', name: 'Pony Diffusion' },
-      { id: 'illustrious', name: 'Illustrious Hassaku XL' },
-      { id: 'sdxl', name: 'SDXL' },
-      { id: 'flux', name: 'FLUX.1-dev' },
-    ];
-    dropdown.innerHTML = models.map(m =>
-      `<div class="custom-opt${m.id === hidden.value ? ' active' : ''}" data-value="${m.id}">${m.name} (${baseLabel(m.id)})</div>`
-    ).join('');
-    const cur = models.find(m => m.id === hidden.value);
-    if (!cur && models[0]) { hidden.value = models[0].id; }
-    label.textContent = cur ? `${cur.name} (${baseLabel(cur.id)})` : `${models[0].name} (${baseLabel(models[0].id)})`;
-  } else {
-    loadModels();
-  }
+  const models = [
+    { id: 'pony', name: 'Pony Diffusion' },
+    { id: 'illustrious', name: 'Illustrious Hassaku XL' },
+    { id: 'sdxl', name: 'SDXL' },
+    { id: 'flux', name: 'FLUX.1-dev' },
+  ];
+  dropdown.innerHTML = models.map(m =>
+    `<div class="custom-opt${m.id === hidden.value ? ' active' : ''}" data-value="${m.id}">${m.name} (${baseLabel(m.id)})</div>`
+  ).join('');
+  const cur = models.find(m => m.id === hidden.value);
+  if (!cur && models[0]) { hidden.value = models[0].id; }
+  label.textContent = cur ? `${cur.name} (${baseLabel(cur.id)})` : `${models[0].name} (${baseLabel(models[0].id)})`;
 
-  const isRunware = p === 'runware';
-  const isModelslab = p === 'modelslab';
-  document.getElementById('modelslab-info').style.display = isModelslab ? 'block' : 'none';
-  document.getElementById('lora-group-runware').style.display = isRunware ? 'block' : 'none';
-  document.getElementById('lora-group-modelslab').style.display = isModelslab ? 'block' : 'none';
+  document.getElementById('modelslab-info').style.display = 'block';
+  document.getElementById('lora-group-runware').style.display = 'none';
+  document.getElementById('lora-group-modelslab').style.display = 'block';
 
   onModelChange();
   saveDraft();
@@ -937,6 +947,8 @@ async function init() {
   updateLoraCount();
   updateRemoveButtons();
   saveDraft();
+  // Runware tab (merged single + batch) is the default view — init + restore batch
+  setPlatform('runware');
 }
 
 async function loadModels() {
@@ -1414,6 +1426,41 @@ function doReset() {
   hideError();
   document.getElementById('status-bar').innerHTML = '';
 }
+function showBatchResetModal() { document.getElementById('batch-reset-overlay').classList.add('open'); }
+function hideBatchResetModal() { document.getElementById('batch-reset-overlay').classList.remove('open'); }
+function doBatchReset() {
+  hideBatchResetModal();
+  // Prompt & negative
+  document.getElementById('batch-prompt').value = '';
+  document.getElementById('batch-negative').value = '';
+  // LoRA — clear all rows
+  document.getElementById('batch-lora-rows').innerHTML = '';
+  updateBatchLoraCount();
+  // Steps, CFG, Seed
+  document.getElementById('batch-steps').value = '35';
+  document.getElementById('batch-cfg').value = '';
+  document.getElementById('batch-seed').value = '';
+  // Aspect — reset to 9:16
+  document.getElementById('batch-aspect').value = '9:16';
+  const al = document.getElementById('batch-aspect-wrap').querySelector('.custom-select-label');
+  if (al) al.textContent = '9:16 竖版';
+  document.getElementById('batch-aspect-wrap').querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active'));
+  const ao = document.getElementById('batch-aspect-wrap').querySelector('.custom-opt[data-value="9:16"]');
+  if (ao) ao.classList.add('active');
+  // Sampler — reset to auto
+  document.getElementById('batch-sampler').value = '';
+  const sl = document.getElementById('batch-sampler-wrap').querySelector('.custom-select-label');
+  if (sl) sl.textContent = '自动（默认）';
+  document.getElementById('batch-sampler-wrap').querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active'));
+  const so = document.getElementById('batch-sampler-wrap').querySelector('.custom-opt[data-value=""]');
+  if (so) so.classList.add('active');
+  // Checkpoints — rebuild grid unchecked (selectBatchCat resets cat + selection)
+  selectBatchCat('flux', document.querySelector('.batch-cat-tab[data-cat="flux"]'));
+  // Status
+  document.getElementById('batch-error-msg').style.display = 'none';
+  document.getElementById('batch-status-bar').textContent = '';
+  saveBatchDraft();
+}
 function setGenerating(v) { document.getElementById('generate-btn').disabled = v; document.getElementById('generate-btn').textContent = v ? '⏳ 生成中…' : '🚀 生成'; }
 function setStatus(msg, cls) { const el = document.getElementById('status-bar'); el.innerHTML = msg ? `<span class="${cls}">${msg}</span>` : ''; }
 function showError(msg) { const el = document.getElementById('error-msg'); el.textContent = '⚠ ' + msg; el.style.display = 'block'; }
@@ -1542,7 +1589,8 @@ function insertSnippet(text, targetId) {
   ta.setSelectionRange(pos, pos);
   ta.focus();
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
-  saveDraft();
+  if (targetId.startsWith('batch-')) saveBatchDraft();
+  else saveDraft();
 }
 
 // ── Editor ──
