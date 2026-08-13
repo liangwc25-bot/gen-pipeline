@@ -309,6 +309,7 @@
   <div class="platform-tabs">
     <div class="platform-tab active" id="tab-runware" onclick="setPlatform('runware')">🟣 Runware</div>
     <div class="platform-tab" id="tab-modelslab" onclick="setPlatform('modelslab')">🧪 ModelsLab</div>
+    <div class="platform-tab" id="tab-i2i" onclick="setPlatform('i2i')">✏️ I2I 编辑</div>
   </div>
 
   <div class="layout">
@@ -568,6 +569,80 @@
         <div class="status-bar" id="batch-status-bar"></div>
         <div class="batch-progress" id="batch-progress" style="display:none"></div>
       </div><!-- /#batch-panel -->
+
+      <!-- I2I editing panel -->
+      <div id="i2i-panel" style="display:none">
+        <div class="form-group">
+          <label>I2I 模型</label>
+          <div class="custom-select" id="i2i-model-wrap">
+            <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+              <span class="custom-select-label">Qwen-Edit</span><span class="arrow">▾</span>
+            </button>
+            <div class="custom-select-dropdown">
+              <div class="custom-opt active" data-value="qwen-edit">Qwen-Edit (@20)</div>
+              <div class="custom-opt" data-value="qwen-edit-plus">Qwen-Edit-Plus (@22)</div>
+              <div class="custom-opt" data-value="zimage-alibaba">原生 Z-Image-Turbo</div>
+            </div>
+          </div>
+          <input type="hidden" id="i2i-model" value="qwen-edit">
+        </div>
+
+        <div class="form-group">
+          <label>🖼️ 原图</label>
+          <input type="file" id="i2i_image_input" accept="image/*" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--text);padding:8px;font-size:0.85rem;cursor:pointer;color-scheme:dark">
+          <div class="hint" id="i2i-model-hint">Qwen-Edit 是指令式编辑 · 传原图 + 自然语言指令 · 精准改目标</div>
+        </div>
+
+        <div class="form-group">
+          <label for="i2i-prompt">编辑指令</label>
+          <textarea id="i2i-prompt" placeholder="把白色毛衣改成黑色T恤…" style="min-height:120px"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="i2i-negative">Negative（可选）</label>
+          <textarea id="i2i-negative" placeholder="不想出现的内容…" style="min-height:60px"></textarea>
+        </div>
+
+        <div class="form-group">
+          <div class="lora-label-row"><span>LoRA（可选）</span><span id="i2i-lora-count">0 个</span></div>
+          <div id="i2i-lora-rows"></div>
+          <button class="lora-add" id="i2i-lora-add-btn" onclick="addI2iLoraRow()">+ 添加 LoRA</button>
+        </div>
+
+        <button class="adv-toggle" id="i2i-adv-toggle-btn" onclick="toggleI2iAdvanced()">
+          <span class="adv-arrow">▶</span> ⚙️ 高级设置
+        </button>
+        <div class="adv-body" id="i2i-adv-body">
+          <div class="row">
+            <div class="form-group">
+              <label>画幅</label>
+              <div class="custom-select" id="i2i-aspect-wrap">
+                <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+                  <span class="custom-select-label">9:16 竖版</span><span class="arrow">▾</span>
+                </button>
+                <div class="custom-select-dropdown">
+                  <div class="custom-opt active" data-value="9:16">9:16 竖版</div>
+                  <div class="custom-opt" data-value="16:9">16:9 横版</div>
+                  <div class="custom-opt" data-value="1:1">1:1 方形</div>
+                  <div class="custom-opt" data-value="3:2">3:2 横版</div>
+                  <div class="custom-opt" data-value="2:3">2:3 竖版</div>
+                </div>
+              </div>
+              <input type="hidden" id="i2i-aspect" value="9:16">
+            </div>
+            <div class="form-group">
+              <label for="i2i-strength">Strength（传统模型）</label>
+              <input type="number" id="i2i-strength" value="0.5" min="0" max="1" step="0.05">
+              <div class="hint">Qwen 忽略此项 · 原生 ZIT 用</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn" id="i2i-generate-btn" onclick="i2iGenerate()" style="margin-top:16px">✏️ 生成编辑</button>
+        <button class="btn btn-secondary" style="margin-top:6px" onclick="resetI2i()">🔄 重置</button>
+        <div class="error-msg" id="i2i-error-msg"></div>
+        <div class="status-bar" id="i2i-status-bar"></div>
+      </div><!-- /#i2i-panel -->
     </div>
 
     <div class="panel result-panel">
@@ -827,12 +902,20 @@ function setPlatform(p) {
   state.platform = p;
   document.getElementById('tab-runware').classList.toggle('active', p === 'runware');
   document.getElementById('tab-modelslab').classList.toggle('active', p === 'modelslab');
+  document.getElementById('tab-i2i').classList.toggle('active', p === 'i2i');
 
   const isRunware = p === 'runware';
   const isModelslab = p === 'modelslab';
+  const isI2i = p === 'i2i';
 
   document.getElementById('batch-panel').style.display = isRunware ? 'block' : 'none';
   document.getElementById('normal-params').style.display = isModelslab ? 'block' : 'none';
+  document.getElementById('i2i-panel').style.display = isI2i ? 'block' : 'none';
+
+  if (isI2i) {
+    initI2i();
+    return;
+  }
 
   if (isRunware) {
     // Initialize batch panel
@@ -2019,6 +2102,266 @@ async function loadBatchModelNames() {
 }
 
 loadBatchModelNames();
+
+// ════════════════════ I2I Editing ════════════════════
+const I2I_MODELS = {
+  'qwen-edit':       { name: 'Qwen-Edit (@20)',      instruction: true },
+  'qwen-edit-plus':  { name: 'Qwen-Edit-Plus (@22)', instruction: true },
+  'zimage-alibaba':  { name: '原生 Z-Image-Turbo',     instruction: false },
+};
+let _i2iLoras = [];
+let _i2iInited = false;
+
+function initI2i() {
+  if (_i2iInited) return;
+  _i2iInited = true;
+
+  // Model select behavior — options handled by global delegated listener;
+  // dropdown toggle via inline onclick="toggleCustomSelect(this.parentElement)".
+  const wrap = document.getElementById('i2i-model-wrap');
+  wrap.querySelectorAll('.custom-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      updateI2iModelHint();
+      loadI2iLoras();
+    });
+  });
+
+  updateI2iModelHint();
+  loadI2iLoras();
+}
+
+function updateI2iModelHint() {
+  const m = document.getElementById('i2i-model').value;
+  const isInst = I2I_MODELS[m] && I2I_MODELS[m].instruction;
+  document.getElementById('i2i-model-hint').textContent =
+    isInst
+      ? 'Qwen-Edit 是指令式编辑 · 传原图 + 自然语言指令 · 精准改目标'
+      : '原生 Z-Image-Turbo 是传统 i2i · 用 strength 控制重绘强度 · 全图重绘';
+  document.getElementById('i2i-strength').disabled = isInst;
+}
+
+async function loadI2iLoras() {
+  const m = document.getElementById('i2i-model').value;
+  try {
+    const r = await fetch('/api/list-loras?model=' + encodeURIComponent(m));
+    const data = await r.json();
+    _i2iLoras = data.loras || [];
+  } catch(e) { _i2iLoras = []; }
+  document.getElementById('i2i-lora-count').textContent = `0 个`;
+  document.getElementById('i2i-lora-rows').innerHTML = '';
+}
+
+function addI2iLoraRow(airId, initScale) {
+  const row = document.createElement('div');
+  row.className = 'lora-row';
+  const wrap = document.createElement('div');
+  wrap.className = 'lora-picker-wrap';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'lora-search';
+  input.placeholder = '搜索 LoRA…';
+  const nameForId = airId ? (_i2iLoras.find(l => l.air_id === airId)?.name || airId) : '';
+  input.value = nameForId;
+  input._airId = airId || null;
+
+  // Dropdown for LoRA options (reuse batch lora dropdown pattern)
+  const dd = document.createElement('div');
+  dd.className = 'lora-dropdown';
+  dd.style.display = 'none';
+
+  const render = (q) => {
+    const groups = {};
+    const catOrder = ['tools', 'character_style', 'style', 'concept', 'character'];
+    const catLabel = { tools: '🛠 工具', character_style: '🧬 微调', style: '🎨 风格', concept: '💡 概念', character: '👤 角色' };
+    const catEmoji = { tools: '🛠', character_style: '🧬', style: '🎨', concept: '💡', character: '👤' };
+    let html = '<div class="lora-opt" data-air="" data-id="" style="color:var(--text2)">无 LoRA</div>';
+    for (const l of _i2iLoras) {
+      if (q && !l.name.toLowerCase().includes(q) && !l.air_id.toLowerCase().includes(q)) continue;
+      const cat = l.category || '';
+      if (!groups[cat]) groups[cat] = [];
+      groups[cat].push(l);
+    }
+    const sortedCats = Object.keys(groups).sort((a, b) => {
+      const ai = catOrder.indexOf(a); const bi = catOrder.indexOf(b);
+      return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+    });
+    for (const cat of sortedCats) {
+      html += `<div class="lora-group-label">${catEmoji[cat] || '📦'} ${catLabel[cat] || cat}</div>`;
+      for (const l of groups[cat]) {
+        html += `<div class="lora-opt" data-air="${escHtml(l.air_id)}" data-id="${escHtml(l.id)}">${escHtml(l.name)}</div>`;
+      }
+    }
+    dd.innerHTML = html;
+  };
+
+  input.addEventListener('focus', () => { dd.style.display = 'block'; render(input.value.toLowerCase()); });
+  input.addEventListener('input', () => render(input.value.toLowerCase()));
+  dd.addEventListener('click', (e) => {
+    const opt = e.target.closest('.lora-opt');
+    if (!opt) return;
+    input.value = opt.dataset.air ? opt.textContent : '';
+    input._airId = opt.dataset.air || null;
+    dd.style.display = 'none';
+    updateI2iLoraCount();
+  });
+
+  const scale = document.createElement('input');
+  scale.type = 'number';
+  scale.className = 'lora-scale';
+  scale.value = initScale != null ? initScale : 0.8;
+  scale.min = '0'; scale.max = '2'; scale.step = '0.05';
+
+  const rm = document.createElement('button');
+  rm.className = 'lora-remove';
+  rm.textContent = '✕';
+  rm.title = '移除';
+  rm.addEventListener('click', () => { row.remove(); updateI2iLoraCount(); });
+
+  wrap.append(input, dd);
+  row.append(wrap, scale, rm);
+  document.getElementById('i2i-lora-rows').appendChild(row);
+  render('');
+  updateI2iLoraCount();
+}
+
+function updateI2iLoraCount() {
+  const n = document.querySelectorAll('#i2i-lora-rows .lora-row').length;
+  document.getElementById('i2i-lora-count').textContent = `${n} 个`;
+}
+
+function toggleI2iAdvanced() {
+  const btn = document.getElementById('i2i-adv-toggle-btn');
+  const body = document.getElementById('i2i-adv-body');
+  const open = body.classList.toggle('open');
+  btn.classList.toggle('open', open);
+}
+
+function resetI2i() {
+  if (!window.confirm('确定要清空 I2I 编辑参数吗？')) return;
+  document.getElementById('i2i-prompt').value = '';
+  document.getElementById('i2i-negative').value = '';
+  document.getElementById('i2i-lora-rows').innerHTML = '';
+  document.getElementById('i2i_image_input').value = '';
+  document.getElementById('i2i-aspect').value = '9:16';
+  document.getElementById('i2i-strength').value = '0.5';
+  document.getElementById('i2i-error-msg').style.display = 'none';
+  document.getElementById('i2i-status-bar').textContent = '';
+  updateI2iLoraCount();
+}
+
+async function i2iGenerate() {
+  const btn = document.getElementById('i2i-generate-btn');
+  if (btn.disabled) return;
+  btn.disabled = true;
+
+  const model = document.getElementById('i2i-model').value;
+  const prompt = document.getElementById('i2i-prompt').value.trim();
+  if (!prompt) { showI2iError('请输入编辑指令'); btn.disabled = false; return; }
+
+  const fileInput = document.getElementById('i2i_image_input');
+  if (!fileInput.files || !fileInput.files[0]) { showI2iError('请上传要编辑的原图'); btn.disabled = false; return; }
+
+  let image_path;
+  try {
+    image_path = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('图片读取失败'));
+      reader.readAsDataURL(fileInput.files[0]);
+    });
+  } catch(e) { showI2iError('图片读取失败'); btn.disabled = false; return; }
+
+  hideI2iError();
+  document.getElementById('result-area').innerHTML = '<span>⏳ 编辑中…</span>';
+  document.getElementById('result-info').textContent = '';
+  document.getElementById('dl-btn').style.display = 'none';
+  document.getElementById('open-btn').style.display = 'none';
+
+  const body = {
+    action: 'generate',
+    platform: 'runware',
+    model: model,
+    prompt: prompt,
+    negative_prompt: document.getElementById('i2i-negative').value.trim(),
+    image_path: image_path,
+    aspect: document.getElementById('i2i-aspect').value,
+    strength: parseFloat(document.getElementById('i2i-strength').value) || 0.5,
+  };
+
+  // LoRA
+  const loraRows = document.querySelectorAll('#i2i-lora-rows .lora-row');
+  const loraIds = []; const loraScales = [];
+  loraRows.forEach(r => {
+    const air = r.querySelector('.lora-search')._airId;
+    const s = parseFloat(r.querySelector('.lora-scale').value) || 0.8;
+    if (air) { loraIds.push(air); loraScales.push(s); }
+  });
+  if (loraIds.length) { body.lora_id = loraIds.join(','); body.lora_scale = loraScales.join(','); }
+
+  setI2iStatus('⏳ 提交中…', 'loading');
+  let jobResp;
+  try {
+    const res = await fetch('/api/generate', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    jobResp = await res.json();
+  } catch(e) {
+    showI2iError('请求失败: ' + e.message); btn.disabled = false; setI2iStatus('', ''); return;
+  }
+
+  if (!jobResp.job_id) {
+    showI2iError(jobResp.error || '提交失败'); btn.disabled = false; setI2iStatus('', ''); return;
+  }
+
+  // Poll
+  const jobId = jobResp.job_id;
+  btn.textContent = '⏳ 编辑中…';
+  const POLL_INTERVAL = 2000;
+  const done = await new Promise(resolve => {
+    const poll = async () => {
+      let st;
+      try {
+        const r = await fetch(`/api/job?job=${jobId}`);
+        st = await r.json();
+      } catch(e) { setTimeout(poll, POLL_INTERVAL); return; }
+      if (st.status === 'done') { resolve(st.result); }
+      else if (st.status === 'error') { resolve(st); }
+      else { setI2iStatus('⏳ 编辑中…', 'loading'); setTimeout(poll, POLL_INTERVAL); }
+    };
+    poll();
+  });
+  btn.disabled = false;
+  btn.textContent = '✏️ 生成编辑';
+
+  if (done && done.success && done.url) {
+    state.resultUrl = done.url; state.resultPath = done.path || null;
+    document.getElementById('result-area').innerHTML = `<img src="${done.url}" alt="编辑结果">`;
+    document.getElementById('result-info').textContent = `✅ ${done.message || '完成'}${done.size ? ` · ${(done.size/1024).toFixed(0)}KB` : ''}${done.seed != null ? ` · 🎲 ${done.seed}` : ''}`;
+    document.getElementById('dl-btn').style.display = 'block';
+    document.getElementById('open-btn').style.display = 'block';
+    setI2iStatus('✅ 完成', 'done');
+  } else {
+    const errMsg = (done && done.error) || '编辑失败';
+    showI2iError(errMsg);
+    document.getElementById('result-area').innerHTML = '<span style="color:var(--red)">❌ 编辑失败</span>';
+    setI2iStatus('', '');
+  }
+}
+
+function showI2iError(msg) {
+  const el = document.getElementById('i2i-error-msg');
+  el.style.display = 'block'; el.textContent = msg;
+}
+function hideI2iError() {
+  document.getElementById('i2i-error-msg').style.display = 'none';
+}
+function setI2iStatus(msg, cls) {
+  const el = document.getElementById('i2i-status-bar');
+  el.textContent = msg;
+  el.className = 'status-bar' + (cls ? ` ${cls}` : '');
+}
 
 // Resume batch polling when tab returns to foreground
 document.addEventListener('visibilitychange', () => {

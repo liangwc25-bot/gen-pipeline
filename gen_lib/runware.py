@@ -48,6 +48,7 @@ MODELS = {
     "dreamshaper-xl": {"id": "civitai:112902@121931", "name": "DreamShaper XL", "price": "~$0.003/张"},
     "juggernaut-xl":  {"id": "rundiffusion:133005@288982", "name": "JuggernautXL V8", "price": "~$0.003/张"},
     "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "~$0.0019/张"},
+    "qwen-edit-plus": {"id": "runware:108@22", "name": "Qwen-Image-Edit-Plus", "price": "~$0.0064/张"},
     "fantasy-reality-xl": {"id": "civitai:230569@260218", "name": "Fantasy Reality Fusion XL", "price": "~$0.003/张"},
     "zimage-alibaba": {"id": "runware:z-image@turbo", "name": "Alibaba Z-Image-Turbo", "price": "$0.0006/张"},
     "zimage-moody":   {"id": "persona:620406@2745677", "name": "Moody Pro Mix (Z-Image)", "price": "$0.0013/张"},
@@ -196,7 +197,7 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
 
     model_info = MODELS[model_key]
     model_id = model_info["id"]
-    is_qwen = (model_key == "qwen-edit")
+    is_qwen = (model_key in ("qwen-edit", "qwen-edit-plus"))
 
     print(f"🎨 Runware: {model_info['name']} ({model_info['price']})")
     print(f"📝 Prompt: {prompt[:120]}{'...' if len(prompt) > 120 else ''}")
