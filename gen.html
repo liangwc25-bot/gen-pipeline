@@ -583,7 +583,6 @@
               <div class="custom-opt" data-value="qwen-edit-plus">Qwen-Edit-Plus (@22)</div>
               <div class="custom-opt" data-value="flux-klein">FLUX.2 klein 9B</div>
               <div class="custom-opt" data-value="zimage-alibaba">原生 Z-Image-Turbo</div>
-              <div class="custom-opt" data-value="flux-kontext">FLUX.1 Kontext</div>
             </div>
           </div>
           <input type="hidden" id="i2i-model" value="qwen-edit">
@@ -2113,7 +2112,6 @@ const I2I_MODELS = {
   'qwen-edit':       { name: 'Qwen-Edit (@20)',      instruction: true },
   'qwen-edit-plus':  { name: 'Qwen-Edit-Plus (@22)', instruction: true },
   'zimage-alibaba':  { name: '原生 Z-Image-Turbo',     instruction: false },
-  'flux-kontext':    { name: 'FLUX.1 Kontext',        instruction: false },
   'flux-klein':      { name: 'FLUX.2 klein 9B',       instruction: true },
 };
 let _i2iLoras = [];
@@ -2145,7 +2143,6 @@ function updateI2iModelHint(m) {
     'qwen-edit': 'Qwen-Edit 是指令式编辑 · 传原图 + 自然语言指令 · 精准改目标',
     'qwen-edit-plus': 'Qwen-Edit-Plus 是指令式编辑 · 精度更高 · 贵一些',
     'flux-klein': 'FLUX.2 klein 指令式编辑 · 传图 + 指令 · 便宜',
-    'flux-kontext': 'FLUX.1 Kontext · 传统 i2i · 用 strength 控制',
     'zimage-alibaba': '原生 Z-Image-Turbo 是传统 i2i · 用 strength 控制重绘强度 · 全图重绘',
   };
   document.getElementById('i2i-model-hint').textContent = hints[m] || '';

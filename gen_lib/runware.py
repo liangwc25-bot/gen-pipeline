@@ -49,7 +49,6 @@ MODELS = {
     "juggernaut-xl":  {"id": "rundiffusion:133005@288982", "name": "JuggernautXL V8", "price": "~$0.003/张"},
     "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "~$0.0019/张", "i2i": "ref"},
     "qwen-edit-plus": {"id": "runware:108@22", "name": "Qwen-Image-Edit-Plus", "price": "~$0.0064/张", "i2i": "ref"},
-    "flux-kontext":   {"id": "runware:106@1", "name": "FLUX.1 Kontext [dev]", "price": "~$0.0092/张", "i2i": "seed"},
     "flux-klein":     {"id": "runware:400@2", "name": "FLUX.2 [klein] 9B", "price": "~$0.00078/张", "i2i": "ref"},
     "fantasy-reality-xl": {"id": "civitai:230569@260218", "name": "Fantasy Reality Fusion XL", "price": "~$0.003/张"},
     "zimage-alibaba": {"id": "runware:z-image@turbo", "name": "Alibaba Z-Image-Turbo", "price": "$0.0006/张"},
