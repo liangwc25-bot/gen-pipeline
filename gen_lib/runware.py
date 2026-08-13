@@ -47,8 +47,10 @@ MODELS = {
     "sdxl-vanilla":   {"id": "liangwc:sdxl-vanilla@1", "name": "SDXL Vanilla 1.0", "price": "~$0.003/张"},
     "dreamshaper-xl": {"id": "civitai:112902@121931", "name": "DreamShaper XL", "price": "~$0.003/张"},
     "juggernaut-xl":  {"id": "rundiffusion:133005@288982", "name": "JuggernautXL V8", "price": "~$0.003/张"},
-    "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "~$0.0019/张"},
-    "qwen-edit-plus": {"id": "runware:108@22", "name": "Qwen-Image-Edit-Plus", "price": "~$0.0064/张"},
+    "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "~$0.0019/张", "i2i": "ref"},
+    "qwen-edit-plus": {"id": "runware:108@22", "name": "Qwen-Image-Edit-Plus", "price": "~$0.0064/张", "i2i": "ref"},
+    "flux-kontext":   {"id": "runware:106@1", "name": "FLUX.1 Kontext [dev]", "price": "~$0.0092/张", "i2i": "seed"},
+    "flux-klein":     {"id": "runware:400@2", "name": "FLUX.2 [klein] 9B", "price": "~$0.00078/张", "i2i": "ref"},
     "fantasy-reality-xl": {"id": "civitai:230569@260218", "name": "Fantasy Reality Fusion XL", "price": "~$0.003/张"},
     "zimage-alibaba": {"id": "runware:z-image@turbo", "name": "Alibaba Z-Image-Turbo", "price": "$0.0006/张"},
     "zimage-moody":   {"id": "persona:620406@2745677", "name": "Moody Pro Mix (Z-Image)", "price": "$0.0013/张"},
@@ -197,7 +199,8 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
 
     model_info = MODELS[model_key]
     model_id = model_info["id"]
-    is_qwen = (model_key in ("qwen-edit", "qwen-edit-plus"))
+    # i2i param mode: 'ref' = referenceImages (instruction editing), 'seed' = seedImage (traditional)
+    i2i_mode = model_info.get("i2i", "seed")
 
     print(f"🎨 Runware: {model_info['name']} ({model_info['price']})")
     print(f"📝 Prompt: {prompt[:120]}{'...' if len(prompt) > 120 else ''}")
@@ -234,10 +237,11 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
         b64 = base64.b64encode(img_data).decode()
         data_uri = f"data:{mime};base64,{b64}"
 
-        if is_qwen:
-            # Qwen uses referenceImages (direct data URI), not seedImage
+        if i2i_mode == "ref":
+            # Instruction-editing models (Qwen-Edit, FLUX.2 klein): direct data URI
             task["referenceImages"] = [data_uri]
         else:
+            # Traditional i2i (ZIT, FLUX Kontext): upload then seedImage + strength
             image_uuid = _upload_image(api_key, data_uri)
             task["seedImage"] = image_uuid
             task["strength"] = strength
