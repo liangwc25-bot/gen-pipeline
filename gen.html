@@ -589,7 +589,10 @@
 
         <div class="form-group">
           <label>🖼️ 原图</label>
-          <input type="file" id="i2i_image_input" accept="image/*" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--text);padding:8px;font-size:0.85rem;cursor:pointer;color-scheme:dark">
+          <input type="file" id="i2i_image_input" accept="image/*" onchange="showI2iPreview()" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--text);padding:8px;font-size:0.85rem;cursor:pointer;color-scheme:dark">
+          <div id="i2i-preview" style="display:none;margin-top:8px">
+            <img id="i2i-preview-img" alt="原图预览" style="max-width:100%;max-height:240px;border-radius:8px;border:1px solid rgba(255,255,255,0.12)">
+          </div>
           <div class="hint" id="i2i-model-hint">Qwen-Edit 是指令式编辑 · 传原图 + 自然语言指令 · 精准改目标</div>
         </div>
 
@@ -613,7 +616,7 @@
           <span class="adv-arrow">▶</span> ⚙️ 高级设置
         </button>
         <div class="adv-body" id="i2i-adv-body">
-          <div class="row">
+          <div class="row" style="align-items:flex-start">
             <div class="form-group">
               <label>画幅</label>
               <div class="custom-select" id="i2i-aspect-wrap">
@@ -631,9 +634,9 @@
               <input type="hidden" id="i2i-aspect" value="9:16">
             </div>
             <div class="form-group">
-              <label for="i2i-strength">Strength（传统模型）</label>
-              <input type="number" id="i2i-strength" value="0.5" min="0" max="1" step="0.05">
-              <div class="hint">Qwen 忽略此项 · 原生 ZIT 用</div>
+              <label for="i2i-strength">Strength</label>
+              <input type="number" id="i2i-strength" value="0.5" min="0" max="1" step="0.05" style="min-height:43px;box-sizing:border-box">
+              <div class="hint">传统模型用 · Qwen 忽略</div>
             </div>
           </div>
         </div>
@@ -2243,6 +2246,8 @@ function resetI2i() {
   document.getElementById('i2i-negative').value = '';
   document.getElementById('i2i-lora-rows').innerHTML = '';
   document.getElementById('i2i_image_input').value = '';
+  document.getElementById('i2i-preview').style.display = 'none';
+  document.getElementById('i2i-preview-img').src = '';
   document.getElementById('i2i-aspect').value = '9:16';
   document.getElementById('i2i-strength').value = '0.5';
   document.getElementById('i2i-error-msg').style.display = 'none';
@@ -2361,6 +2366,19 @@ function setI2iStatus(msg, cls) {
   const el = document.getElementById('i2i-status-bar');
   el.textContent = msg;
   el.className = 'status-bar' + (cls ? ` ${cls}` : '');
+}
+
+function showI2iPreview() {
+  const fileInput = document.getElementById('i2i_image_input');
+  const wrap = document.getElementById('i2i-preview');
+  const img = document.getElementById('i2i-preview-img');
+  if (!fileInput.files || !fileInput.files[0]) { wrap.style.display = 'none'; return; }
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    img.src = e.target.result;
+    wrap.style.display = 'block';
+  };
+  reader.readAsDataURL(fileInput.files[0]);
 }
 
 // Resume batch polling when tab returns to foreground
