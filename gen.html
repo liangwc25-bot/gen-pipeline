@@ -90,6 +90,9 @@
     vertical-align: middle; white-space: nowrap;
   }
   .snippet-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .snippet-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  /* 放大输入框（snippet 旁的 ⤢ 按钮） */
+  textarea.expanded { min-height: 420px !important; }
   .snippet-dropdown {
     display: none; position: absolute; z-index: 200;
     background: var(--card); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px;
@@ -295,6 +298,8 @@
   .batch-ckpt-item.checked { color: var(--accent); font-weight: 500; }
   .batch-progress { font-size: 0.82rem; color: var(--text2); margin-top: 10px; text-align: center; }
   .batch-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .batch-result-grid.single { grid-template-columns: 1fr; }
+  .batch-result-grid.single img { max-height: 70vh; object-fit: contain; }
   .batch-result-card { text-align: center; min-width: 0; max-width: 100%; }
   .batch-result-card img, .batch-result-card video { width: 100%; border-radius: 10px; }
   .batch-result-card .card-label { font-size: 0.78rem; font-weight: 600; color: var(--text); margin: 6px 0 2px; word-break: break-word; overflow-wrap: anywhere; }
@@ -378,7 +383,7 @@
       </div>
 
       <div class="form-group">
-        <label for="prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'prompt')" title="插入预设词">📌 预设</button><div class="snippet-dropdown" id="snippet-dd-prompt"></div></span></label>
+        <label for="prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'prompt')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'prompt')" title="放大输入框">⤢ 放大</button><div class="snippet-dropdown" id="snippet-dd-prompt"></div></span></label>
         <textarea id="prompt" placeholder="输入 prompt…" style="min-height:200px"></textarea>
         <label class="toggle" style="margin-top:8px">
           <input type="checkbox" id="translate_cn"> 🇨🇳→🇬🇧 中文翻译
@@ -387,7 +392,7 @@
       </div>
 
       <div class="form-group">
-        <label for="negative">Negative Prompt（可选） <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'negative')" title="插入预设词">📌 预设</button><div class="snippet-dropdown" id="snippet-dd-negative"></div></span></label>
+        <label for="negative">Negative Prompt（可选） <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'negative')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'negative')" title="放大输入框">⤢ 放大</button><div class="snippet-dropdown" id="snippet-dd-negative"></div></span></label>
         <textarea id="negative" placeholder="不想出现的内容…" style="min-height:100px"></textarea>
       </div>
 
@@ -491,12 +496,12 @@
         </div>
 
         <div class="form-group">
-          <label for="batch-prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-prompt')" title="插入预设词">📌 预设</button><div class="snippet-dropdown" id="snippet-dd-batch-prompt"></div></span></label>
+          <label for="batch-prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-prompt')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'batch-prompt')" title="放大输入框">⤢ 放大</button><div class="snippet-dropdown" id="snippet-dd-batch-prompt"></div></span></label>
           <textarea id="batch-prompt" placeholder="输入 prompt…" style="min-height:200px"></textarea>
         </div>
 
         <div class="form-group">
-          <label for="batch-negative">Negative Prompt（可选） <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-negative')" title="插入预设词">📌 预设</button><div class="snippet-dropdown" id="snippet-dd-batch-negative"></div></span></label>
+          <label for="batch-negative">Negative Prompt（可选） <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-negative')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'batch-negative')" title="放大输入框">⤢ 放大</button><div class="snippet-dropdown" id="snippet-dd-batch-negative"></div></span></label>
           <textarea id="batch-negative" placeholder="不想出现的内容…" style="min-height:100px"></textarea>
         </div>
 
@@ -1632,6 +1637,13 @@ async function saveSnippets() {
 }
 
 // ── Dropdown ──
+function toggleExpand(btn, targetId) {
+  const ta = document.getElementById(targetId);
+  ta.classList.toggle('expanded');
+  btn.classList.toggle('active');
+  btn.title = ta.classList.contains('expanded') ? '缩小输入框' : '放大输入框';
+  btn.textContent = ta.classList.contains('expanded') ? '⤡ 还原' : '⤢ 放大';
+}
 function toggleSnippetDropdown(e, targetId) {
   e.stopPropagation();
   const dd = document.getElementById('snippet-dd-' + targetId);
@@ -2064,7 +2076,8 @@ async function batchGenerate() {
 
 function renderBatchResults(modelsData, orderedKeys) {
   const area = document.getElementById('result-area');
-  let html = '<div class="batch-result-grid">';
+  const single = orderedKeys.length === 1;
+  let html = `<div class="batch-result-grid${single ? ' single' : ''}">`;
   for (const mk of orderedKeys) {
     const md = modelsData[mk];
     const name = _batchModelNames[mk] || mk;
