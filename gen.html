@@ -2119,13 +2119,14 @@ function initI2i() {
   if (_i2iInited) return;
   _i2iInited = true;
 
-  // Model select behavior — options handled by global delegated listener;
-  // dropdown toggle via inline onclick="toggleCustomSelect(this.parentElement)".
+  // Model select behavior — read the clicked option's value directly (avoids
+  // relying on global delegated listener timing to update the hidden field).
   const wrap = document.getElementById('i2i-model-wrap');
   wrap.querySelectorAll('.custom-opt').forEach(opt => {
     opt.addEventListener('click', () => {
-      updateI2iModelHint();
-      loadI2iLoras();
+      const val = opt.dataset.value;
+      updateI2iModelHint(val);
+      loadI2iLoras(val);
     });
   });
 
@@ -2133,8 +2134,8 @@ function initI2i() {
   loadI2iLoras();
 }
 
-function updateI2iModelHint() {
-  const m = document.getElementById('i2i-model').value;
+function updateI2iModelHint(m) {
+  m = m || document.getElementById('i2i-model').value;
   const isInst = I2I_MODELS[m] && I2I_MODELS[m].instruction;
   document.getElementById('i2i-model-hint').textContent =
     isInst
@@ -2143,8 +2144,8 @@ function updateI2iModelHint() {
   document.getElementById('i2i-strength').disabled = isInst;
 }
 
-async function loadI2iLoras() {
-  const m = document.getElementById('i2i-model').value;
+async function loadI2iLoras(m) {
+  m = m || document.getElementById('i2i-model').value;
   try {
     const r = await fetch('/api/list-loras?model=' + encodeURIComponent(m));
     const data = await r.json();
