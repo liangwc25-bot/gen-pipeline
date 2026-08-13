@@ -9501,6 +9501,89 @@
       "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": false
+    },
+    {
+      "id": "klein-anatomy-fixer",
+      "runware_air_id": "myaiprojectsqqq:3@2",
+      "name": "Klein Anatomy Quality Fixer v1.5",
+      "url": "https://myaiprojectsqqq:3@2",
+      "tags": [
+        "klein",
+        "anatomy",
+        "fixer",
+        "quality"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "flux-klein",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "klein-unchained-xxx",
+      "runware_air_id": "liangwc:klein-unchained-xxx@2753532",
+      "name": "[KLEIN 9b] Unchained XXX v2.0",
+      "url": "https://civitai.com/models/2348977",
+      "tags": [
+        "klein",
+        "nsfw",
+        "uncensored",
+        "xxx"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "flux-klein",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "klein-cum-on-face",
+      "runware_air_id": "liangwc:klein-cum-on-face@2794794",
+      "name": "Cum On Face (KLEIN-9B V2)",
+      "url": "https://civitai.com/models/146522",
+      "tags": [
+        "klein",
+        "nsfw",
+        "cum",
+        "facial"
+      ],
+      "trigger_words": [
+        "cum on her face, semen on her face,"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "flux-klein",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "klein-body-weight-slider",
+      "runware_air_id": "liangwc:klein-body-weight-slider@2608738",
+      "name": "Klein 9B Body Weight Slider v1.5",
+      "url": "https://civitai.com/models/2318844",
+      "tags": [
+        "klein",
+        "slider",
+        "body",
+        "weight"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.4,
+        1.2
+      ],
+      "base_model": "flux-klein",
+      "category": "new",
+      "nsfw": false
     }
   ],
   "categories": {
