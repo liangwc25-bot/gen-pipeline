@@ -782,7 +782,7 @@ function renderGrid(images) {
               onclick="event.stopPropagation(); toggleArch('${escapeHtml(img.filename)}', updateAllUI)">📦</button>
       <button class="fav-star ${isFav ? 'on' : 'off'}" data-file="${escapeHtml(img.filename)}"
               onclick="event.stopPropagation(); toggleFav('${escapeHtml(img.filename)}', updateAllUI)">${isFav ? '♥' : '♡'}</button>
-      <img src="/thumb/${enc(img.filename)}" alt="" loading="lazy"
+      <img src="/thumb/${enc(img.filename)}" alt="" loading="lazy" decoding="async" fetchpriority="${images.indexOf(img) < 12 ? 'high' : 'auto'}"
            onerror="this.parentElement.innerHTML='<div class=\\'no-thumb\\'>${escapeHtml(img.filename)}</div>'">
       <div class="card-overlay"><span class="card-name">${escapeHtml(img.filename)}</span></div>
       <div class="sel-check"></div>
@@ -893,7 +893,7 @@ function updateCarouselSlides() {
   for (let offset = -2; offset <= 2; offset++) {
     const idx = modalIndex + offset;
     const img = (idx >= 0 && idx < modalImageList.length) ? modalImageList[idx] : null;
-    slides[offset + 2].src = img ? `/raw/${encodeURIComponent(img.filename)}` : '';
+    _loadSlideDecoded(slides[offset + 2], img ? `/raw/${encodeURIComponent(img.filename)}` : '');
   }
 
   // Scroll to current slide (index 2) silently
@@ -905,6 +905,23 @@ function updateCarouselSlides() {
   vp.offsetHeight;
   vp.style.scrollBehavior = 'smooth';
   setTimeout(() => { updatingSlides = false; }, 50);
+}
+
+// 后台解码后再挂载：避免滑动时"框到了但图是上一张/闪白"（decode 在 worker 外的异步线程，不占主线程）
+function _loadSlideDecoded(el, url) {
+  if (!url) { el.removeAttribute('src'); return; }
+  if (el.dataset.loadedUrl === url && el.complete && el.naturalWidth) return; // already shown
+  const pending = new Image();
+  pending.decoding = 'async';
+  pending.onload = () => {
+    // 只有目标节点仍需要这张图才挂载（防竞态：用户已快速滑走）
+    if (el.dataset.loadedUrl !== url) {
+      el.src = url;
+      el.dataset.loadedUrl = url;
+    }
+  };
+  pending.onerror = () => { el.src = url; el.dataset.loadedUrl = url; }; // 原图失败就交给 onerror 显示 no-thumb
+  pending.src = url;
 }
 
 function navModal(direction) {
