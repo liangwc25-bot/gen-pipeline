@@ -198,7 +198,7 @@ def _generate_modelslab(args: dict) -> dict:
         resp = result_ok(path=result, message=f"Done in {elapsed:.1f}s")
         if result and result.exists():
             resp["size"] = result.stat().st_size
-            resp["seed"] = used_seed
+            resp["seed"] = seed
             # Write to metadata index
             try:
                 from gen_lib.metadata_db import insert
