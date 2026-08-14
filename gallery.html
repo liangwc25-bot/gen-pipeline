@@ -907,13 +907,23 @@ function updateCarouselSlides() {
   setTimeout(() => { updatingSlides = false; }, 50);
 }
 
-// 后台解码后再挂载：避免滑动时"框到了但图是上一张/闪白"（decode 在 worker 外的异步线程，不占主线程）
+// 后台解码后再挂载：避免滑动时"框到了但图是上一张/闪白"（decode 在异步线程，不占主线程）
+// 关键：按 URL 缓存解码结果——同一张图 decode 过一次后，中心节点换图可同步立即挂载，不再闪旧图
+const _decodedCache = new Map(); // url -> true (已解码过一次)
+
 function _loadSlideDecoded(el, url) {
   if (!url) { el.removeAttribute('src'); return; }
   if (el.dataset.loadedUrl === url && el.complete && el.naturalWidth) return; // already shown
+  if (_decodedCache.has(url)) {
+    // 这张图之前已解码 → 同步挂载（浏览器从内存图缓存秒出），消除"闪上一张"
+    el.src = url;
+    el.dataset.loadedUrl = url;
+    return;
+  }
   const pending = new Image();
   pending.decoding = 'async';
   pending.onload = () => {
+    _decodedCache.set(url, true);
     // 只有目标节点仍需要这张图才挂载（防竞态：用户已快速滑走）
     if (el.dataset.loadedUrl !== url) {
       el.src = url;
