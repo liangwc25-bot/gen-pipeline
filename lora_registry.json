@@ -9584,6 +9584,141 @@
       "base_model": "flux-klein",
       "category": "new",
       "nsfw": false
+    },
+    {
+      "id": "zit-breast-nipples-v3",
+      "runware_air_id": "liangwc:zit-breast-nipples-v3@2633923",
+      "name": "2026 Best Breast and Nipples V3 (ZIT)",
+      "url": "https://civitai.com/models/2341651",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "breast",
+        "nipples",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.1,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "zit-futa-cock-growth",
+      "runware_air_id": "liangwc:zit-futa-cock-growth@2453328",
+      "name": "Futa Cock Growth (ZIT)",
+      "url": "https://civitai.com/models/2178677",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "futa",
+        "cock"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.1,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "zit-turbo-pussy",
+      "runware_air_id": "liangwc:zit-turbo-pussy@2639284",
+      "name": "Turbo Pussy Z (ZIT)",
+      "url": "https://civitai.com/models/2178383",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "pussy"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.1,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "zit-betternudes",
+      "runware_air_id": "liangwc:zit-betternudes@2474435",
+      "name": "PhotoReal BetterNudes NSFW (ZIT)",
+      "url": "https://civitai.com/models/2174081",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "betternudes"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.1,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "zit-betterbreasts",
+      "runware_air_id": "liangwc:zit-betterbreasts@2481400",
+      "name": "PhotoReal BetterBreasts NSFW (ZIT)",
+      "url": "https://civitai.com/models/2203854",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "betterbreasts"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.1,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "zit-nsfw-v3",
+      "runware_air_id": "liangwc:zit-nsfw-v3@2898951",
+      "name": "Z-Image Turbo NSFW LoRA v3 (ZIT)",
+      "url": "https://civitai.com/models/2279079",
+      "tags": [
+        "zimage",
+        "nsfw"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.1,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "zit-samdoesarts",
+      "runware_air_id": "liangwc:zit-samdoesarts@2511703",
+      "name": "samdoesarts style (ZIT)",
+      "url": "https://civitai.com/models/1759279",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.1,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
