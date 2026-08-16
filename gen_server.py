@@ -132,10 +132,13 @@ class GenHandler(SimpleHTTPRequestHandler):
         self._json_response(result)
 
     def _handle_list_models(self):
+        from urllib.parse import urlparse, parse_qs
+        qs = parse_qs(urlparse(self.path).query)
+        platform = qs.get("platform", ["runware"])[0]
         try:
             r = subprocess.run(
                 ["python3", str(GEN_WEB_PY)],
-                input=json.dumps({"action": "list_models", "platform": "runware"}),
+                input=json.dumps({"action": "list_models", "platform": platform}),
                 capture_output=True, text=True, timeout=15,
             )
             result = json.loads(r.stdout.strip())

@@ -315,6 +315,7 @@
     <div class="platform-tab active" id="tab-runware" onclick="setPlatform('runware')">🟣 Runware</div>
     <div class="platform-tab" id="tab-modelslab" onclick="setPlatform('modelslab')">🧪 ModelsLab</div>
     <div class="platform-tab" id="tab-i2i" onclick="setPlatform('i2i')">✏️ I2I 编辑</div>
+    <div class="platform-tab" id="tab-flux" onclick="setPlatform('flux')">🌊 Flux 家族</div>
   </div>
 
   <div class="layout">
@@ -422,6 +423,12 @@
       <div class="form-group" id="modelslab-info" style="display:none">
         <div class="hint nsfw">🧪 Pony/Illustrious 在 prompt 中加 rating_explicit 解锁 NSFW · SAFETY_CHECKER 已关 · 按量计费</div>
         <div class="hint" style="margin-top:4px">💡 FLUX/SDXL 裸跑有底座 alignment，Pony/Illu 原生 NSFW</div>
+      </div>
+
+      <!-- FLUX 家族 info -->
+      <div class="form-group" id="flux-info" style="display:none">
+        <div class="hint">🌊 FLUX 家族 · 6 个 FLUX 系模型，各模型参数不通用（已按模型自动处理）</div>
+        <div class="hint" style="margin-top:4px">⚙️ FLUX Ultra / FLUX.2 max 不支持 CFG、Steps、Negative · 单张生成</div>
       </div>
 
       <!-- ModelsLab LoRA input -->
@@ -912,13 +919,15 @@ function setPlatform(p) {
   document.getElementById('tab-runware').classList.toggle('active', p === 'runware');
   document.getElementById('tab-modelslab').classList.toggle('active', p === 'modelslab');
   document.getElementById('tab-i2i').classList.toggle('active', p === 'i2i');
+  document.getElementById('tab-flux').classList.toggle('active', p === 'flux');
 
   const isRunware = p === 'runware';
   const isModelslab = p === 'modelslab';
   const isI2i = p === 'i2i';
+  const isFlux = p === 'flux';
 
   document.getElementById('batch-panel').style.display = isRunware ? 'block' : 'none';
-  document.getElementById('normal-params').style.display = isModelslab ? 'block' : 'none';
+  document.getElementById('normal-params').style.display = (isModelslab || isFlux) ? 'block' : 'none';
   document.getElementById('i2i-panel').style.display = isI2i ? 'block' : 'none';
 
   if (isI2i) {
@@ -953,8 +962,45 @@ function setPlatform(p) {
   label.textContent = cur ? `${cur.name} (${baseLabel(cur.id)})` : `${models[0].name} (${baseLabel(models[0].id)})`;
 
   document.getElementById('modelslab-info').style.display = 'block';
+  document.getElementById('flux-info').style.display = 'none';
   document.getElementById('lora-group-runware').style.display = 'none';
   document.getElementById('lora-group-modelslab').style.display = 'block';
+  // re-show 生成张数 (may have been hidden by flux tab)
+  const cwMs = document.getElementById('count-wrap');
+  if (cwMs && cwMs.closest('.form-group')) cwMs.closest('.form-group').style.display = 'block';
+
+  // ── FLUX 家族: single interface, 6 curated FLUX models, per-model params ──
+  if (isFlux) {
+    const fluxModels = [
+      { id: 'flux-schnell', name: 'FLUX.1 [schnell]' },
+      { id: 'flux-dev', name: 'FLUX.1 [dev]' },
+      { id: 'flux-ultra', name: 'FLUX.1.1 [pro] Ultra' },
+      { id: 'flux2-klein', name: 'FLUX.2 [klein] 9B' },
+      { id: 'flux2-max', name: 'FLUX.2 [max]' },
+      { id: 'juggernaut-pro-flux', name: 'Juggernaut Pro Flux' },
+    ];
+    if (!fluxModels.some(m => m.id === hidden.value)) hidden.value = 'flux-dev';
+    dropdown.innerHTML = fluxModels.map(m =>
+      `<div class="custom-opt${m.id === hidden.value ? ' active' : ''}" data-value="${m.id}">${m.name} (${baseLabel(m.id)})</div>`
+    ).join('');
+    const cur = fluxModels.find(m => m.id === hidden.value) || fluxModels[0];
+    label.textContent = `${cur.name} (${baseLabel(cur.id)})`;
+
+    document.getElementById('modelslab-info').style.display = 'none';
+    document.getElementById('flux-info').style.display = 'block';
+    document.getElementById('lora-group-runware').style.display = 'none';
+    document.getElementById('lora-group-modelslab').style.display = 'none';
+    document.getElementById('qwen-image-group').style.display = 'none';
+    document.getElementById('nsfw-pony-group').style.display = 'none';
+    // single interface → hide 生成张数
+    const cw = document.getElementById('count-wrap');
+    if (cw && cw.closest('.form-group')) cw.closest('.form-group').style.display = 'none';
+    // show advanced (CFG/steps/aspect)
+    document.getElementById('adv-body').style.display = 'block';
+    onModelChange();
+    saveDraft();
+    return;
+  }
 
   onModelChange();
   saveDraft();
@@ -971,6 +1017,7 @@ const baseLabel = id => ({
   'qwen-edit': 'Qwen', 'pony': 'Pony SDXL', 'illustrious': 'Illustrious XL',
   'sdxl': 'SDXL 1.0', 'fantasy-reality-xl': 'SDXL 1.0', 'flux': 'FLUX',
   'zimage-alibaba': 'Z-Image', 'zimage-moody': 'Z-Image', 'zimage-stable-yogi': 'Z-Image', 'zimage-ultimate-nsfw': 'Z-Image', 'zimage-turbo-anime': 'Z-Image', 'zimage-visionary-nsfw': 'Z-Image', 'zimage-tinzit-anime': 'Z-Image', 'zimage-lau-anime': 'Z-Image', 'zimage-komposto-ani': 'Z-Image', 'zimage-pornmaster-v35': 'Z-Image',
+  'flux-schnell': 'FLUX', 'flux-dev': 'FLUX', 'flux-ultra': 'FLUX Ultra', 'flux2-klein': 'FLUX.2', 'flux2-max': 'FLUX.2', 'juggernaut-pro-flux': 'FLUX',
   'dreamshaper-15': 'SD 1.5', 'majicmix-real-15': 'SD 1.5', 'realcartoon3d-15': 'SD 1.5',
   'aniverse-15': 'SD 1.5', 'chikmix-15': 'SD 1.5', 'realcartoon-real-15': 'SD 1.5',
   'perfect-world-15': 'SD 1.5', 'majicmix-lux-15': 'SD 1.5', 'dark-sushi-25d-15': 'SD 1.5',
@@ -1098,8 +1145,41 @@ async function loadLoras(model) {
 
 async function onModelChange() {
   const model = document.getElementById('model').value;
+  if (state.platform === 'flux') {
+    document.getElementById('nsfw-pony-group').style.display = 'none';
+    document.getElementById('qwen-image-group').style.display = 'none';
+    const cfgInput = document.getElementById('cfg');
+    const stepsInput = document.getElementById('steps');
+    const negInput = document.getElementById('negative');
+    const cfgDef = { 'flux-schnell': 3.5, 'flux-dev': 3.5, 'flux2-klein': 3.5, 'juggernaut-pro-flux': 3.5 };
+    const stepsDef = { 'flux-schnell': 4, 'flux-dev': 20, 'flux2-klein': 20, 'juggernaut-pro-flux': 20 };
+    const isUltraMax = model === 'flux-ultra' || model === 'flux2-max';
+    cfgInput.disabled = isUltraMax;
+    stepsInput.disabled = isUltraMax;
+    if (isUltraMax) {
+      cfgInput.value = ''; cfgInput.placeholder = '不支持';
+      stepsInput.value = ''; stepsInput.placeholder = '不支持';
+    } else {
+      cfgInput.placeholder = `默认 ${cfgDef[model] != null ? cfgDef[model] : 3.5}`;
+      if (!cfgInput.value || cfgInput.value === '6') cfgInput.value = '';
+      stepsInput.value = stepsDef[model] != null ? stepsDef[model] : 20;
+      stepsInput.placeholder = `默认 ${stepsDef[model] != null ? stepsDef[model] : 20}`;
+    }
+    // FLUX Ultra / FLUX.2 max have no negativePrompt support → hide the field
+    const negGroup = negInput.closest('.form-group');
+    if (model === 'flux2-max' || model === 'flux-ultra') { negInput.value = ''; if (negGroup) negGroup.style.display = 'none'; }
+    else { if (negGroup) negGroup.style.display = 'block'; }
+    saveDraft();
+    return;
+  }
   if (state.platform !== 'runware') {
     document.getElementById('nsfw-pony-group').style.display = 'none';
+    // restore cfg/steps/negative (may have been disabled/hidden by flux tab)
+    const _cfg = document.getElementById('cfg'); if (_cfg) _cfg.disabled = false;
+    const _steps = document.getElementById('steps'); if (_steps) _steps.disabled = false;
+    const _neg = document.getElementById('negative');
+    const _negGrp = _neg ? _neg.closest('.form-group') : null;
+    if (_negGrp) _negGrp.style.display = 'block';
     return;
   }
   const isPonyIllu = model === 'pony-xl' || model === 'prefect-ill-xl';
@@ -1283,7 +1363,7 @@ async function generate() {
   const prompt = document.getElementById('prompt').value.trim();
   if (!prompt) { showError('请输入 prompt'); return; }
 
-  const count = parseInt(document.getElementById('count').value) || 1;
+  const count = (state.platform === 'flux') ? 1 : (parseInt(document.getElementById('count').value) || 1);
   state.generating = true; setGenerating(true);
   const model = document.getElementById('model').value;
 
