@@ -131,6 +131,25 @@ MODELS = {
     # ZIT checkpoints (Runware AIR IDs)
 }
 
+# ── FLUX 家族 (single-interface tab) — Runware-served, per-model param quirks ──
+# cfg/steps/neg: None = param not supported by that model (must NOT be sent to Runware)
+FLUX_FAMILY = [
+    {"key": "flux-schnell",       "id": "runware:100@1",       "name": "FLUX.1 [schnell]",   "cfg": 3.5, "steps": 4,  "neg": True,  "price": "~$0.001/张"},
+    {"key": "flux-dev",           "id": "runware:101@1",       "name": "FLUX.1 [dev]",       "cfg": 3.5, "steps": 20, "neg": True,  "price": "~$0.003/张"},
+    {"key": "flux-ultra",         "id": "bfl:2@2",             "name": "FLUX.1.1 [pro] Ultra", "cfg": None, "steps": None, "neg": False, "price": "~$0.04/张"},
+    {"key": "flux2-klein",        "id": "runware:400@2",       "name": "FLUX.2 [klein] 9B",  "cfg": 3.5, "steps": 20, "neg": True,  "price": "~$0.00078/张"},
+    {"key": "flux2-max",          "id": "bfl:7@1",             "name": "FLUX.2 [max]",       "cfg": None, "steps": None, "neg": False, "price": "~$0.03/张"},
+    {"key": "juggernaut-pro-flux","id": "rundiffusion:130@100","name": "Juggernaut Pro Flux","cfg": 3.5, "steps": 20, "neg": True,  "price": "~$0.003/张"},
+]
+FLUX_FAMILY_KEYS = [m["key"] for m in FLUX_FAMILY]
+
+# FLUX Ultra (bfl:2@2) only accepts these exact dimensions
+FLUX_ULTRA_DIMS = {
+    "16:9": (2752, 1536), "9:16": (1536, 2752), "1:1": (2048, 2048),
+    "3:2": (2496, 1664), "2:3": (1664, 2496),
+    "4:3": (2368, 1792), "3:4": (1792, 2368),
+}
+
 # Aspect ratio → (width, height) — ALL values % 64 == 0 (Runware requirement)
 ASPECT_MAP = {
     "16:9": (1216, 704),
@@ -296,3 +315,82 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
                      prompt=prompt, model=model_info["name"],
                      seed=used_seed, lora_id=lora_id)
     return out, used_seed
+
+
+def generate_flux_family(prompt: str, *, model_key: str = "flux-dev",
+                         negative_prompt: str = "", seed: int = None,
+                         aspect: str = "9:16", cfg_scale: float = None,
+                         steps: int = None, width: int = None,
+                         height: int = None) -> tuple:
+    """Generate via the FLUX 家族 tab (single interface).
+
+    All 6 models are Runware-served AIR IDs, but with per-model param quirks:
+      - flux-ultra (bfl:2@2, FLUX Ultra): no CFGScale, no steps, fixed resolutions
+      - flux2-max  (bfl:7@1, FLUX.2 max): no CFGScale, no steps, no negativePrompt
+    The task payload only includes params the selected model supports.
+    """
+    api_key = get_key("RUNWARE_API_KEY")
+
+    info = next((m for m in FLUX_FAMILY if m["key"] == model_key), None)
+    if not info:
+        raise ValueError(f"Unknown FLUX family model: {model_key}")
+
+    model_id = info["id"]
+
+    # Resolution
+    if width and height:
+        w, h = width, height
+    elif info["key"] == "flux-ultra":
+        w, h = FLUX_ULTRA_DIMS.get(aspect, (1536, 2752))
+    else:
+        w, h = ASPECT_MAP.get(aspect, (704, 1216))
+
+    print(f"🌊 Flux 家族: {info['name']} ({info['price']})  {w}x{h}")
+    print(f"📝 Prompt: {prompt[:120]}{'...' if len(prompt) > 120 else ''}")
+
+    task = {
+        "taskType": "imageInference",
+        "taskUUID": str(uuid.uuid4()),
+        "model": model_id,
+        "positivePrompt": prompt,
+        "width": w,
+        "height": h,
+        "safety": {"checkContent": False},
+        "outputFormat": "PNG",
+        "includeCost": True,
+        "numberResults": 1,
+    }
+    if info["steps"] is not None:
+        task["steps"] = steps if steps else info["steps"]
+    if info["cfg"] is not None:
+        task["CFGScale"] = cfg_scale if cfg_scale is not None else info["cfg"]
+    if info["neg"]:
+        task["negativePrompt"] = negative_prompt or "ugly, deformed, bad anatomy"
+    if seed is not None:
+        task["seed"] = seed
+
+    result = http_post(API_URL, [task], api_key, auth_prefix="Bearer")
+
+    data_list = result.get("data", [])
+    if not data_list:
+        errors = result.get("errors", [])
+        if errors:
+            print(f"❌ Runware error: {errors[0].get('message', errors)}")
+        else:
+            print("❌ No data in response")
+        raise RuntimeError("Runware returned no image")
+
+    img_url = data_list[0].get("imageURL", "")
+    if not img_url:
+        raise RuntimeError("No imageURL in response")
+
+    cost = data_list[0].get("cost", "?")
+    used_seed = data_list[0].get("seed", seed)
+    print(f"💰 Cost: ${cost}  🎲 Seed: {used_seed}")
+
+    img_data = download_bytes(img_url)
+    out = save_image(img_data, prefix=f"runware_{model_key}_{used_seed}",
+                     prompt=prompt, model=info["name"],
+                     seed=used_seed, lora_id=None)
+    return out, used_seed
+

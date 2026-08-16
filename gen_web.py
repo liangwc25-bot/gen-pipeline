@@ -217,12 +217,64 @@ def _generate_modelslab(args: dict) -> dict:
         return result_err(f"{type(e).__name__}: {e}\n{_log if '_log' in dir() else ''}")
 
 
+def _generate_flux_family(args: dict) -> dict:
+    """FLUX 家族 path — 6 curated FLUX models served via Runware, single interface."""
+    from gen_lib.runware import generate_flux_family as gen_flux
+    prompt = args.get("prompt", "").strip()
+    prompt, err = _translate_prompt(prompt, args)
+    if err:
+        return result_err(err)
+    model = args.get("model", "flux-dev")
+    if not prompt:
+        return result_err("Prompt is required")
+    try:
+        import time, io
+        t0 = time.time()
+        _old_stderr, _old_stdout = sys.stderr, sys.stdout
+        _stderr_buf = io.StringIO()
+        sys.stderr = sys.stdout = _stderr_buf
+        try:
+            result = gen_flux(prompt,
+                model_key=model,
+                negative_prompt=args.get("negative_prompt", ""),
+                seed=args.get("seed"),
+                aspect=args.get("aspect", "9:16"),
+                cfg_scale=args.get("cfg_scale"),
+                steps=int(args["steps"]) if args.get("steps") else None)
+        finally:
+            sys.stdout, sys.stderr = _old_stdout, _old_stderr
+            _log = _stderr_buf.getvalue()
+            _stderr_buf.close()
+
+        elapsed = time.time() - t0
+        path, used_seed = result
+        resp = result_ok(path=path, message=f"Done in {elapsed:.1f}s")
+        if path and path.exists():
+            resp["size"] = path.stat().st_size
+            resp["seed"] = used_seed
+            try:
+                from gen_lib.metadata_db import insert
+                insert(
+                    filename=path.name, prompt=prompt,
+                    seed=str(used_seed) if used_seed is not None else "",
+                    model=model, params=f"Model: {model}",
+                    mtime=int(path.stat().st_mtime),
+                )
+            except Exception:
+                pass
+        return resp
+    except Exception as e:
+        return result_err(f"{type(e).__name__}: {e}\n{_log if '_log' in dir() else ''}")
+
+
 def generate(args: dict) -> dict:
-    """Dispatch to Runware or ModelsLab based on platform field."""
+    """Dispatch to Runware, ModelsLab, or FLUX 家族 based on platform field."""
     load_env()  # ensure env vars loaded before platform dispatch
     platform = args.get("platform", "runware")
     if platform == "modelslab":
         return _generate_modelslab(args)
+    if platform == "flux":
+        return _generate_flux_family(args)
     return _generate_runware(args)
 
 
@@ -266,6 +318,11 @@ def list_models(platform: str = "runware") -> dict:
         from gen_lib.modelslab import MODELS as ML_MODELS
         models = [{"id": k, "name": v["name"], "price": v["price"]}
                   for k, v in ML_MODELS.items()]
+        return {"success": True, "models": models}
+    if platform == "flux":
+        from gen_lib.runware import FLUX_FAMILY
+        models = [{"id": m["key"], "name": m["name"], "price": m["price"]}
+                  for m in FLUX_FAMILY]
         return {"success": True, "models": models}
     else:
         from gen_lib.runware import MODELS as RUNWARE_MODELS
