@@ -240,7 +240,8 @@ def _generate_flux_family(args: dict) -> dict:
                 seed=args.get("seed"),
                 aspect=args.get("aspect", "9:16"),
                 cfg_scale=args.get("cfg_scale"),
-                steps=int(args["steps"]) if args.get("steps") else None)
+                steps=int(args["steps"]) if args.get("steps") else None,
+                raw=args.get("raw"))
         finally:
             sys.stdout, sys.stderr = _old_stdout, _old_stderr
             _log = _stderr_buf.getvalue()

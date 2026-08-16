@@ -136,9 +136,9 @@ MODELS = {
 FLUX_FAMILY = [
     {"key": "flux-schnell",       "id": "runware:100@1",       "name": "FLUX.1 [schnell]",   "cfg": 3.5, "steps": 4,  "neg": True,  "price": "~$0.001/张"},
     {"key": "flux-dev",           "id": "runware:101@1",       "name": "FLUX.1 [dev]",       "cfg": 3.5, "steps": 20, "neg": True,  "price": "~$0.003/张"},
-    {"key": "flux-ultra",         "id": "bfl:2@2",             "name": "FLUX.1.1 [pro] Ultra", "cfg": None, "steps": None, "neg": False, "price": "~$0.04/张"},
+    {"key": "flux-ultra",         "id": "bfl:2@2",             "name": "FLUX.1.1 [pro] Ultra", "cfg": None, "steps": None, "neg": False, "raw": True, "price": "~$0.04/张"},
     {"key": "flux2-klein",        "id": "runware:400@2",       "name": "FLUX.2 [klein] 9B",  "cfg": 3.5, "steps": 20, "neg": True,  "price": "~$0.00078/张"},
-    {"key": "flux2-max",          "id": "bfl:7@1",             "name": "FLUX.2 [max]",       "cfg": None, "steps": None, "neg": False, "price": "~$0.03/张"},
+    {"key": "flux2-max",          "id": "bfl:7@1",             "name": "FLUX.2 [max]",       "cfg": None, "steps": None, "neg": False, "raw": True, "price": "~$0.03/张"},
     {"key": "juggernaut-pro-flux","id": "rundiffusion:130@100","name": "Juggernaut Pro Flux","cfg": 3.5, "steps": 20, "neg": True,  "price": "~$0.003/张"},
 ]
 FLUX_FAMILY_KEYS = [m["key"] for m in FLUX_FAMILY]
@@ -321,7 +321,7 @@ def generate_flux_family(prompt: str, *, model_key: str = "flux-dev",
                          negative_prompt: str = "", seed: int = None,
                          aspect: str = "9:16", cfg_scale: float = None,
                          steps: int = None, width: int = None,
-                         height: int = None) -> tuple:
+                         height: int = None, raw: bool = None) -> tuple:
     """Generate via the FLUX 家族 tab (single interface).
 
     All 6 models are Runware-served AIR IDs, but with per-model param quirks:
@@ -368,6 +368,9 @@ def generate_flux_family(prompt: str, *, model_key: str = "flux-dev",
         task["negativePrompt"] = negative_prompt or "ugly, deformed, bad anatomy"
     if seed is not None:
         task["seed"] = seed
+    # raw (natural/less-processed) — only Ultra/Max support it
+    if info.get("raw") and raw is not None:
+        task["raw"] = raw
 
     result = http_post(API_URL, [task], api_key, auth_prefix="Bearer")
 
