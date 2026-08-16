@@ -138,7 +138,7 @@ FLUX_FAMILY = [
     {"key": "flux-dev",           "id": "runware:101@1",       "name": "FLUX.1 [dev]",       "cfg": 3.5, "steps": 20, "neg": True,  "price": "~$0.003/张"},
     {"key": "flux-ultra",         "id": "bfl:2@2",             "name": "FLUX.1.1 [pro] Ultra", "cfg": None, "steps": None, "neg": False, "raw": True, "price": "~$0.04/张"},
     {"key": "flux2-klein",        "id": "runware:400@2",       "name": "FLUX.2 [klein] 9B",  "cfg": 3.5, "steps": 20, "neg": True,  "price": "~$0.00078/张"},
-    {"key": "flux2-max",          "id": "bfl:7@1",             "name": "FLUX.2 [max]",       "cfg": None, "steps": None, "neg": False, "raw": True, "price": "~$0.03/张"},
+    {"key": "flux2-max",          "id": "bfl:7@1",             "name": "FLUX.2 [max]",       "cfg": None, "steps": None, "neg": False, "price": "~$0.03/张"},
     {"key": "juggernaut-pro-flux","id": "rundiffusion:130@100","name": "Juggernaut Pro Flux","cfg": 3.5, "steps": 20, "neg": True,  "price": "~$0.003/张"},
 ]
 FLUX_FAMILY_KEYS = [m["key"] for m in FLUX_FAMILY]
