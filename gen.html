@@ -1179,10 +1179,10 @@ async function onModelChange() {
     const negGroup = negInput.closest('.form-group');
     if (model === 'flux2-max' || model === 'flux-ultra') { negInput.value = ''; if (negGroup) negGroup.style.display = 'none'; }
     else { if (negGroup) negGroup.style.display = 'block'; }
-    // raw toggle only meaningful for Ultra/Max
+    // raw toggle only meaningful for Ultra (2.max does NOT support raw — API accepts but no image)
     const rawChk = document.getElementById('flux_raw');
     if (rawChk) {
-      if (model === 'flux-ultra' || model === 'flux2-max') rawChk.disabled = false;
+      if (model === 'flux-ultra') rawChk.disabled = false;
       else { rawChk.checked = false; rawChk.disabled = true; }
     }
     saveDraft();
