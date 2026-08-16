@@ -9719,6 +9719,26 @@
       "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "zit-better-nipples-pussy",
+      "runware_air_id": "liangwc:zit-better-nipples-pussy@2740476",
+      "name": "better nipples and pussy (ZIT)",
+      "url": "https://civitai.com/models/2183555",
+      "tags": [
+        "zimage",
+        "nsfw",
+        "nipples",
+        "pussy"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.1,
+        2.0
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
