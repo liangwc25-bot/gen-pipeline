@@ -9739,6 +9739,26 @@
       "base_model": "zimage-turbo",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "breastshaper-splendid-droplets",
+      "runware_air_id": "liangwc:breastshaper-splendid-droplets@823412",
+      "name": "BreastShaper splendid droplets (Flux)",
+      "url": "https://civitai.com/models/736344",
+      "tags": [
+        "flux",
+        "nsfw",
+        "breast",
+        "shaper"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.1,
+        2.0
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
