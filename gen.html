@@ -431,6 +431,14 @@
         <div class="hint" style="margin-top:4px">⚙️ FLUX Ultra / FLUX.2 max 不支持 CFG、Steps、Negative · 单张生成</div>
       </div>
 
+      <!-- FLUX 家族 raw toggle (Ultra/Max only) -->
+      <div class="form-group" id="flux-raw-group" style="display:none">
+        <label class="toggle">
+          <input type="checkbox" id="flux_raw"> 📸 raw 自然写实（少后期处理）
+        </label>
+        <div class="hint" style="margin-top:2px">仅 FLUX Ultra / FLUX.2 max 支持 · 更自然的写实风格</div>
+      </div>
+
       <!-- ModelsLab LoRA input -->
       <div class="form-group" id="lora-group-modelslab" style="display:none">
         <label for="lora_modelslab">LoRA · platform model_id</label>
@@ -963,6 +971,7 @@ function setPlatform(p) {
 
   document.getElementById('modelslab-info').style.display = 'block';
   document.getElementById('flux-info').style.display = 'none';
+  document.getElementById('flux-raw-group').style.display = 'none';
   document.getElementById('lora-group-runware').style.display = 'none';
   document.getElementById('lora-group-modelslab').style.display = 'block';
   // re-show 生成张数 (may have been hidden by flux tab)
@@ -988,6 +997,7 @@ function setPlatform(p) {
 
     document.getElementById('modelslab-info').style.display = 'none';
     document.getElementById('flux-info').style.display = 'block';
+    document.getElementById('flux-raw-group').style.display = 'block';
     document.getElementById('lora-group-runware').style.display = 'none';
     document.getElementById('lora-group-modelslab').style.display = 'none';
     document.getElementById('qwen-image-group').style.display = 'none';
@@ -1169,6 +1179,12 @@ async function onModelChange() {
     const negGroup = negInput.closest('.form-group');
     if (model === 'flux2-max' || model === 'flux-ultra') { negInput.value = ''; if (negGroup) negGroup.style.display = 'none'; }
     else { if (negGroup) negGroup.style.display = 'block'; }
+    // raw toggle only meaningful for Ultra/Max
+    const rawChk = document.getElementById('flux_raw');
+    if (rawChk) {
+      if (model === 'flux-ultra' || model === 'flux2-max') rawChk.disabled = false;
+      else { rawChk.checked = false; rawChk.disabled = true; }
+    }
     saveDraft();
     return;
   }
@@ -1403,6 +1419,9 @@ async function generate() {
   } else if (state.platform === 'modelslab') {
     baseBody.lora_model = document.getElementById('lora_modelslab').value || null;
     baseBody.lora_strength = 0.7;
+  } else if (state.platform === 'flux') {
+    const rawChk = document.getElementById('flux_raw');
+    if (rawChk && rawChk.checked) baseBody.raw = true;
   }
 
   // Qwen-Edit: read source image
