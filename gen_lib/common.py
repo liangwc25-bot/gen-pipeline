@@ -84,6 +84,29 @@ def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
     png_info.add_text("parameters", meta_string)
     img.save(out, "PNG", pnginfo=png_info)
 
+    # Index into the gallery SQLite DB so the image shows up in gallery
+    # regardless of which entry point generated it (gen server / gen.py CLI /
+    # other Hermes profiles). Previously only gen_web.py inserted, so any other
+    # path left the image on disk but invisible to gallery until a manual rescan.
+    try:
+        from gen_lib.metadata_db import insert as _db_insert
+        _db_parts = [f"Steps: {steps}", f"Seed: {seed or 0}",
+                     f"Size: {img.size[0]}x{img.size[1]}"]
+        if model:
+            _db_parts.append(f"Model: {model}")
+        if lora_id:
+            _db_parts.append(f"Lora: {lora_id}")
+        _db_insert(
+            filename=out.name,
+            prompt=prompt,
+            seed=str(seed or 0),
+            model=model,
+            params=", ".join(_db_parts),
+            mtime=int(out.stat().st_mtime),
+        )
+    except Exception:
+        pass  # never let an index failure block generation
+
     print(f"✅ Saved: {out}  ({out.stat().st_size:,} bytes)")
     return out
 
