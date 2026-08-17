@@ -123,6 +123,8 @@ MODELS = {
     "illustrious-xl-2":    {"id": "imagerouter:1369089@1546777", "name": "Illustrious XL 2.0", "price": "~$0.003/张"},
     "ilustmix-ill":        {"id": "civitai:1110783@1456068", "name": "iLustMix (Illustrious)", "price": "~$0.003/张"},
     "pornmaster-ill":      {"id": "civitai:1045588@1412925", "name": "PornMaster-Pro Illustrious", "price": "~$0.003/张"},
+    "pornmaster-anime-ill": {"id": "civitai:1033851@1463869", "name": "PornMaster-Anime NoobXL-V4 (Illustrious)", "price": "~$0.003/张"},
+    "matureritual-ill":    {"id": "civitai:994401@1460442", "name": "MatureRitual 熟メス儀式 (Illustrious)", "price": "~$0.003/张"},
     "kawaij-ill":          {"id": "civitai:1257951@1434449", "name": "Kawaij (Illustrious)", "price": "~$0.003/张"},
     "nova-orange-ill":     {"id": "civitai:967405@1428332", "name": "Nova Orange XL (Illustrious)", "price": "~$0.003/张"},
     "nova-flat-ill":       {"id": "civitai:1240874@1398523", "name": "Nova Flat XL (Illustrious)", "price": "~$0.003/张"},
