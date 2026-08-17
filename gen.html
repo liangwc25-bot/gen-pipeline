@@ -1006,8 +1006,10 @@ function setPlatform(p) {
     // single interface → hide 生成张数
     const cw = document.getElementById('count-wrap');
     if (cw && cw.closest('.form-group')) cw.closest('.form-group').style.display = 'none';
-    // show advanced (CFG/steps/aspect)
-    document.getElementById('adv-body').style.display = 'block';
+    // show advanced (CFG/steps/aspect) — 用 .open class 而非内联 display，
+    // 否则内联样式盖过 toggleAdvanced 的 class 切换，高级设置收不回去
+    document.getElementById('adv-body').classList.add('open');
+    document.getElementById('adv-toggle-btn').classList.add('open');
     // 生成张数 被隐藏后按钮会顶到 seed/cfg 下，补点间距
     document.getElementById('generate-btn').style.marginTop = '16px';
     onModelChange();
