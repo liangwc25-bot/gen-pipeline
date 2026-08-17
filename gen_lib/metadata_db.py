@@ -56,6 +56,53 @@ MODEL_NORMALIZE = {
     "gif-zoom": "gif-zoom",
     "i2v-replicate-wan": "Wan 2.2 Video",
     "Test": "test",
+    # ── SD1.5 checkpoint 显示名 → `*-15` key（2026-08-17）──
+    # 之前 DB 存的是显示名，`model LIKE '%-15'` 筛选命中 0。归一化后 SD1.5 快速筛选可用。
+    "DreamShaper 1.5": "dreamshaper-15",
+    "majicMIX realistic 麦橘写实": "majicmix-real-15",
+    "RealCartoon3D": "realcartoon3d-15",
+    "AniVerse": "aniverse-15",
+    "ChikMix": "chikmix-15",
+    "RealCartoon-Realistic": "realcartoon-real-15",
+    "Perfect World 完美世界": "perfect-world-15",
+    "majicMIX lux 麦橘辉耀": "majicmix-lux-15",
+    "Dark Sushi 2.5D 大颗寿司2.5D": "dark-sushi-25d-15",
+    "国风武侠 Chosen Chinese": "guofeng-wuxia-15",
+    "TastyRice-CG国风MIX": "tastyrice-cg-15",
+    "OnlyRealistic 《唯》超高清真人写实": "onlyrealistic-15",
+    "ChilloutMix": "chilloutmix-15",
+    "chosen-mix": "chosen-mix-15",
+    "AbyssOrangeMix2 NSFW": "abyss-orange-mix-15",
+    "AbyssOrangeMix3 AOM3": "aom3-15",
+    "万象熔炉 Anything XL": "wanxiang-anything-15",
+    "LazyMix+ Real Amateur Nudes": "lazymix-15",
+    "AbyssOrangeMix2 Hardcore": "aom2-hardcore-15",
+    "Dark Sushi Mix 大颗寿司": "dark-sushi-mix-15",
+    "Realisian": "realisian-15",
+    "AnyHentai": "anyhentai-15",
+    "majicMIX sombre 麦橘唯美": "majicmix-sombre-15",
+    "RealCartoon-Anime": "realcartoon-anime-15",
+    "Fantexi v0.9Beta": "fantexi-15",
+    "OrangeChillMix": "orangechillmix-15",
+    "CamelliaMix 2.5D": "camelliamix-15",
+    "AstrAnime": "astranime-15",
+    "Kawaii Realistic Anime Mix": "kawaii-anime-mix-15",
+    "Kakarot 2.8D": "kakarot-28d-15",
+    "majicMIX reverie 麦橘梦幻": "majicmix-reverie-15",
+    "majicMIX horror 麦橘恐怖": "majicmix-horror-15",
+    # ── Z-Image 显示名 → key（2026-08-17，同 SD1.5 问题）──
+    "Alibaba Z-Image-Turbo": "zimage-alibaba",
+    "Moody Pro Mix (Z-Image)": "zimage-moody",
+    "Z Image Ultimate NSFW Unlock Turbo v2.0": "zimage-ultimate-nsfw",
+    "Z-ImageTurbo VISIONARY NSFW (ZIT-fp8)": "zimage-visionary-nsfw",
+    "Z-Image-Turbo Anime V2 Fp8": "zimage-turbo-anime",
+    "Zimage Turbo by Stable Yogi (2603 Fp8)": "zimage-stable-yogi",
+    "Komposto ZIT_ANI (fp8)": "zimage-komposto-ani",
+    "TinZIT-ANIME-FP8 4steps 完全二次元": "zimage-tinzit-anime",
+    "z_animimage_turbo_by_Lau (semi-real bf16)": "zimage-lau-anime",
+    "PornMaster 色情大师 Z-Image (Turbo V3.5 BF16)": "zimage-pornmaster-v35",
+    "Dark Beast 黑兽3.0 (ZIT)": "persona-zit",  # key 不以 zimage- 开头，筛选需加 OR
+    "TwinFlow Z-Image-Turbo": "zimage-twinflow",
 }
 
 
@@ -184,7 +231,7 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
         if model_filter == "sd15":
             conditions.append("model LIKE '%-15'")
         elif model_filter == "zit":
-            conditions.append("model LIKE 'zimage-%'")
+            conditions.append("(model LIKE 'zimage-%' OR model LIKE '%-zit')")
         else:
             conditions.append("model = ?")
             params.append(model_filter)
@@ -255,7 +302,7 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
         if model_filter == "sd15":
             conditions.append("model LIKE '%-15'")
         elif model_filter == "zit":
-            conditions.append("model LIKE 'zimage-%'")
+            conditions.append("(model LIKE 'zimage-%' OR model LIKE '%-zit')")
         else:
             conditions.append("model = ?")
             params.append(model_filter)
