@@ -393,7 +393,7 @@
       </div>
 
       <div class="form-group">
-        <label for="negative">Negative Prompt（可选） <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'negative')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'negative')" title="放大输入框">⤢ 放大</button><div class="snippet-dropdown" id="snippet-dd-negative"></div></span></label>
+        <label for="negative">Negative <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'negative')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'negative')" title="放大输入框">⤢ 放大</button><button class="snippet-btn" onclick="clearPrompt('negative')" title="清空 negative，保留其他参数">🗑 清空</button><div class="snippet-dropdown" id="snippet-dd-negative"></div></span></label>
         <textarea id="negative" placeholder="不想出现的内容…" style="min-height:100px"></textarea>
       </div>
 
@@ -516,7 +516,7 @@
         </div>
 
         <div class="form-group">
-          <label for="batch-negative">Negative Prompt（可选） <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-negative')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'batch-negative')" title="放大输入框">⤢ 放大</button><div class="snippet-dropdown" id="snippet-dd-batch-negative"></div></span></label>
+          <label for="batch-negative">Negative <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-negative')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'batch-negative')" title="放大输入框">⤢ 放大</button><button class="snippet-btn" onclick="clearPrompt('batch-negative')" title="清空 negative，保留其他参数">🗑 清空</button><div class="snippet-dropdown" id="snippet-dd-batch-negative"></div></span></label>
           <textarea id="batch-negative" placeholder="不想出现的内容…" style="min-height:100px"></textarea>
         </div>
 
@@ -1741,8 +1741,8 @@ async function saveSnippets() {
 // ── Dropdown ──
 function clearPrompt(id = 'prompt') {
   document.getElementById(id).value = '';
-  // 只清 prompt，保留所有其他参数；按字段保存对应草稿
-  if (id === 'batch-prompt') saveBatchDraft();
+  // 只清该字段，保留所有其他参数；按字段保存对应草稿
+  if (id.startsWith('batch-')) saveBatchDraft();
   else saveDraft();
 }
 function toggleExpand(btn, targetId) {
