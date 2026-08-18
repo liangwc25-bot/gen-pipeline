@@ -309,6 +309,7 @@ def list_loras(model: str = None) -> dict:
             "scale_range": l.get("scale_range", [0.1, 2.0]),
             "description": l.get("description", ""),
             "category": l.get("category", ""),
+            "trigger_words": l.get("trigger_words", []),
         })
     return {"success": True, "loras": result}
 
