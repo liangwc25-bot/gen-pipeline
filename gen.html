@@ -91,6 +91,13 @@
   }
   .snippet-btn:hover { border-color: var(--accent); color: var(--accent); }
   .snippet-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  /* ── Trigger words row (已选 LoRA 的触发词) ── */
+  .trigger-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 2px 0 8px; padding: 8px 10px; background: rgba(124,92,252,0.06); border: 1px dashed rgba(124,92,252,0.25); border-radius: 8px; }
+  .trigger-row:empty { display: none; }
+  .trigger-row .trigger-label { font-size: 0.72rem; color: var(--text2); font-weight: 600; letter-spacing: 0.3px; margin-right: 2px; white-space: nowrap; }
+  .trigger-chip { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(124,92,252,0.35); background: rgba(124,92,252,0.10); color: var(--text); font-size: 0.78rem; cursor: pointer; transition: .2s; }
+  .trigger-chip:hover { background: rgba(124,92,252,0.22); border-color: var(--accent); }
+  .trigger-chip .tc-from { font-size: 0.62rem; color: var(--text2); font-weight: 600; }
   /* 放大输入框（snippet 旁的 ⤢ 按钮） */
   textarea.expanded { min-height: 420px !important; }
   .snippet-dropdown {
@@ -385,6 +392,7 @@
 
       <div class="form-group">
         <label for="prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'prompt')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'prompt')" title="放大输入框">⤢ 放大</button><button class="snippet-btn" onclick="clearPrompt()" title="清空 prompt，保留其他参数">🗑 清空</button><div class="snippet-dropdown" id="snippet-dd-prompt"></div></span></label>
+        <div class="trigger-row" id="trigger-words-row"></div>
         <textarea id="prompt" placeholder="输入 prompt…" style="min-height:200px"></textarea>
         <label class="toggle" style="margin-top:8px">
           <input type="checkbox" id="translate_cn"> 🇨🇳→🇬🇧 中文翻译
@@ -1099,6 +1107,7 @@ async function init() {
     state.loraRowCount++;
   }
   updateLoraCount();
+  updateTriggerWords();
   updateRemoveButtons();
   saveDraft();
   // Runware tab (merged single + batch) is the default view — init + restore batch
@@ -1222,6 +1231,7 @@ async function onModelChange() {
 
   // Preload LoRA cache for search inputs
   await loadLoras(model);
+  updateTriggerWords();
   saveDraft();
 }
 
@@ -1330,7 +1340,38 @@ function selectLora(el) {
   }
   dropdown.classList.remove('open');
   updateLoraCount();
+  updateTriggerWords();
   saveDraft();
+}
+
+// ── Trigger words: 收集所有已选 LoRA 的触发词，渲染为可点击 chip ──
+function updateTriggerWords() {
+  const row = document.getElementById('trigger-words-row');
+  if (!row) return;
+  const model = document.getElementById('model').value;
+  const loras = state.lorasCache[model] || [];
+  const rows = document.querySelectorAll('#lora-rows .lora-row');
+  const selected = [];
+  rows.forEach(r => {
+    const air = r.querySelector('.lora-value')?.value;
+    if (!air) return;
+    const l = loras.find(x => x.air_id === air);
+    if (l && Array.isArray(l.trigger_words) && l.trigger_words.length) {
+      selected.push({ name: l.name, words: l.trigger_words });
+    }
+  });
+  let html = '';
+  if (selected.length) {
+    html = `<span class="trigger-label">🃏 触发词</span>`;
+    selected.forEach(s => {
+      s.words.forEach(w => {
+        const t = w.trim();
+        if (!t) return;
+        html += `<span class="trigger-chip" title="来自：${escHtml(s.name)}" onclick="insertSnippet('${escHtml(t).replace(/'/g,"\\'")}', 'prompt')">${escHtml(t)}<span class="tc-from">${escHtml(s.name.slice(0,14))}</span></span>`;
+      });
+    });
+  }
+  row.innerHTML = html;
 }
 
 function addLoraRow() {
@@ -1350,6 +1391,7 @@ function removeLoraRow(btn) {
   btn.closest('.lora-row').remove();
   state.loraRowCount = Math.max(0, state.loraRowCount - 1);
   updateLoraCount();
+  updateTriggerWords();
   updateRemoveButtons();
   saveDraft();
 }
