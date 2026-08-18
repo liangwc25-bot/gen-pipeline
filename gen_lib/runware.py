@@ -118,7 +118,6 @@ MODELS = {
     "cat-citron-anime":    {"id": "choosenmodelanime:131986@1945419", "name": "CAT Citron Anime Treasure", "price": "~$0.003/张"},
     "nova-anime-xl-noob":  {"id": "civitai:376130@1474209", "name": "Nova Anime XL (NoobAI)", "price": "~$0.003/张"},
     "nova-reality-ill":    {"id": "civitai:453428@1478543", "name": "Nova Reality XL (Illustrious)", "price": "~$0.003/张"},
-    "nova-unreal-ill":     {"id": "civitai:982047@1445113", "name": "Nova Unreal XL (Illustrious)", "price": "~$0.003/张"},
     "miaomiao-harem-ill":  {"id": "civitai:934764@1357881", "name": "MiaoMiao Harem (Illustrious)", "price": "~$0.003/张"},
     "animij-ill":          {"id": "aiki:1353314@2827109", "name": "Animij (Illustrious)", "price": "~$0.003/张"},
     "illustrious-xl-2":    {"id": "imagerouter:1369089@1546777", "name": "Illustrious XL 2.0", "price": "~$0.003/张"},

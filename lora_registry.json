@@ -3679,25 +3679,6 @@
       "description": "Ink wash painting style for Illustrious — 水墨风格"
     },
     {
-      "id": "gothic-niji-style",
-      "runware_air_id": "liangwc:gothic-niji-style@2498503",
-      "name": "MoriiMee Gothic Niji Style",
-      "url": "https://civitai.com/models/915918",
-      "tags": [
-        "illustrious",
-        "style",
-        "gothic"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false
-    },
-    {
       "id": "niji-goth-style",
       "runware_air_id": "liangwc:niji-goth-style@1896419",
       "name": "Niji Goth Style",
@@ -9883,6 +9864,89 @@
       "category": "new",
       "nsfw": false,
       "notes": "哥特风格,黑白高对比测试完美"
+    },
+    {
+      "id": "rimjob-upside-down-pony",
+      "runware_air_id": "liangwc:rimjob-upside-down@929757",
+      "name": "Rimjob / Anilingus upside-down (Pony)",
+      "url": "https://civitai.com/models/95209",
+      "tags": [
+        "pony",
+        "action",
+        "sex",
+        "anilingus"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true,
+      "notes": "姿势LoRA,已验证"
+    },
+    {
+      "id": "lying-on-stomach-ill",
+      "runware_air_id": "liangwc:lying-on-stomach-ill@1462832",
+      "name": "Lying on Stomach / From Behind with sex (Illustrious)",
+      "url": "https://civitai.com/models/976656",
+      "tags": [
+        "illustrious",
+        "action",
+        "sex",
+        "lying on stomach"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true,
+      "notes": "姿势LoRA,已验证"
+    },
+    {
+      "id": "lying-on-stomach-pony",
+      "runware_air_id": "liangwc:lying-on-stomach-pony@1440380",
+      "name": "Lying on Stomach / From Behind with sex (Pony)",
+      "url": "https://civitai.com/models/976656",
+      "tags": [
+        "pony",
+        "action",
+        "sex",
+        "lying on stomach"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true,
+      "notes": "姿势LoRA,已验证"
+    },
+    {
+      "id": "orgasm-face-pony",
+      "runware_air_id": "liangwc:orgasm-face-pony@730535",
+      "name": "Orgasm Face (Pony)",
+      "url": "https://civitai.com/models/652977",
+      "tags": [
+        "pony",
+        "expression",
+        "orgasm"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true,
+      "notes": "表情LoRA,已验证"
     }
   ],
   "categories": {
