@@ -520,6 +520,7 @@
 
         <div class="form-group">
           <label for="batch-prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-prompt')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'batch-prompt')" title="放大输入框">⤢ 放大</button><button class="snippet-btn" onclick="clearPrompt('batch-prompt')" title="清空 prompt，保留其他参数">🗑 清空</button><div class="snippet-dropdown" id="snippet-dd-batch-prompt"></div></span></label>
+          <div class="trigger-row" id="batch-trigger-words-row"></div>
           <textarea id="batch-prompt" placeholder="输入 prompt…" style="min-height:200px"></textarea>
         </div>
 
@@ -857,6 +858,7 @@ function restoreBatchDraft() {
       setTimeout(() => {
         document.getElementById('batch-lora-rows').innerHTML = '';
         d.loras.forEach(l => addBatchLoraRow(l.air_id, parseFloat(l.scale) || 0.8));
+        updateBatchTriggerWords();
       }, 200);
     }
   } catch(e) {}
@@ -1674,6 +1676,7 @@ function doBatchReset() {
   // LoRA — clear all rows
   document.getElementById('batch-lora-rows').innerHTML = '';
   updateBatchLoraCount();
+  updateBatchTriggerWords();
   // Steps, CFG, Seed
   document.getElementById('batch-steps').value = '35';
   document.getElementById('batch-cfg').value = '';
@@ -2086,6 +2089,7 @@ function addBatchLoraRow(airId, scale) {
     input.value = air ? opt.textContent.trim() : '';
     if (air) input.classList.add('has-value'); else input.classList.remove('has-value');
     dd.classList.remove('open');
+    updateBatchTriggerWords();
   });
   wrap.appendChild(input);
   wrap.appendChild(dd);
@@ -2101,15 +2105,44 @@ function addBatchLoraRow(airId, scale) {
   const removeBtn = document.createElement('button');
   removeBtn.className = 'lora-remove';
   removeBtn.textContent = '×';
-  removeBtn.onclick = () => { row.remove(); updateBatchLoraCount(); };
+  removeBtn.onclick = () => { row.remove(); updateBatchLoraCount(); updateBatchTriggerWords(); };
   row.appendChild(removeBtn);
   document.getElementById('batch-lora-rows').appendChild(row);
   updateBatchLoraCount();
+  updateBatchTriggerWords();
 }
 
 function updateBatchLoraCount() {
   const rows = document.querySelectorAll('#batch-lora-rows .lora-row');
   document.getElementById('batch-lora-count').textContent = rows.length + ' 个';
+}
+
+// ── Batch Trigger words: 收集所有已选 batch LoRA 的触发词，渲染为可点击 chip ──
+function updateBatchTriggerWords() {
+  const row = document.getElementById('batch-trigger-words-row');
+  if (!row) return;
+  const rows = document.querySelectorAll('#batch-lora-rows .lora-row');
+  const selected = [];
+  rows.forEach(r => {
+    const air = r.querySelector('.lora-search')?._airId;
+    if (!air) return;
+    const l = _batchLoras.find(x => x.air_id === air);
+    if (l && Array.isArray(l.trigger_words) && l.trigger_words.length) {
+      selected.push({ name: l.name, words: l.trigger_words });
+    }
+  });
+  let html = '';
+  if (selected.length) {
+    html = `<span class="trigger-label">🃏 触发词</span>`;
+    selected.forEach(s => {
+      s.words.forEach(w => {
+        const t = w.trim();
+        if (!t) return;
+        html += `<span class="trigger-chip" title="来自：${escHtml(s.name)}" onclick="insertSnippet('${escHtml(t).replace(/'/g,"\\'")}', 'batch-prompt')">${escHtml(t)}<span class="tc-from">${escHtml(s.name.slice(0,14))}</span></span>`;
+      });
+    });
+  }
+  row.innerHTML = html;
 }
 
 // ── Batch advanced toggle ──
