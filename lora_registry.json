@@ -9759,6 +9759,130 @@
       "base_model": "flux-dev",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "xuer-thick-paint-ill",
+      "runware_air_id": "liangwc:xuer-thick-paint@1278054",
+      "name": "Xu Er 厚涂构图光影质感增强 V3 (Illustrious)",
+      "url": "https://civitai.com/models/768917",
+      "tags": [
+        "illustrious",
+        "thick_paint",
+        "style",
+        "lighting"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false,
+      "notes": "测试图厚涂质感不明显,需鹿鹿实测定去留"
+    },
+    {
+      "id": "748cm-style-ill",
+      "runware_air_id": "liangwc:748cm-style@1056404",
+      "name": "748cm Style (Illustrious/NoobAI)",
+      "url": "https://civitai.com/models/943607",
+      "tags": [
+        "illustrious",
+        "style"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false,
+      "notes": "风格LoRA,已验证"
+    },
+    {
+      "id": "moriimee-gothic-ill",
+      "runware_air_id": "liangwc:moriimee-gothic-ill@2498503",
+      "name": "MoriiMee Gothic Niji (Illustrious)",
+      "url": "https://civitai.com/models/915918",
+      "tags": [
+        "illustrious",
+        "gothic",
+        "style",
+        "dark"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false,
+      "notes": "哥特风格,测试完美"
+    },
+    {
+      "id": "moriimee-gothic-pony",
+      "runware_air_id": "liangwc:moriimee-gothic-pony@1122823",
+      "name": "MoriiMee Gothic Niji (Pony)",
+      "url": "https://civitai.com/models/915918",
+      "tags": [
+        "pony",
+        "gothic",
+        "style",
+        "dark"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false,
+      "notes": "哥特风格"
+    },
+    {
+      "id": "moriimee-gothic-flux",
+      "runware_air_id": "liangwc:moriimee-gothic-flux@1189748",
+      "name": "MoriiMee Gothic Niji (FLUX)",
+      "url": "https://civitai.com/models/915918",
+      "tags": [
+        "flux-dev",
+        "gothic",
+        "style",
+        "dark"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": false,
+      "notes": "哥特风格"
+    },
+    {
+      "id": "moriimee-gothic-zit",
+      "runware_air_id": "liangwc:moriimee-gothic-zit@2488281",
+      "name": "MoriiMee Gothic Niji (Z-Image)",
+      "url": "https://civitai.com/models/915918",
+      "tags": [
+        "zimage-turbo",
+        "gothic",
+        "style",
+        "dark"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false,
+      "notes": "哥特风格,黑白高对比测试完美"
     }
   ],
   "categories": {
