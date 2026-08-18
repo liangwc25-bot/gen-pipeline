@@ -91,13 +91,6 @@
   }
   .snippet-btn:hover { border-color: var(--accent); color: var(--accent); }
   .snippet-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  /* ── Trigger words row (已选 LoRA 的触发词) ── */
-  .trigger-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 2px 0 8px; padding: 8px 10px; background: rgba(124,92,252,0.06); border: 1px dashed rgba(124,92,252,0.25); border-radius: 8px; }
-  .trigger-row:empty { display: none; }
-  .trigger-row .trigger-label { font-size: 0.72rem; color: var(--text2); font-weight: 600; letter-spacing: 0.3px; margin-right: 2px; white-space: nowrap; }
-  .trigger-chip { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 20px; border: 1px solid rgba(124,92,252,0.35); background: rgba(124,92,252,0.10); color: var(--text); font-size: 0.78rem; cursor: pointer; transition: .2s; }
-  .trigger-chip:hover { background: rgba(124,92,252,0.22); border-color: var(--accent); }
-  .trigger-chip .tc-from { font-size: 0.62rem; color: var(--text2); font-weight: 600; }
   /* 放大输入框（snippet 旁的 ⤢ 按钮） */
   textarea.expanded { min-height: 420px !important; }
   .snippet-dropdown {
@@ -392,7 +385,6 @@
 
       <div class="form-group">
         <label for="prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'prompt')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'prompt')" title="放大输入框">⤢ 放大</button><button class="snippet-btn" onclick="clearPrompt()" title="清空 prompt，保留其他参数">🗑 清空</button><div class="snippet-dropdown" id="snippet-dd-prompt"></div></span></label>
-        <div class="trigger-row" id="trigger-words-row"></div>
         <textarea id="prompt" placeholder="输入 prompt…" style="min-height:200px"></textarea>
         <label class="toggle" style="margin-top:8px">
           <input type="checkbox" id="translate_cn"> 🇨🇳→🇬🇧 中文翻译
@@ -520,7 +512,6 @@
 
         <div class="form-group">
           <label for="batch-prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-prompt')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'batch-prompt')" title="放大输入框">⤢ 放大</button><button class="snippet-btn" onclick="clearPrompt('batch-prompt')" title="清空 prompt，保留其他参数">🗑 清空</button><div class="snippet-dropdown" id="snippet-dd-batch-prompt"></div></span></label>
-          <div class="trigger-row" id="batch-trigger-words-row"></div>
           <textarea id="batch-prompt" placeholder="输入 prompt…" style="min-height:200px"></textarea>
         </div>
 
@@ -1808,6 +1799,16 @@ function toggleSnippetDropdown(e, targetId) {
   if (wasOpen) return;
   // Build
   let html = '';
+  // 动态触发词组（仅 prompt 类目标，实时收集已选 LoRA 的 trigger words）
+  if (targetId === 'prompt' || targetId === 'batch-prompt') {
+    const twItems = collectTriggerWords(targetId);
+    if (twItems.length) {
+      html += `<div class="snippet-group-label">🃏 触发词</div>`;
+      for (const it of twItems) {
+        html += `<div class="snippet-item" data-snippet-text="${escHtml(it.text)}" data-target="${targetId}"><div class="snippet-label">${escHtml(it.label)}</div><div class="snippet-text">${escHtml(it.text)}</div></div>`;
+      }
+    }
+  }
   for (const [group, items] of Object.entries(snippets)) {
     html += `<div class="snippet-group-label">${escHtml(group)}</div>`;
     for (const item of items) {
@@ -1818,6 +1819,40 @@ function toggleSnippetDropdown(e, targetId) {
   dd.innerHTML = html;
   dd.classList.add('open');
   dd._targetId = targetId;
+}
+// 收集当前已选 LoRA 的 trigger words（供 snippet 下拉动态展示）
+function collectTriggerWords(targetId) {
+  const items = [];
+  if (targetId === 'batch-prompt') {
+    const rows = document.querySelectorAll('#batch-lora-rows .lora-row');
+    rows.forEach(r => {
+      const air = r.querySelector('.lora-search')?._airId;
+      if (!air) return;
+      const l = _batchLoras.find(x => x.air_id === air);
+      if (l && Array.isArray(l.trigger_words)) {
+        l.trigger_words.forEach(w => {
+          const t = w.trim();
+          if (t) items.push({ label: l.name.slice(0,20), text: t });
+        });
+      }
+    });
+  } else {
+    const model = document.getElementById('model').value;
+    const loras = state.lorasCache[model] || [];
+    const rows = document.querySelectorAll('#lora-rows .lora-row');
+    rows.forEach(r => {
+      const air = r.querySelector('.lora-value')?.value;
+      if (!air) return;
+      const l = loras.find(x => x.air_id === air);
+      if (l && Array.isArray(l.trigger_words)) {
+        l.trigger_words.forEach(w => {
+          const t = w.trim();
+          if (t) items.push({ label: l.name.slice(0,20), text: t });
+        });
+      }
+    });
+  }
+  return items;
 }
 // Delegated click for snippet items (avoids inline JS string injection)
 document.addEventListener('click', function(e) {
