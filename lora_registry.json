@@ -12020,27 +12020,6 @@
       "nsfw": true
     },
     {
-      "id": "hayden-s-yiffmix-realism-sd15",
-      "runware_air_id": "civitai:125492@137080",
-      "name": "Hayden's YiffMix Realism",
-      "file": "haydensYiffmix_v10.safetensors",
-      "url": "https://civitai.com/models/125492",
-      "trigger_words": [],
-      "tags": [
-        "sd15",
-        "cached"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "",
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true
-    },
-    {
       "id": "penis-worship-flux-dev",
       "runware_air_id": "liangwc:penis-worship@753798",
       "name": "Penis Worship",
@@ -12454,6 +12433,32 @@
       "base_model": "illustrious",
       "category": "new",
       "nsfw": false
+    },
+    {
+      "id": "penis-worship-illustrious",
+      "runware_air_id": "liangwc:penis-worship@1370805",
+      "name": "Penis Worship (Illustrious)",
+      "file": "penis-worship_1370805.safetensors",
+      "url": "https://civitai.com/models/514556",
+      "trigger_words": [
+        "penis worship",
+        "heart-shaped pupils",
+        "penis on face",
+        "penis on head"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
