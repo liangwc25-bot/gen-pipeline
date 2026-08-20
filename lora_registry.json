@@ -11551,6 +11551,909 @@
       "trigger_words": [
         "orgasm_face"
       ]
+    },
+    {
+      "id": "pose-cleaning-illustrious",
+      "runware_air_id": "liangwc:pose-cleaning@2087925",
+      "name": "Pose : Cleaning",
+      "file": "mai_pose_room_cleaning.safetensors",
+      "url": "https://civitai.com/models/1845004",
+      "trigger_words": [
+        "mai_pose_room_cleaning",
+        "all_fours,indoors,gloves,cleaning,foreshortening,holding_rag",
+        "standing,indoors,gloves,leaning_forward,bent_over,holding_mop"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "clothing-hanfu-see-through-illustrious",
+      "runware_air_id": "liangwc:clothing-hanfu-see-through@2970819",
+      "name": "Clothing: Hanfu see-through",
+      "file": "mai_see-through_outfit_bcc.safetensors",
+      "url": "https://civitai.com/models/2645802",
+      "trigger_words": [
+        "mai_see-through_outfit,underwear,black_lingerie"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "dachuno-pose-illustrious",
+      "runware_air_id": "liangwc:dachuno-pose@2024684",
+      "name": "'Dachuno' Pose",
+      "file": "dachuno_pose_0.0.safetensors",
+      "url": "https://civitai.com/models/1789121",
+      "trigger_words": [
+        "dachuno_pose"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "camel-pose-illustrious",
+      "runware_air_id": "liangwc:camel-pose@2088044",
+      "name": "Camel pose",
+      "file": "Camel_pose.safetensors",
+      "url": "https://civitai.com/models/1845114",
+      "trigger_words": [
+        "camel pose, kneeling backbend, backbend pose, yoga pose, arched back, flexibility pose,"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "scorpion-pose-illustrious",
+      "runware_air_id": "liangwc:scorpion-pose@2090985",
+      "name": "Scorpion pose",
+      "file": "Scorpion_pose.safetensors",
+      "url": "https://civitai.com/models/1847687",
+      "trigger_words": [
+        "scorpion pose, forearm stand, yoga pose, backbend, balance pose, flexibility, inversion"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "wheel-pose-illustrious",
+      "runware_air_id": "liangwc:wheel-pose@2088018",
+      "name": "Wheel pose",
+      "file": "Wheel_pose.safetensors",
+      "url": "https://civitai.com/models/1845088",
+      "trigger_words": [
+        "wheel pose, bridge pose, backbend, arching pose, yoga pose, upside-down pose, flexibility pose"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "plow-pose-illustrious",
+      "runware_air_id": "liangwc:plow-pose@2091024",
+      "name": "Plow pose",
+      "file": "Plow_pose.safetensors",
+      "url": "https://civitai.com/models/1847722",
+      "trigger_words": [
+        "plow pose, inverted pose, lying on back, legs over head, flexibility, yoga pose,"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "sidebush-pose-illustrious",
+      "runware_air_id": "liangwc:sidebush-pose@2485570",
+      "name": "Sidebush_Pose",
+      "file": "Sidebush_Pose.safetensors",
+      "url": "https://civitai.com/models/2207610",
+      "trigger_words": [
+        "S1D3BU5HP0531XL",
+        "excessive pubic hair, female pubic hair,",
+        "From side, from_side"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "diamond-pose-pony",
+      "runware_air_id": "liangwc:diamond-pose@1153878",
+      "name": "Diamond pose",
+      "file": "Diamond_pose.safetensors",
+      "url": "https://civitai.com/models/1028808",
+      "trigger_words": [
+        "diamond pose"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "amen-pose-meme-goofy-ai-pony",
+      "runware_air_id": "liangwc:amen-pose-meme-goofy-ai@2888291",
+      "name": "Amen pose meme | Goofy Ai",
+      "file": "amen_pose_pdxl_goofy.safetensors",
+      "url": "https://civitai.com/models/2570566",
+      "trigger_words": [
+        "amen pose , ass focus, bent over, from behind,"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "not-artists-styles-for-pony-diffusion-v6-xl-pony",
+      "runware_air_id": "civitai:264290@1558543",
+      "name": "Not Artists Styles for Pony Diffusion V6 XL",
+      "file": "Abstract Painting - Style [LoRA] - Pony V6 XL.safetensors",
+      "url": "https://civitai.com/models/264290",
+      "trigger_words": [
+        "abstractionism, brush stroke, traditional media, "
+      ],
+      "tags": [
+        "pony",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "incase-style-ponyxl-pony",
+      "runware_air_id": "civitai:300005@436219",
+      "name": "Incase Style [PonyXL]",
+      "file": "incase_style_v3-1_ponyxl_ilff.safetensors",
+      "url": "https://civitai.com/models/300005",
+      "trigger_words": [],
+      "tags": [
+        "pony",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "vixon-s-anima-pony-styles-gothic-neon-pony",
+      "runware_air_id": "civitai:888231@398847",
+      "name": "Vixon's Anima/Pony Styles - Gothic Neon",
+      "file": "g0th1cPXL.safetensors",
+      "url": "https://civitai.com/models/888231",
+      "trigger_words": [
+        "g0thicPXL, glowing, neon,"
+      ],
+      "tags": [
+        "pony",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "vixon-s-anima-pony-styles-gothic-neon-pony",
+      "runware_air_id": "civitai:888231@1029540",
+      "name": "Vixon's Anima/Pony Styles - Gothic Neon",
+      "file": "g0th1c2XLP.safetensors",
+      "url": "https://civitai.com/models/888231",
+      "trigger_words": [
+        "g0th1c, glowing, neon lights, glowing eyes,"
+      ],
+      "tags": [
+        "pony",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "t-rex-studio-v2-new-hentai-18-style-pony-xl-il-pony",
+      "runware_air_id": "civitai:960593@1075495",
+      "name": "T-Rex Studio V2 NEW!!- Hentai +18 - | STYLE | PONY XL | Illustrious XL | - COMMISSION - by YeiyeiArt",
+      "file": "ATRex_style-10.safetensors",
+      "url": "https://civitai.com/models/960593",
+      "trigger_words": [
+        "TRexStudio,,",
+        "score_9, score_8_up, score_7_up, score_6_up, source_anime, anime screencap,,"
+      ],
+      "tags": [
+        "pony",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "the-legend-of-zelda-breath-of-the-wild-botw-st-illustrious",
+      "runware_air_id": "civitai:369362@1461900",
+      "name": "The Legend Of Zelda: Breath Of The Wild (BotW) - STYLE - | Illustrious XL | PONY XL | - by YeiyeiArt",
+      "file": "ZeldaBotWXL_Style-12.safetensors",
+      "url": "https://civitai.com/models/369362",
+      "trigger_words": [
+        "BotWYei,,",
+        "3d, shiny skin,,"
+      ],
+      "tags": [
+        "illustrious",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "pony-geekpower-ai-styles-pony",
+      "runware_air_id": "liangwc:pony-geekpower-ai-styles@909234",
+      "name": "[Pony] Geekpower AI Styles",
+      "file": "[Artstyle] Thicc_Geekpower [PDXL].safetensors",
+      "url": "https://civitai.com/models/315703",
+      "trigger_words": [],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "s1-dramatic-lighting-illustrious",
+      "runware_air_id": "liangwc:s1-dramatic-lighting@2209882",
+      "name": "S1 Dramatic Lighting",
+      "file": "S1 Dramatic Lighting Illustrious_V2.safetensors",
+      "url": "https://civitai.com/models/661736",
+      "trigger_words": [
+        "s1_dram"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "lighting-darkness-slider-illustrious",
+      "runware_air_id": "civitai:1280702@1444863",
+      "name": "Lighting / darkness slider",
+      "file": "lightingSlider.safetensors",
+      "url": "https://civitai.com/models/1280702",
+      "trigger_words": [
+        "dark",
+        "late night",
+        "blue hour"
+      ],
+      "tags": [
+        "illustrious",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "penis-worship-pony",
+      "runware_air_id": "liangwc:penis-worship@571832",
+      "name": "Penis Worship",
+      "file": "Penis_Worship.safetensors",
+      "url": "https://civitai.com/models/514556",
+      "trigger_words": [
+        "cock worship",
+        "penis awe",
+        "heart eyes",
+        "tongue out"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "hayden-s-yiffmix-realism-sd15",
+      "runware_air_id": "civitai:125492@137080",
+      "name": "Hayden's YiffMix Realism",
+      "file": "haydensYiffmix_v10.safetensors",
+      "url": "https://civitai.com/models/125492",
+      "trigger_words": [],
+      "tags": [
+        "sd15",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "sd15",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "penis-worship-flux-dev",
+      "runware_air_id": "liangwc:penis-worship@753798",
+      "name": "Penis Worship",
+      "file": "penis_worship_flux.safetensors",
+      "url": "https://civitai.com/models/514556",
+      "trigger_words": [
+        "woman worshipping penis",
+        "penis worship",
+        "penis",
+        "cum"
+      ],
+      "tags": [
+        "flux-dev",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "ri-mix-style-lora-illustrious-anima-pony",
+      "runware_air_id": "civitai:996220@1400362",
+      "name": "Ri-mix - Style LORA [ Illustrious + Anima]",
+      "file": "Ri-MIX_A_pony2.safetensors",
+      "url": "https://civitai.com/models/996220",
+      "trigger_words": [
+        "rimixa"
+      ],
+      "tags": [
+        "pony",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "96yottea-style-illustrious-illustrious",
+      "runware_air_id": "liangwc:96yottea-style-illustrious@1082928",
+      "name": "96YOTTEA style | Illustrious",
+      "file": "96YOTTEA-WAI.safetensors",
+      "url": "https://civitai.com/models/966483",
+      "trigger_words": [],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "748cm-shiiro-s-styles-niji-illustrious",
+      "runware_air_id": "liangwc:748cm-shiiro-s-styles-niji@2367109",
+      "name": "748cm | Shiiro's Styles | Niji",
+      "file": "748cm_c_illu.safetensors",
+      "url": "https://civitai.com/models/1221007",
+      "trigger_words": [],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "incase-style-pony",
+      "runware_air_id": "liangwc:incase-style@378950",
+      "name": "Incase Style",
+      "file": "IncaseLycoXL.safetensors",
+      "url": "https://civitai.com/models/211726",
+      "trigger_words": [],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "style-filter-xu-er-thick-paint-composition-lig-pony",
+      "runware_air_id": "civitai:768917@860001",
+      "name": "[Style filter] Xu Er thick paint composition light texture enhancement",
+      "file": "绪儿 光影滤镜 XUER guangying.safetensors",
+      "url": "https://civitai.com/models/768917",
+      "trigger_words": [
+        "XUER guangying"
+      ],
+      "tags": [
+        "pony",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "amen-pose-praise-da-boot-illustrious",
+      "runware_air_id": "liangwc:amen-pose-praise-da-boot@2426736",
+      "name": "Amen pose / Praise da booty [Illustrious]",
+      "file": "amen-pose-praise-da-boot_2426736.safetensors",
+      "url": "https://civitai.com/models/2145492",
+      "trigger_words": [
+        "amen_pose",
+        "amen_handsV",
+        "hands_heartpose"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "velvet-s-mythic-fantasy--zimage-turbo",
+      "runware_air_id": "liangwc:velvet-s-mythic-fantasy-@2466747",
+      "name": "Velvet's Mythic Fantasy Styles | Flux + Pony + illustrious + ZiT + Anima + Krea2",
+      "file": "velvet-s-mythic-fantasy-_2466747.safetensors",
+      "url": "https://civitai.com/models/599757",
+      "trigger_words": [
+        "C0lorL1nes"
+      ],
+      "tags": [
+        "zimage-turbo",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "vixon-s-illustrious-styl-illustrious",
+      "runware_air_id": "liangwc:vixon-s-illustrious-styl@1124566",
+      "name": "Vixon's Illustrious Styles - Gothic Neon",
+      "file": "vixon-s-illustrious-styl_1124566.safetensors",
+      "url": "https://civitai.com/models/1003333",
+      "trigger_words": [
+        "g0thic, neon,"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "squatting-pose-legs-toge-pony",
+      "runware_air_id": "liangwc:squatting-pose-legs-toge@512752",
+      "name": "Squatting pose (“Legs together” helper) [PonyXL]",
+      "file": "squatting-pose-legs-toge_512752.safetensors",
+      "url": "https://civitai.com/models/460725",
+      "trigger_words": [
+        "squatting",
+        "legs together, from below,"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "velvet-s-mythic-fantasy--illustrious",
+      "runware_air_id": "liangwc:velvet-s-mythic-fantasy-@2620790",
+      "name": "Velvet's Mythic Fantasy Styles | Flux + Pony + illustrious + ZiT + Anima + Krea2",
+      "file": "velvet-s-mythic-fantasy-_2620790.safetensors",
+      "url": "https://civitai.com/models/599757",
+      "trigger_words": [
+        "C0lorL1nes"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "velvet-s-mythic-fantasy--zimage-turbo",
+      "runware_air_id": "liangwc:velvet-s-mythic-fantasy-@2547883",
+      "name": "Velvet's Mythic Fantasy Styles | Flux + Pony + illustrious + ZiT + Anima + Krea2",
+      "file": "velvet-s-mythic-fantasy-_2547883.safetensors",
+      "url": "https://civitai.com/models/599757",
+      "trigger_words": [
+        "C0lorL1nes"
+      ],
+      "tags": [
+        "zimage-turbo",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "velvet-s-mythic-fantasy--zimage-turbo",
+      "runware_air_id": "liangwc:velvet-s-mythic-fantasy-@2504197",
+      "name": "Velvet's Mythic Fantasy Styles | Flux + Pony + illustrious + ZiT + Anima + Krea2",
+      "file": "velvet-s-mythic-fantasy-_2504197.safetensors",
+      "url": "https://civitai.com/models/599757",
+      "trigger_words": [
+        "C0lorL1nes"
+      ],
+      "tags": [
+        "zimage-turbo",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "incase-gothic-style-mix--illustrious",
+      "runware_air_id": "liangwc:incase-gothic-style-mix-@1189052",
+      "name": "Incase + gothic style mix | Illustrious and Anima",
+      "file": "incase-gothic-style-mix-_1189052.safetensors",
+      "url": "https://civitai.com/models/1059581",
+      "trigger_words": [
+        "incoth, (incase:0.6)"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "expressiveh-v2-illustrio-illustrious",
+      "runware_air_id": "liangwc:expressiveh-v2-illustrio@1486082",
+      "name": "ExpressiveH V2 (Illustrious) エロアニメ",
+      "file": "expressiveh-v2-illustrio_1486082.safetensors",
+      "url": "https://civitai.com/models/1316436",
+      "trigger_words": [
+        "ExpressiveH",
+        "Speedlines "
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "style-filter-xu-er-thick-flux-dev",
+      "runware_air_id": "liangwc:style-filter-xu-er-thick@1138415",
+      "name": "[Style filter] Xu Er thick paint composition light texture enhancement",
+      "file": "style-filter-xu-er-thick_1138415.safetensors",
+      "url": "https://civitai.com/models/768917",
+      "trigger_words": [
+        "XUER guangying"
+      ],
+      "tags": [
+        "flux-dev",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "vixon-s-illustrious-styl-illustrious",
+      "runware_air_id": "liangwc:vixon-s-illustrious-styl@2771047",
+      "name": "Vixon's Illustrious Styles - WaifuCrematori",
+      "file": "vixon-s-illustrious-styl_2771047.safetensors",
+      "url": "https://civitai.com/models/2464573",
+      "trigger_words": [
+        "WaifuCrematori"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "ri-mix-style-lora-illust-illustrious",
+      "runware_air_id": "liangwc:ri-mix-style-lora-illust@2811751",
+      "name": "Ri-mix - Style LORA [ Illustrious + Anima]",
+      "file": "ri-mix-style-lora-illust_2811751.safetensors",
+      "url": "https://civitai.com/models/996220",
+      "trigger_words": [
+        "rimixa"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
     }
   ],
   "categories": {

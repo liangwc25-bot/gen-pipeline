@@ -45,6 +45,7 @@ MODELS = {
     "pornmaster":     {"id": "liangwc:pornmaster@1", "name": "PornMaster-色情大师", "price": "~$0.003/张"},
     "lustify":        {"id": "hassakuxl:573152@2155386", "name": "LUSTIFY SDXL", "price": "~$0.003/张"},
     "sdxl-vanilla":   {"id": "liangwc:sdxl-vanilla@1", "name": "SDXL Vanilla 1.0", "price": "~$0.003/张"},
+    "xuer-cyan-xl":   {"id": "civitai:416205@594394", "name": "XUER 一青十色", "price": "~$0.003/张"},
     "dreamshaper-xl": {"id": "civitai:112902@121931", "name": "DreamShaper XL", "price": "~$0.003/张"},
     "juggernaut-xl":  {"id": "rundiffusion:133005@288982", "name": "JuggernautXL V8", "price": "~$0.003/张"},
     "qwen-edit":      {"id": "runware:108@20", "name": "Qwen-Image-Edit", "price": "~$0.0019/张", "i2i": "ref"},
