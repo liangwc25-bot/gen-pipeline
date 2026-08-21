@@ -663,7 +663,10 @@
       ],
       "base_model": "flux-dev",
       "category": "concept",
-      "nsfw": true
+      "nsfw": true,
+      "trigger_words": [
+        "bjl0r4"
+      ]
     },
     {
       "id": "tiny-puffy-nipples",
@@ -6238,7 +6241,10 @@
       ],
       "base_model": "zimage-turbo",
       "category": "character",
-      "nsfw": true
+      "nsfw": true,
+      "trigger_words": [
+        "清纯的西方俄乌混血女孩，大汗淋漓，无棱角的小脸光滑无瑕，额头占比脸部较大显得更加年幼，水汪汪的大眼睛，长睫毛，有光泽的红唇樱桃小口，皮肤红润细节完美。整体形象是青春的美与充满荷尔蒙的性诱惑。"
+      ]
     },
     {
       "id": "asian-milf-zit",
@@ -8545,7 +8551,10 @@
       ],
       "base_model": "sd15",
       "category": "character_style",
-      "nsfw": false
+      "nsfw": false,
+      "trigger_words": [
+        "cosplay, corset, detached sleeves, stockings"
+      ]
     },
     {
       "id": "sd15-21948-136384",
