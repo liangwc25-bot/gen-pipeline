@@ -762,7 +762,7 @@
       "category": "character",
       "nsfw": false,
       "trigger_words": [
-        "comicmay"
+        "charlady"
       ]
     },
     {
@@ -1115,7 +1115,7 @@
       "nsfw": false,
       "description": "拳拳 v63 — FLUX LoRA, 3000 steps, rank 16, Replicate训练",
       "trigger_words": [
-        "comicmay"
+        "quanquan"
       ]
     },
     {
