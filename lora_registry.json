@@ -135,7 +135,7 @@
       "category": "character_style",
       "nsfw": true,
       "trigger_words": [
-        "comicmay"
+        "she wearing a red lingersuit,red fishnet pantyhose and high heels,"
       ]
     },
     {
@@ -160,7 +160,7 @@
       "category": "character_style",
       "nsfw": true,
       "trigger_words": [
-        "comicmay"
+        "Chinese Zombie Costume"
       ]
     },
     {
@@ -253,7 +253,7 @@
       "category": "character_style",
       "nsfw": true,
       "trigger_words": [
-        "comicmay"
+        "xiaolongnv"
       ]
     },
     {
@@ -737,7 +737,8 @@
       "category": "character",
       "nsfw": false,
       "trigger_words": [
-        "comicmay"
+        "female_immortal",
+        "fantasy hanfu"
       ]
     },
     {
@@ -826,9 +827,7 @@
       "base_model": "flux-dev",
       "category": "character",
       "nsfw": true,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "chinesegirl-realistic-flux",
@@ -874,9 +873,7 @@
       "base_model": "flux-dev",
       "category": "character",
       "nsfw": true,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "flux-asian-beauty",
@@ -919,9 +916,7 @@
       "base_model": "flux-dev",
       "category": "character",
       "nsfw": true,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "chun-li-flux",
@@ -944,7 +939,7 @@
       "category": "character",
       "nsfw": true,
       "trigger_words": [
-        "comicmay"
+        "fluxchunli, 1girl, chun-li, double bun,  solo, hair bun, jewelry, spikes, underwear, detached see- through sleeves, thighhighs, panties, highleg panties, brown eyes, highleg, spiked bracelet, earrings, bracelet, brown hair,  looking at viewer, corset, ribbon, blue panties, makeup, hair ribbon, lips, red lips, black thighhighs, black hair, chinese clothes, alternate costume, short hair, fingernails,bar, sitting on stool,   blue vest, cleavage, high heel"
       ]
     },
     {
@@ -1093,7 +1088,8 @@
       "category": "character",
       "nsfw": false,
       "trigger_words": [
-        "comicmay"
+        "yaohufoxx",
+        "long braided pigtails"
       ]
     },
     {
@@ -2682,9 +2678,7 @@
       "base_model": "illustrious",
       "category": "tools",
       "nsfw": false,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "mature-slider",
@@ -5086,9 +5080,7 @@
       "category": "character_style",
       "nsfw": false,
       "notes": "Works on SDXL Vanilla base only (not runware:100@1). 2026-07-30.",
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "breasts-adjust-xl",
@@ -5644,9 +5636,7 @@
       "base_model": "zimage-turbo",
       "category": "tools",
       "nsfw": false,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "age-slider-v2-zit",
@@ -5688,9 +5678,7 @@
       "base_model": "zimage-turbo",
       "category": "tools",
       "nsfw": true,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "detail-slider-zit",
@@ -5818,9 +5806,7 @@
       "base_model": "zimage-turbo",
       "category": "tools",
       "nsfw": false,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "better-nudes-asians-zit",
@@ -5933,7 +5919,7 @@
       "category": "character_style",
       "nsfw": true,
       "trigger_words": [
-        "comicmay"
+        "ancient costume , yijinggufeng, 1girl, solo, hair ornament, black hair, indoors, flower, realistic, wooden floor, dress, hair flower, sitting, looking at viewer, sunlight, table, see-through, on floor, jewelry, long sleeves"
       ]
     },
     {
@@ -5957,9 +5943,7 @@
       "base_model": "zimage-turbo",
       "category": "style",
       "nsfw": false,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "anime-style-zit",
@@ -6071,9 +6055,7 @@
       "base_model": "zimage-turbo",
       "category": "concept",
       "nsfw": true,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "giantess-zit",
@@ -6187,7 +6169,7 @@
       "category": "character",
       "nsfw": true,
       "trigger_words": [
-        "comicmay"
+        "Asian woman"
       ]
     },
     {
@@ -6211,9 +6193,7 @@
       "base_model": "zimage-turbo",
       "category": "character",
       "nsfw": true,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "korean-women-ai",
@@ -6236,7 +6216,7 @@
       "category": "character",
       "nsfw": false,
       "trigger_words": [
-        "comicmay"
+        "k0r3an"
       ]
     },
     {
@@ -6417,7 +6397,7 @@
       "category": "character",
       "nsfw": false,
       "trigger_words": [
-        "comicmay"
+        "nexblend"
       ]
     },
     {
@@ -6490,7 +6470,8 @@
       "category": "character",
       "nsfw": false,
       "trigger_words": [
-        "comicmay"
+        "wh1te",
+        "short white hair"
       ]
     },
     {
@@ -6540,7 +6521,7 @@
       "category": "character",
       "nsfw": false,
       "trigger_words": [
-        "comicmay"
+        "y0jav"
       ]
     },
     {
@@ -6563,9 +6544,7 @@
       "base_model": "zimage-turbo",
       "category": "character",
       "nsfw": false,
-      "trigger_words": [
-        "comicmay"
-      ]
+      "trigger_words": []
     },
     {
       "id": "asian-consistent-zit",
