@@ -1966,8 +1966,7 @@
         "(D0uble_f1sting:1.4, f1sting_another)",
         "4nal_str3tching",
         "(Str3tching_another:1.4)",
-        "1nternal_4nus",
-        "See samples for other phrases that help"
+        "1nternal_4nus"
       ]
     },
     {
@@ -2541,7 +2540,7 @@
       "nsfw": false,
       "description": "拳拳 v64 — SeaArt Pony Diffusion V6 XL训练, rank 32",
       "trigger_words": [
-        "comicmay"
+        "quanquan"
       ]
     },
     {
@@ -3165,29 +3164,10 @@
       "category": "character_style",
       "nsfw": true,
       "trigger_words": [
-        "pov kiss default, 1girl, 1boy, pov, ",
-        "pov kiss breast press, breast press, 1girl, 1boy, pov,  ",
-        "kiss, ",
-        "french kiss, tongue,",
-        "close up, ",
-        "from below, ",
-        "from above, ",
-        "dutch angle, ",
-        "looking at viewer, ",
-        "reaching for viewer, arms up, ",
-        "imminent sex,",
-        "sex,",
-        "cumming, creampie, ejaculation, trembling,",
-        "pussy,",
-        "nipples,",
-        "penis,",
-        "fully clothed,",
-        "open clothes,",
-        "naked,",
-        "breast grab,",
-        "torso grab, ",
-        "thigh grab, ",
-        "arm grab, "
+        "pov kiss default, 1girl, 1boy, pov,",
+        "pov kiss breast press, breast press, 1girl, 1boy, pov,",
+        "kiss,",
+        "french kiss, tongue,"
       ]
     },
     {
@@ -3336,7 +3316,7 @@
       "category": "character_style",
       "nsfw": false,
       "trigger_words": [
-        "<lora:see-through-silhouette-v3-illustriousxl-lora-nochekaiser:1>, see-through silhouette, solo, looking at viewer, blush, smile, dress, nipples, ass, grin, from side, see-through, no bra, no panties, all fours, finger to mouth, backlighting, top-down bottom-up, shushing,"
+        "see-through silhouette, solo, looking at viewer, blush, smile, dress, nipples, ass, grin, from side, see-through, no bra, no panties, all fours, finger to mouth, backlighting, top-down bottom-up, shushing,"
       ]
     },
     {
@@ -3868,10 +3848,7 @@
       "description": "ass worship — Illustrious (435MB)",
       "trigger_words": [
         "(assworship), ass worship, ass,",
-        "face on ass, ass grab, hand on ass, hugging ass, face press,",
-        "cheek press,",
-        "licking ass, licking, tongue out,",
-        "hand on another's head, head grab,"
+        "face on ass, ass grab, hand on ass, hugging ass, face press,"
       ]
     },
     {
@@ -4014,7 +3991,7 @@
       "category": "concept",
       "nsfw": true,
       "trigger_words": [
-        "<lora:cumpool-v2-illustriousxl-lora-nochekaiser:1>, cum pool, blush, 2boys, nipples, hetero, sweat, completely nude, uncensored, lying, penis, pussy, solo focus, spread legs, cum, on back, cum in pussy, oral, fellatio, group sex, after sex, cumdrip, spread pussy, threesome, after vaginal, pov, pov hands,"
+        "cum pool"
       ]
     },
     {
@@ -4058,19 +4035,7 @@
       "category": "concept",
       "nsfw": true,
       "trigger_words": [
-        "ExClUp, 1girl, 1boy, pov,",
-        "sex, pussy, penis,",
-        "from above,",
-        "from below,",
-        "dutch angle,",
-        "reaching for viewer,",
-        "(cum in pussy, overflow, cum bubbling:1.1),",
-        "standing,",
-        "lying down,",
-        "sitting,",
-        "legs up, leg grab,",
-        "breast grab,",
-        "torso grab,"
+        "ExClUp"
       ]
     },
     {
@@ -4265,35 +4230,7 @@
       "category": "concept",
       "nsfw": true,
       "trigger_words": [
-        "CG_LD, 1girl, 1boy, pov,  girl on top, straddling,",
-        "leaning forward,",
-        "leaning back,",
-        "directly above viewer,",
-        "pinning viewer down,",
-        "closer, breast pressed against another's chest,",
-        "from behind, ass, looking back,",
-        "looking at viewer,",
-        "dutch angle,",
-        "from below,",
-        "from above,",
-        "reaching for viewer,",
-        "hands on own chest,",
-        "arms behind back,",
-        "arms up,",
-        "sex,",
-        "imminent sex,",
-        "after sex,",
-        "penis, pussy,",
-        "pussy juice,",
-        "(ejaculation), cum bubbling, cum, overflow,",
-        "nipples,",
-        "breasts apart,",
-        "breasts together,",
-        "breast grab,",
-        "butt grab,",
-        "leg grab,",
-        "face grab,",
-        "focus on breasts, head out of frame,"
+        "CG_LD, 1girl, 1boy, pov,  girl on top, straddling,"
       ]
     },
     {
@@ -4341,29 +4278,7 @@
         "Standing Missionary,",
         "Closer Missionary, breast pressed against another's chest,",
         "Standing Doggystyle, back,",
-        "doggystyle curving backwards, breasts from behind, butt,",
-        "solo focus, 1girl, 1boy, pov, standing,",
-        "Hand pulling another's chin up,",
-        "breasts from front,",
-        "breasts from behind,",
-        "looking up,",
-        "looking at viewer,",
-        "facing away,",
-        "from above,",
-        "from below,",
-        "dutch angle,",
-        "sex,",
-        "imminent sex,",
-        "penis, pussy,",
-        "pussy juice,",
-        "(ejaculation), cum bubbling, cum, overflow,",
-        "reaching,",
-        "fully clothed,",
-        "open clothes,",
-        "completely naked,",
-        "nipples,",
-        "breast grab,",
-        "butt grab,"
+        "doggystyle curving backwards, breasts from behind, butt,"
       ]
     },
     {
@@ -4694,11 +4609,7 @@
       "nsfw": false,
       "trigger_words": [
         "1girl, Wednesday addams \\(The addams family\\),(ultra HD quality details), hair in two ponytails, black hair, raven black eyes, beautiful face, pale skin, beautiful face,",
-        "COLLARED DRESS, BLACK LONG DRESS, COVERED SHOULDERS, COVERED CHEST, COVERED NECK, PUFFY SLEEVES, LONG SLEEVES, WHITE COLLAR, WHITE CUFFS,",
-        "gothic,",
-        "black lips,",
-        "emo,",
-        "black nails,"
+        "COLLARED DRESS, BLACK LONG DRESS, COVERED SHOULDERS, COVERED CHEST, COVERED NECK, PUFFY SLEEVES, LONG SLEEVES, WHITE COLLAR, WHITE CUFFS,"
       ]
     },
     {
@@ -8140,9 +8051,7 @@
         "tiny microbikini",
         "string-only microbikini",
         "pussy peek",
-        "microbikini wedged in vulva",
-        "clitoris slip",
-        "very lowleg"
+        "microbikini wedged in vulva"
       ]
     },
     {
@@ -8233,8 +8142,7 @@
       "category": "concept",
       "nsfw": true,
       "trigger_words": [
-        "orgasm_face",
-        "<lora:orgasmFace_v10:0.8>"
+        "orgasm_face"
       ]
     },
     {
@@ -8278,8 +8186,7 @@
       "category": "concept",
       "nsfw": true,
       "trigger_words": [
-        "pantpulldown",
-        "<lora:pantpulldown:1>"
+        "pantpulldown"
       ]
     },
     {
@@ -8527,10 +8434,7 @@
       "category": "character_style",
       "nsfw": false,
       "trigger_words": [
-        "wearing see trough dress",
-        "lingerie",
-        "elegant dress",
-        "back view"
+        "wearing see trough dress"
       ]
     },
     {
@@ -9128,9 +9032,7 @@
       "nsfw": false,
       "trigger_words": [
         "gu",
-        "wuxia",
-        "holding weapon",
-        "dragon"
+        "wuxia"
       ]
     },
     {
@@ -9965,18 +9867,7 @@
       "nsfw": true,
       "notes": "姿势LoRA,已验证",
       "trigger_words": [
-        "laying on stomach, feet,",
-        "1girl,",
-        "futanari, penis, testicles,",
-        "legs together,",
-        "foot focus,",
-        "ass,",
-        "from behind,",
-        "barefoot, toes,",
-        "pussy,",
-        "anus,",
-        "legs spread,",
-        "1girl, 1boy, sex,",
+        "laying on stomach",
         "looking back, looking at viewer,"
       ]
     },
@@ -10001,18 +9892,7 @@
       "nsfw": true,
       "notes": "姿势LoRA,已验证",
       "trigger_words": [
-        " laying on stomach, feet, ",
-        "1girl,",
-        "futanari, penis, testicles,",
-        "legs together,",
-        " foot focus,",
-        "ass,",
-        "from behind, ",
-        "barefoot, toes,",
-        "pussy,",
-        "anus,",
-        "legs spread,",
-        "1girl, 1boy, sex,",
+        "laying on stomach,",
         "looking back, looking at viewer,"
       ]
     },
