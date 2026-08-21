@@ -12459,6 +12459,27 @@
       "base_model": "illustrious",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "sketch-illustrious",
+      "runware_air_id": "liangwc:sketch@2417216",
+      "name": "Sketch (Illustrious)",
+      "file": "sketch_2417216.safetensors",
+      "url": "https://civitai.com/models/1974371",
+      "trigger_words": [],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
