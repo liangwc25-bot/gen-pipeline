@@ -73,24 +73,6 @@
       "nsfw": false
     },
     {
-      "id": "flux_730405_831470",
-      "runware_air_id": "liangwc:flux_730405_831470@831470",
-      "name": "Remove Clothing Censors",
-      "url": "https://civitai.com/models/730405",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "tools",
-      "nsfw": false
-    },
-    {
       "id": "flux_649568_726726",
       "runware_air_id": "liangwc:flux_649568_726726@726726",
       "name": "Asian Pubic Hair FLUX",
@@ -319,29 +301,6 @@
       "nsfw": false
     },
     {
-      "id": "naked-cherry-blossoms-flux",
-      "runware_air_id": "liangwc:naked-cherry-blossoms@1819867",
-      "name": "Naked Cherry Blossoms (FLUX)",
-      "url": "https://civitai.com/models/1608142",
-      "tags": [
-        "flux",
-        "nature",
-        "nsfw",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character_style",
-      "nsfw": false,
-      "trigger_words": [
-        "she Naked with Cherry blossoms,crystal high heels,"
-      ]
-    },
-    {
       "id": "flux_990976_1110224",
       "runware_air_id": "liangwc:flux_990976_1110224@1110224",
       "name": "Realistic Male Dick FLUX",
@@ -404,34 +363,6 @@
       "base_model": "flux-dev",
       "category": "character_style",
       "nsfw": false
-    },
-    {
-      "id": "lora3-3d-campus-girl",
-      "runware_air_id": "liangwc:lora3@1711467",
-      "name": "3D campus girl (lora3)",
-      "file": "",
-      "url": "https://civitai.com/models/1711467",
-      "trigger_words": [
-        "yiyiV3"
-      ],
-      "tags": [
-        "3d",
-        "campus",
-        "girl",
-        "flux",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "3D semi-realistic style campus girl — Flux.1 D base. Runware AIR verified ✅.",
-      "base_model": "flux-dev",
-      "category": "style",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-01: uploaded to Runware."
     },
     {
       "id": "cg-style-girl-flux",
@@ -786,48 +717,6 @@
       ]
     },
     {
-      "id": "afg20-virtual-asian-20",
-      "runware_air_id": "liangwc:afg20-virtual-asian-20@1051873",
-      "name": "afg20 Virtual Asian Female 20",
-      "url": "https://civitai.com/models/783464",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "afg20"
-      ]
-    },
-    {
-      "id": "afg26-virtual-asian-26",
-      "runware_air_id": "liangwc:afg26-virtual-asian-26@1038777",
-      "name": "afg26 Virtual Asian Female 26",
-      "url": "https://civitai.com/models/927990",
-      "tags": [
-        "flux",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "afg26"
-      ]
-    },
-    {
       "id": "chinese-hanfu",
       "runware_air_id": "liangwc:chinese-hanfu@1",
       "name": "Ancient Chinese Hanfu Style",
@@ -849,29 +738,6 @@
       "nsfw": false,
       "trigger_words": [
         "comicmay"
-      ]
-    },
-    {
-      "id": "flux_685674_767398",
-      "runware_air_id": "liangwc:flux_685674_767398@767398",
-      "name": "ARI (NSFW)",
-      "url": "https://civitai.com/models/685674",
-      "tags": [
-        "flux",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "Ari ",
-        "Girl",
-        "Women"
       ]
     },
     {
@@ -1231,60 +1097,6 @@
       ]
     },
     {
-      "id": "quanquan-v6",
-      "runware_air_id": "liangwc:quanquan-v6@1",
-      "name": "拳拳 V6 (quanquan)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/quanquan-lora-v6",
-      "trigger_words": [
-        "quanquan"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "拳拳 V6 — FLUX.1 dev LoRA, 3 HD neutral images",
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-18: V6 on Replicate, rank 16, 1000 steps, blue-ray HD only"
-    },
-    {
-      "id": "quanquan-v61",
-      "runware_air_id": "liangwc:quanquan-v61@1",
-      "name": "拳拳 V6.1 (quanquan)",
-      "file": "",
-      "url": "https://huggingface.co/liangwc25/quanquan-lora-v61",
-      "trigger_words": [
-        "quanquan"
-      ],
-      "tags": [
-        "flux",
-        "lora",
-        "portrait",
-        "runware-verified"
-      ],
-      "default_scale": 0.85,
-      "scale_range": [
-        0.6,
-        1.2
-      ],
-      "description": "拳拳 V6.1 — FLUX.1 dev LoRA, 2 blue-ray HD images, no ref_01",
-      "base_model": "flux-dev",
-      "category": "character",
-      "nsfw": false,
-      "incompatible_with": [],
-      "notes": "2026-07-18: V6.1 on Replicate, rank 16, 1000 steps."
-    },
-    {
       "id": "quanquan-v63",
       "runware_air_id": "liangwc:quanquan-v63@1",
       "name": "拳拳 v63 FLUX",
@@ -1310,7 +1122,7 @@
     {
       "id": "qizhong",
       "runware_air_id": "liangwc:qizhong@1",
-      "name": "棋钟 (qizhong)",
+      "name": "七总 (qizhong)",
       "file": "",
       "url": "https://huggingface.co/liangwc25/qizhong-lora-pub",
       "trigger_words": [
@@ -1351,7 +1163,7 @@
         1.2
       ],
       "base_model": "flux-dev",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true,
       "trigger_words": [
         "54_school_uniform,blue cheongsam shirt and black skirt,covered nipples,Black floral buttons,"
@@ -1454,7 +1266,7 @@
         1.2
       ],
       "base_model": "flux-dev",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true,
       "trigger_words": [
         "black silk bodysuit,transparent body,transparent skin,She was soaked in oil and water,wearing a collar,bracelets,and high heels.,"
@@ -1524,28 +1336,6 @@
       "nsfw": false
     },
     {
-      "id": "anal-gape-pony",
-      "runware_air_id": "liangwc:anal-gape-pony@1226443",
-      "name": "Anal Gape Slider - PONY",
-      "url": "https://civitai.com/models/1091956",
-      "tags": [
-        "pony",
-        "nsfw",
-        "anal",
-        "gape",
-        "slider"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "tools",
-      "nsfw": true,
-      "description": "Anal gape slider — Pony base"
-    },
-    {
       "id": "breast-size-pony",
       "runware_air_id": "liangwc:breast-size-pony@534952",
       "name": "Breast Size Slider (Pony)",
@@ -1562,35 +1352,6 @@
       "base_model": "pony",
       "category": "tools",
       "nsfw": false
-    },
-    {
-      "id": "darker-images-slider",
-      "runware_air_id": "liangwc:darker-images-slider@989098",
-      "name": "Darker Images Slider",
-      "url": "https://civitai.com/models/883616",
-      "tags": [
-        "pony",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "tools",
-      "nsfw": false,
-      "trigger_words": [
-        "dark theme",
-        "dim lighting",
-        "black theme",
-        "dark background",
-        "dark room",
-        "black background",
-        "silhouette",
-        "backlighting"
-      ]
     },
     {
       "id": "gape-slider",
@@ -1795,67 +1556,6 @@
       ]
     },
     {
-      "id": "gufeng-qingqu",
-      "runware_air_id": "liangwc:gufeng-qingqu@539310",
-      "name": "Chinese lingerie 古风小情趣",
-      "url": "https://civitai.com/models/141682",
-      "tags": [
-        "pony",
-        "nsfw",
-        "lingerie",
-        "chinese",
-        "gufeng"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true,
-      "description": "Chinese lingerie Clothing 古风小情趣 — Pony",
-      "trigger_words": [
-        ",gufeng1,gufeng,hanfu,"
-      ]
-    },
-    {
-      "id": "chinese-wedding-pony3",
-      "runware_air_id": "liangwc:chinese-wedding-pony3@1002426",
-      "name": "Chinese wedding dress 中式婚纱",
-      "url": "https://civitai.com/models/895809",
-      "tags": [
-        "pony",
-        "nsfw",
-        "chinese",
-        "wedding",
-        "lingerie"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": true,
-      "description": "Chinese wedding dress 中式婚纱 Sexy lingerie — Pony",
-      "trigger_words": [
-        "chinese clothes",
-        "jewelry",
-        "chinese wedding dress top",
-        "chinese wedding dress ",
-        "red high heels",
-        "black sexy lingerie",
-        "skin pantyhose",
-        "stockings foot",
-        "no panties",
-        "see-through",
-        "hair ornament",
-        "earrings"
-      ]
-    },
-    {
       "id": "lora9-futanari",
       "runware_air_id": "liangwc:lora9@564643",
       "name": "Futanari 18+ (lora9)",
@@ -1930,33 +1630,6 @@
       ]
     },
     {
-      "id": "ofuda-pony",
-      "runware_air_id": "liangwc:ofuda-pony@593678",
-      "name": "Ofuda (miko/jiangshi/pasties)",
-      "url": "https://civitai.com/models/250482",
-      "tags": [
-        "pony",
-        "style",
-        "concept"
-      ],
-      "default_scale": 0.7,
-      "scale_range": [
-        0.4,
-        1.0
-      ],
-      "base_model": "pony",
-      "category": "character_style",
-      "nsfw": false,
-      "notes": "神楽/符札/巫女/僵尸/乳房贴纸等概念",
-      "trigger_words": [
-        "chinese ofuda, japanese ofuda",
-        "ofuda mebari, ofuda pasties",
-        "hanging ofuda, glowing ofuda",
-        "ofuda panties, ofuda bra, ofuda slingshot swimsuit",
-        "ofuda on clothes, ofuda on head"
-      ]
-    },
-    {
       "id": "lora8-oppai-large-breasts",
       "runware_air_id": "liangwc:lora8@623811",
       "name": "Oppai Large Breasts 18+ (lora8)",
@@ -1979,7 +1652,7 @@
       ],
       "description": "Oppai / Large breasts slim body 18+ — Pony base. Runware AIR verified ✅.",
       "base_model": "pony",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true,
       "incompatible_with": [],
       "notes": "2026-07-01: uploaded to Runware."
@@ -1999,7 +1672,7 @@
         1.2
       ],
       "base_model": "pony",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "asian_japanese",
@@ -2079,7 +1752,7 @@
         1.2
       ],
       "base_model": "pony",
-      "category": "character_style",
+      "category": "concept",
       "nsfw": true,
       "trigger_words": [
         "spread pussy",
@@ -2267,27 +1940,6 @@
       "description": "Shiny Nai style — Pony",
       "trigger_words": [
         "shiny skin, shiny"
-      ]
-    },
-    {
-      "id": "adjusting-clothes",
-      "runware_air_id": "liangwc:adjusting-clothes@856243",
-      "name": "Adjusting Clothes",
-      "url": "https://civitai.com/models/93524",
-      "tags": [
-        "pony",
-        "concept"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false,
-      "trigger_words": [
-        "adjusting clothes"
       ]
     },
     {
@@ -2571,50 +2223,6 @@
       ]
     },
     {
-      "id": "pov-facesitting-v2",
-      "runware_air_id": "liangwc:pov-facesitting-v2@576510",
-      "name": "POV Facesitting v2",
-      "url": "https://civitai.com/models/518838",
-      "tags": [
-        "pony",
-        "nsfw",
-        "pov"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": true,
-      "trigger_words": [
-        "povsit",
-        "from below"
-      ]
-    },
-    {
-      "id": "tiny-creatures",
-      "runware_air_id": "liangwc:tiny-creatures@1810137",
-      "name": "Tiny Creatures",
-      "url": "https://civitai.com/models/1599588",
-      "tags": [
-        "pony",
-        "concept",
-        "tiny",
-        "creatures"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Tiny Creatures — Pony base"
-    },
-    {
       "id": "tiny-girl-pony",
       "runware_air_id": "liangwc:tiny-girl-pony@480044",
       "name": "Tiny Girl - Pony",
@@ -2659,30 +2267,6 @@
       "category": "concept",
       "nsfw": false,
       "description": "XE: GuoMan LoRA — Pony base"
-    },
-    {
-      "id": "ada-wong",
-      "runware_air_id": "liangwc:ada-wong@396269",
-      "name": "Ada Wong (Resident Evil)",
-      "url": "https://civitai.com/models/354374",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "adasweater, black hair, short hair, black eyes, red sweater, turtleneck, harness, pantyhose, black gloves, belt",
-        "adadress, black hair, short hair, black eyes, red dress, short dress, sleeveless dress, cleavage, choker, pantyhose",
-        "adashirt, black hair, short hair, black eyes, red shirt, cross necklace, cleavage, black gloves, partially unbuttoned, black pants",
-        "adachina, black hair, short hair, black eyes, china dress, choker, cleavage, thigh strap, side slit"
-      ]
     },
     {
       "id": "princess-belle",
@@ -2773,53 +2357,6 @@
       ]
     },
     {
-      "id": "jessica-rabbit",
-      "runware_air_id": "liangwc:jessica-rabbit@726862",
-      "name": "Jessica Rabbit",
-      "url": "https://civitai.com/models/385769",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "1girl, red hair, long hair, hair over one eye, green eyes, makeup, lipstick",
-        "jessicarab, bare shoulders, cleavage, red dress, strapless, elbow purple gloves, high heels, side slit",
-        "jessicaranger, hat, green shirt, short sleeves, shorts, belt, white gloves, ranger uniform",
-        "jessicanurse, nurse, nurse cap, miniskirt, high heels"
-      ]
-    },
-    {
-      "id": "jill-valentine",
-      "runware_air_id": "liangwc:jill-valentine@655583",
-      "name": "Jill Valentine (Resident Evil)",
-      "url": "https://civitai.com/models/435001",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "JillRE3, brown hair, tube top, bob cut, short hair, suspenders, pencil skirt, clothes around waist, boots",
-        " JillSTARS, brown hair, bob cut, short hair,beret, shoulder holster, police uniform, fingerless gloves",
-        "Jillrev, ponytail, cleavage, wetsuit, bodysuit, harness, utility belt, thigh holster, bracelet"
-      ]
-    },
-    {
       "id": "ranma",
       "runware_air_id": "liangwc:ranma@928097",
       "name": "Ranma 1/2",
@@ -2865,24 +2402,6 @@
       "trigger_words": [
         "Sadako Yamamura,1girl,solo,long hair,black hair,dress,very long hair,torn clothes,covered navel,cameltoe,wide hips,impossible clothes,hair over eyes,torn dress,grey skin,impossible dress,yamamura sadako"
       ]
-    },
-    {
-      "id": "selena-goth-punk",
-      "runware_air_id": "liangwc:selena-goth-punk@607167",
-      "name": "Selena Goth Punk Girl",
-      "url": "https://civitai.com/models/545935",
-      "tags": [
-        "pony",
-        "character"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false
     },
     {
       "id": "shampoo-ranma",
@@ -2979,29 +2498,6 @@
         "maishirandg,",
         "pelvic curtain, japanese clothes, sleeveless, sash, no bra, obi, fingerless gloves, ",
         "Brown hair, brown eyes, high ponytail,"
-      ]
-    },
-    {
-      "id": "miku-pony",
-      "runware_air_id": "liangwc:miku-pony@404551",
-      "name": "初音ミク Miku (Pony)",
-      "url": "https://civitai.com/models/362031",
-      "tags": [
-        "pony",
-        "character",
-        "vocaloid"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "pony",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "miku hatsune, ahoge, aqua eyes, aqua hair, crossed bangs, hair between eyes, hair ornament, headphones, long hair, twintails,",
-        "aqua necktie, black footwear, black skirt, black sleeves, boots, collared shirt, detached sleeves, grey shirt, necktie, pleated skirt, shirt, skirt, sleeveless, sleeveless shirt, thigh boots, tie clip,"
       ]
     },
     {
@@ -3232,25 +2728,6 @@
       ]
     },
     {
-      "id": "nsfw-slider",
-      "runware_air_id": "liangwc:nsfw-slider@2876566",
-      "name": "NSFW Slider",
-      "url": "https://civitai.com/models/2559781",
-      "tags": [
-        "illustrious",
-        "concept",
-        "slider"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.2,
-        1.0
-      ],
-      "base_model": "illustrious",
-      "category": "tools",
-      "nsfw": true
-    },
-    {
       "id": "penis-size-ill",
       "runware_air_id": "liangwc:penis-size-ill@1831724",
       "name": "Penis Size Slider (Illu)",
@@ -3348,30 +2825,6 @@
       "nsfw": false
     },
     {
-      "id": "anal-dilator",
-      "runware_air_id": "liangwc:lora-2446854@2751245",
-      "name": "Anal dilator - Illustrious",
-      "url": "https://civitai.com/models/2446854",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "anal",
-        "dilator"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true,
-      "description": "Anal dilator — Illustrious XL base",
-      "trigger_words": [
-        "anald1lat0r, sex toy, metal sex_toy, anal toy, wide open anus, guts,"
-      ]
-    },
-    {
       "id": "backless-panties",
       "runware_air_id": "liangwc:backless-panties@1170807",
       "name": "Backless Panties",
@@ -3442,60 +2895,6 @@
         "edgDudou",
         " , wearing edgDudou_lingerie,sexy underwear,",
         "navel"
-      ]
-    },
-    {
-      "id": "sexy-lingerie",
-      "runware_air_id": "liangwc:sexy-lingerie@1951432",
-      "name": "Chinese Style Sexy Lingerie",
-      "url": "https://civitai.com/models/1724344",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "lingerie",
-        "chinese",
-        "sexy"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true,
-      "description": "Chinese Style Sexy Lingerie — Illustrious (325MB)",
-      "trigger_words": [
-        "QHNY0,",
-        "chinese shirt,purple skirt,floral print,see-through,",
-        "purple panties,"
-      ]
-    },
-    {
-      "id": "wedding-dress2",
-      "runware_air_id": "liangwc:wedding-dress2@2069519",
-      "name": "Chinese style wedding dress 2",
-      "url": "https://civitai.com/models/1828738",
-      "tags": [
-        "illustrious",
-        "concept",
-        "chinese",
-        "wedding",
-        "dress"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": false,
-      "description": "Chinese style wedding dress 2 — Illustrious",
-      "trigger_words": [
-        "HUNSHA3,",
-        "sleeveless print china dress,long dress,red dress,bare shoulders,",
-        "red shawl,print shawl,"
       ]
     },
     {
@@ -3792,29 +3191,6 @@
         "torso grab, ",
         "thigh grab, ",
         "arm grab, "
-      ]
-    },
-    {
-      "id": "large-insertion-pov",
-      "runware_air_id": "liangwc:large-insertion-pov@2578214",
-      "name": "Large Insertion POV",
-      "url": "https://civitai.com/models/2291093",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pov"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character_style",
-      "nsfw": true,
-      "trigger_words": [
-        "ILPOV,",
-        "size difference,pov,torso grab,lifting person,giant hand,large insertion,gigantic penis,pov hands,stomach bulge,spread legs,"
       ]
     },
     {
@@ -4296,27 +3672,6 @@
       ]
     },
     {
-      "id": "realistic-filter",
-      "runware_air_id": "liangwc:realistic-filter@1124771",
-      "name": "Realistic Filter [IL]",
-      "url": "https://civitai.com/models/1003513",
-      "tags": [
-        "illustrious",
-        "style"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false,
-      "trigger_words": [
-        "realistic"
-      ]
-    },
-    {
       "id": "shiny-nai-il",
       "runware_air_id": "liangwc:shiny-nai-il@2786889",
       "name": "Shiny Nai style ILXL",
@@ -4361,76 +3716,6 @@
       "trigger_words": [
         "TRexStyle,,",
         "(anime coloring, anime screencap), shiny skin,,"
-      ]
-    },
-    {
-      "id": "hk-comic-style-jinyong",
-      "runware_air_id": "liangwc:hk-comic-style-jinyong@2164436",
-      "name": "港漫风·金庸 (黄玉郎/邱福龙)",
-      "url": "https://civitai.com/models/1912298",
-      "tags": [
-        "illustrious",
-        "style",
-        "guoman"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false,
-      "trigger_words": [
-        "HuangRong",
-        "GuoJing",
-        "XiaoLongNv",
-        "YangGuo",
-        "ShiFeiXuan",
-        "ShiQingXuan",
-        "WanWan",
-        "QiaoFeng",
-        "AZi",
-        "WangYuYan"
-      ]
-    },
-    {
-      "id": "dynasty-warriors-style",
-      "runware_air_id": "liangwc:dynasty-warriors-style@3045074",
-      "name": "真三国无双8 Artist Style",
-      "url": "https://civitai.com/models/2710670",
-      "tags": [
-        "illustrious",
-        "style"
-      ],
-      "default_scale": 0.6,
-      "scale_range": [
-        0.3,
-        0.9
-      ],
-      "base_model": "illustrious",
-      "category": "style",
-      "nsfw": false,
-      "trigger_words": [
-        "wangyuanji",
-        "diaochan",
-        "lvlingqi",
-        "guanyinping",
-        "wangyi",
-        "sunshangxiang",
-        "xinxianying",
-        "dongbai",
-        "zhurong",
-        "xiahouji",
-        "baosanniang",
-        "zhangxingcai",
-        "huangyueying",
-        "caiwenji",
-        "zhenji",
-        "bulianshi",
-        "daqiao",
-        "xiaoqiao",
-        "zhangchunhua"
       ]
     },
     {
@@ -4540,28 +3825,6 @@
       ]
     },
     {
-      "id": "armless-amputee",
-      "runware_air_id": "liangwc:mulan@1222872",
-      "name": "Armless / Double Amputee",
-      "url": "https://civitai.com/models/1088883",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "fetish"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "trigger_words": [
-        "doublefq"
-      ]
-    },
-    {
       "id": "armpit-musk",
       "runware_air_id": "liangwc:armpit-musk@2257531",
       "name": "Armpit worship musk of female",
@@ -4584,31 +3847,6 @@
       "trigger_words": [
         "pamptSP",
         "shiny skin, sweaty armpit, shiny armpit, steam"
-      ]
-    },
-    {
-      "id": "armpit-sweaty",
-      "runware_air_id": "liangwc:armpit-sweaty@2691923",
-      "name": "Armpit worship Sweaty Armpits",
-      "url": "https://civitai.com/models/2394119",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "armpit",
-        "sweaty"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Armpit worship — sweaty armpits & undress",
-      "trigger_words": [
-        "UdarmptSP",
-        "(armpit focus, close-up:1.2), arms up, sweat, undressing, steamy armpit, sweaty armpit, armpit, exposed breasts, from side, sweaty clothes, wet clothes, blush, looking at viewer, shy, embarrassed, open mouth, sweaty, sweat, breath, steam, hot, humid, smell, steamy, wet skin, shiny skin"
       ]
     },
     {
@@ -4640,33 +3878,6 @@
       ]
     },
     {
-      "id": "breeding-mount",
-      "runware_air_id": "liangwc:breeding-mount@1545661",
-      "name": "Breeding mount with someone inside",
-      "url": "https://civitai.com/models/1368140",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "breeding",
-        "mount"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Breeding mount with someone inside — Illustrious",
-      "trigger_words": [
-        "breeding mount with someone inside",
-        " in breeding mount",
-        "transparent",
-        "fetal position"
-      ]
-    },
-    {
       "id": "building-insertion-giantess",
       "runware_air_id": "liangwc:building-insertion-giantess@1610430",
       "name": "Building Insertion / Giantess",
@@ -4690,35 +3901,6 @@
         "anal insertion",
         "oral insertion"
       ]
-    },
-    {
-      "id": "giantess-v2",
-      "runware_air_id": "liangwc:giantess-v2@2386394",
-      "name": "BuildingSizedGiantess v2",
-      "file": "",
-      "url": "https://civitai.com/models/2386394",
-      "trigger_words": [
-        "giantess, building sized girl, macro scale, extreme size difference, giantess in street, skyscrapers",
-        "traffic, stepping on cars, raised sole, giant foot,destruction, show sole, perspective, street view, low angle, high angle",
-        "walking, sitting, sitting on bridge, sitting on ass, laying on back, crossed legs,",
-        "towering over buildings, foot over city, crushing streets, cityscape,"
-      ],
-      "tags": [
-        "giantess",
-        "illustrious",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "Building Sized Giantess v2 — Illustrious base. Runware AIR verified ✅.",
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "incompatible_with": [],
-      "notes": "2026-07-01: uploaded to Runware. Illustrious base model."
     },
     {
       "id": "choking-pov",
@@ -4769,37 +3951,6 @@
         "cock_worship, penis_awe,",
         "penis_on_face,",
         "heart eyes,"
-      ]
-    },
-    {
-      "id": "cowgirl-position",
-      "runware_air_id": "liangwc:cowgirl-position@1797834",
-      "name": "Cowgirl Position Sex",
-      "url": "https://civitai.com/models/717557",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pov"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "trigger_words": [
-        "cowgirl position, sex, on top, straddling, spread legs,",
-        "Squatting Cowgirl Position, squatting, knees up squat,",
-        "cowgirl at car, inside car, upright straddle, steering wheel,",
-        "reclining cowgirl position, reclining, holding hands,",
-        "Cowgirl amazon,",
-        "leaning forward,",
-        "about to penetrate,",
-        "Creampie,",
-        "Pov Cowgirl,",
-        "side view, third person view,"
       ]
     },
     {
@@ -4923,32 +4074,6 @@
         "legs up, leg grab,",
         "breast grab,",
         "torso grab,"
-      ]
-    },
-    {
-      "id": "facesitting-pov-buttcrush",
-      "runware_air_id": "liangwc:facesitting-pov@1617237",
-      "name": "Facesitting (Close-up Reverse POV)/POV Buttcrush",
-      "url": "https://civitai.com/models/1190058",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pov",
-        "facesitting"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "description": "Facesitting close-up reverse POV / POV buttcrush",
-      "trigger_words": [
-        "povfsrevext",
-        "from_below, foreshortening, close-up",
-        "giantess, butt_crush, tiny man, glass_floor "
       ]
     },
     {
@@ -5125,36 +4250,6 @@
       ]
     },
     {
-      "id": "orgasm-pose",
-      "runware_air_id": "liangwc:orgasm-pose@1788452",
-      "name": "Pleasured Orgasm Pose",
-      "url": "https://civitai.com/models/721065",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pose"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "trigger_words": [
-        "orgasm_face,",
-        "closed eyes,",
-        "half-closed eyes,",
-        "rolling eyes,",
-        "open mouth,",
-        "tongue out,",
-        "blush,",
-        "drooling,",
-        "saliva,"
-      ]
-    },
-    {
       "id": "pov-cowgirl",
       "runware_air_id": "liangwc:pov-cowgirl@2488358",
       "name": "Pov Cowgirl (Looking Down)",
@@ -5202,31 +4297,6 @@
         "leg grab,",
         "face grab,",
         "focus on breasts, head out of frame,"
-      ]
-    },
-    {
-      "id": "pov-head-under-clothes",
-      "runware_air_id": "liangwc:pov-head-under-clothes@1077941",
-      "name": "POV Head Under Clothes",
-      "url": "https://civitai.com/models/775379",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "pov"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "trigger_words": [
-        "looking down, from_below, under, from below, inside_clothes",
-        "upshirt, pov,",
-        "upshirt, pov, 1boy, from below, under clothes,",
-        "from behind, standing, extended upskirt, pov, upshirt, from below"
       ]
     },
     {
@@ -5320,28 +4390,6 @@
       "description": "Submissive Concept — Illustrious"
     },
     {
-      "id": "tiny-fairy",
-      "runware_air_id": "liangwc:tiny-fairy@1319597",
-      "name": "Tiny Fairy Girls / Mini Girl",
-      "url": "https://civitai.com/models/1172814",
-      "tags": [
-        "illustrious",
-        "concept",
-        "tiny",
-        "fairy",
-        "mini"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": false,
-      "description": "Tiny fairy girls / mini girl — Illustrious"
-    },
-    {
       "id": "tinygirl-illustrious",
       "runware_air_id": "liangwc:lora-1694875@1694875",
       "name": "Tinygirl - Illustrious",
@@ -5386,29 +4434,6 @@
       "nsfw": false,
       "trigger_words": [
         "upshorts"
-      ]
-    },
-    {
-      "id": "vore-internals",
-      "runware_air_id": "liangwc:vore-internals@1086041",
-      "name": "Vore Internals",
-      "url": "https://civitai.com/models/20837",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "fetish"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "concept",
-      "nsfw": true,
-      "trigger_words": [
-        "inside a stomach",
-        "stomach interior"
       ]
     },
     {
@@ -5460,85 +4485,6 @@
         "multiple_tails, fox tail, nine tails, huge tails,",
         "1girls, solo, wuxia, mature woman, bailingmiao, white hair, medium_hair, low buns, hair buns, hairpin, sharp eyes, hair_down, pink eyes, long eyelashes, white eyelashes, white eyebrows, red lipstick, blush, pale skin, bead earrings",
         "hanfu, chinese_clothes, long_sleeves, wide_sleeves, white dress, red trim, inner red shirt, red belt, pendant, floating fabric, around arms, around waist, golden halo"
-      ]
-    },
-    {
-      "id": "wuxia-girl-1",
-      "runware_air_id": "liangwc:wuxia-girl1@2468438",
-      "name": "Chinese Wuxia girl 1",
-      "url": "https://civitai.com/models/2186100",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "wuxia",
-        "girl",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": true,
-      "description": "Chinese Wuxia girl-武侠风格女侠 — Illustrious",
-      "trigger_words": [
-        "wuxia_xanthe, black cape, white dress",
-        "wuxia_xanthe, white dress,"
-      ]
-    },
-    {
-      "id": "wuxia-girl-2",
-      "runware_air_id": "liangwc:wuxia-girl2@2491859",
-      "name": "Chinese Wuxia girl 2",
-      "url": "https://civitai.com/models/2213299",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "wuxia",
-        "girl",
-        "chinese"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": true,
-      "description": "Chinese Wuxia girl-武侠风格女侠2 — Illustrious",
-      "trigger_words": [
-        "wuxia_ruoshuang, black thghhighs, dress, chinese clothes, wide sleeves, red dress, long sleeves, red footwear, garter straps, china dress, outfitred,",
-        "wuxia_ruoshuang, black thghhighs, black gloves, clothing cutout, off shoulder,outfitblue,",
-        "wuxia_ruoshuang, white hair,"
-      ]
-    },
-    {
-      "id": "crimson-xiannu",
-      "runware_air_id": "liangwc:crimson-xiannu@2178043",
-      "name": "Crimson Xiannu Wuxia",
-      "url": "https://civitai.com/models/1924359",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "wuxia",
-        "crimson",
-        "xiannu"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": true,
-      "description": "Crimson Xiannu — Wuxia style",
-      "trigger_words": [
-        "mature woman, wuxia, black hair, very long hair, half updo, hair bun, parted bangs, long side bangs, hair ornament, hairpin, golden pins, forehead mark, long eyelashes, red eyeliner, red lipstick, tassel earrings, collarbone, bare shoulders, huge breasts, sagging breasts",
-        "skindentation, off shoulder, red dress, white sash, side slit,red sleeves, very long sleeves, wide sleeves, floating fabric, red fabric, around waist, around arms, pendant, narrow waist, wide hips, thick thighs, thigh strap, red nails, chinese clothes"
       ]
     },
     {
@@ -5613,65 +4559,6 @@
       "nsfw": false
     },
     {
-      "id": "fairy-mge",
-      "runware_air_id": "liangwc:fairy-mge@2146447",
-      "name": "Fairy MGE",
-      "url": "https://civitai.com/models/1853472",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "monster girl"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": true,
-      "notes": "Monster Girl Encyclopedia fairy/koonago",
-      "trigger_words": [
-        "[SEE DESC]",
-        "fairy",
-        "fairymge",
-        "leanansidhemge",
-        "pixiemge",
-        "kesaranpasaranmge",
-        "mini person",
-        "holding-fairy, giant hand, in palm, size difference, pov hands,  mini person",
-        "fairy-foreplay, koonago, mini person, gigantic penis, penis hug, grinding, size difference, erection, penis grab",
-        "fairy-foreplay, koonago, 2girls, gigantic penis, penis hug, hetero, ffm threesome,1boy, group sex, licking penis, grinding, size difference",
-        "4girls, group sex, multiple girls, hetero, fairies, penis grab, testicles, testicle grab, size difference, erection, penis hug, gigantic penis",
-        "fairy-sex, 1boy, pov, torso grab, giant hand, hetero, stomach bulge, inflation, sex, vaginal, gigantic penis, size difference, pussy, large insertion, koonago"
-      ]
-    },
-    {
-      "id": "hermione-granger",
-      "runware_air_id": "liangwc:hermione-granger@2472457",
-      "name": "Hermione Granger",
-      "url": "https://civitai.com/models/1282238",
-      "tags": [
-        "illustrious",
-        "character",
-        "harry potter"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "hermione_hp,",
-        "brown hair, long hair, curly hair, hair intakes, brown eyes, small breasts,",
-        "gryffindor uniform, gryffindor emblem, hogwarts school uniform, grey vest, open cloak, black cloak, wide sleeves, white shirt, long sleeves, collared shirt, pleated skirt, grey skirt, diagonal-striped necktie, red with yellow diagonal stripes necktie,  black pantyhose,  black knee high socks, black shoes,",
-        "holding book, holding wand,"
-      ]
-    },
-    {
       "id": "iyaena-slave-jewelry",
       "runware_air_id": "liangwc:iyaena-jewelry@2443554",
       "name": "Iyaena - Slave jewelry",
@@ -5694,28 +4581,6 @@
       "description": "Iyaena - Slave jewelry — Illustrious",
       "trigger_words": [
         "1girl, (naked), long brown hair, (curly hair), erect chest, (realistic pussy), (necklace), (nipple rings), (nipple chain), (hips chain), (nipple and necklace chain), (navel piercing), (pussy piercing) or (clitoris piercing), ultra detailed, intricate details, (realistic screencap)"
-      ]
-    },
-    {
-      "id": "silent-hill-nurse",
-      "runware_air_id": "liangwc:silent-hill-nurse@2341418",
-      "name": "Nurses - Silent Hill (horror)",
-      "url": "https://civitai.com/models/155163",
-      "tags": [
-        "illustrious",
-        "nsfw",
-        "horror"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": true,
-      "trigger_words": [
-        "nrseSHXL,"
       ]
     },
     {
@@ -5788,30 +4653,6 @@
       "notes": "Tifa FF7R 23套服装",
       "trigger_words": [
         "tfff7lckhrt, brown eyes, black hair, long hair, swept bangs, silver earring, jewelry, white tank top, black undershirt, midriff, bare shoulders, toned, black gloves, elbow pad, red arm guard, single arm guard, elbow gloves, fingerless gloves, belt, black skirt, miniskirt, suspender skirt, black thighhighs, zettai ryouiki, suspenders, navel,"
-      ]
-    },
-    {
-      "id": "tinker-bell",
-      "runware_air_id": "liangwc:tinker-bell@1075382",
-      "name": "Tinker Bell (Peter Pan)",
-      "url": "https://civitai.com/models/44638",
-      "tags": [
-        "illustrious",
-        "character",
-        "disney"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "TinkerWaifu,,",
-        "Blonde hair, single hair bun, blue eyes,,",
-        "fairy wings, blue eyes, green dress, sexy, strapless,,"
       ]
     },
     {
@@ -5915,34 +4756,6 @@
       ]
     },
     {
-      "id": "yeo-jiwok",
-      "runware_air_id": "liangwc:yeo-jiwok@2374913",
-      "name": "Yeo Jiwok Manhwa",
-      "url": "https://civitai.com/models/2099063",
-      "tags": [
-        "illustrious",
-        "concept",
-        "manhwa",
-        "webtoon"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "description": "Yeo Jiwok — God Bless You Manhwa/Webtoon style",
-      "trigger_words": [
-        "Jiwok",
-        "1girl, solo, jiwok, tucked hair, tucked hair, updo, low bun, hair gathered at nape, side parted hair, long side bangs,  black hair, slightly wavy hair, long bangs, parted bangs, hair over one eye, golden hairpin, hair strands, hair strands over eyes, long eyelashes, orange eyes, red_lips, golden earrings, hair ornament, red lipstick,",
-        "hanbok, traditional korean clothes, white shirt, gold trim, gold bow, layered_shirt, white skirt,  pendant, ornament,",
-        "hanbok, traditional korean clothes, dark violet shirt, gold trim, gold bow, layered_shirt, pink skirt,  pendant, ornament, long skirt, puffy skirt,",
-        "blue robe, gold trim, layered robe, embroidery, golden imprint, golden dragon pattern"
-      ]
-    },
-    {
       "id": "yuna-ffx",
       "runware_air_id": "liangwc:yuna-ffx@1982307",
       "name": "Yuna (FFX)",
@@ -5987,31 +4800,6 @@
         "maishirandg,",
         "Brown hair, brown eyes, high ponytail, long hair,",
         "pelvic curtain, japanese clothes, sleeveless, sash, no bra, obi, fingerless gloves, toeless footwear,"
-      ]
-    },
-    {
-      "id": "racing-miku",
-      "runware_air_id": "liangwc:racing-miku@2487845",
-      "name": "初音ミク Racing Miku 2022",
-      "url": "https://civitai.com/models/2209692",
-      "tags": [
-        "illustrious",
-        "character",
-        "vocaloid"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "Hatsune Miku,very long hair,aqua hair,twintails,headset,hair ornament,hair between eyes,aqua eyes,",
-        "ver1,hatsune miku \\(cosplay\\),white shirt,collared shirt,sleeveless shirt,aqua necktie,detached sleeves,black sleeves,miniskirt,black skirt,pleated skirt,zettai ryouiki,black thighhighs,thigh boots,black footwear",
-        "ver2,racing miku \\(2022\\),white jacket, cropped jacket, crop top overhang, long sleeves, black bodysuit, flame print, smiley face, clothes writing, two-tone gloves, black gloves, green gloves, black thighhighs, single thighhigh, single thigh boot  ,",
-        "ver3,hatsune miku \\(append\\),belt, bridal_gauntlets, convenient_censorship, elbow_gloves, fingerless_gloves, floating, gloves, jewelry, long_hair, navel, necktie, solo, thighhighs, twintails, very_long_hair, zettai_ryouiki ,"
       ]
     },
     {
@@ -6098,30 +4886,6 @@
       "nsfw": false
     },
     {
-      "id": "ankela-kuluomi",
-      "runware_air_id": "liangwc:ankela-kuluomi@3005489",
-      "name": "安琪拉·库洛米",
-      "url": "https://civitai.com/models/2676704",
-      "tags": [
-        "illustrious",
-        "character",
-        "wangzhe"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "kuluo77, 1girl,  solo, heterochromia,left_purple_eye, right_blue_eye, large_eyes, detailed_eyes,jewelry, bare shoulders,",
-        "hair ornament, purple_hair, gradient_hair, twin_tails, very_long_hair, huge_hair_bows, black_ribbons,",
-        "black_purple_gothic_dress, lolita_fashion, frills, bows, lace, choker, heart_earrings, black_gloves, arm_garters, thigh_straps, black_thighhighs, smile,  high_heels,"
-      ]
-    },
-    {
       "id": "lora5-shao-siyuan",
       "runware_air_id": "liangwc:lora5@1645600",
       "name": "少司缘ssy (lora5)",
@@ -6172,51 +4936,6 @@
       ]
     },
     {
-      "id": "ssy-wulishishen",
-      "runware_air_id": "liangwc:ssy-wulishishen@2317184",
-      "name": "少司缘·巫礼祀神",
-      "url": "https://civitai.com/models/2047406",
-      "tags": [
-        "illustrious",
-        "character",
-        "wangzhe"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "wulisishen,",
-        "hair ornament,long sleeves,sleeves past wrists,facial mark,dress,"
-      ]
-    },
-    {
-      "id": "ssy-wulishishen-v2",
-      "runware_air_id": "liangwc:ssy-wulishishen-v2@2894054",
-      "name": "少司缘·巫礼祀神V2",
-      "url": "https://civitai.com/models/2575923",
-      "tags": [
-        "illustrious",
-        "character",
-        "wangzhe"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "shaosiyu,1girl,solo,aqua eyes,green eyes,bangs,blunt bangs,hair between eyes,hair intakes,long hair,sidelocks,very long hair,white hair,aqua bodysuit,aqua dress,gradient bodysuit,gradient clothes,long sleeves,open clothes,pencil skirt,short dress,white bodysuit,white dress,white pants,wide sleeves,circlet,forehead jewel,gold trim,hair ornament,halo,headgear,headpiece,high heels,gradient pantyhose,white pantyhose,"
-      ]
-    },
-    {
       "id": "ssy-tushan-honghong",
       "runware_air_id": "liangwc:ssy-tushan-honghong@2829173",
       "name": "少司缘·涂山红红联动",
@@ -6262,31 +4981,6 @@
       ]
     },
     {
-      "id": "yueying-dynasty-warriors",
-      "runware_air_id": "liangwc:yueying-dynasty-warriors@2121618",
-      "name": "月英 Yueying (三國無双)",
-      "url": "https://civitai.com/models/1874429",
-      "tags": [
-        "illustrious",
-        "character",
-        "guoman"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "dw6_Yueying",
-        "brown eyes,red hair,bindi,long hair,Medium breasts,",
-        "chinese clothes,Plush collar,Plush sleeve,gloves,fingerless gloves,belt,Dragon Pattern,Tassel skirt,zettai ryouki, thight boots,high heels boots,",
-        "weapon,bow(weapon),arrow,"
-      ]
-    },
-    {
       "id": "yao-wangzhe",
       "runware_air_id": "liangwc:yao-wangzhe@2824482",
       "name": "瑶·王者荣耀V2.2",
@@ -6304,31 +4998,6 @@
       "base_model": "illustrious",
       "category": "character",
       "nsfw": false
-    },
-    {
-      "id": "zhenji-dynasty-warriors",
-      "runware_air_id": "liangwc:zhenji-dynasty-warriors@2047208",
-      "name": "甄姬 Zhenji (三國無双)",
-      "url": "https://civitai.com/models/1809007",
-      "tags": [
-        "illustrious",
-        "character",
-        "guoman"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "illustrious",
-      "category": "character",
-      "nsfw": false,
-      "trigger_words": [
-        "dw8zhenji,",
-        "brown eyes,black hair,long hair, ponytail,hair flower,rose,mole under the eye, large breasts, mature female,",
-        "jewelry,fishnet gloves, cleavage cutout, chinese clothes,wide sleeves, side slit, fishnet pantyhose,",
-        "hight heels,"
-      ]
     },
     {
       "id": "atlaseuu-ill",
@@ -6369,35 +5038,10 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "sinnun,bywolfcat,revealing clothes,gloves,underboob,cross,"
-      ]
-    },
-    {
-      "id": "undress-striptease",
-      "runware_air_id": "liangwc:undress-striptease@419214",
-      "name": "undress | striptease slider",
-      "url": "https://civitai.com/models/375374",
-      "tags": [
-        "sdxl",
-        "slider",
-        "nsfw",
-        "undress"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.0,
-        1.5
-      ],
-      "base_model": "sdxl",
-      "category": "tools",
-      "nsfw": true,
-      "description": "Undress / striptease slider — from clothed to nude",
-      "trigger_words": [
-        "undressing",
-        "stripteasing"
       ]
     },
     {
@@ -6812,7 +5456,7 @@
         1.2
       ],
       "base_model": "sdxl",
-      "category": "new",
+      "category": "character",
       "nsfw": true,
       "trigger_words": [
         "hsuhsu"
@@ -6835,7 +5479,7 @@
         1.2
       ],
       "base_model": "sdxl",
-      "category": "new",
+      "category": "character",
       "nsfw": true
     },
     {
@@ -6854,7 +5498,7 @@
         1.2
       ],
       "base_model": "sdxl",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "a2",
@@ -6879,7 +5523,7 @@
         1.2
       ],
       "base_model": "sdxl",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "b1",
@@ -6905,7 +5549,7 @@
         1.2
       ],
       "base_model": "sdxl",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "sweater_top"
@@ -6928,7 +5572,7 @@
         1.2
       ],
       "base_model": "sdxl",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "punishnun"
@@ -6951,7 +5595,7 @@
         1.2
       ],
       "base_model": "sdxl",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "see-through kimono"
@@ -6974,7 +5618,7 @@
         1.2
       ],
       "base_model": "sdxl",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "sinnun,nun,leotard,black footwear,underboob,cross"
@@ -7404,7 +6048,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -7939,7 +6583,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "minpar8"
@@ -7961,7 +6605,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "lat1na_g5r"
@@ -7983,7 +6627,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "b10ndi"
@@ -8006,7 +6650,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true,
       "trigger_words": [
         "姑娘穿着Hello Kitty Bikini，胸罩的罩杯是hello kitty的头部图案，红白格图案的三角裤。"
@@ -8028,7 +6672,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "slingshot swimsuit, revealing, white and purple lace one-piece lingerie outfit. The garment features deep V-cut lines that expose much of her torso and a small, matching lace panel at the crotch area. The lace is adorned with floral patterns, adding a delicate touch to the otherwise minimalistic design."
@@ -8069,7 +6713,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "y0ngcut1"
@@ -8091,7 +6735,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "y0jav"
@@ -8113,7 +6757,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character",
       "nsfw": false
     },
     {
@@ -8132,7 +6776,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character",
       "nsfw": false
     },
     {
@@ -8227,24 +6871,6 @@
         "slider",
         "body",
         "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "tools",
-      "nsfw": false
-    },
-    {
-      "id": "sd15-110990-119676",
-      "runware_air_id": "civitai:110990@119676",
-      "name": "breasts size (SD1.5)",
-      "url": "https://civitai.com/models/110990",
-      "tags": [
-        "sd15",
         "runware-verified"
       ],
       "default_scale": 0.8,
@@ -8373,26 +6999,6 @@
         "sd15",
         "slider",
         "body",
-        "tool",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "tools",
-      "nsfw": false
-    },
-    {
-      "id": "clothing-adjuster-sd15",
-      "runware_air_id": "civitai:88132@117151",
-      "name": "LEOSAM Clothing Adjuster (SD1.5)",
-      "url": "https://civitai.com/models/88132",
-      "tags": [
-        "sd15",
-        "clothing",
         "tool",
         "runware-verified"
       ],
@@ -9034,7 +7640,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -9055,7 +7661,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "pixel_art"
@@ -9078,7 +7684,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -9096,7 +7702,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "chinesedragon"
@@ -9121,7 +7727,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character",
       "nsfw": true,
       "trigger_words": [
         "cbpkv5"
@@ -9142,7 +7748,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "wearing deep_v-neck_dress"
@@ -9165,7 +7771,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -9186,29 +7792,8 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false
-    },
-    {
-      "id": "sd15-106762-114681",
-      "runware_air_id": "civitai:106762@114681",
-      "name": "Girl in bathtub: 浴缸里的女孩 | Siren Lora (SD1.5)",
-      "url": "https://civitai.com/models/106762",
-      "tags": [
-        "sd15",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "base_model": "sd15",
-      "category": "new",
-      "nsfw": true,
-      "trigger_words": [
-        "girl in bathtub"
-      ]
     },
     {
       "id": "gothic-horror-sd15",
@@ -9228,7 +7813,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "gothichorrorai"
@@ -9251,7 +7836,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "trigger_words": [
         "hairygirls69420"
@@ -9272,7 +7857,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "hanfu",
@@ -9294,7 +7879,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "heartboob",
@@ -9318,7 +7903,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -9338,7 +7923,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "trigger_words": [
         "stomach bulge",
@@ -9363,7 +7948,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "trigger_words": [
         "Insertion"
@@ -9386,7 +7971,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "jim lee"
@@ -9407,7 +7992,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true,
       "trigger_words": [
         "jk_lure_dress3"
@@ -9428,7 +8013,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "wearing leg_split_dress"
@@ -9451,7 +8036,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "foot",
@@ -9477,7 +8062,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "logo"
@@ -9498,7 +8083,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "long_ponytail_hairstyle"
@@ -9521,7 +8106,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "pixel"
@@ -9542,7 +8127,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "wearing mini_dress"
@@ -9563,7 +8148,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true,
       "trigger_words": [
         "miniature microbikini",
@@ -9592,7 +8177,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "zydAFP"
@@ -9615,7 +8200,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "no_bra",
@@ -9637,7 +8222,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true,
       "trigger_words": [
         "open towel"
@@ -9660,7 +8245,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "trigger_words": [
         "orgasm_face",
@@ -9682,7 +8267,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "oversized_shirt"
@@ -9705,7 +8290,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "trigger_words": [
         "pantpulldown",
@@ -9729,7 +8314,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "penSketch_style, monochrome, ink sketch"
@@ -9752,7 +8337,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -9772,7 +8357,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "trigger_words": [
         "womb tattoo",
@@ -9794,7 +8379,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "pigtail_hairstyle"
@@ -9817,7 +8402,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "pixelart"
@@ -9840,7 +8425,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "from below"
@@ -9864,7 +8449,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "dragon_real",
@@ -9886,7 +8471,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "reverse bunnysuit",
@@ -9910,7 +8495,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "trigger_words": [
         "mascaraTears"
@@ -9932,7 +8517,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "sagging breasts",
@@ -9954,7 +8539,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "wearing see trough dress",
@@ -9980,7 +8565,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false
     },
     {
@@ -9998,7 +8583,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true,
       "trigger_words": [
         "swimsuit"
@@ -10021,7 +8606,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -10041,7 +8626,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "see-through leotard",
@@ -10065,7 +8650,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "very_long_hair"
@@ -10088,7 +8673,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true,
       "trigger_words": [
         "virgin killer sweater"
@@ -10112,7 +8697,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": true
     },
     {
@@ -10132,7 +8717,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "womb tattoo",
@@ -10154,7 +8739,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "blue yoga clothes, Brown yoga clothes, white yoga clothes"
@@ -10175,7 +8760,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "ruanyi0179, black bodysuit, white bodysuit"
@@ -10196,7 +8781,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "tight pants, black bell bottoms, blue bell bottoms, Brown bell bottoms, green bell bottoms,"
@@ -10217,7 +8802,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "black yoga pants, brown yoga pants, green yoga pants, pink yoga pants"
@@ -10238,7 +8823,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "ruanyi0212"
@@ -10259,7 +8844,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "bodysuit, black jumpsuit, blue jumpsuit, brown jumpsuit, dark gray jumpsuit, gray jumpsuit, white jumpsuit,"
@@ -10283,7 +8868,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "taoist"
@@ -10307,7 +8892,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "Chinese style"
@@ -10332,7 +8917,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "Chinese ink painting,ink wash painting,"
@@ -10356,7 +8941,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false
     },
     {
@@ -10374,7 +8959,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "jewelry,see-through,dress"
@@ -10395,7 +8980,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "navel,transparent,swimsuit,hair ornament,see-through"
@@ -10416,7 +9001,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "see-through,underwear,anal beads,cleavage,babydoll"
@@ -10437,7 +9022,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "see-through,chiffon,hair ornament,dress,looking at viewer,chinese clothes,panties,underwear"
@@ -10458,7 +9043,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character_style",
       "nsfw": false,
       "trigger_words": [
         "panties,underwear,see-through,sitting,skirt,pink panties,covered nipples,meadow"
@@ -10480,7 +9065,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character",
       "nsfw": false
     },
     {
@@ -10501,7 +9086,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "ghostdom",
@@ -10527,7 +9112,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "fantasy"
@@ -10551,7 +9136,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "gu",
@@ -10578,7 +9163,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "Samurai girl"
@@ -10602,7 +9187,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "character",
       "nsfw": false,
       "trigger_words": [
         "SWAV"
@@ -10626,7 +9211,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "midjourney"
@@ -10651,7 +9236,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "ghost nocturnal"
@@ -10675,7 +9260,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "90s",
@@ -10700,7 +9285,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "white hell"
@@ -10724,7 +9309,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "guanyin"
@@ -10748,7 +9333,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "midjourney portrait"
@@ -10773,7 +9358,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false
     },
     {
@@ -10794,7 +9379,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "evil spirits"
@@ -10818,7 +9403,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "Magic Circle"
@@ -10842,7 +9427,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "Dragon and girl"
@@ -10867,7 +9452,7 @@
         1.2
       ],
       "base_model": "sd15",
-      "category": "new",
+      "category": "concept",
       "nsfw": false,
       "trigger_words": [
         "chinese dragon"
@@ -10890,7 +9475,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": true,
       "trigger_words": [
         "ArtfulNSFW"
@@ -10912,7 +9497,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -10931,7 +9516,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "anime style",
@@ -10955,7 +9540,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "Pixel Art style."
@@ -10977,7 +9562,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "A highly detailed digital illustration in an anime-inspired style"
@@ -11000,7 +9585,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -11020,97 +9605,11 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "trigger_words": [
         "Limin0l1"
       ]
-    },
-    {
-      "id": "klein-anatomy-fixer",
-      "runware_air_id": "myaiprojectsqqq:3@2",
-      "name": "Klein Anatomy Quality Fixer v1.5",
-      "url": "https://myaiprojectsqqq:3@2",
-      "tags": [
-        "klein",
-        "anatomy",
-        "fixer",
-        "quality"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.4,
-        1.2
-      ],
-      "base_model": "flux-klein",
-      "category": "new",
-      "nsfw": false,
-      "trigger_words": [
-        "sks lucy"
-      ]
-    },
-    {
-      "id": "klein-unchained-xxx",
-      "runware_air_id": "liangwc:klein-unchained-xxx@2753532",
-      "name": "[KLEIN 9b] Unchained XXX v2.0",
-      "url": "https://civitai.com/models/2348977",
-      "tags": [
-        "klein",
-        "nsfw",
-        "uncensored",
-        "xxx"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.4,
-        1.2
-      ],
-      "base_model": "flux-klein",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "klein-cum-on-face",
-      "runware_air_id": "liangwc:klein-cum-on-face@2794794",
-      "name": "Cum On Face (KLEIN-9B V2)",
-      "url": "https://civitai.com/models/146522",
-      "tags": [
-        "klein",
-        "nsfw",
-        "cum",
-        "facial"
-      ],
-      "trigger_words": [
-        "cum on her face, semen on her face,"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.4,
-        1.2
-      ],
-      "base_model": "flux-klein",
-      "category": "new",
-      "nsfw": true
-    },
-    {
-      "id": "klein-body-weight-slider",
-      "runware_air_id": "liangwc:klein-body-weight-slider@2608738",
-      "name": "Klein 9B Body Weight Slider v1.5",
-      "url": "https://civitai.com/models/2318844",
-      "tags": [
-        "klein",
-        "slider",
-        "body",
-        "weight"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.4,
-        1.2
-      ],
-      "base_model": "flux-klein",
-      "category": "new",
-      "nsfw": false
     },
     {
       "id": "zit-breast-nipples-v3",
@@ -11130,7 +9629,7 @@
         2.0
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true
     },
     {
@@ -11150,7 +9649,7 @@
         2.0
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "trigger_words": [
         "futagr0w1",
@@ -11174,7 +9673,7 @@
         2.0
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true
     },
     {
@@ -11193,7 +9692,7 @@
         2.0
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true
     },
     {
@@ -11212,7 +9711,7 @@
         2.0
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true,
       "trigger_words": [
         "breasts,large,medium, small"
@@ -11233,7 +9732,7 @@
         2.0
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -11252,7 +9751,7 @@
         2.0
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": true,
       "trigger_words": [
         "samdoesarts"
@@ -11275,7 +9774,7 @@
         2.0
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true
     },
     {
@@ -11295,7 +9794,7 @@
         2.0
       ],
       "base_model": "flux-dev",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -11315,7 +9814,7 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "notes": "测试图厚涂质感不明显,需鹿鹿实测定去留",
       "trigger_words": [
@@ -11361,7 +9860,7 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "notes": "哥特风格,测试完美"
     },
@@ -11382,7 +9881,7 @@
         1.2
       ],
       "base_model": "pony",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "notes": "哥特风格",
       "trigger_words": [
@@ -11408,7 +9907,7 @@
         1.2
       ],
       "base_model": "flux-dev",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "notes": "哥特风格"
     },
@@ -11429,7 +9928,7 @@
         1.2
       ],
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false,
       "notes": "哥特风格,黑白高对比测试完美"
     },
@@ -11450,7 +9949,7 @@
         1.2
       ],
       "base_model": "pony",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "notes": "姿势LoRA,已验证",
       "trigger_words": [
@@ -11474,7 +9973,7 @@
         1.2
       ],
       "base_model": "illustrious",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "notes": "姿势LoRA,已验证",
       "trigger_words": [
@@ -11545,7 +10044,7 @@
         1.2
       ],
       "base_model": "pony",
-      "category": "new",
+      "category": "concept",
       "nsfw": true,
       "notes": "表情LoRA,已验证",
       "trigger_words": [
@@ -11574,7 +10073,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -11597,7 +10096,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "character_style",
       "nsfw": true
     },
     {
@@ -11620,7 +10119,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "concept",
       "nsfw": false
     },
     {
@@ -11643,7 +10142,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "concept",
       "nsfw": false
     },
     {
@@ -11666,7 +10165,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "concept",
       "nsfw": false
     },
     {
@@ -11689,7 +10188,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "concept",
       "nsfw": false
     },
     {
@@ -11712,7 +10211,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "concept",
       "nsfw": false
     },
     {
@@ -11737,7 +10236,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -11760,7 +10259,7 @@
       ],
       "description": "",
       "base_model": "pony",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -11783,7 +10282,7 @@
       ],
       "description": "",
       "base_model": "pony",
-      "category": "new",
+      "category": "concept",
       "nsfw": false
     },
     {
@@ -11806,51 +10305,7 @@
       ],
       "description": "",
       "base_model": "pony",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "incase-style-ponyxl-pony",
-      "runware_air_id": "civitai:300005@436219",
-      "name": "Incase Style [PonyXL]",
-      "file": "incase_style_v3-1_ponyxl_ilff.safetensors",
-      "url": "https://civitai.com/models/300005",
-      "trigger_words": [],
-      "tags": [
-        "pony",
-        "cached"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "",
-      "base_model": "pony",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "vixon-s-anima-pony-styles-gothic-neon-pony",
-      "runware_air_id": "civitai:888231@398847",
-      "name": "Vixon's Anima/Pony Styles - Gothic Neon",
-      "file": "g0th1cPXL.safetensors",
-      "url": "https://civitai.com/models/888231",
-      "trigger_words": [
-        "g0thicPXL, glowing, neon,"
-      ],
-      "tags": [
-        "pony",
-        "cached"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "",
-      "base_model": "pony",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -11897,7 +10352,7 @@
       ],
       "description": "",
       "base_model": "pony",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -11921,28 +10376,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
-      "nsfw": false
-    },
-    {
-      "id": "pony-geekpower-ai-styles-pony",
-      "runware_air_id": "liangwc:pony-geekpower-ai-styles@909234",
-      "name": "[Pony] Geekpower AI Styles",
-      "file": "[Artstyle] Thicc_Geekpower [PDXL].safetensors",
-      "url": "https://civitai.com/models/315703",
-      "trigger_words": [],
-      "tags": [
-        "pony",
-        "runware-verified"
-      ],
-      "default_scale": 0.8,
-      "scale_range": [
-        0.5,
-        1.2
-      ],
-      "description": "",
-      "base_model": "pony",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -11965,7 +10399,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -11990,7 +10424,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "tools",
       "nsfw": false
     },
     {
@@ -12016,7 +10450,7 @@
       ],
       "description": "",
       "base_model": "pony",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -12042,7 +10476,7 @@
       ],
       "description": "",
       "base_model": "flux-dev",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -12065,7 +10499,7 @@
       ],
       "description": "",
       "base_model": "pony",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12086,7 +10520,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12128,7 +10562,7 @@
       ],
       "description": "",
       "base_model": "pony",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12151,7 +10585,7 @@
       ],
       "description": "",
       "base_model": "pony",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12176,7 +10610,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "concept",
       "nsfw": false
     },
     {
@@ -12199,7 +10633,7 @@
       ],
       "description": "",
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12222,7 +10656,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12246,7 +10680,7 @@
       ],
       "description": "",
       "base_model": "pony",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -12269,7 +10703,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12292,7 +10726,7 @@
       ],
       "description": "",
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12315,7 +10749,7 @@
       ],
       "description": "",
       "base_model": "zimage-turbo",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12338,7 +10772,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": true
     },
     {
@@ -12362,7 +10796,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": true
     },
     {
@@ -12385,7 +10819,7 @@
       ],
       "description": "",
       "base_model": "flux-dev",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12408,7 +10842,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12431,7 +10865,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": false
     },
     {
@@ -12457,7 +10891,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "concept",
       "nsfw": true
     },
     {
@@ -12478,7 +10912,7 @@
       ],
       "description": "",
       "base_model": "illustrious",
-      "category": "new",
+      "category": "style",
       "nsfw": true
     }
   ],
