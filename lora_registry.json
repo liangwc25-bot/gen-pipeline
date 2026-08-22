@@ -11476,6 +11476,34 @@
       "base_model": "illustrious",
       "category": "new",
       "nsfw": false
+    },
+    {
+      "id": "ass-on-glass-illustrious",
+      "runware_air_id": "liangwc:ass-on-glass@1836638",
+      "name": "Ass On Glass / Sitting On Glass (Illustrious)",
+      "file": "ass-on-glass_1836638.safetensors",
+      "url": "https://civitai.com/models/1399763",
+      "trigger_words": [
+        "assonglassILL",
+        "ass on glass",
+        "against glass",
+        "ass against glass",
+        "sitting on glass",
+        "ass focus"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
