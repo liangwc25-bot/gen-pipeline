@@ -1110,7 +1110,10 @@ function updateModalUI(img) {
       let html = '';
       if (m.prompt) {
         const escaped = escapeHtml(m.prompt);
-        html += `<div class="field"><span class="label">Prompt  </span><span class="prompt-text">${escaped}</span> <button class="modal-copy-btn" onclick="copyPromptMeta(this)" data-prompt="${escaped}">📋</button></div>`;
+        // data-prompt 是 HTML 属性值,escapeHtml(textContent→innerHTML)不转义双引号 ",
+        // 含 " 的 prompt 会令属性在第一个引号处截断 → 复制少字。额外转义。
+        const attrEscaped = escaped.replace(/"/g, '&quot;');
+        html += `<div class="field"><span class="label">Prompt  </span><span class="prompt-text">${escaped}</span> <button class="modal-copy-btn" onclick="copyPromptMeta(this)" data-prompt="${attrEscaped}">📋</button></div>`;
       }
       if (m.params) {
         const rest = m.params.replace(/^Prompt:.*?(\n|$)/, '').replace(/^\n/, '');
