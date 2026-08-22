@@ -11286,6 +11286,121 @@
       "base_model": "pony",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "futa-world-sabrina-pony",
+      "runware_air_id": "liangwc:futa-world-sabrina@3067857",
+      "name": "Futa World - Sabrina",
+      "file": "futa-world-sabrina_3067857.safetensors",
+      "url": "https://civitai.com/models/2729077",
+      "trigger_words": [
+        "Sabrina, symmetrical face, oval face, thick natural eyebrows, delicate jawline, fair skin, high cheekbones, slender nose, bright blue almond-shaped eyes, long eyelashes, full pink lips, long dark brown hair, center-parted hair, loose wavy hair."
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "futa-world-saya-pony",
+      "runware_air_id": "liangwc:futa-world-saya@2870116",
+      "name": "Futa World - Saya",
+      "file": "futa-world-saya_2870116.safetensors",
+      "url": "https://civitai.com/models/2553857",
+      "trigger_words": [
+        "Saya, dark brown hair, two long thick braids, straight fringe bangs, pale skin, soft texture, large light blue eyes, dark eye makeup, dark-brown eyeshadow, slender nose, small soft lips, natural pink tint. straight fringe bangs."
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "futa-world-lisa-pony",
+      "runware_air_id": "liangwc:futa-world-lisa@2799889",
+      "name": "Futa World - Lisa",
+      "file": "futa-world-lisa_2799889.safetensors",
+      "url": "https://civitai.com/models/2490558",
+      "trigger_words": [
+        "Lisa, clear fair skin, amber-hazel eyes, long chestnut-brown hair, straight eyebrow-length bangs, two high pigtails, slim nose, soft pink lips, symmetrical facial features."
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "futa-world-luna-pony",
+      "runware_air_id": "liangwc:futa-world-luna@2685379",
+      "name": "Futa World - Luna",
+      "file": "futa-world-luna_2685379.safetensors",
+      "url": "https://civitai.com/models/2388196",
+      "trigger_words": [
+        "Luna, 26 years old, delicate facial features, fair skin, straight nose, soft natural lips, short layered dark ash-brown hair, subtle silver highlights, slightly tousled hairstyle, large wolf ears, dark fur, lighter inner fur, big striking blue eyes"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "futa-world-tsireya-pony",
+      "runware_air_id": "liangwc:futa-world-tsireya@3014754",
+      "name": "Futa World - Tsireya",
+      "file": "futa-world-tsireya_3014754.safetensors",
+      "url": "https://civitai.com/models/2684940",
+      "trigger_words": [
+        "Tsireya, elf, heart-shaped face, pale skin, subtle texture, mint-green eyes, pink and mauve eyeshadow, smoky under-eye makeup, long delicate lashes, pointed ears, small nose, full soft pink lips, neutral expression, silky golden-blonde hair, straight bangs across forehead, wavy strands, hair over shoulders."
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
