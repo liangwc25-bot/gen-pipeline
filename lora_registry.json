@@ -11401,6 +11401,81 @@
       "base_model": "pony",
       "category": "new",
       "nsfw": true
+    },
+    {
+      "id": "western-comic-art-style--pony",
+      "runware_air_id": "liangwc:western-comic-art-style-@871611",
+      "name": "Western Comic Art Style (Pony)",
+      "file": "western-comic-art-style-_871611.safetensors",
+      "url": "https://civitai.com/models/779355",
+      "trigger_words": [
+        "w3st3rnc0m1c",
+        "westerncomic",
+        "western comic art style"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "realistic-snapshot-z-ima-zimage-turbo",
+      "runware_air_id": "liangwc:realistic-snapshot-z-ima@2617751",
+      "name": "Realistic Snapshot (Z-Image)",
+      "file": "realistic-snapshot-z-ima_2617751.safetensors",
+      "url": "https://civitai.com/models/2268008",
+      "trigger_words": [
+        "amateur digital snapshot, candid, smartphone capture, high ISO noise, direct on-camera flash",
+        "visible pores, visible vellus hair, subsurface scattering, detailed skin texture",
+        "wide-angle lens, barrel distortion, chromatic aberration, depth of field"
+      ],
+      "tags": [
+        "zimage-turbo",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "zimage-turbo",
+      "category": "new",
+      "nsfw": false
+    },
+    {
+      "id": "western-comic-art-style-illustrious",
+      "runware_air_id": "liangwc:western-comic-art-style@1211879",
+      "name": "Western Comic Art Style (Illustrious)",
+      "file": "western-comic-art-style_1211879.safetensors",
+      "url": "https://civitai.com/models/779355",
+      "trigger_words": [
+        "w3st3rnc0m1c",
+        "westerncomic",
+        "western comic art style"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": false
     }
   ],
   "categories": {
