@@ -10782,6 +10782,510 @@
       "base_model": "illustrious",
       "category": "style",
       "nsfw": true
+    },
+    {
+      "id": "asian-hafu-lora-pony",
+      "runware_air_id": "civitai:1024198@1151651",
+      "name": "Asian Hafu Lora",
+      "file": "AsianHafuLora_pony.safetensors",
+      "url": "https://civitai.com/models/1024198",
+      "trigger_words": [
+        "score_9, score_8_up, score_7_up, score_6_up, score_5_up, score_4_up, realistic, portrait, upper body, lips, nose, solo, 1girl, idol, young woman, asian female, cleavage, large breasts, wide hips, plump, slender, slim, thin, bright skin, fair skin, skin pores, floating hair, brown hair, white hair flower, sky, scenery, dynamic view,",
+        "face focus,"
+      ],
+      "tags": [
+        "pony",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "peking-opera-pony-beijing-oper-pony",
+      "runware_air_id": "civitai:841809@941799",
+      "name": "Peking Opera Pony,国潮,京剧,Beijing Opera",
+      "file": "peking_operaV2.safetensors",
+      "url": "https://civitai.com/models/841809",
+      "trigger_words": [
+        "peking_opera,china clothes,makeup,blush,ornate headwear,long sleeves,red lip,asian,flower,jewelry, "
+      ],
+      "tags": [
+        "pony",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "eastern-asian-fantasy-illustra-pony",
+      "runware_air_id": "civitai:605702@699965",
+      "name": "Eastern Asian Fantasy Illustration",
+      "file": "Eastern Asian Fantasy Illustration (Pony).safetensors",
+      "url": "https://civitai.com/models/605702",
+      "trigger_words": [
+        "fantasy"
+      ],
+      "tags": [
+        "pony",
+        "cached"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "brown-skin-asians-pony",
+      "runware_air_id": "liangwc:brown-skin-asians@1636113",
+      "name": "brown_skin_asians",
+      "file": "brown-skin-asians_1636113.safetensors",
+      "url": "https://civitai.com/models/1447176",
+      "trigger_words": [
+        "asian",
+        "brown skin",
+        "epicanthal fold",
+        "thai"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "asian-anime-girl-vol-3-illustrious",
+      "runware_air_id": "liangwc:asian-anime-girl-vol-3@3062394",
+      "name": "Asian Anime Girl Vol.3",
+      "file": "asian-anime-girl-vol-3_3062394.safetensors",
+      "url": "https://civitai.com/models/2724695",
+      "trigger_words": [
+        "MisaLIM",
+        "1girl, jewelry, solo, long hair, black hair, earrings, dress, red dress,",
+        "brown hair, short hair, school uniform, brown eyes, dress",
+        "white blouse, light blue high-waisted jeans, beige crossbody bag, white pumps",
+        "retro artstyle,anime screencap, anime colouring",
+        "BIKINI"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "asian-beauitful-girl-k-p-illustrious",
+      "runware_air_id": "liangwc:asian-beauitful-girl-k-p@2683137",
+      "name": "Asian beauitful Girl (K-pop/J-pop style)",
+      "file": "asian-beauitful-girl-k-p_2683137.safetensors",
+      "url": "https://civitai.com/models/2386136",
+      "trigger_words": [
+        "anime coloring,retro artstyle",
+        "HAYASHIYUNA,black hair,long hair,1girl,brown eyes,",
+        "Wedding dress",
+        "K-pop girls dressing",
+        "Kimono",
+        "soft oval face, balanced facial proportions,  natural double eyelids, long almond eyes, small delicate nose bridge, thin soft lips, smooth jawline, pure elegant kpop actress style"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "anime-eastern-mediterran-illustrious",
+      "runware_air_id": "liangwc:anime-eastern-mediterran@3091823",
+      "name": "Anime Eastern Mediterranean Girl V1",
+      "file": "anime-eastern-mediterran_3091823.safetensors",
+      "url": "https://civitai.com/models/2748531",
+      "trigger_words": [
+        "nurbanuturk",
+        "retro artstyle,anime screencap, anime colouring",
+        ".solo,1girl,long wavy brunette hair, grey blue eyes",
+        "yellow ruffle dress with low neckline,earrings,jewelry",
+        "black off-shoulder long dress with high slit",
+        "solo,1girl,long straight blonde hair,grey blue eyes",
+        "ornate silver and gold fantasy armor over red embroidered dress, leather boots, holding longsword,earrings,jewelry",
+        "BIKINI",
+        "white strapless wrapped wet dress,earrings,jewelry"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "lora-rnd-futa-pony",
+      "runware_air_id": "liangwc:lora-rnd-futa@1785881",
+      "name": "[Lora] RND futa",
+      "file": "lora-rnd-futa_1785881.safetensors",
+      "url": "https://civitai.com/models/1578152",
+      "trigger_words": [
+        "RND futa, asian futa, round face, droopy eyes, tareme,",
+        "RND futa, asian girl, round face, droopy eyes, tareme,",
+        "RND futa, round face, droopy eyes, tareme,",
+        "RND futa"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "east-asian-game-style-illustrious",
+      "runware_air_id": "liangwc:east-asian-game-style@1091693",
+      "name": "East Asian Game Style",
+      "file": "east-asian-game-style_1091693.safetensors",
+      "url": "https://civitai.com/models/974894",
+      "trigger_words": [
+        "fscq"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "amy-brown-oc-flux-dev",
+      "runware_air_id": "liangwc:amy-brown-oc@890271",
+      "name": "Amy Brown (OC)",
+      "file": "amy-brown-oc_890271.safetensors",
+      "url": "https://civitai.com/models/796153",
+      "trigger_words": [
+        " The image shows a young woman with a petite, athletic build, and small to medium sized breast. She has fair skin and a youthful, delicate facial structure with prominent, almond-shaped hazel eyes that are wide and expressive. Her hair is a Auburn, shoulder-length, and slightly wavy. Her lips are full and naturally pink.",
+        "The image is a highly detailed, digital illustration in a realistic anime style. "
+      ],
+      "tags": [
+        "flux-dev",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "flux-dev",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "asian-girl-face-concept-illustrious",
+      "runware_air_id": "liangwc:asian-girl-face-concept@1340633",
+      "name": "Asian Girl Face [ Concept ] [ PXL / illustrious ] by Leaf",
+      "file": "asian-girl-face-concept_1340633.safetensors",
+      "url": "https://civitai.com/models/797226",
+      "trigger_words": [
+        "Asian"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "brown-skin-asians-wai-pony",
+      "runware_air_id": "liangwc:brown-skin-asians-wai@1640083",
+      "name": "brown_skin_asians_wai",
+      "file": "brown-skin-asians-wai_1640083.safetensors",
+      "url": "https://civitai.com/models/1450567",
+      "trigger_words": [
+        "asian",
+        "thai",
+        "epicanthal fold",
+        "brown skin"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "beautiful-asian-anime-girl-vol2-illustrious",
+      "runware_air_id": "liangwc:beautiful-asian-anime-girl-vol2@3057958",
+      "name": "Beauitful Asian Anime Girl style Vol2",
+      "file": "beautiful-asian-anime-girl-vol2_3057958.safetensors",
+      "url": "https://civitai.com/models/2721102",
+      "trigger_words": [
+        "YUNABAE,1 girl,solo,Brown hair,brown eyes",
+        "School uniform",
+        "White dress",
+        "Bikini",
+        "retro artstyle,anime screencap, anime colouring",
+        "Short hair, mature woman"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "anime-west-asian-girl-v1-illustrious",
+      "runware_air_id": "liangwc:anime-west-asian-girl-v1@3089853",
+      "name": "Anime West Asian Girl V1",
+      "file": "anime-west-asian-girl-v1_3089853.safetensors",
+      "url": "https://civitai.com/models/2746892",
+      "trigger_words": [
+        "Ecrinkaya,1girl,solo,brown hair,blue eyes",
+        "navel,bra,underwear,belt,breasts,",
+        "bikini,side-tie bikini bottom,black bikini,breasts",
+        "retro artstyle,anime coloring,"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "sexy-oc-illustrious",
+      "runware_air_id": "liangwc:sexy-oc@2565434",
+      "name": "SEXY OC",
+      "file": "sexy-oc_2565434.safetensors",
+      "url": "https://civitai.com/models/2279369",
+      "trigger_words": [
+        "1girl, asian girl, multicolored hair, blonde hair, pink hair gradient, long hair, wavy hair, braid, bangs, red eyes, huge breasts,",
+        "ribbed sweater, beige sweater, cleavage, short sleeves, pencil skirt, red skirt,",
+        "white top, oversized top, see through top, off the shoulders, open top, bikini, thin bikini, black bikini, bulging breasts, bare shoulders, midriff, navel, collarbone,",
+        "navel, off-shoulder, white overhang top, black pleated skirt, black bra straps, black skirt,",
+        "maid headdress, frills, detached sleeves, thigh gap, zettai ryouiki, detached collar, bikini, maid bikini, apron, frilled apron, maid apron, collarbone, cleavage, waist apron, navel, skirt, miniskirt,"
+      ],
+      "tags": [
+        "illustrious",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "illustrious",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "zekut-s-busty-korean-pony",
+      "runware_air_id": "liangwc:zekut-s-busty-korean@2812007",
+      "name": "Zekut's Busty Korean",
+      "file": "zekut-s-busty-korean_2812007.safetensors",
+      "url": "https://civitai.com/models/2498829",
+      "trigger_words": [
+        "1girl, asian, korean, ponytail, large breasts, shiny skin, naked, portrait, close up, cinematic, atmospheric, good lighting, amateur, candid, raw"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "himari-yet-another-petit-pony",
+      "runware_air_id": "liangwc:himari-yet-another-petit@520660",
+      "name": "Himari - Yet another petite asian girl",
+      "file": "himari-yet-another-petit_520660.safetensors",
+      "url": "https://civitai.com/models/467923",
+      "trigger_words": [
+        "Himari",
+        "Black hair",
+        "long hair"
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "futa-world-nami-pony",
+      "runware_air_id": "liangwc:futa-world-nami@3248907",
+      "name": "Futa World - Nami💜",
+      "file": "futa-world-nami_3248907.safetensors",
+      "url": "https://civitai.com/models/2875160",
+      "trigger_words": [
+        "Face: Nami, pale skin, long eyelashes, light brown eyebrows, pink lips.",
+        "Hair: Aqua hair, high ponytail, side-swept bangs, loose strands, sidelocks.",
+        "Eyes: Big bright aqua eyes."
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "futa-world-uta-pony",
+      "runware_air_id": "liangwc:futa-world-uta@3057692",
+      "name": "Futa World - Uta💜",
+      "file": "futa-world-uta_3057692.safetensors",
+      "url": "https://civitai.com/models/2720876",
+      "trigger_words": [
+        "Uta, East Asian girl, pale skin, symmetrical face, sharp features, light gray eyes, winged black eyeliner, voluminous choppy bob, deep black hair, wispy bangs, neat dark eyebrows, full matte nude lips.",
+        "black camisole, cleavage, white pendant, pink bra, denim jacket, open jacket, undersized clothing, short lace skirt, black frills."
+      ],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
+    },
+    {
+      "id": "yoko-asian-girl-pony",
+      "runware_air_id": "liangwc:yoko-asian-girl@1289195",
+      "name": "🌸Yoko Asian Girl🌸",
+      "file": "yoko-asian-girl_1289195.safetensors",
+      "url": "https://civitai.com/models/1146255",
+      "trigger_words": [],
+      "tags": [
+        "pony",
+        "runware-verified"
+      ],
+      "default_scale": 0.8,
+      "scale_range": [
+        0.5,
+        1.2
+      ],
+      "description": "",
+      "base_model": "pony",
+      "category": "new",
+      "nsfw": true
     }
   ],
   "categories": {
