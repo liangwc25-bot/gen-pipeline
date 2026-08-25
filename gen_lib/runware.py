@@ -60,6 +60,8 @@ MODELS = {
     "speciosa-anime": {"id": "liangwc:speciosa-anime@1416220", "name": "Speciosa Anime v1.5 (Pony)", "price": "~$0.003/张"},
     "dreamisoa-remix": {"id": "liangwc:dreamisoa-remix@3178577", "name": "Dreamisoa_remix SemiReal v2 EVO (Pony)", "price": "~$0.003/张"},
     "wicked-pony-mix": {"id": "liangwc:wicked-pony-mix@1317288", "name": "Wicked Pony Mix v2.1 (Pony)", "price": "~$0.003/张"},
+    "bemypony-photo4": {"id": "liangwc:bemypony-photo4@973878", "name": "BeMyPony Photo4 (Pony)", "price": "~$0.003/张"},
+    "magicalpony": {"id": "liangwc:magicalpony@713992", "name": "MagicalPony3 (Pony)", "price": "~$0.003/张"},
     "zimage-alibaba": {"id": "runware:z-image@turbo", "name": "Alibaba Z-Image-Turbo", "price": "$0.0006/张"},
     "zimage-moody":   {"id": "persona:620406@2745677", "name": "Moody Pro Mix (Z-Image)", "price": "$0.0013/张"},
     "zimage-stable-yogi": {"id": "liangwc:zimage-turbo-stable-yogi@3096324", "name": "Zimage Turbo by Stable Yogi (2603 Fp8)", "price": "~$0.0013/张"},
