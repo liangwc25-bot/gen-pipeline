@@ -53,6 +53,8 @@ MODELS = {
     "qwen-edit-plus": {"id": "runware:108@22", "name": "Qwen-Image-Edit-Plus", "price": "~$0.0064/张", "i2i": "ref"},
     "flux-klein":     {"id": "runware:400@2", "name": "FLUX.2 [klein] 9B", "price": "~$0.00078/张", "i2i": "ref"},
     "fantasy-reality-xl": {"id": "civitai:230569@260218", "name": "Fantasy Reality Fusion XL", "price": "~$0.003/张"},
+    "hoj-illustrious-xl": {"id": "liangwc:hoj-illustrious-xl@2384232", "name": "(HoJ) High on Juice - Semi-realistic IllustriousXL v4.0c", "price": "~$0.003/张"},
+    "ponymature-pony": {"id": "liangwc:ponymature-ponyeclipse@477658", "name": "Ponymature SDXL PonyEclipse 1.0", "price": "~$0.003/张"},
     "zimage-alibaba": {"id": "runware:z-image@turbo", "name": "Alibaba Z-Image-Turbo", "price": "$0.0006/张"},
     "zimage-moody":   {"id": "persona:620406@2745677", "name": "Moody Pro Mix (Z-Image)", "price": "$0.0013/张"},
     "zimage-stable-yogi": {"id": "liangwc:zimage-turbo-stable-yogi@3096324", "name": "Zimage Turbo by Stable Yogi (2603 Fp8)", "price": "~$0.0013/张"},
