@@ -138,9 +138,6 @@ textarea { resize: vertical; min-height: 60px; }
 .lora-dropdown .lora-opt:hover, .lora-dropdown .lora-opt.active {
   background: rgba(124,92,252,0.15); color: var(--accent);
 }
-.lora-dropdown .lora-opt .lora-tags {
-  font-size: 0.7rem; color: var(--text2); margin-top: 2px;
-}
 .lora-dropdown .lora-opt.clear { color: var(--text2); font-style: italic; }
 .lora-dropdown .lora-opt.custom { color: var(--accent); }
 .noise-badge {
@@ -303,7 +300,6 @@ function filterLoraDropdown() {
   items.forEach(l => {
     html += `<div class="lora-opt" onclick="selectLora('${escapeHtml(l.id)}')">
       <div>${noiseBadge(l)} ${escapeHtml(l.name)}</div>
-      <div class="lora-tags">${(l.tags || []).join(' · ')}</div>
     </div>`;
   });
   if (q && items.length === 0) {
