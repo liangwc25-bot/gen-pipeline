@@ -69,6 +69,12 @@ textarea { resize: vertical; min-height: 60px; }
 .lora-row { margin-top: 10px; display: flex; gap: 8px; align-items: flex-end; }
 .lora-row input[type="text"] { flex: 1; }
 .lora-row input.has-value { color: var(--accent); font-weight: 600; border-color: rgba(255,255,255,0.25); }
+.lora-remove {
+  width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
+  background: rgba(255,255,255,0.04); color: var(--text2); font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: .2s; align-self: flex-end;
+}
+.lora-remove:hover { border-color: var(--red); color: var(--red); background: rgba(255,77,79,0.08); }
 
 .submit-btn {
   width: 100%; background: var(--accent); border: none;
@@ -145,17 +151,6 @@ textarea { resize: vertical; min-height: 60px; }
 .noise-badge.n-high { background: rgba(66,133,244,0.18); color: #7db3ff; border: 1px solid rgba(66,133,244,0.4); }
 .noise-badge.n-low  { background: rgba(251,188,5,0.16); color: #f5cd57; border: 1px solid rgba(251,188,5,0.4); }
 .noise-badge.n-both { background: rgba(168,85,247,0.18); color: #c9a6f5; border: 1px solid rgba(168,85,247,0.45); }
-.lora-selected {
-  display: flex; align-items: center; gap: 8px;
-  padding: 6px 0; font-size: 0.8rem;
-}
-.lora-selected .lora-name { color: var(--accent); font-weight: 600; }
-.lora-selected .lora-clear {
-  background: none; border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 4px; color: var(--text2); font-size: 0.7rem;
-  padding: 1px 6px; cursor: pointer;
-}
-.lora-selected .lora-clear:hover { border-color: var(--red); color: var(--red); }
 
 @media (max-width: 480px) {
   body { padding: 12px; }
@@ -219,8 +214,8 @@ textarea { resize: vertical; min-height: 60px; }
       <label>Scale</label>
       <input type="number" id="loraScale" value="1.0" min="0.1" max="2.0" step="0.1">
     </div>
+    <button id="loraClearBtn" class="lora-remove" title="移除 LoRA" onclick="clearLora()" style="display:none;">×</button>
   </div>
-  <div id="loraSelected" style="display:none;margin-top:6px;font-size:0.78rem;color:var(--accent);"></div>
   <div class="lora-row" style="margin-top:8px;">
     <div style="flex:1;position:relative;">
       <label style="display:block;font-size:0.75rem;color:var(--text2);margin-bottom:4px;">LoRA #2 (LOW, 可选)</label>
@@ -234,8 +229,7 @@ textarea { resize: vertical; min-height: 60px; }
       <label>Scale</label>
       <input type="number" id="loraScale2" value="1.0" min="0.1" max="2.0" step="0.1">
     </div>
-  </div>
-  <div id="loraSelected2" style="display:none;margin-top:6px;font-size:0.78rem;color:var(--accent);"></div>
+    <button id="loraClearBtn2" class="lora-remove" title="移除 LoRA #2" onclick="clearLora2()" style="display:none;">×</button>
   </div>
 </div>
 
@@ -338,14 +332,8 @@ function selectLora(id) {
   const search = document.getElementById('loraSearch');
   search.value = lora.name;
   search.classList.add('has-value');
+  document.getElementById('loraClearBtn').style.display = 'flex';
   document.getElementById('loraDropdown').classList.remove('show');
-  
-  const sel = document.getElementById('loraSelected');
-  sel.style.display = 'block';
-  sel.innerHTML = `<span class="lora-selected">
-    <span class="lora-name">🎬 ${escapeHtml(lora.name)}</span>
-    <button class="lora-clear" onclick="clearLora()">✕</button>
-  </span>`;
 }
 
 function clearLora() {
@@ -353,9 +341,8 @@ function clearLora() {
   document.getElementById('loraId').value = '';
   document.getElementById('loraSearch').value = '';
   document.getElementById('loraSearch').classList.remove('has-value');
+  document.getElementById('loraClearBtn').style.display = 'none';
   document.getElementById('loraDropdown').classList.remove('show');
-  document.getElementById('loraSelected').style.display = 'none';
-  document.getElementById('loraSelected').innerHTML = '';
 }
 
 function customLoraUrl() {
@@ -365,13 +352,9 @@ function customLoraUrl() {
   document.getElementById('loraUrl').value = url;
   document.getElementById('loraId').value = '';
   document.getElementById('loraSearch').value = '';
+  document.getElementById('loraSearch').classList.add('has-value');
+  document.getElementById('loraClearBtn').style.display = 'flex';
   document.getElementById('loraDropdown').classList.remove('show');
-  const sel = document.getElementById('loraSelected');
-  sel.style.display = 'block';
-  sel.innerHTML = `<span class="lora-selected">
-    <span class="lora-name">🔗 自定义 URL</span>
-    <button class="lora-clear" onclick="clearLora()">✕</button>
-  </span>`;
 }
 
 // Close dropdown on outside click
@@ -403,24 +386,23 @@ function selectLora2(id) {
   var search = document.getElementById('loraSearch2');
   search.value = l.name;
   search.classList.add('has-value');
+  document.getElementById('loraClearBtn2').style.display = 'flex';
   document.getElementById('loraDropdown2').classList.remove('show');
-  var s = document.getElementById('loraSelected2'); s.style.display = 'block';
-  s.innerHTML = '<span class="lora-selected"><span class="lora-name">🎬 ' + escapeHtml(l.name) + ' (LOW)</span><button class="lora-clear" onclick="clearLora2()">✕</button></span>';
 }
 function clearLora2() {
   document.getElementById('loraUrl2').value = ''; document.getElementById('loraId2').value = '';
   document.getElementById('loraSearch2').value = ''; document.getElementById('loraSearch2').classList.remove('has-value');
+  document.getElementById('loraClearBtn2').style.display = 'none';
   document.getElementById('loraDropdown2').classList.remove('show');
-  document.getElementById('loraSelected2').style.display = 'none'; document.getElementById('loraSelected2').innerHTML = '';
 }
 function customLoraUrl2() {
   var q = document.getElementById('loraSearch2').value.trim();
   var url = prompt('输入 LoRA #2 .safetensors URL:', q || '');
   if (!url) return;
   document.getElementById('loraUrl2').value = url; document.getElementById('loraId2').value = '';
-  document.getElementById('loraSearch2').value = ''; document.getElementById('loraDropdown2').classList.remove('show');
-  var s = document.getElementById('loraSelected2'); s.style.display = 'block';
-  s.innerHTML = '<span class="lora-selected"><span class="lora-name">🔗 自定义 URL #2</span><button class="lora-clear" onclick="clearLora2()">✕</button></span>';
+  document.getElementById('loraSearch2').value = ''; document.getElementById('loraSearch2').classList.add('has-value');
+  document.getElementById('loraClearBtn2').style.display = 'flex';
+  document.getElementById('loraDropdown2').classList.remove('show');
 }
 document.addEventListener('click', function(e) {
   if (!e.target.closest('#loraSearch2') && !e.target.closest('#loraDropdown2'))
