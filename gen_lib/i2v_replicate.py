@@ -197,7 +197,27 @@ def generate(image_path: str, prompt: str, *,
     from datetime import datetime
     ts = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
     source_stem = Path(image_path).stem[:30]
-    fname = f"i2v_{source_stem}_{ts}.mp4"
+
+    # Build a clear, consistent filename: i2v_{source}_{lora}_{noise}_{res}_{frames}fps}_{ts}.mp4
+    def _lora_label(url, slot):
+        if not url:
+            return ""
+        stem = url.rstrip("/").split("/")[-1].split("?")[0]
+        if stem.lower().endswith(".safetensors"):
+            stem = stem[:-len(".safetensors")]
+        # strip obvious high/low markers already in the filename
+        low = "-low" in stem.lower() or "_low" in stem.lower() or "-ln" in stem.lower() or "low" in stem.lower().split("_")[-1]
+        hi  = "high" in stem.lower() or "hi_" in stem.lower() or "-hn" in stem.lower()
+        tag = "low" if low else ("high" if hi else "")
+        return f"{stem}({slot}:{tag})" if tag else f"{stem}({slot})"
+
+    lora_hi = _lora_label(lora_url, "hi")
+    lora_lo = _lora_label(lora_url_2, "lo")
+    lora_part = f"_{lora_hi}" if lora_hi else ""
+    if lora_lo:
+        lora_part += f"+{lora_lo}"
+    res_part = f"_{resolution}" if resolution else ""
+    fname = f"i2v_{source_stem}{lora_part}{res_part}_{num_frames}fps{fps}_{ts}.mp4"
     out_path = OUTPUT_DIR / fname
     out_path.write_bytes(video_data)
     
