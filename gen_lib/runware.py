@@ -16,6 +16,18 @@ import urllib.error
 from pathlib import Path
 from gen_lib.common import get_key, save_image, http_post, download_bytes
 
+
+def _default_cfg(model_key):
+    """Default CFG by model family. Flux=3, ZIT=1, SD1.5=7, else (Pony/Illu/SDXL)=6."""
+    if model_key.startswith("flux-") or model_key.endswith("-flux"):
+        return 3.0
+    if model_key.startswith("zimage-") or model_key == "persona-zit":
+        return 1.0
+    if model_key.endswith("-15"):
+        return 7.0
+    return 6.0
+
+
 MODELS = {
     "flux-dev":       {"id": "runware:101@1", "name": "FLUX.1-dev", "price": "$0.0013/张"},
     "flux-schnell":   {"id": "bfl:1@1", "name": "FLUX Schnell", "price": "$0.0023/张"},
@@ -62,6 +74,8 @@ MODELS = {
     "wicked-pony-mix": {"id": "liangwc:wicked-pony-mix@1317288", "name": "Wicked Pony Mix v2.1 (Pony)", "price": "~$0.003/张"},
     "bemypony-photo4": {"id": "liangwc:bemypony-photo4@973878", "name": "BeMyPony Photo4 (Pony)", "price": "~$0.003/张"},
     "magicalpony": {"id": "liangwc:magicalpony@713992", "name": "MagicalPony3 (Pony)", "price": "~$0.003/张"},
+    "pinkiepie-pony-mix": {"id": "liangwc:pinkiepie-pony-mix@1159818", "name": "PinkiePie pony mix v3.6 Fp16 (Pony)", "price": "~$0.003/张"},
+    "dreamisoa-anime": {"id": "liangwc:dreamisoa-anime@3152606", "name": "Dreamisoa_remix_anime v3 EVO (Pony)", "price": "~$0.003/张"},
     "zimage-alibaba": {"id": "runware:z-image@turbo", "name": "Alibaba Z-Image-Turbo", "price": "$0.0006/张"},
     "zimage-moody":   {"id": "persona:620406@2745677", "name": "Moody Pro Mix (Z-Image)", "price": "$0.0013/张"},
     "zimage-stable-yogi": {"id": "liangwc:zimage-turbo-stable-yogi@3096324", "name": "Zimage Turbo by Stable Yogi (2603 Fp8)", "price": "~$0.0013/张"},
@@ -258,7 +272,7 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
         "width": w,
         "height": h,
         "steps": steps,
-        "CFGScale": cfg_scale if cfg_scale is not None else (7.0 if model_key in ("dreamshaper-15", "majicmix-real-15", "realcartoon3d-15", "aniverse-15", "chikmix-15", "realcartoon-real-15", "perfect-world-15", "majicmix-lux-15", "dark-sushi-25d-15", "guofeng-wuxia-15", "tastyrice-cg-15", "onlyrealistic-15") else 6.0 if model_key in ("pony-xl", "pony-real", "prefect-ill-xl", "guofeng4-xl", "pornmaster", "sdxl-vanilla", "dreamshaper-xl", "juggernaut-xl", "lustify", "fantasy-reality-xl") else 3.5),
+        "CFGScale": cfg_scale if cfg_scale is not None else _default_cfg(model_key),
         "safety": {"checkContent": False},
         "outputFormat": "PNG",
         "includeCost": True,
