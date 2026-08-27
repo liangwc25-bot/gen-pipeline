@@ -798,10 +798,9 @@ function insertMotionPreset(el, ev) {
   const pos = (before + sep + text + ' ').length;
   ta.setSelectionRange(pos, pos);
   ta.focus();
-  // 不阻止冒泡, 让 document handler 统一关闭下拉
 }
-document.addEventListener('click', function(e) {
-  // 点击不在编辑 modal 内时, 统一关闭预设下拉
+// 用 pointerdown 关闭下拉 —— 它比 click 更早触发, 保证点击预设项时下拉先收起
+document.addEventListener('pointerdown', function(e) {
   if (!e.target.closest('#snippet-editor-overlay')) {
     document.getElementById('motion-presets-dd').style.display = 'none';
   }
