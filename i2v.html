@@ -792,6 +792,8 @@ function toggleMotionPresets(e) {
   dd.classList.add('open');
 }
 function insertMotionPreset(el) {
+  // 先收起下拉(确保即使后续出错也收起了)
+  closeMotionPresets();
   // 在 cursor 位置粘贴(不整段替换)
   const ta = document.getElementById('prompt');
   const text = el.dataset.text;
@@ -801,10 +803,8 @@ function insertMotionPreset(el) {
   const sep = before.length > 0 && !before.endsWith(',') && !before.endsWith(' ') ? ', ' : '';
   ta.value = before + sep + text + ' ' + after;
   const pos = (before + sep + text + ' ').length;
-  ta.setSelectionRange(pos, pos);
+  try { ta.setSelectionRange(pos, pos); } catch(e) {}
   ta.focus();
-  // 立即收起下拉
-  closeMotionPresets();
 }
 function closeMotionPresets() {
   document.getElementById('motion-presets-dd').classList.remove('open');
