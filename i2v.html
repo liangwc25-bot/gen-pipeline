@@ -765,17 +765,20 @@ function toggleMotionPresets(e) {
     if (!items || items.length === 0) continue;
     html += `<div style="padding:4px 12px;font-size:0.68rem;color:var(--accent);font-weight:700;margin-top:2px">${escHtml(group)}</div>`;
     items.forEach((p) => {
-      html += `<div onclick="insertMotionPreset(this)" data-text="${escHtml(p.text)}" style="padding:6px 12px;cursor:pointer;font-size:0.8rem;color:var(--text);transition:.12s" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'"><div style="font-weight:500">${escHtml(p.label)}</div><div style="font-size:0.72rem;color:var(--text2);margin-top:1px">${escHtml(p.text)}</div></div>`;
+      html += `<div onclick="insertMotionPreset(this, event)" data-text="${escHtml(p.text)}" style="padding:6px 12px;cursor:pointer;font-size:0.8rem;color:var(--text);transition:.12s" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'"><div style="font-weight:500">${escHtml(p.label)}</div><div style="font-size:0.72rem;color:var(--text2);margin-top:1px">${escHtml(p.text)}</div></div>`;
     });
   }
   html += `<div onclick="openSnippetEditor()" style="padding:8px 12px;cursor:pointer;font-size:0.78rem;color:var(--accent);border-top:1px solid rgba(255,255,255,0.1);margin-top:4px" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'">✏️ 编辑预设…</div>`;
   dd.innerHTML = html;
   dd.style.display = 'block';
 }
-function insertMotionPreset(el) {
+function insertMotionPreset(el, ev) {
   const ta = document.getElementById('prompt');
   ta.value = el.dataset.text;
-  document.getElementById('motion-presets-dd').style.display = 'none';
+  // 强制收回下拉(display none), 并阻止点击继续冒泡
+  const dd = document.getElementById('motion-presets-dd');
+  dd.style.display = 'none';
+  if (ev && ev.stopPropagation) ev.stopPropagation();
   ta.focus();
 }
 document.addEventListener('click', function(e) {
