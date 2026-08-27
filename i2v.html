@@ -197,6 +197,10 @@ textarea { resize: vertical; min-height: 180px; }
 .snippet-editor-actions .se-done { background: var(--accent); color: #fff; }
 .snippet-editor-actions .se-cancel { background: rgba(255,255,255,0.08); color: var(--text); }
 
+/* 动作预设下拉: 默认隐藏, .open 显示 (class 控制, 避免 display 切换边界问题) */
+#motion-presets-dd { display: none; }
+#motion-presets-dd.open { display: block; }
+
 @media (max-width: 480px) {
   body { padding: 12px; }
   .source-section { flex-direction: column; align-items: flex-start; }
@@ -224,7 +228,7 @@ textarea { resize: vertical; min-height: 180px; }
 
 <!-- Prompt -->
 <div class="card">
-  <label class="section-label">动作描述 <span style="position:relative;display:inline"><button class="snippet-btn" onclick="toggleMotionPresets(event)" style="font-size:0.7rem;padding:2px 6px;margin-left:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:var(--text2);cursor:pointer">📌 预设</button><div class="snippet-dropdown" id="motion-presets-dd" style="display:none;position:absolute;z-index:200;background:var(--card);border:1px solid rgba(255,255,255,0.12);border-radius:10px;min-width:280px;max-height:300px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.5);padding:4px 0;top:100%;left:0"></div></span></label>
+  <label class="section-label">动作描述 <span style="position:relative;display:inline"><button class="snippet-btn" onclick="toggleMotionPresets(event)" style="font-size:0.7rem;padding:2px 6px;margin-left:4px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:var(--text2);cursor:pointer">📌 预设</button><div class="snippet-dropdown" id="motion-presets-dd" style="position:absolute;z-index:200;background:var(--card);border:1px solid rgba(255,255,255,0.12);border-radius:10px;min-width:280px;max-height:300px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.5);padding:4px 0;top:100%;left:0"></div></span></label>
   <textarea id="prompt" placeholder="英文动作描述: She slowly turns, gentle breathing, soft breeze through hair..."></textarea>
 </div>
 
@@ -773,20 +777,21 @@ function escHtml(s) {
 function toggleMotionPresets(e) {
   e.stopPropagation();
   const dd = document.getElementById('motion-presets-dd');
-  if (dd.style.display === 'block') { dd.style.display = 'none'; return; }
+  // 用 .open class 控制显示
+  if (dd.classList.contains('open')) { dd.classList.remove('open'); return; }
   let html = '<div style="padding:4px 12px;font-size:0.7rem;color:var(--text2);font-weight:700">选择一个预设动作…</div>';
   for (const [group, items] of Object.entries(i2vSnippets)) {
     if (!items || items.length === 0) continue;
     html += `<div style="padding:4px 12px;font-size:0.68rem;color:var(--accent);font-weight:700;margin-top:2px">${escHtml(group)}</div>`;
     items.forEach((p) => {
-      html += `<div onclick="insertMotionPreset(this, event)" data-text="${escHtml(p.text)}" style="padding:6px 12px;cursor:pointer;font-size:0.8rem;color:var(--text);transition:.12s" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'"><div style="font-weight:500">${escHtml(p.label)}</div><div style="font-size:0.72rem;color:var(--text2);margin-top:1px">${escHtml(p.text)}</div></div>`;
+      html += `<div onclick="insertMotionPreset(this)" data-text="${escHtml(p.text)}" style="padding:6px 12px;cursor:pointer;font-size:0.8rem;color:var(--text);transition:.12s" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'"><div style="font-weight:500">${escHtml(p.label)}</div><div style="font-size:0.72rem;color:var(--text2);margin-top:1px">${escHtml(p.text)}</div></div>`;
     });
   }
-  html += `<div onclick="openSnippetEditor()" style="padding:8px 12px;cursor:pointer;font-size:0.78rem;color:var(--accent);border-top:1px solid rgba(255,255,255,0.1);margin-top:4px" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'">✏️ 编辑预设…</div>`;
+  html += `<div onclick="openSnippetEditor(event)" style="padding:8px 12px;cursor:pointer;font-size:0.78rem;color:var(--accent);border-top:1px solid rgba(255,255,255,0.1);margin-top:4px" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'">✏️ 编辑预设…</div>`;
   dd.innerHTML = html;
-  dd.style.display = 'block';
+  dd.classList.add('open');
 }
-function insertMotionPreset(el, ev) {
+function insertMotionPreset(el) {
   // 在 cursor 位置粘贴(不整段替换)
   const ta = document.getElementById('prompt');
   const text = el.dataset.text;
@@ -798,19 +803,25 @@ function insertMotionPreset(el, ev) {
   const pos = (before + sep + text + ' ').length;
   ta.setSelectionRange(pos, pos);
   ta.focus();
+  // 立即收起下拉
+  closeMotionPresets();
 }
-// 用 pointerdown 关闭下拉 —— 它比 click 更早触发, 保证点击预设项时下拉先收起
-document.addEventListener('pointerdown', function(e) {
-  if (!e.target.closest('#snippet-editor-overlay')) {
-    document.getElementById('motion-presets-dd').style.display = 'none';
+function closeMotionPresets() {
+  document.getElementById('motion-presets-dd').classList.remove('open');
+}
+// 点击下拉外/按钮外时关闭 (LoRA 下拉已验证的 .show 模式同款)
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#motion-presets-dd') && !e.target.closest('.snippet-btn') && !e.target.closest('#snippet-editor-overlay')) {
+    closeMotionPresets();
   }
 });
 
 // ── Editor modal ──
 let _editorSnapshot = null;
-function openSnippetEditor() {
+function openSnippetEditor(e) {
+  if (e && e.stopPropagation) e.stopPropagation();
   _editorSnapshot = JSON.parse(JSON.stringify(i2vSnippets));
-  document.getElementById('motion-presets-dd').style.display = 'none';
+  closeMotionPresets();
   const container = document.getElementById('snippet-editor-groups');
   let html = '';
   for (const [group, items] of Object.entries(i2vSnippets)) {
