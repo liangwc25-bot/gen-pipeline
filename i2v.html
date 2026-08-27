@@ -777,6 +777,8 @@ function escHtml(s) {
 function toggleMotionPresets(e) {
   e.stopPropagation();
   const dd = document.getElementById('motion-presets-dd');
+  // 防抖: 如果刚因选中预设而关闭(<300ms), 忽略这次点击(避免 phantom 二次 click 重新打开)
+  if (Date.now() - (window.__presetClosedAt || 0) < 300) return;
   // 用 .open class 控制显示
   if (dd.classList.contains('open')) { dd.classList.remove('open'); return; }
   let html = '<div style="padding:4px 12px;font-size:0.7rem;color:var(--text2);font-weight:700">选择一个预设动作…</div>';
@@ -784,35 +786,41 @@ function toggleMotionPresets(e) {
     if (!items || items.length === 0) continue;
     html += `<div style="padding:4px 12px;font-size:0.68rem;color:var(--accent);font-weight:700;margin-top:2px">${escHtml(group)}</div>`;
     items.forEach((p) => {
-      html += `<div onclick="insertMotionPreset(this)" data-text="${escHtml(p.text)}" style="padding:6px 12px;cursor:pointer;font-size:0.8rem;color:var(--text);transition:.12s" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'"><div style="font-weight:500">${escHtml(p.label)}</div><div style="font-size:0.72rem;color:var(--text2);margin-top:1px">${escHtml(p.text)}</div></div>`;
+      html += `<div class="snippet-item" data-snippet-text="${escHtml(p.text)}" style="padding:6px 12px;cursor:pointer;font-size:0.8rem;color:var(--text);transition:.12s" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'"><div style="font-weight:500">${escHtml(p.label)}</div><div style="font-size:0.72rem;color:var(--text2);margin-top:1px">${escHtml(p.text)}</div></div>`;
     });
   }
-  html += `<div onclick="openSnippetEditor(event)" style="padding:8px 12px;cursor:pointer;font-size:0.78rem;color:var(--accent);border-top:1px solid rgba(255,255,255,0.1);margin-top:4px" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'">✏️ 编辑预设…</div>`;
+  html += `<div onclick="openSnippetEditor(); return false;" style="padding:8px 12px;cursor:pointer;font-size:0.78rem;color:var(--accent);border-top:1px solid rgba(255,255,255,0.1);margin-top:4px" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'">✏️ 编辑预设…</div>`;
   dd.innerHTML = html;
   dd.classList.add('open');
 }
+// 事件委托: 点击 .snippet-item → 插入 + 关闭所有 open 的下拉 (照 T2I)
+document.addEventListener('click', function(e) {
+  const item = e.target.closest('.snippet-item');
+  if (item) {
+    insertMotionPreset(item);
+  }
+});
 function insertMotionPreset(el) {
-  // 先收起下拉(确保即使后续出错也收起了)
-  closeMotionPresets();
   // 在 cursor 位置粘贴(不整段替换)
   const ta = document.getElementById('prompt');
-  const text = el.dataset.text;
+  const text = el.dataset.snippetText || el.dataset.text;
   const start = ta.selectionStart, end = ta.selectionEnd;
   const before = ta.value.substring(0, start);
   const after = ta.value.substring(end);
   const sep = before.length > 0 && !before.endsWith(',') && !before.endsWith(' ') ? ', ' : '';
   ta.value = before + sep + text + ' ' + after;
   const pos = (before + sep + text + ' ').length;
-  try { ta.setSelectionRange(pos, pos); } catch(e) {}
+  try { ta.setSelectionRange(pos, pos); } catch(e2) {}
   ta.focus();
+  // 关闭所有 open 的下拉 (照 T2I 的可靠机制)
+  document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
+  // 记录关闭时间, 供 toggleMotionPresets 防抖忽略 phantom 二次 click
+  window.__presetClosedAt = Date.now();
 }
-function closeMotionPresets() {
-  document.getElementById('motion-presets-dd').classList.remove('open');
-}
-// 点击下拉外/按钮外时关闭 (LoRA 下拉已验证的 .show 模式同款)
+// 点击下拉外/按钮外时关闭
 document.addEventListener('click', function(e) {
   if (!e.target.closest('#motion-presets-dd') && !e.target.closest('.snippet-btn') && !e.target.closest('#snippet-editor-overlay')) {
-    closeMotionPresets();
+    document.getElementById('motion-presets-dd').classList.remove('open');
   }
 });
 
@@ -821,7 +829,7 @@ let _editorSnapshot = null;
 function openSnippetEditor(e) {
   if (e && e.stopPropagation) e.stopPropagation();
   _editorSnapshot = JSON.parse(JSON.stringify(i2vSnippets));
-  closeMotionPresets();
+  document.getElementById('motion-presets-dd').classList.remove('open');
   const container = document.getElementById('snippet-editor-groups');
   let html = '';
   for (const [group, items] of Object.entries(i2vSnippets)) {
