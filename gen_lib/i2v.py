@@ -16,8 +16,8 @@ I2V_PROVIDERS = {
         "supports_lora": True,
         "params": {
             "num_frames": 121,
-            "fps": 18,
-            "resolution": "720p",
+            "fps": 24,
+            "resolution": "480p",
             "disable_safety_checker": True,
             "go_fast": True,
         },
