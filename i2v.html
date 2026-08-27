@@ -19,6 +19,18 @@
   --bg: #f8f9fc; --card: #fff; --accent: #6c4ce0;
   --green: #16a34a; --red: #dc2626; --text: #1e293b; --text2: #64748b;
 }
+[data-theme="light"] .card { border-color: rgba(0,0,0,0.08); }
+[data-theme="light"] textarea, [data-theme="light"] input[type="text"], [data-theme="light"] select,
+[data-theme="light"] input[type="number"], [data-theme="light"] input[type="file"] {
+  border-color: rgba(0,0,0,0.12) !important; background: #fff !important;
+}
+[data-theme="light"] .lora-dropdown, [data-theme="light"] #motion-presets-dd, [data-theme="light"] .snippet-editor {
+  border-color: rgba(0,0,0,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+[data-theme="light"] .snippet-btn, [data-theme="light"] .submit-btn, [data-theme="light"] .lora-remove {
+  color: var(--text2);
+}
+[data-theme="light"] #motion-presets-dd, [data-theme="light"] .lora-dropdown { background: #fff; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -192,6 +204,8 @@ textarea { resize: vertical; min-height: 180px; }
 </style>
 </head>
 <body>
+
+<button id="theme-toggle" style="position:fixed;bottom:20px;right:20px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(128,128,128,0.3);background:var(--card);color:var(--text);font-size:1.2rem;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;transition:.2s;box-shadow:0 2px 8px rgba(0,0,0,0.15)" onclick="toggleTheme()" title="切换主题">☀️</button>
 
 <h1>🎬 图转视频</h1>
 
@@ -773,16 +787,22 @@ function toggleMotionPresets(e) {
   dd.style.display = 'block';
 }
 function insertMotionPreset(el, ev) {
+  // 在 cursor 位置粘贴(不整段替换)
   const ta = document.getElementById('prompt');
-  ta.value = el.dataset.text;
-  // 强制收回下拉(display none), 并阻止点击继续冒泡
-  const dd = document.getElementById('motion-presets-dd');
-  dd.style.display = 'none';
-  if (ev && ev.stopPropagation) ev.stopPropagation();
+  const text = el.dataset.text;
+  const start = ta.selectionStart, end = ta.selectionEnd;
+  const before = ta.value.substring(0, start);
+  const after = ta.value.substring(end);
+  const sep = before.length > 0 && !before.endsWith(',') && !before.endsWith(' ') ? ', ' : '';
+  ta.value = before + sep + text + ' ' + after;
+  const pos = (before + sep + text + ' ').length;
+  ta.setSelectionRange(pos, pos);
   ta.focus();
+  // 不阻止冒泡, 让 document handler 统一关闭下拉
 }
 document.addEventListener('click', function(e) {
-  if (!e.target.closest('#motion-presets-dd') && !e.target.closest('.snippet-btn')) {
+  // 点击不在编辑 modal 内时, 统一关闭预设下拉
+  if (!e.target.closest('#snippet-editor-overlay')) {
     document.getElementById('motion-presets-dd').style.display = 'none';
   }
 });
@@ -849,7 +869,24 @@ function addSnippetItem(group) {
   saveI2VSnippets();
   openSnippetEditor();
 }
-loadI2VSnippets();</script>
+loadI2VSnippets();
+
+// ── Theme toggle (Light/Dark) ──
+(function initTheme() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  const btn = document.getElementById('theme-toggle');
+  if (btn) btn.textContent = saved === 'light' ? '🌙' : '☀️';
+})();
+window.toggleTheme = function() {
+  const root = document.documentElement;
+  const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  const btn = document.getElementById('theme-toggle');
+  if (btn) btn.textContent = next === 'light' ? '🌙' : '☀️';
+};
+</script>
 
 <!-- Snippet editor modal -->
 <div class="snippet-editor-overlay" id="snippet-editor-overlay" onclick="if(event.target===this)closeSnippetEditor()">
