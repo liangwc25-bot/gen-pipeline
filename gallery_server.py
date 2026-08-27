@@ -165,6 +165,8 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             return self._handle_i2v()
         if self.path == "/api/upload-source":
             return self._handle_upload_source()
+        if self.path == "/api/i2v-snippets":
+            return self._handle_save_i2v_snippets()
         self.send_response(405)
         self.end_headers()
     def _handle_batch(self):
@@ -303,6 +305,46 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(json.dumps({"loras": loras}).encode())
+    
+    def _get_i2v_snippets_path(self):
+        return Path(__file__).parent / "i2v_snippets.json"
+    
+    def _handle_get_i2v_snippets(self):
+        """GET /api/i2v-snippets — get i2v motion presets (editable)."""
+        sp = self._get_i2v_snippets_path()
+        try:
+            data = json.loads(sp.read_text())
+        except Exception:
+            data = {}
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps({"snippets": data}).encode())
+    
+    def _handle_save_i2v_snippets(self):
+        """POST /api/i2v-snippets — save i2v motion presets."""
+        content_len = int(self.headers.get("Content-Length", 0))
+        try:
+            data = json.loads(self.rfile.read(content_len))
+        except json.JSONDecodeError:
+            self.send_error(400, "Invalid JSON")
+            return
+        snippets = data.get("snippets", {})
+        if not isinstance(snippets, dict):
+            self.send_error(400, "Invalid snippets")
+            return
+        sp = self._get_i2v_snippets_path()
+        try:
+            sp.write_text(json.dumps(snippets, ensure_ascii=False, indent=2))
+        except Exception as e:
+            self.send_error(500, str(e))
+            return
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps({"ok": True}).encode())
     
     def _handle_job(self):
         """GET /api/job?job=xxx — check async job status."""
@@ -650,6 +692,9 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         # API: list I2V LoRAs
         if path == "/api/i2v-loras":
             return self._handle_list_i2v_loras()
+        # API: get i2v motion presets (snippets)
+        if path == "/api/i2v-snippets":
+            return self._handle_get_i2v_snippets()
         # API: send to Telegram
         if path == "/api/send":
             filename = params.get("filename", [None])[0]

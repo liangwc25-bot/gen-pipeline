@@ -59,7 +59,7 @@ textarea, input[type="text"], select {
 textarea:focus, input:focus, select:focus {
   outline: none; border-color: var(--accent);
 }
-textarea { resize: vertical; min-height: 60px; }
+textarea { resize: vertical; min-height: 180px; }
 .params-row {
   display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap;
 }
@@ -148,6 +148,42 @@ textarea { resize: vertical; min-height: 60px; }
 .noise-badge.n-high { background: rgba(66,133,244,0.18); color: #7db3ff; border: 1px solid rgba(66,133,244,0.4); }
 .noise-badge.n-low  { background: rgba(251,188,5,0.16); color: #f5cd57; border: 1px solid rgba(251,188,5,0.4); }
 .noise-badge.n-both { background: rgba(168,85,247,0.18); color: #c9a6f5; border: 1px solid rgba(168,85,247,0.45); }
+
+/* ── Snippet editor modal ── */
+.snippet-editor-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 500;
+  display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.snippet-editor-overlay.open { display: flex; }
+.snippet-editor {
+  background: var(--card); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px;
+  width: 100%; max-width: 520px; max-height: 80vh; overflow-y: auto; padding: 20px;
+}
+.snippet-editor h3 { margin: 0 0 16px; font-size: 1rem; }
+.snippet-editor .se-group { margin-bottom: 18px; }
+.snippet-editor .se-group-label { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.snippet-editor .se-row { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; padding: 10px; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(255,255,255,0.02); }
+.snippet-editor .se-row input, .snippet-editor .se-row textarea {
+  width: 100%; font-size: 0.82rem; padding: 8px 10px; border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: var(--text);
+}
+.snippet-editor .se-row textarea { min-height: 70px; resize: vertical; line-height: 1.4; }
+.snippet-editor .se-del {
+  align-self: flex-end; background: none; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px; color: var(--text2); width: 28px; height: 28px; cursor: pointer; font-size: 0.9rem;
+}
+.snippet-editor .se-del:hover { border-color: var(--red); color: var(--red); }
+.snippet-editor .se-add button {
+  width: 100%; padding: 8px; background: rgba(124,92,252,0.12); color: var(--accent);
+  border: 1px dashed rgba(124,92,252,0.4); border-radius: 8px; cursor: pointer; font-size: 0.82rem;
+}
+.snippet-editor .se-add button:hover { background: rgba(124,92,252,0.2); }
+.snippet-editor-actions { display: flex; gap: 10px; margin-top: 8px; }
+.snippet-editor-actions button {
+  flex: 1; padding: 10px; border-radius: 8px; cursor: pointer; font-size: 0.88rem; border: none;
+}
+.snippet-editor-actions .se-done { background: var(--accent); color: #fff; }
+.snippet-editor-actions .se-cancel { background: rgba(255,255,255,0.08); color: var(--text); }
 
 @media (max-width: 480px) {
   body { padding: 12px; }
@@ -681,29 +717,64 @@ document.addEventListener('keydown', function(e) {
     submitI2V();
   }
 });
-// ── Motion presets ──
-const MOTION_PRESETS = [
-  { label: '🌬️ 呼吸+微风', text: 'Gentle breathing, soft breeze through hair, subtle head tilt, slight shoulder movement, natural expression, warm ambient light' },
-  { label: '👁️ 眼神+微动', text: 'Subtle eye movement, slow blink, gentle smile forming, slight head turn, hair softly swaying, natural lighting, cinematic' },
-  { label: '🌸 轻转身', text: 'Slow graceful turn, gentle movement, hair flowing naturally, soft breeze, subtle body sway, dreamy atmosphere' },
-  { label: '✨ 静静发光', text: 'Still and serene, subtle light changes, gentle breathing visible in chest, soft sparkle in eyes, atmospheric, cinematic slow motion' },
-  { label: '💃 轻微摆动', text: 'Subtle swaying motion, gentle weight shift, hair dancing in light wind, soft fabric movement, relaxed natural pose, warm lighting' },
-  { label: '🎭 表情变化', text: 'Slow change of expression, gentle smile emerging, eyes softening, subtle emotion shift, natural lighting, cinematic close-up' },
-];
+// ── Motion presets (editable, like T2I) ──
+let i2vSnippets = {};
+const I2V_DEFAULT_SNIPPETS = {
+  "✏️ 自定义": [],
+  "🎬 动作预设": [
+    { label: '🌬️ 呼吸+微风', text: 'Gentle breathing, soft breeze through hair, subtle head tilt, slight shoulder movement, natural expression, warm ambient light' },
+    { label: '👁️ 眼神+微动', text: 'Subtle eye movement, slow blink, gentle smile forming, slight head turn, hair softly swaying, natural lighting, cinematic' },
+    { label: '🌸 轻转身', text: 'Slow graceful turn, gentle movement, hair flowing naturally, soft breeze, subtle body sway, dreamy atmosphere' },
+    { label: '✨ 静静发光', text: 'Still and serene, subtle light changes, gentle breathing visible in chest, soft sparkle in eyes, atmospheric, cinematic slow motion' },
+    { label: '💃 轻微摆动', text: 'Subtle swaying motion, gentle weight shift, hair dancing in light wind, soft fabric movement, relaxed natural pose, warm lighting' },
+    { label: '🎭 表情变化', text: 'Slow change of expression, gentle smile emerging, eyes softening, subtle emotion shift, natural lighting, cinematic close-up' }
+  ]
+};
+
+async function loadI2VSnippets() {
+  try {
+    const res = await fetch('/api/i2v-snippets');
+    const data = await res.json();
+    i2vSnippets = data.snippets || {};
+  } catch(e) { i2vSnippets = {}; }
+  if (!i2vSnippets['✏️ 自定义']) {
+    i2vSnippets = { '✏️ 自定义': [], ...i2vSnippets };
+  }
+}
+async function saveI2VSnippets() {
+  try {
+    await fetch('/api/i2v-snippets', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ snippets: i2vSnippets }),
+    });
+  } catch(e) { /* silent */ }
+}
+function escHtml(s) {
+  const div = document.createElement('div');
+  div.textContent = s;
+  return div.innerHTML;
+}
+
 function toggleMotionPresets(e) {
   e.stopPropagation();
   const dd = document.getElementById('motion-presets-dd');
   if (dd.style.display === 'block') { dd.style.display = 'none'; return; }
   let html = '<div style="padding:4px 12px;font-size:0.7rem;color:var(--text2);font-weight:700">选择一个预设动作…</div>';
-  MOTION_PRESETS.forEach((p, i) => {
-    html += `<div onclick="insertMotionPreset(${i})" style="padding:6px 12px;cursor:pointer;font-size:0.8rem;color:var(--text);transition:.12s" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'"><div style="font-weight:500">${p.label}</div><div style="font-size:0.72rem;color:var(--text2);margin-top:1px">${p.text}</div></div>`;
-  });
+  for (const [group, items] of Object.entries(i2vSnippets)) {
+    if (!items || items.length === 0) continue;
+    html += `<div style="padding:4px 12px;font-size:0.68rem;color:var(--accent);font-weight:700;margin-top:2px">${escHtml(group)}</div>`;
+    items.forEach((p) => {
+      html += `<div onclick="insertMotionPreset(this)" data-text="${escHtml(p.text)}" style="padding:6px 12px;cursor:pointer;font-size:0.8rem;color:var(--text);transition:.12s" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'"><div style="font-weight:500">${escHtml(p.label)}</div><div style="font-size:0.72rem;color:var(--text2);margin-top:1px">${escHtml(p.text)}</div></div>`;
+    });
+  }
+  html += `<div onclick="openSnippetEditor()" style="padding:8px 12px;cursor:pointer;font-size:0.78rem;color:var(--accent);border-top:1px solid rgba(255,255,255,0.1);margin-top:4px" onmouseover="this.style.background='rgba(124,92,252,0.12)'" onmouseout="this.style.background='none'">✏️ 编辑预设…</div>`;
   dd.innerHTML = html;
   dd.style.display = 'block';
 }
-function insertMotionPreset(idx) {
+function insertMotionPreset(el) {
   const ta = document.getElementById('prompt');
-  ta.value = MOTION_PRESETS[idx].text;
+  ta.value = el.dataset.text;
   document.getElementById('motion-presets-dd').style.display = 'none';
   ta.focus();
 }
@@ -711,6 +782,82 @@ document.addEventListener('click', function(e) {
   if (!e.target.closest('#motion-presets-dd') && !e.target.closest('.snippet-btn')) {
     document.getElementById('motion-presets-dd').style.display = 'none';
   }
-});</script>
+});
+
+// ── Editor modal ──
+let _editorSnapshot = null;
+function openSnippetEditor() {
+  _editorSnapshot = JSON.parse(JSON.stringify(i2vSnippets));
+  document.getElementById('motion-presets-dd').style.display = 'none';
+  const container = document.getElementById('snippet-editor-groups');
+  let html = '';
+  for (const [group, items] of Object.entries(i2vSnippets)) {
+    html += `<div class="se-group"><div class="se-group-label">${escHtml(group)}</div>`;
+    items.forEach((item, i) => {
+      html += `<div class="se-row">
+        <input value="${escHtml(item.label)}" data-group="${escHtml(group)}" data-idx="${i}" data-field="label" placeholder="标签">
+        <textarea data-group="${escHtml(group)}" data-idx="${i}" data-field="text" placeholder="动作描述">${escHtml(item.text)}</textarea>
+        <button class="se-del" onclick="deleteSnippetItem('${escHtml(group)}',${i})">×</button>
+      </div>`;
+    });
+    html += `<div class="se-add"><button onclick="addSnippetItem('${escHtml(group)}')">+ 添加</button></div></div>`;
+  }
+  container.innerHTML = html;
+  document.getElementById('snippet-editor-overlay').classList.add('open');
+}
+function closeSnippetEditor() {
+  const rows = document.querySelectorAll('#snippet-editor-groups .se-row');
+  const newSnippets = {};
+  rows.forEach(row => {
+    const labelInp = row.querySelector('[data-field="label"]');
+    const textInp = row.querySelector('[data-field="text"]');
+    if (!labelInp || !textInp) return;
+    const group = labelInp.dataset.group;
+    const label = labelInp.value.trim();
+    const text = textInp.value.trim();
+    if (!label && !text) return;
+    if (!newSnippets[group]) newSnippets[group] = [];
+    newSnippets[group].push({ label: label || text.slice(0, 20), text });
+  });
+  for (const group of Object.keys(i2vSnippets)) {
+    if (!newSnippets[group]) newSnippets[group] = [];
+  }
+  i2vSnippets = newSnippets;
+  if (i2vSnippets['✏️ 自定义'] !== undefined && Object.keys(i2vSnippets)[0] !== '✏️ 自定义') {
+    const custom = i2vSnippets['✏️ 自定义'];
+    delete i2vSnippets['✏️ 自定义'];
+    i2vSnippets = { '✏️ 自定义': custom, ...i2vSnippets };
+  }
+  saveI2VSnippets();
+  document.getElementById('snippet-editor-overlay').classList.remove('open');
+}
+function cancelSnippetEditor() {
+  i2vSnippets = _editorSnapshot;
+  document.getElementById('snippet-editor-overlay').classList.remove('open');
+}
+function deleteSnippetItem(group, idx) {
+  if (i2vSnippets[group]) i2vSnippets[group].splice(idx, 1);
+  saveI2VSnippets();
+  openSnippetEditor();
+}
+function addSnippetItem(group) {
+  if (!i2vSnippets[group]) i2vSnippets[group] = [];
+  i2vSnippets[group].push({ label: '', text: '' });
+  saveI2VSnippets();
+  openSnippetEditor();
+}
+loadI2VSnippets();</script>
+
+<!-- Snippet editor modal -->
+<div class="snippet-editor-overlay" id="snippet-editor-overlay" onclick="if(event.target===this)closeSnippetEditor()">
+  <div class="snippet-editor">
+    <h3>✏️ 编辑动作预设</h3>
+    <div id="snippet-editor-groups"></div>
+    <div class="snippet-editor-actions">
+      <button class="se-done" onclick="closeSnippetEditor()">✅ 完成</button>
+      <button class="se-cancel" onclick="cancelSnippetEditor()">取消</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
