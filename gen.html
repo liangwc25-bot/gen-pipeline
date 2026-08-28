@@ -64,6 +64,8 @@
   }
   textarea:focus, select:focus, input:focus { border-color: var(--accent); background: rgba(124,92,252,0.06); box-shadow: 0 0 0 3px rgba(124,92,252,0.15); }
   textarea { resize: vertical; min-height: 100px; line-height: 1.5; }
+  /* Prompt / Negative 输入框字号调大一点点（仅这两个 box） */
+  #batch-prompt, #batch-negative { font-size: 1.05rem; }
   select { cursor: pointer; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-color: rgba(255,255,255,0.05); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238e8e93' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
   .row { display: flex; gap: 14px; align-items: flex-end; }
   .row .form-group { flex: 1; margin-bottom: 0; }
@@ -290,7 +292,13 @@
   .batch-cat-tab:hover:not(.active) { color: var(--text); }
   .batch-check-all-label { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text2); cursor: pointer; }
   .batch-check-all-label input { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
-  .batch-ckpt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; max-height: 240px; overflow-y: auto; margin-top: 6px; }
+  .ckpt-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .ckpt-toggle { background: none; border: none; color: var(--text2); font-size: 0.82rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; text-align: left; transition: .15s; padding: 2px 0; }
+  .ckpt-toggle:hover { color: var(--accent); }
+  .ckpt-toggle .adv-arrow { font-size: 0.65rem; transition: transform .25s; }
+  .ckpt-toggle.open .adv-arrow { transform: rotate(90deg); }
+  .ckpt-body.closed { display: none; }
+  .batch-ckpt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; max-height: 360px; overflow-y: auto; margin-top: 6px; }
   .batch-ckpt-item { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 6px; cursor: pointer; transition: .12s; font-size: 0.8rem; color: var(--text2); min-width: 0; }
   .batch-ckpt-item .batch-ckpt-name { word-break: keep-all; overflow-wrap: break-word; min-width: 0; }
   .batch-ckpt-item:hover { background: rgba(124,92,252,0.08); color: var(--text); }
@@ -300,6 +308,8 @@
   .batch-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .batch-result-grid.single { grid-template-columns: 1fr; }
   .batch-result-grid.single img { max-height: 70vh; object-fit: contain; }
+  .batch-result-grid.stacked { grid-template-columns: 1fr; }
+  .batch-result-grid.stacked img { max-height: 70vh; object-fit: contain; }
   .batch-result-card { text-align: center; min-width: 0; max-width: 100%; }
   .batch-result-card img, .batch-result-card video { width: 100%; border-radius: 10px; }
   .batch-result-card .card-label { font-size: 0.78rem; font-weight: 600; color: var(--text); margin: 6px 0 2px; word-break: break-word; overflow-wrap: anywhere; }
@@ -503,11 +513,18 @@
         </div>
 
         <div class="form-group">
-          <label class="batch-check-all-label">
-            <input type="checkbox" id="batch-check-all" onchange="toggleAllCheckpoints()"> 
-            选择 Checkpoint（<span id="batch-ckpt-count">0</span> 个已选）
-          </label>
-          <div class="batch-ckpt-grid" id="batch-ckpt-grid"></div>
+          <div class="ckpt-head">
+            <label class="batch-check-all-label">
+              <input type="checkbox" id="batch-check-all" onchange="toggleAllCheckpoints()"> 
+              选择 Checkpoint（<span id="batch-ckpt-count">0</span> 个已选）
+            </label>
+            <button class="ckpt-toggle open" id="ckpt-toggle-btn" onclick="toggleCkptList()">
+              <span class="adv-arrow">▶</span>
+            </button>
+          </div>
+          <div class="ckpt-body" id="ckpt-body">
+            <div class="batch-ckpt-grid" id="batch-ckpt-grid"></div>
+          </div>
         </div>
 
         <div class="form-group">
@@ -2190,6 +2207,15 @@ function updateBatchTriggerWords() {
   row.innerHTML = html;
 }
 
+// ── Checkpoint list toggle ──
+function toggleCkptList() {
+  const btn = document.getElementById('ckpt-toggle-btn');
+  const body = document.getElementById('ckpt-body');
+  const isOpen = btn.classList.contains('open');
+  if (isOpen) { btn.classList.remove('open'); body.classList.add('closed'); }
+  else { btn.classList.add('open'); body.classList.remove('closed'); }
+}
+
 // ── Batch advanced toggle ──
 function toggleBatchAdvanced() {
   const btn = document.getElementById('batch-adv-toggle-btn');
@@ -2306,8 +2332,11 @@ async function batchGenerate() {
 
 function renderBatchResults(modelsData, orderedKeys) {
   const area = document.getElementById('result-area');
-  const single = orderedKeys.length === 1;
-  let html = `<div class="batch-result-grid${single ? ' single' : ''}">`;
+  // 1 张 → 全宽单张；2 张 → 全宽上下两张；3 张及以上 → 两列
+  let layoutClass = '';
+  if (orderedKeys.length === 1) layoutClass = ' single';
+  else if (orderedKeys.length === 2) layoutClass = ' stacked';
+  let html = `<div class="batch-result-grid${layoutClass}">`;
   for (const mk of orderedKeys) {
     const md = modelsData[mk];
     const name = _batchModelNames[mk] || mk;
