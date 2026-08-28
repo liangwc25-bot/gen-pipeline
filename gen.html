@@ -64,8 +64,8 @@
   }
   textarea:focus, select:focus, input:focus { border-color: var(--accent); background: rgba(124,92,252,0.06); box-shadow: 0 0 0 3px rgba(124,92,252,0.15); }
   textarea { resize: vertical; min-height: 100px; line-height: 1.5; }
-  /* Prompt / Negative 输入框字号调大一点点（仅这两个 box） */
-  #batch-prompt, #batch-negative { font-size: 1.2rem; }
+  /* Prompt / Negative 输入框字号调大一点点（所有 tab 一致） */
+  #batch-prompt, #batch-negative, #prompt, #negative, #i2i-prompt, #i2i-negative { font-size: 1.2rem; }
   select { cursor: pointer; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-color: rgba(255,255,255,0.05); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238e8e93' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
   .row { display: flex; gap: 14px; align-items: flex-end; }
   .row .form-group { flex: 1; margin-bottom: 0; }
@@ -177,6 +177,8 @@
   .result-actions { display: flex; gap: 8px; }
   .result-actions .btn { font-size: 0.85rem; padding: 8px 16px; flex: 1; }
   .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .result-grid.stacked { grid-template-columns: 1fr; }
+  .result-grid.stacked img { max-height: 70vh; object-fit: contain; }
   .result-grid img { width: 100%; border-radius: 10px; }
   .result-grid .result-card { text-align: center; }
   .result-grid .result-card .card-label { font-size: 0.75rem; color: var(--text2); margin-top: 4px; }
@@ -1601,6 +1603,8 @@ async function generate() {
     setStatus('✅ 完成', 'done');
   } else if (results.length > 1) {
     state.resultUrl = results.filter(r => r.url).pop()?.url || null;
+    // 2 张 → 全宽上下两张；3 张及以上 → 两列
+    const layoutClass = results.length === 2 ? ' stacked' : '';
     const gridHtml = results.map((r, idx) => {
       if (r.url) {
         return `<div class="result-card"><img src="${r.url}" alt="#${idx+1}"><div class="card-label">#${idx+1} · ${(r.size/1024).toFixed(0)}KB${r.seed != null ? ` · 🎲${r.seed}` : ''}</div></div>`;
@@ -1608,7 +1612,7 @@ async function generate() {
         return `<div class="result-card" style="display:flex;align-items:center;justify-content:center;min-height:150px;color:var(--red);border:1px dashed rgba(255,255,255,0.1);border-radius:6px">❌ ${r.error}</div>`;
       }
     }).join('');
-    document.getElementById('result-area').innerHTML = `<div class="result-grid">${gridHtml}</div>`;
+    document.getElementById('result-area').innerHTML = `<div class="result-grid${layoutClass}">${gridHtml}</div>`;
     const successCount = results.filter(r => r.url).length;
     document.getElementById('result-info').textContent = `✅ ${successCount}/${count} 张完成`;
     document.getElementById('dl-btn').style.display = 'none';
