@@ -1873,7 +1873,7 @@ function toggleSnippetDropdown(e, targetId) {
   // Build
   let html = '';
   // 动态触发词组（仅 prompt 类目标，实时收集已选 LoRA 的 trigger words）
-  if (targetId === 'prompt' || targetId === 'batch-prompt') {
+  if (targetId === 'prompt' || targetId.endsWith('-prompt')) {
     const twItems = collectTriggerWords(targetId);
     if (twItems.length) {
       html += `<div class="snippet-group-label">🃏 触发词</div>`;
@@ -1896,12 +1896,14 @@ function toggleSnippetDropdown(e, targetId) {
 // 收集当前已选 LoRA 的 trigger words（供 snippet 下拉动态展示）
 function collectTriggerWords(targetId) {
   const items = [];
-  if (targetId === 'batch-prompt') {
-    const rows = document.querySelectorAll('#batch-lora-rows .lora-row');
+  if (targetId === 'prompt') {
+    const model = document.getElementById('model').value;
+    const loras = state.lorasCache[model] || [];
+    const rows = document.querySelectorAll('#lora-rows .lora-row');
     rows.forEach(r => {
-      const air = r.querySelector('.lora-search')?._airId;
+      const air = r.querySelector('.lora-value')?.value;
       if (!air) return;
-      const l = _batchLoras.find(x => x.air_id === air);
+      const l = loras.find(x => x.air_id === air);
       if (l && Array.isArray(l.trigger_words)) {
         l.trigger_words.forEach(w => {
           const t = w.trim();
@@ -1909,12 +1911,13 @@ function collectTriggerWords(targetId) {
         });
       }
     });
-  } else {
-    const model = document.getElementById('model').value;
-    const loras = state.lorasCache[model] || [];
-    const rows = document.querySelectorAll('#lora-rows .lora-row');
+  } else if (targetId.endsWith('-prompt')) {
+    // batch column prompt (batch-prompt / bcolN-prompt)
+    const colId = targetId.slice(0, targetId.length - '-prompt'.length);
+    const loras = _colLoras(colId);
+    const rows = _colEl(colId, 'lora-rows').querySelectorAll('.lora-row');
     rows.forEach(r => {
-      const air = r.querySelector('.lora-value')?.value;
+      const air = r.querySelector('.lora-search')?._airId;
       if (!air) return;
       const l = loras.find(x => x.air_id === air);
       if (l && Array.isArray(l.trigger_words)) {
@@ -2079,10 +2082,12 @@ function addBatchCol() {
   clone.querySelectorAll('[onclick]').forEach(el => {
     el.setAttribute('onclick', el.getAttribute('onclick')
       .replace(/batchGenerate\(\)/g, `batchGenerate('${colId}')`)
-      .replace(/batchGenerate\s*\(/, `batchGenerate('${colId}')`)
       .replace(/addBatchLoraRow\(\)/g, `addBatchLoraRow('${colId}')`)
       .replace(/toggleAllCheckpoints\(\)/g, `toggleAllCheckpoints('${colId}')`)
       .replace(/updateBatchCount\(\)/g, `updateBatchCount('${colId}')`)
+      .replace(/toggleBatchAdvanced\(\)/g, `toggleBatchAdvanced('${colId}')`)
+      .replace(/'batch-prompt'/g, `'${colId}-prompt'`)
+      .replace(/'batch-negative'/g, `'${colId}-negative'`)
       .replace(/selectBatchCat\('([^']+)',\s*this\)/g, `selectBatchCat('$1', this, '${colId}')`)
     );
   });
@@ -2238,7 +2243,9 @@ async function loadBatchLoras(cat, colId) {
   else { if (!_batchColState[colId]) _batchColState[colId] = {}; _batchColState[colId].loras = loras; }
 }
 
-function addBatchLoraRow(airId, scale) {
+function addBatchLoraRow(airId, scale, colId) {
+  colId = colId || 'batch';
+  const loras = _colLoras(colId);
   const row = document.createElement('div');
   row.className = 'lora-row';
   const wrap = document.createElement('div');
@@ -2248,7 +2255,7 @@ function addBatchLoraRow(airId, scale) {
   input.className = 'lora-search';
   input.placeholder = '搜索 LoRA…';
   // Look up display name from registry for the saved airId
-  const nameForId = airId ? (_batchLoras.find(l => l.air_id === airId)?.name || airId) : '';
+  const nameForId = airId ? (loras.find(l => l.air_id === airId)?.name || airId) : '';
   input.value = airId ? nameForId : '';
   if (airId) input.classList.add('has-value');
   input._airId = airId || '';
@@ -2264,7 +2271,7 @@ function addBatchLoraRow(airId, scale) {
     if (!q) {
       // Grouped view
       const groups = {};
-      for (const l of _batchLoras) {
+      for (const l of loras) {
         const cat = l.category || '';
         if (!groups[cat]) groups[cat] = [];
         groups[cat].push(l);
@@ -2284,13 +2291,13 @@ function addBatchLoraRow(airId, scale) {
       }
     } else {
       // Flat filtered view
-      for (const l of _batchLoras) {
+      for (const l of loras) {
         if (!l.name.toLowerCase().includes(q) && !l.air_id.toLowerCase().includes(q) && !l.id.toLowerCase().includes(q)) continue;
         const sel = input._airId === l.air_id ? ' selected' : '';
         html += `<div class="lora-opt${sel}" data-air="${escHtml(l.air_id)}" data-id="${escHtml(l.id)}">${escHtml(l.name)}</div>`;
       }
     }
-    if (_batchLoras.length === 0) html += '<div class="lora-no-results">暂无 LoRA</div>';
+    if (loras.length === 0) html += '<div class="lora-no-results">暂无 LoRA</div>';
     dd.innerHTML = html;
   };
   input.addEventListener('focus', () => {
@@ -2324,28 +2331,31 @@ function addBatchLoraRow(airId, scale) {
   const removeBtn = document.createElement('button');
   removeBtn.className = 'lora-remove';
   removeBtn.textContent = '×';
-  removeBtn.onclick = () => { row.remove(); updateBatchLoraCount(); updateBatchTriggerWords(); };
+  removeBtn.onclick = () => { row.remove(); updateBatchLoraCount(colId); updateBatchTriggerWords(colId); };
   row.appendChild(removeBtn);
-  document.getElementById('batch-lora-rows').appendChild(row);
-  updateBatchLoraCount();
-  updateBatchTriggerWords();
+  _colEl(colId, 'lora-rows').appendChild(row);
+  updateBatchLoraCount(colId);
+  updateBatchTriggerWords(colId);
 }
 
-function updateBatchLoraCount() {
-  const rows = document.querySelectorAll('#batch-lora-rows .lora-row');
-  document.getElementById('batch-lora-count').textContent = rows.length + ' 个';
+function updateBatchLoraCount(colId) {
+  colId = colId || 'batch';
+  const rows = _colEl(colId, 'lora-rows').querySelectorAll('.lora-row');
+  _colEl(colId, 'lora-count').textContent = rows.length + ' 个';
 }
 
 // ── Batch Trigger words: 收集所有已选 batch LoRA 的触发词，渲染为可点击 chip ──
-function updateBatchTriggerWords() {
-  const row = document.getElementById('batch-trigger-words-row');
+function updateBatchTriggerWords(colId) {
+  colId = colId || 'batch';
+  const row = _colEl(colId, 'trigger-words-row');
   if (!row) return;
-  const rows = document.querySelectorAll('#batch-lora-rows .lora-row');
+  const rows = _colEl(colId, 'lora-rows').querySelectorAll('.lora-row');
+  const loras = _colLoras(colId);
   const selected = [];
   rows.forEach(r => {
     const air = r.querySelector('.lora-search')?._airId;
     if (!air) return;
-    const l = _batchLoras.find(x => x.air_id === air);
+    const l = loras.find(x => x.air_id === air);
     if (l && Array.isArray(l.trigger_words) && l.trigger_words.length) {
       selected.push({ name: l.name, words: l.trigger_words });
     }
@@ -2357,7 +2367,7 @@ function updateBatchTriggerWords() {
       s.words.forEach(w => {
         const t = w.trim();
         if (!t) return;
-        html += `<span class="trigger-chip" title="来自：${escHtml(s.name)}" onclick="insertSnippet('${escHtml(t).replace(/'/g,"\\'")}', 'batch-prompt')">${escHtml(t)}<span class="tc-from">${escHtml(s.name.slice(0,14))}</span></span>`;
+        html += `<span class="trigger-chip" title="来自：${escHtml(s.name)}" onclick="insertSnippet('${escHtml(t).replace(/'/g,"\\'")}', '${colId}-prompt')">${escHtml(t)}<span class="tc-from">${escHtml(s.name.slice(0,14))}</span></span>`;
       });
     });
   }
@@ -2374,9 +2384,11 @@ function toggleCkptList() {
 }
 
 // ── Batch advanced toggle ──
-function toggleBatchAdvanced() {
-  const btn = document.getElementById('batch-adv-toggle-btn');
-  const body = document.getElementById('batch-adv-body');
+function toggleBatchAdvanced(colId) {
+  colId = colId || 'batch';
+  const btn = _colEl(colId, 'adv-toggle-btn');
+  const body = _colEl(colId, 'adv-body');
+  if (!btn || !body) return;
   const isOpen = body.classList.contains('open');
   if (isOpen) { body.classList.remove('open'); btn.classList.remove('open'); }
   else { body.classList.add('open'); btn.classList.add('open'); }
@@ -2386,31 +2398,33 @@ function toggleBatchAdvanced() {
 let _batchGenId = 0;  // incremented each generate call, used to cancel stale polls
 let _batchPollFn = null;  // current polling function, called on visibility change
 
-async function batchGenerate() {
-  const models = getSelectedModels();
+async function batchGenerate(colId) {
+  colId = colId || 'batch';
+  const models = getSelectedModels(colId);
+  const errEl = _colEl(colId, 'error-msg');
   if (models.length === 0) {
-    document.getElementById('batch-error-msg').style.display = 'block';
-    document.getElementById('batch-error-msg').textContent = '请至少选一个 checkpoint';
+    errEl.style.display = 'block';
+    errEl.textContent = '请至少选一个 checkpoint';
     return;
   }
-  const prompt = document.getElementById('batch-prompt').value.trim();
+  const prompt = _colEl(colId, 'prompt').value.trim();
   if (!prompt) {
-    document.getElementById('batch-error-msg').style.display = 'block';
-    document.getElementById('batch-error-msg').textContent = '请输入 Prompt';
+    errEl.style.display = 'block';
+    errEl.textContent = '请输入 Prompt';
     return;
   }
 
-  document.getElementById('batch-error-msg').style.display = 'none';
-  const btn = document.getElementById('batch-generate-btn');
+  errEl.style.display = 'none';
+  const btn = _colEl(colId, 'generate-btn');
   btn.disabled = true;
   btn.textContent = '⏳ 提交中…';
 
   // Clear old results and progress
-  document.getElementById('result-area').innerHTML = '<span>⏳ 提交中…</span>';
-  document.getElementById('batch-progress').style.display = 'none';
+  _colEl(colId, 'col-result-area').innerHTML = '<span>⏳ 提交中…</span>';
+  _colEl(colId, 'progress').style.display = 'none';
 
   // Collect shared params
-  const loraRows = document.querySelectorAll('#batch-lora-rows .lora-row');
+  const loraRows = _colEl(colId, 'lora-rows').querySelectorAll('.lora-row');
   const loraIds = []; const loraScales = [];
   loraRows.forEach(r => {
     const air = r.querySelector('.lora-search')._airId;
@@ -2418,20 +2432,20 @@ async function batchGenerate() {
     if (air) { loraIds.push(air); loraScales.push(s); }
   });
 
-  const cfgEl = document.getElementById('batch-cfg');
-  const seedEl = document.getElementById('batch-seed');
-  const stepsEl = document.getElementById('batch-steps');
+  const cfgEl = _colEl(colId, 'cfg');
+  const seedEl = _colEl(colId, 'seed');
+  const stepsEl = _colEl(colId, 'steps');
 
   const body = {
     models,
     prompt,
-    negative_prompt: document.getElementById('batch-negative').value,
+    negative_prompt: _colEl(colId, 'negative').value,
     lora_id: loraIds.length > 0 ? loraIds.join(',') : null,
     lora_scale: loraScales.length > 0 ? loraScales.join(',') : 0.8,
     cfg_scale: cfgEl.value ? parseFloat(cfgEl.value) : null,
     steps: parseInt(stepsEl.value) || 35,
-    aspect: document.getElementById('batch-aspect').value,
-    sampler: document.getElementById('batch-sampler').value || null,
+    aspect: _colEl(colId, 'aspect').value,
+    sampler: _colEl(colId, 'sampler').value || null,
     seed: seedEl.value ? parseInt(seedEl.value) : null,
   };
 
@@ -2442,22 +2456,22 @@ async function batchGenerate() {
   });
   const data = await res.json();
   if (!data.success) {
-    document.getElementById('batch-error-msg').style.display = 'block';
-    document.getElementById('batch-error-msg').textContent = data.error || '提交失败';
+    errEl.style.display = 'block';
+    errEl.textContent = data.error || '提交失败';
     btn.disabled = false;
     btn.textContent = '🚀 一键 Batch 生成';
     return;
   }
 
   const batchId = data.batch_id;
-  const genId = ++_batchGenId;  // capture this generation's id
+  const genId = _bumpColGenId(colId);  // capture this generation's id
   btn.textContent = '⏳ 生成中…';
-  document.getElementById('batch-progress').style.display = 'block';
-  document.getElementById('batch-status-bar').textContent = '';
+  _colEl(colId, 'progress').style.display = 'block';
+  _colEl(colId, 'status-bar').textContent = '';
 
   // Poll until done
   const poll = async () => {
-    if (genId !== _batchGenId) return;  // stale poll, cancelled by newer generation
+    if (genId !== _colGenId(colId)) return;  // stale poll, cancelled by newer generation
     let d;
     try {
       const r = await fetch('/api/batch?batch_id=' + batchId);
@@ -2467,28 +2481,29 @@ async function batchGenerate() {
       setTimeout(poll, 3000);
       return;
     }
-    if (genId !== _batchGenId) return;
+    if (genId !== _colGenId(colId)) return;
 
     const total = d.total || models.length;
     const done = d.completed || 0;
-    document.getElementById('batch-progress').textContent = `⏳ ${done}/${total} 完成`;
+    _colEl(colId, 'progress').textContent = `⏳ ${done}/${total} 完成`;
 
     if (d.status === 'done') {
       btn.disabled = false;
       btn.textContent = '🚀 一键 Batch 生成';
-      document.getElementById('batch-progress').style.display = 'none';
-      _batchPollFn = null;
-      renderBatchResults(d.models, models);
+      _colEl(colId, 'progress').style.display = 'none';
+      _setColPollFn(colId, null);
+      renderBatchResults(d.models, models, colId);
       return;
     }
     setTimeout(poll, 2000);
   };
-  _batchPollFn = poll;
+  _setColPollFn(colId, poll);
   poll();
 }
 
-function renderBatchResults(modelsData, orderedKeys) {
-  const area = document.getElementById('result-area');
+function renderBatchResults(modelsData, orderedKeys, colId) {
+  colId = colId || 'batch';
+  const area = _colEl(colId, 'col-result-area');
   // 1 张 → 全宽单张；2 张 → 全宽上下两张；3 张及以上 → 两列
   let layoutClass = '';
   if (orderedKeys.length === 1) layoutClass = ' single';
@@ -2816,9 +2831,13 @@ function showI2iPreview() {
   reader.readAsDataURL(fileInput.files[0]);
 }
 
-// Resume batch polling when tab returns to foreground
+// Resume batch polling when tab returns to foreground (all columns)
 document.addEventListener('visibilitychange', () => {
-  if (!document.hidden && _batchPollFn) _batchPollFn();
+  if (document.hidden) return;
+  if (_batchPollFn) _batchPollFn();
+  for (const k in _batchColState) {
+    if (_batchColState[k] && _batchColState[k].pollFn) _batchColState[k].pollFn();
+  }
 });
 
 loadSnippets();
