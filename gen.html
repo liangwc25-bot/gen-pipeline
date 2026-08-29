@@ -735,7 +735,7 @@
       </div><!-- /#i2i-panel -->
     </div>
 
-    <div class="panel result-panel">
+    <div class="panel result-panel" id="result-panel">
       <h2>结果</h2>
       <div class="result-placeholder" id="result-area">
         <span>点击「生成」开始</span>
@@ -1005,6 +1005,10 @@ function setPlatform(p) {
   document.getElementById('batch-panel').style.display = isRunware ? 'block' : 'none';
   document.getElementById('normal-params').style.display = (isModelslab || isFlux) ? 'block' : 'none';
   document.getElementById('i2i-panel').style.display = isI2i ? 'block' : 'none';
+  // Runware(多列 batch) 结果在各自列内，隐藏右侧全局结果面板；其他 tab 显示
+  document.getElementById('result-panel').style.display = isRunware ? 'none' : '';
+  // Runware 下让参数面板横跨整个 layout 宽度，多列横评占满可用空间
+  document.getElementById('left-panel').style.gridColumn = isRunware ? '1 / -1' : '';
 
   if (isI2i) {
     initI2i();
