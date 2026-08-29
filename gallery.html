@@ -392,6 +392,22 @@
   .filter-bar select { min-width: 120px; }
   .filter-bar input { flex: 1; min-width: 140px; }
   .filter-bar select:focus, .filter-bar input:focus { border-color: var(--accent); }
+  /* Search box: clear ✕ + spinner */
+  .search-wrap { display: flex; align-items: center; }
+  .search-wrap input { padding-right: 56px; }
+  .search-clear {
+    position: absolute; right: 32px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: var(--text2); font-size: 0.85rem;
+    cursor: pointer; padding: 4px; line-height: 1; border-radius: 50%;
+  }
+  .search-clear:hover { color: var(--text); background: rgba(255,255,255,0.08); }
+  .search-spinner {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.2);
+    border-top-color: var(--accent); border-radius: 50%;
+    animation: searchspin .7s linear infinite;
+  }
+  @keyframes searchspin { to { transform: translateY(-50%) rotate(360deg); } }
   [data-theme="light"] .filter-bar select, [data-theme="light"] .filter-bar input {
     background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.08);
   }
@@ -435,7 +451,11 @@
   <button class="filter-btn" id="modelZIT" onclick="setModelFilter('zit')">ZIT</button>
 </div>
 <div class="filter-bar" style="margin-top:6px">
-  <input type="text" id="searchInput" placeholder="🔍 搜索 prompt…" oninput="applyFiltersDebounced()" style="flex:1">
+  <div class="search-wrap" style="flex:1;position:relative">
+    <input type="text" id="searchInput" placeholder="🔍 搜索 prompt…" oninput="applyFiltersDebounced()" style="width:100%">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()" title="清除搜索" style="display:none">✕</button>
+    <span class="search-spinner" id="searchSpinner" style="display:none"></span>
+  </div>
 </div>
 <div id="paginationTop" class="pagination"></div>
 <div id="grid" class="grid"></div>
@@ -726,8 +746,21 @@ async function loadPage(page) {
   if (search) url += `&search=${encodeURIComponent(search)}`;
   if (timeFilter) url += `&time=${encodeURIComponent(timeFilter)}`;
 
+  // Show search spinner + clear button while fetching (list not yet received)
+  const _sp = document.getElementById('searchSpinner');
+  const _clr = document.getElementById('searchClear');
+  if (_sp) _sp.style.display = 'block';
+  if (_clr) _clr.style.display = search ? 'block' : 'none';
+
   const res = await fetch(url);
+  if (!res.ok) {
+    if (_sp) _sp.style.display = 'none';
+    document.getElementById('grid').innerHTML = '<div style="padding:40px;text-align:center;color:var(--red)">加载失败</div>';
+    return;
+  }
   const data = await res.json();
+  // List received → hide spinner (thumbs may still load, that's fine)
+  if (_sp) _sp.style.display = 'none';
   currentPage = data.page;
   totalPages = data.total_pages;
   totalImages = data.total;
@@ -752,7 +785,18 @@ function applyFilters() {
 let _searchTimer = null;
 function applyFiltersDebounced() {
   if (_searchTimer) clearTimeout(_searchTimer);
+  const inp = document.getElementById('searchInput');
+  document.getElementById('searchClear').style.display = inp.value ? 'block' : 'none';
   _searchTimer = setTimeout(() => loadPage(1), 300);
+}
+
+function clearSearch() {
+  const inp = document.getElementById('searchInput');
+  inp.value = '';
+  document.getElementById('searchClear').style.display = 'none';
+  document.getElementById('searchSpinner').style.display = 'none';
+  if (_searchTimer) clearTimeout(_searchTimer);
+  loadPage(1);
 }
 
 function enc(f) { return encodeURIComponent(f); }
