@@ -558,11 +558,11 @@
               <input type="checkbox" id="batch-check-all" onchange="toggleAllCheckpoints()"> 
               选择 Checkpoint（<span id="batch-ckpt-count">0</span> 个已选）
             </label>
-            <button class="ckpt-toggle open" id="ckpt-toggle-btn" onclick="toggleCkptList()">
+            <button class="ckpt-toggle open" id="batch-toggle-btn" onclick="toggleCkptList('batch')">
               <span class="adv-arrow">▶</span>
             </button>
           </div>
-          <div class="ckpt-body" id="ckpt-body">
+          <div class="ckpt-body" id="batch-body">
             <div class="batch-ckpt-grid" id="batch-ckpt-grid"></div>
           </div>
         </div>
@@ -2375,9 +2375,11 @@ function updateBatchTriggerWords(colId) {
 }
 
 // ── Checkpoint list toggle ──
-function toggleCkptList() {
-  const btn = document.getElementById('ckpt-toggle-btn');
-  const body = document.getElementById('ckpt-body');
+function toggleCkptList(colId) {
+  colId = colId || 'batch';
+  const btn = _colEl(colId, 'toggle-btn');
+  const body = _colEl(colId, 'body');
+  if (!btn || !body) return;
   const isOpen = btn.classList.contains('open');
   if (isOpen) { btn.classList.remove('open'); body.classList.add('closed'); }
   else { btn.classList.add('open'); body.classList.remove('closed'); }
