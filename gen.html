@@ -1002,7 +1002,8 @@ function setPlatform(p) {
   const isI2i = p === 'i2i';
   const isFlux = p === 'flux';
 
-  document.getElementById('batch-panel').style.display = isRunware ? 'block' : 'none';
+  // Runware(多列 batch) 显示 batch-cols 容器(含每列+加列按钮)；其他 tab 整体隐藏
+  document.getElementById('batch-cols').style.display = isRunware ? 'flex' : 'none';
   document.getElementById('normal-params').style.display = (isModelslab || isFlux) ? 'block' : 'none';
   document.getElementById('i2i-panel').style.display = isI2i ? 'block' : 'none';
   // Runware(多列 batch) 结果在各自列内，隐藏右侧全局结果面板；其他 tab 显示
