@@ -427,9 +427,9 @@
 </div>
 <div class="filter-bar" style="margin-top:4px">
   <button class="filter-btn active" id="modelAll" onclick="setModelFilter('')">🔮 全部</button>
-  <button class="filter-btn" id="modelPony" onclick="setModelFilter('pony-xl')">Pony</button>
-  <button class="filter-btn" id="modelIll" onclick="setModelFilter('prefect-ill-xl')">Illustrious</button>
-  <button class="filter-btn" id="modelFlux" onclick="setModelFilter('flux-dev')">FLUX</button>
+  <button class="filter-btn" id="modelPony" onclick="setModelFilter('pony')">Pony</button>
+  <button class="filter-btn" id="modelIll" onclick="setModelFilter('illustrious')">Illustrious</button>
+  <button class="filter-btn" id="modelFlux" onclick="setModelFilter('flux')">FLUX</button>
   <button class="filter-btn" id="modelSD15" onclick="setModelFilter('sd15')">SD1.5</button>
   <button class="filter-btn" id="modelZIT" onclick="setModelFilter('zit')">ZIT</button>
 </div>
@@ -494,7 +494,7 @@ let favorites = new Set();
 let archived = new Set();
 let filterMode = 'all';
 let typeFilter = 'img';  // 'img', 'video', 'all'
-let modelFilter = '';    // '' = all, 'pony-xl', 'prefect-ill-xl', 'flux-dev', etc.
+let modelFilter = '';    // '' = all, 'pony', 'illustrious', 'flux', 'sd15', 'zit'
 let timeFilter = '';     // '' = all, 'today', 'week'
 const PER_PAGE = 100;
 
@@ -1173,9 +1173,9 @@ function setFilter(mode) {
 function setModelFilter(m) {
   modelFilter = m;
   document.getElementById('modelAll').className = 'filter-btn' + (m === '' ? ' active' : '');
-  document.getElementById('modelPony').className = 'filter-btn' + (m === 'pony-xl' ? ' active' : '');
-  document.getElementById('modelIll').className = 'filter-btn' + (m === 'prefect-ill-xl' ? ' active' : '');
-  document.getElementById('modelFlux').className = 'filter-btn' + (m === 'flux-dev' ? ' active' : '');
+  document.getElementById('modelPony').className = 'filter-btn' + (m === 'pony' ? ' active' : '');
+  document.getElementById('modelIll').className = 'filter-btn' + (m === 'illustrious' ? ' active' : '');
+  document.getElementById('modelFlux').className = 'filter-btn' + (m === 'flux' ? ' active' : '');
   document.getElementById('modelSD15').className = 'filter-btn' + (m === 'sd15' ? ' active' : '');
   document.getElementById('modelZIT').className = 'filter-btn' + (m === 'zit' ? ' active' : '');
   loadPage(1);

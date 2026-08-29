@@ -113,6 +113,33 @@ def _normalize_model(raw: str) -> str:
     return MODEL_NORMALIZE.get(raw, raw)
 
 
+# ── Gallery model filter: category-based (not exact single key) ──
+# Many checkpoints share a base but store different model keys (e.g. all the
+# `*-pony` / `*-ill` variants). Filtering by one exact key like 'pony-xl'
+# silently drops those. We match by base category via model name patterns.
+# 'sd15' / 'zit' kept as-is (they already catch their whole family).
+def _model_filter_sql(f):
+    """Return the WHERE condition for a model category filter."""
+    if f == "sd15":
+        return "model LIKE '%-15'"
+    if f == "zit":
+        return "(model LIKE 'zimage-%' OR model LIKE '%-zit')"
+    if f == "pony":
+        return "(LOWER(model) LIKE '%pony%')"
+    if f == "illustrious":
+        return ("(LOWER(model) LIKE '%-ill' OR LOWER(model) LIKE '%ill-xl' "
+                "OR LOWER(model) LIKE '%illustrious%' OR LOWER(model) LIKE '%-noob' "
+                "OR LOWER(model) LIKE '%noobai%')")
+    if f == "flux":
+        return "(LOWER(model) LIKE '%flux%')"
+    return ""  # unknown/empty → no filter
+
+
+def _model_filter_params(f):
+    """Return the bound params for a model category filter (none for pattern-only)."""
+    return []
+
+
 def _conn() -> sqlite3.Connection:
     # timeout=10: during a rescan backfill still holds short write-lock windows
     # (~1-3s per 50-row batch). 5s was too tight and favorites occasionally
@@ -228,13 +255,10 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
         params.append(int(archived))
 
     if model_filter:
-        if model_filter == "sd15":
-            conditions.append("model LIKE '%-15'")
-        elif model_filter == "zit":
-            conditions.append("(model LIKE 'zimage-%' OR model LIKE '%-zit')")
-        else:
-            conditions.append("model = ?")
-            params.append(model_filter)
+        _fc = _model_filter_sql(model_filter)
+        if _fc:
+            conditions.append(_fc)
+            params.extend(_model_filter_params(model_filter))
 
     if favorited_only:
         conditions.append("favorited = 1")
@@ -299,13 +323,10 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
         params.append(int(archived))
 
     if model_filter:
-        if model_filter == "sd15":
-            conditions.append("model LIKE '%-15'")
-        elif model_filter == "zit":
-            conditions.append("(model LIKE 'zimage-%' OR model LIKE '%-zit')")
-        else:
-            conditions.append("model = ?")
-            params.append(model_filter)
+        _fc = _model_filter_sql(model_filter)
+        if _fc:
+            conditions.append(_fc)
+            params.extend(_model_filter_params(model_filter))
 
     if favorited_only:
         conditions.append("favorited = 1")
