@@ -860,7 +860,8 @@ function saveBatchDraft() {
   loraRows.forEach(row => {
     const air = row.querySelector('.lora-search')._airId;
     const scale = row.querySelector('.lora-scale').value;
-    if (air) loras.push({ air_id: air, scale });
+    const name = row.querySelector('.lora-search').value;
+    if (air) loras.push({ air_id: air, scale, name });
   });
 
   localStorage.setItem('batch_draft', JSON.stringify({
@@ -914,7 +915,7 @@ function restoreBatchDraft() {
     if (d.loras && d.loras.length > 0) {
       setTimeout(() => {
         document.getElementById('batch-lora-rows').innerHTML = '';
-        d.loras.forEach(l => addBatchLoraRow(l.air_id, parseFloat(l.scale) || 0.8));
+        d.loras.forEach(l => addBatchLoraRow(l.air_id, parseFloat(l.scale) || 0.8, 'batch', l.name));
         updateBatchTriggerWords();
       }, 200);
     }
@@ -2113,22 +2114,33 @@ function addBatchCol() {
   addBtn.parentNode.insertBefore(clone, addBtn);
   // 复制源列(Batch 1)的 LoRA 配置，重建到克隆列：
   // cloneNode 不复制 JS 事件监听/_airId，直接克隆的行无法操作。
-  // 改为读取源列配置后逐条 addBatchLoraRow() 重建，保证功能正常。
+  // 改为读取源列配置后逐条 addBatchLoraRow() 重建，带显示名避免变 ID。
   const srcLoraRows = document.querySelectorAll('#batch-lora-rows .lora-row');
   const srcLoras = [];
   srcLoraRows.forEach(r => {
     const air = r.querySelector('.lora-search')?._airId;
     if (!air) return;
     const s = parseFloat(r.querySelector('.lora-scale').value);
-    srcLoras.push({ airId: air, scale: (s && !isNaN(s)) ? s : 0.8 });
+    const nm = r.querySelector('.lora-search')?.value || '';
+    srcLoras.push({ airId: air, scale: (s && !isNaN(s)) ? s : 0.8, name: nm });
   });
   const cloneLoraRows = document.getElementById(colId + '-lora-rows');
   if (cloneLoraRows) cloneLoraRows.innerHTML = '';
   const cloneLoraCount = document.getElementById(colId + '-lora-count');
   if (cloneLoraCount) cloneLoraCount.textContent = '0 个';
-  srcLoras.forEach(l => addBatchLoraRow(l.airId, l.scale, colId));
-  // 渲染该列的 checkpoint 网格 + 滚动到新列
-  selectBatchCat('flux', clone.querySelector('.batch-cat-tab[data-cat="flux"]'), colId);
+  srcLoras.forEach(l => addBatchLoraRow(l.airId, l.scale, colId, l.name));
+  // 读取源列当前分类 + 勾选的 checkpoint，复制到克隆列
+  const srcCat = document.querySelector('#batch-cat-tabs .batch-cat-tab.active')?.dataset.cat || 'flux';
+  const srcChecked = Array.from(document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]:checked')).map(cb => cb.value);
+  selectBatchCat(srcCat, clone.querySelector(`.batch-cat-tab[data-cat="${srcCat}"]`), colId);
+  const newGrid = document.getElementById(colId + '-ckpt-grid');
+  if (newGrid && srcChecked.length) {
+    newGrid.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.checked = srcChecked.includes(cb.value);
+    });
+    updateBatchCount(colId);
+  }
+  // 滚动到新列
   addBtn.scrollIntoView({ behavior: 'smooth', inline: 'end', block: 'nearest' });
 }
 
@@ -2260,7 +2272,7 @@ async function loadBatchLoras(cat, colId) {
   else { if (!_batchColState[colId]) _batchColState[colId] = {}; _batchColState[colId].loras = loras; }
 }
 
-function addBatchLoraRow(airId, scale, colId) {
+function addBatchLoraRow(airId, scale, colId, displayName) {
   colId = colId || 'batch';
   const loras = _colLoras(colId);
   const row = document.createElement('div');
@@ -2271,8 +2283,8 @@ function addBatchLoraRow(airId, scale, colId) {
   input.type = 'text';
   input.className = 'lora-search';
   input.placeholder = '搜索 LoRA…';
-  // Look up display name from registry for the saved airId
-  const nameForId = airId ? (loras.find(l => l.air_id === airId)?.name || airId) : '';
+  // Look up display name: explicit displayName > registry lookup > raw id
+  const nameForId = airId ? (displayName || (loras.find(l => l.air_id === airId)?.name) || airId) : '';
   input.value = airId ? nameForId : '';
   if (airId) input.classList.add('has-value');
   input._airId = airId || '';
