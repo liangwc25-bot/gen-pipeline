@@ -106,6 +106,128 @@ MODEL_NORMALIZE = {
 }
 
 
+# ── Base model 权威映射（2026-08-28）──
+# 每个规范 key → 底座 model。分类在生图时入库，gallery 按它筛，
+# 不再靠名字正则猜（避免每加一个 checkpoint 就多一个特例）。
+# base 取值：pony / illustrious / flux / sdxl / sd15 / zit / video / qwen / other
+MODEL_BASE = {
+    # ── Pony ──
+    "pony-xl": "pony", "pony-real": "pony", "ponymature-pony": "pony",
+    "wai-semireal-pony": "pony", "wai-ani-hentai-pony": "pony", "wai-ani-pony": "pony",
+    "wai-c-pony": "pony", "wai-realmix-pony": "pony", "wai-mature-pony": "pony",
+    "realcartoon-pony": "pony", "nova-anime-pony": "pony", "nova-asian-pony": "pony",
+    "nova-reality-pony": "pony", "atomix-3d-pony": "pony", "atomix-anime-pony": "pony",
+    "redcraft-pony": "pony", "the-deep-dark-pony": "pony", "honey-mix-pony": "pony",
+    "powerpuffmix-pony": "pony", "powerpuffanimix-pony": "pony", "miaomiao-3d-pony": "pony",
+    "red-blue-fantasy-pony": "pony", "wicked-pony-mix": "pony", "bemypony-photo4": "pony",
+    "magicalpony": "pony", "pinkiepie-pony-mix": "pony", "speciosa-25d": "pony",
+    "speciosa-realistica": "pony", "speciosa-anime": "pony", "dreamisoa-remix": "pony",
+    "dreamisoa-anime": "pony",
+    # Pony 显示名（历史未归一化的落库值）
+    "WAI-SemiReal": "pony", "WAI-C": "pony", "The Deep Dark": "pony",
+    "RedCraft 红潮2": "pony", "Honey Mix High Contrast Anime": "pony",
+    "MiaoMiao 3D Harem": "pony", "PowerPuffMix": "pony", "PowerPuffAnimix": "pony",
+    "DucHaiten-Pony-Real": "pony", "WAI-ANI-PONYXL": "pony",
+    "WAI-ANI-HENTAI-PONYXL": "pony", "WAI-REALMIX (Pony)": "pony",
+    "RealCartoon-Pony": "pony", "Atomix Pony 3D XL": "pony", "Atomix Pony Anime XL": "pony",
+    "Nova Anime XL": "pony", "Nova Asian XL": "pony", "Nova Reality XL": "pony",
+    # ── Illustrious ──
+    "prefect-ill-xl": "illustrious", "hoj-illustrious-xl": "illustrious", "wai-illustrious": "illustrious",
+    "aoi-164": "illustrious", "cat-citron-anime": "illustrious", "nova-anime-xl-noob": "illustrious",
+    "nova-flat-ill": "illustrious", "nova-orange-ill": "illustrious", "nova-reality-ill": "illustrious",
+    "nova-unreal-ill": "illustrious", "animij-ill": "illustrious", "ilustmix-ill": "illustrious",
+    "kawaij-ill": "illustrious", "semilust-ill": "illustrious", "pornmaster-ill": "illustrious",
+    "pornmaster-anime-ill": "illustrious", "matureritual-ill": "illustrious",
+    "burgundy-semireal-ill": "illustrious", "burgundy-bimbos-ill": "illustrious",
+    "burgundy-dolls-ill": "illustrious", "burgundy-milfs-ill": "illustrious",
+    "miaomiao-harem-ill": "illustrious", "miaomiao-mature-ill": "illustrious",
+    "illustrious-xl-2": "illustrious",
+    # Illustrious 显示名（历史未归一化的落库值）
+    "Aoi 164 Character": "illustrious", "CAT Citron Anime Treasure": "illustrious",
+    "Animij (Illustrious)": "illustrious", "Illustrious XL 2.0": "illustrious",
+    "Kawaij (Illustrious)": "illustrious", "MiaoMiao Harem (Illustrious)": "illustrious",
+    "Nova Anime XL (NoobAI)": "illustrious", "Nova Flat XL (Illustrious)": "illustrious",
+    "Nova Orange XL (Illustrious)": "illustrious", "Nova Reality XL (Illustrious)": "illustrious",
+    "Nova Unreal XL (Illustrious)": "illustrious", "Persona (Illustrious)": "illustrious",
+    "PornMaster-Pro Illustrious": "illustrious", "iLustMix (Illustrious)": "illustrious",
+    "semILust (Illustrious)": "illustrious", "WAI-Illustrious-SDXL": "illustrious",
+    # ── FLUX ──
+    "flux-dev": "flux", "flux-uncensored": "flux", "flux-ultrareal": "flux",
+    "flux-artsy-dream": "flux", "flux-artsy-vibe": "flux", "flux-blue-pencil": "flux",
+    "flux-fluximation": "flux", "flux-nepotism": "flux", "iniverse-mix-flux": "flux",
+    "lah-mysterious-flux": "flux", "khialmaster-flux": "flux", "c4pacitor-flux": "flux",
+    "asian-flux": "flux", "animeasy-flux": "flux", "myhuman-flux": "flux", "redcraft-flux": "flux",
+    "flux-klein": "flux", "flux-schnell": "flux", "flux-2-pro": "flux",
+    # FLUX 显示名（历史未归一化的落库值）
+    "FLUX.1 [dev]": "flux", "FLUX.1 [schnell]": "flux", "FLUX.1.1 [pro] Ultra": "flux",
+    "FLUX.2 [klein] 9B": "flux", "FLUX.2 [max]": "flux", "Juggernaut Pro Flux": "flux",
+    "AnimEasy Flux": "flux", "MYHuman-墨幽随拍-Flux": "flux", "Flux.1[dev]Asian": "flux",
+    "Fluximation v1": "flux", "C4PACITOR": "flux", "[Lah] Mysterious": "flux",
+    "khialmaster": "flux", "iNiverse Mix(SFW & NSFW)": "flux",
+    "RedCraft | 红潮2 | 赤佬3 Scaled 加速": "flux", "Nepotism XI (DiT)": "flux",
+    "Artsy Dream v6 (FP16)": "flux", "Artsy Vibe v1 (FP16)": "flux",
+    "blue_pencil-flux1 v0.1.0": "flux", "flux-dev": "flux",
+    # ── SDXL ──
+    "guofeng4-xl": "sdxl", "pornmaster": "sdxl", "lustify": "sdxl", "sdxl-vanilla": "sdxl",
+    "dreamshaper-xl": "sdxl", "juggernaut-xl": "sdxl", "fantasy-reality-xl": "sdxl",
+    "xuer-cyan-xl": "sdxl", "nwsj-real-mix-sdxl": "sdxl",
+    # SDXL 显示名（历史未归一化的落库值）
+    "Fantasy Reality Fusion XL": "sdxl", "NwsjRealMix SDXL": "sdxl",
+    "SDXL": "sdxl", "国风4 GuoFeng4 XL": "sdxl", "DreamShaper XL": "sdxl",
+    "JuggernautXL V8": "sdxl", "LUSTIFY SDXL": "sdxl", "PornMaster-色情大师": "sdxl",
+    # ── SD 1.5 ──
+    "dreamshaper-15": "sd15", "majicmix-real-15": "sd15", "realcartoon3d-15": "sd15",
+    "aniverse-15": "sd15", "chikmix-15": "sd15", "realcartoon-real-15": "sd15",
+    "perfect-world-15": "sd15", "majicmix-lux-15": "sd15", "dark-sushi-25d-15": "sd15",
+    "guofeng-wuxia-15": "sd15", "tastyrice-cg-15": "sd15", "onlyrealistic-15": "sd15",
+    "chilloutmix-15": "sd15", "chosen-mix-15": "sd15", "abyss-orange-mix-15": "sd15",
+    "aom3-15": "sd15", "wanxiang-anything-15": "sd15", "lazymix-15": "sd15",
+    "aom2-hardcore-15": "sd15", "dark-sushi-mix-15": "sd15", "realisian-15": "sd15",
+    "anyhentai-15": "sd15", "majicmix-sombre-15": "sd15", "realcartoon-anime-15": "sd15",
+    "fantexi-15": "sd15", "orangechillmix-15": "sd15", "camelliamix-15": "sd15",
+    "astranime-15": "sd15", "kawaii-anime-mix-15": "sd15", "kakarot-28d-15": "sd15",
+    "majicmix-reverie-15": "sd15", "majicmix-horror-15": "sd15",
+    # ── Z-Image Turbo ──
+    "zimage-alibaba": "zit", "zimage-moody": "zit", "zimage-stable-yogi": "zit",
+    "zimage-ultimate-nsfw": "zit", "zimage-turbo-anime": "zit", "zimage-visionary-nsfw": "zit",
+    "zimage-tinzit-anime": "zit", "zimage-lau-anime": "zit", "zimage-komposto-ani": "zit",
+    "zimage-pornmaster-v35": "zit", "persona-zit": "zit",
+    # ── Qwen 编辑模型 ──
+    "qwen-edit": "qwen", "qwen-edit-plus": "qwen",
+    "Qwen-Image-Edit": "qwen", "Qwen-Image-Edit-Plus": "qwen",
+    "test": "other",
+}
+
+
+def base_model(model: str) -> str:
+    """Return the canonical base model for a stored model value.
+
+    Accepts both raw display names (normalized first) and canonical keys.
+    Unknown values fall back to a keyword-based guess; empty returns ''.
+    """
+    if not model:
+        return ""
+    canon = _normalize_model(model)
+    b = MODEL_BASE.get(canon)
+    if b:
+        return b
+    # 兜底：未知规范 key，用名字猜一次（仅迁移/兜底，正常生图不会走到）
+    ml = canon.lower()
+    if "pony" in ml:
+        return "pony"
+    if "ill" in ml or "illustr" in ml or "noob" in ml:
+        return "illustrious"
+    if "flux" in ml:
+        return "flux"
+    if ml.endswith("-15"):
+        return "sd15"
+    if "zimage" in ml or "zit" in ml:
+        return "zit"
+    if "xl" in ml or ml in ("sd", "sdxl"):
+        return "sdxl"
+    return "other"
+
+
 def _normalize_model(raw: str) -> str:
     """Normalize a model name to its canonical short key."""
     if not raw:
@@ -159,12 +281,18 @@ def init_db() -> None:
             prompt     TEXT NOT NULL DEFAULT '',
             seed       TEXT NOT NULL DEFAULT '',
             model      TEXT NOT NULL DEFAULT '',
+            base_model TEXT NOT NULL DEFAULT '',
             params     TEXT NOT NULL DEFAULT '',
             favorited  INTEGER NOT NULL DEFAULT 0,
             archived   INTEGER NOT NULL DEFAULT 0,
             mtime      INTEGER NOT NULL DEFAULT 0
         )
     """)
+    # 兼容旧库：ALTER TABLE 加 base_model 列（已存在则忽略）
+    try:
+        db.execute("ALTER TABLE images ADD COLUMN base_model TEXT NOT NULL DEFAULT ''")
+    except sqlite3.OperationalError:
+        pass  # column already exists
     # Indexes for fast filtering
     db.execute("CREATE INDEX IF NOT EXISTS idx_favorited ON images(favorited)")
     db.execute("CREATE INDEX IF NOT EXISTS idx_archived ON images(archived)")
@@ -199,9 +327,9 @@ def insert(filename: str, prompt: str = "", seed: str = "", model: str = "",
     model = _normalize_model(model)
     db = _conn()
     db.execute("""
-        INSERT OR REPLACE INTO images (filename, prompt, seed, model, params, mtime)
-        VALUES (?, ?, ?, ?, ?, ?)
-    """, (filename, prompt, seed, model, params, mtime))
+        INSERT OR REPLACE INTO images (filename, prompt, seed, model, base_model, params, mtime)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (filename, prompt, seed, model, base_model(model), params, mtime))
     db.commit()
     db.close()
 
@@ -234,7 +362,7 @@ def is_archived(filename: str) -> bool:
     return bool(row and row[0])
 
 
-def list_images(model_filter: str = "", search: str = "", archived: bool = False,
+def list_images(model_filter: str = "", base_filter: str = "", search: str = "", archived: bool = False,
                 favorited_only: bool = False, video_only: bool = None,
                 time_filter: str = "", offset: int = 0, limit: int = 50) -> list[dict]:
     """List images with optional filters. Returns [{filename, ...}, ...].
@@ -242,6 +370,7 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
     video_only: None=all, True=video only, False=image only.
     time_filter: 'today' (since midnight UTC), 'week' (last 7 days), '' (all).
     model_filter: exact key, or 'sd15' (all *-15), 'zit' (all zimage-*).
+    base_filter: base model category ('pony'/'illustrious'/'flux'/'sdxl'/'sd15'/'zit'/'edit'/'video').
     """
     db = _conn()
     db.row_factory = sqlite3.Row
@@ -253,6 +382,10 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
         # favorite + archive can coexist (2026-08-09)
         conditions.append("archived = ?")
         params.append(int(archived))
+
+    if base_filter:
+        conditions.append("base_model = ?")
+        params.append(base_filter)
 
     if model_filter:
         _fc = _model_filter_sql(model_filter)
@@ -280,8 +413,10 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
         fts_query = search if any(c in search for c in '*"()') else f"{search}*"
         fts_where = "images_fts MATCH ?"
         fts_params = [fts_query]
-        # In FTS join path, qualify model references with table alias 'i'
-        where_qualified = where.replace("model ", "i.model ").replace("model)", "i.model)")
+        # In FTS join path, qualify model references with table alias 'i'.
+        # Use word-boundary so `base_model` is NOT rewritten (only bare `model`).
+        import re as _re
+        where_qualified = _re.sub(r"\bmodel\b", "i.model", where)
         query = f"""
             SELECT i.* FROM images i
             INNER JOIN images_fts fts ON i.rowid = fts.rowid
@@ -304,7 +439,7 @@ def list_images(model_filter: str = "", search: str = "", archived: bool = False
     return [dict(r) for r in rows]
 
 
-def count_images(model_filter: str = "", search: str = "", archived: bool = False,
+def count_images(model_filter: str = "", base_filter: str = "", search: str = "", archived: bool = False,
                  favorited_only: bool = False, video_only: bool = None,
                  time_filter: str = "") -> int:
     """Count images matching filters.
@@ -312,6 +447,7 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
     video_only: None=all, True=video only, False=image only.
     time_filter: 'today' (since midnight UTC), 'week' (last 7 days), '' (all).
     model_filter: exact key, or 'sd15' (all *-15), 'zit' (all zimage-*).
+    base_filter: base model category ('pony'/'illustrious'/'flux'/'sdxl'/'sd15'/'zit'/'edit'/'video').
     """
     db = _conn()
 
@@ -321,6 +457,10 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
         # Same coexistence rule as list_images (2026-08-09)
         conditions.append("archived = ?")
         params.append(int(archived))
+
+    if base_filter:
+        conditions.append("base_model = ?")
+        params.append(base_filter)
 
     if model_filter:
         _fc = _model_filter_sql(model_filter)
@@ -345,7 +485,8 @@ def count_images(model_filter: str = "", search: str = "", archived: bool = Fals
 
     if search:
         fts_query = search if any(c in search for c in '*"()') else f"{search}*"
-        where_qualified = where.replace("model ", "i.model ").replace("model)", "i.model)")
+        import re as _re
+        where_qualified = _re.sub(r"\bmodel\b", "i.model", where)
         query = f"""
             SELECT COUNT(*) FROM images i
             INNER JOIN images_fts fts ON i.rowid = fts.rowid
@@ -447,12 +588,13 @@ def backfill(image_dir: Path, archive_dir: Path | None = None) -> int:
             except FileNotFoundError:
                 continue  # file moved/trashed by another thread
             db.execute("""
-                INSERT INTO images (filename, prompt, seed, model, params, favorited, archived, mtime)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO images (filename, prompt, seed, model, base_model, params, favorited, archived, mtime)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(filename) DO UPDATE SET
                     prompt = excluded.prompt,
                     seed = excluded.seed,
                     model = excluded.model,
+                    base_model = excluded.base_model,
                     params = excluded.params,
                     mtime = excluded.mtime
             """, (
@@ -460,6 +602,7 @@ def backfill(image_dir: Path, archive_dir: Path | None = None) -> int:
                 meta.get("prompt", ""),
                 meta.get("seed", ""),
                 _normalize_model(meta.get("model", "")),
+                base_model(meta.get("model", "")),
                 meta.get("params", ""),
                 1 if f.name in favs else 0,
                 1 if archive_dir and d == archive_dir else 0,
@@ -504,6 +647,28 @@ def normalize_existing() -> int:
             continue
         cur = db.execute("UPDATE images SET model = ? WHERE model = ?", (normalized, raw))
         updated += cur.rowcount
+    db.commit()
+    db.close()
+    return updated
+
+
+def backfill_base_model() -> int:
+    """One-time migration: fill base_model for every existing record from its model.
+
+    Uses the authoritative MODEL_BASE map (via base_model()), so display names
+    and canonical keys both resolve correctly. Returns rows updated.
+    """
+    db = _conn()
+    rows = db.execute("SELECT filename, model FROM images WHERE base_model = ''").fetchall()
+    updated = 0
+    for filename, model in rows:
+        b = base_model(model)
+        if not b:
+            continue
+        db.execute("UPDATE images SET base_model = ? WHERE filename = ?", (b, filename))
+        updated += 1
+        if updated % 200 == 0:
+            db.commit()
     db.commit()
     db.close()
     return updated

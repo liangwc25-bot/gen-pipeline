@@ -233,7 +233,8 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         
         overrides = {}
         for k in ("num_frames", "fps", "resolution", "go_fast", "lora_url", "lora_scale",
-                  "lora_url_2", "lora_scale_2"):
+                  "lora_url_2", "lora_scale_2", "width", "height", "steps", "seed",
+                  "lora_url_3", "lora_scale_3", "lora_pairs"):
             if k in data:
                 overrides[k] = data[k]
         
@@ -519,6 +520,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             per_page = int(params.get("per_page", [50])[0])
             filter_mode = params.get("filter", ["all"])[0]
             model_filter = params.get("model", [""])[0]
+            base_filter = params.get("base", [""])[0]
             search = params.get("search", [""])[0]
             type_filter = params.get("type", ["all"])[0]
             time_filter = params.get("time", [""])[0]
@@ -529,6 +531,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             try:
                 all_images = list_images(
                     model_filter=model_filter,
+                    base_filter=base_filter,
                     search=search,
                     archived=archived,
                     favorited_only=favorited_only,
@@ -539,6 +542,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 )
                 total = count_images(
                     model_filter=model_filter,
+                    base_filter=base_filter,
                     search=search,
                     archived=archived,
                     favorited_only=favorited_only,

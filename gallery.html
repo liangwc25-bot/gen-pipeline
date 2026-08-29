@@ -430,6 +430,7 @@
   <button class="filter-btn" id="modelPony" onclick="setModelFilter('pony')">Pony</button>
   <button class="filter-btn" id="modelIll" onclick="setModelFilter('illustrious')">Illustrious</button>
   <button class="filter-btn" id="modelFlux" onclick="setModelFilter('flux')">FLUX</button>
+  <button class="filter-btn" id="modelSDXL" onclick="setModelFilter('sdxl')">SDXL</button>
   <button class="filter-btn" id="modelSD15" onclick="setModelFilter('sd15')">SD1.5</button>
   <button class="filter-btn" id="modelZIT" onclick="setModelFilter('zit')">ZIT</button>
 </div>
@@ -494,7 +495,7 @@ let favorites = new Set();
 let archived = new Set();
 let filterMode = 'all';
 let typeFilter = 'img';  // 'img', 'video', 'all'
-let modelFilter = '';    // '' = all, 'pony', 'illustrious', 'flux', 'sd15', 'zit'
+let modelFilter = '';    // '' = all, 'pony', 'illustrious', 'flux', 'sdxl', 'sd15', 'zit'
 let timeFilter = '';     // '' = all, 'today', 'week'
 const PER_PAGE = 100;
 
@@ -717,11 +718,11 @@ async function loadPage(page) {
   else if (filterMode === 'fav') apiFilter = 'fav';
   else apiFilter = 'all';
 
-  const model = modelFilter;
+  const model = '';  // model 精确筛选已废弃，改用 base 类别
   const search = document.getElementById('searchInput').value.trim();
 
   let url = `/api/images?page=${page}&per_page=${PER_PAGE}&filter=${apiFilter}&type=${typeFilter}`;
-  if (model) url += `&model=${encodeURIComponent(model)}`;
+  if (modelFilter) url += `&base=${encodeURIComponent(modelFilter)}`;
   if (search) url += `&search=${encodeURIComponent(search)}`;
   if (timeFilter) url += `&time=${encodeURIComponent(timeFilter)}`;
 
@@ -1176,6 +1177,7 @@ function setModelFilter(m) {
   document.getElementById('modelPony').className = 'filter-btn' + (m === 'pony' ? ' active' : '');
   document.getElementById('modelIll').className = 'filter-btn' + (m === 'illustrious' ? ' active' : '');
   document.getElementById('modelFlux').className = 'filter-btn' + (m === 'flux' ? ' active' : '');
+  document.getElementById('modelSDXL').className = 'filter-btn' + (m === 'sdxl' ? ' active' : '');
   document.getElementById('modelSD15').className = 'filter-btn' + (m === 'sd15' ? ' active' : '');
   document.getElementById('modelZIT').className = 'filter-btn' + (m === 'zit' ? ' active' : '');
   loadPage(1);
