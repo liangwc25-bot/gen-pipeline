@@ -316,6 +316,39 @@
   .batch-result-card img, .batch-result-card video { width: 100%; border-radius: 10px; }
   .batch-result-card .card-label { font-size: 0.78rem; font-weight: 600; color: var(--text); margin: 6px 0 2px; word-break: break-word; overflow-wrap: anywhere; }
   .batch-result-card .card-sub { font-size: 0.7rem; color: var(--text2); }
+  /* ── Multi-column batch (横评 prompt) ── */
+  .batch-cols {
+    display: flex; gap: 16px; align-items: flex-start;
+    overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px; margin: 0 -4px; padding: 0 4px 8px;
+  }
+  .batch-cols::-webkit-scrollbar { display: none; }
+  .batch-col {
+    flex: 0 0 auto; width: 100%; max-width: 520px;
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 14px;
+    background: rgba(255,255,255,0.02); padding: 14px;
+    scroll-snap-align: start; position: relative;
+  }
+  .batch-col-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .batch-col-title { font-size: 0.8rem; font-weight: 700; color: var(--accent); }
+  .batch-col-del {
+    background: none; border: none; color: var(--text2); font-size: 0.85rem;
+    cursor: pointer; padding: 4px 8px; border-radius: 6px;
+  }
+  .batch-col-del:hover { color: var(--red); background: rgba(255,59,48,0.08); }
+  .batch-col-add {
+    flex: 0 0 auto; width: 64px; min-height: 200px;
+    border: 1px dashed rgba(255,255,255,0.15); border-radius: 14px;
+    background: transparent; color: var(--text2); font-size: 1.6rem;
+    cursor: pointer; transition: .15s; align-self: stretch; scroll-snap-align: start;
+  }
+  .batch-col-add:hover { border-color: var(--accent); color: var(--accent); background: rgba(124,92,252,0.06); }
+  @media (max-width: 700px) { .batch-col { width: 100%; } }
+  .batch-col-result { margin-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; }
 </style>
 </head>
 <body>
@@ -501,7 +534,12 @@
       </div><!-- /#normal-params -->
 
       <!-- Runware (merged single + batch) panel -->
-      <div id="batch-panel" style="display:block;padding-bottom:16px">
+      <div id="batch-cols" class="batch-cols">
+      <div id="batch-panel" class="batch-col" style="display:block;padding-bottom:16px">
+        <div class="batch-col-head">
+          <span class="batch-col-title" id="batch-col-title">🟣 Batch 横评 <span class="batch-col-num" id="batch-col-num">列 1</span></span>
+          <button class="batch-col-del" id="batch-col-del" onclick="removeBatchCol('batch')" title="删除此列" style="display:none">✕</button>
+        </div>
         <div class="form-group">
           <label>底座类别</label>
           <div class="batch-cat-tabs" id="batch-cat-tabs">
@@ -607,7 +645,16 @@
         <div class="error-msg" id="batch-error-msg"></div>
         <div class="status-bar" id="batch-status-bar"></div>
         <div class="batch-progress" id="batch-progress" style="display:none"></div>
+        <div class="batch-col-result">
+          <div class="result-placeholder" id="batch-col-result-area">
+            <span>点击「一键 Batch 生成」开始</span>
+          </div>
+          <div class="result-info" id="batch-col-result-info"></div>
+        </div>
       </div><!-- /#batch-panel -->
+
+      <button class="batch-col-add" id="batch-col-add" onclick="addBatchCol()" title="加一列横评 prompt">＋</button>
+      </div><!-- /#batch-cols -->
 
       <!-- I2I editing panel -->
       <div id="i2i-panel" style="display:none">
@@ -1993,6 +2040,92 @@ document.addEventListener('click', function(e) {
 let _batchInited = false;
 let _batchCat = 'flux';
 
+// ── Multi-column batch (横评 prompt) ──
+// 第一列用固定前缀 'batch'（兼容所有现有 batch-* id）；新列克隆后前缀为 bcolN-。
+let _batchColSeq = 0;          // 已创建的额外列数
+const _batchColState = {};     // colId → { cat, loras, genId, pollFn }
+function _colEl(colId, suffix) {
+  return document.getElementById(colId + '-' + suffix);
+}
+function _colCat(colId) { return _batchColState[colId] ? _batchColState[colId].cat : (colId === 'batch' ? _batchCat : 'flux'); }
+function _colLoras(colId) { return _batchColState[colId] ? _batchColState[colId].loras : _batchLoras; }
+function _colGenId(colId) { return _batchColState[colId] ? _batchColState[colId].genId : _batchGenId; }
+function _bumpColGenId(colId) {
+  if (colId === 'batch') { return ++_batchGenId; }
+  if (!_batchColState[colId]) _batchColState[colId] = {};
+  return (_batchColState[colId].genId = ((_batchColState[colId].genId || 0) + 1));
+}
+function _colPollFn(colId) { return _batchColState[colId] ? _batchColState[colId].pollFn : _batchPollFn; }
+function _setColPollFn(colId, fn) {
+  if (colId === 'batch') { _batchPollFn = fn; return; }
+  if (!_batchColState[colId]) _batchColState[colId] = {};
+  _batchColState[colId].pollFn = fn;
+}
+
+function addBatchCol() {
+  _batchColSeq++;
+  const colId = 'bcol' + _batchColSeq;
+  const src = document.getElementById('batch-panel');
+  const clone = src.cloneNode(true);
+  clone.id = colId;
+  clone.classList.add('batch-col');
+  clone.style.display = 'block';
+  // 重写内部所有 batch-* id → colId-*
+  clone.querySelectorAll('[id]').forEach(el => {
+    const id = el.id;
+    if (id.startsWith('batch-')) el.id = colId + id.slice('batch'.length);
+  });
+  // 重写 onclick / 相关内联引用 batchGenerate() → batchGenerate(colId)
+  clone.querySelectorAll('[onclick]').forEach(el => {
+    el.setAttribute('onclick', el.getAttribute('onclick')
+      .replace(/batchGenerate\(\)/g, `batchGenerate('${colId}')`)
+      .replace(/batchGenerate\s*\(/, `batchGenerate('${colId}')`)
+      .replace(/addBatchLoraRow\(\)/g, `addBatchLoraRow('${colId}')`)
+      .replace(/toggleAllCheckpoints\(\)/g, `toggleAllCheckpoints('${colId}')`)
+      .replace(/updateBatchCount\(\)/g, `updateBatchCount('${colId}')`)
+      .replace(/selectBatchCat\('([^']+)',\s*this\)/g, `selectBatchCat('$1', this, '${colId}')`)
+    );
+  });
+  // 标题
+  const title = clone.querySelector('.batch-col-title');
+  if (title) {
+    const num = title.querySelector('.batch-col-num');
+    if (num) num.textContent = '列 ' + (_batchColSeq + 1);
+  }
+  const del = clone.querySelector('.batch-col-del');
+  if (del) {
+    del.style.display = 'block';
+    del.setAttribute('onclick', `removeBatchCol('${colId}')`);
+  }
+  // 结果区清空
+  const ra = clone.querySelector('.result-placeholder');
+  if (ra) ra.innerHTML = '<span>点击「一键 Batch 生成」开始</span>';
+  // 初始化状态
+  _batchColState[colId] = { cat: 'flux', loras: [], genId: 0, pollFn: null };
+  // 插入到加列按钮前
+  const addBtn = document.getElementById('batch-col-add');
+  addBtn.parentNode.insertBefore(clone, addBtn);
+  // 渲染该列的 checkpoint 网格 + 滚动到新列
+  selectBatchCat('flux', clone.querySelector('.batch-cat-tab[data-cat="flux"]'), colId);
+  addBtn.scrollIntoView({ behavior: 'smooth', inline: 'end', block: 'nearest' });
+}
+
+function removeBatchCol(colId) {
+  if (colId === 'batch') return; // 第一列不可删
+  const col = document.getElementById(colId);
+  if (col) col.remove();
+  delete _batchColState[colId];
+  // 重排列号标题
+  renumberBatchCols();
+}
+function renumberBatchCols() {
+  const cols = document.querySelectorAll('#batch-cols .batch-col');
+  cols.forEach((c, i) => {
+    const num = c.querySelector('.batch-col-num');
+    if (num) num.textContent = '列 ' + (i + 1);
+  });
+}
+
 // Model key → category mapping (derived from model key naming)
 function _categorizeModel(mk) {
   if (mk.startsWith('flux-') || mk.endsWith('-flux')) return 'flux';
@@ -2016,54 +2149,71 @@ let MODEL_GROUPS = { flux: [], pony: [], illustrious: [], sdxl: [], zit: [], sd1
 // Maps model key → name from backend; populated via /api/list-models
 let _batchModelNames = {};
 
-function selectBatchCat(cat, btn) {
-  _batchCat = cat;
-  document.querySelectorAll('.batch-cat-tab').forEach(t => t.classList.remove('active'));
+function selectBatchCat(cat, btn, colId) {
+  colId = colId || 'batch';
+  if (colId === 'batch') _batchCat = cat;
+  else { if (!_batchColState[colId]) _batchColState[colId] = {}; _batchColState[colId].cat = cat; }
+  // 只切换本列内的 tab
+  const scope = colId === 'batch' ? document : document.getElementById(colId);
+  scope.querySelectorAll('.batch-cat-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
 
   const models = MODEL_GROUPS[cat] || [];
-  const grid = document.getElementById('batch-ckpt-grid');
+  const grid = _colEl(colId, 'ckpt-grid');
+  if (!grid) return;
   if (models.length === 0) {
     // Models not yet loaded — show a retrying indicator
     grid.innerHTML = '<div style="padding:12px;color:var(--text2);font-size:0.8rem">加载中…</div>';
     // Retry after models load if needed
     if (Object.values(MODEL_GROUPS).every(a => a.length === 0)) {
-      loadBatchModelNames().then(() => selectBatchCat(cat));
+      loadBatchModelNames().then(() => selectBatchCat(cat, btn, colId));
       return;
     }
   }
   let html = '';
   for (const mk of models) {
     const name = _batchModelNames[mk] || mk;
-    html += `<label class="batch-ckpt-item"><input type="checkbox" value="${mk}" onchange="updateBatchCount()"> <span class="batch-ckpt-name">${escHtml(name)}</span></label>`;
+    html += `<label class="batch-ckpt-item"><input type="checkbox" value="${mk}" onchange="updateBatchCount('${colId}')"> <span class="batch-ckpt-name">${escHtml(name)}</span></label>`;
   }
   grid.innerHTML = html;
 
-  document.getElementById('batch-check-all').checked = false;
-  updateBatchCount();
+  const checkAll = _colEl(colId, 'check-all');
+  if (checkAll) checkAll.checked = false;
+  updateBatchCount(colId);
 
   // Load LoRAs for this category
-  loadBatchLoras(cat).then(() => saveBatchDraft());
+  loadBatchLoras(cat, colId);
 }
 
-function toggleAllCheckpoints() {
-  const checked = document.getElementById('batch-check-all').checked;
-  document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]').forEach(cb => {
+function toggleAllCheckpoints(colId) {
+  colId = colId || 'batch';
+  const checkAll = _colEl(colId, 'check-all');
+  const checked = checkAll ? checkAll.checked : false;
+  const grid = _colEl(colId, 'ckpt-grid');
+  if (!grid) return;
+  grid.querySelectorAll('input[type="checkbox"]').forEach(cb => {
     cb.checked = checked;
     cb.parentElement.classList.toggle('checked', checked);
   });
-  updateBatchCount();
+  updateBatchCount(colId);
 }
 
-function updateBatchCount() {
-  const cbs = document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]:checked');
-  document.getElementById('batch-ckpt-count').textContent = cbs.length;
+function updateBatchCount(colId) {
+  colId = colId || 'batch';
+  const grid = _colEl(colId, 'ckpt-grid');
+  const countEl = _colEl(colId, 'ckpt-count');
+  if (!grid || !countEl) return;
+  const cbs = grid.querySelectorAll('input[type="checkbox"]:checked');
+  countEl.textContent = cbs.length;
   cbs.forEach(cb => cb.parentElement.classList.toggle('checked', true));
-  document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]:not(:checked)').forEach(cb => cb.parentElement.classList.remove('checked'));
+  grid.querySelectorAll('input[type="checkbox"]:not(:checked)').forEach(cb => cb.parentElement.classList.remove('checked'));
 }
 
-function getSelectedModels() {
-  const cbs = document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]:checked');
+function getSelectedModels(colId) {
+  colId = colId || 'batch';
+  const grid = _colEl(colId, 'ckpt-grid');
+  if (!grid) return [];
+  const cbs = grid.querySelectorAll('input[type="checkbox"]:checked');
   return Array.from(cbs).map(cb => cb.value);
 }
 
@@ -2071,18 +2221,21 @@ function getSelectedModels() {
 let _batchLoras = [];
 let _batchLoraLoaded = false;
 
-async function loadBatchLoras(cat) {
+async function loadBatchLoras(cat, colId) {
+  colId = colId || 'batch';
   // Map category to base_model alias for LoRA filtering
   const baseMap = { flux: 'flux-dev', pony: 'pony', illustrious: 'illustrious', sdxl: 'sdxl', zit: 'zimage-turbo', sd15: 'sd15' };
   const model = baseMap[cat] || cat;
+  let loras = [];
   try {
     const r = await fetch('/api/list-loras?model=' + encodeURIComponent(model));
     const data = await r.json();
-    _batchLoras = data.loras || [];
-    _batchLoraLoaded = true;
+    loras = data.loras || [];
   } catch(e) {
-    _batchLoras = [];
+    loras = [];
   }
+  if (colId === 'batch') { _batchLoras = loras; _batchLoraLoaded = true; }
+  else { if (!_batchColState[colId]) _batchColState[colId] = {}; _batchColState[colId].loras = loras; }
 }
 
 function addBatchLoraRow(airId, scale) {
