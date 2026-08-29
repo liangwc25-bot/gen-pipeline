@@ -2345,6 +2345,7 @@ function addBatchLoraRow(airId, scale, colId, displayName) {
     if (air) input.classList.add('has-value'); else input.classList.remove('has-value');
     dd.classList.remove('open');
     updateBatchTriggerWords(colId);
+    if (colId === 'batch') saveBatchDraft();
   });
   wrap.appendChild(input);
   wrap.appendChild(dd);
@@ -2360,7 +2361,7 @@ function addBatchLoraRow(airId, scale, colId, displayName) {
   const removeBtn = document.createElement('button');
   removeBtn.className = 'lora-remove';
   removeBtn.textContent = '×';
-  removeBtn.onclick = () => { row.remove(); updateBatchLoraCount(colId); updateBatchTriggerWords(colId); };
+  removeBtn.onclick = () => { row.remove(); updateBatchLoraCount(colId); updateBatchTriggerWords(colId); if (colId === 'batch') saveBatchDraft(); };
   row.appendChild(removeBtn);
   _colEl(colId, 'lora-rows').appendChild(row);
   updateBatchLoraCount(colId);
