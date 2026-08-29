@@ -427,8 +427,8 @@
   <h1>✦ 生图库 <span class="count" id="count"></span></h1>
   <div class="header-actions">
     <button class="btn active" id="filterAll" onclick="setFilter('all')">全部</button>
-    <button class="btn" id="filterFav" onclick="setFilter('fav')">♥ 收藏</button>
-    <button class="btn" id="filterArchive" onclick="setFilter('archive')">📦 存档</button>
+    <button class="btn" id="filterFav" onclick="setFilter('fav')">♥ 喜爱</button>
+    <button class="btn" id="filterArchive" onclick="setFilter('archive')">📦 收藏</button>
     <button class="btn" onclick="rescan()" id="rescanBtn">⟳ 扫描</button>
     <button class="btn" id="selectBtn" onclick="toggleSelectMode()">☐ 选择</button>
   </div>
@@ -461,8 +461,8 @@
 <div id="grid" class="grid"></div>
 <div id="batchBar" class="batch-bar">
   <span class="batch-count" id="batchCount">已选 0 张</span>
-  <button class="batch-btn fav" onclick="batchOp('favorite')">♥ 收藏</button>
-  <button class="batch-btn arch" onclick="batchOp('archive')">📦 存档</button>
+  <button class="batch-btn fav" onclick="batchOp('favorite')">♥ 喜爱</button>
+  <button class="batch-btn arch" onclick="batchOp('archive')">📦 收藏</button>
   <button class="batch-btn trash" onclick="batchOp('trash')">🗑 回收</button>
   <button class="batch-btn cancel" onclick="toggleSelectMode()">取消</button>
 </div>
@@ -479,8 +479,8 @@
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-actions">
-      <button class="modal-arch-btn" id="modalArchBtn" onclick="toggleArchModal()">📦 存档</button>
-      <button class="modal-fav-btn" id="modalFavBtn" onclick="toggleFavModal()">♡ 收藏</button>
+      <button class="modal-arch-btn" id="modalArchBtn" onclick="toggleArchModal()">📦 收藏</button>
+      <button class="modal-fav-btn" id="modalFavBtn" onclick="toggleFavModal()">♡ 喜爱</button>
       <button class="modal-del-btn" id="modalDelBtn" onclick="moveToTrash()">🗑 回收</button>
     </div>
     <div class="modal-swipe-area">
@@ -601,7 +601,7 @@ function removeFromLocal(filename) {
   if (totalImages === 0) {
     document.getElementById('empty').style.display = 'block';
     document.getElementById('emptyMsg').textContent = filterMode === 'archive'
-      ? '还没有存档图片' : '还没有生图';
+      ? '还没有收藏图片' : '还没有生图';
   }
 }
 
@@ -618,7 +618,7 @@ function updateFavUI(filename) {
   }
   const modalFav = document.getElementById('modalFavBtn');
   if (modalFav.dataset.file === filename) {
-    modalFav.textContent = favorites.has(filename) ? '♥ 已收藏' : '♡ 收藏';
+    modalFav.textContent = favorites.has(filename) ? '♥ 已喜爱' : '♡ 喜爱';
     modalFav.className = 'modal-fav-btn ' + (favorites.has(filename) ? 'on' : '');
   }
 }
@@ -630,7 +630,7 @@ function updateArchUI(filename) {
   }
   const modalArch = document.getElementById('modalArchBtn');
   if (modalArch.dataset.file === filename) {
-    modalArch.textContent = archived.has(filename) ? '📤 取出' : '📦 存档';
+    modalArch.textContent = archived.has(filename) ? '📤 取出' : '📦 收藏';
     modalArch.className = 'modal-arch-btn ' + (archived.has(filename) ? 'on' : '');
   }
 }
@@ -807,9 +807,9 @@ function renderGrid(images) {
     grid.innerHTML = '';
     document.getElementById('empty').style.display = 'block';
     if (filterMode === 'fav') {
-      document.getElementById('emptyMsg').textContent = '还没有收藏的图片，点击 ♡ 按钮收藏吧';
+      document.getElementById('emptyMsg').textContent = '还没有喜爱的图片，点击 ♡ 按钮喜爱吧';
     } else if (filterMode === 'archive') {
-      document.getElementById('emptyMsg').textContent = '还没有存档图片，点击 📦 按钮存档吧';
+      document.getElementById('emptyMsg').textContent = '还没有收藏的图片，点击 📦 按钮收藏吧';
     } else {
       document.getElementById('emptyMsg').textContent = '还没有生图，先去首页生成一张吧';
     }
@@ -1136,13 +1136,13 @@ function updateModalUI(img) {
 
   const isFav = favorites.has(img.filename);
   const favBtn = document.getElementById('modalFavBtn');
-  favBtn.textContent = isFav ? '♥ 已收藏' : '♡ 收藏';
+  favBtn.textContent = isFav ? '♥ 已喜爱' : '♡ 喜爱';
   favBtn.className = 'modal-fav-btn ' + (isFav ? 'on' : '');
   favBtn.dataset.file = img.filename;
 
   const isArch = archived.has(img.filename);
   const archBtn = document.getElementById('modalArchBtn');
-  archBtn.textContent = isArch ? '📤 取出' : '📦 存档';
+  archBtn.textContent = isArch ? '📤 取出' : '📦 收藏';
   archBtn.className = 'modal-arch-btn ' + (isArch ? 'on' : '');
   archBtn.dataset.file = img.filename;
 
