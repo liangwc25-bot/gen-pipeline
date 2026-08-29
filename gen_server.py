@@ -29,7 +29,10 @@ GEN_SEM = threading.BoundedSemaphore(6)  # max concurrent gen_web.py for normal 
 # Batch jobs (model comparison)
 BATCH_JOBS = OrderedDict()
 MAX_BATCH_JOBS = 30
-BATCH_CONCURRENCY = 6  # max concurrent gen_web.py processes per batch
+BATCH_CONCURRENCY = 6  # max concurrent gen_web.py processes TOTAL across all batches
+# 全局信号量：所有 batch 列(多列横评)共享同一并发上限，多列同时跑时自动排队，
+# 总量封顶 BATCH_CONCURRENCY，不会因列数翻倍导致 Runware 并发叠加(2026-08-29)
+BATCH_SEM = threading.BoundedSemaphore(BATCH_CONCURRENCY)
 
 
 def _trim_batch_jobs():
@@ -244,7 +247,7 @@ class GenHandler(SimpleHTTPRequestHandler):
         }
 
         batch_entry = {"status": "running", "total": len(models), "completed": 0, "models": {}}
-        sem = threading.BoundedSemaphore(BATCH_CONCURRENCY)
+        sem = BATCH_SEM  # 全局信号量，所有 batch 列共享并发上限，多列自动排队
 
         for model_key in models:
             payload = dict(shared)
