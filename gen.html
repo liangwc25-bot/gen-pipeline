@@ -2295,6 +2295,8 @@ function addBatchLoraRow(airId, scale, colId, displayName) {
   const catOrder = ['tools','character_style','style','concept','character','new'];
   // Build dropdown items
   const rebuild = () => {
+    // 每次重建时重新读取该列的 LoRA 列表，避免换底模后 dropdown 卡在旧快照(2026-08-29)
+    const loras = _colLoras(colId);
     let q = input.value.toLowerCase().trim();
     let html = '<div class="lora-opt none" data-air="" data-id="">— 不启用 —</div>';
     if (!q) {
