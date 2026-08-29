@@ -2082,7 +2082,8 @@ function addBatchCol() {
   clone.querySelectorAll('[onclick]').forEach(el => {
     el.setAttribute('onclick', el.getAttribute('onclick')
       .replace(/batchGenerate\(\)/g, `batchGenerate('${colId}')`)
-      .replace(/addBatchLoraRow\(\)/g, `addBatchLoraRow('${colId}')`)
+      .replace(/addBatchLoraRow\(\)/g, `addBatchLoraRow('', '', '${colId}')`)
+      .replace(/toggleCkptList\('batch'\)/g, `toggleCkptList('${colId}')`)
       .replace(/toggleAllCheckpoints\(\)/g, `toggleAllCheckpoints('${colId}')`)
       .replace(/updateBatchCount\(\)/g, `updateBatchCount('${colId}')`)
       .replace(/toggleBatchAdvanced\(\)/g, `toggleBatchAdvanced('${colId}')`)
@@ -2315,7 +2316,7 @@ function addBatchLoraRow(airId, scale, colId) {
     input.value = air ? opt.textContent.trim() : '';
     if (air) input.classList.add('has-value'); else input.classList.remove('has-value');
     dd.classList.remove('open');
-    updateBatchTriggerWords();
+    updateBatchTriggerWords(colId);
   });
   wrap.appendChild(input);
   wrap.appendChild(dd);
