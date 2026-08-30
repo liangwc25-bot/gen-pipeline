@@ -1958,7 +1958,10 @@ function insertSnippet(text, targetId) {
   ta.value = before + sep + text + ' ' + after;
   const pos = (before + sep + text + ' ').length;
   ta.setSelectionRange(pos, pos);
-  ta.focus();
+  // preventScroll: focus 若触发浏览器自动 scrollIntoView，在 batch 多列横向滚动容器
+  // + scroll-snap-stop:always 下会吸附回第一列(snap 点)，画面跳回 Batch1(2026-08-30)。
+  // 设光标但不滚动，画面停在当前列。
+  ta.focus({ preventScroll: true });
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
   if (targetId.startsWith('batch-')) saveBatchDraft();
   else saveDraft();
