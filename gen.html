@@ -2083,6 +2083,8 @@ function addBatchCol() {
   clone.querySelectorAll('[id]').forEach(el => {
     const id = el.id;
     if (id.startsWith('batch-')) el.id = colId + id.slice('batch'.length);
+    // snippet 下拉容器 id 形如 snippet-dd-batch-prompt，也要按列重写
+    else if (id.startsWith('snippet-dd-batch-')) el.id = 'snippet-dd-' + colId + id.slice('snippet-dd-batch'.length);
   });
   // 重写 onclick / 相关内联引用 batchGenerate() → batchGenerate(colId)
   clone.querySelectorAll('[onclick]').forEach(el => {
