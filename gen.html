@@ -1978,17 +1978,19 @@ function insertSnippet(text, targetId) {
   const cols = document.getElementById('batch-cols');
   const colEl = colId ? document.getElementById(colId) : null;
   ta.focus({ preventScroll: true });
-  // 容器已设 position:relative，colEl.offsetLeft 相对 .batch-cols 计算，
-  // scrollLeft 对齐当前列左缘到容器左缘，整列完整进入视口。
-  if (cols && colEl) {
-    const targetLeft = colEl.offsetLeft;
-    if (!isNaN(targetLeft)) cols.scrollLeft = targetLeft;
-  }
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
   if (targetId.startsWith('batch-')) saveBatchDraft();
   else saveDraft();
-  // 延迟到点击事件链结束后再次强制 focus 回当前列，覆盖点击中途焦点被 dropdown/mousedown 抢走的情况
-  if (ta) setTimeout(() => { ta.focus({ preventScroll: true }); }, 0);
+  // 把 scrollLeft 对齐放到所有 focus/事件链之后，用双重延迟确保不被后续 focus 自动滚动覆盖。
+  // (之前 setScrollLeft 在中间，被末尾 setTimeout focus 的自动滚动重置回 Batch1)
+  if (cols && colEl) {
+    const targetLeft = colEl.offsetLeft;
+    if (!isNaN(targetLeft)) {
+      const align = () => { cols.scrollLeft = targetLeft; };
+      requestAnimationFrame(align);
+      setTimeout(align, 100);
+    }
+  }
 }
 
 // ── Editor ──
