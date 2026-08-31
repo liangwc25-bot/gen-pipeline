@@ -320,7 +320,7 @@
   .batch-cols {
     display: flex; gap: 16px; align-items: flex-start;
     overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity; /* proximity 只在用户主动滑动接近吸附点时吸附，程序化 scrollLeft 不被强制拉回(否则 snippet 注入后会被 snap 拉回 Batch1) */
+    scroll-snap-type: x mandatory; /* 根因(label for 未重写)已修，focus 正确停在本列；snap 恢复原版 mandatory(2026-08-31) */
     position: relative; /* 让 .batch-col 的 offsetLeft 相对本容器计算，scrollLeft 对齐才准确 */
     padding-bottom: 8px; margin: 0 -4px; padding: 0 4px 8px;
   }
@@ -1976,9 +1976,9 @@ function insertSnippet(text, targetId) {
   const sep = before.length > 0 && !before.endsWith(',') && !before.endsWith(' ') ? ', ' : '';
   ta.value = before + sep + text + ' ' + after;
   const pos = (before + sep + text + ' ').length;
-  // focus 触发浏览器自动 scrollIntoView，在 batch 多列横向滚动容器 + scroll-snap-stop:always
-  // 下会吸附回第一列(snap 点)，画面跳回 Batch1。preventScroll 在某些浏览器对 textarea 不生效，
-  // 所以额外记录并恢复 .batch-cols 的 scrollLeft，强制停回当前列(2026-08-30)。
+  // focus 触发浏览器自动 scrollIntoView，在 batch 多列横向滚动容器 + scroll-snap-stop:always 下，
+  // 为稳妥起见额外记录并恢复 .batch-cols 的 scrollLeft，确保画面停回当前列(2026-08-30)。
+  // 注：label for 根因修复后，focus 已正确停在本列，scrollLeft 对齐属双保险(2026-08-31)。
   const cols = document.getElementById('batch-cols');
   const colEl = colId ? document.getElementById(colId) : null;
   // 先 focus 再 setSelectionRange(标准顺序)；对从未聚焦的克隆列 textarea，先 focus 才能设光标
