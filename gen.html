@@ -1975,12 +1975,13 @@ function insertSnippet(text, targetId) {
   // 下会吸附回第一列(snap 点)，画面跳回 Batch1。preventScroll 在某些浏览器对 textarea 不生效，
   // 所以额外记录并恢复 .batch-cols 的 scrollLeft，强制停回当前列(2026-08-30)。
   const cols = document.getElementById('batch-cols');
-  const sl = cols ? cols.scrollLeft : null;
+  const colEl = colId ? document.getElementById(colId) : null;
   ta.focus({ preventScroll: true });
-  // 兼容手机浏览器 focus 自动滚动：显式把当前 textarea 所在列滚回容器内可见位置，
-  // 保证停在当前列而不是被 snap/focus 拉回 batch1。
-  if (ta && typeof ta.scrollIntoView === 'function') {
-    ta.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'auto' });
+  // 精确对齐当前列到容器左缘，而不是 scrollIntoView(会滚到列交界/边缘，停在两列之间)。
+  // 用当前列的 offsetLeft 设置 scrollLeft，使整列完整进入视口。
+  if (cols && colEl) {
+    const targetLeft = colEl.offsetLeft;
+    if (targetLeft !== undefined) cols.scrollLeft = targetLeft;
   }
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
   if (targetId.startsWith('batch-')) saveBatchDraft();
