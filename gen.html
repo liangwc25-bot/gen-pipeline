@@ -2172,6 +2172,14 @@ function addBatchCol() {
       .replace(/selectBatchCat\('([^']+)',\s*this\)/g, `selectBatchCat('$1', this, '${colId}')`)
     );
   });
+  // 重写 onchange 属性（如全选 checkbox 的 onchange="toggleAllCheckpoints()"）。
+  // 之前只重写 onclick，onchange 里无参的 toggleAllCheckpoints() 克隆后落到 Batch1，
+  // 导致 Batch2 全选无效(2026-08-31)。
+  clone.querySelectorAll('[onchange]').forEach(el => {
+    el.setAttribute('onchange', el.getAttribute('onchange')
+      .replace(/toggleAllCheckpoints\(\)/g, `toggleAllCheckpoints('${colId}')`)
+    );
+  });
   // 标题
   const title = clone.querySelector('.batch-col-title');
   if (title) {
