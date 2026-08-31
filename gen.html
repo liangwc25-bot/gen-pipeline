@@ -1902,11 +1902,6 @@ function toggleSnippetDropdown(e, targetId) {
   // 阻止 mousedown 默认把焦点移到点击处(否则点击 snippet 项会把焦点抢到别处/落到 Batch1)，
   // 让 insertSnippet 里的 ta.focus() 完全掌控焦点(2026-08-30)
   dd.addEventListener('mousedown', (e) => {
-    // DEBUG: 记录点击前焦点，确认点 snippet 前焦点在哪个 prompt
-    const pre = document.activeElement ? document.activeElement.id : 'NONE';
-    setTimeout(() => { let dbg=document.getElementById('snippet-dbg');
-      if(!dbg){dbg=document.createElement('div');dbg.id='snippet-dbg';dbg.style.cssText='position:fixed;bottom:8px;left:8px;z-index:99999;background:#000;color:#0f0;font:11px monospace;padding:6px;border-radius:4px;max-width:92vw;white-space:pre-wrap';document.body.appendChild(dbg);}
-      dbg.textContent='PRE-focus='+pre+' NOW-focus='+(document.activeElement?document.activeElement.id:'NONE')+'\n'+dbg.textContent; }, 5);
     e.preventDefault();
   });
 }
@@ -1975,8 +1970,6 @@ function insertSnippet(text, targetId) {
   // targetId 本身就是完整 id(bcol1-prompt)，直接用 getElementById 拿该列 textarea，
   // 无需 _colEl 绕弯(之前 _colEl(colId,'-prompt') 拼成 bcol1--prompt 是错的，靠兜底才拿到对)
   const ta = document.getElementById(targetId);
-  // DEBUG(2026-08-30): 定位 focus 跳回 batch1 问题
-  console.log('[SNIPPET-BATCH] targetId=', targetId, 'colId=', colId, 'ta.id=', ta ? ta.id : 'NULL');
   const start = ta.selectionStart, end = ta.selectionEnd;
   const before = ta.value.substring(0, start);
   const after = ta.value.substring(end);
@@ -2004,7 +1997,6 @@ function insertSnippet(text, targetId) {
       setTimeout(align, 100);
     }
   }
-  // DEBUG(2026-08-30) 焦点时间线调试已移除，改为只显示 PRE-focus(在 mousedown 里记录)
 }
 
 // ── Editor ──
@@ -2128,6 +2120,14 @@ function addBatchCol() {
     if (id.startsWith('batch-')) el.id = colId + id.slice('batch'.length);
     // snippet 下拉容器 id 形如 snippet-dd-batch-prompt，也要按列重写
     else if (id.startsWith('snippet-dd-batch-')) el.id = 'snippet-dd-' + colId + id.slice('snippet-dd-batch'.length);
+  });
+  // 重写 label 的 for 属性（batch-prompt → bcol1-prompt）。否则克隆列仍 <label for="batch-prompt">，
+  // 而 snippet 下拉项就在该 label 内，click 冒泡到 label 触发浏览器原生 activation，把焦点
+  // 转发给 for 指向的 Batch1 textarea —— 该默认动作在 insertSnippet 的 ta.focus() 之后执行，
+  // 覆盖了正确焦点。这就是「注入对但 focus 跳回 Batch1」的根因(2026-08-31)。
+  clone.querySelectorAll('[for]').forEach(el => {
+    const f = el.getAttribute('for');
+    if (f && f.startsWith('batch-')) el.setAttribute('for', colId + f.slice('batch'.length));
   });
   // 重写 onclick / 相关内联引用 batchGenerate() → batchGenerate(colId)
   clone.querySelectorAll('[onclick]').forEach(el => {
