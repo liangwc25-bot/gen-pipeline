@@ -321,6 +321,7 @@
     display: flex; gap: 16px; align-items: flex-start;
     overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;
     scroll-snap-type: none; /* SNAP-DEBUG 2026-08-30: 临时关闭验证 snippet 跳转是否 snap 引起 */
+    position: relative; /* 让 .batch-col 的 offsetLeft 相对本容器计算，scrollLeft 对齐才准确 */
     padding-bottom: 8px; margin: 0 -4px; padding: 0 4px 8px;
   }
   .batch-cols::-webkit-scrollbar { display: none; }
@@ -1977,12 +1978,10 @@ function insertSnippet(text, targetId) {
   const cols = document.getElementById('batch-cols');
   const colEl = colId ? document.getElementById(colId) : null;
   ta.focus({ preventScroll: true });
-  // 精确对齐当前列到容器左缘。不能直接用 colEl.offsetLeft(需 offsetParent 是容器)，
-  // 用 getBoundingClientRect 差值 + 当前 scrollLeft 计算列相对容器的真实偏移。
+  // 容器已设 position:relative，colEl.offsetLeft 相对 .batch-cols 计算，
+  // scrollLeft 对齐当前列左缘到容器左缘，整列完整进入视口。
   if (cols && colEl) {
-    const cr = cols.getBoundingClientRect();
-    const er = colEl.getBoundingClientRect();
-    const targetLeft = cols.scrollLeft + (er.left - cr.left);
+    const targetLeft = colEl.offsetLeft;
     if (!isNaN(targetLeft)) cols.scrollLeft = targetLeft;
   }
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
