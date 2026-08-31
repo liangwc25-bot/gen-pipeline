@@ -1899,6 +1899,9 @@ function toggleSnippetDropdown(e, targetId) {
   dd.innerHTML = html;
   dd.classList.add('open');
   dd._targetId = targetId;
+  // 阻止 mousedown 默认把焦点移到点击处(否则点击 snippet 项会把焦点抢到别处/落到 Batch1)，
+  // 让 insertSnippet 里的 ta.focus() 完全掌控焦点(2026-08-30)
+  dd.addEventListener('mousedown', (e) => { e.preventDefault(); });
 }
 // 收集当前已选 LoRA 的 trigger words（供 snippet 下拉动态展示）
 function collectTriggerWords(targetId) {
