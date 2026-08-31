@@ -1989,6 +1989,21 @@ function insertSnippet(text, targetId) {
       setTimeout(align, 100);
     }
   }
+  // DEBUG(2026-08-30) 手机无法看 console，用页面可见调试框显示焦点时间线
+  const dshow = (label, delay) => setTimeout(() => {
+    let dbg = document.getElementById('snippet-dbg');
+    if (!dbg) { dbg = document.createElement('div'); dbg.id = 'snippet-dbg';
+      dbg.style.cssText = 'position:fixed;bottom:8px;left:8px;z-index:99999;background:#000;color:#0f0;font:11px monospace;padding:6px;border-radius:4px;max-width:92vw;white-space:pre-wrap';
+      document.body.appendChild(dbg); }
+    const ae = document.activeElement ? document.activeElement.id : 'NONE';
+    dbg.textContent = label + ' focus=' + ae + '\n'
+      + (ta ? ('ta_ro=' + ta.readOnly + ' ta_dis=' + ta.disabled + ' ta_vis=' + (ta.offsetParent!==null)) : '')
+      + '\n' + (dbg.textContent.split('\n').slice(0,3).join('\n'));
+  }, delay);
+  dshow('t0(now)', 0);
+  dshow('t1(50ms)', 50);
+  dshow('t2(150ms)', 150);
+  dshow('t3(300ms)', 300);
 }
 
 // ── Editor ──
