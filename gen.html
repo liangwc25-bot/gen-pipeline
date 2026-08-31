@@ -320,7 +320,7 @@
   .batch-cols {
     display: flex; gap: 16px; align-items: flex-start;
     overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity; /* proximity 只在用户主动滑动接近吸附点时吸附，程序化 scrollLeft 不被强制拉回(否则 snippet 注入后会被 snap 拉回 Batch1) */
     position: relative; /* 让 .batch-col 的 offsetLeft 相对本容器计算，scrollLeft 对齐才准确 */
     padding-bottom: 8px; margin: 0 -4px; padding: 0 4px 8px;
   }
