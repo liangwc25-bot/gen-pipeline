@@ -1955,14 +1955,9 @@ function insertSnippet(text, targetId) {
   const colId = targetId.endsWith('-prompt') || targetId.endsWith('-negative')
     ? targetId.slice(0, targetId.lastIndexOf('-'))
     : null;
-  let ta;
-  if (colId) {
-    // batch 列：用列作用域拿当前列的 textarea，避免 getElementById 因 id 冲突取到 batch1
-    ta = _colEl(colId, targetId.slice(colId.length + 1));
-    if (!ta) ta = document.getElementById(targetId); // 兜底
-  } else {
-    ta = document.getElementById(targetId);
-  }
+  // targetId 本身就是完整 id(bcol1-prompt)，直接用 getElementById 拿该列 textarea，
+  // 无需 _colEl 绕弯(之前 _colEl(colId,'-prompt') 拼成 bcol1--prompt 是错的，靠兜底才拿到对)
+  const ta = document.getElementById(targetId);
   // DEBUG(2026-08-30): 定位 focus 跳回 batch1 问题
   console.log('[SNIPPET-BATCH] targetId=', targetId, 'colId=', colId, 'ta.id=', ta ? ta.id : 'NULL');
   const start = ta.selectionStart, end = ta.selectionEnd;
