@@ -1964,7 +1964,12 @@ function insertSnippet(text, targetId) {
   const cols = document.getElementById('batch-cols');
   const sl = cols ? cols.scrollLeft : null;
   ta.focus({ preventScroll: true });
-  if (cols && sl !== null) cols.scrollLeft = sl;
+  // 浏览器对 textarea 的 focus 自动滚动可能是异步的(且 preventScroll 支持不全)，
+  // 用 requestAnimationFrame 在异步滚动后强制恢复 scrollLeft，确保停在当前列。
+  if (cols && sl !== null) {
+    requestAnimationFrame(() => { cols.scrollLeft = sl; });
+    setTimeout(() => { cols.scrollLeft = sl; }, 50);
+  }
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
   if (targetId.startsWith('batch-')) saveBatchDraft();
   else saveDraft();
