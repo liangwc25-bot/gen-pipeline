@@ -1977,11 +1977,13 @@ function insertSnippet(text, targetId) {
   const cols = document.getElementById('batch-cols');
   const colEl = colId ? document.getElementById(colId) : null;
   ta.focus({ preventScroll: true });
-  // 精确对齐当前列到容器左缘，而不是 scrollIntoView(会滚到列交界/边缘，停在两列之间)。
-  // 用当前列的 offsetLeft 设置 scrollLeft，使整列完整进入视口。
+  // 精确对齐当前列到容器左缘。不能直接用 colEl.offsetLeft(需 offsetParent 是容器)，
+  // 用 getBoundingClientRect 差值 + 当前 scrollLeft 计算列相对容器的真实偏移。
   if (cols && colEl) {
-    const targetLeft = colEl.offsetLeft;
-    if (targetLeft !== undefined) cols.scrollLeft = targetLeft;
+    const cr = cols.getBoundingClientRect();
+    const er = colEl.getBoundingClientRect();
+    const targetLeft = cols.scrollLeft + (er.left - cr.left);
+    if (!isNaN(targetLeft)) cols.scrollLeft = targetLeft;
   }
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
   if (targetId.startsWith('batch-')) saveBatchDraft();
