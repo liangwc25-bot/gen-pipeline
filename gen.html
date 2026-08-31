@@ -1972,7 +1972,7 @@ function insertSnippet(text, targetId) {
   // 所以额外记录并恢复 .batch-cols 的 scrollLeft，强制停回当前列(2026-08-30)。
   const cols = document.getElementById('batch-cols');
   const colEl = colId ? document.getElementById(colId) : null;
-  ta.focus({ preventScroll: true });
+  ta.focus(); // 普通 focus 确保真正聚焦当前列 textarea；画面滚动由下方 scrollLeft 对齐兜底
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
   if (targetId.startsWith('batch-')) saveBatchDraft();
   else saveDraft();
