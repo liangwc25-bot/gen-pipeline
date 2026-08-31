@@ -320,7 +320,7 @@
   .batch-cols {
     display: flex; gap: 16px; align-items: flex-start;
     overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;
-    scroll-snap-type: none; /* SNAP-DEBUG 2026-08-30: 临时关闭验证 snippet 跳转是否 snap 引起 */
+    scroll-snap-type: x mandatory;
     position: relative; /* 让 .batch-col 的 offsetLeft 相对本容器计算，scrollLeft 对齐才准确 */
     padding-bottom: 8px; margin: 0 -4px; padding: 0 4px 8px;
   }
@@ -329,7 +329,7 @@
     flex: 0 0 auto; width: 100%; max-width: 520px;
     border: 1px solid rgba(255,255,255,0.08); border-radius: 14px;
     background: rgba(255,255,255,0.02); padding: 10px;
-    /* SNAP-DEBUG: 临时移除 scroll-snap-align/stop */ position: relative;
+    scroll-snap-align: start; scroll-snap-stop: always; position: relative;
   }
   .batch-col-head {
     display: flex; align-items: center; justify-content: space-between;
@@ -345,7 +345,7 @@
     flex: 0 0 auto; width: 64px; min-height: 200px;
     border: 1px dashed rgba(255,255,255,0.15); border-radius: 14px;
     background: transparent; color: var(--text2); font-size: 1.6rem;
-    cursor: pointer; transition: .15s; align-self: stretch; /* SNAP-DEBUG: 移除 scroll-snap-align */
+    cursor: pointer; transition: .15s; align-self: stretch; scroll-snap-align: start;
   }
   .batch-col-add:hover { border-color: var(--accent); color: var(--accent); background: rgba(124,92,252,0.06); }
   @media (max-width: 700px) { .batch-col { width: 100%; } }
