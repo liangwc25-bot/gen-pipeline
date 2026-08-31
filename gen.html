@@ -1958,10 +1958,13 @@ function insertSnippet(text, targetId) {
   ta.value = before + sep + text + ' ' + after;
   const pos = (before + sep + text + ' ').length;
   ta.setSelectionRange(pos, pos);
-  // preventScroll: focus 若触发浏览器自动 scrollIntoView，在 batch 多列横向滚动容器
-  // + scroll-snap-stop:always 下会吸附回第一列(snap 点)，画面跳回 Batch1(2026-08-30)。
-  // 设光标但不滚动，画面停在当前列。
+  // focus 触发浏览器自动 scrollIntoView，在 batch 多列横向滚动容器 + scroll-snap-stop:always
+  // 下会吸附回第一列(snap 点)，画面跳回 Batch1。preventScroll 在某些浏览器对 textarea 不生效，
+  // 所以额外记录并恢复 .batch-cols 的 scrollLeft，强制停回当前列(2026-08-30)。
+  const cols = document.getElementById('batch-cols');
+  const sl = cols ? cols.scrollLeft : null;
   ta.focus({ preventScroll: true });
+  if (cols && sl !== null) cols.scrollLeft = sl;
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
   if (targetId.startsWith('batch-')) saveBatchDraft();
   else saveDraft();
@@ -2365,7 +2368,7 @@ function addBatchLoraRow(airId, scale, colId, displayName) {
   const scaleInput = document.createElement('input');
   scaleInput.type = 'number';
   scaleInput.className = 'lora-scale';
-  scaleInput.value = scale != null ? scale : 0.8;
+  scaleInput.value = (scale != null && scale !== '') ? scale : 0.8;
   scaleInput.step = 0.05;
   scaleInput.min = 0.05;
   scaleInput.max = 2.0;
