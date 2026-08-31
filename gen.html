@@ -851,90 +851,119 @@ function restoreDraft() {
 }
 
 // ── Batch draft persistence ──
-function saveBatchDraft() {
-  const cbs = document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]');
-  const checkedModels = [];
-  cbs.forEach(cb => { if (cb.checked) checkedModels.push(cb.value); });
-
-  const loraRows = document.querySelectorAll('#batch-lora-rows .lora-row');
+// 保存/恢复所有 batch 列（Batch1 + 所有克隆列 bcolN），刷新后全部保留(2026-08-31)。
+let _batchRestored = false;   // 每次页面加载只重建一次克隆列（避免切 tab 重复建列）
+// 枚举当前所有 batch 列的 colId：batch + 每个 .batch-col 里 id 为 bcolN 的
+function _batchColIds() {
+  const ids = ['batch'];
+  document.querySelectorAll('#batch-cols .batch-col').forEach(el => {
+    if (el.id && /^bcol\d+$/.test(el.id)) ids.push(el.id);
+  });
+  return ids;
+}
+function _readBatchCol(colId) {
+  const cbs = _colEl(colId, 'ckpt-grid').querySelectorAll('input[type="checkbox"]');
+  const models = [];
+  cbs.forEach(cb => { if (cb.checked) models.push(cb.value); });
   const loras = [];
-  loraRows.forEach(row => {
+  _colEl(colId, 'lora-rows').querySelectorAll('.lora-row').forEach(row => {
     const air = row.querySelector('.lora-search')._airId;
     const scale = row.querySelector('.lora-scale').value;
     const name = row.querySelector('.lora-search').value;
     if (air) loras.push({ air_id: air, scale, name });
   });
-
-  localStorage.setItem('batch_draft', JSON.stringify({
-    cat: _batchCat,
-    models: checkedModels,
-    prompt: document.getElementById('batch-prompt').value,
-    negative: document.getElementById('batch-negative').value,
-    steps: document.getElementById('batch-steps').value,
-    cfg: document.getElementById('batch-cfg').value,
-    seed: document.getElementById('batch-seed').value,
-    aspect: document.getElementById('batch-aspect').value,
-    sampler: document.getElementById('batch-sampler').value,
+  return {
+    cat: _colCat(colId),
+    models,
+    prompt: _colEl(colId, 'prompt').value,
+    negative: _colEl(colId, 'negative').value,
+    steps: _colEl(colId, 'steps').value,
+    cfg: _colEl(colId, 'cfg').value,
+    seed: _colEl(colId, 'seed').value,
+    aspect: _colEl(colId, 'aspect').value,
+    sampler: _colEl(colId, 'sampler').value,
     loras,
-  }));
+  };
 }
-
+function saveBatchDraft() {
+  const cols = _batchColIds().map(colId => ({ colId, ..._readBatchCol(colId) }));
+  localStorage.setItem('batch_draft', JSON.stringify({ version: 2, cols }));
+}
+// 把一份列配置写到指定列（colId = 'batch' 或 'bcolN'）
+function _applyBatchCol(colId, d) {
+  if (d.cat && _colCat(colId) !== d.cat) {
+    const tab = _colEl(colId, 'cat-tabs').querySelector(`.batch-cat-tab[data-cat="${d.cat}"]`);
+    selectBatchCat(d.cat, tab, colId);
+  }
+  if (d.prompt) _colEl(colId, 'prompt').value = d.prompt;
+  if (d.negative) _colEl(colId, 'negative').value = d.negative;
+  if (d.steps) _colEl(colId, 'steps').value = d.steps;
+  if (d.cfg) _colEl(colId, 'cfg').value = d.cfg;
+  if (d.seed) _colEl(colId, 'seed').value = d.seed;
+  if (d.aspect) {
+    _colEl(colId, 'aspect').value = d.aspect;
+    const al = _colEl(colId, 'aspect-wrap').querySelector('.custom-select-label');
+    const ao = _colEl(colId, 'aspect-wrap').querySelector(`.custom-opt[data-value="${d.aspect}"]`);
+    if (al && ao) al.textContent = ao.textContent;
+  }
+  if (d.sampler != null) {
+    _colEl(colId, 'sampler').value = d.sampler || '';
+    const sl = _colEl(colId, 'sampler-wrap').querySelector('.custom-select-label');
+    const so = _colEl(colId, 'sampler-wrap').querySelector(`.custom-opt[data-value="${d.sampler || ''}"]`);
+    if (sl && so) sl.textContent = so.textContent;
+  }
+  // Restore checkpoint selection (after a short delay for grid to populate)
+  if (d.models && d.models.length > 0) {
+    setTimeout(() => {
+      const cbs = _colEl(colId, 'ckpt-grid').querySelectorAll('input[type="checkbox"]');
+      cbs.forEach(cb => { cb.checked = d.models.includes(cb.value); });
+      updateBatchCount(colId);
+    }, 100);
+  }
+  // Restore LoRA rows
+  if (d.loras && d.loras.length > 0) {
+    setTimeout(() => {
+      const rows = _colEl(colId, 'lora-rows');
+      rows.innerHTML = '';
+      d.loras.forEach(l => addBatchLoraRow(l.air_id, parseFloat(l.scale) || 0.8, colId, l.name));
+      updateBatchTriggerWords(colId);
+    }, 200);
+  }
+}
 function restoreBatchDraft() {
   try {
     const raw = localStorage.getItem('batch_draft');
     if (!raw) return;
     const d = JSON.parse(raw);
-    if (d.cat && _batchCat !== d.cat) {
-      selectBatchCat(d.cat, document.querySelector(`.batch-cat-tab[data-cat="${d.cat}"]`));
+    let cols;
+    if (d && Array.isArray(d.cols)) cols = d.cols;
+    else if (d) cols = [{ colId: 'batch', ...d }]; // 旧版单列格式兼容
+    else return;
+    if (cols.length === 0) return;
+    if (_batchRestored) return; // 已重建过，避免重复建列
+    _batchRestored = true;
+    // 第一列 batch 已在 DOM 中，直接填值；其余按序 addBatchCol 重建（bcol1, bcol2…）
+    _applyBatchCol('batch', cols[0]);
+    for (let i = 1; i < cols.length; i++) {
+      addBatchCol();
+      _applyBatchCol('bcol' + i, cols[i]);
     }
-    if (d.prompt) document.getElementById('batch-prompt').value = d.prompt;
-    if (d.negative) document.getElementById('batch-negative').value = d.negative;
-    if (d.steps) document.getElementById('batch-steps').value = d.steps;
-    if (d.cfg) document.getElementById('batch-cfg').value = d.cfg;
-    if (d.seed) document.getElementById('batch-seed').value = d.seed;
-    if (d.aspect) {
-      document.getElementById('batch-aspect').value = d.aspect;
-      const al = document.getElementById('batch-aspect-wrap').querySelector('.custom-select-label');
-      const ao = document.getElementById('batch-aspect-wrap').querySelector(`.custom-opt[data-value="${d.aspect}"]`);
-      if (al && ao) al.textContent = ao.textContent;
-    }
-    if (d.sampler != null) {
-      document.getElementById('batch-sampler').value = d.sampler || '';
-      const sl = document.getElementById('batch-sampler-wrap').querySelector('.custom-select-label');
-      const so = document.getElementById('batch-sampler-wrap').querySelector(`.custom-opt[data-value="${d.sampler || ''}"]`);
-      if (sl && so) sl.textContent = so.textContent;
-    }
-    // Restore checkpoint selection (after a short delay for grid to populate)
-    if (d.models && d.models.length > 0) {
-      setTimeout(() => {
-        const cbs = document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]');
-        cbs.forEach(cb => { cb.checked = d.models.includes(cb.value); });
-        updateBatchCount();
-      }, 100);
-    }
-    // Restore LoRA rows
-    if (d.loras && d.loras.length > 0) {
-      setTimeout(() => {
-        document.getElementById('batch-lora-rows').innerHTML = '';
-        d.loras.forEach(l => addBatchLoraRow(l.air_id, parseFloat(l.scale) || 0.8, 'batch', l.name));
-        updateBatchTriggerWords();
-      }, 200);
-    }
-  } catch(e) {}
+  } catch(e) { /* silent */ }
 }
 
 // Auto-save on input
 document.addEventListener('input', e => {
   if (['prompt','negative','seed','count'].includes(e.target.id) ||
       e.target.closest('.lora-row')) saveDraft();
-  // Batch panel auto-save
-  if (e.target.id === 'batch-prompt' || e.target.id === 'batch-negative' ||
-      e.target.id === 'batch-seed' || e.target.id === 'batch-steps' ||
-      e.target.id === 'batch-cfg' || e.target.closest('#batch-lora-rows .lora-row')) saveBatchDraft();
+  // Batch panel auto-save（匹配任意 batch 列：batch-prompt / bcolN-prompt / ...）
+  const bcol = e.target.closest('.batch-col');
+  if (bcol && (e.target.id.endsWith('-prompt') || e.target.id.endsWith('-negative') ||
+      e.target.id.endsWith('-seed') || e.target.id.endsWith('-steps') ||
+      e.target.id.endsWith('-cfg') || e.target.closest('.lora-row'))) saveBatchDraft();
 });
 document.addEventListener('change', e => {
   if (e.target.id === 'model' || e.target.id === 'translate_cn') saveDraft();
-  if (e.target.closest('#batch-ckpt-grid')) saveBatchDraft();
+  if (e.target.closest('.batch-ckpt-grid')) saveBatchDraft();
 });
 // Platform tabs call setPlatform which calls onModelChange — saveDraft is handled there
 // via the lora/input listeners and init final save.
@@ -969,7 +998,7 @@ document.addEventListener('click', function(e) {
     opt.classList.add('active');
     wrap.classList.remove('open');
     saveDraft();
-    if (opt.closest('#batch-panel')) {
+    if (opt.closest('.batch-col')) {
       saveBatchDraft();
     }
     // Trigger model change if model selector
@@ -1860,7 +1889,7 @@ async function saveSnippets() {
 function clearPrompt(id = 'prompt') {
   document.getElementById(id).value = '';
   // 只清该字段，保留所有其他参数；按字段保存对应草稿
-  if (id.startsWith('batch-')) saveBatchDraft();
+  if (document.getElementById(id).closest('.batch-col')) saveBatchDraft();
   else saveDraft();
 }
 function toggleExpand(btn, targetId) {
@@ -1985,7 +2014,7 @@ function insertSnippet(text, targetId) {
   ta.focus();
   ta.setSelectionRange(pos, pos);
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
-  if (targetId.startsWith('batch-')) saveBatchDraft();
+  if (ta.closest('.batch-col')) saveBatchDraft();
   else saveDraft();
   // 把 scrollLeft 对齐放到所有 focus/事件链之后，用双重延迟确保不被后续 focus 自动滚动覆盖。
   // (之前 setScrollLeft 在中间，被末尾 setTimeout focus 的自动滚动重置回 Batch1)
@@ -2397,7 +2426,7 @@ function addBatchLoraRow(airId, scale, colId, displayName) {
     if (air) input.classList.add('has-value'); else input.classList.remove('has-value');
     dd.classList.remove('open');
     updateBatchTriggerWords(colId);
-    if (colId === 'batch') saveBatchDraft();
+    saveBatchDraft();
   });
   wrap.appendChild(input);
   wrap.appendChild(dd);
@@ -2413,7 +2442,7 @@ function addBatchLoraRow(airId, scale, colId, displayName) {
   const removeBtn = document.createElement('button');
   removeBtn.className = 'lora-remove';
   removeBtn.textContent = '×';
-  removeBtn.onclick = () => { row.remove(); updateBatchLoraCount(colId); updateBatchTriggerWords(colId); if (colId === 'batch') saveBatchDraft(); };
+  removeBtn.onclick = () => { row.remove(); updateBatchLoraCount(colId); updateBatchTriggerWords(colId); saveBatchDraft(); };
   row.appendChild(removeBtn);
   _colEl(colId, 'lora-rows').appendChild(row);
   updateBatchLoraCount(colId);
