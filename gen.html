@@ -1901,7 +1901,14 @@ function toggleSnippetDropdown(e, targetId) {
   dd._targetId = targetId;
   // 阻止 mousedown 默认把焦点移到点击处(否则点击 snippet 项会把焦点抢到别处/落到 Batch1)，
   // 让 insertSnippet 里的 ta.focus() 完全掌控焦点(2026-08-30)
-  dd.addEventListener('mousedown', (e) => { e.preventDefault(); });
+  dd.addEventListener('mousedown', (e) => {
+    // DEBUG: 记录点击前焦点，确认点 snippet 前焦点在哪个 prompt
+    const pre = document.activeElement ? document.activeElement.id : 'NONE';
+    setTimeout(() => { let dbg=document.getElementById('snippet-dbg');
+      if(!dbg){dbg=document.createElement('div');dbg.id='snippet-dbg';dbg.style.cssText='position:fixed;bottom:8px;left:8px;z-index:99999;background:#000;color:#0f0;font:11px monospace;padding:6px;border-radius:4px;max-width:92vw;white-space:pre-wrap';document.body.appendChild(dbg);}
+      dbg.textContent='PRE-focus='+pre+' NOW-focus='+(document.activeElement?document.activeElement.id:'NONE')+'\n'+dbg.textContent; }, 5);
+    e.preventDefault();
+  });
 }
 // 收集当前已选 LoRA 的 trigger words（供 snippet 下拉动态展示）
 function collectTriggerWords(targetId) {
@@ -1952,6 +1959,13 @@ function escHtml(s) {
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
 }
 
+// 全局：阻止点击 snippet 按钮/下拉项时 mousedown 把焦点从 textarea 抢走
+// (button 可聚焦，点 📌 会把焦点从 bcol1-prompt 移到按钮；item 同理。preventDefault 后焦点保留在 textarea)
+document.addEventListener('mousedown', function(e) {
+  if (e.target.closest('.snippet-btn') || e.target.closest('.snippet-item')) {
+    e.preventDefault();
+  }
+});
 // ── Insert at cursor ──
 function insertSnippet(text, targetId) {
   // 从 targetId 推导列 id：batch-prompt→batch, bcol1-prompt→bcol1；其它(ModelsLab 的 prompt/negative)走全局
@@ -1969,13 +1983,14 @@ function insertSnippet(text, targetId) {
   const sep = before.length > 0 && !before.endsWith(',') && !before.endsWith(' ') ? ', ' : '';
   ta.value = before + sep + text + ' ' + after;
   const pos = (before + sep + text + ' ').length;
-  ta.setSelectionRange(pos, pos);
   // focus 触发浏览器自动 scrollIntoView，在 batch 多列横向滚动容器 + scroll-snap-stop:always
   // 下会吸附回第一列(snap 点)，画面跳回 Batch1。preventScroll 在某些浏览器对 textarea 不生效，
   // 所以额外记录并恢复 .batch-cols 的 scrollLeft，强制停回当前列(2026-08-30)。
   const cols = document.getElementById('batch-cols');
   const colEl = colId ? document.getElementById(colId) : null;
-  ta.focus(); // 普通 focus 确保真正聚焦当前列 textarea；画面滚动由下方 scrollLeft 对齐兜底
+  // 先 focus 再 setSelectionRange(标准顺序)；对从未聚焦的克隆列 textarea，先 focus 才能设光标
+  ta.focus();
+  ta.setSelectionRange(pos, pos);
   document.querySelectorAll('.snippet-dropdown.open').forEach(d => d.classList.remove('open'));
   if (targetId.startsWith('batch-')) saveBatchDraft();
   else saveDraft();
@@ -1989,21 +2004,7 @@ function insertSnippet(text, targetId) {
       setTimeout(align, 100);
     }
   }
-  // DEBUG(2026-08-30) 手机无法看 console，用页面可见调试框显示焦点时间线
-  const dshow = (label, delay) => setTimeout(() => {
-    let dbg = document.getElementById('snippet-dbg');
-    if (!dbg) { dbg = document.createElement('div'); dbg.id = 'snippet-dbg';
-      dbg.style.cssText = 'position:fixed;bottom:8px;left:8px;z-index:99999;background:#000;color:#0f0;font:11px monospace;padding:6px;border-radius:4px;max-width:92vw;white-space:pre-wrap';
-      document.body.appendChild(dbg); }
-    const ae = document.activeElement ? document.activeElement.id : 'NONE';
-    dbg.textContent = label + ' focus=' + ae + '\n'
-      + (ta ? ('ta_ro=' + ta.readOnly + ' ta_dis=' + ta.disabled + ' ta_vis=' + (ta.offsetParent!==null)) : '')
-      + '\n' + (dbg.textContent.split('\n').slice(0,3).join('\n'));
-  }, delay);
-  dshow('t0(now)', 0);
-  dshow('t1(50ms)', 50);
-  dshow('t2(150ms)', 150);
-  dshow('t3(300ms)', 300);
+  // DEBUG(2026-08-30) 焦点时间线调试已移除，改为只显示 PRE-focus(在 mousedown 里记录)
 }
 
 // ── Editor ──
