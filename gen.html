@@ -2661,7 +2661,9 @@ async function loadBatchModelNames() {
       MODEL_GROUPS = { flux: [], pony: [], illustrious: [], sdxl: [], zit: [], sd15: [] };
       for (const m of data.models) {
         _batchModelNames[m.id] = m.name;
-        const cat = _categorizeModel(m.id);
+        // 权威 base 优先（后端 MODELS.base 来自 MODEL_BASE 表）；无则回退名字正则
+        let cat = m.base || _categorizeModel(m.id);
+        if (cat === 'qwen') cat = null;  // 编辑模型不进生图 batch 分组
         if (cat && MODEL_GROUPS[cat]) {
           MODEL_GROUPS[cat].push(m.id);
         }

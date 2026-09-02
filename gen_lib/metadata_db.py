@@ -123,6 +123,7 @@ MODEL_BASE = {
     "magicalpony": "pony", "pinkiepie-pony-mix": "pony", "speciosa-25d": "pony",
     "speciosa-realistica": "pony", "speciosa-anime": "pony", "dreamisoa-remix": "pony",
     "dreamisoa-anime": "pony",
+    "diving-pony": "pony",
     # Pony 显示名（历史未归一化的落库值）
     "WAI-SemiReal": "pony", "WAI-C": "pony", "The Deep Dark": "pony",
     "RedCraft 红潮2": "pony", "Honey Mix High Contrast Anime": "pony",
@@ -142,6 +143,7 @@ MODEL_BASE = {
     "burgundy-dolls-ill": "illustrious", "burgundy-milfs-ill": "illustrious",
     "miaomiao-harem-ill": "illustrious", "miaomiao-mature-ill": "illustrious",
     "illustrious-xl-2": "illustrious",
+    "diving-3d": "illustrious", "diving-flat": "illustrious", "diving-anime": "illustrious",
     # Illustrious 显示名（历史未归一化的落库值）
     "Aoi 164 Character": "illustrious", "CAT Citron Anime Treasure": "illustrious",
     "Animij (Illustrious)": "illustrious", "Illustrious XL 2.0": "illustrious",
@@ -191,7 +193,7 @@ MODEL_BASE = {
     "zimage-alibaba": "zit", "zimage-moody": "zit", "zimage-stable-yogi": "zit",
     "zimage-ultimate-nsfw": "zit", "zimage-turbo-anime": "zit", "zimage-visionary-nsfw": "zit",
     "zimage-tinzit-anime": "zit", "zimage-lau-anime": "zit", "zimage-komposto-ani": "zit",
-    "zimage-pornmaster-v35": "zit", "persona-zit": "zit",
+    "zimage-pornmaster-v35": "zit", "persona-zit": "zit", "diving-zit": "zit",
     # ── Qwen 编辑模型 ──
     "qwen-edit": "qwen", "qwen-edit-plus": "qwen",
     "Qwen-Image-Edit": "qwen", "Qwen-Image-Edit-Plus": "qwen",
