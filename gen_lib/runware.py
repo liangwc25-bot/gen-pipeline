@@ -21,7 +21,7 @@ def _default_cfg(model_key):
     """Default CFG by model family. Flux=3, ZIT=1, SD1.5=7, else (Pony/Illu/SDXL)=6."""
     if model_key.startswith("flux-") or model_key.endswith("-flux"):
         return 3.0
-    if model_key.startswith("zimage-") or model_key == "persona-zit":
+    if model_key.startswith("zimage-") or model_key == "persona-zit" or model_key == "diving-zit":
         return 1.0
     if model_key.endswith("-15"):
         return 7.0
