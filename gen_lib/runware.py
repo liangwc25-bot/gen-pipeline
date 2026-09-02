@@ -67,6 +67,7 @@ MODELS = {
     "flux-klein":     {"id": "runware:400@2", "name": "FLUX.2 [klein] 9B", "price": "~$0.00078/张", "i2i": "ref"},
     "fantasy-reality-xl": {"id": "civitai:230569@260218", "name": "Fantasy Reality Fusion XL", "price": "~$0.003/张"},
     "hoj-illustrious-xl": {"id": "liangwc:hoj-illustrious-xl@2384232", "name": "(HoJ) High on Juice - Semi-realistic IllustriousXL v4.0c", "price": "~$0.003/张"},
+    "bismuth-illustrious": {"id": "liangwc:bismuth-illustrious@2897830", "name": "Bismuth Illustrious Mix v8.0", "price": "~$0.003/张"},
     "ponymature-pony": {"id": "liangwc:ponymature-ponyeclipse@477658", "name": "Ponymature SDXL PonyEclipse 1.0", "price": "~$0.003/张"},
     "speciosa-25d": {"id": "liangwc:speciosa-25d@634767", "name": "Speciosa 2.5D v1.2 (Pony)", "price": "~$0.003/张"},
     "speciosa-realistica": {"id": "liangwc:speciosa-realistica@1379842", "name": "Speciosa Realistica v1.2b (Pony)", "price": "~$0.003/张"},
