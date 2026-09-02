@@ -69,7 +69,6 @@ MODELS = {
     "hoj-illustrious-xl": {"id": "liangwc:hoj-illustrious-xl@2384232", "name": "(HoJ) High on Juice - Semi-realistic IllustriousXL v4.0c", "price": "~$0.003/张"},
     "bismuth-illustrious": {"id": "liangwc:bismuth-illustrious@2897830", "name": "Bismuth Illustrious Mix v8.0", "price": "~$0.003/张"},
     "diving-pony":        {"id": "liangwc:divingponyanime@1459310", "name": "Diving-Pony Anime v3.0", "price": "~$0.003/张"},
-    "diving-semi-real":   {"id": "liangwc:divingillustrioussemi@1527952", "name": "Diving-Illustrious Semi-Real v1.0", "price": "~$0.003/张"},
     "diving-3d":          {"id": "liangwc:diving3d@2763403", "name": "Diving-Illustrious 3D/CG v3.0", "price": "~$0.003/张"},
     "diving-flat":        {"id": "liangwc:divingflat@3001848", "name": "Diving-Illustrious Flat Anime v8.0", "price": "~$0.003/张"},
     "diving-anime":       {"id": "liangwc:divinganime@2939886", "name": "Diving-Illustrious Anime v2.0", "price": "~$0.003/张"},
