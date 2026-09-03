@@ -144,6 +144,7 @@ MODEL_BASE = {
     "miaomiao-harem-ill": "illustrious", "miaomiao-mature-ill": "illustrious",
     "illustrious-xl-2": "illustrious",
     "diving-3d": "illustrious", "diving-flat": "illustrious", "diving-anime": "illustrious",
+    "diving-real": "illustrious",
     # Illustrious 显示名（历史未归一化的落库值）
     "Aoi 164 Character": "illustrious", "CAT Citron Anime Treasure": "illustrious",
     "Animij (Illustrious)": "illustrious", "Illustrious XL 2.0": "illustrious",
