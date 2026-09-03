@@ -73,6 +73,7 @@ MODELS = {
     "diving-real":        {"id": "liangwc:divingreal@2490435", "name": "Diving-Illustrious Real-Asian v7.0", "price": "~$0.003/张", "base": "illustrious"},
     "diving-flat":        {"id": "liangwc:divingflat@3001848", "name": "Diving-Illustrious Flat Anime v8.0", "price": "~$0.003/张", "base": "illustrious"},
     "diving-anime":       {"id": "liangwc:divinganime@2939886", "name": "Diving-Illustrious Anime v2.0", "price": "~$0.003/张", "base": "illustrious"},
+    "diving-semi-real":   {"id": "liangwc:diving-semireal@1527952", "name": "Diving-Illustrious Semi-Real v1.0", "price": "~$0.003/张", "base": "illustrious"},
     "diving-zit":         {"id": "liangwc:divingzit@3126573", "name": "Diving-Z-Image Turbo v7.0", "price": "~$0.003/张", "base": "zit"},
     "ponymature-pony": {"id": "liangwc:ponymature-ponyeclipse@477658", "name": "Ponymature SDXL PonyEclipse 1.0", "price": "~$0.003/张", "base": "pony"},
     "speciosa-25d": {"id": "liangwc:speciosa-25d@634767", "name": "Speciosa 2.5D v1.2 (Pony)", "price": "~$0.003/张", "base": "pony"},
