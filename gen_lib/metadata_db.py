@@ -146,6 +146,7 @@ MODEL_BASE = {
     "diving-3d": "illustrious", "diving-flat": "illustrious", "diving-anime": "illustrious",
     "diving-semi-real": "illustrious", "diving-real": "illustrious",
     "red-lily-ill": "illustrious", "silene-ill": "illustrious",
+    "kokio-ill": "illustrious", "konbinimix-ill": "illustrious",
     # Illustrious 显示名（历史未归一化的落库值）
     "Aoi 164 Character": "illustrious", "CAT Citron Anime Treasure": "illustrious",
     "Animij (Illustrious)": "illustrious", "Illustrious XL 2.0": "illustrious",
