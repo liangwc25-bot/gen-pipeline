@@ -68,6 +68,8 @@ MODELS = {
     "fantasy-reality-xl": {"id": "civitai:230569@260218", "name": "Fantasy Reality Fusion XL", "price": "~$0.003/张", "base": "sdxl"},
     "hoj-illustrious-xl": {"id": "liangwc:hoj-illustrious-xl@2384232", "name": "(HoJ) High on Juice - Semi-realistic IllustriousXL v4.0c", "price": "~$0.003/张", "base": "illustrious"},
     "bismuth-illustrious": {"id": "liangwc:bismuth-illustrious@2897830", "name": "Bismuth Illustrious Mix v8.0", "price": "~$0.003/张", "base": "illustrious"},
+    "red-lily-ill":       {"id": "liangwc:red-lily-ill@2343145", "name": "Red Lily | Illu v1.0", "price": "~$0.003/张", "base": "illustrious"},
+    "silene-ill":         {"id": "liangwc:silene-ill@1415266", "name": "Silene Illustrious XL 1.0", "price": "~$0.003/张", "base": "illustrious"},
     "diving-pony":        {"id": "liangwc:divingponyanime@1459310", "name": "Diving-Pony Anime v3.0", "price": "~$0.003/张", "base": "pony"},
     "diving-3d":          {"id": "liangwc:diving3d@2763403", "name": "Diving-Illustrious 3D/CG v3.0", "price": "~$0.003/张", "base": "illustrious"},
     "diving-real":        {"id": "liangwc:divingreal@2490435", "name": "Diving-Illustrious Real-Asian v7.0", "price": "~$0.003/张", "base": "illustrious"},
