@@ -143,8 +143,13 @@ def main():
         problems.append("缺 quant_conv/post_quant_conv")
     dtype_note = ""
     if "F16" in sig["dtype_dist"] and not ("F32" in sig["dtype_dist"]):
-        # 全 FP16 VAE — SD1.5 原生 FP16 也常见,但 SDXL 系标准是 FP32,值得提示
-        dtype_note = f" ⚠️ 全 FP16 (VEA dtype: {sig['dtype_dist']}) — SDXL/Illustrious 建议参考 FP32 版 VAE"
+        # 全 FP16 VAE — SDXL/Pony/Illustrious 系标准是 FP32, 全 FP16 多为阉割/非标准版
+        dtype_note = f" ⚠️ 全 FP16 (VEA dtype: {sig['dtype_dist']}) — SDXL/Pony/Illustrious 建议参考 FP32 版 VAE"
+        # 无参考文件时, 全 FP16 也报疑似(2026-09-04 教训: Konbini 两个全 FP16 出图灰+白亮点,
+        # 但当时没带参考, dtype_note 没进 problems → exit 0 放行). SD1.5 原生 FP16 正常,
+        # 但宁可多报一次让鹿鹿决策, 不错放 SDXL 系.
+        if not (ref_path and Path(ref_path).exists()):
+            problems.append("全 FP16 VAE (SDXL/Pony/Illustrious 系标准为 FP32, 疑似阉割/非标准版, 建议对照 readme 的参考 VAE)")
 
     print(f"✅ 含内嵌 VAE: {sig['count']} 键 | dtype: {sig['dtype_dist']}")
     print(f"   结构: encoder={sig['has_encoder']} decoder={sig['has_decoder']} quant={sig['has_quant']}")
