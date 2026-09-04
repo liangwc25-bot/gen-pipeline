@@ -124,6 +124,7 @@ MODEL_BASE = {
     "speciosa-realistica": "pony", "speciosa-anime": "pony", "dreamisoa-remix": "pony",
     "dreamisoa-anime": "pony",
     "diving-pony": "pony",
+    "konbinimix-pony": "pony", "konbinimix-retro-pony": "pony",
     # Pony 显示名（历史未归一化的落库值）
     "WAI-SemiReal": "pony", "WAI-C": "pony", "The Deep Dark": "pony",
     "RedCraft 红潮2": "pony", "Honey Mix High Contrast Anime": "pony",

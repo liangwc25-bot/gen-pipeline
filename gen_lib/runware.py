@@ -89,6 +89,8 @@ MODELS = {
     "magicalpony": {"id": "liangwc:magicalpony@713992", "name": "MagicalPony3 (Pony)", "price": "~$0.003/张", "base": "pony"},
     "pinkiepie-pony-mix": {"id": "liangwc:pinkiepie-pony-mix@1159818", "name": "PinkiePie pony mix v3.6 Fp16 (Pony)", "price": "~$0.003/张", "base": "pony"},
     "dreamisoa-anime": {"id": "liangwc:dreamisoa-anime@3152606", "name": "Dreamisoa_remix_anime v3 EVO (Pony)", "price": "~$0.003/张", "base": "pony"},
+    "konbinimix-pony": {"id": "liangwc:konbinimix-pony@816093", "name": "KonbiniMix Pony/XL v1", "price": "~$0.003/张", "base": "pony"},
+    "konbinimix-retro-pony": {"id": "liangwc:konbinimix-retro-pony@827451", "name": "KonbiniMix_Retro Pony/XL v1", "price": "~$0.003/张", "base": "pony"},
     "zimage-alibaba": {"id": "runware:z-image@turbo", "name": "Alibaba Z-Image-Turbo", "price": "$0.0006/张", "base": "zit"},
     "zimage-moody":   {"id": "persona:620406@2745677", "name": "Moody Pro Mix (Z-Image)", "price": "$0.0013/张", "base": "zit"},
     "zimage-stable-yogi": {"id": "liangwc:zimage-turbo-stable-yogi@3096324", "name": "Zimage Turbo by Stable Yogi (2603 Fp8)", "price": "~$0.0013/张", "base": "zit"},
