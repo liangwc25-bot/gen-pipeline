@@ -1,0 +1,12 @@
+# gen-pipeline dependencies
+#
+# Core (required — the web UI, gallery and image saving all use Pillow):
+Pillow>=10.0.0
+
+# Optional:
+#   boto3  — only needed by gen_lib/i2v_runpod.py (I2V via RunPod serverless,
+#            staging LoRAs onto a RunPod S3 network volume). Skip unless you use it.
+#   numpy  — only needed by gen_lib/check_vae.py (offline VAE-health check of
+#            checkpoints before upload). Not a runtime dependency.
+# boto3>=1.34
+# numpy>=1.26

@@ -535,22 +535,9 @@ def delete_record(filename: str) -> None:
 
 def backfill(image_dir: Path, archive_dir: Path | None = None) -> int:
     """Scan existing images and populate the DB from PNG metadata.
-    Also migrates favorites from the old JSON file.
     Returns number of images indexed.
     """
     from PIL import Image
-
-    # Import favorites from old JSON
-    favs = set()
-    fav_file = Path.home() / ".hermes" / "gallery_favorites.json"
-    if fav_file.exists():
-        try:
-            import json as _json
-            data = _json.loads(fav_file.read_text())
-            if isinstance(data, list):
-                favs = set(data)
-        except Exception:
-            pass
 
     db = _conn()
     indexed = 0
@@ -611,7 +598,7 @@ def backfill(image_dir: Path, archive_dir: Path | None = None) -> int:
                 _normalize_model(meta.get("model", "")),
                 base_model(meta.get("model", "")),
                 meta.get("params", ""),
-                1 if f.name in favs else 0,
+                0,  # favorited — owned by the user-facing API (set_favorited), not backfill
                 1 if archive_dir and d == archive_dir else 0,
                 mtime,
             ))
