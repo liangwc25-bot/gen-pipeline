@@ -42,10 +42,17 @@ def _api(method: str, *, data: dict | None = None,
          multipart: dict[str, tuple[str, bytes | None, str]] | None = None,
          timeout: int = 120) -> None:
     """POST to a Telegram bot API method. Returns None; raises TelegramError on failure."""
-    token, _ = _bot()
+    token, chat_id = _bot()
     url = f"https://api.telegram.org/bot{token}/{method}"
     headers = {}
     body = None
+
+    # chat_id comes from _bot() (quotes stripped). Normalise any raw env usage
+    # in the callers so the id is always clean.
+    if multipart and "chat_id" in multipart:
+        multipart["chat_id"] = (chat_id, None, "")
+    if data and "chat_id" in data:
+        data["chat_id"] = chat_id
 
     # Clean multipart build (kept simple & correct):
     if multipart:
