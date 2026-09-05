@@ -706,11 +706,14 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                 filepath = IMAGES_DIR / filename
                 if filepath.exists():
                     try:
-                        result = subprocess.run(
-                            ["/root/scripts/tg", str(filepath)],
-                            capture_output=True, text=True, timeout=120
-                        )
-                        ok = result.returncode == 0
+                        from gen_lib.telegram import send_file, TelegramError
+                        ok = True
+                        err = None
+                        try:
+                            send_file(str(filepath), caption=f"来自 [gallery]")
+                        except TelegramError as e:
+                            ok = False
+                            err = str(e)
                         self.send_response(200 if ok else 500)
                         self.send_header("Content-Type", "application/json")
                         self.send_header("Access-Control-Allow-Origin", "*")
@@ -718,16 +721,16 @@ class GalleryHandler(SimpleHTTPRequestHandler):
                         self.wfile.write(json.dumps({
                             "sent": ok,
                             "filename": filename,
-                            "error": result.stderr.strip() if not ok else None,
+                            "error": err,
                         }).encode())
-                    except subprocess.TimeoutExpired:
+                    except Exception as e:
                         self.send_response(500)
                         self.send_header("Content-Type", "application/json")
                         self.send_header("Access-Control-Allow-Origin", "*")
                         self.end_headers()
                         self.wfile.write(json.dumps({
                             "sent": False, "filename": filename,
-                            "error": "timeout",
+                            "error": str(e),
                         }).encode())
                 else:
                     self.send_error(404, "File not found")

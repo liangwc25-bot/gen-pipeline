@@ -236,6 +236,15 @@ textarea { resize: vertical; min-height: 180px; }
 <div class="card">
   <label class="section-label">参数</label>
   <div class="params-row">
+    <div class="param-item" style="flex:2;">
+      <label>引擎 (Provider)</label>
+      <select id="provider" onchange="onProviderChange()">
+        <option value="replicate-wan">Replicate Wan 2.2 (1 LoRA)</option>
+        <option value="runpod-wan">RunPod Wan 2.2 (多 LoRA)</option>
+      </select>
+    </div>
+  </div>
+  <div class="params-row" id="replicateParams">
     <div class="param-item">
       <label>帧数</label>
       <input type="number" id="frames" value="121" min="81" max="121">
@@ -252,36 +261,25 @@ textarea { resize: vertical; min-height: 180px; }
       </select>
     </div>
   </div>
-  <div class="lora-row">
-    <div style="flex:1;position:relative;">
-      <label style="display:block;font-size:0.75rem;color:var(--text2);margin-bottom:4px;">LoRA</label>
-      <input type="text" id="loraSearch" placeholder="搜索 LoRA…" autocomplete="off"
-        style="width:100%;" onfocus="showLoraDropdown()" oninput="filterLoraDropdown()" onkeydown="if(event.key==='Enter'){event.preventDefault();selectFirstLora()}">
-      <div class="lora-dropdown" id="loraDropdown"></div>
-      <input type="hidden" id="loraUrl">
-      <input type="hidden" id="loraId">
+  <div class="params-row" id="runpodParams" style="display:none;">
+    <div class="param-item">
+      <label>宽</label>
+      <input type="number" id="rpWidth" value="768" min="256" max="1280">
     </div>
-    <div class="param-item" style="max-width:70px;">
-      <label>Scale</label>
-      <input type="number" id="loraScale" value="1.0" min="0.1" max="2.0" step="0.1">
+    <div class="param-item">
+      <label>高</label>
+      <input type="number" id="rpHeight" value="1024" min="256" max="1280">
     </div>
-    <button id="loraClearBtn" class="lora-remove" title="移除 LoRA" onclick="clearLora()" style="display:none;">×</button>
+    <div class="param-item">
+      <label>Steps</label>
+      <input type="number" id="rpSteps" value="10" min="4" max="30">
+    </div>
   </div>
-  <div class="lora-row" style="margin-top:8px;">
-    <div style="flex:1;position:relative;">
-      <label style="display:block;font-size:0.75rem;color:var(--text2);margin-bottom:4px;">LoRA #2 (LOW, 可选)</label>
-      <input type="text" id="loraSearch2" placeholder="搜索 LoRA…" autocomplete="off"
-        style="width:100%;" onfocus="showLoraDropdown2()" oninput="filterLoraDropdown2()" onkeydown="if(event.key==='Enter'){event.preventDefault();selectFirstLora2()}">
-      <div class="lora-dropdown" id="loraDropdown2"></div>
-      <input type="hidden" id="loraUrl2">
-      <input type="hidden" id="loraId2">
-    </div>
-    <div class="param-item" style="max-width:70px;">
-      <label>Scale</label>
-      <input type="number" id="loraScale2" value="1.0" min="0.1" max="2.0" step="0.1">
-    </div>
-    <button id="loraClearBtn2" class="lora-remove" title="移除 LoRA #2" onclick="clearLora2()" style="display:none;">×</button>
+  <div class="lora-label-row" style="font-size:0.8rem;color:var(--text2);margin:10px 0 6px;display:flex;justify-content:space-between;">
+    <span>自定义 LoRA（每组 High + Low，最多 4 组）</span><span id="lora-pair-count">0 组</span>
   </div>
+  <div id="lora-pair-rows"></div>
+  <button class="lora-add" id="lora-pair-add-btn" onclick="addLoraPairRow()" style="display:inline-block;margin-top:6px;padding:6px 14px;border:1px dashed rgba(255,255,255,0.15);border-radius:8px;background:transparent;color:var(--text2);font-size:0.8rem;cursor:pointer;">+ 添加 LoRA 组</button>
 </div>
 
 <button class="submit-btn" id="submitBtn" onclick="submitI2V()">▶ 生成视频</button>
@@ -312,6 +310,14 @@ let currentSourceFile = null;  // for uploaded files
 // ── LoRA Registry ──
 let loraRegistry = [];
 
+function onProviderChange() {
+  const p = document.getElementById('provider').value;
+  const rp = document.getElementById('runpodParams');
+  const repParams = document.getElementById('replicateParams');
+  if (rp) rp.style.display = (p === 'runpod-wan') ? 'flex' : 'none';
+  if (repParams) repParams.style.display = (p === 'replicate-wan') ? 'flex' : 'none';
+}
+
 async function loadLoraRegistry() {
   try {
     const res = await fetch('/api/i2v-loras');
@@ -324,140 +330,142 @@ async function loadLoraRegistry() {
 loadLoraRegistry();
 
 function showLoraDropdown() {
-  const dd = document.getElementById('loraDropdown');
-  filterLoraDropdown();
-  dd.classList.add('show');
+  // legacy no-op — dynamic pair rows handle dropdowns per-row
+}
+function addLoraPairRow(preHighId, preLowId) {
+  if (document.querySelectorAll('#lora-pair-rows .lora-pair').length >= 4) return;
+  const container = document.getElementById('lora-pair-rows');
+  const pair = document.createElement('div');
+  pair.className = 'lora-pair';
+  pair.style.cssText = 'border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px;margin-bottom:10px;position:relative;';
+  pair.innerHTML =
+    '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">' +
+      '<span style="font-size:0.75rem;color:var(--text2);">LoRA 组 ' + (document.querySelectorAll('#lora-pair-rows .lora-pair').length + 1) + '</span>' +
+      '<button class="lora-remove" onclick="removeLoraPair(this)" title="移除整组" style="width:26px;height:26px;">×</button>' +
+    '</div>' +
+    buildLoraLine('high') +
+    buildLoraLine('low') ;
+  container.appendChild(pair);
+  if (preHighId) setPairLora(pair, 'high', preHighId);
+  if (preLowId) setPairLora(pair, 'low', preLowId);
+  updateLoraPairCount();
 }
 
-function noiseBadge(l) {
-  const n = (l.noise || '').toLowerCase();
-  if (n === 'both') return '<span class="noise-badge n-both">H+L</span>';
-  if (n === 'low') return '<span class="noise-badge n-low">LOW</span>';
-  if (n === 'high') return '<span class="noise-badge n-high">HIGH</span>';
-  return '';
+function buildLoraLine(slot) {
+  return '<div class="lora-row" data-slot="' + slot + '" style="gap:6px;align-items:center;">' +
+    '<div style="flex:1;position:relative;">' +
+      '<label style="display:block;font-size:0.7rem;color:var(--text2);margin-bottom:2px;">' + (slot==='high'?'High 噪声':'Low 噪声') + '</label>' +
+      '<input type="text" class="lora-search" placeholder="搜索 LoRA…" autocomplete="off" style="width:100%;"' +
+        ' onfocus="filterPairDropdown(this)" oninput="filterPairDropdown(this)" onkeydown="if(event.key==='Enter'){event.preventDefault();selectFirstPairOpt(this)}">' +
+      '<div class="lora-dropdown"></div>' +
+      '<input type="hidden" class="lora-value">' +
+    '</div>' +
+    '<div style="max-width:70px;">' +
+      '<label style="display:block;font-size:0.7rem;color:var(--text2);margin-bottom:2px;">Scale</label>' +
+      '<input type="number" class="lora-scale" value="1.0" min="0.1" max="2.0" step="0.1">' +
+    '</div>' +
+  '</div>';
 }
 
-function filterLoraDropdown() {
-  const q = (document.getElementById('loraSearch').value || '').toLowerCase().trim();
-  const dd = document.getElementById('loraDropdown');
-  
-  let items = loraRegistry;
-  if (q) {
-    items = loraRegistry.filter(l => 
-      l.name.toLowerCase().includes(q) ||
-      (l.tags || []).some(t => t.toLowerCase().includes(q)) ||
-      (l.description || '').toLowerCase().includes(q)
-    );
-  }
-  
-  let html = '<div class="lora-opt clear" onclick="clearLora()">— 不启用 —</div>';
-  items.forEach(l => {
-    html += `<div class="lora-opt" onclick="selectLora('${escapeHtml(l.id)}')">
-      <div>${noiseBadge(l)} ${escapeHtml(l.name)}</div>
-    </div>`;
-  });
-  if (q && items.length === 0) {
-    html += `<div class="lora-opt custom" onclick="customLoraUrl()">✏️ 手动输入 URL: "${escapeHtml(q)}"</div>`;
-  } else {
-    html += '<div class="lora-opt custom" onclick="customLoraUrl()">✏️ 手动输入 URL…</div>';
-  }
-  
-  dd.innerHTML = html;
-  dd.classList.add('show');
-}
-
-function selectFirstLora() {
-  const opts = document.querySelectorAll('#loraDropdown .lora-opt');
-  if (opts.length > 1) opts[1].click();  // skip "不启用"
-  else if (opts.length > 0) opts[0].click();
-}
-
-function selectLora(id) {
-  const lora = loraRegistry.find(l => l.id === id);
+function setPairLora(pair, slot, id) {
+  const lora = loraRegistry.find(function(l){ return l.id === id; });
   if (!lora) return;
-  
-  document.getElementById('loraUrl').value = lora.url;
-  document.getElementById('loraId').value = lora.id;
-  document.getElementById('loraScale').value = lora.default_scale || 1.0;
-  const search = document.getElementById('loraSearch');
+  const row = pair.querySelector('.lora-row[data-slot="'+slot+'"]');
+  row.querySelector('.lora-value').value = slot==='high' ? (lora.url||'') : (lora.url_2||lora.url||'');
+  const search = row.querySelector('.lora-search');
   search.value = lora.name;
   search.classList.add('has-value');
-  document.getElementById('loraClearBtn').style.display = 'flex';
-  document.getElementById('loraDropdown').classList.remove('show');
+  row.querySelector('.lora-scale').value = lora.default_scale || 1.0;
 }
 
-function clearLora() {
-  document.getElementById('loraUrl').value = '';
-  document.getElementById('loraId').value = '';
-  document.getElementById('loraSearch').value = '';
-  document.getElementById('loraSearch').classList.remove('has-value');
-  document.getElementById('loraClearBtn').style.display = 'none';
-  document.getElementById('loraDropdown').classList.remove('show');
-}
-
-function customLoraUrl() {
-  const q = document.getElementById('loraSearch').value.trim();
-  const url = prompt('输入 LoRA .safetensors URL:', q || '');
-  if (!url) return;
-  document.getElementById('loraUrl').value = url;
-  document.getElementById('loraId').value = '';
-  document.getElementById('loraSearch').value = '';
-  document.getElementById('loraSearch').classList.add('has-value');
-  document.getElementById('loraClearBtn').style.display = 'flex';
-  document.getElementById('loraDropdown').classList.remove('show');
-}
-
-// Close dropdown on outside click
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('#loraSearch') && !e.target.closest('#loraDropdown')) {
-    document.getElementById('loraDropdown').classList.remove('show');
-  }
-});
-
-// ── LoRA #2 (LOW) ──
-function showLoraDropdown2() { filterLoraDropdown2(); document.getElementById('loraDropdown2').classList.add('show'); }
-function filterLoraDropdown2() {
-  var q = (document.getElementById('loraSearch2').value || '').toLowerCase().trim();
-  var dd = document.getElementById('loraDropdown2');
-  var items = loraRegistry;
-  if (q) items = loraRegistry.filter(function(l) { return l.name.toLowerCase().indexOf(q) >= 0 || (l.tags || []).some(function(t) { return t.toLowerCase().indexOf(q) >= 0; }); });
-  var html = '<div class="lora-opt clear" onclick="clearLora2()">— 不启用 —</div>';
-  items.forEach(function(l) { html += '<div class="lora-opt" onclick="selectLora2(\'' + escapeHtml(l.id) + '\')"><div>' + noiseBadge(l) + ' ' + escapeHtml(l.name) + '</div></div>'; });
-  if (q && items.length === 0) html += '<div class="lora-opt custom" onclick="customLoraUrl2()">✏️ 手动输入 URL: "' + escapeHtml(q) + '"</div>';
-  else html += '<div class="lora-opt custom" onclick="customLoraUrl2()">✏️ 手动输入 URL…</div>';
+function filterPairDropdown(input) {
+  const row = input.closest('.lora-row');
+  const dd = row.querySelector('.lora-dropdown');
+  const q = (input.value||'').toLowerCase().trim();
+  let items = loraRegistry;
+  if (q) items = loraRegistry.filter(function(l){ return l.name.toLowerCase().indexOf(q)>=0 || (l.tags||[]).some(function(t){ return t.toLowerCase().indexOf(q)>=0; }); });
+  let html = '<div class="lora-opt clear" onclick="clearPairLora(this)">— 不启用 —</div>';
+  items.forEach(function(l){ html += '<div class="lora-opt" onclick="pickPairLora(this,\'' + escapeHtml(l.id) + '\')"><div>' + noiseBadge(l) + ' ' + escapeHtml(l.name) + '</div></div>'; });
+  if (q && items.length===0) html += '<div class="lora-opt custom" onclick="customPairLora(this)">✏️ 手动输入 URL: "' + escapeHtml(q) + '"</div>';
+  else html += '<div class="lora-opt custom" onclick="customPairLora(this)">✏️ 手动输入 URL…</div>';
   dd.innerHTML = html; dd.classList.add('show');
 }
-function selectFirstLora2() { var o = document.querySelectorAll('#loraDropdown2 .lora-opt'); if (o.length > 1) o[1].click(); else if (o.length > 0) o[0].click(); }
-function selectLora2(id) {
-  var l = loraRegistry.find(function(l) { return l.id === id; }); if (!l) return;
-  document.getElementById('loraUrl2').value = l.url_2 || l.url;
-  document.getElementById('loraId2').value = l.id;
-  document.getElementById('loraScale2').value = l.default_scale || 1.0;
-  var search = document.getElementById('loraSearch2');
-  search.value = l.name;
+
+function pickPairLora(el, id) {
+  const row = el.closest('.lora-row');
+  const lora = loraRegistry.find(function(l){ return l.id === id; });
+  if (!lora) return;
+  const slot = row.dataset.slot;
+  row.querySelector('.lora-value').value = slot==='high' ? (lora.url||'') : (lora.url_2||lora.url||'');
+  const search = row.querySelector('.lora-search');
+  search.value = lora.name;
   search.classList.add('has-value');
-  document.getElementById('loraClearBtn2').style.display = 'flex';
-  document.getElementById('loraDropdown2').classList.remove('show');
+  row.querySelector('.lora-scale').value = lora.default_scale || 1.0;
+  row.querySelector('.lora-dropdown').classList.remove('show');
 }
-function clearLora2() {
-  document.getElementById('loraUrl2').value = ''; document.getElementById('loraId2').value = '';
-  document.getElementById('loraSearch2').value = ''; document.getElementById('loraSearch2').classList.remove('has-value');
-  document.getElementById('loraClearBtn2').style.display = 'none';
-  document.getElementById('loraDropdown2').classList.remove('show');
+
+function clearPairLora(el) {
+  const row = el.closest('.lora-row');
+  row.querySelector('.lora-value').value = '';
+  const search = row.querySelector('.lora-search');
+  search.value = ''; search.classList.remove('has-value');
+  row.querySelector('.lora-dropdown').classList.remove('show');
 }
-function customLoraUrl2() {
-  var q = document.getElementById('loraSearch2').value.trim();
-  var url = prompt('输入 LoRA #2 .safetensors URL:', q || '');
+
+function customPairLora(el) {
+  const row = el.closest('.lora-row');
+  const q = row.querySelector('.lora-search').value.trim();
+  const url = prompt('输入 LoRA .safetensors URL:', q || '');
   if (!url) return;
-  document.getElementById('loraUrl2').value = url; document.getElementById('loraId2').value = '';
-  document.getElementById('loraSearch2').value = ''; document.getElementById('loraSearch2').classList.add('has-value');
-  document.getElementById('loraClearBtn2').style.display = 'flex';
-  document.getElementById('loraDropdown2').classList.remove('show');
+  row.querySelector('.lora-value').value = url;
+  const search = row.querySelector('.lora-search');
+  search.value = ''; search.classList.add('has-value');
+  row.querySelector('.lora-dropdown').classList.remove('show');
 }
+
+function selectFirstPairOpt(input) {
+  const opts = input.closest('.lora-row').querySelectorAll('.lora-opt');
+  if (opts.length > 1) opts[1].click(); else if (opts.length > 0) opts[0].click();
+}
+
+function removeLoraPair(btn) {
+  btn.closest('.lora-pair').remove();
+  updateLoraPairCount();
+  // renumber
+  const pairs = document.querySelectorAll('#lora-pair-rows .lora-pair');
+  pairs.forEach(function(p,i){ const lbl=p.querySelector('span'); if(lbl) lbl.textContent='LoRA 组 '+(i+1); });
+}
+
+function updateLoraPairCount() {
+  const n = document.querySelectorAll('#lora-pair-rows .lora-pair').length;
+  const el = document.getElementById('lora-pair-count');
+  if (el) el.textContent = n + ' 组';
+  const addBtn = document.getElementById('lora-pair-add-btn');
+  if (addBtn) addBtn.style.display = n >= 4 ? 'none' : 'inline-block';
+}
+
+function collectLoraPairs() {
+  const pairs = [];
+  document.querySelectorAll('#lora-pair-rows .lora-pair').forEach(function(pair){
+    const hiRow = pair.querySelector('.lora-row[data-slot="high"]');
+    const loRow = pair.querySelector('.lora-row[data-slot="low"]');
+    const hiUrl = hiRow ? hiRow.querySelector('.lora-value').value.trim() : '';
+    const loUrl = loRow ? loRow.querySelector('.lora-value').value.trim() : '';
+    const hiScale = hiRow ? parseFloat(hiRow.querySelector('.lora-scale').value)||1.0 : 1.0;
+    const loScale = loRow ? parseFloat(loRow.querySelector('.lora-scale').value)||1.0 : 1.0;
+    if (hiUrl || loUrl) pairs.push({ high: hiUrl, high_scale: hiScale, low: loUrl, low_scale: loScale });
+  });
+  return pairs;
+}
+
+// outside-click close for dynamic dropdowns
 document.addEventListener('click', function(e) {
-  if (!e.target.closest('#loraSearch2') && !e.target.closest('#loraDropdown2'))
-    document.getElementById('loraDropdown2').classList.remove('show');
+  document.querySelectorAll('#lora-pair-rows .lora-dropdown.show').forEach(function(dd){
+    if (!e.target.closest('.lora-row')) dd.classList.remove('show');
+  });
 });
+// init one empty pair on load
+document.addEventListener('DOMContentLoaded', function(){ if(!document.getElementById('lora-pair-rows').children.length) addLoraPairRow(); });
 
 if (sourceFilename) {
   document.getElementById('sourceImg').src = `/raw/${encodeURIComponent(sourceFilename)}`;
@@ -488,10 +496,26 @@ function restoreJobs() {
     document.getElementById('frames').value = job.frames || 121;
     document.getElementById('fps').value = job.fps || 24;
     document.getElementById('res').value = job.resolution || '480p';
-    document.getElementById('loraUrl').value = job.loraUrl || '';
-    document.getElementById('loraScale').value = job.loraScale || 1.0;
-    document.getElementById('loraUrl2').value = job.loraUrl2 || '';
-    document.getElementById('loraScale2').value = job.loraScale2 || 1.0;
+    // rebuild lora pairs if any
+    const rows = document.getElementById('lora-pair-rows');
+    if (rows) {
+      rows.innerHTML = '';
+      const pairs = job.loraPairs || [];
+      if (pairs.length === 0) { addLoraPairRow(); }
+      else {
+        pairs.forEach(function(p){
+          addLoraPairRow();
+          const pairEls = rows.querySelectorAll('.lora-pair');
+          const last = pairEls[pairEls.length-1];
+          if (last) {
+            const hi = last.querySelector('.lora-row[data-slot="high"]');
+            const lo = last.querySelector('.lora-row[data-slot="low"]');
+            if (hi && p.high) { hi.querySelector('.lora-value').value = p.high; const s=hi.querySelector('.lora-search'); s.value='(high)'; s.classList.add('has-value'); hi.querySelector('.lora-scale').value = p.high_scale||1.0; }
+            if (lo && p.low) { lo.querySelector('.lora-value').value = p.low; const s=lo.querySelector('.lora-search'); s.value='(low)'; s.classList.add('has-value'); lo.querySelector('.lora-scale').value = p.low_scale||1.0; }
+          }
+        });
+      }
+    }
     if (job.source) {
       currentSourceFile = job.source;
       document.getElementById('sourceName').textContent = job.source;
@@ -538,10 +562,8 @@ async function submitI2V() {
   const frames = parseInt(document.getElementById('frames').value) || 121;
   const fps = parseInt(document.getElementById('fps').value) || 24;
   const resolution = document.getElementById('res').value;
-  const loraUrl = document.getElementById('loraUrl').value.trim();
-  const loraScale = parseFloat(document.getElementById('loraScale').value) || 1.0;
-  const loraUrl2 = document.getElementById('loraUrl2').value.trim();
-  const loraScale2 = parseFloat(document.getElementById('loraScale2').value) || 1.0;
+  const loraPairs = collectLoraPairs();
+  const provider = document.getElementById('provider').value;
 
   try {
     let filename = currentSourceFile;
@@ -571,18 +593,21 @@ async function submitI2V() {
     const body = {
       filename: filename,
       prompt: prompt,
-      provider: 'replicate-wan',
-      num_frames: frames,
-      fps: fps,
-      resolution: resolution,
+      provider: provider,
     };
-    if (loraUrl) {
-      body.lora_url = loraUrl;
-      body.lora_scale = loraScale;
+    if (provider === 'runpod-wan') {
+      body.width = parseInt(document.getElementById('rpWidth').value) || 768;
+      body.height = parseInt(document.getElementById('rpHeight').value) || 1024;
+      body.steps = parseInt(document.getElementById('rpSteps').value) || 10;
+      body.length = frames;
+      body.seed = Math.floor(Math.random() * 1000000);
+    } else {
+      body.num_frames = frames;
+      body.fps = fps;
+      body.resolution = resolution;
     }
-    if (loraUrl2) {
-      body.lora_url_2 = loraUrl2;
-      body.lora_scale_2 = loraScale2;
+    if (loraPairs.length) {
+      body.lora_pairs = loraPairs;
     }
 
     const res = await fetch('/api/i2v', {
@@ -612,10 +637,7 @@ async function submitI2V() {
       frames: frames,
       fps: fps,
       resolution: resolution,
-      loraUrl: loraUrl,
-      loraScale: loraScale,
-      loraUrl2: loraUrl2,
-      loraScale2: loraScale2,
+      loraPairs: loraPairs,
       startedAt: Date.now(),
     });
     renderJobHistory();
