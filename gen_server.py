@@ -243,7 +243,6 @@ class GenHandler(SimpleHTTPRequestHandler):
             "width": data.get("width"),
             "height": data.get("height"),
             "nsfw_lora": data.get("nsfw_lora", False),
-            "translate": data.get("translate", False),
         }
 
         batch_entry = {"status": "running", "total": len(models), "completed": 0, "models": {}}

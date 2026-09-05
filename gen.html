@@ -94,7 +94,7 @@
   .snippet-btn:hover { border-color: var(--accent); color: var(--accent); }
   .snippet-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
   /* 放大输入框（snippet 旁的 ⤢ 按钮） */
-  textarea.expanded { min-height: 420px !important; }
+  textarea.expanded { min-height: 600px !important; }
   .snippet-dropdown {
     display: none; position: absolute; z-index: 200;
     background: var(--card); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px;
@@ -432,10 +432,6 @@
       <div class="form-group">
         <label for="prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'prompt')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'prompt')" title="放大输入框">⤢ 放大</button><button class="snippet-btn" onclick="clearPrompt()" title="清空 prompt，保留其他参数">🗑 清空</button><div class="snippet-dropdown" id="snippet-dd-prompt"></div></span></label>
         <textarea id="prompt" placeholder="输入 prompt…" style="min-height:200px"></textarea>
-        <label class="toggle" style="margin-top:8px">
-          <input type="checkbox" id="translate_cn"> 🇨🇳→🇬🇧 中文翻译
-        </label>
-        <div class="hint" style="margin-top:2px">开启后，中文 prompt 通过 Hermes 自动翻译为英文再发送到生图平台</div>
       </div>
 
       <div class="form-group">
@@ -807,7 +803,6 @@ function saveDraft() {
     steps: document.getElementById('steps').value,
     aspect: document.getElementById('aspect').value,
     sampler: document.getElementById('sampler').value,
-    translate: document.getElementById('translate_cn').checked,
     loras,
   }));
 }
@@ -842,7 +837,6 @@ function restoreDraft() {
       const so = document.getElementById('sampler-wrap').querySelector(`.custom-opt[data-value="${d.sampler || ''}"]`);
       if (sl && so) { sl.textContent = so.textContent; }
     }
-    if (d.translate != null) document.getElementById('translate_cn').checked = d.translate;
     window._draftModel = d.model;
     window._draftLoras = d.loras;
   } finally {
@@ -962,7 +956,7 @@ document.addEventListener('input', e => {
       e.target.id.endsWith('-cfg') || e.target.closest('.lora-row'))) saveBatchDraft();
 });
 document.addEventListener('change', e => {
-  if (e.target.id === 'model' || e.target.id === 'translate_cn') saveDraft();
+  if (e.target.id === 'model') saveDraft();
   if (e.target.closest('.batch-ckpt-grid')) saveBatchDraft();
 });
 // Platform tabs call setPlatform which calls onModelChange — saveDraft is handled there
@@ -1552,7 +1546,6 @@ async function generate() {
     negative_prompt: document.getElementById('negative').value.trim(),
     model: model,
     seed: null, // will set per-image
-    translate: document.getElementById('translate_cn').checked,
     aspect: document.getElementById('aspect').value || '9:16',
     sampler: document.getElementById('sampler').value || null,
     steps: parseInt(document.getElementById('steps').value) || 35,
@@ -1727,7 +1720,6 @@ function doReset() {
   // Prompt & negative
   document.getElementById('prompt').value = '';
   document.getElementById('negative').value = '';
-  document.getElementById('translate_cn').checked = false;
   // LoRA — keep one empty row
   const container = document.getElementById('lora-rows');
   container.innerHTML = '';

@@ -38,26 +38,10 @@ def result_err(msg):
     return {"success": False, "error": str(msg)}
 
 
-def _translate_prompt(prompt: str, args: dict) -> tuple[str | None, str | None]:
-    """Translate CN prompt to EN if translate flag is set.
-    Returns (translated_prompt, error_message). One is always None.
-    """
-    if not args.get("translate") or not prompt:
-        return prompt, None
-    from gen_lib.translate import translate_cn_to_en
-    translated = translate_cn_to_en(prompt)
-    if translated:
-        return translated, None
-    return None, "翻译失败 — Hermes API server 无响应或超时，生成已取消"
-
-
 def _generate_runware(args: dict) -> dict:
     """Runware path."""
     from gen_lib.runware import generate as gen_runware
     prompt = args.get("prompt", "").strip()
-    prompt, err = _translate_prompt(prompt, args)
-    if err:
-        return result_err(err)
     negative = args.get("negative_prompt", "")
     model = args.get("model", "flux-dev")
     seed = args.get("seed")
@@ -164,9 +148,6 @@ def _generate_modelslab(args: dict) -> dict:
     """
     from gen_lib.modelslab import generate as gen_modelslab
     prompt = args.get("prompt", "").strip()
-    prompt, err = _translate_prompt(prompt, args)
-    if err:
-        return result_err(err)
     negative = args.get("negative_prompt", "")
     model = args.get("model", "pony")
     seed = args.get("seed")
@@ -221,9 +202,6 @@ def _generate_flux_family(args: dict) -> dict:
     """FLUX 家族 path — 6 curated FLUX models served via Runware, single interface."""
     from gen_lib.runware import generate_flux_family as gen_flux
     prompt = args.get("prompt", "").strip()
-    prompt, err = _translate_prompt(prompt, args)
-    if err:
-        return result_err(err)
     model = args.get("model", "flux-dev")
     if not prompt:
         return result_err("Prompt is required")
