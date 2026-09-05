@@ -14,6 +14,25 @@ from io import BytesIO
 
 OUTPUT_DIR = Path(__file__).parent.parent / "output" / "images"
 
+# User-editable data (git-ignored). Real files live in data/; each has a
+# `*.example.json` template that ships with the repo and is used as a fallback
+# when the real file doesn't exist yet (fresh clone).
+DATA_DIR = Path(__file__).parent.parent / "data"
+
+
+def data_file(name: str) -> Path:
+    """Resolve a user-data file under data/.
+
+    Returns the real file if present; otherwise falls back to the matching
+    `*.example.json` template so a fresh clone still has usable defaults.
+    Missing files never raise — callers should treat an empty result as "no data".
+    """
+    real = DATA_DIR / name
+    if real.exists():
+        return real
+    example = DATA_DIR / f"{Path(name).stem}.example.json"
+    return example if example.exists() else real
+
 
 # ── Env ─────────────────────────────────────────────────────────────────────
 

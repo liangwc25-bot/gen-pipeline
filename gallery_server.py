@@ -18,6 +18,7 @@ class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):
 from pathlib import Path
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
+from gen_lib.common import DATA_DIR, data_file
 from gen_lib.metadata_db import (
     init_db, list_images, count_images, distinct_models,
     set_favorited, set_archived, is_favorited, is_archived,
@@ -296,7 +297,7 @@ class GalleryHandler(SimpleHTTPRequestHandler):
     
     def _handle_list_i2v_loras(self):
         """GET /api/i2v-loras — list registered I2V LoRAs."""
-        reg_path = Path(__file__).parent / "i2v_lora_registry.json"
+        reg_path = data_file("i2v_lora_registry.json")  # falls back to .example.json
         try:
             loras = json.loads(reg_path.read_text())
         except Exception:
@@ -308,11 +309,11 @@ class GalleryHandler(SimpleHTTPRequestHandler):
         self.wfile.write(json.dumps({"loras": loras}).encode())
     
     def _get_i2v_snippets_path(self):
-        return Path(__file__).parent / "i2v_snippets.json"
+        return DATA_DIR / "i2v_snippets.json"
     
     def _handle_get_i2v_snippets(self):
         """GET /api/i2v-snippets — get i2v motion presets (editable)."""
-        sp = self._get_i2v_snippets_path()
+        sp = data_file("i2v_snippets.json")  # falls back to .example.json
         try:
             data = json.loads(sp.read_text())
         except Exception:

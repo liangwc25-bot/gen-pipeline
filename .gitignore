@@ -5,3 +5,8 @@ __pycache__/
 snippets.json
 .local/
 tmp/
+# User data (editable config) — real files ignored, .example.json templates tracked
+data/lora_registry.json
+data/i2v_lora_registry.json
+data/i2v_snippets.json
+data/snippets.json

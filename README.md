@@ -79,13 +79,16 @@ gen-pipeline/
 │   ├── fal.py / grok.py / together.py / replicate.py / openrouter.py  # CLI providers
 │   ├── i2v.py / i2v_replicate.py / i2v_runpod.py   # image-to-video
 │   └── check_vae.py       # offline VAE-health check (dev tool)
-├── lora_registry.json     # LoRA catalog shipped with the service
-├── i2v_lora_registry.json
-├── i2v_snippets.json
-├── snippets.json          # user prompt snippets (git-ignored; create if missing)
+├── data/                  # user-editable JSON (git-ignored real files + tracked .example.json)
+│   ├── lora_registry.json          # LoRA catalog (real, git-ignored)
+│   ├── lora_registry.example.json  # shipped template (fallback if real missing)
+│   ├── i2v_lora_registry.json
+│   ├── i2v_snippets.json
+│   ├── snippets.json
+│   └── *.example.json
 ├── requirements.txt
 ├── .env.example
-└── output/                # git-ignored local data (images + metadata.db)
+└── output/                # git-ignored generated data (images + metadata.db)
 ```
 
 ## Reverse proxy (optional, for internet access)
@@ -109,8 +112,10 @@ img.0x01.qzz.io {
 - Every saved PNG embeds its full generation params in a `parameters` tEXt chunk
   (AUTOMATIC1111 format) — the gallery reads these back, so metadata survives
   re-indexing and is portable to other A1111-compatible tools.
-- `snippets.json` holds your personal prompt presets and is **git-ignored**. If the
-  file is missing the UI simply starts with no presets — it won't crash.
-- `output/` is your data: images + `metadata.db`. Back it up; it is not in git.
+- The `data/` directory holds user-editable JSON (LoRA registry, i2v registry,
+  snippets). Real files there are **git-ignored**; each has a tracked
+  `*.example.json` template that the code falls back to when the real file is
+  missing. An empty/missing registry never crashes — the UI just shows no items.
+- `output/` is your generated data: images + `metadata.db`. Back it up; it is not in git.
 - The gallery DB is the source of truth for favorites/archives (stored in SQLite,
   not in any JSON sidecar).

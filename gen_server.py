@@ -16,7 +16,8 @@ RUNWARE_KEY = _runware_key or os.environ.get("RUNWARE_API_KEY", "")
 GEN_DIR = Path(__file__).parent
 GEN_WEB_PY = GEN_DIR / "gen_web.py"
 OUTPUT_DIR = GEN_DIR / "output" / "images"
-SNIPPETS_FILE = GEN_DIR / "snippets.json"
+from gen_lib.common import DATA_DIR, data_file
+SNIPPETS_FILE = DATA_DIR / "snippets.json"
 
 # Import GIF zoom
 from gen_lib.gif_zoom import make_gif
@@ -337,9 +338,10 @@ class GenHandler(SimpleHTTPRequestHandler):
         return self._json_response({"job_id": job_id, "status": "running"})
 
     def _handle_get_snippets(self):
-        if SNIPPETS_FILE.exists():
+        src = data_file("snippets.json")  # falls back to snippets.example.json
+        if src.exists():
             try:
-                data = json.loads(SNIPPETS_FILE.read_text())
+                data = json.loads(src.read_text())
             except (json.JSONDecodeError, Exception):
                 data = {}
         else:
