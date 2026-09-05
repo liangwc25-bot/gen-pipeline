@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "updated": "YYYY-MM-DD",
+  "_README": "Copy this file to data/lora_registry.json and fill in YOUR models. Schema reference only — this template intentionally ships empty so fresh clones start with no LoRAs.",
+  "loras": [],
+  "categories": [
+    "tools",
+    "character_style",
+    "style",
+    "concept",
+    "character"
+  ]
+}

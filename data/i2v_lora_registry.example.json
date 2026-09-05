@@ -1,0 +1,12 @@
+[
+  {
+    "id": "example-lora-name",
+    "name": "Example LoRA (replace me)",
+    "url": "https://example.com/your-model.safetensors",
+    "base_model": "wan-2.2-i2v-a14b",
+    "default_scale": 1.0,
+    "scale_range": [0.1, 2.0],
+    "tag": "",
+    "notes": "Copy this file to data/i2v_lora_registry.json and replace with your models."
+  }
+]

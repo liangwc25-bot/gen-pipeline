@@ -1,0 +1,10 @@
+{
+  "README": "Copy this file to data/i2v_snippets.json. Grouped motion presets: each group is a list of {label, text}.",
+  "\u270f\ufe0f Custom": [],
+  "\ud83c\udfac Motion Presets": [
+    {
+      "label": "Example preset",
+      "text": "Describe the motion you want here (delete this example)."
+    }
+  ]
+}

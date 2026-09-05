@@ -1,0 +1,10 @@
+{
+  "README": "Copy this file to data/snippets.json. Grouped prompt presets: each group is a list of {label, text}.",
+  "\u270f\ufe0f Custom": [],
+  "\ud83c\udfa8 Quality": [
+    {
+      "label": "Example preset",
+      "text": "Your preset prompt text here (delete this example)."
+    }
+  ]
+}
