@@ -25,6 +25,9 @@ cd gen-pipeline
 # 1. Install deps (Python 3.10+)
 pip install -r requirements.txt
 
+#    System dependency: ffmpeg is required for video thumbnails (gallery) and
+#    the Ken Burns GIF feature. On Debian/Ubuntu:  sudo apt install ffmpeg
+
 # 2. Configure keys
 cp .env.example .env
 #    edit .env — at minimum RUNWARE_API_KEY (and MODELSLAB_API_KEY for ModelsLab)

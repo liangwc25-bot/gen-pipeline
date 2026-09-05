@@ -26,9 +26,8 @@ gen.py — AI 图片/视频生成 dispatcher。
 
 Metadata:
   所有生成的 PNG 自动嵌入完整参数（prompt/seed/model/LoRA）。
-  验证: python3 ~/scripts/pngmeta.py <文件>.png
 
-环境变量 (~/.hermes/.env):
+环境变量 (项目根 .env, 参考 .env.example):
   RUNWARE_API_KEY  /  FAL_KEY  /  XAI_API_KEY
   OPENROUTER_API_KEY  /  TOGETHER_API_KEY  /  REPLICATE_API_TOKEN
 """
