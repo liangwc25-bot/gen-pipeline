@@ -492,11 +492,11 @@
       <div class="row" id="seed-group">
         <div class="form-group">
           <label for="seed">Seed（留空随机）</label>
-          <input type="number" id="seed" placeholder="留空随机" min="0" max="2147483647">
+          <input type="number" id="seed" placeholder="留空随机" min="0" max="2147483647" autocomplete="off">
         </div>
         <div class="form-group" id="cfg-group">
           <label for="cfg">CFG Scale</label>
-          <input type="number" id="cfg" placeholder="自动" min="0.5" max="20" step="0.5">
+          <input type="number" id="cfg" placeholder="自动" min="0.5" max="20" step="0.5" autocomplete="off">
         </div>
       </div>
 
@@ -628,11 +628,11 @@
             </div>
             <div class="form-group">
               <label for="batch-cfg">CFG Scale</label>
-              <input type="number" id="batch-cfg" placeholder="自动" min="0.5" max="20" step="0.5">
+              <input type="number" id="batch-cfg" placeholder="自动" min="0.5" max="20" step="0.5" autocomplete="off">
             </div>
             <div class="form-group">
               <label for="batch-seed">Seed（留空随机）</label>
-              <input type="number" id="batch-seed" placeholder="留空随机" min="0" max="2147483647">
+              <input type="number" id="batch-seed" placeholder="留空随机" min="0" max="2147483647" autocomplete="off">
             </div>
           </div>
         </div>
@@ -822,8 +822,11 @@ function restoreDraft() {
       const co = document.getElementById('count-wrap').querySelector(`.custom-opt[data-value="${d.count}"]`);
       if (cl && co) { cl.textContent = co.textContent; }
     }
-    if (d.seed) document.getElementById('seed').value = d.seed;
-    if (d.cfg) document.getElementById('cfg').value = d.cfg;
+    // seed/cfg 总是显式赋值（含空串）：draft 为空也必须清空输入框。
+    // 否则空值(falsy)会跳过清理，而 app 被系统 kill 后浏览器原生会话恢复会把残留
+    // 的 number 值(常与 cfg 相同,像格式串位)填回 seed/cfg 框——这是「kill 重开才出现脏数字」的根因。
+    if (d.seed != null) document.getElementById('seed').value = d.seed;
+    if (d.cfg != null) document.getElementById('cfg').value = d.cfg;
     if (d.steps) document.getElementById('steps').value = d.steps;
     if (d.aspect) {
       document.getElementById('aspect').value = d.aspect;
@@ -892,8 +895,8 @@ function _applyBatchCol(colId, d) {
   if (d.prompt) _colEl(colId, 'prompt').value = d.prompt;
   if (d.negative) _colEl(colId, 'negative').value = d.negative;
   if (d.steps) _colEl(colId, 'steps').value = d.steps;
-  if (d.cfg) _colEl(colId, 'cfg').value = d.cfg;
-  if (d.seed) _colEl(colId, 'seed').value = d.seed;
+  if (d.cfg != null) _colEl(colId, 'cfg').value = d.cfg;
+  if (d.seed != null) _colEl(colId, 'seed').value = d.seed;
   if (d.aspect) {
     _colEl(colId, 'aspect').value = d.aspect;
     const al = _colEl(colId, 'aspect-wrap').querySelector('.custom-select-label');
