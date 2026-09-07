@@ -72,6 +72,7 @@ MODELS = {
     "silene-ill":         {"id": "liangwc:silene-ill@1415266", "name": "Silene Illustrious XL 1.0", "price": "~$0.003/张", "base": "illustrious"},
     "naughtymouse-ill":   {"id": "liangwc:naughtymouse-ill@2907147", "name": "NaughtyMouseMix V10", "price": "~$0.003/张", "base": "illustrious"},
     "ra-mix-ill":         {"id": "liangwc:ra-mix-ill@2985291", "name": "RA-Mix v1.0", "price": "~$0.003/张", "base": "illustrious"},
+    "pearly-opal-ill":    {"id": "liangwc:pearly-opal-ill@2839173", "name": "Pearly Opal Toon mix V2", "price": "~$0.003/张", "base": "illustrious"},
     "kokio-ill":          {"id": "liangwc:kokio-ill@1298658", "name": "Koki'o Illu v2.0", "price": "~$0.003/张", "base": "illustrious"},
     "konbinimix-ill":     {"id": "liangwc:konbinimix-ill@1014358", "name": "KonbiniMix - Illustrious", "price": "~$0.003/张", "base": "illustrious"},
     "diving-pony":        {"id": "liangwc:divingponyanime@1459310", "name": "Diving-Pony Anime v3.0", "price": "~$0.003/张", "base": "pony"},
