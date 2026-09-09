@@ -254,6 +254,9 @@
   }
   .custom-select-dropdown .custom-opt:hover { background: rgba(124,92,252,0.1); color: var(--text); }
   .custom-select-dropdown .custom-opt.active { color: var(--accent); font-weight: 600; background: rgba(124,92,252,0.06); }
+  .custom-select-dropdown .custom-opt .opt-main { display: block; }
+  .custom-select-dropdown .custom-opt .opt-sub { display: block; font-size: 0.68rem; color: var(--text2); font-weight: 400; opacity: 0.75; margin-top: 1px; line-height: 1.2; }
+  .custom-select-dropdown .custom-opt.active .opt-sub { color: var(--text2); opacity: 0.85; }
   [data-theme="light"] .custom-select-btn { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.08); }
   [data-theme="light"] .custom-select-btn:focus { background: rgba(108,76,224,0.04); border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,76,224,0.12); }
   [data-theme="light"] .custom-select-dropdown { border-color: rgba(0,0,0,0.1); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
@@ -410,12 +413,22 @@
                 <span class="custom-select-label">自动（默认）</span><span class="arrow">▾</span>
               </button>
               <div class="custom-select-dropdown">
-                <div class="custom-opt active" data-value="">自动（默认）</div>
-                <div class="custom-opt" data-value="Euler">Euler</div>
-                <div class="custom-opt" data-value="Euler A">Euler A</div>
-                <div class="custom-opt" data-value="DPM++ 2M Karras">DPM++ 2M Karras</div>
-                <div class="custom-opt" data-value="DDIM">DDIM</div>
-                <div class="custom-opt" data-value="UniPC">UniPC</div>
+                <div class="custom-opt active" data-value=""><span class="opt-main">自动（默认）</span></div>
+                <div class="custom-opt" data-value="Euler a"><span class="opt-main">Euler a</span><span class="opt-sub">二次元首选 · SDXL(SD1.5)</span></div>
+                <div class="custom-opt" data-value="Euler"><span class="opt-main">Euler</span><span class="opt-sub">清晰锐利 · SDXL · SD1.5</span></div>
+                <div class="custom-opt" data-value="FlowMatchEulerDiscreteScheduler"><span class="opt-main">Euler (FlowMatch)</span><span class="opt-sub">Flux 原生 · FLUX</span></div>
+                <div class="custom-opt" data-value="DPM++ 2M Karras"><span class="opt-main">DPM++ 2M Karras</span><span class="opt-sub">写实/质感最佳平衡 · SDXL · SD1.5</span></div>
+                <div class="custom-opt" data-value="DPM++ 2M SDE Karras"><span class="opt-main">DPM++ 2M SDE Karras</span><span class="opt-sub">高对比暗黑/写实 · SDXL · SD1.5</span></div>
+                <div class="custom-opt" data-value="DPM++ SDE Karras"><span class="opt-main">DPM++ SDE Karras</span><span class="opt-sub">少步数质感佳 · SDXL · SD1.5</span></div>
+                <div class="custom-opt" data-value="DPM++ 3M Karras"><span class="opt-main">DPM++ 3M Karras</span><span class="opt-sub">高步数精雕 · SDXL</span></div>
+                <div class="custom-opt" data-value="LCM"><span class="opt-main">LCM</span><span class="opt-sub">极速4-8步 · SDXL · SD1.5</span></div>
+                <div class="custom-opt" data-value="TCDScheduler"><span class="opt-main">TCD</span><span class="opt-sub">极速8-12步·画质佳 · SDXL · SD1.5</span></div>
+                <div class="custom-opt" data-value="UniPC"><span class="opt-main">UniPC</span><span class="opt-sub">10-15步快速 · SDXL · SD1.5</span></div>
+                <div class="custom-opt" data-value="DDIM"><span class="opt-main">DDIM</span><span class="opt-sub">ZIT必需·传统稳定 · ZIT · SD1.5 · SDXL</span></div>
+                <div class="custom-opt" data-value="Heun Karras"><span class="opt-main">Heun Karras</span><span class="opt-sub">高精细节 · SDXL</span></div>
+                <div class="custom-opt" data-value="LMS Karras"><span class="opt-main">LMS Karras</span><span class="opt-sub">柔和古典油画感 · SDXL · SD1.5</span></div>
+                <div class="custom-opt" data-value="DEISMultistepScheduler"><span class="opt-main">DEIS</span><span class="opt-sub">低步数干净线稿 · SDXL</span></div>
+                <div class="custom-opt" data-value="Default"><span class="opt-main">Default</span><span class="opt-sub">后端自动匹配 · 全模型</span></div>
               </div>
             </div>
             <input type="hidden" id="sampler" value="">
@@ -610,12 +623,22 @@
                   <span class="custom-select-label">自动（默认）</span><span class="arrow">▾</span>
                 </button>
                 <div class="custom-select-dropdown">
-                  <div class="custom-opt active" data-value="">自动（默认）</div>
-                  <div class="custom-opt" data-value="Euler">Euler</div>
-                  <div class="custom-opt" data-value="Euler A">Euler A</div>
-                  <div class="custom-opt" data-value="DPM++ 2M Karras">DPM++ 2M Karras</div>
-                  <div class="custom-opt" data-value="DDIM">DDIM</div>
-                  <div class="custom-opt" data-value="UniPC">UniPC</div>
+                  <div class="custom-opt active" data-value=""><span class="opt-main">自动（默认）</span></div>
+                  <div class="custom-opt" data-value="Euler a"><span class="opt-main">Euler a</span><span class="opt-sub">二次元首选 · SDXL(SD1.5)</span></div>
+                  <div class="custom-opt" data-value="Euler"><span class="opt-main">Euler</span><span class="opt-sub">清晰锐利 · SDXL · SD1.5</span></div>
+                  <div class="custom-opt" data-value="FlowMatchEulerDiscreteScheduler"><span class="opt-main">Euler (FlowMatch)</span><span class="opt-sub">Flux 原生 · FLUX</span></div>
+                  <div class="custom-opt" data-value="DPM++ 2M Karras"><span class="opt-main">DPM++ 2M Karras</span><span class="opt-sub">写实/质感最佳平衡 · SDXL · SD1.5</span></div>
+                  <div class="custom-opt" data-value="DPM++ 2M SDE Karras"><span class="opt-main">DPM++ 2M SDE Karras</span><span class="opt-sub">高对比暗黑/写实 · SDXL · SD1.5</span></div>
+                  <div class="custom-opt" data-value="DPM++ SDE Karras"><span class="opt-main">DPM++ SDE Karras</span><span class="opt-sub">少步数质感佳 · SDXL · SD1.5</span></div>
+                  <div class="custom-opt" data-value="DPM++ 3M Karras"><span class="opt-main">DPM++ 3M Karras</span><span class="opt-sub">高步数精雕 · SDXL</span></div>
+                  <div class="custom-opt" data-value="LCM"><span class="opt-main">LCM</span><span class="opt-sub">极速4-8步 · SDXL · SD1.5</span></div>
+                  <div class="custom-opt" data-value="TCDScheduler"><span class="opt-main">TCD</span><span class="opt-sub">极速8-12步·画质佳 · SDXL · SD1.5</span></div>
+                  <div class="custom-opt" data-value="UniPC"><span class="opt-main">UniPC</span><span class="opt-sub">10-15步快速 · SDXL · SD1.5</span></div>
+                  <div class="custom-opt" data-value="DDIM"><span class="opt-main">DDIM</span><span class="opt-sub">ZIT必需·传统稳定 · ZIT · SD1.5 · SDXL</span></div>
+                  <div class="custom-opt" data-value="Heun Karras"><span class="opt-main">Heun Karras</span><span class="opt-sub">高精细节 · SDXL</span></div>
+                  <div class="custom-opt" data-value="LMS Karras"><span class="opt-main">LMS Karras</span><span class="opt-sub">柔和古典油画感 · SDXL · SD1.5</span></div>
+                  <div class="custom-opt" data-value="DEISMultistepScheduler"><span class="opt-main">DEIS</span><span class="opt-sub">低步数干净线稿 · SDXL</span></div>
+                  <div class="custom-opt" data-value="Default"><span class="opt-main">Default</span><span class="opt-sub">后端自动匹配 · 全模型</span></div>
                 </div>
               </div>
               <input type="hidden" id="batch-sampler" value="">
@@ -838,7 +861,7 @@ function restoreDraft() {
       document.getElementById('sampler').value = d.sampler || '';
       const sl = document.getElementById('sampler-wrap').querySelector('.custom-select-label');
       const so = document.getElementById('sampler-wrap').querySelector(`.custom-opt[data-value="${d.sampler || ''}"]`);
-      if (sl && so) { sl.textContent = so.textContent; }
+      if (sl && so) { sl.textContent = _optLabel(so); }
     }
     window._draftModel = d.model;
     window._draftLoras = d.loras;
@@ -907,7 +930,7 @@ function _applyBatchCol(colId, d) {
     _colEl(colId, 'sampler').value = d.sampler || '';
     const sl = _colEl(colId, 'sampler-wrap').querySelector('.custom-select-label');
     const so = _colEl(colId, 'sampler-wrap').querySelector(`.custom-opt[data-value="${d.sampler || ''}"]`);
-    if (sl && so) sl.textContent = so.textContent;
+    if (sl && so) sl.textContent = _optLabel(so);
   }
   // Restore checkpoint selection (after a short delay for grid to populate)
   if (d.models && d.models.length > 0) {
@@ -981,6 +1004,12 @@ function toggleCustomSelect(wrap) {
   if (!isOpen) wrap.classList.add('open');
 }
 
+// 取一个 custom-opt 的显示主文本：有 opt-main 用 main，否则退回整个 textContent（兼容无副标签的旧选项）
+function _optLabel(opt) {
+  const m = opt && opt.querySelector('.opt-main');
+  return m ? m.textContent : (opt ? opt.textContent : '');
+}
+
 // Init custom select option clicks
 document.addEventListener('click', function(e) {
   const opt = e.target.closest('.custom-opt');
@@ -989,7 +1018,7 @@ document.addEventListener('click', function(e) {
     const hidden = wrap.parentElement.querySelector('input[type="hidden"]');
     const label = wrap.querySelector('.custom-select-label');
     hidden.value = opt.dataset.value;
-    label.textContent = opt.textContent;
+    label.textContent = _optLabel(opt);
     // Highlight active
     wrap.querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active'));
     opt.classList.add('active');
