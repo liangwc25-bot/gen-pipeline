@@ -149,6 +149,7 @@ MODEL_BASE = {
     "red-lily-ill": "illustrious", "silene-ill": "illustrious",
     "naughtymouse-ill": "illustrious", "ra-mix-ill": "illustrious", "pearly-opal-ill": "illustrious",
     "mature-citron-ill": "illustrious", "wai-mature-ill": "illustrious",
+    "bismuth-mature-ill": "illustrious", "mature-female-ill": "illustrious", "mature-milk-ill": "illustrious",
     "kokio-ill": "illustrious", "konbinimix-ill": "illustrious",
     # Illustrious 显示名（历史未归一化的落库值）
     "Aoi 164 Character": "illustrious", "CAT Citron Anime Treasure": "illustrious",
