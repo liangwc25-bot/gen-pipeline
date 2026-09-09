@@ -410,10 +410,10 @@
             <label>采样器</label>
             <div class="custom-select" id="sampler-wrap">
               <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
-                <span class="custom-select-label">自动（默认）</span><span class="arrow">▾</span>
+                <span class="custom-select-label">Default</span><span class="arrow">▾</span>
               </button>
               <div class="custom-select-dropdown">
-                <div class="custom-opt active" data-value=""><span class="opt-main">自动（默认）</span></div>
+                <div class="custom-opt active" data-value="Default"><span class="opt-main">Default</span><span class="opt-sub">后端自动匹配 · 全模型</span></div>
                 <div class="custom-opt" data-value="Euler a"><span class="opt-main">Euler a</span><span class="opt-sub">二次元首选 · SDXL(SD1.5)</span></div>
                 <div class="custom-opt" data-value="Euler"><span class="opt-main">Euler</span><span class="opt-sub">清晰锐利 · SDXL · SD1.5</span></div>
                 <div class="custom-opt" data-value="FlowMatchEulerDiscreteScheduler"><span class="opt-main">Euler (FlowMatch)</span><span class="opt-sub">Flux 原生 · FLUX</span></div>
@@ -428,10 +428,9 @@
                 <div class="custom-opt" data-value="Heun Karras"><span class="opt-main">Heun Karras</span><span class="opt-sub">高精细节 · SDXL</span></div>
                 <div class="custom-opt" data-value="LMS Karras"><span class="opt-main">LMS Karras</span><span class="opt-sub">柔和古典油画感 · SDXL · SD1.5</span></div>
                 <div class="custom-opt" data-value="DEISMultistepScheduler"><span class="opt-main">DEIS</span><span class="opt-sub">低步数干净线稿 · SDXL</span></div>
-                <div class="custom-opt" data-value="Default"><span class="opt-main">Default</span><span class="opt-sub">后端自动匹配 · 全模型</span></div>
               </div>
             </div>
-            <input type="hidden" id="sampler" value="">
+            <input type="hidden" id="sampler" value="Default">
           </div>
         </div>
         <div class="row">
@@ -620,10 +619,10 @@
               <label>采样器</label>
               <div class="custom-select" id="batch-sampler-wrap">
                 <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
-                  <span class="custom-select-label">自动（默认）</span><span class="arrow">▾</span>
+                  <span class="custom-select-label">Default</span><span class="arrow">▾</span>
                 </button>
                 <div class="custom-select-dropdown">
-                  <div class="custom-opt active" data-value=""><span class="opt-main">自动（默认）</span></div>
+                  <div class="custom-opt active" data-value="Default"><span class="opt-main">Default</span><span class="opt-sub">后端自动匹配 · 全模型</span></div>
                   <div class="custom-opt" data-value="Euler a"><span class="opt-main">Euler a</span><span class="opt-sub">二次元首选 · SDXL(SD1.5)</span></div>
                   <div class="custom-opt" data-value="Euler"><span class="opt-main">Euler</span><span class="opt-sub">清晰锐利 · SDXL · SD1.5</span></div>
                   <div class="custom-opt" data-value="FlowMatchEulerDiscreteScheduler"><span class="opt-main">Euler (FlowMatch)</span><span class="opt-sub">Flux 原生 · FLUX</span></div>
@@ -638,10 +637,9 @@
                   <div class="custom-opt" data-value="Heun Karras"><span class="opt-main">Heun Karras</span><span class="opt-sub">高精细节 · SDXL</span></div>
                   <div class="custom-opt" data-value="LMS Karras"><span class="opt-main">LMS Karras</span><span class="opt-sub">柔和古典油画感 · SDXL · SD1.5</span></div>
                   <div class="custom-opt" data-value="DEISMultistepScheduler"><span class="opt-main">DEIS</span><span class="opt-sub">低步数干净线稿 · SDXL</span></div>
-                  <div class="custom-opt" data-value="Default"><span class="opt-main">Default</span><span class="opt-sub">后端自动匹配 · 全模型</span></div>
                 </div>
               </div>
-              <input type="hidden" id="batch-sampler" value="">
+              <input type="hidden" id="batch-sampler" value="Default">
             </div>
           </div>
           <div class="row" style="margin-top:14px">
@@ -1775,11 +1773,11 @@ function doReset() {
   const ao = document.getElementById('aspect-wrap').querySelector('.custom-opt[data-value="9:16"]');
   if (al) al.textContent = '9:16 竖版';
   if (ao) { document.getElementById('aspect-wrap').querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active')); ao.classList.add('active'); }
-  // Sampler — reset to auto
-  document.getElementById('sampler').value = '';
+  // Sampler — reset to Default
+  document.getElementById('sampler').value = 'Default';
   const sl = document.getElementById('sampler-wrap').querySelector('.custom-select-label');
-  const so = document.getElementById('sampler-wrap').querySelector('.custom-opt[data-value=""]');
-  if (sl) sl.textContent = '自动（默认）';
+  const so = document.getElementById('sampler-wrap').querySelector('.custom-opt[data-value="Default"]');
+  if (sl) sl.textContent = 'Default';
   if (so) { document.getElementById('sampler-wrap').querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active')); so.classList.add('active'); }
   // Count — reset to 1
   document.getElementById('count').value = '1';
@@ -1812,12 +1810,12 @@ function doBatchReset() {
   document.getElementById('batch-aspect-wrap').querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active'));
   const ao = document.getElementById('batch-aspect-wrap').querySelector('.custom-opt[data-value="9:16"]');
   if (ao) ao.classList.add('active');
-  // Sampler — reset to auto
-  document.getElementById('batch-sampler').value = '';
+  // Sampler — reset to Default
+  document.getElementById('batch-sampler').value = 'Default';
   const sl = document.getElementById('batch-sampler-wrap').querySelector('.custom-select-label');
-  if (sl) sl.textContent = '自动（默认）';
+  if (sl) sl.textContent = 'Default';
   document.getElementById('batch-sampler-wrap').querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active'));
-  const so = document.getElementById('batch-sampler-wrap').querySelector('.custom-opt[data-value=""]');
+  const so = document.getElementById('batch-sampler-wrap').querySelector('.custom-opt[data-value="Default"]');
   if (so) so.classList.add('active');
   // Checkpoints — rebuild grid unchecked (selectBatchCat resets cat + selection)
   selectBatchCat('flux', document.querySelector('.batch-cat-tab[data-cat="flux"]'));
