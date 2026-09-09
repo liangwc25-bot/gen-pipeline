@@ -200,7 +200,7 @@ MODEL_BASE = {
     "zimage-alibaba": "zit", "zimage-moody": "zit", "zimage-stable-yogi": "zit",
     "zimage-ultimate-nsfw": "zit", "zimage-turbo-anime": "zit", "zimage-visionary-nsfw": "zit",
     "zimage-tinzit-anime": "zit", "zimage-lau-anime": "zit", "zimage-komposto-ani": "zit",
-    "zimage-pornmaster-v35": "zit", "persona-zit": "zit", "diving-zit": "zit",
+    "zimage-pornmaster-v35": "zit", "persona-zit": "zit", "diving-zit": "zit", "zimage-base-aio": "zit",
     # ── Qwen 编辑模型 ──
     "qwen-edit": "qwen", "qwen-edit-plus": "qwen",
     "Qwen-Image-Edit": "qwen", "Qwen-Image-Edit-Plus": "qwen",
