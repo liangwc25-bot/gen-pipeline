@@ -154,6 +154,9 @@ MODEL_BASE = {
     "gem-amethyst-ill": "illustrious", "gem-moonstone-ill": "illustrious", "gem-proteus-ill": "illustrious",
     "gem-sapphire-ill": "illustrious", "gem-serpentine-ill": "illustrious", "gem-rose-quartz-ill": "illustrious",
     "gem-opal-ill": "illustrious", "gem-pearl-ill": "illustrious",
+    "dasiwa-anime-ill": "illustrious", "dasiwa-real-ill": "illustrious", "phoenix-ill": "illustrious",
+    "waivete-ill": "illustrious", "a-mix-ill": "illustrious", "plant-milk-walnut-ill": "illustrious",
+    "visionary-ill": "illustrious", "visionary-v3-ill": "illustrious", "coldmilk-ill": "illustrious",
     # Illustrious 显示名（历史未归一化的落库值）
     "Aoi 164 Character": "illustrious", "CAT Citron Anime Treasure": "illustrious",
     "Animij (Illustrious)": "illustrious", "Illustrious XL 2.0": "illustrious",
