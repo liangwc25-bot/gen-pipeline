@@ -156,7 +156,7 @@ MODEL_BASE = {
     "gem-opal-ill": "illustrious", "gem-pearl-ill": "illustrious",
     "dasiwa-anime-ill": "illustrious", "dasiwa-real-ill": "illustrious", "phoenix-ill": "illustrious",
     "waivete-ill": "illustrious", "a-mix-ill": "illustrious", "plant-milk-walnut-ill": "illustrious",
-    "visionary-ill": "illustrious", "visionary-v3-ill": "illustrious", "coldmilk-ill": "illustrious",
+    "visionary-ill": "illustrious", "visionary-v3-ill": "illustrious", "coldmilk-ill": "illustrious", "pie-cherry-ill": "illustrious", "pie-derby-ill": "illustrious", "pie-elderberry-ill": "illustrious", "pie-fudge-ill": "illustrious", "pie-grape-ill": "illustrious", "pie-honey-ill": "illustrious", "pie-impossible-ill": "illustrious", "pie-jam-ill": "illustrious", "pie-apple-v2-ill": "illustrious", "pie-keylime-ill": "illustrious", "pie-lemon-ill": "illustrious", "pie-mango-ill": "illustrious", "pie-nutella-ill": "illustrious", "pie-oreo-ill": "illustrious", "pie-pecan-ill": "illustrious", "pie-quiche-ill": "illustrious",
     # Illustrious 显示名（历史未归一化的落库值）
     "Aoi 164 Character": "illustrious", "CAT Citron Anime Treasure": "illustrious",
     "Animij (Illustrious)": "illustrious", "Illustrious XL 2.0": "illustrious",
