@@ -67,6 +67,8 @@ class GenHandler(SimpleHTTPRequestHandler):
         # API endpoints
         if self._parsed_path == "/api/list-loras":
             return self._handle_list_loras()
+        if self._parsed_path == "/api/list-embeddings":
+            return self._handle_list_embeddings()
         if self._parsed_path == "/api/list-models":
             return self._handle_list_models()
         if self._parsed_path.startswith("/api/output-images/"):
@@ -133,6 +135,21 @@ class GenHandler(SimpleHTTPRequestHandler):
             result = json.loads(r.stdout.strip())
         except Exception as e:
             result = {"success": False, "error": str(e), "loras": []}
+        self._json_response(result)
+
+    def _handle_list_embeddings(self):
+        from urllib.parse import urlparse, parse_qs
+        qs = parse_qs(urlparse(self.path).query)
+        model = qs.get("model", [None])[0]
+        try:
+            r = subprocess.run(
+                ["python3", str(GEN_WEB_PY)],
+                input=json.dumps({"action": "list_embeddings", "model": model}),
+                capture_output=True, text=True, timeout=15,
+            )
+            result = json.loads(r.stdout.strip())
+        except Exception as e:
+            result = {"success": False, "error": str(e), "embeddings": []}
         self._json_response(result)
 
     def _handle_list_models(self):
@@ -236,6 +253,7 @@ class GenHandler(SimpleHTTPRequestHandler):
             "negative_prompt": data.get("negative_prompt", ""),
             "lora_id": data.get("lora_id"),
             "lora_scale": data.get("lora_scale", 0.8),
+            "embedding_id": data.get("embedding_id"),
             "cfg_scale": data.get("cfg_scale"),
             "steps": data.get("steps", 35),
             "aspect": data.get("aspect", "9:16"),

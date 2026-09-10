@@ -47,6 +47,7 @@ def _generate_runware(args: dict) -> dict:
     seed = args.get("seed")
     lora_id = args.get("lora_id")
     lora_scale = args.get("lora_scale", 0.8)
+    embedding_id = args.get("embedding_id")
     cfg_scale = args.get("cfg_scale")  # float or None (None = use model default)
     steps = args.get("steps")
     aspect = args.get("aspect", "9:16")
@@ -90,6 +91,7 @@ def _generate_runware(args: dict) -> dict:
             result = gen_runware(prompt,
                 model_key=model, negative_prompt=negative,
                 lora_id=effective_lora_id, lora_scale=effective_lora_scale,
+                embedding_id=embedding_id,
                 seed=seed, image_path=_qwen_tmp.name if _qwen_tmp else None,
                 cfg_scale=cfg_scale, aspect=aspect,
                 steps=int(steps) if steps else 35,
@@ -293,6 +295,36 @@ def list_loras(model: str = None) -> dict:
     return {"success": True, "loras": result}
 
 
+def list_embeddings(model: str = None) -> dict:
+    """Return embeddings from registry. 不按底座过滤（鹿鹿定案：全部展示，名称注明底座）。
+    Each entry: {id, name, air_id, trigger_words, base_model, category, nsfw, description}."""
+    import json as _json
+    from gen_lib.common import data_file
+    registry_path = data_file("embedding_registry.json")
+    try:
+        with open(registry_path) as f:
+            registry = _json.load(f)
+    except Exception:
+        return {"success": False, "error": "Cannot read embedding registry", "embeddings": []}
+
+    result = []
+    for e in registry.get("embeddings", []):
+        air_id = e.get("runware_air_id", "")
+        if not air_id:
+            continue  # skip entries without a verified AIR
+        result.append({
+            "id": e["id"],
+            "name": e["name"],
+            "air_id": air_id,
+            "base_model": e.get("base_model", ""),
+            "trigger_words": e.get("trigger_words", []),
+            "category": e.get("category", ""),
+            "nsfw": e.get("nsfw", False),
+            "description": e.get("description", ""),
+        })
+    return {"success": True, "embeddings": result}
+
+
 def list_models(platform: str = "runware") -> dict:
     """Return available models for either Runware or ModelsLab."""
     if platform == "modelslab":
@@ -329,6 +361,8 @@ if __name__ == "__main__":
         result = list_models(data.get("platform", "runware"))
     elif action == "list_loras":
         result = list_loras(data.get("model"))
+    elif action == "list_embeddings":
+        result = list_embeddings(data.get("model"))
     else:
         result = {"success": False, "error": f"Unknown action: {action}"}
 

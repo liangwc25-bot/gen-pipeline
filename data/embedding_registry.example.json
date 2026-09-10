@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "updated": "2026-09-09",
+  "_comment": "Embedding (textual inversion) registry. 真实文件 embedding_registry.json 被 .gitignore 忽略，本 example 为模板。runware_air_id 原样存完整 AIR（前缀可能是 civitai:/aimatch:/beam:/liangwc: 等，不要按前缀解析）。trigger_words 里的词要写进 prompt 才生效（在 gen 页面用 Prompt 的「📌 预设 → 🃏 触发词」插入）。",
+  "embeddings": [
+    {
+      "id": "example-embedding-id",
+      "name": "作者原始名 (底座)",
+      "runware_air_id": "civitai:000000@000000",
+      "trigger_words": ["trigger_word_here"],
+      "base_model": "sdxl",
+      "category": "quality",
+      "nsfw": false,
+      "description": "说明（可选）",
+      "tags": ["optional"],
+      "url": "https://civitai.com/models/000000",
+      "notes": ""
+    }
+  ],
+  "categories": ["concept", "style", "negative", "quality", "character"]
+}

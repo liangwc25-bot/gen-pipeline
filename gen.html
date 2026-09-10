@@ -592,6 +592,13 @@
           <button class="lora-add" id="batch-lora-add-btn" onclick="addBatchLoraRow()">+ 添加 LoRA</button>
         </div>
 
+        <div class="form-group">
+          <div class="lora-label-row"><span>Embedding（所有 checkpoint 共享）</span><span id="batch-embedding-count">0 个</span></div>
+          <div id="batch-embedding-rows"></div>
+          <button class="lora-add" id="batch-embedding-add-btn" onclick="addBatchEmbeddingRow()">+ 添加 Embedding</button>
+          <div class="hint">选好后到 Prompt 的 📌 预设 → 🃏 触发词 点一下插入触发词</div>
+        </div>
+
         <button class="adv-toggle" id="batch-adv-toggle-btn" onclick="toggleBatchAdvanced()">
           <span class="adv-arrow">▶</span> ⚙️ 高级设置
         </button>
@@ -813,6 +820,12 @@ function saveDraft() {
     const scale = row.querySelector('.lora-scale').value;
     if (val) loras.push({ air_id: val, scale });
   });
+  const embRows = document.querySelectorAll('#embedding-rows .embedding-row');
+  const embeddings = [];
+  embRows.forEach(row => {
+    const val = row.querySelector('.embedding-value').value;
+    if (val) embeddings.push({ air_id: val });
+  });
   localStorage.setItem('gen_draft', JSON.stringify({
     prompt: document.getElementById('prompt').value,
     negative: document.getElementById('negative').value,
@@ -825,6 +838,7 @@ function saveDraft() {
     aspect: document.getElementById('aspect').value,
     sampler: document.getElementById('sampler').value,
     loras,
+    embeddings,
   }));
 }
 
@@ -863,6 +877,7 @@ function restoreDraft() {
     }
     window._draftModel = d.model;
     window._draftLoras = d.loras;
+    window._draftEmbeddings = d.embeddings;
   } finally {
     state._restoring = false;
   }
@@ -890,6 +905,13 @@ function _readBatchCol(colId) {
     const name = row.querySelector('.lora-search').value;
     if (air) loras.push({ air_id: air, scale, name });
   });
+  const embeddings = [];
+  const embCont = _colEl(colId, 'embedding-rows');
+  if (embCont) embCont.querySelectorAll('.embedding-row').forEach(row => {
+    const air = row.querySelector('.embedding-search')?._airId;
+    const name = row.querySelector('.embedding-search')?.value || '';
+    if (air) embeddings.push({ air_id: air, name });
+  });
   return {
     cat: _colCat(colId),
     models,
@@ -901,6 +923,7 @@ function _readBatchCol(colId) {
     aspect: _colEl(colId, 'aspect').value,
     sampler: _colEl(colId, 'sampler').value,
     loras,
+    embeddings,
   };
 }
 function saveBatchDraft() {
@@ -947,6 +970,15 @@ function _applyBatchCol(colId, d) {
       updateBatchTriggerWords(colId);
     }, 200);
   }
+  // Restore Embedding rows
+  if (d.embeddings && d.embeddings.length > 0) {
+    setTimeout(() => {
+      const cont = _colEl(colId, 'embedding-rows');
+      if (!cont) return;
+      cont.innerHTML = '';
+      d.embeddings.forEach(e => addBatchEmbeddingRow(e.air_id, colId, e.name));
+    }, 250);
+  }
 }
 function restoreBatchDraft() {
   try {
@@ -990,6 +1022,7 @@ document.addEventListener('change', e => {
 let state = {
   platform: 'runware', resultUrl: null, resultPath: null, generating: false,
   lorasCache: {},
+  embeddingsCache: {},
   loraRowCount: 0,
   _restoring: false,
 };
@@ -1233,6 +1266,8 @@ async function init() {
   updateLoraCount();
   updateTriggerWords();
   updateRemoveButtons();
+  // 预热 Embedding 缓存（UI 在 batch 面板，Runware tab）
+  await loadEmbeddings();
   saveDraft();
   // Runware tab (merged single + batch) is the default view — init + restore batch
   setPlatform('runware');
@@ -1544,6 +1579,117 @@ function collectLoras() {
   return { ids, scales };
 }
 
+// ════════════════════ Embeddings (textual inversion) ════════════════════
+// 比照 LoRA，但无权重（embedding 靠触发词生效）。列表不按底座过滤。
+async function loadEmbeddings() {
+  if (state.embeddingsCache._all) return state.embeddingsCache._all;
+  try {
+    const r = await fetch('/api/list-embeddings');
+    const data = await r.json();
+    const embs = data.success ? data.embeddings : [];
+    state.embeddingsCache._all = embs;
+    return embs;
+  } catch(e) {
+    state.embeddingsCache._all = [];
+    return [];
+  }
+}
+
+function addBatchEmbeddingRow(airId, colId, displayName) {
+  colId = colId || 'batch';
+  const list0 = state.embeddingsCache._all || [];
+  const row = document.createElement('div');
+  row.className = 'lora-row embedding-row';
+  const wrap = document.createElement('div');
+  wrap.className = 'lora-picker-wrap';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'embedding-search';
+  input.placeholder = '搜索 Embedding…';
+  const nameForId = airId ? (displayName || (list0.find(x => x.air_id === airId)?.name) || airId) : '';
+  input.value = airId ? nameForId : '';
+  if (airId) input.classList.add('has-value');
+  input._airId = airId || '';
+  const dd = document.createElement('div');
+  dd.className = 'lora-dropdown';
+  const rebuild = () => {
+    const list = state.embeddingsCache._all || [];
+    const q = input.value.toLowerCase().trim();
+    let html = '<div class="lora-opt none" data-air="">— 不启用 —</div>';
+    const filtered = list.filter(x => !q
+      || (x.name || '').toLowerCase().includes(q)
+      || (x.air_id || '').toLowerCase().includes(q));
+    for (const x of filtered) {
+      const sel = input._airId === x.air_id ? ' selected' : '';
+      const tw = (x.trigger_words && x.trigger_words.length) ? ` · 🃏${x.trigger_words.join(' ')}` : '';
+      html += `<div class="lora-opt${sel}" data-air="${escHtml(x.air_id)}">${escHtml(x.name)}<span class="opt-sub">${escHtml((x.category || '') + tw)}</span></div>`;
+    }
+    if (list.length === 0) html += '<div class="lora-no-results">暂无 Embedding</div>';
+    dd.innerHTML = html;
+  };
+  input.addEventListener('focus', () => { rebuild(); dd.classList.add('open'); });
+  input.addEventListener('input', rebuild);
+  input.addEventListener('blur', () => setTimeout(() => dd.classList.remove('open'), 150));
+  dd.addEventListener('mousedown', (e) => {
+    const opt = e.target.closest('.lora-opt');
+    if (!opt) return;
+    e.preventDefault();
+    const air = opt.dataset.air || '';
+    input._airId = air;
+    const mainEl = opt.childNodes[0];
+    input.value = air ? (mainEl ? mainEl.textContent : opt.textContent).trim() : '';
+    if (air) input.classList.add('has-value'); else input.classList.remove('has-value');
+    dd.classList.remove('open');
+    saveBatchDraft();
+  });
+  wrap.appendChild(input);
+  wrap.appendChild(dd);
+  row.appendChild(wrap);
+  const removeBtn = document.createElement('button');
+  removeBtn.className = 'lora-remove';
+  removeBtn.textContent = '×';
+  removeBtn.onclick = () => { row.remove(); updateBatchEmbeddingCount(colId); saveBatchDraft(); };
+  row.appendChild(removeBtn);
+  const cont = _colEl(colId, 'embedding-rows');
+  if (!cont) return;
+  cont.appendChild(row);
+  updateBatchEmbeddingCount(colId);
+}
+
+function updateBatchEmbeddingCount(colId) {
+  colId = colId || 'batch';
+  const cont = _colEl(colId, 'embedding-rows');
+  if (!cont) return;
+  const n = cont.querySelectorAll('.embedding-row').length;
+  const el = _colEl(colId, 'embedding-count');
+  if (el) el.textContent = n + ' 个';
+}
+
+// 收集某列已选 embedding 的 AIR 列表（batch 提交用）
+function collectBatchEmbeddings(colId) {
+  colId = colId || 'batch';
+  const cont = _colEl(colId, 'embedding-rows');
+  if (!cont) return [];
+  const ids = [];
+  cont.querySelectorAll('.embedding-row').forEach(r => {
+    const air = r.querySelector('.embedding-search')?._airId;
+    if (air) ids.push(air);
+  });
+  return ids;
+}
+
+// 单面板（normal-params）预留：目前 embedding UI 只在 batch 面板，无容器时返回空
+function collectEmbeddings() {
+  const cont = document.getElementById('embedding-rows');
+  if (!cont) return [];
+  const ids = [];
+  cont.querySelectorAll('.embedding-row').forEach(r => {
+    const air = r.querySelector('.embedding-search')?._airId;
+    if (air) ids.push(air);
+  });
+  return ids;
+}
+
 // ════════════════════ Generate ════════════════════
 async function generate() {
   if (state.generating) return;
@@ -1585,6 +1731,8 @@ async function generate() {
     const { ids, scales } = collectLoras();
     baseBody.lora_id = ids.length ? ids.join(',') : null;
     baseBody.lora_scale = ids.length ? scales.join(',') : null;
+    const embIds = collectEmbeddings();
+    baseBody.embedding_id = embIds.length ? embIds.join(',') : null;
     if (model === 'pony-xl' || model === 'prefect-ill-xl') baseBody.nsfw = document.getElementById('nsfw_pony').checked;
   } else if (state.platform === 'modelslab') {
     baseBody.lora_model = document.getElementById('lora_modelslab').value || null;
@@ -1799,6 +1947,9 @@ function doBatchReset() {
   document.getElementById('batch-lora-rows').innerHTML = '';
   updateBatchLoraCount();
   updateBatchTriggerWords();
+  // Embedding — clear all rows
+  const batchEmbRows = document.getElementById('batch-embedding-rows');
+  if (batchEmbRows) { batchEmbRows.innerHTML = ''; updateBatchEmbeddingCount('batch'); }
   // Steps, CFG, Seed
   document.getElementById('batch-steps').value = '35';
   document.getElementById('batch-cfg').value = '';
@@ -1987,6 +2138,20 @@ function collectTriggerWords(targetId) {
         l.trigger_words.forEach(w => {
           const t = w.trim();
           if (t) items.push({ label: l.name.slice(0,20), text: t });
+        });
+      }
+    });
+    // Embeddings（该列）
+    const embsB = state.embeddingsCache._all || [];
+    const embCont = _colEl(colId, 'embedding-rows');
+    if (embCont) embCont.querySelectorAll('.embedding-row').forEach(r => {
+      const air = r.querySelector('.embedding-search')?._airId;
+      if (!air) return;
+      const e = embsB.find(x => x.air_id === air);
+      if (e && Array.isArray(e.trigger_words)) {
+        e.trigger_words.forEach(w => {
+          const t = w.trim();
+          if (t) items.push({ label: '🧩' + e.name.slice(0,16), text: t });
         });
       }
     });
@@ -2185,6 +2350,7 @@ function addBatchCol() {
     el.setAttribute('onclick', el.getAttribute('onclick')
       .replace(/batchGenerate\(\)/g, `batchGenerate('${colId}')`)
       .replace(/addBatchLoraRow\(\)/g, `addBatchLoraRow('', '', '${colId}')`)
+      .replace(/addBatchEmbeddingRow\(\)/g, `addBatchEmbeddingRow('', '${colId}')`)
       .replace(/toggleCkptList\('batch'\)/g, `toggleCkptList('${colId}')`)
       .replace(/toggleAllCheckpoints\(\)/g, `toggleAllCheckpoints('${colId}')`)
       .replace(/updateBatchCount\(\)/g, `updateBatchCount('${colId}')`)
@@ -2238,6 +2404,20 @@ function addBatchCol() {
   const cloneLoraCount = document.getElementById(colId + '-lora-count');
   if (cloneLoraCount) cloneLoraCount.textContent = '0 个';
   srcLoras.forEach(l => addBatchLoraRow(l.airId, l.scale, colId, l.name));
+  // 复制源列(Batch 1)的 Embedding 配置到克隆列（同样 cloneNode 不复制 _airId）
+  const srcEmbRows = document.querySelectorAll('#batch-embedding-rows .embedding-row');
+  const srcEmbs = [];
+  srcEmbRows.forEach(r => {
+    const air = r.querySelector('.embedding-search')?._airId;
+    if (!air) return;
+    const nm = r.querySelector('.embedding-search')?.value || '';
+    srcEmbs.push({ airId: air, name: nm });
+  });
+  const cloneEmbRows = document.getElementById(colId + '-embedding-rows');
+  if (cloneEmbRows) cloneEmbRows.innerHTML = '';
+  const cloneEmbCount = document.getElementById(colId + '-embedding-count');
+  if (cloneEmbCount) cloneEmbCount.textContent = '0 个';
+  srcEmbs.forEach(e => addBatchEmbeddingRow(e.airId, colId, e.name));
   // 读取源列当前分类 + 勾选的 checkpoint，复制到克隆列
   const srcCat = document.querySelector('#batch-cat-tabs .batch-cat-tab.active')?.dataset.cat || 'flux';
   const srcChecked = Array.from(document.querySelectorAll('#batch-ckpt-grid input[type="checkbox"]:checked')).map(cb => cb.value);
@@ -2578,6 +2758,7 @@ async function batchGenerate(colId) {
   const cfgEl = _colEl(colId, 'cfg');
   const seedEl = _colEl(colId, 'seed');
   const stepsEl = _colEl(colId, 'steps');
+  const embIds = collectBatchEmbeddings(colId);
 
   const body = {
     models,
@@ -2585,6 +2766,7 @@ async function batchGenerate(colId) {
     negative_prompt: _colEl(colId, 'negative').value,
     lora_id: loraIds.length > 0 ? loraIds.join(',') : null,
     lora_scale: loraScales.length > 0 ? loraScales.join(',') : 0.8,
+    embedding_id: embIds.length > 0 ? embIds.join(',') : null,
     cfg_scale: cfgEl.value ? parseFloat(cfgEl.value) : null,
     steps: parseInt(stepsEl.value) || 35,
     aspect: _colEl(colId, 'aspect').value,

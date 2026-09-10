@@ -272,6 +272,7 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
              lora_scale: float = 0.8, seed: int = None,
              aspect: str = "9:16", cfg_scale: float = None,
              steps: int = 35, sampler: str = None,
+             embedding_id: str = None,
              width: int = None, height: int = None) -> Path:
     """Generate image via Runware AI."""
     api_key = get_key("RUNWARE_API_KEY")
@@ -354,6 +355,14 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
 
     if sampler:
         task["scheduler"] = sampler
+
+    # Embeddings (textual inversion) — supports single or comma-separated AIR list.
+    # 用法：embedding 的 trigger word 要写进 prompt 才生效（同 LoRA 机制）。
+    if embedding_id:
+        eids = [x.strip() for x in embedding_id.split(",") if x.strip()]
+        task["embeddings"] = [{"model": eid} for eid in eids]
+        for eid in eids:
+            print(f"🧩 Embedding: {eid}")
 
     result = http_post(API_URL, [task], api_key, auth_prefix="Bearer")
 
