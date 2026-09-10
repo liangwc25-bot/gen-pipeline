@@ -68,7 +68,9 @@ def timestamp() -> str:
 
 def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
                model: str = "", seed: int = None, lora_id: str = None,
-               steps: int = 35, negative_prompt: str = "") -> Path:
+               steps: int = 35, negative_prompt: str = "",
+               cfg_scale: float = None, sampler: str = None,
+               clip_skip: int = None, embedding_id: str = None) -> Path:
     """Save image data as PNG with AUTOMATIC1111-compatible metadata embedded.
 
     EVERY call to this function produces a PNG with full parameters in the
@@ -96,6 +98,14 @@ def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
         params_line.append(f"Model: {model}")
     if lora_id:
         params_line.append(f"Lora: {lora_id}")
+    if embedding_id:
+        params_line.append(f"Embedding: {embedding_id}")
+    if cfg_scale is not None:
+        params_line.append(f"CFG: {cfg_scale}")
+    if sampler:
+        params_line.append(f"Sampler: {sampler}")
+    if clip_skip is not None:
+        params_line.append(f"Clip skip: {clip_skip}")
 
     meta_string = ", ".join(meta_parts + params_line)
 
@@ -109,12 +119,7 @@ def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
     # path left the image on disk but invisible to gallery until a manual rescan.
     try:
         from gen_lib.metadata_db import insert as _db_insert
-        _db_parts = [f"Steps: {steps}", f"Seed: {seed or 0}",
-                     f"Size: {img.size[0]}x{img.size[1]}"]
-        if model:
-            _db_parts.append(f"Model: {model}")
-        if lora_id:
-            _db_parts.append(f"Lora: {lora_id}")
+        _db_parts = list(params_line)  # 与 PNG 内嵌 metadata 完全一致
         _db_insert(
             filename=out.name,
             prompt=prompt,

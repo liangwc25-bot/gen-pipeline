@@ -419,7 +419,10 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
     img_data = download_bytes(img_url)
     out = save_image(img_data, prefix=f"runware_{model_key}_{used_seed}",
                      prompt=prompt, model=model_info["name"],
-                     seed=used_seed, lora_id=lora_id)
+                     seed=used_seed, lora_id=lora_id,
+                     steps=steps, negative_prompt=negative_prompt,
+                     cfg_scale=task.get("CFGScale"), sampler=task.get("scheduler"),
+                     clip_skip=task.get("clipSkip"), embedding_id=embedding_id)
     return out, used_seed
 
 
@@ -500,6 +503,9 @@ def generate_flux_family(prompt: str, *, model_key: str = "flux-dev",
     img_data = download_bytes(img_url)
     out = save_image(img_data, prefix=f"runware_{model_key}_{used_seed}",
                      prompt=prompt, model=info["name"],
-                     seed=used_seed, lora_id=None)
+                     seed=used_seed, lora_id=None,
+                     steps=task.get("steps") or info["steps"] or 35,
+                     negative_prompt=task.get("negativePrompt", ""),
+                     cfg_scale=task.get("CFGScale"))
     return out, used_seed
 
