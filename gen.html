@@ -304,11 +304,17 @@
   .ckpt-toggle.open .adv-arrow { transform: rotate(90deg); }
   .ckpt-body.closed { display: none; }
   .batch-ckpt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; max-height: 360px; overflow-y: auto; margin-top: 6px; }
-  .batch-ckpt-item { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 6px; cursor: pointer; transition: .12s; font-size: 0.8rem; color: var(--text2); min-width: 0; }
+  .batch-ckpt-item { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 6px; cursor: pointer; transition: .12s; font-size: 0.8rem; color: var(--text2); min-width: 0; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
   .batch-ckpt-item .batch-ckpt-name { word-break: keep-all; overflow-wrap: break-word; min-width: 0; }
   .batch-ckpt-item:hover { background: rgba(124,92,252,0.08); color: var(--text); }
   .batch-ckpt-item input { width: 14px; height: 14px; accent-color: var(--accent); cursor: pointer; }
   .batch-ckpt-item.checked { color: var(--accent); font-weight: 500; }
+  /* pinned（长按置顶）—— 琥珀金，light/dark 各自取醒目档位；带 📌 前缀与选中态区分 */
+  .batch-ckpt-item.pinned { color: #fbbf24; font-weight: 600; }
+  .batch-ckpt-item.pinned .batch-ckpt-name::before { content: '📌'; margin-right: 3px; font-size: 0.72em; }
+  .batch-ckpt-item.pinned:hover { background: rgba(251,191,36,0.12); color: #fbbf24; }
+  [data-theme="light"] .batch-ckpt-item.pinned { color: #b45309; }
+  [data-theme="light"] .batch-ckpt-item.pinned:hover { background: rgba(180,83,9,0.1); color: #b45309; }
   .batch-progress { font-size: 0.82rem; color: var(--text2); margin-top: 10px; text-align: center; }
   .batch-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .batch-result-grid.single { grid-template-columns: 1fr; }
@@ -2471,6 +2477,84 @@ let MODEL_GROUPS = { flux: [], pony: [], illustrious: [], sdxl: [], zit: [], sd1
 // Maps model key → name from backend; populated via /api/list-models
 let _batchModelNames = {};
 
+// ── Checkpoint pin（长按置顶，2026-09-10 鹿鹿需求）──
+// 长按列表项 pin → 置顶 + 名称变色(琥珀金) + 📌；再长按取消 → 回到原列表位置。
+// pin 列表全局共享（所有列通用），持久化到 localStorage。
+let _pinnedCkpts = new Set();
+try { _pinnedCkpts = new Set(JSON.parse(localStorage.getItem('pinned_ckpts') || '[]')); } catch(e) {}
+let _pinSwallowClickUntil = 0;   // 长按后短暂吞掉 click，避免误切换 checkbox
+
+function _savePinned() {
+  try { localStorage.setItem('pinned_ckpts', JSON.stringify([..._pinnedCkpts])); } catch(e) {}
+}
+
+function isCkptPinned(mk) { return _pinnedCkpts.has(mk); }
+
+function togglePinCkpt(mk) {
+  if (!mk) return;
+  if (_pinnedCkpts.has(mk)) _pinnedCkpts.delete(mk);
+  else _pinnedCkpts.add(mk);
+  _savePinned();
+  _pinSwallowClickUntil = Date.now() + 900;
+  if (navigator.vibrate) { try { navigator.vibrate(30); } catch(e) {} }
+  // 重渲染所有列的当前分组（保留已勾选状态）
+  _batchColIds().forEach(cid => {
+    const grid = _colEl(cid, 'ckpt-grid');
+    if (!grid) return;
+    const checked = new Set([...grid.querySelectorAll('input[type="checkbox"]:checked')].map(cb => cb.value));
+    _renderCkptGrid(cid, _colCat(cid), checked);
+  });
+}
+
+// 按 pinned 优先 + 原顺序 渲染 checkpoint 网格
+function _renderCkptGrid(colId, cat, checkedSet) {
+  const grid = _colEl(colId, 'ckpt-grid');
+  if (!grid) return;
+  const models = MODEL_GROUPS[cat] || [];
+  const pinned = models.filter(mk => _pinnedCkpts.has(mk));
+  const rest = models.filter(mk => !_pinnedCkpts.has(mk));
+  const ordered = [...pinned, ...rest];
+  let html = '';
+  for (const mk of ordered) {
+    const name = _batchModelNames[mk] || mk;
+    const isPin = _pinnedCkpts.has(mk);
+    const isChk = checkedSet ? checkedSet.has(mk) : false;
+    html += `<label class="batch-ckpt-item${isPin ? ' pinned' : ''}${isChk ? ' checked' : ''}" data-mk="${escHtml(mk)}">`
+          + `<input type="checkbox" value="${escHtml(mk)}"${isChk ? ' checked' : ''} onchange="updateBatchCount('${colId}')"> `
+          + `<span class="batch-ckpt-name">${escHtml(name)}</span></label>`;
+  }
+  grid.innerHTML = html;
+  _bindCkptLongPress(grid);
+}
+
+// 长按检测：touch + mouse；移动/抬起即取消（不干扰滚动与点选）
+function _bindCkptLongPress(grid) {
+  const LONG_MS = 550;
+  let timer = null;
+  const clear = () => { if (timer) { clearTimeout(timer); timer = null; } };
+  const arm = (el) => {
+    clear();
+    timer = setTimeout(() => { timer = null; togglePinCkpt(el.dataset.mk); }, LONG_MS);
+  };
+  grid.querySelectorAll('.batch-ckpt-item').forEach(el => {
+    el.addEventListener('touchstart', () => arm(el), { passive: true });
+    el.addEventListener('touchend', clear);
+    el.addEventListener('touchmove', clear);
+    el.addEventListener('touchcancel', clear);
+    el.addEventListener('mousedown', () => arm(el));
+    el.addEventListener('mouseup', clear);
+    el.addEventListener('mouseleave', clear);
+  });
+}
+
+// 长按触发的 click 会落到重渲染后的元素上 → 全局吞掉，防止误切 checkbox
+document.addEventListener('click', (e) => {
+  if (Date.now() < _pinSwallowClickUntil && e.target.closest && e.target.closest('.batch-ckpt-item')) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+}, true);
+
 function selectBatchCat(cat, btn, colId) {
   colId = colId || 'batch';
   if (colId === 'batch') _batchCat = cat;
@@ -2492,12 +2576,7 @@ function selectBatchCat(cat, btn, colId) {
       return;
     }
   }
-  let html = '';
-  for (const mk of models) {
-    const name = _batchModelNames[mk] || mk;
-    html += `<label class="batch-ckpt-item"><input type="checkbox" value="${mk}" onchange="updateBatchCount('${colId}')"> <span class="batch-ckpt-name">${escHtml(name)}</span></label>`;
-  }
-  grid.innerHTML = html;
+  _renderCkptGrid(colId, cat, null);
 
   const checkAll = _colEl(colId, 'check-all');
   if (checkAll) checkAll.checked = false;
