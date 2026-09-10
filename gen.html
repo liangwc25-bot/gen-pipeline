@@ -668,6 +668,13 @@
               <input type="number" id="batch-seed" placeholder="留空随机" min="0" max="2147483647" autocomplete="off">
             </div>
           </div>
+          <div class="row" style="margin-top:14px">
+            <div class="form-group">
+              <label for="batch-clipskip">Clip Skip（留空不启用）</label>
+              <input type="number" id="batch-clipskip" placeholder="留空" min="0" max="4" autocomplete="off">
+            </div>
+          </div>
+          <div class="hint">Clip Skip 仅 SDXL / Illustrious / Pony / SD1.5 系有效（0-4，常用 1-2）；FLUX / Z-Image 无此参数</div>
         </div>
 
         <button class="btn" id="batch-generate-btn" onclick="batchGenerate()" style="margin-top:16px">🚀 一键 Batch 生成</button>
@@ -927,6 +934,7 @@ function _readBatchCol(colId) {
     seed: _colEl(colId, 'seed').value,
     aspect: _colEl(colId, 'aspect').value,
     sampler: _colEl(colId, 'sampler').value,
+    clipskip: _colEl(colId, 'clipskip').value,
     loras,
     embeddings,
   };
@@ -958,6 +966,7 @@ function _applyBatchCol(colId, d) {
     const so = _colEl(colId, 'sampler-wrap').querySelector(`.custom-opt[data-value="${d.sampler || ''}"]`);
     if (sl && so) sl.textContent = _optLabel(so);
   }
+  if (d.clipskip != null) _colEl(colId, 'clipskip').value = d.clipskip;
   // Restore checkpoint selection (after a short delay for grid to populate)
   if (d.models && d.models.length > 0) {
     setTimeout(() => {
@@ -1014,7 +1023,7 @@ document.addEventListener('input', e => {
   const bcol = e.target.closest('.batch-col');
   if (bcol && (e.target.id.endsWith('-prompt') || e.target.id.endsWith('-negative') ||
       e.target.id.endsWith('-seed') || e.target.id.endsWith('-steps') ||
-      e.target.id.endsWith('-cfg') || e.target.closest('.lora-row'))) saveBatchDraft();
+      e.target.id.endsWith('-cfg') || e.target.id.endsWith('-clipskip') || e.target.closest('.lora-row'))) saveBatchDraft();
 });
 document.addEventListener('change', e => {
   if (e.target.id === 'model') saveDraft();
@@ -1959,6 +1968,7 @@ function doBatchReset() {
   document.getElementById('batch-steps').value = '35';
   document.getElementById('batch-cfg').value = '';
   document.getElementById('batch-seed').value = '';
+  document.getElementById('batch-clipskip').value = '';
   // Aspect — reset to 9:16
   document.getElementById('batch-aspect').value = '9:16';
   const al = document.getElementById('batch-aspect-wrap').querySelector('.custom-select-label');
@@ -2861,6 +2871,7 @@ async function batchGenerate(colId) {
     steps: parseInt(stepsEl.value) || 35,
     aspect: _colEl(colId, 'aspect').value,
     sampler: _colEl(colId, 'sampler').value || null,
+    clip_skip: (_colEl(colId, 'clipskip').value !== '' ? parseInt(_colEl(colId, 'clipskip').value) : null),
     seed: seedEl.value ? parseInt(seedEl.value) : null,
   };
 

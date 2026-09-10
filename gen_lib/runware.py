@@ -299,7 +299,7 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
              lora_scale: float = 0.8, seed: int = None,
              aspect: str = "9:16", cfg_scale: float = None,
              steps: int = 35, sampler: str = None,
-             embedding_id: str = None,
+             embedding_id: str = None, clip_skip: int = None,
              width: int = None, height: int = None) -> Path:
     """Generate image via Runware AI."""
     api_key = get_key("RUNWARE_API_KEY")
@@ -382,6 +382,11 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
 
     if sampler:
         task["scheduler"] = sampler
+
+    # clipSkip（仅 SDXL/Illustrious/Pony/SD1.5 系支持；FLUX/ZIT 无此参数）
+    # 语义同 seed：留空(None)不传，填了才生效。Runware 有效范围 0-4。
+    if clip_skip is not None:
+        task["clipSkip"] = int(clip_skip)
 
     # Embeddings (textual inversion) — supports single or comma-separated AIR list.
     # 用法：embedding 的 trigger word 要写进 prompt 才生效（同 LoRA 机制）。

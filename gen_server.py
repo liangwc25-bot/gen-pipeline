@@ -254,6 +254,7 @@ class GenHandler(SimpleHTTPRequestHandler):
             "lora_id": data.get("lora_id"),
             "lora_scale": data.get("lora_scale", 0.8),
             "embedding_id": data.get("embedding_id"),
+            "clip_skip": data.get("clip_skip"),
             "cfg_scale": data.get("cfg_scale"),
             "steps": data.get("steps", 35),
             "aspect": data.get("aspect", "9:16"),
