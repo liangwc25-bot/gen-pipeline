@@ -654,27 +654,24 @@
               <input type="hidden" id="batch-sampler" value="Default">
             </div>
           </div>
-          <div class="row" style="margin-top:14px">
+          <div class="row" style="margin-top:14px;gap:8px">
             <div class="form-group">
               <label for="batch-steps">Steps</label>
               <input type="number" id="batch-steps" placeholder="35" min="4" max="50" value="35">
             </div>
             <div class="form-group">
-              <label for="batch-cfg">CFG Scale</label>
+              <label for="batch-cfg">CFG</label>
               <input type="number" id="batch-cfg" placeholder="自动" min="0.5" max="20" step="0.5" autocomplete="off">
             </div>
             <div class="form-group">
-              <label for="batch-seed">Seed（留空随机）</label>
-              <input type="number" id="batch-seed" placeholder="留空随机" min="0" max="2147483647" autocomplete="off">
+              <label for="batch-seed">Seed</label>
+              <input type="number" id="batch-seed" placeholder="随机" min="0" max="2147483647" autocomplete="off" title="留空 = 随机">
             </div>
-          </div>
-          <div class="row" style="margin-top:14px">
             <div class="form-group">
-              <label for="batch-clipskip">Clip Skip（留空不启用）</label>
-              <input type="number" id="batch-clipskip" placeholder="留空" min="0" max="4" autocomplete="off">
+              <label for="batch-clipskip" title="仅 SDXL/Illustrious/Pony/SD1.5 有效；FLUX/Z-Image 无此参数">Clip Skip</label>
+              <input type="number" id="batch-clipskip" placeholder="留空" min="0" max="4" autocomplete="off" title="仅 SDXL/Illustrious/Pony/SD1.5 有效 (0-4, 常用1-2)；留空=不传">
             </div>
           </div>
-          <div class="hint">Clip Skip 仅 SDXL / Illustrious / Pony / SD1.5 系有效（0-4，常用 1-2）；FLUX / Z-Image 无此参数</div>
         </div>
 
         <button class="btn" id="batch-generate-btn" onclick="batchGenerate()" style="margin-top:16px">🚀 一键 Batch 生成</button>
