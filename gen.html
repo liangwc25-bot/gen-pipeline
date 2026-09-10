@@ -2555,6 +2555,18 @@ document.addEventListener('click', (e) => {
   }
 }, true);
 
+// ── Checkpoint 列表：点击外部自动收起（2026-09-10）
+// 点任何 checkpoint 折叠区(.ckpt-toggle 按钮 / .ckpt-body)之外 → 收起所有已展开的列表。
+// 在多列 batch 下对每一列生效。长按触发的 click 已被上面 capture 吞掉，不影响这里。
+document.addEventListener('click', (e) => {
+  if (e.target.closest && e.target.closest('.ckpt-toggle, .ckpt-body')) return;  // 点列表/按钮内部不动
+  _batchColIds().forEach(cid => {
+    const btn = _colEl(cid, 'toggle-btn');
+    const body = _colEl(cid, 'body');
+    if (btn && btn.classList.contains('open')) { btn.classList.remove('open'); body.classList.add('closed'); }
+  });
+});
+
 function selectBatchCat(cat, btn, colId) {
   colId = colId || 'batch';
   if (colId === 'batch') _batchCat = cat;
