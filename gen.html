@@ -49,8 +49,11 @@
   /* 平台切换：原 4 个等宽 tab 行改成与「AETHER • 以太」同一行的紧凑下拉（2026-09-11）
      原 tab 行占 39px 高 + 12px margin；并进标题行后整行消失 → 省 ~45px。
      h1 用 clamp 在窄屏收缩，保证手机上「wordmark + 下拉」放得下（实测 390px 屏：h1 241px@2rem 太大）。 */
-  .topbar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-  .topbar h1 { margin-bottom: 0; font-size: clamp(1.5rem, 5.5vw, 2rem); white-space: nowrap; }
+  .topbar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .topbar h1 { margin-bottom: 0; font-size: clamp(1.4rem, 5.2vw, 2rem); white-space: nowrap; }
+  /* 品牌 logo：Æ 架构 + 编译器运行三角。尺寸跟 h1 的 clamp 用同一个 vw 斜率一起缩放。
+     描边用 currentColor（跟随 --text）→ 浅色主题下不会变成白底白线；紫/绿强调色保持原值。 */
+  .brand-logo { width: clamp(21px, 5.2vw, 30px); height: auto; flex: 0 0 auto; color: var(--text); }
   /* 平台下拉贴右边界（不在 wordmark 后面跟排） */
   .platform-select { flex: 0 0 auto; margin-left: auto; }
   .platform-select .custom-select-btn { padding: 7px 10px; font-size: 0.8rem; border-radius: 9px; }
@@ -455,7 +458,18 @@
 <div class="container">
   <!-- 顶栏：wordmark + 平台下拉同一行（原 4 个 tab 行已移除，省一整行） -->
   <div class="topbar">
-    <h1>AETHER • 以太</h1>
+    <!-- 品牌 logo（Æ 架构 + 编译器运行三角），内联 SVG 免额外请求。
+         白色描边改 currentColor → 跟随 --text，深浅主题都可见。 -->
+    <svg class="brand-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <!-- 极简 Æ 架构 -->
+      <path d="M12 52L26 12H34V52" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M20 34H48" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round"/>
+      <path d="M34 12H50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <path d="M34 52H50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <!-- 编译器运行三角标志 -->
+      <polygon points="44,30 52,34 44,38" fill="#10B981"/>
+    </svg>
+    <h1>aether • 以太</h1>
     <div class="custom-select platform-select" id="platform-wrap">
       <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
         <span class="custom-select-label">🟣 Runware</span><span class="arrow">▾</span>
