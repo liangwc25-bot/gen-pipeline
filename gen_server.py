@@ -84,6 +84,22 @@ class GenHandler(SimpleHTTPRequestHandler):
         if self._parsed_path == "/":
             self._parsed_path = "/gen.html"
         
+        # 自托管字体（prompt 输入框用的 JetBrains Mono）。只放行 fonts/ 下的 .woff2，
+        # 文件名白名单校验（无 '/'、无 '..'、只允许字母数字与 -_.）→ 防路径穿越。
+        # 字体是静态不可变资源，给长缓存。
+        if self._parsed_path.startswith("/fonts/"):
+            _name = self._parsed_path[len("/fonts/"):]
+            if (_name.endswith(".woff2") and "/" not in _name and ".." not in _name
+                    and all(c.isalnum() or c in "-_." for c in _name)):
+                _fp = GEN_DIR / "fonts" / _name
+                if _fp.exists():
+                    self.send_response(200)
+                    self.send_header("Content-Type", "font/woff2")
+                    self.send_header("Cache-Control", "public, max-age=604800")
+                    self.end_headers()
+                    self.wfile.write(_fp.read_bytes())
+                    return
+
         _static = {
             "/gen.html": "text/html",
             "/batch.html": "text/html",
