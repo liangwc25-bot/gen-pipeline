@@ -178,4 +178,4 @@ def generate(prompt: str, *, model_key: str = "pony",
         sys.exit(1)
 
     return save_image(img_data, prefix=f"modelslab_{model_key}_{seed}",
-                      prompt=prompt, model=model_info["name"], seed=seed)
+                      prompt=prompt, model=model_info["name"], model_key=model_key, seed=seed)

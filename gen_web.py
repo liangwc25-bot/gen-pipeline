@@ -114,35 +114,10 @@ def _generate_runware(args: dict) -> dict:
         if result and result.exists():
             resp["size"] = result.stat().st_size
             resp["seed"] = used_seed
-            # Write to metadata index
-            try:
-                from gen_lib.metadata_db import insert
-                # Build params string matching save_image() AUTOMATIC1111 format
-                _param_parts = [f"Steps: {int(steps) if steps else 35}"]
-                if used_seed is not None:
-                    _param_parts.append(f"Seed: {used_seed}")
-                if aspect:
-                    _w, _h = {"9:16":(704,1216),"16:9":(1216,704),"1:1":(1024,1024),"3:2":(1152,768),"2:3":(768,1152),"4:3":(1024,768),"3:4":(768,1024)}.get(aspect, (704,1216))
-                    _param_parts.append(f"Size: {_w}x{_h}")
-                _param_parts.append(f"Model: {model}")
-                if lora_id:
-                    _param_parts.append(f"Lora: {lora_id}")
-                if cfg_scale:
-                    _param_parts.append(f"CFG: {cfg_scale}")
-                if sampler:
-                    _param_parts.append(f"Sampler: {sampler}")
-                if clip_skip not in (None, ""):
-                    _param_parts.append(f"Clip skip: {int(clip_skip)}")
-                insert(
-                    filename=result.name,
-                    prompt=prompt,
-                    seed=str(used_seed) if used_seed is not None else "",
-                    model=model,
-                    params=", ".join(_param_parts),
-                    mtime=int(result.stat().st_mtime),
-                )
-            except Exception:
-                pass
+            # metadata 统一由 gen_lib.common.save_image() 写入（PNG 内嵌 + DB）。
+            # 此处历史上也 insert 一次 → INSERT OR REPLACE 覆盖 save_image 的完整记录，
+            # 造成字段分叉（runware 版缺 Embedding；modelslab 版 params 为空；
+            # flux 版只有 "Model: x" 一行）。2026-09-11 删掉重复写入，单一出口。
         return resp
     except Exception as e:
         return result_err(f"{type(e).__name__}: {e}\n{_log if '_log' in dir() else ''}")
@@ -186,19 +161,7 @@ def _generate_modelslab(args: dict) -> dict:
         if result and result.exists():
             resp["size"] = result.stat().st_size
             resp["seed"] = seed
-            # Write to metadata index
-            try:
-                from gen_lib.metadata_db import insert
-                insert(
-                    filename=result.name,
-                    prompt=prompt,
-                    seed=str(seed) if seed is not None else "",
-                    model=model,
-                    params="",
-                    mtime=int(result.stat().st_mtime),
-                )
-            except Exception:
-                pass
+            # metadata 由 save_image() 统一写入（见 _generate_runware 注释）
         return resp
     except Exception as e:
         return result_err(f"{type(e).__name__}: {e}\n{_log if '_log' in dir() else ''}")
@@ -237,16 +200,7 @@ def _generate_flux_family(args: dict) -> dict:
         if path and path.exists():
             resp["size"] = path.stat().st_size
             resp["seed"] = used_seed
-            try:
-                from gen_lib.metadata_db import insert
-                insert(
-                    filename=path.name, prompt=prompt,
-                    seed=str(used_seed) if used_seed is not None else "",
-                    model=model, params=f"Model: {model}",
-                    mtime=int(path.stat().st_mtime),
-                )
-            except Exception:
-                pass
+            # metadata 由 save_image() 统一写入（见 _generate_runware 注释）
         return resp
     except Exception as e:
         return result_err(f"{type(e).__name__}: {e}\n{_log if '_log' in dir() else ''}")

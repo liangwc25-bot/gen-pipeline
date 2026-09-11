@@ -70,12 +70,18 @@ def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
                model: str = "", seed: int = None, lora_id: str = None,
                steps: int = 35, negative_prompt: str = "",
                cfg_scale: float = None, sampler: str = None,
-               clip_skip: int = None, embedding_id: str = None) -> Path:
+               clip_skip: int = None, embedding_id: str = None,
+               model_key: str = None) -> Path:
     """Save image data as PNG with AUTOMATIC1111-compatible metadata embedded.
 
     EVERY call to this function produces a PNG with full parameters in the
     ``parameters`` tEXt chunk.  No exceptions.  New platforms must call this
     function — they should never write raw bytes to OUTPUT_DIR.
+
+    ``model``      = 显示名（写进 PNG/params，如 "Pie-Honey (Illu)"）
+    ``model_key``  = 内部 gen-key（写进 DB 的 model 列，用于底座映射/筛选；
+                     缺省时回退用 ``model``）。**两者必须分开**，DB 的 model 列
+                     依赖 gen-key 查 MODEL_BASE 表。
 
     Returns the output Path.
     """
@@ -124,8 +130,8 @@ def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
             filename=out.name,
             prompt=prompt,
             seed=str(seed or 0),
-            model=model,
-            params=", ".join(_db_parts),
+            model=model_key or model,   # DB model 列必须用 gen-key（底座映射/筛选依赖它）
+            params=", ".join(params_line),
             mtime=int(out.stat().st_mtime),
         )
     except Exception:
