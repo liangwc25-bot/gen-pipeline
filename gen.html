@@ -2501,6 +2501,22 @@ function _colEl(colId, suffix) {
 function _colRoot(colId) {
   return document.getElementById(colId === 'batch' ? 'batch-panel' : colId);
 }
+// _colRoot 的逆函数：DOM 列元素 → colId。
+// ⚠️ 第一列 DOM id 是 'batch-panel' 但 colId 是 'batch' —— 直接拿 el.id 当 colId 会把
+// _activeBatchCol 设成 'batch-panel'，之后 _colEl()/_winEl() 全部取不到元素
+// （badge 归 0、两个浮窗按钮永久失灵、只能刷页）。2026-09-11 线上 bug 的根因。
+function _colIdOf(el) {
+  if (!el || !el.id) return null;
+  if (el.id === 'batch-panel') return 'batch';
+  return /^bcol\d+$/.test(el.id) ? el.id : null;
+}
+// _activeBatchCol 可能指向已不存在的列（列被删、状态残留、历史 bug 留下的脏值）→ 回退到仍存在的第一列。
+// 没有这层兜底时，一次坏状态就会让工具行永久失灵；加上之后下一次交互自动恢复。
+function _resolvedActiveCol() {
+  const cids = _batchColIds();
+  if (cids.indexOf(_activeBatchCol) === -1) _activeBatchCol = cids[0] || 'batch';
+  return _activeBatchCol;
+}
 function _colCat(colId) { return _batchColState[colId] ? _batchColState[colId].cat : (colId === 'batch' ? _batchCat : 'flux'); }
 function _colLoras(colId) { return _batchColState[colId] ? _batchColState[colId].loras : _batchLoras; }
 function _colGenId(colId) { return _batchColState[colId] ? _batchColState[colId].genId : _batchGenId; }
@@ -2571,9 +2587,10 @@ function _updateCatTabCounts(colId) {
 function _updateToolbarCol() {
   const el = document.getElementById('batch-toolbar-col');
   if (!el) return;
+  const cids = _batchColIds();
   // 只有一列时不显示"列 N" —— 没开 clone 就别在屏幕上留多余痕迹
-  if (_batchColIds().length <= 1) { el.textContent = ''; el.style.display = 'none'; return; }
-  const i = _batchColIds().indexOf(_activeBatchCol);
+  if (cids.length <= 1) { el.textContent = ''; el.style.display = 'none'; return; }
+  const i = cids.indexOf(_resolvedActiveCol());
   el.style.display = '';
   el.textContent = '列 ' + (i >= 0 ? i + 1 : 1);
 }
@@ -2600,7 +2617,7 @@ function _syncActiveColFromScroll() {
 function _updateToolbarBadge() {
   const b = document.getElementById('batch-btn-ckpt-n');
   if (!b) return;
-  const grid = _colEl(_activeBatchCol, 'ckpt-grid');
+  const grid = _colEl(_resolvedActiveCol(), 'ckpt-grid');
   b.textContent = grid ? grid.querySelectorAll('input[type="checkbox"]:checked').length : 0;
 }
 // 单列时隐藏列头「🟣 Batch 横评 列 1」—— 纯装饰，省 38px。
@@ -2631,9 +2648,12 @@ function closeBatchWindow() {
   const b1 = document.getElementById('batch-btn-ckpt'), b2 = document.getElementById('batch-btn-adv');
   if (b1) b1.classList.remove('active');
   if (b2) b2.classList.remove('active');
+  // 关窗后无条件重算 badge：万一 _activeBatchCol 被某条路径弄脏，这里也能把显示拉回真值
+  if (typeof _updateToolbarBadge === 'function') _updateToolbarBadge();
 }
 function toggleBatchWindow(kind) {
-  const colId = _activeBatchCol || 'batch';
+  // _resolvedActiveCol()：脏 _activeBatchCol 会导致 _winEl() 取不到元素 → 按钮"打不开、只能刷页"
+  const colId = _resolvedActiveCol();
   if (_batchWinKind === kind && _batchWinCol === colId) { closeBatchWindow(); return; }  // 再点同一个按钮 = 关闭
   closeBatchWindow();
   const el = _winEl(colId, kind);
@@ -2659,7 +2679,7 @@ function toggleBatchWindow(kind) {
 
 // ── 清空已选（破坏性操作 → 挂确认框）──
 function requestClearCkptSel() {
-  const colId = _batchWinCol || _activeBatchCol || 'batch';
+  const colId = _batchWinCol || _resolvedActiveCol();
   const n = getSelectedModels(colId).length;
   if (n === 0) return;
   const tab = document.querySelector('#' + colId + '-cat-tabs .batch-cat-tab.active');
@@ -2674,7 +2694,7 @@ function hideClearCkptModal() {
   if (ov) ov.classList.remove('open');
 }
 function doClearCkptSel() {
-  const colId = _batchWinCol || _activeBatchCol || 'batch';
+  const colId = _batchWinCol || _resolvedActiveCol();
   const cat = _colCat(colId);
   _selCatMap(colId)[cat] = new Set();
   const grid = _colEl(colId, 'ckpt-grid');
@@ -2703,8 +2723,10 @@ function doClearCkptSel() {
   // 桌面端多列同屏时 scrollLeft 无法判定 → 以最后交互过的列为准
   ['pointerdown', 'focusin'].forEach(ev => document.addEventListener(ev, e => {
     const col = (e.target && e.target.closest) ? e.target.closest('#batch-cols .batch-col') : null;
-    if (col && col.id && col.id !== _activeBatchCol) {
-      _activeBatchCol = col.id; _updateToolbarCol(); _updateToolbarBadge();
+    // ⚠️ 必须走 _colIdOf() 做 id→colId 映射，不能直接用 col.id（第一列是 'batch-panel'）
+    const cid = _colIdOf(col);
+    if (cid && cid !== _activeBatchCol) {
+      _activeBatchCol = cid; _updateToolbarCol(); _updateToolbarBadge();
     }
   }, true));
 })();
