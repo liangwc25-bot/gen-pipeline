@@ -46,15 +46,15 @@
     box-shadow: 0 2px 12px rgba(0,0,0,0.15);
   }
   .panel h2 { font-size: 0.85rem; font-weight: 600; color: var(--text2); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .platform-tabs { display: flex; gap: 0; margin-bottom: 12px; background: rgba(255,255,255,0.04); border-radius: var(--radius); overflow: hidden; padding: 2px; }
-  .platform-tab {
-    flex: 1; padding: 8px 8px; border: none;
-    background: transparent; color: var(--text2);
-    font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all .25s ease; text-align: center; border-radius: calc(var(--radius) - 3px);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .platform-tab.active { background: var(--accent); color: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-  .platform-tab:hover:not(.active) { color: var(--text); }
+  /* 平台切换：原 4 个等宽 tab 行改成与「AETHER • 以太」同一行的紧凑下拉（2026-09-11）
+     原 tab 行占 39px 高 + 12px margin；并进标题行后整行消失 → 省 ~45px。
+     h1 用 clamp 在窄屏收缩，保证手机上「wordmark + 下拉」放得下（实测 390px 屏：h1 241px@2rem 太大）。 */
+  .topbar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .topbar h1 { margin-bottom: 0; font-size: clamp(1.5rem, 5.5vw, 2rem); white-space: nowrap; }
+  .platform-select { flex: 0 0 auto; }
+  .platform-select .custom-select-btn { padding: 7px 10px; font-size: 0.8rem; border-radius: 9px; }
+  /* 下拉比按钮宽：右对齐展开，避免超出屏幕右侧 */
+  .platform-select .custom-select-dropdown { min-width: 200px; left: auto; right: 0; }
   .form-group { margin-bottom: 14px; }
   .form-group label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text2); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.03em; }
   textarea, select, input[type="text"], input[type="number"] {
@@ -273,7 +273,7 @@
   [data-theme="light"] .lora-dropdown { border-color: rgba(0,0,0,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
   [data-theme="light"] .lora-dropdown .lora-opt { border-bottom-color: rgba(0,0,0,0.06); }
   [data-theme="light"] .panel { box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-  [data-theme="light"] .platform-tabs { background: rgba(0,0,0,0.04); }
+  [data-theme="light"] .platform-select .custom-select-dropdown { border-color: rgba(0,0,0,0.1); }
   /* ── Collapsible section ── */
   .adv-toggle {
     width: 100%; background: none; border: 1px solid rgba(255,255,255,0.08);
@@ -420,13 +420,21 @@
 </head>
 <body>
 <div class="container">
-  <h1>AETHER • 以太</h1>
-
-  <div class="platform-tabs">
-    <div class="platform-tab active" id="tab-runware" onclick="setPlatform('runware')">🟣 Runware</div>
-    <div class="platform-tab" id="tab-modelslab" onclick="setPlatform('modelslab')">🧪 ModelsLab</div>
-    <div class="platform-tab" id="tab-i2i" onclick="setPlatform('i2i')">✏️ I2I 编辑</div>
-    <div class="platform-tab" id="tab-flux" onclick="setPlatform('flux')">🌊 Flux 家族</div>
+  <!-- 顶栏：wordmark + 平台下拉同一行（原 4 个 tab 行已移除，省一整行） -->
+  <div class="topbar">
+    <h1>AETHER • 以太</h1>
+    <div class="custom-select platform-select" id="platform-wrap">
+      <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+        <span class="custom-select-label">🟣 Runware</span><span class="arrow">▾</span>
+      </button>
+      <div class="custom-select-dropdown">
+        <div class="custom-opt active" data-value="runware"><span class="opt-main">🟣 Runware</span><span class="opt-sub">批量横评出图</span></div>
+        <div class="custom-opt" data-value="modelslab"><span class="opt-main">🧪 ModelsLab</span><span class="opt-sub">单张生成</span></div>
+        <div class="custom-opt" data-value="i2i"><span class="opt-main">✏️ I2I 编辑</span><span class="opt-sub">图改图</span></div>
+        <div class="custom-opt" data-value="flux"><span class="opt-main">🌊 Flux 家族</span><span class="opt-sub">FLUX 系模型</span></div>
+      </div>
+      <input type="hidden" id="platform-value" value="runware">
+    </div>
   </div>
 
   <div class="layout">
@@ -1178,6 +1186,8 @@ document.addEventListener('click', function(e) {
     wrap.querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active'));
     opt.classList.add('active');
     wrap.classList.remove('open');
+    // 平台下拉：选中即切换平台。放在 saveDraft() 之前，否则草稿里存的是旧平台
+    if (wrap.id === 'platform-wrap') setPlatform(opt.dataset.value);
     saveDraft();
     if (opt.closest('.batch-col')) {
       saveBatchDraft();
@@ -1203,10 +1213,13 @@ function setPlatform(p) {
   // Normalize legacy 'batch' value from old drafts → 'runware'
   if (p === 'batch') p = 'runware';
   state.platform = p;
-  document.getElementById('tab-runware').classList.toggle('active', p === 'runware');
-  document.getElementById('tab-modelslab').classList.toggle('active', p === 'modelslab');
-  document.getElementById('tab-i2i').classList.toggle('active', p === 'i2i');
-  document.getElementById('tab-flux').classList.toggle('active', p === 'flux');
+  // 平台下拉同步（原 4 个等宽 tab 已换成与 wordmark 同行的下拉）
+  const _pv = document.getElementById('platform-value');
+  if (_pv) _pv.value = p;
+  const _pl = document.querySelector('#platform-wrap .custom-select-label');
+  const _po = document.querySelector(`#platform-wrap .custom-opt[data-value="${p}"]`);
+  if (_pl) _pl.textContent = _po ? _optLabel(_po) : p;
+  document.querySelectorAll('#platform-wrap .custom-opt').forEach(o => o.classList.toggle('active', o.dataset.value === p));
 
   const isRunware = p === 'runware';
   const isModelslab = p === 'modelslab';
