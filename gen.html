@@ -1282,6 +1282,8 @@ async function init() {
   saveDraft();
   // Runware tab (merged single + batch) is the default view — init + restore batch
   setPlatform('runware');
+  // 页面被系统回收后重载时, 对接未完成的 batch 任务（列已建好后延迟调用）
+  setTimeout(() => { _resumePendingBatch(); }, 1500);
 }
 
 async function loadModels() {
@@ -2450,6 +2452,7 @@ function removeBatchCol(colId) {
   const col = document.getElementById(colId);
   if (col) col.remove();
   delete _batchColState[colId];
+  _clearPendingBatch(colId);   // 列删了就不再恢复它的任务
   // 重排列号标题
   renumberBatchCols();
 }
@@ -2887,12 +2890,23 @@ async function batchGenerate(colId) {
   }
 
   const batchId = data.batch_id;
-  const genId = _bumpColGenId(colId);  // capture this generation's id
-  btn.textContent = '⏳ 生成中…';
-  _colEl(colId, 'progress').style.display = 'block';
-  _colEl(colId, 'status-bar').textContent = '';
+  // 持久化未完成任务 → 页面被浏览器回收/重载后仍能恢复（见 _resumePendingBatch）
+  _savePendingBatch(colId, batchId, models);
+  startBatchPoll(colId, batchId, models);
+}
 
-  // Poll until done
+// ── Batch 轮询（可恢复）──
+// 抽出成独立函数：新提交 / 页面重载后恢复 / visibilitychange 恢复 都走这里。
+function startBatchPoll(colId, batchId, models) {
+  colId = colId || 'batch';
+  const genId = _bumpColGenId(colId);   // capture this generation's id
+  const btn = _colEl(colId, 'generate-btn');
+  const prog = _colEl(colId, 'progress');
+  const statusBar = _colEl(colId, 'status-bar');
+  if (btn) { btn.textContent = '⏳ 生成中…'; btn.disabled = true; }
+  if (prog) prog.style.display = 'block';
+  if (statusBar) statusBar.textContent = '';
+
   const poll = async () => {
     if (genId !== _colGenId(colId)) return;  // stale poll, cancelled by newer generation
     let d;
@@ -2900,21 +2914,20 @@ async function batchGenerate(colId) {
       const r = await fetch('/api/batch?batch_id=' + batchId);
       d = await r.json();
     } catch (e) {
-      // Network error — retry after a bit
       setTimeout(poll, 3000);
       return;
     }
     if (genId !== _colGenId(colId)) return;
 
-    const total = d.total || models.length;
+    const total = d.total || (models ? models.length : 0);
     const done = d.completed || 0;
-    _colEl(colId, 'progress').textContent = `⏳ ${done}/${total} 完成`;
+    if (prog) prog.textContent = `⏳ ${done}/${total} 完成`;
 
     if (d.status === 'done') {
-      btn.disabled = false;
-      btn.textContent = '🚀 一键 Batch 生成';
-      _colEl(colId, 'progress').style.display = 'none';
+      if (btn) { btn.disabled = false; btn.textContent = '🚀 一键 Batch 生成'; }
+      if (prog) prog.style.display = 'none';
       _setColPollFn(colId, null);
+      _clearPendingBatch(colId);
       renderBatchResults(d.models, models, colId);
       return;
     }
@@ -2922,6 +2935,58 @@ async function batchGenerate(colId) {
   };
   _setColPollFn(colId, poll);
   poll();
+}
+
+// ── 未完成 Batch 任务持久化（治「切后台回来不抓了」）──
+// 根因：poll 状态只活在页面内存。手机切后台被系统回收 / bfcache / 重载 → 页面重来
+// → _batchColFn=null、batchId 丢失 → 轮询彻底断。后端 BATCH_JOBS 仍在内存里，拿到
+// batch_id 就能续。存 localStorage，页面加载时 _resumePendingBatch() 自动对接。
+const PENDING_BATCH_KEY = 'pending_batches';
+
+function _pendingMap() {
+  try { return JSON.parse(localStorage.getItem(PENDING_BATCH_KEY) || '{}'); } catch (e) { return {}; }
+}
+function _savePendingBatch(colId, batchId, models) {
+  const m = _pendingMap();
+  m[colId] = { batchId, models: models || [], ts: Date.now() };
+  try { localStorage.setItem(PENDING_BATCH_KEY, JSON.stringify(m)); } catch (e) {}
+}
+function _clearPendingBatch(colId) {
+  const m = _pendingMap();
+  delete m[colId];
+  try { localStorage.setItem(PENDING_BATCH_KEY, JSON.stringify(m)); } catch (e) {}
+}
+// 页面加载 / 切回前台 时调用：对每个未完成任务查一次后端状态
+//   - 还在跑 → 恢复轮询
+//   - 已完成 → 直接渲染结果（切后台期间跑完的，回来就能看到）
+//   - 后端已无此任务（gen_server 重启过）→ 清掉
+async function _resumePendingBatch() {
+  const m = _pendingMap();
+  for (const colId of Object.keys(m)) {
+    const p = m[colId];
+    if (!p || !p.batchId) { _clearPendingBatch(colId); continue; }
+    if (Date.now() - (p.ts || 0) > 2 * 3600 * 1000) { _clearPendingBatch(colId); continue; }  // >2h 视为过期
+    const el = _colEl(colId, 'ckpt-grid');
+    if (!el) { continue; }   // 该列 DOM 未就绪（多列恢复中）→ 留着下次再试
+    try {
+      const r = await fetch('/api/batch?batch_id=' + p.batchId);
+      const d = await r.json();
+      if (!d || (!d.status && !d.models)) { _clearPendingBatch(colId); continue; }  // 后端已无此任务
+      if (d.status === 'done') {
+        _clearPendingBatch(colId);
+        const btn = _colEl(colId, 'generate-btn');
+        const prog = _colEl(colId, 'progress');
+        if (btn) { btn.disabled = false; btn.textContent = '🚀 一键 Batch 生成'; }
+        if (prog) prog.style.display = 'none';
+        renderBatchResults(d.models, p.models || [], colId);
+      } else {
+        startBatchPoll(colId, p.batchId, p.models || []);
+      }
+    } catch (e) {
+      // 网络异常 → 留着下次再试（切回前台时会重试）
+      console.warn('[resume batch] failed:', colId, e);
+    }
+  }
 }
 
 function renderBatchResults(modelsData, orderedKeys, colId) {
@@ -3256,14 +3321,23 @@ function showI2iPreview() {
   reader.readAsDataURL(fileInput.files[0]);
 }
 
-// Resume batch polling when tab returns to foreground (all columns)
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) return;
+// Resume batch polling when page returns to foreground / restored from bfcache (all columns)
+function _resumeBatchPolling() {
+  // 1) 内存里还活着的 poll 直接续跑
   if (_batchPollFn) _batchPollFn();
   for (const k in _batchColState) {
     if (_batchColState[k] && _batchColState[k].pollFn) _batchColState[k].pollFn();
   }
+  // 2) 页面被回收/重载过的 → 从 localStorage 对接后端未完成任务（含已跑完的，直接渲染结果）
+  _resumePendingBatch();
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) return;
+  _resumeBatchPolling();
 });
+// bfcache 恢复（前进/后退、部分手机切回）不一定触发 visibilitychange → 补 pageshow
+window.addEventListener('pageshow', (e) => { _resumeBatchPolling(); });
+window.addEventListener('focus', () => { _resumeBatchPolling(); });
 
 loadSnippets();
 
