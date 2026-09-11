@@ -296,7 +296,9 @@
     display: flex; flex-direction: column;
     position: fixed; top: 7vh; left: 4vw; right: 4vw;
     margin: 0 auto; max-width: 560px; max-height: 84vh;
-    z-index: 9990; background: var(--card);
+    /* z-index 必须高于工具行(9991)与遮罩(9989) —— 否则手机上工具行会压在弹窗上面，
+       看起来像弹窗在后面。层级：遮罩 9989 < 工具行 9991 < 浮窗 9995 < 既有弹窗 9999 */
+    z-index: 9995; background: var(--card);
     border: 1px solid rgba(255,255,255,0.12); border-radius: 16px;
     padding: 12px 14px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
     overflow: hidden;
@@ -318,7 +320,14 @@
   /* ── 顶部工具行（在 #batch-cols 外面，所以不会被 clone）2026-09-11 ──
      ＋ 加列 从 .batch-cols 里移出来放这里：否则 100% 的列 + 64px 按钮 > 容器宽，
      单列状态下容器就横向溢出 → 没开 clone 也能往右滑，滑出来就是那个按钮。 */
-  .batch-toolbar { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; position: relative; z-index: 9991; }
+  .batch-toolbar { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; position: relative; z-index: 9991; transition: opacity .18s; }
+  /* 浮窗打开时工具栏退到背景：视觉上让位给弹窗。
+     仍然 z-index 9991（高于遮罩 9989）→ 保持可点，从一个窗口切到另一个窗口仍是一次点击。 */
+  .batch-toolbar.dimmed { opacity: .3; }
+  @media (max-width: 430px) {
+    .bt-btn { padding: 6px 8px; font-size: 0.72rem; }
+    .bt-left { font-size: 0.68rem; }
+  }
   /* 高级设置窗口内容不高（~330px）且里面有 4 个下拉（LoRA/Embedding/画幅/采样器）。
      滚动容器会裁掉 position:absolute 的下拉，所以这个窗口不设滚动 —— 宁可让它溢出也不能让下拉打不开。 */
   .batch-win.bw-fit.as-overlay { max-height: none; overflow: visible; }
@@ -2513,7 +2522,10 @@ function _updateCatTabCounts(colId) {
 function _updateToolbarCol() {
   const el = document.getElementById('batch-toolbar-col');
   if (!el) return;
+  // 只有一列时不显示"列 N" —— 没开 clone 就别在屏幕上留多余痕迹
+  if (_batchColIds().length <= 1) { el.textContent = ''; el.style.display = 'none'; return; }
   const i = _batchColIds().indexOf(_activeBatchCol);
+  el.style.display = '';
   el.textContent = '列 ' + (i >= 0 ? i + 1 : 1);
 }
 // 多列时按 scrollLeft 就近判定当前停在哪列（手机上 scroll-snap 一屏一列）
@@ -2555,6 +2567,8 @@ function closeBatchWindow() {
   _batchWinKind = null; _batchWinCol = null;
   const bd = document.getElementById('batch-overlay-backdrop');
   if (bd) bd.classList.remove('open');
+  const tb = document.getElementById('batch-toolbar');
+  if (tb) tb.classList.remove('dimmed');
   const b1 = document.getElementById('batch-btn-ckpt'), b2 = document.getElementById('batch-btn-adv');
   if (b1) b1.classList.remove('active');
   if (b2) b2.classList.remove('active');
@@ -2569,6 +2583,9 @@ function toggleBatchWindow(kind) {
   el.classList.add('as-overlay');
   const bd = document.getElementById('batch-overlay-backdrop');
   if (bd) bd.classList.add('open');
+  // 工具栏退到背景（仍可点，用来直接切到另一个窗口）
+  const tb = document.getElementById('batch-toolbar');
+  if (tb) tb.classList.add('dimmed');
   const btn = document.getElementById(kind === 'ckpt' ? 'batch-btn-ckpt' : 'batch-btn-adv');
   if (btn) btn.classList.add('active');
   const i = _batchColIds().indexOf(colId);
