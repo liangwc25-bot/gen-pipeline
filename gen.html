@@ -51,10 +51,15 @@
      h1 用 clamp 在窄屏收缩，保证手机上「wordmark + 下拉」放得下（实测 390px 屏：h1 241px@2rem 太大）。 */
   .topbar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
   .topbar h1 { margin-bottom: 0; font-size: clamp(1.5rem, 5.5vw, 2rem); white-space: nowrap; }
-  .platform-select { flex: 0 0 auto; }
+  /* 平台下拉贴右边界（不在 wordmark 后面跟排） */
+  .platform-select { flex: 0 0 auto; margin-left: auto; }
   .platform-select .custom-select-btn { padding: 7px 10px; font-size: 0.8rem; border-radius: 9px; }
   /* 下拉比按钮宽：右对齐展开，避免超出屏幕右侧 */
   .platform-select .custom-select-dropdown { min-width: 200px; left: auto; right: 0; }
+  /* ⚠️ 层级：普通 .custom-select-dropdown 只有 z-index:100，会被 .batch-toolbar(position:relative; z-index:9991)
+     整个盖住 —— 平台下拉正好和工具行上下相邻，会开在"Checkpoint 按钮"后面。
+     层级阶梯：遮罩 9989 < 工具行 9991 < 平台下拉 9992 < 浮窗 9995 < 既有弹窗 9999 */
+  .platform-select .custom-select-dropdown { z-index: 9992; }
   .form-group { margin-bottom: 14px; }
   .form-group label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text2); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.03em; }
   textarea, select, input[type="text"], input[type="number"] {
