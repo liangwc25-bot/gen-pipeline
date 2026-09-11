@@ -70,7 +70,7 @@ def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
                model: str = "", seed: int = None, lora_id: str = None,
                steps: int = 35, negative_prompt: str = "",
                cfg_scale: float = None, sampler: str = None,
-               clip_skip: int = None, embedding_id: str = None,
+               embedding_id: str = None,
                model_key: str = None) -> Path:
     """Save image data as PNG with AUTOMATIC1111-compatible metadata embedded.
 
@@ -110,8 +110,6 @@ def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
         params_line.append(f"CFG: {cfg_scale}")
     if sampler:
         params_line.append(f"Sampler: {sampler}")
-    if clip_skip is not None:
-        params_line.append(f"Clip skip: {clip_skip}")
 
     meta_string = ", ".join(meta_parts + params_line)
 
