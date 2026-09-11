@@ -79,6 +79,8 @@ class GenHandler(SimpleHTTPRequestHandler):
             return self._handle_batch_get()
         if self._parsed_path == "/api/snippets":
             return self._handle_get_snippets()
+        if self._parsed_path == "/api/prompt-hl":
+            return self._handle_get_prompt_hl()
         
         # Static files
         if self._parsed_path == "/":
@@ -381,6 +383,21 @@ class GenHandler(SimpleHTTPRequestHandler):
         else:
             data = {}
         self._json_response({"success": True, "snippets": data})
+
+    def _handle_get_prompt_hl(self):
+        """GET /api/prompt-hl — prompt 语法高亮配置（C 方案）。
+
+        读 data/prompt_hl.json，缺失则回退 data/prompt_hl.example.json。
+        这个文件是给人手改的（加词/改色/加规则），改完刷新页面即生效。
+        """
+        src = data_file("prompt_hl.json")
+        if src.exists():
+            try:
+                return self._json_response(json.loads(src.read_text()))
+            except Exception as e:
+                return self._json_response({"enabled": False, "colors": {}, "rules": [],
+                                            "error": f"prompt_hl.json 解析失败: {e}"})
+        return self._json_response({"enabled": False, "colors": {}, "rules": []})
 
     def _handle_post_snippets(self):
         content_len = int(self.headers.get("Content-Length", 0))

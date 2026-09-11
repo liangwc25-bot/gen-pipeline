@@ -1,0 +1,40 @@
+{
+  "enabled": true,
+  "_note": "prompt 语法高亮（C 方案）。真实文件是 data/prompt_hl.json（不进 git）。改完刷新页面即生效。",
+
+  "_colors_note": "bracket_depth = 括号按嵌套深度循环取色（规则表达不了，所以内建；颜色在这里配）。提示里嵌套一般不超过两层。",
+  "colors": {
+    "bracket_depth": ["#a78bfa", "#f472b6", "#fb923c", "#22d3ee"]
+  },
+
+  "_rules_note": "★ 这是你主要会改的地方。数组顺序 = 优先级，先匹配先赢。每条：match 正则 / color 颜色 / bold 是否加粗 / flags 可选（默认 i 忽略大小写）/ enabled 可选（false 关掉）。match 从当前字符位置开始尝试（sticky），所以词建议加 \\b...\\b 做整词边界 —— 但中文词不要加 \\b（中文没有单词边界）。想在 JSON 里写 \\b 要写成 \\\\b。",
+  "rules": [
+    {
+      "name": "权重 (tag:1.25) / :0.8",
+      "match": ":\\s*-?\\d+(?:\\.\\d+)?",
+      "color": "#fbbf24",
+      "bold": true,
+      "enabled": true
+    },
+    {
+      "name": "逗号",
+      "match": ",+",
+      "color": "#8e8e93",
+      "enabled": true
+    },
+    {
+      "name": "人物数量 1girl / 1boy（她点名要的样板）",
+      "match": "\\b(1girl|1boy|2girls|1girls)\\b",
+      "color": "#60a5fa",
+      "bold": true,
+      "enabled": true
+    },
+    {
+      "name": "示例：标红 nsfw（想用把 enabled 改 true）",
+      "match": "\\bnsfw\\b",
+      "color": "#fb7185",
+      "bold": true,
+      "enabled": false
+    }
+  ]
+}

@@ -11,3 +11,4 @@ data/embedding_registry.json
 data/i2v_lora_registry.json
 data/i2v_snippets.json
 data/snippets.json
+data/prompt_hl.json

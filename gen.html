@@ -112,6 +112,28 @@
     font-size: 1rem; line-height: 1.28;
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   }
+
+  /* ── prompt 语法高亮（C 方案·叠层）2026-09-11 ──
+     原理：文字透明的 textarea 压在 <pre class="hl-backdrop"> 高亮层之上
+     → 键盘/输入法/粘贴/撤销/选中全走原生 textarea，只把"显示"接管过来。
+     ⚠️ 度量不在这里手写：由 JS 从 textarea 的 computed style 逐项拷到高亮层（见 _hlSyncMetrics），
+        手写 CSS 迟早会因上面那条 font 规则改动而漂移。 */
+  .hl-wrap { position: relative; }
+  .hl-backdrop {
+    position: absolute; inset: 0; margin: 0; pointer-events: none;
+    overflow: hidden; border-style: solid; border-color: transparent;
+    white-space: pre-wrap;
+  }
+  /* ⚠️ textarea 默认是 inline-block，在 wrapper 里会占一条行盒 → 底部多出 ~4px 基线间隙，
+     导致高亮层比 textarea 高出 4px。必须 display:block 消掉。 */
+  .hl-wrap > textarea { display: block; position: relative; z-index: 1; }
+  /* 关闭时把高亮层整个拿掉 —— 否则它会带着复制来的背景色与 textarea 自己的背景叠成两层
+     （0.05 + 0.05 ≈ 0.0975），底色比改动前略亮。关掉就必须和原来逐像素一致。 */
+  .hl-wrap:not(.hl-on) > .hl-backdrop { display: none; }
+  /* 开启后：textarea 的文字与底色透明（底色交给高亮层），只留光标 */
+  .hl-wrap.hl-on > textarea { color: transparent !important; background: transparent !important; caret-color: var(--text); }
+  .hl-wrap.hl-on > textarea::selection { background: rgba(124,92,252,0.35); }
+  .hl-b { font-weight: 700; }
   select { cursor: pointer; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-color: rgba(255,255,255,0.05); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238e8e93' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
   .row { display: flex; gap: 14px; align-items: flex-end; }
   .row .form-group { flex: 1; margin-bottom: 0; }
@@ -559,6 +581,11 @@
             <input type="number" id="steps" placeholder="35" min="10" max="50" value="35">
           </div>
         </div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="toggle">
+            <input type="checkbox" class="hl-toggle" onchange="setPromptHl(this.checked)"> ✏️ Prompt 语法高亮（只标括号 / 权重）
+          </label>
+        </div>
       </div>
 
       <div class="form-group">
@@ -818,6 +845,12 @@
               <label for="batch-seed">Seed（留空随机）</label>
               <input type="number" id="batch-seed" placeholder="留空随机" min="0" max="2147483647" autocomplete="off">
             </div>
+          </div>
+          <div class="form-group" style="margin-top:14px;margin-bottom:0">
+            <label class="toggle">
+              <input type="checkbox" class="hl-toggle" onchange="setPromptHl(this.checked)"> ✏️ Prompt 语法高亮（只标括号 / 权重）
+            </label>
+            <div class="hint">规则与配色在 <code>data/prompt_hl.json</code>，可随时加词/改色，刷新即生效</div>
           </div>
           </div><!-- /.bw-body -->
         </div><!-- /#batch-adv-body -->
@@ -2865,6 +2898,8 @@ function addBatchCol() {
   // 刚建出来的列就是用户想操作的那列 → 工具行立即指过来，不用等 scroll 事件
   _activeBatchCol = colId;
   _updateToolbarCol(); _updateToolbarBadge(); _updateColHeads();
+  // 克隆列的高亮层是 cloneNode 带过来的（没有事件）→ 重新绑定 + 重绘
+  if (typeof _hlSetupColumn === 'function') _hlSetupColumn(colId);
 }
 
 function removeBatchCol(colId) {
@@ -3791,9 +3826,179 @@ document.addEventListener('visibilitychange', () => {
 window.addEventListener('pageshow', (e) => { _resumeBatchPolling(); });
 window.addEventListener('focus', () => { _resumeBatchPolling(); });
 
+// ════════════════════ prompt 语法高亮（C 方案 · 叠层）════════════════════
+// 配置来自 data/prompt_hl.json（经 /api/prompt-hl 读取），改文件后刷新页面即生效。
+// C 方案 = 只标"容易写错"的地方（括号配对 / 权重数值），tag 本身不上色（鹿鹿 2026-09-11 定）。
+// 叠层原理：textarea 文字透明压在 <pre class="hl-backdrop"> 上，键盘/IME/粘贴仍是原生的。
+const _HL_SEL = 'textarea[id$="-prompt"], textarea[id$="-negative"], #prompt, #negative';
+const _HL_KEY = 'prompt_hl_on';
+let _hlCfg = null;      // { enabled, colors:{bracket_depth:[...]}, rules:[...] }
+let _hlRules = [];      // 编译后的规则（sticky 正则，逐个位置尝试）
+let _hlDepth = [];      // 括号深度取色表（有状态，规则表达不了 → 内建）
+
+function _hlOn() { return document.documentElement.dataset.promptHl === 'on'; }
+
+async function loadPromptHlConfig() {
+  try {
+    _hlCfg = await (await fetch('/api/prompt-hl')).json();
+  } catch (e) {
+    console.warn('[prompt-hl] 配置加载失败，高亮保持关闭：', e.message);
+    _hlCfg = { enabled: false };
+  }
+  const d = (_hlCfg && _hlCfg.colors && Array.isArray(_hlCfg.colors.bracket_depth))
+    ? _hlCfg.colors.bracket_depth.filter(Boolean) : [];
+  _hlDepth = d.length ? d : ['#a78bfa', '#f472b6', '#fb923c', '#22d3ee'];
+  _hlRules = ((_hlCfg && Array.isArray(_hlCfg.rules)) ? _hlCfg.rules : [])
+    .filter(r => r && r.enabled !== false && r.match)
+    .map(r => {
+      try {
+        // sticky('y') 只从当前位置尝试匹配；用户 flags 默认 'i'（忽略大小写，1girl 也能匹配 1Girl），
+        // 'g'/'y' 由本代码接管，从用户写的 flags 里剥掉，避免语义混乱。
+        const flags = 'y' + String(r.flags == null ? 'i' : r.flags).replace(/[gy]/g, '');
+        return { re: new RegExp(r.match, flags), color: r.color || 'inherit', bold: !!r.bold };
+      } catch (e) { console.warn('[prompt-hl] 规则正则无效已跳过：', r.name || r.match, '→', e.message); return null; }
+    }).filter(Boolean);
+  if (_hlCfg && _hlCfg.error) console.warn('[prompt-hl]', _hlCfg.error);
+}
+
+function _hlEsc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+// 单遍扫描：用户规则优先（数组顺序、先匹配先赢）→ 内建括号深度 → 其余原样输出
+function _hlHtml(text) {
+  let out = '', pending = '', i = 0, depth = 0;
+  const flush = () => { if (pending) { out += _hlEsc(pending); pending = ''; } };
+  while (i < text.length) {
+    let hit = null;
+    for (const r of _hlRules) {
+      r.re.lastIndex = i;
+      const m = r.re.exec(text);
+      if (m && m[0]) { hit = { t: m[0], c: r.color, b: r.bold }; break; }
+    }
+    if (hit) {
+      flush();
+      out += `<span class="hl-tok${hit.b ? ' hl-b' : ''}" style="color:${hit.c}">${_hlEsc(hit.t)}</span>`;
+      i += hit.t.length; continue;
+    }
+    const ch = text[i];
+    if (ch === '(' || ch === '[') {
+      flush(); out += `<span class="hl-tok" style="color:${_hlDepth[depth % _hlDepth.length]}">${_hlEsc(ch)}</span>`;
+      depth++; i++; continue;
+    }
+    if (ch === ')' || ch === ']') {
+      flush(); depth = Math.max(0, depth - 1);
+      out += `<span class="hl-tok" style="color:${_hlDepth[depth % _hlDepth.length]}">${_hlEsc(ch)}</span>`;
+      i++; continue;
+    }
+    pending += ch; i++;
+  }
+  flush();
+  // <pre> 会吃掉末尾换行 → 补一个空格占位，否则最后一行会与 textarea 差一行
+  if (text.endsWith('\n')) out += ' ';
+  return out;
+}
+
+// 度量逐项从 textarea 的 computed style 复制到高亮层。
+// ⚠️ 别改回手写 CSS —— 上面那条 prompt font 规则一改就会漂移，这是叠层方案最容易坏的地方。
+function _hlSyncMetrics(ta, bd) {
+  const cs = getComputedStyle(ta);
+  ['fontFamily', 'fontSize', 'fontWeight', 'fontStyle', 'fontVariant', 'lineHeight', 'letterSpacing',
+   'wordSpacing', 'textAlign', 'textIndent', 'tabSize', 'boxSizing', 'whiteSpace', 'overflowWrap', 'wordBreak',
+   'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft',
+   'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth',
+   'borderRadius', 'backgroundColor'].forEach(p => { bd.style[p] = cs[p]; });
+  bd.style.borderStyle = 'solid';
+  bd.style.borderColor = 'transparent';
+}
+
+function _hlBd(ta) {
+  const w = ta.parentElement;
+  return (w && w.classList.contains('hl-wrap')) ? w.querySelector(':scope > .hl-backdrop') : null;
+}
+
+function _hlSyncScroll(ta) {
+  const bd = _hlBd(ta);
+  if (bd) { bd.scrollTop = ta.scrollTop; bd.scrollLeft = ta.scrollLeft; }
+}
+
+function _hlDraw(ta, force) {
+  const bd = _hlBd(ta);
+  if (!bd) return;
+  if (!_hlOn()) { if (bd.innerHTML) bd.innerHTML = ''; ta.dataset.hlLast = ta.value; return; }
+  if (force || ta.value !== ta.dataset.hlLast) {
+    bd.innerHTML = _hlHtml(ta.value);
+    ta.dataset.hlLast = ta.value;
+  }
+  _hlSyncScroll(ta);
+}
+
+function _hlSetup(ta) {
+  if (!ta) return;
+  let wrap = ta.parentElement;
+  if (!wrap || !wrap.classList.contains('hl-wrap')) {
+    wrap = document.createElement('div');
+    wrap.className = 'hl-wrap';
+    ta.parentNode.insertBefore(wrap, ta);
+    wrap.appendChild(ta);
+  }
+  let bd = wrap.querySelector(':scope > .hl-backdrop');
+  if (!bd) {
+    bd = document.createElement('pre');
+    bd.className = 'hl-backdrop';
+    bd.setAttribute('aria-hidden', 'true');
+    wrap.insertBefore(bd, ta);
+  }
+  if (ta.dataset.hlBound !== '1') {          // ⚠️ 克隆列会带着这个标记过来，_hlSetupColumn 里会清掉
+    ta.dataset.hlBound = '1';
+    ta.addEventListener('input', () => _hlDraw(ta));
+    ta.addEventListener('scroll', () => _hlSyncScroll(ta), { passive: true });
+    ta.addEventListener('focus', () => { _hlSyncMetrics(ta, bd); _hlDraw(ta, true); });
+    ta.addEventListener('blur', () => _hlSyncMetrics(ta, bd));
+  }
+  _hlSyncMetrics(ta, bd);
+  wrap.classList.toggle('hl-on', _hlOn());
+  _hlDraw(ta, true);
+}
+
+// 新克隆出来的列：wrapper/backdrop 是 cloneNode 带过来的，但事件没带、标记要重来
+function _hlSetupColumn(colId) {
+  ['prompt', 'negative'].forEach(k => {
+    const ta = _colEl(colId, k);
+    if (!ta) return;
+    delete ta.dataset.hlBound;
+    _hlSetup(ta);
+  });
+}
+
+function promptHlDrawAll() { document.querySelectorAll(_HL_SEL).forEach(ta => _hlDraw(ta, true)); }
+
+function setPromptHl(on) {
+  localStorage.setItem(_HL_KEY, on ? '1' : '0');
+  document.documentElement.dataset.promptHl = on ? 'on' : 'off';
+  document.querySelectorAll('.hl-wrap').forEach(w => w.classList.toggle('hl-on', _hlOn()));
+  document.querySelectorAll('.hl-toggle').forEach(cb => { cb.checked = _hlOn(); });
+  promptHlDrawAll();
+}
+
+function initPromptHl() {
+  const saved = localStorage.getItem(_HL_KEY);
+  const on = (saved === '0' || saved === '1') ? saved === '1' : !!(_hlCfg && _hlCfg.enabled);
+  document.documentElement.dataset.promptHl = on ? 'on' : 'off';
+  document.querySelectorAll(_HL_SEL).forEach(_hlSetup);
+  document.querySelectorAll('.hl-toggle').forEach(cb => { cb.checked = on; });
+  // 兜底：有若干路径会"程序化"改 prompt 的值（草稿恢复 / 重置 / 插入预设词 / 清空），
+  // 它们不触发 input 事件 → 低频一致性检查兜住，避免出现"字看不见"。只在开启且页面可见时跑。
+  setInterval(() => {
+    if (document.hidden || !_hlOn()) return;
+    document.querySelectorAll(_HL_SEL).forEach(ta => { if (ta.value !== ta.dataset.hlLast) _hlDraw(ta); });
+  }, 800);
+}
+
 loadSnippets();
 
 init();
+
+// prompt 语法高亮：先取配置再初始化（配置拿不到就静默保持关闭，退化回普通 textarea）
+(async () => { await loadPromptHlConfig(); initPromptHl(); })();
 </script>
 </body>
 </html>
