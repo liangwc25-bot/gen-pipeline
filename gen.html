@@ -46,7 +46,7 @@
     box-shadow: 0 2px 12px rgba(0,0,0,0.15);
   }
   .panel h2 { font-size: 0.85rem; font-weight: 600; color: var(--text2); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .platform-tabs { display: flex; gap: 0; margin-bottom: 22px; background: rgba(255,255,255,0.04); border-radius: var(--radius); overflow: hidden; padding: 2px; }
+  .platform-tabs { display: flex; gap: 0; margin-bottom: 12px; background: rgba(255,255,255,0.04); border-radius: var(--radius); overflow: hidden; padding: 2px; }
   .platform-tab {
     flex: 1; padding: 8px 8px; border: none;
     background: transparent; color: var(--text2);
@@ -431,7 +431,7 @@
 
   <div class="layout">
     <div class="panel" id="left-panel">
-      <h2>参数</h2>
+      <h2 id="left-panel-title">参数</h2>
       <div id="normal-params">
 
       <div class="form-group">
@@ -1218,6 +1218,9 @@ function setPlatform(p) {
   const _btb = document.getElementById('batch-toolbar');
   if (_btb) _btb.style.display = isRunware ? 'flex' : 'none';
   if (!isRunware) closeBatchWindow();
+  // Runware 下 #normal-params 是 display:none，标题「参数」下面空无一物 → 隐藏省 38px
+  const _lpt = document.getElementById('left-panel-title');
+  if (_lpt) _lpt.style.display = isRunware ? 'none' : '';
   document.getElementById('normal-params').style.display = (isModelslab || isFlux) ? 'block' : 'none';
   document.getElementById('i2i-panel').style.display = isI2i ? 'block' : 'none';
   // Runware(多列 batch) 结果在各自列内，隐藏右侧全局结果面板；其他 tab 显示
@@ -1238,6 +1241,7 @@ function setPlatform(p) {
     _updateToolbarCol();
     _updateToolbarBadge();
     _updateCatTabCounts('batch');
+    _updateColHeads();
     return;
   }
 
@@ -2553,6 +2557,16 @@ function _updateToolbarBadge() {
   const grid = _colEl(_activeBatchCol, 'ckpt-grid');
   b.textContent = grid ? grid.querySelectorAll('input[type="checkbox"]:checked').length : 0;
 }
+// 单列时隐藏列头「🟣 Batch 横评 列 1」—— 纯装饰，省 38px。
+// 多列时保留：它承载删除该列的 ✕（第一列的 ✕ 是 display:none，因为它不可删）。
+function _updateColHeads() {
+  const multi = _batchColIds().length > 1;
+  _batchColIds().forEach(cid => {
+    const root = _colRoot(cid);
+    const head = root ? root.querySelector('.batch-col-head') : null;
+    if (head) head.style.display = multi ? '' : 'none';
+  });
+}
 
 // ── 浮窗开关 ──
 function _winEl(colId, kind) {
@@ -2765,7 +2779,7 @@ function addBatchCol() {
   if (cont) cont.scrollTo({ left: clone.offsetLeft, behavior: 'smooth' });
   // 刚建出来的列就是用户想操作的那列 → 工具行立即指过来，不用等 scroll 事件
   _activeBatchCol = colId;
-  _updateToolbarCol(); _updateToolbarBadge();
+  _updateToolbarCol(); _updateToolbarBadge(); _updateColHeads();
 }
 
 function removeBatchCol(colId) {
@@ -2779,7 +2793,7 @@ function removeBatchCol(colId) {
   if (_activeBatchCol === colId) _activeBatchCol = 'batch';
   // 重排列号标题
   renumberBatchCols();
-  _updateToolbarCol(); _updateToolbarBadge();
+  _updateToolbarCol(); _updateToolbarBadge(); _updateColHeads();
 }
 function renumberBatchCols() {
   const cols = document.querySelectorAll('#batch-cols .batch-col');
