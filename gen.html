@@ -91,10 +91,11 @@
     src: url('/fonts/jetbrains-mono-latin-ext.woff2') format('woff2');
     unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
   }
-  /* Prompt / Negative 输入框：等宽 + 行高收一点（mono 字面高，1.5 显散）。
-     选择器用 id 后缀匹配 → 一次覆盖所有 tab、所有 batch 列（含克隆列 bcolN-prompt）。 */
+  /* Prompt / Negative 输入框：等宽 + 字号/行高收窄（mono 字面高且宽，同 px 下比正文显大）。
+     选择器用 id 后缀匹配 → 一次覆盖所有 tab、所有 batch 列（含克隆列 bcolN-prompt）。
+     字号沿革：1.2rem → 1.1rem（2026-08-29）→ **1.05rem**；行高 1.5 → 1.35 → **1.28**。 */
   textarea[id$="-prompt"], textarea[id$="-negative"], #prompt, #negative {
-    font-size: 1.1rem; line-height: 1.35;
+    font-size: 1.05rem; line-height: 1.28;
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
   }
   select { cursor: pointer; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-color: rgba(255,255,255,0.05); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238e8e93' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
