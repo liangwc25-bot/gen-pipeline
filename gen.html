@@ -3915,6 +3915,22 @@ function _hlBd(ta) {
   return (w && w.classList.contains('hl-wrap')) ? w.querySelector(':scope > .hl-backdrop') : null;
 }
 
+// 在实例上劫持 value 的 setter：程序化赋值（清空按钮 / 插入预设词 / 草稿恢复 / 重置）也能**当拍**重绘。
+// 否则 textarea 的文字瞬间没了、高亮层还挂着旧文字 → 会"残影"一下（要等下面那个兜底检查才清掉）。
+// 一处覆盖所有写入点（含将来新增的代码），不用去每个 call site 打补丁。
+// 克隆列拿不到这个实例属性 → _hlSetup 里会重新挂（cloneNode 只复制 attribute）。
+function _hlHookValue(ta) {
+  if (ta._hlValueHooked) return;
+  const desc = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(ta), 'value');
+  if (!desc || !desc.set) return;              // 理论上不会发生；防不住就直接靠兜底检查
+  ta._hlValueHooked = true;
+  Object.defineProperty(ta, 'value', {
+    configurable: true,
+    get() { return desc.get.call(this); },
+    set(v) { desc.set.call(this, v); if (typeof _hlDraw === 'function') _hlDraw(this); },
+  });
+}
+
 function _hlSyncScroll(ta) {
   const bd = _hlBd(ta);
   if (bd) { bd.scrollTop = ta.scrollTop; bd.scrollLeft = ta.scrollLeft; }
@@ -3933,6 +3949,7 @@ function _hlDraw(ta, force) {
 
 function _hlSetup(ta) {
   if (!ta) return;
+  _hlHookValue(ta);            // 程序化赋值也要当拍重绘（克隆列在这里重新挂）
   let wrap = ta.parentElement;
   if (!wrap || !wrap.classList.contains('hl-wrap')) {
     wrap = document.createElement('div');
