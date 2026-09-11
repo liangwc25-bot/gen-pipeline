@@ -57,7 +57,10 @@
         上下各有 12/64 的空白，导致"盒子底边"≠"图形底边"，肉眼就是"偏了几个 px"（实测偏 4.63px）。
         收紧后 vertical-align:baseline 让图形最低点正好压在文字基线上。
      描边用 currentColor 跟随 --text → 浅色主题下不会白底白线。 */
-  .brand-logo { width: 1.03em; height: 1.03em; vertical-align: baseline; margin-right: 0.3em; color: var(--text); }
+  /* 尺寸：顶部与「以太」字形顶齐平、底部仍压在 aether 基线上。
+     实测 以太 ink 高 33px = ascent 28 + descent 5（汉字会伸到基线下 5px），aether ink 高 24px。
+     所以 0.875em(=28px) 才是"不冒头"的解 —— 取 33px 的话顶部会比以太高 5px，看着"高出太多"。 */
+  .brand-logo { width: 0.875em; height: 0.875em; vertical-align: baseline; margin-right: 0.3em; color: var(--text); }
   /* 平台下拉贴右边界（不在 wordmark 后面跟排） */
   .platform-select { flex: 0 0 auto; margin-left: auto; }
   .platform-select .custom-select-btn { padding: 7px 10px; font-size: 0.8rem; border-radius: 9px; }
