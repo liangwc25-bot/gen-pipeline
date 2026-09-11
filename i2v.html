@@ -356,7 +356,7 @@ function buildLoraLine(slot) {
     '<div style="flex:1;position:relative;">' +
       '<label style="display:block;font-size:0.7rem;color:var(--text2);margin-bottom:2px;">' + (slot==='high'?'High 噪声':'Low 噪声') + '</label>' +
       '<input type="text" class="lora-search" placeholder="搜索 LoRA…" autocomplete="off" style="width:100%;"' +
-        ' onfocus="filterPairDropdown(this)" oninput="filterPairDropdown(this)" onkeydown="if(event.key==='Enter'){event.preventDefault();selectFirstPairOpt(this)}">' +
+        ' onfocus="filterPairDropdown(this)" oninput="filterPairDropdown(this)" onkeydown="if(event.key===&#39;Enter&#39;){event.preventDefault();selectFirstPairOpt(this)}">' +
       '<div class="lora-dropdown"></div>' +
       '<input type="hidden" class="lora-value">' +
     '</div>' +
