@@ -286,6 +286,58 @@
   .adv-toggle.open .adv-arrow { transform: rotate(90deg); }
   .adv-body { display: none; padding-top: 12px; }
   .adv-body.open { display: block; }
+
+  /* ── 浮窗（checkpoint 选择 / 高级设置）2026-09-11 ──
+     #batch-ckpt-window / #batch-adv-body 平时 display:none，加 .as-overlay 才浮起来。
+     必须 position:fixed —— absolute 会被 .batch-cols(overflow-x:auto) 和 .panel(overflow-x:hidden) 裁掉。
+     祖先链上无 transform/filter，fixed 能正常脱离裁剪。z-index 9990（现有最高 9999 是 snippet/reset 弹窗与主题按钮）。 */
+  .batch-win { display: none; }
+  .batch-win.as-overlay {
+    display: flex; flex-direction: column;
+    position: fixed; top: 7vh; left: 4vw; right: 4vw;
+    margin: 0 auto; max-width: 560px; max-height: 84vh;
+    z-index: 9990; background: var(--card);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 16px;
+    padding: 12px 14px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    overflow: hidden;
+  }
+  [data-theme="light"] .batch-win.as-overlay { border-color: rgba(0,0,0,0.1); box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
+  .bw-head { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  [data-theme="light"] .bw-head { border-bottom-color: rgba(0,0,0,0.07); }
+  .bw-title { font-size: 0.82rem; font-weight: 700; color: var(--accent); white-space: nowrap; }
+  .bw-sub { font-size: 0.72rem; color: var(--text2); margin-left: auto; white-space: nowrap; }
+  .bw-close { background: none; border: none; color: var(--text2); font-size: 0.95rem; cursor: pointer; padding: 2px 7px; border-radius: 6px; line-height: 1.1; }
+  .bw-close:hover { color: var(--red); background: rgba(255,59,48,0.08); }
+  /* 全窗唯一的滚动容器。窗口自身 overflow:hidden，绝不出现第二根滚动条（嵌套滚动是手机上的老毛病）。
+     min-height:0 不能漏 —— flex 子项默认不收缩，漏了 .bw-body 会撑破窗口，整页跟着滚。 */
+  .bw-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .batch-win.as-overlay .batch-ckpt-grid { max-height: none; overflow: visible; }
+  #batch-overlay-backdrop { display: none; position: fixed; inset: 0; z-index: 9989; background: rgba(0,0,0,0.45); }
+  #batch-overlay-backdrop.open { display: block; }
+
+  /* ── 顶部工具行（在 #batch-cols 外面，所以不会被 clone）2026-09-11 ──
+     ＋ 加列 从 .batch-cols 里移出来放这里：否则 100% 的列 + 64px 按钮 > 容器宽，
+     单列状态下容器就横向溢出 → 没开 clone 也能往右滑，滑出来就是那个按钮。 */
+  .batch-toolbar { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; position: relative; z-index: 9991; }
+  /* 高级设置窗口内容不高（~330px）且里面有 4 个下拉（LoRA/Embedding/画幅/采样器）。
+     滚动容器会裁掉 position:absolute 的下拉，所以这个窗口不设滚动 —— 宁可让它溢出也不能让下拉打不开。 */
+  .batch-win.bw-fit.as-overlay { max-height: none; overflow: visible; }
+  .batch-win.bw-fit .bw-body { overflow: visible; }
+  .bt-left { display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: var(--text2); min-width: 0; }
+  .bt-right { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+  .bt-btn { background: none; border: 1px solid rgba(255,255,255,0.1); border-radius: 9px; color: var(--text2);
+    font-size: 0.75rem; font-weight: 600; padding: 6px 10px; cursor: pointer; transition: .15s; white-space: nowrap; }
+  .bt-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .bt-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(124,92,252,0.1); }
+  .bt-btn .bt-badge { color: var(--accent); font-weight: 700; }
+  .bt-add { width: 34px; padding: 0; font-size: 1rem; display: flex; align-items: center; justify-content: center; height: 30px; }
+  [data-theme="light"] .bt-btn { border-color: rgba(0,0,0,0.1); }
+  .batch-cat-tab .cat-n { font-size: 0.66rem; margin-left: 3px; font-weight: 700; opacity: 0.9; }
+  .batch-ckpt-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex: 0 0 auto; padding-top: 8px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); }
+  [data-theme="light"] .batch-ckpt-foot { border-top-color: rgba(0,0,0,0.07); }
+  .ckpt-clear { background: none; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text2); font-size: 0.72rem; padding: 5px 10px; cursor: pointer; transition: .15s; }
+  .ckpt-clear:hover { border-color: var(--red); color: var(--red); }
+  [data-theme="light"] .ckpt-clear { border-color: rgba(0,0,0,0.1); }
   /* ── Batch comparison ── */
   .batch-cat-tabs { display: flex; gap: 0; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 2px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .batch-cat-tab {
@@ -302,8 +354,9 @@
   .ckpt-toggle:hover { color: var(--accent); }
   .ckpt-toggle .adv-arrow { font-size: 0.65rem; transition: transform .25s; }
   .ckpt-toggle.open .adv-arrow { transform: rotate(90deg); }
-  .ckpt-body.closed { display: none; }
-  .batch-ckpt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; max-height: 640px; overflow-y: auto; margin-top: 6px; }
+  /* .ckpt-body.closed 的 display:none 已移除(2026-09-11)：列表改由浮窗控制显隐，
+     留着这条会在外部点击 handler 里把浮窗内的网格整个隐藏掉。 */
+  .batch-ckpt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 6px; }
   .batch-ckpt-item { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 6px; cursor: pointer; transition: .12s; font-size: 0.8rem; color: var(--text2); min-width: 0; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
   .batch-ckpt-item .batch-ckpt-name { word-break: keep-all; overflow-wrap: break-word; min-width: 0; }
   .batch-ckpt-item:hover { background: rgba(124,92,252,0.08); color: var(--text); }
@@ -350,13 +403,8 @@
     cursor: pointer; padding: 4px 8px; border-radius: 6px;
   }
   .batch-col-del:hover { color: var(--red); background: rgba(255,59,48,0.08); }
-  .batch-col-add {
-    flex: 0 0 auto; width: 64px; min-height: 200px;
-    border: 1px dashed rgba(255,255,255,0.15); border-radius: 14px;
-    background: transparent; color: var(--text2); font-size: 1.6rem;
-    cursor: pointer; transition: .15s; align-self: stretch; scroll-snap-align: start;
-  }
-  .batch-col-add:hover { border-color: var(--accent); color: var(--accent); background: rgba(124,92,252,0.06); }
+  /* .batch-col-add 原样式已移除(2026-09-11)：＋ 按钮搬进顶部 .batch-toolbar（.bt-btn.bt-add），
+     不再作为 .batch-cols 的 flex item —— 那是单列状态下横向溢出的根因。 */
   @media (max-width: 700px) { .batch-col { width: 100%; } }
   .batch-col-result { margin-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; }
 </style>
@@ -549,38 +597,68 @@
       </div><!-- /#normal-params -->
 
       <!-- Runware (merged single + batch) panel -->
+      <!-- 顶部工具行：在 #batch-cols 外面 → 不会被 addBatchCol() 的 cloneNode 复制（浮动按钮和 clone 会打架）。
+           ＋ 加列 也从 .batch-cols 里搬到这里：否则 100% 宽的列 + 64px 按钮 > 容器宽，
+           单列状态下容器就横向溢出 —— 没开 clone 也能往右滑，滑出来就是那个按钮。 -->
+      <div class="batch-toolbar" id="batch-toolbar">
+        <div class="bt-left">
+          <span id="batch-toolbar-col">列 1</span>
+          <button class="bt-btn bt-add" id="batch-col-add" onclick="addBatchCol()" title="加一列横评 prompt">＋</button>
+        </div>
+        <div class="bt-right">
+          <button class="bt-btn" id="batch-btn-ckpt" onclick="toggleBatchWindow('ckpt')">⛶ Checkpoint <span class="bt-badge" id="batch-btn-ckpt-n">0</span></button>
+          <button class="bt-btn" id="batch-btn-adv" onclick="toggleBatchWindow('adv')">⚙️ 高级设置</button>
+        </div>
+      </div>
+
       <div id="batch-cols" class="batch-cols">
       <div id="batch-panel" class="batch-col" style="display:block;padding-bottom:16px">
         <div class="batch-col-head">
           <span class="batch-col-title" id="batch-col-title">🟣 Batch 横评 <span class="batch-col-num" id="batch-col-num">列 1</span></span>
           <button class="batch-col-del" id="batch-col-del" onclick="removeBatchCol('batch')" title="删除此列" style="display:none">✕</button>
         </div>
-        <div class="form-group">
-          <label>底座类别</label>
-          <div class="batch-cat-tabs" id="batch-cat-tabs">
-            <button class="batch-cat-tab active" data-cat="flux" onclick="selectBatchCat('flux', this)">FLUX</button>
-            <button class="batch-cat-tab" data-cat="zit" onclick="selectBatchCat('zit', this)">Z-Image</button>
-            <button class="batch-cat-tab" data-cat="pony" onclick="selectBatchCat('pony', this)">Pony</button>
-            <button class="batch-cat-tab" data-cat="illustrious" onclick="selectBatchCat('illustrious', this)">Illustrious</button>
-            <button class="batch-cat-tab" data-cat="sdxl" onclick="selectBatchCat('sdxl', this)">SDXL</button>
-            <button class="batch-cat-tab" data-cat="sd15" onclick="selectBatchCat('sd15', this)">SD 1.5</button>
-          </div>
-        </div>
 
-        <div class="form-group">
-          <div class="ckpt-head">
-            <label class="batch-check-all-label">
-              <input type="checkbox" id="batch-check-all" onchange="toggleAllCheckpoints()"> 
-              选择 Checkpoint（<span id="batch-ckpt-count">0</span> 个已选）
-            </label>
-            <button class="ckpt-toggle" id="batch-toggle-btn" onclick="toggleCkptList('batch')">
-              <span class="adv-arrow">▶</span>
-            </button>
+        <!-- checkpoint 浮窗：平时 display:none，点工具行 ⛶ 按钮才加 .as-overlay 浮起 -->
+        <div class="batch-win" id="batch-ckpt-window">
+          <div class="bw-head">
+            <span class="bw-title">⛶ 选择 Checkpoint</span>
+            <span class="bw-sub" id="batch-ckpt-win-sub"></span>
+            <button class="bw-close" onclick="closeBatchWindow()" title="关闭">✕</button>
           </div>
-          <div class="ckpt-body closed" id="batch-body">
-            <div class="batch-ckpt-grid" id="batch-ckpt-grid"></div>
+          <div class="bw-body">
+            <div class="form-group">
+              <label>底座类别</label>
+              <div class="batch-cat-tabs" id="batch-cat-tabs">
+                <button class="batch-cat-tab active" data-cat="flux" onclick="selectBatchCat('flux', this)">FLUX</button>
+                <button class="batch-cat-tab" data-cat="zit" onclick="selectBatchCat('zit', this)">Z-Image</button>
+                <button class="batch-cat-tab" data-cat="pony" onclick="selectBatchCat('pony', this)">Pony</button>
+                <button class="batch-cat-tab" data-cat="illustrious" onclick="selectBatchCat('illustrious', this)">Illustrious</button>
+                <button class="batch-cat-tab" data-cat="sdxl" onclick="selectBatchCat('sdxl', this)">SDXL</button>
+                <button class="batch-cat-tab" data-cat="sd15" onclick="selectBatchCat('sd15', this)">SD 1.5</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="ckpt-head">
+                <label class="batch-check-all-label">
+                  <input type="checkbox" id="batch-check-all" onchange="toggleAllCheckpoints()"> 
+                  选择 Checkpoint（<span id="batch-ckpt-count">0</span> 个已选）
+                </label>
+              </div>
+              <div class="ckpt-body" id="batch-body">
+                <div class="batch-ckpt-grid" id="batch-ckpt-grid"></div>
+              </div>
+            </div>
+          </div>
+          <div class="batch-ckpt-foot">
+            <button class="ckpt-clear" onclick="requestClearCkptSel()">🧹 清空已选</button>
+            <span class="bw-sub" id="batch-ckpt-win-foot"></span>
           </div>
         </div>
+        <!-- 旧的 checkpoint 折叠按钮：保留节点（避免动 toggleCkptList/toggleAllCheckpoints 调用点）但隐藏 -->
+        <button class="ckpt-toggle" id="batch-toggle-btn" onclick="toggleCkptList('batch')" style="display:none">
+          <span class="adv-arrow">▶</span>
+        </button>
 
         <div class="form-group">
           <label for="batch-prompt">Prompt <span class="snippet-wrap"><button class="snippet-btn" onclick="toggleSnippetDropdown(event, 'batch-prompt')" title="插入预设词">📌 预设</button><button class="snippet-btn" onclick="toggleExpand(this,'batch-prompt')" title="放大输入框">⤢ 放大</button><button class="snippet-btn" onclick="clearPrompt('batch-prompt')" title="清空 prompt，保留其他参数">🗑 清空</button><div class="snippet-dropdown" id="snippet-dd-batch-prompt"></div></span></label>
@@ -592,10 +670,17 @@
           <textarea id="batch-negative" placeholder="不想出现的内容…" style="min-height:100px"></textarea>
         </div>
 
-        <button class="adv-toggle" id="batch-adv-toggle-btn" onclick="toggleBatchAdvanced()">
+        <!-- 旧的高级设置折叠按钮：保留节点但隐藏，改由工具行 ⚙️ 浮窗驱动 -->
+        <button class="adv-toggle" id="batch-adv-toggle-btn" onclick="toggleBatchAdvanced()" style="display:none">
           <span class="adv-arrow">▶</span> ⚙️ 高级设置
         </button>
-        <div class="adv-body" id="batch-adv-body">
+        <div class="batch-win bw-fit" id="batch-adv-body">
+          <div class="bw-head">
+            <span class="bw-title">⚙️ 高级设置</span>
+            <span class="bw-sub" id="batch-adv-win-sub"></span>
+            <button class="bw-close" onclick="closeBatchWindow()" title="关闭">✕</button>
+          </div>
+          <div class="bw-body">
           <div class="form-group">
             <div class="lora-label-row"><span>LoRA（所有 checkpoint 共享）</span><span id="batch-lora-count">0 个</span></div>
             <div id="batch-lora-rows"></div>
@@ -668,7 +753,8 @@
               <input type="number" id="batch-seed" placeholder="留空随机" min="0" max="2147483647" autocomplete="off">
             </div>
           </div>
-        </div>
+          </div><!-- /.bw-body -->
+        </div><!-- /#batch-adv-body -->
 
         <button class="btn" id="batch-generate-btn" onclick="batchGenerate()" style="margin-top:16px">🚀 一键 Batch 生成</button>
         <button class="btn btn-secondary" style="margin-top:6px" onclick="showBatchResetModal()">🔄 重置</button>
@@ -682,8 +768,6 @@
           <div class="result-info" id="batch-col-result-info"></div>
         </div>
       </div><!-- /#batch-panel -->
-
-      <button class="batch-col-add" id="batch-col-add" onclick="addBatchCol()" title="加一列横评 prompt">＋</button>
       </div><!-- /#batch-cols -->
 
       <!-- I2I editing panel -->
@@ -812,6 +896,20 @@
   </div>
 </div>
 
+<!-- 浮窗遮罩：点它关闭 batch 浮窗。必须在 #batch-cols 外面，否则会被 addBatchCol 的 cloneNode 复制 -->
+<div id="batch-overlay-backdrop" onclick="closeBatchWindow()"></div>
+
+<!-- 清空已选确认（破坏性操作才挂确认框；切底模不挂，因为底模记忆不会丢） -->
+<div class="reset-overlay" id="clear-ckpt-overlay" onclick="if(event.target===this)hideClearCkptModal()">
+  <div class="reset-dialog">
+    <p id="clear-ckpt-msg">确定要清空已选的 checkpoint 吗？</p>
+    <div class="reset-actions">
+      <button class="reset-cancel" onclick="hideClearCkptModal()">取消</button>
+      <button class="reset-ok" onclick="doClearCkptSel()">清空</button>
+    </div>
+  </div>
+</div>
+
 <button id="theme-toggle" style="position:fixed;bottom:20px;right:20px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(128,128,128,0.3);background:var(--card);color:var(--text);font-size:1.2rem;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;transition:.2s;box-shadow:0 2px 8px rgba(0,0,0,0.15)" onclick="toggleTheme()" title="切换主题">☀️</button>
 
 <script>
@@ -932,15 +1030,28 @@ function _readBatchCol(colId) {
   };
 }
 function saveBatchDraft() {
-  const cols = _batchColIds().map(colId => ({ colId, ..._readBatchCol(colId) }));
-  localStorage.setItem('batch_draft', JSON.stringify({ version: 2, cols }));
+  // 先把各列当前底模的实时勾选同步进记忆槽，再落盘 ——
+  // 否则记忆槽里存的还是"上次切走那一刻"的旧快照，刷新后恢复的是过期数据。
+  _batchColIds().forEach(cid => _saveCkptSel(cid, _colCat(cid)));
+  const cols = _batchColIds().map(colId => ({
+    colId, ..._readBatchCol(colId), selByCat: _serializeSelByCat(colId),
+  }));
+  localStorage.setItem('batch_draft', JSON.stringify({ version: 3, cols }));
 }
 // 把一份列配置写到指定列（colId = 'batch' 或 'bcolN'）
 function _applyBatchCol(colId, d) {
-  if (d.cat && _colCat(colId) !== d.cat) {
-    const tab = _colEl(colId, 'cat-tabs').querySelector(`.batch-cat-tab[data-cat="${d.cat}"]`);
-    selectBatchCat(d.cat, tab, colId);
+  // 先恢复该列所有底模的记忆槽，再切底模 —— 顺序反了会被 selectBatchCat 的回写覆盖掉
+  if (d.selByCat) {
+    const map = _selCatMap(colId);
+    Object.keys(d.selByCat).forEach(c => { map[c] = new Set(d.selByCat[c]); });
   }
+  _restoringBatchDraft = true;
+  try {
+    if (d.cat && _colCat(colId) !== d.cat) {
+      const tab = _colEl(colId, 'cat-tabs').querySelector(`.batch-cat-tab[data-cat="${d.cat}"]`);
+      selectBatchCat(d.cat, tab, colId);
+    }
+  } finally { _restoringBatchDraft = false; }
   if (d.prompt) _colEl(colId, 'prompt').value = d.prompt;
   if (d.negative) _colEl(colId, 'negative').value = d.negative;
   if (d.steps) _colEl(colId, 'steps').value = d.steps;
@@ -1094,8 +1205,11 @@ function setPlatform(p) {
   const isI2i = p === 'i2i';
   const isFlux = p === 'flux';
 
-  // Runware(多列 batch) 显示 batch-cols 容器(含每列+加列按钮)；其他 tab 整体隐藏
+  // Runware(多列 batch) 显示 batch-cols 容器 + 顶部工具行；其他 tab 整体隐藏，并强制关掉浮窗
   document.getElementById('batch-cols').style.display = isRunware ? 'flex' : 'none';
+  const _btb = document.getElementById('batch-toolbar');
+  if (_btb) _btb.style.display = isRunware ? 'flex' : 'none';
+  if (!isRunware) closeBatchWindow();
   document.getElementById('normal-params').style.display = (isModelslab || isFlux) ? 'block' : 'none';
   document.getElementById('i2i-panel').style.display = isI2i ? 'block' : 'none';
   // Runware(多列 batch) 结果在各自列内，隐藏右侧全局结果面板；其他 tab 显示
@@ -1112,6 +1226,10 @@ function setPlatform(p) {
     // Initialize batch panel
     if (!_batchInited) { selectBatchCat('flux', document.querySelector('.batch-cat-tab[data-cat="flux"]')); _batchInited = true; }
     restoreBatchDraft();
+    // 工具行状态（目标列 + 已选 badge）。放在 restoreBatchDraft 之后，否则 badge 读到的是恢复前的 0
+    _updateToolbarCol();
+    _updateToolbarBadge();
+    _updateCatTabCounts('batch');
     return;
   }
 
@@ -1975,8 +2093,14 @@ function doBatchReset() {
   document.getElementById('batch-sampler-wrap').querySelectorAll('.custom-opt').forEach(o => o.classList.remove('active'));
   const so = document.getElementById('batch-sampler-wrap').querySelector('.custom-opt[data-value="Default"]');
   if (so) so.classList.add('active');
-  // Checkpoints — rebuild grid unchecked (selectBatchCat resets cat + selection)
+  // Checkpoints — 先清空「所有底模」的记忆槽再重建网格。
+  // ⚠️ 不能只调 selectBatchCat：如果当前底模已经是 flux 且网格非空，它会走同底模短路直接返回，
+  // 结果重置了却清不掉勾选。
+  Object.keys(_ckptSelByCat).forEach(k => delete _ckptSelByCat[k]);
+  const _resetGrid = document.getElementById('batch-ckpt-grid');
+  if (_resetGrid) _resetGrid.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
   selectBatchCat('flux', document.querySelector('.batch-cat-tab[data-cat="flux"]'));
+  updateBatchCount('batch');
   // Status
   document.getElementById('batch-error-msg').style.display = 'none';
   document.getElementById('batch-status-bar').textContent = '';
@@ -2314,6 +2438,11 @@ const _batchColState = {};     // colId → { cat, loras, genId, pollFn }
 function _colEl(colId, suffix) {
   return document.getElementById(colId + '-' + suffix);
 }
+// ⚠️ 第一列的 colId 是 'batch'（前缀约定），但它的 DOM id 是 'batch-panel' —— 没有 #batch 这个元素。
+// 任何"按 colId 取整列根节点"的地方都必须走这里，直接用 getElementById(colId) 会拿到 null。
+function _colRoot(colId) {
+  return document.getElementById(colId === 'batch' ? 'batch-panel' : colId);
+}
 function _colCat(colId) { return _batchColState[colId] ? _batchColState[colId].cat : (colId === 'batch' ? _batchCat : 'flux'); }
 function _colLoras(colId) { return _batchColState[colId] ? _batchColState[colId].loras : _batchLoras; }
 function _colGenId(colId) { return _batchColState[colId] ? _batchColState[colId].genId : _batchGenId; }
@@ -2328,6 +2457,181 @@ function _setColPollFn(colId, fn) {
   if (!_batchColState[colId]) _batchColState[colId] = {};
   _batchColState[colId].pollFn = fn;
 }
+
+// ── batch 浮窗 + 底模记忆（2026-09-11）──
+// 每列 × 每底模各存一份勾选：切底模不丢，切回来自动恢复。
+// 生成仍只读当前 DOM 网格（_readBatchCol），所以永远只有 active 底模参与生成 —— 跨底模组合不可能发生。
+const _ckptSelByCat = {};         // colId → { cat: Set(modelKey) }
+let _batchWinKind = null;         // 当前开着的浮窗：'ckpt' | 'adv' | null
+let _batchWinCol = null;          // 浮窗归属的列（开窗时绑定）
+let _activeBatchCol = 'batch';    // 工具行作用的目标列
+let _scrollSyncT = null;
+let _restoringBatchDraft = false; // 恢复草稿期间禁止 selectBatchCat 回写记忆，否则会覆盖刚恢复的值
+
+function _selCatMap(colId) {
+  if (!_ckptSelByCat[colId]) _ckptSelByCat[colId] = {};
+  return _ckptSelByCat[colId];
+}
+// 把某列当前网格的勾选同步进该列「当前底模」的记忆槽
+function _saveCkptSel(colId, cat) {
+  if (_restoringBatchDraft) return;
+  const grid = _colEl(colId, 'ckpt-grid');
+  if (!grid) return;
+  const c = cat || _colCat(colId);
+  _selCatMap(colId)[c] = new Set(
+    Array.from(grid.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value));
+}
+function _rememberedCkptSel(colId, cat) {
+  return _selCatMap(colId)[cat] || null;
+}
+function _serializeSelByCat(colId) {
+  const map = _selCatMap(colId), out = {};
+  Object.keys(map).forEach(c => { if (map[c] && map[c].size) out[c] = Array.from(map[c]); });
+  return out;
+}
+// 底模 tab 上的已选数量角标 —— 让"记忆"是可见的，而不是藏起来的状态
+function _updateCatTabCounts(colId) {
+  const map = _selCatMap(colId);
+  const curCat = _colCat(colId);
+  const grid = _colEl(colId, 'ckpt-grid');
+  const scope = _colRoot(colId);
+  if (!scope) return;
+  scope.querySelectorAll('.batch-cat-tab').forEach(t => {
+    const cat = t.dataset.cat;
+    let n = map[cat] ? map[cat].size : 0;
+    // 当前底模以实时 DOM 为准（记忆槽里存的是上次切走那一刻的快照）
+    if (cat === curCat && grid) n = grid.querySelectorAll('input[type="checkbox"]:checked').length;
+    let el = t.querySelector('.cat-n');
+    if (n > 0) {
+      if (!el) { el = document.createElement('span'); el.className = 'cat-n'; t.appendChild(el); }
+      el.textContent = n;
+    } else if (el) { el.remove(); }
+  });
+}
+
+// ── 工具行（在 #batch-cols 外面，不会被 clone）──
+function _updateToolbarCol() {
+  const el = document.getElementById('batch-toolbar-col');
+  if (!el) return;
+  const i = _batchColIds().indexOf(_activeBatchCol);
+  el.textContent = '列 ' + (i >= 0 ? i + 1 : 1);
+}
+// 多列时按 scrollLeft 就近判定当前停在哪列（手机上 scroll-snap 一屏一列）
+function _syncActiveColFromScroll() {
+  const cids = _batchColIds();
+  if (cids.length <= 1) { _activeBatchCol = cids[0] || 'batch'; _updateToolbarCol(); return; }
+  const cont = document.getElementById('batch-cols');
+  if (!cont) return;
+  // 容器没有横向可滚空间（桌面多列同屏）→ scrollLeft 恒为 0，据此判定会误切到第 1 列。
+  // 这种情况保留「最后交互过的列」（由 pointerdown/focusin 维护）。
+  if (cont.scrollWidth <= cont.clientWidth + 1) return;
+  const sl = cont.scrollLeft;
+  let best = _activeBatchCol, bestD = Infinity;
+  cids.forEach(cid => {
+    const el = _colRoot(cid);
+    if (!el) return;
+    const d = Math.abs(el.offsetLeft - sl);
+    if (d < bestD) { bestD = d; best = cid; }
+  });
+  _activeBatchCol = best;
+  _updateToolbarCol();
+}
+function _updateToolbarBadge() {
+  const b = document.getElementById('batch-btn-ckpt-n');
+  if (!b) return;
+  const grid = _colEl(_activeBatchCol, 'ckpt-grid');
+  b.textContent = grid ? grid.querySelectorAll('input[type="checkbox"]:checked').length : 0;
+}
+
+// ── 浮窗开关 ──
+function _winEl(colId, kind) {
+  return document.getElementById(colId + '-' + (kind === 'ckpt' ? 'ckpt-window' : 'adv-body'));
+}
+function closeBatchWindow() {
+  if (_batchWinKind && _batchWinCol) {
+    const el = _winEl(_batchWinCol, _batchWinKind);
+    if (el) el.classList.remove('as-overlay');
+  }
+  _batchWinKind = null; _batchWinCol = null;
+  const bd = document.getElementById('batch-overlay-backdrop');
+  if (bd) bd.classList.remove('open');
+  const b1 = document.getElementById('batch-btn-ckpt'), b2 = document.getElementById('batch-btn-adv');
+  if (b1) b1.classList.remove('active');
+  if (b2) b2.classList.remove('active');
+}
+function toggleBatchWindow(kind) {
+  const colId = _activeBatchCol || 'batch';
+  if (_batchWinKind === kind && _batchWinCol === colId) { closeBatchWindow(); return; }  // 再点同一个按钮 = 关闭
+  closeBatchWindow();
+  const el = _winEl(colId, kind);
+  if (!el) return;
+  _batchWinKind = kind; _batchWinCol = colId;
+  el.classList.add('as-overlay');
+  const bd = document.getElementById('batch-overlay-backdrop');
+  if (bd) bd.classList.add('open');
+  const btn = document.getElementById(kind === 'ckpt' ? 'batch-btn-ckpt' : 'batch-btn-adv');
+  if (btn) btn.classList.add('active');
+  const i = _batchColIds().indexOf(colId);
+  const label = '列 ' + (i >= 0 ? i + 1 : 1);
+  const sub = _colEl(colId, kind === 'ckpt' ? 'ckpt-win-sub' : 'adv-win-sub');
+  if (sub) sub.textContent = kind === 'ckpt' ? (label + ' · 已选 ' + getSelectedModels(colId).length) : label;
+  if (kind === 'ckpt') {
+    const foot = _colEl(colId, 'ckpt-win-foot');
+    if (foot) foot.textContent = '长按置顶 · 滑动浏览';
+  }
+}
+
+// ── 清空已选（破坏性操作 → 挂确认框）──
+function requestClearCkptSel() {
+  const colId = _batchWinCol || _activeBatchCol || 'batch';
+  const n = getSelectedModels(colId).length;
+  if (n === 0) return;
+  const tab = document.querySelector('#' + colId + '-cat-tabs .batch-cat-tab.active');
+  const catName = tab ? tab.textContent.replace(/[0-9]+$/, '').trim() : _colCat(colId);
+  const msg = document.getElementById('clear-ckpt-msg');
+  if (msg) msg.textContent = '确定要清空「' + catName + '」已选的 ' + n + ' 个 checkpoint 吗？';
+  const ov = document.getElementById('clear-ckpt-overlay');
+  if (ov) ov.classList.add('open');
+}
+function hideClearCkptModal() {
+  const ov = document.getElementById('clear-ckpt-overlay');
+  if (ov) ov.classList.remove('open');
+}
+function doClearCkptSel() {
+  const colId = _batchWinCol || _activeBatchCol || 'batch';
+  const cat = _colCat(colId);
+  _selCatMap(colId)[cat] = new Set();
+  const grid = _colEl(colId, 'ckpt-grid');
+  if (grid) grid.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+  const checkAll = _colEl(colId, 'check-all');
+  if (checkAll) checkAll.checked = false;
+  updateBatchCount(colId);
+  saveBatchDraft();
+  hideClearCkptModal();
+}
+
+// 切列（横滑）→ 必须关窗，否则窗口里显示的仍是上一列的设置；同时把目标列同步到工具行
+(function _initBatchToolbar() {
+  const cont = document.getElementById('batch-cols');
+  if (cont) cont.addEventListener('scroll', () => {
+    clearTimeout(_scrollSyncT);
+    _scrollSyncT = setTimeout(() => {
+      _syncActiveColFromScroll();
+      _updateToolbarBadge();
+      // ⚠️ 只在「真的换到另一列」时关窗。不能一见 scroll 就关 ——
+      // 加列/删列、scroll-snap 余波、横向滚一点再弹回都会派发 scroll 事件，
+      // 那会让用户刚点开的浮窗无缘无故自己关掉。
+      if (_batchWinKind && _batchWinCol && _batchWinCol !== _activeBatchCol) closeBatchWindow();
+    }, 90);
+  }, { passive: true });
+  // 桌面端多列同屏时 scrollLeft 无法判定 → 以最后交互过的列为准
+  ['pointerdown', 'focusin'].forEach(ev => document.addEventListener(ev, e => {
+    const col = (e.target && e.target.closest) ? e.target.closest('#batch-cols .batch-col') : null;
+    if (col && col.id && col.id !== _activeBatchCol) {
+      _activeBatchCol = col.id; _updateToolbarCol(); _updateToolbarBadge();
+    }
+  }, true));
+})();
 
 function addBatchCol() {
   _batchColSeq++;
@@ -2391,9 +2695,13 @@ function addBatchCol() {
   if (ra) ra.innerHTML = '<span>点击「一键 Batch 生成」开始</span>';
   // 初始化状态
   _batchColState[colId] = { cat: 'flux', loras: [], genId: 0, pollFn: null };
-  // 插入到加列按钮前
-  const addBtn = document.getElementById('batch-col-add');
-  addBtn.parentNode.insertBefore(clone, addBtn);
+  // 复制源列「所有底模」的勾选记忆（不只当前底模）——先把源列实时勾选同步进记忆槽再拷
+  _saveCkptSel('batch', _colCat('batch'));
+  _ckptSelByCat[colId] = {};
+  const _srcSelMap = _selCatMap('batch');
+  Object.keys(_srcSelMap).forEach(c => { _ckptSelByCat[colId][c] = new Set(_srcSelMap[c]); });
+  // 追加到 #batch-cols 末尾 —— ＋ 按钮已搬到 .batch-toolbar，不能再拿它当插入锚点
+  document.getElementById('batch-cols').appendChild(clone);
   // 复制源列(Batch 1)的 LoRA 配置，重建到克隆列：
   // cloneNode 不复制 JS 事件监听/_airId，直接克隆的行无法操作。
   // 改为读取源列配置后逐条 addBatchLoraRow() 重建，带显示名避免变 ID。
@@ -2436,18 +2744,26 @@ function addBatchCol() {
     });
     updateBatchCount(colId);
   }
-  // 滚动到新列
-  addBtn.scrollIntoView({ behavior: 'smooth', inline: 'end', block: 'nearest' });
+  // 滚到新列（＋ 按钮已不在容器内，改为把容器滚到新列的 offsetLeft）
+  const cont = document.getElementById('batch-cols');
+  if (cont) cont.scrollTo({ left: clone.offsetLeft, behavior: 'smooth' });
+  // 刚建出来的列就是用户想操作的那列 → 工具行立即指过来，不用等 scroll 事件
+  _activeBatchCol = colId;
+  _updateToolbarCol(); _updateToolbarBadge();
 }
 
 function removeBatchCol(colId) {
   if (colId === 'batch') return; // 第一列不可删
+  if (_batchWinCol === colId) closeBatchWindow();   // 浮窗开在被删的列上 → 先关掉
   const col = document.getElementById(colId);
   if (col) col.remove();
   delete _batchColState[colId];
+  delete _ckptSelByCat[colId];
   _clearPendingBatch(colId);   // 列删了就不再恢复它的任务
+  if (_activeBatchCol === colId) _activeBatchCol = 'batch';
   // 重排列号标题
   renumberBatchCols();
+  _updateToolbarCol(); _updateToolbarBadge();
 }
 function renumberBatchCols() {
   const cols = document.querySelectorAll('#batch-cols .batch-col');
@@ -2509,6 +2825,14 @@ function togglePinCkpt(mk) {
   });
 }
 
+// checkpoint 列表真正的滚动容器：列表本身不再设 max-height（见 CSS 注释），
+// 滚动发生在浮窗的 .bw-body 上。高级设置窗口不滚，所以退化为网格自身。
+function _winScroller(colId) {
+  const grid = _colEl(colId, 'ckpt-grid');
+  if (!grid) return null;
+  return grid.closest('.bw-body') || grid;
+}
+
 // 按 pinned 优先 + 原顺序 渲染 checkpoint 网格
 function _renderCkptGrid(colId, cat, checkedSet) {
   const grid = _colEl(colId, 'ckpt-grid');
@@ -2526,7 +2850,12 @@ function _renderCkptGrid(colId, cat, checkedSet) {
           + `<input type="checkbox" value="${escHtml(mk)}"${isChk ? ' checked' : ''} onchange="updateBatchCount('${colId}')"> `
           + `<span class="batch-ckpt-name">${escHtml(name)}</span></label>`;
   }
+  // 这里是 innerHTML 整体重渲染 —— 不保滚动位置的话，长按 pin 一个（走的就是这条路径）会让
+  // 74 项的列表直接跳回顶部，用户得重新往下滚。⚠️ 滚动容器是 .bw-body 不是网格本身。
+  const sc = _winScroller(colId);
+  const prevTop = sc ? sc.scrollTop : 0;
   grid.innerHTML = html;
+  if (sc) sc.scrollTop = prevTop;
   _bindCkptLongPress(grid);
 }
 
@@ -2561,27 +2890,31 @@ document.addEventListener('click', (e) => {
 // ── Checkpoint 列表：点击外部自动收起（2026-09-10）
 // 点任何 checkpoint 折叠区(.ckpt-toggle 按钮 / .ckpt-body)之外 → 收起所有已展开的列表。
 // 在多列 batch 下对每一列生效。长按触发的 click 已被上面 capture 吞掉，不影响这里。
-document.addEventListener('click', (e) => {
-  if (e.target.closest && e.target.closest('.ckpt-toggle, .ckpt-body')) return;  // 点列表/按钮内部不动
-  _batchColIds().forEach(cid => {
-    const btn = _colEl(cid, 'toggle-btn');
-    const body = _colEl(cid, 'body');
-    if (btn && btn.classList.contains('open')) { btn.classList.remove('open'); body.classList.add('closed'); }
-  });
-});
+// ── 旧的「点击外部自动收起 checkpoint 列表」handler 已删除（2026-09-11）──
+// 列表改由浮窗控制显隐后，这条会把 .closed 加回 .ckpt-body；虽然 CSS 的 display:none 已移除，
+// 但语义上已无意义 —— 现在"点外部关闭"由 #batch-overlay-backdrop 负责。
 
 function selectBatchCat(cat, btn, colId) {
   colId = colId || 'batch';
+  const grid = _colEl(colId, 'ckpt-grid');
+  if (!grid) return;
+
+  // 同底模短路：点那个已经亮着的 tab 不该清空勾选（误触清空的主因）。
+  // ⚠️ 但网格为空时必须放行 —— 首次加载时 _colCat() 的兜底值就是 'flux'，
+  // 纯按「底模相同」短路会把初始渲染也挡掉，列表一片空白。
+  if (_colCat(colId) === cat && grid.children.length > 0) return;
+
+  // 切之前先把当前底模的勾选存进记忆槽
+  _saveCkptSel(colId, _colCat(colId));
+
   if (colId === 'batch') _batchCat = cat;
   else { if (!_batchColState[colId]) _batchColState[colId] = {}; _batchColState[colId].cat = cat; }
-  // 只切换本列内的 tab
-  const scope = colId === 'batch' ? document : document.getElementById(colId);
-  scope.querySelectorAll('.batch-cat-tab').forEach(t => t.classList.remove('active'));
+  // 只切换本列内的 tab（旧代码对 'batch' 用 document 作用域 → 会清掉其它列 tab 的 active 高亮，已修）
+  const scope = _colRoot(colId);
+  if (scope) scope.querySelectorAll('.batch-cat-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
 
   const models = MODEL_GROUPS[cat] || [];
-  const grid = _colEl(colId, 'ckpt-grid');
-  if (!grid) return;
   if (models.length === 0) {
     // Models not yet loaded — show a retrying indicator
     grid.innerHTML = '<div style="padding:12px;color:var(--text2);font-size:0.8rem">加载中…</div>';
@@ -2591,11 +2924,15 @@ function selectBatchCat(cat, btn, colId) {
       return;
     }
   }
-  _renderCkptGrid(colId, cat, null);
+  // 恢复这个底模的记忆（没记忆则为空 → 参数传 null 即可）
+  _renderCkptGrid(colId, cat, _rememberedCkptSel(colId, cat));
 
   const checkAll = _colEl(colId, 'check-all');
   if (checkAll) checkAll.checked = false;
   updateBatchCount(colId);
+  // 换了底模，列表回到顶部（否则沿用上一个底模的滚动位置，看着很怪）
+  const sc = _winScroller(colId);
+  if (sc) sc.scrollTop = 0;
 
   // Load LoRAs for this category
   loadBatchLoras(cat, colId);
@@ -2623,6 +2960,14 @@ function updateBatchCount(colId) {
   countEl.textContent = cbs.length;
   cbs.forEach(cb => cb.parentElement.classList.toggle('checked', true));
   grid.querySelectorAll('input[type="checkbox"]:not(:checked)').forEach(cb => cb.parentElement.classList.remove('checked'));
+  // 底模 tab 角标 + 工具行 badge（窗口关着时，badge 是唯一可见的已选状态）
+  _updateCatTabCounts(colId);
+  if (colId === _activeBatchCol) _updateToolbarBadge();
+  if (_batchWinKind === 'ckpt' && _batchWinCol === colId) {
+    const sub = _colEl(colId, 'ckpt-win-sub');
+    const i = _batchColIds().indexOf(colId);
+    if (sub) sub.textContent = '列 ' + (i >= 0 ? i + 1 : 1) + ' · 已选 ' + cbs.length;
+  }
 }
 
 function getSelectedModels(colId) {
