@@ -57,7 +57,7 @@
         上下各有 12/64 的空白，导致"盒子底边"≠"图形底边"，肉眼就是"偏了几个 px"（实测偏 4.63px）。
         收紧后 vertical-align:baseline 让图形最低点正好压在文字基线上。
      描边用 currentColor 跟随 --text → 浅色主题下不会白底白线。 */
-  .brand-logo { width: 0.6em; height: 0.6em; vertical-align: baseline; margin-right: 0.3em; color: var(--text); }
+  .brand-logo { width: 1.03em; height: 1.03em; vertical-align: baseline; margin-right: 0.3em; color: var(--text); }
   /* 平台下拉贴右边界（不在 wordmark 后面跟排） */
   .platform-select { flex: 0 0 auto; margin-left: auto; }
   .platform-select .custom-select-btn { padding: 7px 10px; font-size: 0.8rem; border-radius: 9px; }
@@ -466,7 +466,7 @@
          ⚠️ 必须放在 <h1> 内部：① vertical-align 才能跟文字基线对齐 ② em 才能跟随 h1 的 clamp 字号。
          ⚠️ viewBox 收紧到图形外沿（原 0 0 64 64 上下各留 12 单位空白，会让"图形底边"对不齐文字底部）。
          白色描边改 currentColor → 跟随 --text，深浅主题都可见。 -->
-    <h1><svg class="brand-logo" viewBox="8.75 9.75 44.5 44.5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M12 52L26 12H34V52" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 34H48" stroke="#8B5CF6" stroke-width="4.5" stroke-linecap="round"/><path d="M34 12H50" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M34 52H50" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><polygon points="44,30 52,34 44,38" fill="#10B981"/></svg>aether • 以太</h1>
+    <h1><svg class="brand-logo" viewBox="8.25 9.25 45.5 45.5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M12 52L26 12H34V52" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 34H48" stroke="#8B5CF6" stroke-width="5.5" stroke-linecap="round"/><path d="M34 12H50" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/><path d="M34 52H50" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/><polygon points="44,30 52,34 44,38" fill="#10B981"/></svg>aether • 以太</h1>
     <div class="custom-select platform-select" id="platform-wrap">
       <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
         <span class="custom-select-label">🟣 Runware</span><span class="arrow">▾</span>
