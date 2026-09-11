@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="AETHER">
+<meta name="apple-mobile-web-app-title" content="aether">
 <meta name="theme-color" content="#0f0f14">
 <link rel="manifest" href="/gen-manifest.json">
-<title>AETHER • 以太</title>
+<title>aether • 以太</title>
 <style>
   :root {
     --bg: #0f0f14;
@@ -46,14 +46,18 @@
     box-shadow: 0 2px 12px rgba(0,0,0,0.15);
   }
   .panel h2 { font-size: 0.85rem; font-weight: 600; color: var(--text2); margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.05em; }
-  /* 平台切换：原 4 个等宽 tab 行改成与「AETHER • 以太」同一行的紧凑下拉（2026-09-11）
+  /* 平台切换：原 4 个等宽 tab 行改成与「aether • 以太」同一行的紧凑下拉（2026-09-11）
      原 tab 行占 39px 高 + 12px margin；并进标题行后整行消失 → 省 ~45px。
      h1 用 clamp 在窄屏收缩，保证手机上「wordmark + 下拉」放得下（实测 390px 屏：h1 241px@2rem 太大）。 */
   .topbar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
   .topbar h1 { margin-bottom: 0; font-size: clamp(1.4rem, 5.2vw, 2rem); white-space: nowrap; }
-  /* 品牌 logo：Æ 架构 + 编译器运行三角。尺寸跟 h1 的 clamp 用同一个 vw 斜率一起缩放。
-     描边用 currentColor（跟随 --text）→ 浅色主题下不会变成白底白线；紫/绿强调色保持原值。 */
-  .brand-logo { width: clamp(21px, 5.2vw, 30px); height: auto; flex: 0 0 auto; color: var(--text); }
+  /* 品牌 logo：Æ 架构 + 编译器运行三角。
+     ⚠️ 必须放在 <h1> 内部：① 才能用 vertical-align 做基线对齐 ② em 跟随 h1 的 clamp 字号自动缩放。
+     ⚠️ viewBox 收紧到图形外沿（x/y 10.5..53.5）—— 原 0 0 64 64 里图形只占 y12..52，
+        上下各有 12/64 的空白，导致"盒子底边"≠"图形底边"，肉眼就是"偏了几个 px"（实测偏 4.63px）。
+        收紧后 vertical-align:baseline 让图形最低点正好压在文字基线上。
+     描边用 currentColor 跟随 --text → 浅色主题下不会白底白线。 */
+  .brand-logo { width: 0.6em; height: 0.6em; vertical-align: baseline; margin-right: 0.3em; color: var(--text); }
   /* 平台下拉贴右边界（不在 wordmark 后面跟排） */
   .platform-select { flex: 0 0 auto; margin-left: auto; }
   .platform-select .custom-select-btn { padding: 7px 10px; font-size: 0.8rem; border-radius: 9px; }
@@ -459,17 +463,10 @@
   <!-- 顶栏：wordmark + 平台下拉同一行（原 4 个 tab 行已移除，省一整行） -->
   <div class="topbar">
     <!-- 品牌 logo（Æ 架构 + 编译器运行三角），内联 SVG 免额外请求。
+         ⚠️ 必须放在 <h1> 内部：① vertical-align 才能跟文字基线对齐 ② em 才能跟随 h1 的 clamp 字号。
+         ⚠️ viewBox 收紧到图形外沿（原 0 0 64 64 上下各留 12 单位空白，会让"图形底边"对不齐文字底部）。
          白色描边改 currentColor → 跟随 --text，深浅主题都可见。 -->
-    <svg class="brand-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-      <!-- 极简 Æ 架构 -->
-      <path d="M12 52L26 12H34V52" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M20 34H48" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round"/>
-      <path d="M34 12H50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-      <path d="M34 52H50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-      <!-- 编译器运行三角标志 -->
-      <polygon points="44,30 52,34 44,38" fill="#10B981"/>
-    </svg>
-    <h1>aether • 以太</h1>
+    <h1><svg class="brand-logo" viewBox="8.75 9.75 44.5 44.5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M12 52L26 12H34V52" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 34H48" stroke="#8B5CF6" stroke-width="4.5" stroke-linecap="round"/><path d="M34 12H50" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M34 52H50" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><polygon points="44,30 52,34 44,38" fill="#10B981"/></svg>aether • 以太</h1>
     <div class="custom-select platform-select" id="platform-wrap">
       <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
         <span class="custom-select-label">🟣 Runware</span><span class="arrow">▾</span>
