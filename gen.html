@@ -411,7 +411,8 @@
      目的 = 不用点进浮窗就知道它在收费（+$0.0007 且耗时拉长）。
      ⚠️ 必须 position:absolute 脱离文档流 —— 用 flex 竖排会把工具栏撑高、把按钮往上挤。 */
   .bt-adv-wrap { position: relative; display: flex; align-items: center; }
-  .bt-hiresflag { position: absolute; top: 100%; right: 0; margin-top: 1px; display: none;
+  .bt-hiresflag { position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+                  margin-top: 3px; display: none;
                   font-size: 0.62rem; line-height: 1.1; font-weight: 700;
                   color: var(--orange); white-space: nowrap; letter-spacing: 0.2px; }
   .bt-hiresflag.on { display: block; }
