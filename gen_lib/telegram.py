@@ -136,13 +136,17 @@ def send_message(text: str) -> None:
 
 
 def send_file(path: str | Path, caption: str = "") -> str:
-    """Send an arbitrary file, picking photo/video/document by extension.
-    Returns '' on success; raises TelegramError on failure."""
+    """Send an arbitrary file, picking document/video by extension.
+    Returns '' on success; raises TelegramError on failure.
+
+    ⚠️ 图片走 **send_document 而不是 send_photo**：sendPhoto 会被 Telegram 重新压缩，
+    小字/参数会被糊掉（2026-09-11 鹿鹿定案，点名的就是这个坑）。
+    视频仍走 sendVideo —— 换成 document 虽然更保真，但会**失去 Telegram 内直接播放**
+    （鹿鹿会倍速看 i2v 成果），所以这里保持原样。
+    """
     p = Path(path)
     ext = p.suffix.lower().lstrip(".")
-    if ext in ("jpg", "jpeg", "png", "gif", "webp"):
-        send_photo(p, caption)
-    elif ext in ("mp4", "mov", "avi", "mkv"):
+    if ext in ("mp4", "mov", "avi", "mkv"):
         send_video(p, caption)
     else:
         send_document(p, caption)
