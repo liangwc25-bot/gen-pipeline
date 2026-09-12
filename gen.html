@@ -852,6 +852,14 @@
             </label>
             <div class="hint">规则与配色在 <code>data/prompt_hl.json</code>，可随时加词/改色，刷新即生效</div>
           </div>
+          <!-- 高清修复（hiresFix）。按底模自动可用性：仅 Illustrious/Pony/SDXL/SD1.5，
+               ZIT/FLUX 平台不支持 → 控件置灰（见 updateHiresFixAvail）。 -->
+          <div class="form-group" id="batch-hires-wrap" style="margin-top:14px;margin-bottom:0">
+            <label class="toggle">
+              <input type="checkbox" id="batch-hiresfix" onchange="onHiresFixToggle(this)"> ✨ 高清修复 High Res Fix
+            </label>
+            <div class="hint" id="batch-hiresfix-hint"></div>
+          </div>
           </div><!-- /.bw-body -->
         </div><!-- /#batch-adv-body -->
 
@@ -1126,6 +1134,7 @@ function _readBatchCol(colId) {
     sampler: _colEl(colId, 'sampler').value,
     loras,
     embeddings,
+    hires_fix: _colHiresFix(colId),
   };
 }
 function saveBatchDraft() {
@@ -1194,6 +1203,12 @@ function _applyBatchCol(colId, d) {
       d.embeddings.forEach(e => addBatchEmbeddingRow(e.air_id, colId, e.name));
     }, 250);
   }
+  // Restore High Res Fix（先落勾选，再按底模判定可用性 —— 底模不支持时会被自动清掉）
+  if (d.hires_fix != null) {
+    const hcb = _colEl(colId, 'hiresfix');
+    if (hcb) hcb.checked = !!d.hires_fix;
+  }
+  updateHiresFixAvail(colId);
 }
 function restoreBatchDraft() {
   try {
@@ -2187,6 +2202,9 @@ function doBatchReset() {
   document.getElementById('batch-steps').value = '35';
   document.getElementById('batch-cfg').value = '';
   document.getElementById('batch-seed').value = '';
+  // High Res Fix（与上面一致，仅重置 Batch1 —— doBatchReset 历来只作用于第一列）
+  const hfx = document.getElementById('batch-hiresfix');
+  if (hfx) hfx.checked = false;
   // Aspect — reset to 9:16
   document.getElementById('batch-aspect').value = '9:16';
   const al = document.getElementById('batch-aspect-wrap').querySelector('.custom-select-label');
@@ -2568,6 +2586,41 @@ function _resolvedActiveCol() {
   return _activeBatchCol;
 }
 function _colCat(colId) { return _batchColState[colId] ? _batchColState[colId].cat : (colId === 'batch' ? _batchCat : 'flux'); }
+// ── 高清修复（hiresFix）的按底模可用性 ──
+// 平台白名单（2026-09-11 实测，错误码 unsupportedArchitectureHiresFix）：
+//   SD1.5 / SDXL 系 / Pony / NoobAI 可用；**ZIT 与 FLUX 不支持**。
+// 我们的 Illustrious checkpoint 注册为 sdxl 架构 → 可用，所以这 4 类放开。
+const HIRES_FIX_CATS = ['illustrious', 'pony', 'sdxl', 'sd15'];
+// 读取某列的 hiresFix 勾选（禁用/不存在一律视为未开）
+function _colHiresFix(colId) {
+  const cb = _colEl(colId, 'hiresfix');
+  return !!(cb && cb.checked && !cb.disabled);
+}
+// 按当前底模刷新控件可用性。切底模时调用（selectBatchCat 尾部）+ draft 恢复时调用。
+// ⚠️ 切到不支持的底模会自动取消勾选 —— 否则会留下"ZIT 却勾着 hiresFix"的脏状态，
+//    提交后被后端静默跳过，用户以为开了其实没开（排查成本极高，参见 clipSkip 教训）。
+function updateHiresFixAvail(colId) {
+  colId = colId || 'batch';
+  const cb = _colEl(colId, 'hiresfix');
+  if (!cb) return;
+  const cat = _colCat(colId);
+  const ok = HIRES_FIX_CATS.includes(cat);
+  cb.disabled = !ok;
+  if (!ok && cb.checked) cb.checked = false;
+  const wrap = document.getElementById(colId + '-hires-wrap');
+  if (wrap) wrap.style.opacity = ok ? '1' : '0.45';
+  const hint = document.getElementById(colId + '-hiresfix-hint');
+  if (hint) {
+    hint.textContent = ok
+      ? '再跑一遍高分辨率推理 → 细节明显增加。成本约 +$0.0007、耗时 +5~40s；⚠️ 同 seed 出来也是另一张图，不是「同一张图升级」。'
+      : cat.toUpperCase() + ' 架构不支持高清修复（仅 Illustrious / Pony / SDXL / SD1.5 可用）';
+  }
+}
+function onHiresFixToggle(cb) {
+  const col = cb.closest('.batch-col');
+  updateHiresFixAvail(_colIdOf(col) || 'batch');
+  saveBatchDraft();
+}
 function _colLoras(colId) { return _batchColState[colId] ? _batchColState[colId].loras : _batchLoras; }
 function _colGenId(colId) { return _batchColState[colId] ? _batchColState[colId].genId : _batchGenId; }
 function _bumpColGenId(colId) {
@@ -3086,6 +3139,8 @@ function selectBatchCat(cat, btn, colId) {
 
   // Load LoRAs for this category
   loadBatchLoras(cat, colId);
+  // 底模换了 → 刷新高清修复可用性（ZIT/FLUX 置灰，其余放开）
+  updateHiresFixAvail(colId);
 }
 
 function toggleAllCheckpoints(colId) {
@@ -3360,6 +3415,7 @@ async function batchGenerate(colId) {
     aspect: _colEl(colId, 'aspect').value,
     sampler: _colEl(colId, 'sampler').value || null,
     seed: seedEl.value ? parseInt(seedEl.value) : null,
+    hires_fix: _colHiresFix(colId),
   };
 
   const res = await fetch('/api/batch', {

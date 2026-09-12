@@ -71,7 +71,8 @@ def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
                steps: int = 35, negative_prompt: str = "",
                cfg_scale: float = None, sampler: str = None,
                embedding_id: str = None,
-               model_key: str = None) -> Path:
+               model_key: str = None,
+               hires_fix: bool = False) -> Path:
     """Save image data as PNG with AUTOMATIC1111-compatible metadata embedded.
 
     EVERY call to this function produces a PNG with full parameters in the
@@ -110,6 +111,10 @@ def save_image(data: bytes, *, prefix: str = "gen", prompt: str = "",
         params_line.append(f"CFG: {cfg_scale}")
     if sampler:
         params_line.append(f"Sampler: {sampler}")
+    if hires_fix:
+        # 只在开启时记录。⚠️ 该字段是「参数是否真送到平台」的唯一事后判据，
+        # 别省（clipSkip 那次就是靠 PNG 内嵌字段才发现请求压根没生效）。
+        params_line.append("Hires fix: True")
 
     meta_string = ", ".join(meta_parts + params_line)
 

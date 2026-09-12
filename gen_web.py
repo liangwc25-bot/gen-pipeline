@@ -97,7 +97,8 @@ def _generate_runware(args: dict) -> dict:
                 steps=int(steps) if steps else 35,
                 sampler=sampler if sampler else None,
                 width=int(bwidth) if bwidth else None,
-                height=int(bheight) if bheight else None)
+                height=int(bheight) if bheight else None,
+                hires_fix=bool(args.get("hires_fix", False)))
             if isinstance(result, tuple):
                 result, used_seed = result
             else:

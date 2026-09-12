@@ -293,6 +293,15 @@ def _upload_image(api_key: str, data_uri: str) -> str:
     return upload_data[0]["imageUUID"]
 
 
+# hiresFix 架构白名单（2026-09-11 平台实测，错误码 unsupportedArchitectureHiresFix）。
+# 平台支持：SD 1.5 / SDXL 1.0 / SDXL LCM / SDXL Distilled / SDXL Turbo / Pony /
+#           SDXL Lightning / SDXL Hyper / SD 1.5 Hyper / NoobAI
+# 不支持：FLUX 全系、Z-Image Turbo。
+# 我们把这批 checkpoint 统一注册为 sdxl 架构，所以 Illustrious/Pony/SDXL/SD1.5 都能用。
+# 不在白名单时**静默跳过**（不抛错、不中断 batch）——前端已按底模灰掉控件，这里只是兜底保险。
+HIRES_FIX_BASES = {"illustrious", "pony", "sdxl", "sd15", "noobai"}
+
+
 def generate(prompt: str, *, model_key: str = "flux-dev",
              negative_prompt: str = "", image_path: str = None,
              strength: float = 0.8, lora_id: str = None,
@@ -300,7 +309,8 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
              aspect: str = "9:16", cfg_scale: float = None,
              steps: int = 35, sampler: str = None,
              embedding_id: str = None,
-             width: int = None, height: int = None) -> Path:
+             width: int = None, height: int = None,
+             hires_fix: bool = False) -> Path:
     """Generate image via Runware AI."""
     api_key = get_key("RUNWARE_API_KEY")
 
@@ -341,6 +351,16 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
     }
     if seed is not None:
         task["seed"] = seed
+
+    # 高清修复（hiresFix）——纯开关，无子参数。平台按架构白名单限制，不支持的静默跳过。
+    # ⚠️ 副作用：它改变整张图（同 seed 也是另一张），不是"同一张图加细节"；
+    #    输出尺寸不变；成本约 +$0.0007，耗时 +5~40s 不等。
+    effective_hires = bool(hires_fix) and model_info.get("base") in HIRES_FIX_BASES
+    if effective_hires:
+        task["advancedFeatures"] = {"hiresFix": True}
+        print("✨ High res fix: ON")
+    elif hires_fix:
+        print(f"⏭️  High res fix skipped（{model_info.get('base')} 架构不支持）")
 
     # Image-to-image: two-step flow for Runware (non-Qwen)
     if image_path:
@@ -417,7 +437,8 @@ def generate(prompt: str, *, model_key: str = "flux-dev",
                      seed=used_seed, lora_id=lora_id,
                      steps=steps, negative_prompt=negative_prompt,
                      cfg_scale=task.get("CFGScale"), sampler=task.get("scheduler"),
-                     embedding_id=embedding_id)
+                     embedding_id=embedding_id,
+                     hires_fix=effective_hires)
     return out, used_seed
 
 
