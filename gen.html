@@ -407,6 +407,12 @@
   .bt-btn:hover { border-color: var(--accent); color: var(--accent); }
   .bt-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(124,92,252,0.1); }
   .bt-btn .bt-badge { color: var(--accent); font-weight: 700; }
+  /* hiresFix 成本提醒：贴在 ⚙️ 高级设置 按钮下方的小字，仅在当前列开着时显示。
+     目的 = 不用点进浮窗就知道它在收费（+$0.0007 且耗时拉长）。 */
+  .bt-adv-wrap { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+  .bt-hiresflag { display: none; font-size: 0.62rem; line-height: 1.1; font-weight: 700;
+                  color: var(--orange); white-space: nowrap; letter-spacing: 0.2px; }
+  .bt-hiresflag.on { display: block; }
   .bt-add { width: 34px; padding: 0; font-size: 1rem; display: flex; align-items: center; justify-content: center; height: 30px; }
   [data-theme="light"] .bt-btn { border-color: rgba(0,0,0,0.1); }
   .batch-cat-tab .cat-n { font-size: 0.66rem; margin-left: 3px; font-weight: 700; opacity: 0.9; }
@@ -700,7 +706,10 @@
         </div>
         <div class="bt-right">
           <button class="bt-btn" id="batch-btn-ckpt" onclick="toggleBatchWindow('ckpt')">⛶ Checkpoint <span class="bt-badge" id="batch-btn-ckpt-n">0</span></button>
-          <button class="bt-btn" id="batch-btn-adv" onclick="toggleBatchWindow('adv')">⚙️ 高级设置</button>
+          <div class="bt-adv-wrap">
+            <button class="bt-btn" id="batch-btn-adv" onclick="toggleBatchWindow('adv')">⚙️ 高级设置</button>
+            <span class="bt-hiresflag" id="batch-hires-flag">HighResFix On</span>
+          </div>
         </div>
       </div>
 
@@ -2596,6 +2605,15 @@ function _colHiresFix(colId) {
   const cb = _colEl(colId, 'hiresfix');
   return !!(cb && cb.checked && !cb.disabled);
 }
+// 工具行 ⚙️ 高级设置 按钮下方那排小字「HighResFix On」：开着才显示，关掉就消失。
+// 目的：不用点进浮窗就知道它正在收费（成本更高 + 耗时拉长）。跟随**当前激活列**。
+function updateHiresFlag() {
+  const el = document.getElementById('batch-hires-flag');
+  if (!el) return;
+  let on = false;
+  try { on = _colHiresFix(_resolvedActiveCol()); } catch (e) { on = false; }
+  el.classList.toggle('on', !!on);
+}
 // 按当前底模刷新控件可用性。切底模时调用（selectBatchCat 尾部）+ draft 恢复时调用。
 // ⚠️ 切到不支持的底模会自动取消勾选 —— 否则会留下"ZIT 却勾着 hiresFix"的脏状态，
 //    提交后被后端静默跳过，用户以为开了其实没开（排查成本极高，参见 clipSkip 教训）。
@@ -2615,6 +2633,7 @@ function updateHiresFixAvail(colId) {
       ? '再跑一遍高分辨率推理 → 细节明显增加。成本约 +$0.0007、耗时 +5~40s；⚠️ 同 seed 出来也是另一张图，不是「同一张图升级」。'
       : cat.toUpperCase() + ' 架构不支持高清修复（仅 Illustrious / Pony / SDXL / SD1.5 可用）';
   }
+  updateHiresFlag();   // 勾选变化 / 切底模 / draft 恢复 都要同步工具行小字
 }
 function onHiresFixToggle(cb) {
   const col = cb.closest('.batch-col');
@@ -2718,6 +2737,7 @@ function _syncActiveColFromScroll() {
   _updateToolbarCol();
 }
 function _updateToolbarBadge() {
+  updateHiresFlag();   // 与 badge 同一处刷新：激活列切换/加删列/浮窗关闭/初始化都走这里
   const b = document.getElementById('batch-btn-ckpt-n');
   if (!b) return;
   const grid = _colEl(_resolvedActiveCol(), 'ckpt-grid');
