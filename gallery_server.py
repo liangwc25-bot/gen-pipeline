@@ -206,6 +206,74 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             "failed": len(failed),
             "total": len(filenames),
         }).encode())
+    def _handle_card(self, params):
+        """GET /api/card — 把「图 + 生成参数」合成一张图并发到 Telegram。
+
+        mode=full（Prompt + Negative + 参数行）| slim（只参数行）。
+        ⚠️ 合成图是临时产物，发完立即删除（鹿鹿：这个图就可以删了），不落 gallery。
+        ⚠️ 必须走 sendDocument：.png 走 sendPhoto 会被 Telegram 重新压缩，小字会糊。
+        """
+        import re
+        import tempfile
+
+        filename = params.get("filename", [None])[0]
+        mode = params.get("mode", ["full"])[0]
+        if mode not in ("full", "slim"):
+            mode = "full"
+
+        def _json(payload, status=200):
+            self.send_response(status)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps(payload).encode())
+
+        if not filename:
+            return self.send_error(400, "Missing filename")
+        src = IMAGES_DIR / filename
+        if not src.exists():
+            return self.send_error(404, "File not found")
+
+        try:
+            from gen_lib.card import build_card
+            from gen_lib.telegram import send_document, TelegramError
+        except Exception as e:
+            return _json({"sent": False, "error": f"import failed: {e}"}, 500)
+
+        meta = get_meta(filename) or {}
+        prompt = meta.get("prompt", "") or ""
+        params_line = meta.get("params", "") or ""
+
+        # Negative prompt 只在 params 里有（save_image 仅非空时写入），从 PNG 内嵌串取
+        negative = ""
+        try:
+            raw = Image.open(src).info.get("parameters", "") or ""
+            mm = re.search(r"Negative prompt:\s*(.*?)(?:,\s*Steps:|$)", raw, re.S)
+            if mm:
+                negative = mm.group(1).strip().rstrip(",")
+        except Exception:
+            pass
+
+        tmpdir = tempfile.mkdtemp(prefix="gencard-")
+        # .jpg 不是笔误：JPEG q92 比 PNG 小 3 倍多，而到 Telegram 的路由很窄
+        # （~95~140 KB/s），小体积直接决定她要等几秒还是十几秒。
+        out = Path(tmpdir) / f"{Path(filename).stem}_{mode}.jpg"
+        try:
+            build_card(src, prompt=prompt, params=params_line, negative=negative,
+                       mode=mode, out_path=out)
+            kb = out.stat().st_size // 1024
+            send_document(str(out), caption=f"[gallery] 图+参数 · {mode}")
+            _json({"sent": True, "filename": filename, "mode": mode, "size_kb": kb,
+                   "error": None})
+        except TelegramError as e:
+            _json({"sent": False, "filename": filename, "mode": mode, "error": str(e)})
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            _json({"sent": False, "filename": filename, "mode": mode, "error": str(e)}, 500)
+        finally:
+            shutil.rmtree(tmpdir, ignore_errors=True)  # 临时合成图用完即删
+
     def _handle_i2v(self):
         """POST /api/i2v — generate video from an existing image (async)."""
         content_len = int(self.headers.get("Content-Length", 0))
@@ -738,6 +806,9 @@ class GalleryHandler(SimpleHTTPRequestHandler):
             else:
                 self.send_error(400, "Missing filename")
             return
+        # API: 图 + 生成参数 → 合成一张图 → 发 Telegram（临时文件用完即删）
+        if path == "/api/card":
+            return self._handle_card(params)
         # Serve thumbnail — try main dir first, then archive
         if path.startswith("/thumb/"):
             filename = unq(path[7:])

@@ -237,6 +237,26 @@
     transition: .15s; margin-left: 4px; white-space: nowrap;
   }
   .modal-i2v-btn:hover { border-color: var(--accent); color: var(--accent); }
+  /* 「带参数」传送：点击后在下方展开 详细/精简 两个选项（自定义，不用原生弹窗） */
+  .modal-card-btn {
+    background: none; border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px; padding: 6px 10px;
+    color: var(--text2); font-size: 0.85rem; cursor: pointer;
+    transition: .15s; margin-left: 4px; white-space: nowrap;
+  }
+  .modal-card-btn:hover, .modal-card-btn.active { border-color: var(--green); color: var(--green); }
+  .modal-card-btn.busy { border-color: var(--green); color: var(--green); opacity: 0.6; pointer-events: none; }
+  .modal-card-opts {
+    display: none; gap: 6px; justify-content: center;
+    margin-top: 12px; flex-wrap: wrap;
+  }
+  .modal-card-opts.open { display: flex; }
+  .modal-card-opts button {
+    background: none; border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px; padding: 8px 14px;
+    color: var(--text2); font-size: 0.82rem; cursor: pointer; transition: .15s;
+  }
+  .modal-card-opts button:hover { border-color: var(--green); color: var(--green); }
   .modal-video {
     width: 100%;
     max-height: 70vh;
@@ -497,7 +517,12 @@
     </div>
     <div class="modal-meta" id="modalMeta"></div>
     <div class="modal-info" id="modalInfo"></div>
+    <div class="modal-card-opts" id="modalCardOpts">
+      <button onclick="sendCard('full')">🧾 详细（含 Prompt）</button>
+      <button onclick="sendCard('slim')">🧾 精简（只参数）</button>
+    </div>
     <div class="modal-bottom-actions">
+      <button class="modal-card-btn" id="modalCardBtn" onclick="toggleCardOpts(event)">🧾 带参数</button>
       <button class="modal-send-btn" id="modalSendBtn" onclick="sendToTg()">📱 传送</button>
       <button class="modal-i2v-btn" id="modalI2vBtn" onclick="openI2V()">🎬 转视频</button>
     </div>
@@ -698,6 +723,54 @@ async function sendToTg() {
     setTimeout(() => { btn.textContent = '📱 传送'; btn.classList.remove('sending'); }, 2000);
   }
 }
+
+// ── 「带参数」：图 + metadata 合成一张 → 发 Telegram（合成图服务端用完即删）──
+function toggleCardOpts(e) {
+  if (e) e.stopPropagation();
+  const opts = document.getElementById('modalCardOpts');
+  const btn = document.getElementById('modalCardBtn');
+  const open = opts.classList.toggle('open');
+  btn.classList.toggle('active', open);
+}
+function hideCardOpts() {
+  const opts = document.getElementById('modalCardOpts');
+  const btn = document.getElementById('modalCardBtn');
+  if (opts) opts.classList.remove('open');
+  if (btn) btn.classList.remove('active');
+}
+async function sendCard(mode) {
+  if (!modalFilename) return;
+  const btn = document.getElementById('modalCardBtn');
+  hideCardOpts();
+  btn.textContent = '⏳ 发送中…';
+  btn.classList.add('busy');
+  const restore = () => { btn.textContent = '🧾 带参数'; btn.classList.remove('busy'); };
+  // 到 Telegram 的路由窄（~95~140 KB/s），正常 5~15s，偶发尖峰可到 60s →
+  // 给足 150s，但不设上限会让按钮无限转。
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), 150000);
+  try {
+    const res = await fetch(`/api/card?filename=${encodeURIComponent(modalFilename)}&mode=${mode}`,
+                            { signal: ctl.signal });
+    const data = await res.json();
+    if (data.sent) {
+      btn.textContent = '✅ 已发送';
+    } else {
+      btn.textContent = '❌ 失败';
+      console.warn('card failed:', data.error);
+    }
+  } catch (e) {
+    btn.textContent = '❌ 失败';
+    console.warn('card error:', e);
+  } finally {
+    clearTimeout(timer);
+  }
+  setTimeout(restore, 2200);
+}
+// 点空白处收起 详细/精简 选项
+document.addEventListener('click', e => {
+  if (!e.target.closest('#modalCardOpts') && !e.target.closest('#modalCardBtn')) hideCardOpts();
+});
 
 // ── Trash ──
 async function moveToTrash() {
@@ -911,6 +984,7 @@ function showModalImage() {
   const modal = document.getElementById('modal');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+  hideCardOpts();   // 换图时收起「带参数」的 详细/精简 选项
 
   if (isVideo) {
     vp.classList.add('hidden');
