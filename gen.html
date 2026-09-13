@@ -464,6 +464,26 @@
   .batch-result-card img, .batch-result-card video { width: 100%; border-radius: 10px; }
   .batch-result-card .card-label { font-size: 0.78rem; font-weight: 600; color: var(--text); margin: 6px 0 2px; word-break: break-word; overflow-wrap: anywhere; }
   .batch-result-card .card-sub { font-size: 0.7rem; color: var(--text2); }
+  .batch-result-card img { cursor: zoom-in; }
+  /* ── 结果大图查看器（页面内弹层）──
+     ⚠️ 不要改回 <a target="_blank">：PWA(standalone) 里会开出**没有关闭 UI 的窗口**，
+     只能靠返回手势 → PWA 重载 → 生成结果全丢（2026-09-11 鹿鹿踩到）。
+     z-index 10000 高于现有最高 9999（snippet/reset 弹窗）。 */
+  .result-lb {
+    display: none; position: fixed; inset: 0; z-index: 10000;
+    background: rgba(0,0,0,0.93); align-items: center; justify-content: center;
+    padding: 10px;
+  }
+  .result-lb.open { display: flex; }
+  .result-lb img { max-width: 96vw; max-height: 90vh; border-radius: 8px; object-fit: contain; }
+  .result-lb .lb-close {
+    position: absolute; top: 10px; right: 10px; width: 42px; height: 42px;
+    border-radius: 50%; background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.28); color: #fff;
+    font-size: 1.3rem; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .result-lb .lb-close:hover { background: rgba(255,255,255,0.26); }
   /* ── Multi-column batch (横评 prompt) ── */
   .batch-cols {
     display: flex; gap: 16px; align-items: flex-start;
@@ -1017,6 +1037,12 @@
 
 <!-- 浮窗遮罩：点它关闭 batch 浮窗。必须在 #batch-cols 外面，否则会被 addBatchCol 的 cloneNode 复制 -->
 <div id="batch-overlay-backdrop" onclick="closeBatchWindow()"></div>
+
+<!-- 结果大图查看器：页面内弹层。PWA 里必须能就地关闭，不能开新窗口 -->
+<div class="result-lb" id="result-lb" onclick="if(event.target===this)closeResultLb()">
+  <button class="lb-close" onclick="closeResultLb()" title="关闭" aria-label="关闭">✕</button>
+  <img id="result-lb-img" alt="结果大图">
+</div>
 
 <!-- 清空已选确认（破坏性操作才挂确认框；切底模不挂，因为底模记忆不会丢） -->
 <div class="reset-overlay" id="clear-ckpt-overlay" onclick="if(event.target===this)hideClearCkptModal()">
@@ -2149,6 +2175,36 @@ function downloadResult() {
   }
 }
 function openResult() { if (state.resultUrl) window.open(state.resultUrl, '_blank'); }
+
+// ── 结果大图查看器（页面内弹层）──
+// ⚠️ 不要改回 <a target="_blank">：PWA(standalone) 下会开出没有关闭 UI 的窗口，
+//    只能靠返回手势 → PWA 重载 → 生成结果全丢（2026-09-11 鹿鹿踩到）。
+let _lbPrevOverflow = null;
+function openResultLb(url) {
+  const lb = document.getElementById('result-lb');
+  if (!lb || !url) return;
+  document.getElementById('result-lb-img').src = url;
+  lb.classList.add('open');
+  _lbPrevOverflow = document.body.style.overflow;
+  document.body.style.overflow = 'hidden';
+}
+function closeResultLb() {
+  const lb = document.getElementById('result-lb');
+  if (!lb || !lb.classList.contains('open')) return;
+  lb.classList.remove('open');
+  document.getElementById('result-lb-img').src = '';   // 释放，避免旧图残留
+  if (_lbPrevOverflow !== null) {
+    document.body.style.overflow = _lbPrevOverflow;
+    _lbPrevOverflow = null;
+  }
+}
+// Esc 关闭（桌面顺手）
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeResultLb(); });
+// 结果图点击 → 弹层（事件委托，避免把 URL 拼进 onclick 的转义坑）
+document.addEventListener('click', e => {
+  const img = e.target.closest('img[data-lb-url]');
+  if (img) { e.preventDefault(); openResultLb(img.dataset.lbUrl); }
+});
 
 function showResetModal() { document.getElementById('reset-overlay').classList.add('open'); }
 function hideResetModal() { document.getElementById('reset-overlay').classList.remove('open'); }
@@ -3569,7 +3625,7 @@ function renderBatchResults(modelsData, orderedKeys, colId) {
     if (md && md.status === 'done' && md.result && md.result.success) {
       const url = md.result.url || '';
       html += `<div class="batch-result-card">
-        <a href="${url}" target="_blank"><img src="${url}" loading="lazy"></a>
+        <img src="${url}" loading="lazy" data-lb-url="${escHtml(url)}" alt="结果">
         <div class="card-label">${escHtml(name)}</div>
         <div class="card-sub">seed: ${md.result.seed || '?'}</div>
       </div>`;
