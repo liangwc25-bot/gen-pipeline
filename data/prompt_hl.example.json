@@ -10,9 +10,10 @@
   "_rules_note": "★ 这是你主要会改的地方。数组顺序 = 优先级，先匹配先赢。每条：match 正则 / color 颜色 / bold 是否加粗 / flags 可选（默认 i 忽略大小写）/ enabled 可选（false 关掉）。match 从当前字符位置开始尝试（sticky），所以词建议加 \\b...\\b 做整词边界 —— 但中文词不要加 \\b（中文没有单词边界）。想在 JSON 里写 \\b 要写成 \\\\b。",
   "rules": [
     {
-      "_note": "BREAK 是分块符（重置 75-token 分块）。★ 只有大写 BREAK 生效，小写 break 无效 → flags 空串 = 大小写敏感，所以小写不会被标记。不写 color → 回退 inherit = 不上色，只加粗。",
+      "_note": "BREAK 是分块符（重置 75-token 分块），大写才有意义。★ flags 空串 = 大小写敏感 → 小写 break 只是普通单字，完全不产生高亮。",
       "name": "BREAK（分块符 · 仅大写）",
       "match": "\\bBREAK\\b",
+      "color": "#34c759",
       "bold": true,
       "flags": "",
       "enabled": true
