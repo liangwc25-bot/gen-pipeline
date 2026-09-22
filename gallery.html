@@ -357,37 +357,31 @@
     cursor: zoom-in;
     -webkit-tap-highlight-color: transparent;
   }
-  /* 全屏原图查看弹层（页面内, PWA 可关闭）。点大图 → 以原始分辨率/可滚动看 */
+  /* 全屏原图查看弹层（页面内, PWA 可关闭）。与 gen.html result-lb 一致:
+     img 缩放到「宽跟屏幕一致」(max-width:96vw / max-height:90vh + contain),
+     保留移动浏览器原生两指缩放; 不用物理原尺寸(会逸出屏幕/卡 carousel 滑动)。 */
   .img-full-overlay {
     display: none; position: fixed; inset: 0; z-index: 10000;
     background: rgba(0,0,0,0.95);
     align-items: center; justify-content: center;
-    padding: 12px;
+    padding: 10px;
   }
   .img-full-overlay.open { display: flex; }
-  .img-full-overlay .iff-scroll {
-    width: 100%; height: 100%; overflow: auto;
-    display: flex; align-items: center; justify-content: center;
-    -webkit-overflow-scrolling: touch;
-  }
   .img-full-overlay img {
-    max-width: none; max-height: none;
+    max-width: 96vw; max-height: 90vh;
     width: auto; height: auto;
+    object-fit: contain;
+    border-radius: 8px;
     display: block;
-    border-radius: 4px;
   }
   .img-full-overlay .iff-close {
     position: fixed; top: 14px; right: 14px; z-index: 10001;
     background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
-    color: #fff; width: 40px; height: 40px; border-radius: 50%;
+    color: #fff; width: 42px; height: 42px; border-radius: 50%;
     font-size: 1.4rem; line-height: 1; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
   }
   .img-full-overlay .iff-close:hover { background: rgba(255,255,255,0.28); }
-  .img-full-overlay .iff-size {
-    position: fixed; bottom: 14px; left: 0; right: 0; text-align: center;
-    color: rgba(255,255,255,0.7); font-size: 0.75rem; pointer-events: none;
-  }
 
   /* Empty state */
   .empty {
@@ -567,13 +561,10 @@
   </div>
 </div>
 
-<!-- 全屏原图查看弹层：点大图中心图打开，PWA 可就地关闭(不开新窗口) -->
+<!-- 全屏原图查看弹层：点大图中心图打开, PWA 可就地关闭(不开新窗口)。与 gen.html result-lb 一致, 支持移动端原生两指缩放 -->
 <div class="img-full-overlay" id="imgFullOverlay" onclick="if(event.target===this)closeImgFull()">
-  <button class="iff-close" onclick="closeImgFull()">✕</button>
-  <div class="iff-scroll" onclick="if(event.target===this)closeImgFull()">
-    <img id="imgFullImg" alt="原图">
-  </div>
-  <div class="iff-size" id="imgFullSize"></div>
+  <button class="iff-close" onclick="closeImgFull()" title="关闭" aria-label="关闭">✕</button>
+  <img id="imgFullImg" alt="原图">
 </div>
 
 <script>
@@ -1326,21 +1317,15 @@ function closeModal(e) {
     if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
-// ── 全屏原图：点大图中心图 → 以原始分辨率/可滚动查看（PWA 可就地关闭, 不开新窗口）──
+// ── 全屏原图：点大图中心图 → 弹层显示「宽跟屏幕一致」的原图（PWA 可就地关闭, 移动端原生两指缩放）──
 function openImgFull(src) {
   const overlay = document.getElementById('imgFullOverlay');
-  const img = document.getElementById('imgFullImg');
-  const sz = document.getElementById('imgFullSize');
-  img.src = src;
-  img.onload = () => {
-    sz.textContent = img.naturalWidth + ' × ' + img.naturalHeight + ' px · 点背景或 ✕ 关闭';
-  };
+  document.getElementById('imgFullImg').src = src;
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeImgFull() {
-  const overlay = document.getElementById('imgFullOverlay');
-  overlay.classList.remove('open');
+  document.getElementById('imgFullOverlay').classList.remove('open');
   setTimeout(() => { document.getElementById('imgFullImg').removeAttribute('src'); }, 200);
   document.body.style.overflow = '';
 }
