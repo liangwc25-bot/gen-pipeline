@@ -3265,9 +3265,13 @@ function getSelectedModels(colId) {
 // ── Batch LoRA ──
 let _batchLoras = [];
 let _batchLoraLoaded = false;
+// 请求序号：防「刷新后 restore 触发两次同 cat/不同 cat 的 async fetch 竞态」——
+// 竞态后返回的旧请求会覆盖 _batchLoras，导致底模 tab 换了但 LoRA 列表卡在旧底模(2026-09-22 根因修复)
+let _loraReqSeq = 0;
 
 async function loadBatchLoras(cat, colId) {
   colId = colId || 'batch';
+  const reqSeq = ++_loraReqSeq;
   // Map category to base_model alias for LoRA filtering
   const baseMap = { flux: 'flux-dev', pony: 'pony', illustrious: 'illustrious', sdxl: 'sdxl', zit: 'zimage-turbo', sd15: 'sd15' };
   const model = baseMap[cat] || cat;
@@ -3279,6 +3283,8 @@ async function loadBatchLoras(cat, colId) {
   } catch(e) {
     loras = [];
   }
+  // 过期请求直接丢弃：期间又发起了更新的请求，或底模已被切走
+  if (reqSeq !== _loraReqSeq) return;
   if (colId === 'batch') { _batchLoras = loras; _batchLoraLoaded = true; }
   else { if (!_batchColState[colId]) _batchColState[colId] = {}; _batchColState[colId].loras = loras; }
 }
