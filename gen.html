@@ -4253,7 +4253,8 @@ const _PV_FONTS = {
   mono:   "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
   system: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif",
 };
-let _pv = { font: 'jbm', fs: 16, lh: 1.28 };
+const _PV_DEF = { fs: 16, lh: 1.28 };   // 字号/行距默认值：格子清空即回这两个（鹿鹿 2026-09-24）
+let _pv = { font: 'jbm', fs: _PV_DEF.fs, lh: _PV_DEF.lh };
 let _pvRedrawT = 0;
 
 function _pvLoad() {
@@ -4267,7 +4268,7 @@ function _pvLoad() {
   } catch (e) {}
 }
 
-function applyPromptVisual() {
+function applyPromptVisual(skipEl) {
   const r = document.documentElement;
   r.style.setProperty('--prompt-font', _PV_FONTS[_pv.font]);
   r.style.setProperty('--prompt-fs', _pv.fs + 'px');
@@ -4282,8 +4283,8 @@ function applyPromptVisual() {
     if (lb) lb.textContent = _optLabel(opt);
   });
   document.querySelectorAll('.pv-font-val').forEach(h => { h.value = _pv.font; });
-  document.querySelectorAll('.pv-fs').forEach(i => { if (+i.value !== _pv.fs) i.value = _pv.fs; });
-  document.querySelectorAll('.pv-lh').forEach(i => { if (+i.value !== _pv.lh) i.value = _pv.lh; });
+  document.querySelectorAll('.pv-fs').forEach(i => { if (i !== skipEl && +i.value !== _pv.fs) i.value = _pv.fs; });
+  document.querySelectorAll('.pv-lh').forEach(i => { if (i !== skipEl && +i.value !== _pv.lh) i.value = _pv.lh; });
   // 高亮层：必须先同步度量（_hlSyncMetrics 只在 setup/focus/blur 跑过 —— 字体/字号/行高
   // 变了不重同步的话 backdrop 还是旧字号，换行位置直接漂，长内容 scrollHeight 对不上），
   // 再重画。立即一次 + 过渡动画（textarea transition: all .2s）结束后的补画 ——
@@ -4307,18 +4308,31 @@ function setPromptFont(v) {
   applyPromptVisual();
 }
 
-// oninput：只接受范围内的值，绝不改写正在输入的框（打 '20' 时中途的 '2' 越界直接忽略）
+// oninput：只接受范围内的值，绝不改写正在输入的框（打 '20' 时中途的 '2' 越界直接忽略）。
+// **清空 = 用默认值（16 / 1.28）立即生效**，但当前空框留着不回写 —— 她还要继续打字。
 function pvInput(kind, el) {
-  const n = parseFloat(el.value);
+  const raw = el.value.trim();
+  if (raw === '') {
+    if (kind === 'fs') _pv.fs = _PV_DEF.fs; else _pv.lh = _PV_DEF.lh;
+    applyPromptVisual(el);
+    return;
+  }
+  const n = parseFloat(raw);
   if (!isFinite(n)) return;
   if (kind === 'fs') { if (n < 12 || n > 24) return; _pv.fs = Math.round(n); }
   else { if (n < 1 || n > 2) return; _pv.lh = Math.round(n * 100) / 100; }
   applyPromptVisual();
 }
 
-// onchange（blur / 回车 / 上下箭头）：越界或非法 → 从 _pv 回写规范值到所有实例
+// onchange（blur / 回车 / 上下箭头）：空 → 回填默认值；越界或非法 → 回填上一个有效值
 function pvNorm(kind, el) {
-  const n = parseFloat(el.value);
+  const raw = el.value.trim();
+  if (raw === '') {
+    if (kind === 'fs') _pv.fs = _PV_DEF.fs; else _pv.lh = _PV_DEF.lh;
+    applyPromptVisual();
+    return;
+  }
+  const n = parseFloat(raw);
   const bad = !isFinite(n) || (kind === 'fs' && (n < 12 || n > 24)) || (kind === 'lh' && (n < 1 || n > 2));
   if (bad) applyPromptVisual();
   else pvInput(kind, el);
