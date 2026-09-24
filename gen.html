@@ -109,9 +109,12 @@
      字号沿革：1.2rem → 1.1rem（2026-08-29）→ 1.05rem → **1rem / 16px**（她轻微老花，
      等宽字形的辨识度补回了尺寸，所以敢往小走一档）；行高 1.5 → 1.35 → 1.28。 */
   textarea[id$="-prompt"], textarea[id$="-negative"], #prompt, #negative {
-    font-size: 1rem; line-height: 1.28;
-    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+    font-size: var(--prompt-fs, 1rem); line-height: var(--prompt-lh, 1.28);
+    font-family: var(--prompt-font, 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
   }
+  /* 2026-09-24 起上面三个值都走 CSS 变量（--prompt-font/--prompt-fs/--prompt-lh），
+     由高级设定最下面的「字体/字号/行距」实时写入 <html>（localStorage prompt_visual 持久化，
+     改完不用刷新）。var() 的 fallback = 上面那套默认值。 */
 
   /* ── prompt 语法高亮（C 方案·叠层）2026-09-11 ──
      原理：文字透明的 textarea 压在 <pre class="hl-backdrop"> 高亮层之上
@@ -316,6 +319,8 @@
     max-height: 220px; overflow-y: auto; margin-top: 4px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);
   }
   .custom-select.open .custom-select-dropdown { display: block; }
+  /* 字体下拉（外观组窄行）放不下全名 → 截断省略，完整名字看下拉选项里的 opt-main */
+  .pv-font-wrap .custom-select-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .custom-select-dropdown .custom-opt {
     padding: 10px 14px; cursor: pointer; font-size: 0.85rem; color: var(--text2);
     border-bottom: 1px solid rgba(255,255,255,0.04); transition: .15s;
@@ -363,7 +368,8 @@
   .batch-win.as-overlay {
     display: flex; flex-direction: column;
     position: fixed; top: 7vh; left: 4vw; right: 4vw;
-    margin: 0 auto; max-width: 560px; max-height: 84vh;
+    /* 2026-09-24 84vh → calc(84vh - 10px)：弹窗矮一截，屏幕下方弹窗外留白更大，好点空白关闭 */
+    margin: 0 auto; max-width: 560px; max-height: calc(84vh - 10px);
     /* z-index 必须高于工具行(9991)与遮罩(9989) —— 否则手机上工具行会压在弹窗上面，
        看起来像弹窗在后面。层级：遮罩 9989 < 工具行 9991 < 浮窗 9995 < 既有弹窗 9999 */
     z-index: 9995; background: var(--card);
@@ -396,10 +402,11 @@
     .bt-btn { padding: 6px 8px; font-size: 0.72rem; }
     .bt-left { font-size: 0.68rem; }
   }
-  /* 高级设置窗口内容不高（~330px）且里面有 4 个下拉（LoRA/Embedding/画幅/采样器）。
-     滚动容器会裁掉 position:absolute 的下拉，所以这个窗口不设滚动 —— 宁可让它溢出也不能让下拉打不开。 */
-  .batch-win.bw-fit.as-overlay { max-height: none; overflow: visible; }
-  .batch-win.bw-fit .bw-body { overflow: visible; }
+  /* 2026-09-24 撤销 bw-fit（高级设置窗不再豁免滚动）：加了「字体/字号/行距」外观组后内容更高，
+     窗口必须封顶 + 内部滚动 —— 外观组落到滚动区外 = 变相隐藏，同时弹窗外留白变大好点空白关闭。
+     「滚动容器裁 position:absolute 下拉」的老问题改由 _ddViewportFix() 解决：下拉打开时切
+     position:fixed 视口定位（祖先链无 transform，fixed 不受 overflow 裁剪），下方放不下自动向上开。
+     留档：该窗口曾因内含 4 个 absolute 下拉（LoRA/Embedding/画幅/采样器）特设 overflow:visible 不滚动。 */
   .bt-left { display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: var(--text2); min-width: 0; }
   .bt-right { display: flex; align-items: center; gap: 6px; margin-left: auto; }
   .bt-btn { background: none; border: 1px solid rgba(255,255,255,0.1); border-radius: 9px; color: var(--text2);
@@ -610,10 +617,36 @@
             <input type="number" id="steps" placeholder="35" min="10" max="50" value="35">
           </div>
         </div>
-        <div class="form-group" style="margin-bottom:0">
+        <!-- 外观（字体/字号/行距）—— 2026-09-24：高级设定最下面平铺，不设分组标题；即时生效 -->
+        <div class="row" style="margin-top:14px">
+          <div class="form-group" style="flex:2">
+            <label>字体</label>
+            <div class="custom-select pv-font-wrap">
+              <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+                <span class="custom-select-label">JetBrains Mono</span><span class="arrow">▾</span>
+              </button>
+              <div class="custom-select-dropdown">
+                <div class="custom-opt active" data-value="jbm"><span class="opt-main">JetBrains Mono</span><span class="opt-sub">默认 · 等宽</span></div>
+                <div class="custom-opt" data-value="mono"><span class="opt-main">系统等宽</span><span class="opt-sub">SF Mono / Consolas</span></div>
+                <div class="custom-opt" data-value="system"><span class="opt-main">系统正文字体</span><span class="opt-sub">跟页面正文一致</span></div>
+              </div>
+            </div>
+            <input type="hidden" class="pv-font-val" value="jbm">
+          </div>
+          <div class="form-group">
+            <label>字号 (px)</label>
+            <input type="number" class="pv-fs" min="12" max="24" step="1" value="16" autocomplete="off" oninput="pvInput('fs',this)" onchange="pvNorm('fs',this)">
+          </div>
+          <div class="form-group">
+            <label>行距</label>
+            <input type="number" class="pv-lh" min="1" max="2" step="0.05" value="1.28" autocomplete="off" oninput="pvInput('lh',this)" onchange="pvNorm('lh',this)">
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:14px;margin-bottom:0">
           <label class="toggle">
             <input type="checkbox" class="hl-toggle" onchange="setPromptHl(this.checked)"> ✏️ Prompt 语法高亮（只标括号 / 权重）
           </label>
+          <div class="hint">规则与配色在 <code>data/prompt_hl.json</code>，可随时加词/改色，刷新即生效</div>
         </div>
       </div>
 
@@ -799,7 +832,7 @@
         <button class="adv-toggle" id="batch-adv-toggle-btn" onclick="toggleBatchAdvanced()" style="display:none">
           <span class="adv-arrow">▶</span> ⚙️ 高级设置
         </button>
-        <div class="batch-win bw-fit" id="batch-adv-body">
+        <div class="batch-win" id="batch-adv-body">
           <div class="bw-head">
             <span class="bw-title">⚙️ 高级设置</span>
             <span class="bw-sub" id="batch-adv-win-sub"></span>
@@ -878,12 +911,6 @@
               <input type="number" id="batch-seed" placeholder="留空随机" min="0" max="2147483647" autocomplete="off">
             </div>
           </div>
-          <div class="form-group" style="margin-top:14px;margin-bottom:0">
-            <label class="toggle">
-              <input type="checkbox" class="hl-toggle" onchange="setPromptHl(this.checked)"> ✏️ Prompt 语法高亮（只标括号 / 权重）
-            </label>
-            <div class="hint">规则与配色在 <code>data/prompt_hl.json</code>，可随时加词/改色，刷新即生效</div>
-          </div>
           <!-- 高清修复（hiresFix）。按底模自动可用性：仅 Illustrious/Pony/SDXL/SD1.5，
                ZIT/FLUX 平台不支持 → 控件置灰（见 updateHiresFixAvail）。 -->
           <div class="form-group" id="batch-hires-wrap" style="margin-top:14px;margin-bottom:0">
@@ -891,6 +918,38 @@
               <input type="checkbox" id="batch-hiresfix" onchange="onHiresFixToggle(this)"> ✨ 高清修复 High Res Fix
             </label>
             <div class="hint" id="batch-hiresfix-hint"></div>
+          </div>
+          <!-- 外观（字体/字号/行距）—— 2026-09-24：垫在最下面，要滚动才看得到（变相隐藏）；
+               即时生效（CSS 变量）+ localStorage 持久化；语法高亮开关移进这组。 -->
+          <div class="row" style="margin-top:14px">
+            <div class="form-group" style="flex:2">
+              <label>字体</label>
+              <div class="custom-select pv-font-wrap">
+                <button type="button" class="custom-select-btn" onclick="toggleCustomSelect(this.parentElement)">
+                  <span class="custom-select-label">JetBrains Mono</span><span class="arrow">▾</span>
+                </button>
+                <div class="custom-select-dropdown">
+                  <div class="custom-opt active" data-value="jbm"><span class="opt-main">JetBrains Mono</span><span class="opt-sub">默认 · 等宽</span></div>
+                  <div class="custom-opt" data-value="mono"><span class="opt-main">系统等宽</span><span class="opt-sub">SF Mono / Consolas</span></div>
+                  <div class="custom-opt" data-value="system"><span class="opt-main">系统正文字体</span><span class="opt-sub">跟页面正文一致</span></div>
+                </div>
+              </div>
+              <input type="hidden" class="pv-font-val" value="jbm">
+            </div>
+            <div class="form-group">
+              <label>字号 (px)</label>
+              <input type="number" class="pv-fs" min="12" max="24" step="1" value="16" autocomplete="off" oninput="pvInput('fs',this)" onchange="pvNorm('fs',this)">
+            </div>
+            <div class="form-group">
+              <label>行距</label>
+              <input type="number" class="pv-lh" min="1" max="2" step="0.05" value="1.28" autocomplete="off" oninput="pvInput('lh',this)" onchange="pvNorm('lh',this)">
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:12px;margin-bottom:0">
+            <label class="toggle">
+              <input type="checkbox" class="hl-toggle" onchange="setPromptHl(this.checked)"> ✏️ Prompt 语法高亮（只标括号 / 权重）
+            </label>
+            <div class="hint">规则与配色在 <code>data/prompt_hl.json</code>，可随时加词/改色，刷新即生效</div>
           </div>
           </div><!-- /.bw-body -->
         </div><!-- /#batch-adv-body -->
@@ -1300,7 +1359,35 @@ function toggleCustomSelect(wrap) {
   const isOpen = wrap.classList.contains('open');
   // Close all others
   document.querySelectorAll('.custom-select.open').forEach(c => c.classList.remove('open'));
-  if (!isOpen) wrap.classList.add('open');
+  if (!isOpen) {
+    wrap.classList.add('open');
+    _ddViewportFix(wrap.querySelector('.custom-select-dropdown'));
+  }
+}
+
+// 浮窗（.batch-win）是滚动容器：overflow 会把 position:absolute 的下拉裁掉 →
+// 打开时切 position:fixed + 视口坐标（祖先链无 transform，fixed 不受裁剪影响），
+// 下方放不下、上方放得下时自动向上开。关闭后 inline 样式残留无害 —— 每次打开都按当时坐标重算。
+function _ddViewportFix(dd) {
+  if (!dd || !dd.closest('.batch-win')) return;   // 只管浮窗内下拉；主面板折叠区照旧 absolute
+  const op = dd.offsetParent;                     // 定位祖先（display:block 之后才非 null）
+  if (!op) return;
+  const or = op.getBoundingClientRect();
+  dd.style.position = 'fixed';
+  dd.style.margin = '0';
+  dd.style.left = or.left + 'px';
+  dd.style.width = or.width + 'px';
+  dd.style.right = 'auto';
+  const h = dd.offsetHeight;
+  const below = window.innerHeight - or.bottom - 8;
+  const above = or.top - 8;
+  if (below < h && above > h) {
+    dd.style.top = 'auto';
+    dd.style.bottom = (window.innerHeight - or.top + 4) + 'px';
+  } else {
+    dd.style.bottom = 'auto';
+    dd.style.top = (or.bottom + 4) + 'px';
+  }
 }
 
 // 取一个 custom-opt 的显示主文本：有 opt-main 用 main，否则退回整个 textContent（兼容无副标签的旧选项）
@@ -1324,6 +1411,8 @@ document.addEventListener('click', function(e) {
     wrap.classList.remove('open');
     // 平台下拉：选中即切换平台。放在 saveDraft() 之前，否则草稿里存的是旧平台
     if (wrap.id === 'platform-wrap') setPlatform(opt.dataset.value);
+    // 字体下拉（高级设定最下面的外观组）：选中即生效，多实例一起同步
+    if (wrap.classList.contains('pv-font-wrap')) setPromptFont(opt.dataset.value);
     saveDraft();
     if (opt.closest('.batch-col')) {
       saveBatchDraft();
@@ -1760,6 +1849,7 @@ function filterLoraDropdown(row, loras) {
   }
   dropdown.innerHTML = html;
   dropdown.classList.add('open');
+  _ddViewportFix(dropdown);   // 浮窗内的 LoRA/Embedding 下拉同样防裁剪
 }
 
 function selectLora(el) {
@@ -4152,6 +4242,91 @@ function initPromptHl() {
 }
 
 loadSnippets();
+
+// ════════════════════ Prompt 外观：字体 / 字号 / 行距（2026-09-24）════════════════════
+// 即时生效：写 <html> 的 CSS 变量 → prompt/negative 当帧变化，不用刷新；
+// localStorage 持久化（刷新/重开都在）。控件在两处高级设定最下面，class 多实例，
+// 主面板 + batch 浮窗 + 克隆列一起同步（照 .hl-toggle 的模式），id 一律不用（克隆列会重写 batch-* id）。
+const _PV_KEY = 'prompt_visual';
+const _PV_FONTS = {
+  jbm:    "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+  mono:   "ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace",
+  system: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif",
+};
+let _pv = { font: 'jbm', fs: 16, lh: 1.28 };
+let _pvRedrawT = 0;
+
+function _pvLoad() {
+  try {
+    const s = JSON.parse(localStorage.getItem(_PV_KEY) || 'null');
+    if (s && typeof s === 'object') {
+      if (_PV_FONTS[s.font]) _pv.font = s.font;
+      if (isFinite(s.fs)) _pv.fs = Math.min(24, Math.max(12, Math.round(+s.fs)));
+      if (isFinite(s.lh)) _pv.lh = Math.min(2, Math.max(1, Math.round(+s.lh * 100) / 100));
+    }
+  } catch (e) {}
+}
+
+function applyPromptVisual() {
+  const r = document.documentElement;
+  r.style.setProperty('--prompt-font', _PV_FONTS[_pv.font]);
+  r.style.setProperty('--prompt-fs', _pv.fs + 'px');
+  r.style.setProperty('--prompt-lh', String(_pv.lh));
+  try { localStorage.setItem(_PV_KEY, JSON.stringify(_pv)); } catch (e) {}
+  // 多实例同步（主面板 / batch 浮窗 / 克隆列里的副本）
+  document.querySelectorAll('.pv-font-wrap').forEach(w => {
+    const opt = w.querySelector('.custom-opt[data-value="' + _pv.font + '"]');
+    if (!opt) return;
+    w.querySelectorAll('.custom-opt').forEach(o => o.classList.toggle('active', o === opt));
+    const lb = w.querySelector('.custom-select-label');
+    if (lb) lb.textContent = _optLabel(opt);
+  });
+  document.querySelectorAll('.pv-font-val').forEach(h => { h.value = _pv.font; });
+  document.querySelectorAll('.pv-fs').forEach(i => { if (+i.value !== _pv.fs) i.value = _pv.fs; });
+  document.querySelectorAll('.pv-lh').forEach(i => { if (+i.value !== _pv.lh) i.value = _pv.lh; });
+  // 高亮层：必须先同步度量（_hlSyncMetrics 只在 setup/focus/blur 跑过 —— 字体/字号/行高
+  // 变了不重同步的话 backdrop 还是旧字号，换行位置直接漂，长内容 scrollHeight 对不上），
+  // 再重画。立即一次 + 过渡动画（textarea transition: all .2s）结束后的补画 ——
+  // 动画期间 getComputedStyle 是插值值，250ms 那次才读到终值。
+  _pvHlResync();
+  clearTimeout(_pvRedrawT);
+  _pvRedrawT = setTimeout(_pvHlResync, 250);
+}
+
+function _pvHlResync() {
+  document.querySelectorAll(_HL_SEL).forEach(ta => {
+    const bd = _hlBd(ta);
+    if (bd) _hlSyncMetrics(ta, bd);
+  });
+  promptHlDrawAll();
+}
+
+function setPromptFont(v) {
+  if (!_PV_FONTS[v] || v === _pv.font) return;
+  _pv.font = v;
+  applyPromptVisual();
+}
+
+// oninput：只接受范围内的值，绝不改写正在输入的框（打 '20' 时中途的 '2' 越界直接忽略）
+function pvInput(kind, el) {
+  const n = parseFloat(el.value);
+  if (!isFinite(n)) return;
+  if (kind === 'fs') { if (n < 12 || n > 24) return; _pv.fs = Math.round(n); }
+  else { if (n < 1 || n > 2) return; _pv.lh = Math.round(n * 100) / 100; }
+  applyPromptVisual();
+}
+
+// onchange（blur / 回车 / 上下箭头）：越界或非法 → 从 _pv 回写规范值到所有实例
+function pvNorm(kind, el) {
+  const n = parseFloat(el.value);
+  const bad = !isFinite(n) || (kind === 'fs' && (n < 12 || n > 24)) || (kind === 'lh' && (n < 1 || n > 2));
+  if (bad) applyPromptVisual();
+  else pvInput(kind, el);
+}
+
+_pvLoad();
+applyPromptVisual();   // 同步上 CSS 变量（首屏不闪默认值）。此时 hl 尚未 setup，
+                       // promptHlDrawAll 里 _hlBd 返回 null 自动跳过 —— hl 初始化时自己会同步度量。
 
 init();
 
