@@ -95,7 +95,7 @@ MODELS = {
     "phoenix-ill":           {"id": "liangwc:phoenix-ill@3057554", "name": "Phoenix IL v4.0", "price": "~$0.003/张", "base": "illustrious"},
     "waivete-ill":           {"id": "liangwc:waivete-ill@3223633", "name": "WaiVete V5 v1.0", "price": "~$0.003/张", "base": "illustrious"},
     "a-mix-ill":             {"id": "liangwc:a-mix-ill@1915059", "name": "A-mix [Illustrious]", "price": "~$0.003/张", "base": "illustrious"},
-    "plant-milk-walnut-ill": {"id": "liangwc:plant-milk-walnut-ill@1714002", "name": "Plant Milk - Walnut", "price": "~$0.003/张", "base": "illustrious"},
+    "plant-milk-walnut-ill": {"id": "liangwc:plant-milk-walnut-ill@1714002", "name": "Plant Milk-Walnut (Illu)", "price": "~$0.003/张", "base": "illustrious"},
     "visionary-ill":         {"id": "liangwc:visionary-ill@1909771", "name": "VISIONARY Illustrious (NEW ERA)", "price": "~$0.003/张", "base": "illustrious"},
     "visionary-v3-ill":      {"id": "liangwc:visionary-v3-ill@1919246", "name": "Visionary Illustrious Mix V3", "price": "~$0.003/张", "base": "illustrious"},
     "coldmilk-ill":          {"id": "liangwc:coldmilk-ill@3259564", "name": "ColdMilk Illustrious v3.0", "price": "~$0.003/张", "base": "illustrious"},
