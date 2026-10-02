@@ -461,6 +461,20 @@
   .batch-ckpt-item.pinned:hover { background: rgba(251,191,36,0.12); color: #fbbf24; }
   [data-theme="light"] .batch-ckpt-item.pinned { color: #b45309; }
   [data-theme="light"] .batch-ckpt-item.pinned:hover { background: rgba(180,83,9,0.1); color: #b45309; }
+
+  /* ── Checkpoint 三段式 section（2026-10-02）：整段横跨两列，内部自成 1fr 1fr ── */
+  .batch-ckpt-grid .ckpt-sec { grid-column: 1 / -1; margin-top: 8px; min-width: 0; }
+  .batch-ckpt-grid .ckpt-sec:first-child { margin-top: 0; }
+  .ckpt-sec-head { display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: var(--text2); padding: 2px 2px 4px; user-select: none; -webkit-user-select: none; }
+  .ckpt-sec-head i { font-style: normal; font-size: 0.66rem; line-height: 1; background: rgba(124,92,252,0.16); border-radius: 8px; padding: 2px 6px; color: var(--text2); }
+  .ckpt-sec-body { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .ckpt-sec.closed > .ckpt-sec-body { display: none; }   /* 收起只藏不删（勾选不丢） */
+  .ckpt-grp-head { cursor: pointer; }
+  .ckpt-grp-head .caret { width: 0.8em; font-size: 0.7rem; color: var(--text2); }
+  .ckpt-grp-head .gname { font-weight: 500; letter-spacing: 0.02em; }
+  .ckpt-grp-head:active { opacity: 0.7; }
+  .ckpt-grp-head.open, .ckpt-grp-head.open .caret, .ckpt-grp-head.open .gname { color: var(--accent); }
+  .ckpt-grp-head.open i { background: rgba(124,92,252,0.26); color: var(--accent); }
   .batch-progress { font-size: 0.82rem; color: var(--text2); margin-top: 10px; text-align: center; }
   .batch-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .batch-result-grid.single { grid-template-columns: 1fr; }
@@ -3167,6 +3181,7 @@ let MODEL_GROUPS = { flux: [], pony: [], illustrious: [], sdxl: [], zit: [], sd1
 
 // Maps model key → name from backend; populated via /api/list-models
 let _batchModelNames = {};
+let _batchModelCreators = {};   // id -> creator（registry 2026-10-02 起全量带作者，全 243 个）
 
 // ── Checkpoint pin（长按置顶，2026-09-10 鹿鹿需求）──
 // 长按列表项 pin → 置顶 + 名称变色(琥珀金) + 📌；再长按取消 → 回到原列表位置。
@@ -3206,22 +3221,63 @@ function _winScroller(colId) {
 }
 
 // 按 pinned 优先 + 原顺序 渲染 checkpoint 网格
+// ── Checkpoint 列表三段式分组（2026-10-02 鹿鹿需求）──
+// ① 置顶（pin） ② 作者折叠组：当前底座下某作者 ≥ CKPT_GROUP_MIN 个模型，自动成组、默认收起
+// ③ 未分组：孤儿（作者不足阈值 / Anonymous），保持原排序原样子
+// 空 section 不渲染不占位。分组是渲染时按当前底座实时算的 → 以后新部署的模型自动归组，
+// 不需要改任何清单/代码（这是「全量判定」，pin 走某个不会让组降级散架）。
+const CKPT_GROUP_MIN = 4;      // 4 or more → 收起来（鹿鹿定案）
+let _ckptGroupsOpen = new Set();
+try { _ckptGroupsOpen = new Set(JSON.parse(localStorage.getItem('ckpt_groups_open') || '[]')); } catch(e) {}
+function _saveCkptGroupsOpen() { try { localStorage.setItem('ckpt_groups_open', JSON.stringify([..._ckptGroupsOpen])); } catch(e) {} }
+function _ckptCreatorOf(mk) { return _batchModelCreators[mk] || 'Anonymous'; }
+
 function _renderCkptGrid(colId, cat, checkedSet) {
   const grid = _colEl(colId, 'ckpt-grid');
   if (!grid) return;
   const models = MODEL_GROUPS[cat] || [];
-  const pinned = models.filter(mk => _pinnedCkpts.has(mk));
-  const rest = models.filter(mk => !_pinnedCkpts.has(mk));
-  const ordered = [...pinned, ...rest];
-  let html = '';
-  for (const mk of ordered) {
-    const name = _batchModelNames[mk] || mk;
-    const isPin = _pinnedCkpts.has(mk);
-    const isChk = checkedSet ? checkedSet.has(mk) : false;
-    html += `<label class="batch-ckpt-item${isPin ? ' pinned' : ''}${isChk ? ' checked' : ''}" data-mk="${escHtml(mk)}">`
-          + `<input type="checkbox" value="${escHtml(mk)}"${isChk ? ' checked' : ''} onchange="updateBatchCount('${colId}')"> `
-          + `<span class="batch-ckpt-name">${escHtml(name)}</span></label>`;
+
+  // 组判定用全量（含 pinned），显示时 pinned 单独归到置顶区
+  const counts = {};
+  for (const mk of models) { const cr = _ckptCreatorOf(mk); counts[cr] = (counts[cr] || 0) + 1; }
+  const pinned = [], groups = new Map(), orphans = [];
+  for (const mk of models) {
+    if (_pinnedCkpts.has(mk)) { pinned.push(mk); continue; }
+    const cr = _ckptCreatorOf(mk);
+    if (cr !== 'Anonymous' && counts[cr] >= CKPT_GROUP_MIN) {
+      if (!groups.has(cr)) groups.set(cr, []);
+      groups.get(cr).push(mk);
+    } else orphans.push(mk);
   }
+  // 组顺序：组内模型数降序（大家族在前），同数按字母
+  const grpList = [...groups.entries()]
+    .filter(([, list]) => list.length)                       // 整组被 pin 空 → 不渲染
+    .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
+
+  const item = (mk) => {
+    const name = _batchModelNames[mk] || mk;
+    const isChk = checkedSet ? checkedSet.has(mk) : false;
+    return `<label class="batch-ckpt-item${_pinnedCkpts.has(mk) ? ' pinned' : ''}${isChk ? ' checked' : ''}" data-mk="${escHtml(mk)}">`
+         + `<input type="checkbox" value="${escHtml(mk)}"${isChk ? ' checked' : ''} onchange="updateBatchCount('${colId}')"> `
+         + `<span class="batch-ckpt-name">${escHtml(name)}</span></label>`;
+  };
+  const body = (list) => `<div class="ckpt-sec-body">${list.map(item).join('')}</div>`;
+  const head = (label, n, cls) => `<div class="ckpt-sec-head${cls ? ' ' + cls : ''}">${label} <i>${n}</i></div>`;
+
+  let html = '';
+  if (pinned.length) html += `<div class="ckpt-sec">${head('📌 置顶', pinned.length)}${body(pinned)}</div>`;
+  for (const [cr, list] of grpList) {
+    const open = _ckptGroupsOpen.has(cr);
+    // ⚠️ 收起 = CSS 隐藏，不是不渲染：组内已勾选的模型必须留在 DOM，
+    // 否则 updateBatchCount / getSelectedModels 只数得到可见 input → 勾选会静默丢失。
+    html += `<div class="ckpt-sec${open ? '' : ' closed'}">`
+          + `<div class="ckpt-sec-head ckpt-grp-head${open ? ' open' : ''}" data-cr="${escHtml(cr)}">`
+          + `<span class="caret">${open ? '▾' : '▸'}</span><span class="gname">${escHtml(cr)}</span> <i>${list.length}</i></div>`
+          + body(list)
+          + `</div>`;
+  }
+  if (orphans.length) html += `<div class="ckpt-sec">${head('未分组', orphans.length)}${body(orphans)}</div>`;
+
   // 这里是 innerHTML 整体重渲染 —— 不保滚动位置的话，长按 pin 一个（走的就是这条路径）会让
   // 74 项的列表直接跳回顶部，用户得重新往下滚。⚠️ 滚动容器是 .bw-body 不是网格本身。
   const sc = _winScroller(colId);
@@ -3230,6 +3286,24 @@ function _renderCkptGrid(colId, cat, checkedSet) {
   if (sc) sc.scrollTop = prevTop;
   _bindCkptLongPress(grid);
 }
+
+// 组头点击：展开/收起该作者组（事件委托，避免每次重渲染重复绑定）
+function toggleCkptGroup(colId, cr) {
+  if (_ckptGroupsOpen.has(cr)) _ckptGroupsOpen.delete(cr); else _ckptGroupsOpen.add(cr);
+  _saveCkptGroupsOpen();
+  const grid = _colEl(colId, 'ckpt-grid');
+  if (!grid) return;
+  // 从 DOM 取当前勾选，重渲染后不丢选择
+  const checked = new Set(Array.from(grid.querySelectorAll('input:checked')).map(i => i.value));
+  _renderCkptGrid(colId, _colCat(colId), checked);
+}
+document.addEventListener('click', (e) => {
+  const h = e.target.closest && e.target.closest('.ckpt-grp-head');
+  if (!h) return;
+  const grid = h.closest('.batch-ckpt-grid');
+  if (!grid) return;
+  toggleCkptGroup(grid.id.replace(/-ckpt-grid$/, ''), h.dataset.cr);
+});
 
 // 长按检测：touch + mouse；移动/抬起即取消（不干扰滚动与点选）
 function _bindCkptLongPress(grid) {
@@ -3746,6 +3820,7 @@ async function loadBatchModelNames() {
       MODEL_GROUPS = { flux: [], pony: [], illustrious: [], sdxl: [], zit: [], sd15: [] };
       for (const m of data.models) {
         _batchModelNames[m.id] = m.name;
+        _batchModelCreators[m.id] = m.creator || 'Anonymous';
         // 权威 base 优先（后端 MODELS.base 来自 MODEL_BASE 表）；无则回退名字正则
         let cat = m.base || _categorizeModel(m.id);
         if (cat === 'qwen') cat = null;  // 编辑模型不进生图 batch 分组
