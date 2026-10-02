@@ -128,11 +128,21 @@ def send_document(path: str | Path, caption: str = "") -> None:
 
 
 def send_message(text: str) -> None:
-    _api("sendMessage", data={
-        "chat_id": os.environ["TG_CHAT_ID"],
-        "text": text,
-        "parse_mode": "Markdown",
-    }, timeout=60)
+    """Markdown 优先；实体解析炸了（不配对的 ` * _ [ ）自动降级纯文本，绝不静默丢消息。"""
+    try:
+        _api("sendMessage", data={
+            "chat_id": os.environ["TG_CHAT_ID"],
+            "text": text,
+            "parse_mode": "Markdown",
+        }, timeout=60)
+    except TelegramError as e:
+        msg = str(e).lower()
+        if "parse" not in msg and "entity" not in msg and "unsupported" not in msg:
+            raise
+        _api("sendMessage", data={
+            "chat_id": os.environ["TG_CHAT_ID"],
+            "text": text,
+        }, timeout=60)
 
 
 def send_file(path: str | Path, caption: str = "") -> str:
