@@ -475,6 +475,7 @@
   .ckpt-grp-head:active { opacity: 0.7; }
   .ckpt-grp-head.open, .ckpt-grp-head.open .caret, .ckpt-grp-head.open .gname { color: var(--accent); }
   .ckpt-grp-head.open i { background: rgba(124,92,252,0.26); color: var(--accent); }
+  .ckpt-sec-head em.sel { font-style: normal; margin-left: auto; font-size: 0.66rem; line-height: 1; font-weight: 600; background: rgba(124,92,252,0.3); color: var(--accent); border-radius: 8px; padding: 3px 6px; }
   .batch-progress { font-size: 0.82rem; color: var(--text2); margin-top: 10px; text-align: center; }
   .batch-result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .batch-result-grid.single { grid-template-columns: 1fr; }
@@ -3262,21 +3263,23 @@ function _renderCkptGrid(colId, cat, checkedSet) {
          + `<span class="batch-ckpt-name">${escHtml(name)}</span></label>`;
   };
   const body = (list) => `<div class="ckpt-sec-body">${list.map(item).join('')}</div>`;
-  const head = (label, n, cls) => `<div class="ckpt-sec-head${cls ? ' ' + cls : ''}">${label} <i>${n}</i></div>`;
+  const selN = (list) => (checkedSet ? list.filter(mk => checkedSet.has(mk)).length : 0);
+  const badge = (n) => n > 0 ? `<em class="sel">${n} 已选</em>` : '';
+  const head = (label, n, list) => `<div class="ckpt-sec-head">${label} <i>${n}</i>${badge(selN(list))}</div>`;
 
   let html = '';
-  if (pinned.length) html += `<div class="ckpt-sec">${head('📌 置顶', pinned.length)}${body(pinned)}</div>`;
+  if (pinned.length) html += `<div class="ckpt-sec">${head('📌 置顶', pinned.length, pinned)}${body(pinned)}</div>`;
   for (const [cr, list] of grpList) {
     const open = _ckptGroupsOpen.has(cr);
     // ⚠️ 收起 = CSS 隐藏，不是不渲染：组内已勾选的模型必须留在 DOM，
     // 否则 updateBatchCount / getSelectedModels 只数得到可见 input → 勾选会静默丢失。
     html += `<div class="ckpt-sec${open ? '' : ' closed'}">`
           + `<div class="ckpt-sec-head ckpt-grp-head${open ? ' open' : ''}" data-cr="${escHtml(cr)}">`
-          + `<span class="caret">${open ? '▾' : '▸'}</span><span class="gname">${escHtml(cr)}</span> <i>${list.length}</i></div>`
+          + `<span class="caret">${open ? '▾' : '▸'}</span><span class="gname">${escHtml(cr)}</span> <i>${list.length}</i>${badge(selN(list))}</div>`
           + body(list)
           + `</div>`;
   }
-  if (orphans.length) html += `<div class="ckpt-sec">${head('未分组', orphans.length)}${body(orphans)}</div>`;
+  if (orphans.length) html += `<div class="ckpt-sec">${head('未分组', orphans.length, orphans)}${body(orphans)}</div>`;
 
   // 这里是 innerHTML 整体重渲染 —— 不保滚动位置的话，长按 pin 一个（走的就是这条路径）会让
   // 74 项的列表直接跳回顶部，用户得重新往下滚。⚠️ 滚动容器是 .bw-body 不是网格本身。
@@ -3304,6 +3307,23 @@ document.addEventListener('click', (e) => {
   if (!grid) return;
   toggleCkptGroup(grid.id.replace(/-ckpt-grid$/, ''), h.dataset.cr);
 });
+
+// section 标题上的「已选 N」徽章刷新（勾选/清空/全选/展开收起后调用）
+// 存在意义：折叠组收起后里面的勾选看不见，用户找不到自己选了哪些（鹿鹿 2026-10-02 反馈）
+function _updateCkptSectionBadges(colId) {
+  const grid = _colEl(colId, 'ckpt-grid');
+  if (!grid) return;
+  grid.querySelectorAll(':scope > .ckpt-sec').forEach(sec => {
+    const h = sec.querySelector(':scope > .ckpt-sec-head');
+    if (!h) return;
+    const n = sec.querySelectorAll('.batch-ckpt-item input:checked').length;
+    let em = h.querySelector('em.sel');
+    if (n > 0) {
+      if (!em) { em = document.createElement('em'); em.className = 'sel'; h.appendChild(em); }
+      em.textContent = `${n} 已选`;
+    } else if (em) em.remove();
+  });
+}
 
 // 长按检测：touch + mouse；移动/抬起即取消（不干扰滚动与点选）
 function _bindCkptLongPress(grid) {
@@ -3406,6 +3426,7 @@ function updateBatchCount(colId) {
   if (!grid || !countEl) return;
   const cbs = grid.querySelectorAll('input[type="checkbox"]:checked');
   countEl.textContent = cbs.length;
+  _updateCkptSectionBadges(colId);   // 各 section 标题上的「已选 N」实时刷新
   cbs.forEach(cb => cb.parentElement.classList.toggle('checked', true));
   grid.querySelectorAll('input[type="checkbox"]:not(:checked)').forEach(cb => cb.parentElement.classList.remove('checked'));
   // 底模 tab 角标 + 工具行 badge（窗口关着时，badge 是唯一可见的已选状态）
