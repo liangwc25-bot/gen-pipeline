@@ -18,14 +18,14 @@ from gen_lib.common import get_key, save_image, http_post, download_bytes
 
 
 def _default_cfg(model_key):
-    """Default CFG by model family. Flux=3, ZIT=1, SD1.5=7, else (Pony/Illu/SDXL)=6."""
+    """Default CFG by model family. Flux=3, ZIT=1, SD1.5=7, else (Pony/Illu/SDXL)=5 (2026-10-02 定)."""
     if model_key.startswith("flux-") or model_key.endswith("-flux"):
         return 3.0
     if model_key.startswith("zimage-") or model_key == "persona-zit" or model_key == "diving-zit":
         return 1.0
     if model_key.endswith("-15"):
         return 7.0
-    return 6.0
+    return 5.0
 
 
 MODELS = {
